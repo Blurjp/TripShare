@@ -1,0 +1,1414 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline; background: transparent}
+::selection {background: #eeeeee}
+::-moz-selection {background: #eeeeee}
+::-webkit-selection {background: #eeeeee}
+body {line-height: 1}
+ol, ul {list-style: none}
+img, fieldset {border: none}
+blockquote, q {quotes: none}
+blockquote:before, blockquote:after, q:before, q:after {content: ""; content: none}
+* {outline: 0}
+ins {text-decoration: none}
+del {text-decoration: line-through}
+table {border-collapse: collapse; border-spacing: 0}
+.clearfix {*display: inline-block}
+.clearfix:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+body {font: 83% "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+.large {font-size: 110%; line-height: 1.4}
+.sidebar .pod {line-height: 1.3}
+.hgroup {margin-bottom: 20px}
+.hgroup h2 {color: black; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
+.hsubgroup {margin-bottom: 10px}
+.lead-in {color: #333333; margin-bottom: 10px; line-height: 1.4em; font-size: 1.7em; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
+h1 {font-size: 2.2em; letter-spacing: 0; color: #96af4b; font-weight: 100; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important}
+h1 strong {font-weight: 500}
+h1.helvetica-light {font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
+h1.helvetica-light strong {font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif}
+h1 img {vertical-align: top}
+h2 {font-size: 160%; font-weight: 300; margin-bottom: 10px; color: #96af4b; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+h2 small {font-size: 60%; padding-top: 5px; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+h2 strong {font-weight: 500}
+.sidebar h2 {font-size: 140%}
+h3 {font-size: 130%; line-height: 1.1; font-weight: normal; margin-bottom: 15px}
+h3 small {color: #817772; font-weight: normal}
+h4 {margin-bottom: 10px}
+h4.light {color: #999999}
+a {color: #268ca0; text-decoration: none}
+a:hover {text-decoration: underline; color: #196473}
+.nomargin {margin: 0 !important}
+.padding {padding: 15px}
+.center {text-align: center}
+p {margin-bottom: 1em}
+strong {font-weight: bold}
+.timestamp {color: #666666}
+.more-link {font-weight: bold}
+.about-h1 {border-top: 5px solid black; padding-top: 5px; font-weight: bold; margin-bottom: 10px}
+.large-light {font-size: 1.7em; margin-bottom: 10px; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 300}
+ol {list-style-type: decimal; margin-left: 20px; margin-bottom: 1em}
+ol.roman {list-style-type: upper-roman}
+ol li {margin-bottom: 1em}
+ul.disc {list-style-type: disc; margin-left: 18px; margin-bottom: 1em}
+ul.disc li {margin-bottom: 0.4em}
+blockquote {margin-left: 20px}
+small {font-size: 85%}
+.avatar-list a {float: left; width: 30px; height: 30px; overflow: hidden}
+.avatar-list a img {width: 30px; height: 30px}
+.tags a {line-height: 18px; text-decoration: none}
+.tags a img {width: 12px; height: 12px; vertical-align: middle; margin-right: 5px; background: transparent url(/images/sprites.png) no-repeat -52px -83px}
+.tags a:hover {text-decoration: none}
+.tags a:hover span {text-decoration: underline}
+.tags a.delete {color: #777777; font-size: 90%; padding: 1px 4px; line-height: 0.9em}
+.tags a.delete:hover {color: red}
+.check-twitter {color: #cccccc; font-weight: normal}
+.check-twitter a {color: lightblue !important}
+.warning {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin-bottom: 20px; font-weight: bold; background-color: #999999; padding: 7px; display: block; text-align: center; color: white}
+.warning a {color: #ffffcc; text-decoration: underline}
+.warning a:hover {color: #ffffaa}
+ul#other_locations li {margin-bottom: 10px}
+ul#other_locations li addr {color: #666666}
+ul#other_locations li addr .street-address, ul#other_locations li addr .extended-address, ul#other_locations li addr .country-name {display: block}
+ul#other_locations li a {display: block; color: black}
+ul#other_locations li a:hover {text-decoration: none}
+dl.sb-nav {margin-bottom: 20px}
+dl.sb-nav dt {font-size: 110%; margin-bottom: 5px}
+dl.sb-nav dt.active a {color: black}
+dl.sb-nav dt.active a:hover {text-decoration: none; cursor: default}
+dl.dlist dt {color: #777777; font-size: 90%; margin-bottom: 2px}
+dl.dlist dd {margin-bottom: 10px}
+dl.dlist.inline dt {clear: left; float: left; width: 70px}
+dl.dlist.inline dd {margin-left: 70px}
+.submit-photo-action {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; float: right; margin-left: 5px}
+.submit-photo-action:hover {color: white; background-color: #64bcc9; text-decoration: none}
+.submit-photo-action:active, .submit-photo-action.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+.flag-action, .follow-action {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; cursor: pointer; color: #666666; width: auto; height: 30px; display: block; line-height: 30px; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #dddddd; background: white; float: right; margin-left: 5px}
+.flag-action:hover, .follow-action:hover {color: black; border-color: #999999; text-decoration: none}
+.flag-action.add img, .follow-action.add img {width: 9px; height: 9px; margin-right: 2px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -34px -83px}
+.flag-action.remove img, .follow-action.remove img {width: 9px; height: 9px; overflow: hidden; margin-right: 2px; background: transparent url(/images/sprites.png) no-repeat -43px -83px}
+.flag-action.loading, .follow-action.loading {background: white url(/images/spinner.gif) no-repeat 6px 7px}
+.flag-action.loading img, .follow-action.loading img {background: none}
+.grid-button, .list-button {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; cursor: pointer; color: #666666; width: auto; height: 30px; display: block; line-height: 30px; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #dddddd; background: white; float: right; margin-left: 5px; padding: 6px 7px 5px; height: 19px}
+.grid-button:hover, .list-button:hover {color: black; border-color: #999999; text-decoration: none}
+.grid-button.on, .list-button.on {border-color: #999999}
+.grid-button img {width: 19px; height: 19px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -98px -19px}
+.grid-button:hover img, .grid-button.on img {background-position: -117px -19px}
+.list-button img {width: 19px; height: 19px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -98px -39px}
+.list-button:hover img, .list-button.on img {background-position: -116px -39px}
+span.divider {padding: 0 2px}
+.tag-input {float: left; font-size: 1em; padding: 4px 2px 5px; margin-top: 0; width: 180px; font-family: inherit}
+.add-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; box-shadow: 0 1px #cccccc; -moz-box-shadow: 0 1px #cccccc; -webkit-box-shadow: 0 1px #cccccc; cursor: pointer; width: auto; height: 28px !important; display: block; line-height: 27px !important; font-size: 12px; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #718818 #718818 #576a0d; color: #313c04; text-shadow: 1px 1px #b3cc4f; background: #96af4b; float: left; margin-left: 5px}
+.add-button:hover {border-color: #576a0d; text-decoration: none}
+.add-button:active {background: #ccd7a5}
+.item-assocation-action {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; cursor: pointer; color: #666666; width: auto; height: 30px; display: block; line-height: 30px; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #dddddd; background: white; float: right; margin-left: 5px; font-size: 2.4em; padding: 0 6px}
+.item-assocation-action:hover {color: black; border-color: #999999; text-decoration: none}
+.item-assocation-action img {width: 20px; height: 19px; overflow: hidden; vertical-align: middle; margin-top: 6px; background: transparent url(/images/sprites.png) no-repeat -98px 0}
+.item-assocation-action:hover img {background-position: -118px 0}
+.qmark {font-weight: bold; color: black}
+.code {width: 550px; cursor: text; display: block; white-space: pre; overflow: auto; height: 80px; padding: 0; line-height: 1.2em; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px}
+.edit {font-size: 0.9em; color: red}
+.edit:hover {color: black}
+.highlight {background-color: #ffffcc}
+.admin_links a {font-size: 0.9em; color: red; margin-left: 5px; padding-left: 7px; border-left: 1px solid #dddddd}
+.admin_links a.first {border-left: none; margin-left: none; padding-left: none}
+.admin_links a:hover {color: black}
+.primary-text-color, .primary-text-color a {color: #96af4b !important}
+.widget-download {display: block; margin: 15px 0}
+#sidebar-home {float: left}
+#sidebar-auth-buttons .sidebar-auth-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 100%; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.65em; float: left}
+#sidebar-auth-buttons .sidebar-auth-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
+#sidebar-auth-buttons .sidebar-auth-button:active, #sidebar-auth-buttons .sidebar-auth-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+address {color: #777777; font-style: normal}
+.pager-container {height: 20px}
+.pagination {clear: both}
+.pagination * {float: left}
+.pagination a {border: 1px solid #eeeeee}
+.pagination a:hover {border-color: #cccccc; text-decoration: underline}
+.pagination a, .pagination span {display: block; padding: 3px 6px; margin-right: 4px}
+.pagination span {cursor: default}
+.pagination .disabled {color: #999999}
+.pagination .prev_page {padding-left: 0}
+.pagination .prev_page:hover, .pagination .next_page:hover {border-color: white}
+#iphone-app-link {width: 145px; height: 73px; text-indent: -10000px; overflow: hidden; display: block; background: transparent url(/images/iphone-app-teaser-button.png) no-repeat}
+#iphone-app-link:hover {background-position: 0 -73px}
+#opentable-button {margin: -10px -10px 10px; background: transparent url(/images/opentable-button.png) no-repeat; display: block; width: 300px; height: 36px; overflow: hidden; text-indent: -10000px}
+#opentable-button:hover {background-position: 0 -36px}
+dl#sidebar-nav dt {display: block; margin: 0.5em 0 0.5em; font-size: 1.1em}
+dl#sidebar-nav dt:after {content: ""}
+dl#sidebar-nav dd {margin-top: 0.5em; padding-left: 15px}
+dl#sidebar-nav dd dt {font-size: 1em}
+dl#sidebar-nav dd dd {color: #268ca0}
+dl#sidebar-nav dd dd:before {content: "· "}
+dl#sidebar-nav .on a {cursor: default; color: black}
+dl#sidebar-nav .on a:hover {text-decoration: none}
+form .row input.big {font-size: 30px; width: 400px; padding: 5px; font-family: inherit; background: #f9f7f6; border: 2px solid #817772}
+input:focus, input:active {outline: none}
+label.disabled {color: #777777}
+input.text {padding: 4px; font-size: 1em; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; font-family: "Helvetica Neue"; border: 1px solid #cccccc; border-color: #aaaaaa #dddddd #dddddd #aaaaaa; margin-top: 0}
+form.user-form #errorExplanation {margin-bottom: 20px}
+form.user-form #errorExplanation h2 {display: none}
+form.user-form #errorExplanation p {margin-bottom: 10px; font-size: 1.1em}
+form.user-form #errorExplanation ul {color: #444444; list-style-type: decimal; margin-left: 20px}
+form.user-form .check-row {line-height: 22px}
+form.user-form .row {float: left; clear: left; *display: inline-block; margin-bottom: 10px}
+form.user-form .row:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+form.user-form .row .note {color: #777777; font-size: 90%; padding-top: 11px}
+form.user-form .row.last {margin-bottom: 0}
+form.user-form .submit {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; display: inline; overflow: visible; font-size: 1em; padding: 8px 12px; margin: 0 !important}
+form.user-form .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
+form.user-form .submit:active, form.user-form .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+form.user-form .text-box {margin-right: 5px; cursor: text; position: relative}
+form.user-form .text-box.small {float: left; width: 140px !important}
+form.user-form .text-box.small input, form.user-form .text-box.small label {width: 138px !important}
+form.user-form .text-box input, form.user-form .text-box textarea {padding: 6px 0; position: relative; margin: 0 !important; background-color: white; border: 1px solid #cccccc; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+form.user-form .text-box label, form.user-form .text-box input, form.user-form .text-box textarea {text-indent: 10px !important; cursor: text; width: 283px; font-size: 15px; line-height: 18px; font-family: inherit}
+form.user-form .text-box label {color: #777777; cursor: text; padding: 6px 0; position: absolute; z-index: 2; top: 1px; left: 1px}
+form.default .top-label {margin-bottom: 5px; margin-top: 5px}
+form.default .side-label {float: left; width: 120px; padding: 8px 0 0}
+form.default .check-row {line-height: 22px}
+form.default .row {*display: inline-block; margin-bottom: 10px}
+form.default .row:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+form.default .row .note {color: #777777; font-size: 90%; padding-top: 11px}
+form.default .text-box {cursor: text !important; float: left; width: 265px; margin-right: 7px; padding: 6px 10px; position: relative; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+form.default .text-box.small {width: 119px}
+form.default .text-box.small input, form.default .text-box.small label {width: 119px}
+form.default .text-box.medium {width: 236px; padding: 6px 8px}
+form.default .text-box.medium input, form.default .text-box.medium label {width: 236px}
+form.default .text-box.valid {background: #edffe1 url(/images/little-check.png) no-repeat 8px center}
+form.default .text-box.valid input {color: #336600; width: 200px; margin: 0 !important; padding-left: 16px}
+form.default .text-box .text-box-search {background: transparent url(/images/text-box-search.png) no-repeat; width: 18px !important; height: 18px !important; border: none; margin: 0; padding: 0; position: absolute; top: 5px; right: 10px; cursor: pointer; z-index: 20}
+form.default .text-box .text-box-search:hover {background-position: -18px 0}
+form.default .text-box .clear {position: absolute; text-indent: -10000px; right: 6px; top: 8px; width: 17px; height: 17px; background: transparent url(/images/clear-search.png) no-repeat}
+form.default .text-box .clear:hover {background-position: -17px 0}
+form.default .text-box label, form.default .text-box input, form.default .text-box textarea {width: 260px; font-size: 15px; line-height: 18px; font-family: inherit}
+form.default .text-box label {color: #777777; cursor: text; position: absolute}
+form.default .text-box input, form.default .text-box textarea {border: none; padding: 0; margin: 0 !important}
+form.default .text-box textarea {height: 80px; background: transparent}
+form.default .text-box.text-area-box {width: 580px}
+form.default .text-box.text-area-box label {width: 580px}
+form.default .text-box.text-area-box textarea {width: 580px; height: 40px; font-size: 15px; font-family: inherit}
+form.default .row.inline-200 .text-box {width: 140px; padding: 4px 5px}
+form.default .row.inline-200 .text-box .clear {top: 4px; right: 4px}
+form.default .row.inline-200 .text-box input, form.default .row.inline-200 .text-box label {font-size: 100%; width: 140px}
+form.default .row.inline-200 .perfect-blue {padding: 6px 10px !important}
+form.default .row.inline-300 {margin-bottom: 0}
+form.default .row.inline-300 .text-box {width: 242px; padding: 6px 8px}
+form.default .row.inline-300 .text-box input, form.default .row.inline-300 .text-box label {font-size: 1.1em; width: 226px}
+form.default .row.inline-300 .text-box label {line-height: 1.1 !important}
+form.default .row.inline-300 .submit {float: left; margin: 0; padding: 0; width: 70px; height: 33px; line-height: 1}
+form.default #errorExplanation {margin-bottom: 20px}
+form.default #errorExplanation p {margin-bottom: 5px}
+form.default #errorExplanation ul {color: #444444; list-style-type: decimal; margin-left: 20px}
+form.default #photo-field {width: 416px; height: 35px; cursor: pointer; overflow: hidden; position: relative; background: transparent url(/images/upload-user-photo.png) no-repeat 0 0}
+form.default #photo-field.px300 {width: 287px; height: 34px; background: transparent url(/images/file-field-300px.png) no-repeat 0 0}
+form.default #photo-field.px300.complete {background-position: 0 -34px}
+form.default #photo-field.px300 .file-field {width: 190px; overflow: hidden}
+form.default #photo-field.complete {background-position: 0 -35px}
+form.default #photo-field #file-value {color: #777777; font-size: 15px; line-height: 35px; position: absolute; cursor: pointer; padding-left: 45px}
+form.default #photo-field .file-field {cursor: pointer; opacity: 0; filter: alpha(opacity=0); display: block; font-size: 40px; width: 416px; height: 35px; left: 0; position: absolute}
+form.default .submit {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; display: inline; overflow: visible; font-size: 1em}
+form.default .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
+form.default .submit:active, form.default .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+form.default .submit.inline {padding-left: 10px; padding-right: 10px}
+form.default .submit[disabled="disabled"] {color: #999999; background: #dddddd; box-shadow: inset 1px 1px #cccccc; -moz-box-shadow: inset 1px 1px #cccccc; -webkit-box-shadow: inset 1px 1px #cccccc; cursor: default}
+form.default .submit-row .submit {padding: 8px 12px}
+form.default .submit-row .submit:hover {text-decoration: none}
+ul.uploadContainer li {font-size: 12px; position: relative; height: 22px}
+ul.uploadContainer li h6 {font-size: 11px}
+ul.uploadContainer li div.bar {width: 100%; height: 4px}
+ul.uploadContainer li div.progress {position: absolute; top: 17px; height: 5px; background: #268ca0}
+.swfUploadArea .embedArea {margin-right: 10px; margin-bottom: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: #e1dcc8; box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); padding: 7px 10px; cursor: default}
+.swfUploadArea .embedArea input[type="button"] {border: none; background: #e1dcc8; padding: 0; margin: 0; font: inherit; font-weight: bold}
+.recessed-buttons {float: left; margin-top: 2px}
+.recessed-buttons li {float: left; margin-right: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: #e1dcc8; box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); padding: 7px 10px; cursor: default}
+.recessed-buttons li img {width: 16px; height: 16px; vertical-align: middle}
+.recessed-buttons li .review-connect-btn {margin-left: 3px}
+.recessed-buttons li.twitter img {background: transparent url(/images/share-sprite.png) no-repeat 0 0}
+.recessed-buttons li.foursquare img {background: transparent url(/images/share-sprite.png) no-repeat 0 -16px}
+.recessed-buttons li.facebook img {background: transparent url(/images/share-sprite.png) no-repeat 0 -32px}
+.recessed-buttons li.flickr img {background: transparent url(/images/share-sprite.png) no-repeat 0 -80px}
+.text-box-note {position: absolute; right: 10px; top: 5px; color: #999999; font-size: 90%; line-height: 20px}
+#modal-errors {margin-bottom: 10px; padding: 10px; background: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#modal-errors h3 {margin-bottom: 5px}
+.services .pod {border: 1px solid #e5e1dd; background: #edece3; margin-bottom: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+.services .pod .service-header {padding: 10px; height: 50px}
+.services .pod img {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px}
+.services .pod a {margin-top: 10px; float: right; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; box-shadow: 0 1px #cccccc; -moz-box-shadow: 0 1px #cccccc; -webkit-box-shadow: 0 1px #cccccc; cursor: pointer; width: auto; height: 28px !important; display: block; line-height: 27px !important; font-size: 12px; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #718818 #718818 #576a0d; color: #313c04; text-shadow: 1px 1px #b3cc4f; background: #96af4b}
+.services .pod a:hover {border-color: #576a0d; text-decoration: none}
+.services .pod a:active {background: #ccd7a5}
+.services .pod a.disconnect {margin-left: 10px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; box-shadow: 0 1px #cccccc; -moz-box-shadow: 0 1px #cccccc; -webkit-box-shadow: 0 1px #cccccc; color: #333333 !important; cursor: pointer; width: auto; height: 28px !important; display: block; line-height: 27px !important; font-size: 12px; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #999999 #999999 #777777; background: #cccccc; text-shadow: none}
+.services .pod a.disconnect:hover {border-color: #777777; text-decoration: none}
+.services .pod a.disconnect:active {background: #aaaaaa}
+.services .pod.connected {background: white; border-color: #edece3}
+.services .pod.problem {background-image: -moz-linear-gradient(top, #fffea9, #fffe77); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fffea9),color-stop(1, #fffe77)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fffea9', EndColorStr='#fffe77'); border-color: #e2e161}
+.services .pod.problem a {color: white; border-color: #960909 #960909 #780b00; background: none; background-image: -moz-linear-gradient(top, #c41c1c, #b40b0b); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #c41c1c),color-stop(1, #b40b0b)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#c41c1c', EndColorStr='#b40b0b'); box-shadow: 0 1px #c1c190; -moz-box-shadow: 0 1px #c1c190; -webkit-box-shadow: 0 1px #c1c190; text-shadow: none}
+.services .pod.problem a:hover {border-color: #780b00}
+.service-notification-settings {clear: both; padding: 10px}
+.service-notification-settings h3 {font-size: 110%; font-weight: bold; padding: 0; margin: 0 0 10px}
+.service-notification-settings li {padding: 5px 0; line-height: 1.4}
+.service-notification-settings li label {padding-left: 5px}
+.service-notification-settings li label strong {color: #96af4b; font-size: 90%}
+.service-notification-settings li img {vertical-align: middle; margin-right: 2px; margin-top: -5px}
+#email-notification-settings h3 {padding: 15px; margin: 0; border-bottom: 1px solid #dddddd}
+#email-notification-settings li {padding: 10px 15px; border-bottom: 1px solid #dddddd}
+.button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; display: inline; overflow: visible; font-size: 1em; cursor: pointer}
+.button:hover {color: white; background-color: #64bcc9; text-decoration: none}
+.button:active, .button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+.reject {color: #333333; background: #cccccc; box-shadow: 1px 1px #666666; -moz-box-shadow: 1px 1px #666666; -webkit-box-shadow: 1px 1px #666666}
+.reject:hover {background: #dddddd; color: #333333}
+.reject:active {color: #333333; background: #aaaaaa; box-shadow: inset 1px 1px #666666; -moz-box-shadow: inset 1px 1px #666666; -webkit-box-shadow: inset 1px 1px #666666}
+.fake-input {width: 265px; padding: 6px 10px; position: relative; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+.fake-input.medium {width: 240px; padding: 6px}
+.fake-input.medium input, .fake-input.medium label {width: 240px}
+form .results-container {top: 31px; left: -1px; position: absolute}
+form .results-container .results {position: absolute; width: 270px; border: 1px solid #cccccc; border-top: 1px solid #f3f3f3; background-color: white; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; list-style: none}
+form .results-container .results li {display: block}
+form .results-container .results li.selected a.result {background-color: #dddddd}
+form .results-container .results li a.result {color: #222222; display: block; padding: 4px 8px; zoom: 1; text-decoration: none; font-weight: bold; font-size: 93%; border-top: 1px solid #eeeeee}
+form .results-container .results li a.result small {color: #555555; font-size: 11px; display: block; font-weight: normal}
+form .results-container .results li a:hover {color: #333333; background-color: #f8f8f8}
+form .results-container .results li.status {color: #222222; font-size: 90%; padding: 6px 8px}
+form .results-container .results li.status em {color: #666666; display: block; margin-top: 6px; padding: 5px; background: #eeeeee; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px}
+form .results-container .results li.add_row {padding: 8px; font-size: 93%; background: #eeeeee; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd}
+form .results-container .results li.add_row strong {margin-bottom: 3px; display: block}
+form .results-container .results li.add_row.selected {background-color: #dddddd}
+form .live-search .spinner {position: absolute; top: 9px; right: 8px}
+.perfect-blue, .remote-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; overflow: visible !important}
+.perfect-blue:hover, .remote-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
+.perfect-blue:active, .perfect-blue.active, .remote-button:active, .remote-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+.perfect-blue.inline, .remote-button.inline {padding-left: 10px; padding-right: 10px}
+form.wide .fieldset {padding-top: 10px; margin: 0 auto; width: 560px}
+form.wide .fieldset .text-box {margin: 0 30px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid white}
+form.wide fieldset {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; padding: 30px; margin: 0 auto; width: 500px}
+form.wide .row {*display: inline-block; margin-bottom: 20px}
+form.wide .row:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+form.wide .row .note {color: #777777; font-size: 90%; padding-top: 11px}
+form.wide .top-label {margin-bottom: 5px; font-size: 1.2em; font-weight: 300; color: #96af4b; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+form.wide .submit {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 100%; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.65em; overflow: hidden}
+form.wide .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
+form.wide .submit:active, form.wide .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+form.wide .check-row {padding: 10px; background-color: #e1dcc8; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+form.wide .check-row h3 {font-size: 1.2em; margin-bottom: 0}
+form.wide .radio-group {float: right}
+form.wide .text-box {cursor: text !important; float: left; width: 500px; position: relativge; border: 1px solid #e1dcc8; border-top-color: #b4aaa0; border-left-color: #b4aaa0; background-color: white}
+form.wide .text-box.error {border-color: red}
+form.wide .text-box label, form.wide .text-box input, form.wide .text-box textarea {width: 480px; font-size: 1.2em; padding: 15px 10px; font-family: inherit; background-color: transparent}
+form.wide .text-box label {color: #b4aaa0; cursor: text; position: absolute}
+form.wide .text-box input, form.wide .text-box textarea {border: none; font-size: 1.8em; padding: 10px; margin: 0 !important; background: transparent}
+form.wide .text-box textarea {font-size: 1.2em; height: 100px}
+form.wide .text-box.text-area-box {width: 580px}
+form.wide .text-box.text-area-box label {width: 580px}
+form.wide .text-box.text-area-box textarea {width: 580px; height: 40px; font-size: 15px; font-family: inherit; background: transparent}
+#signup-terms {margin-bottom: 10px}
+.destroy-submit {background-color: red !important; box-shadow: inset 1px 1px 0 #333333; -moz-box-shadow: inset 1px 1px 0 #333333; -webkit-box-shadow: inset 1px 1px 0 #333333}
+#draft-saved {font-size: 1.3em; color: #999999; font-style: italic; line-height: 30px; margin-right: 10px}
+#blog-post-form #select-blog-categories a {float: left; margin-right: 5px; margin-top: 5px; padding: 2px 5px; border: 1px solid #cccccc; background: white; border-color: #268ca0; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px}
+#blog-post-form .row {margin-bottom: 10px}
+#blog-post-form .row .text-box {width: 560px; border: 1px solid #888888; border-color: #888888 #cccccc #cccccc #888888; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0}
+#blog-post-form .row .text-box label {color: #999999; font-size: 1.6em; line-height: 1.2}
+#blog-post-form .row .text-box input.text {font-size: 1.6em; width: 100%}
+#blog-post-form .row textarea.text {padding: 5px; font-size: 1.1em; font-family: inherit; width: 570px; height: 300px; border: 1px solid #888888; border-color: #888888 #cccccc #cccccc #888888}
+.checkbox-flag {background-color: #f0eee4; border: 1px solid #e1dcc8; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 5px 10px; margin: 0 0 10px 120px; width: 264px}
+body {background: white}
+#dashboard-header {margin-bottom: 25px}
+#dashboard-header .avatar {float: left; margin-right: 15px}
+#dashboard-header .avatar img {width: 75px; height: 75px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#dashboard-header h1 {padding-top: 5px}
+#call-to-action {background: #196473; color: #f0f5ec; padding: 10px; margin-bottom: 15px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#call-to-action .avatar {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#call-to-action a {color: #e1dcc8}
+#service-notification {background: #fffea9; color: black; padding: 15px; text-align: center; border-bottom: 1px solid #e2e161}
+#service-notification .inset {text-align: left; margin: 0 auto; width: 940px}
+#service-notification h3 {font-weight: bold; font-size: 120%; margin-bottom: 5px}
+#service-notification .check-settings {float: right; font-size: 1.1em; font-weight: bold; text-decoration: underline; padding: 7px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; text-shadow: 1px 1px #ffffcc; color: #268ca0}
+#wrapper {position: relative; height: auto}
+#container {z-index: 2; margin: 0 auto; position: relative}
+.deny-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.65em; background-color: #aaaaaa !important; box-shadow: inset -1px -1px #777777; -moz-box-shadow: inset -1px -1px #777777; -webkit-box-shadow: inset -1px -1px #777777}
+.deny-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
+.deny-button:active, .deny-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+.follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.65em}
+.follow-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
+.follow-button:active, .follow-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+.partner-follow-custom .follow-button {box-shadow: 0 0 0 white; -moz-box-shadow: 0 0 0 white; -webkit-box-shadow: 0 0 0 white}
+.partner-follow-custom .follow-button:active {box-shadow: 0 0 0 white; -moz-box-shadow: 0 0 0 white; -webkit-box-shadow: 0 0 0 white}
+#social-icons {float: right}
+#social-icons a {float: right; margin-left: 5px}
+#user-info-window {float: right; width: 270px; padding: 11px 15px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; color: #f0f5ec; min-height: 50px; background: #196473; position: relative}
+#user-info-window strong {font-size: 110%; display: block; margin-bottom: 5px}
+#user-info-window .tip {left: -15px; top: 17px; position: absolute; background: transparent url(/images/tip-speechbubble.png) no-repeat; width: 20px; height: 40px}
+#user-info-window img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#user-info-window #user-stats {font-size: 90%}
+#user-info-window a {color: #f7f6f1}
+#new-sighting-form {z-index: 1000; margin-bottom: 20px}
+#new-sighting-form #review-widget {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; float: left; background: #f0eee4; padding: 20px; width: 580px}
+#review-widget {z-index: 20; position: relative; float: left}
+#review-widget form {width: 280px; margin: 0}
+#review-widget #review-widget-error {margin: -20px -20px 10px -20px; color: #564b40; padding: 15px; text-align: center; background: #e1dcc8; font-size: 1.1em; border-bottom: 1px solid #b4aaa0; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+#review-widget #review-widget-error strong {color: #ad3843}
+#review-widget #uploading {height: 130px; text-align: center}
+#review-widget #uploading div {padding-top: 40px}
+#review-widget #file-upload {width: 577px; height: 34px; cursor: pointer; position: relative; overflow: hidden; background: transparent url(/images/spotting-file-upload.png)}
+#review-widget #file-upload #file-value {color: #777777; font-size: 15px; line-height: 33px; position: absolute; cursor: pointer; padding-left: 10px}
+#review-widget #file-upload .file-field {cursor: pointer; opacity: 0; filter: alpha(opacity=0); display: block; font-size: 80px; z-index: 0; width: 277px; height: 34px; left: 0; position: absolute}
+#review-widget #file-upload .file-field2 {cursor: pointer; opacity: 0; filter: alpha(opacity=0); display: block; font-size: 80px; z-index: 0; width: 277px; height: 34px; left: 0; position: absolute}
+#review-widget #file-upload.complete #file-value {background: transparent url(/images/spotting-check.png) no-repeat 10px 10px; padding-left: 30px}
+#review-widget #file-upload.full {width: 620px; background: white url(/images/review-browse-full.png) no-repeat}
+#review-widget #file-upload.full:hover, #review-widget #file-upload.full.complete {background-position: 0 0}
+#review-widget #file-upload.full .file-field {width: 200px}
+#review-widget #file-upload.full .file-field2 {width: 200px}
+#review-widget .submit {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1em; padding: 8px 12px; font-weight: normal; display: inline}
+#review-widget .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
+#review-widget .submit:active, #review-widget .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+#review-widget .submit:hover {text-decoration: none}
+#review-widget #award_ribbon {float: right; margin-right: 10px; padding: 9px 0 8px 16px; background: transparent url(/images/ribbon-16px.png) no-repeat 0 50%}
+#review-widget #optional-fields {margin-top: 10px}
+#review-widget .text-box {float: left; width: 250px; padding: 6px 10px !important; position: relative; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#review-widget .text-box.focus {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+#review-widget .text-box.valid {background: #96af4b !important; border-color: #96af4b !important; color: white !important}
+#review-widget .text-box.valid input {color: white !important; -webkit-text-fill-color: white !important; margin: 0 !important; font-weight: bold}
+#review-widget .text-box .clear {position: absolute; text-indent: -10000px; right: 6px; top: 7px; width: 17px; height: 17px; background: transparent url(/images/sprites.png) no-repeat -34px -66px}
+#review-widget .text-box .clear:hover {background-position: -51px -66px}
+#review-widget .text-box .center {text-align: center}
+#review-widget .text-box label, #review-widget .text-box input {width: 230px; font-size: 15px; line-height: 19px; font-family: inherit; margin: 0 !important; background-color: transparent}
+#review-widget .text-box label {width: 260px; color: #777777; cursor: text; text-align: left; position: absolute}
+#review-widget .text-box input {border: none; padding: 0; background: transparent}
+#review-widget .text-box.text-area-box {width: 556px; float: none}
+#review-widget .text-box.text-area-box label {width: 556px; text-align: left}
+#review-widget .text-box.text-area-box textarea {width: 556px; height: 40px; font-size: 15px; font-family: inherit; background: transparent}
+#review-widget .text-box.category {margin-right: 10px; width: 200px}
+#review-widget .text-box.category input, #review-widget .text-box.category label {width: 200px}
+#review-widget .text-box.category .results-container .results {width: 220px}
+#review-widget .text-box.tags {width: 324px; padding: 6px}
+#review-widget .text-box.tags input, #review-widget .text-box.tags label {width: 318px}
+#review-widget .text-box.tags .results {width: 344px}
+#review-widget .text-box.full label, #review-widget .text-box.full input {width: 550px; font-size: 15px; line-height: 19px; font-family: inherit; margin: 0 !important; background-color: transparent}
+#review-widget .text-box.full label {width: 550px; color: #777777; cursor: text; text-align: left; position: absolute}
+#review-widget .at {text-align: center; font-size: 1.4em; float: left; color: black; line-height: 32px; width: 33px}
+#review-widget .live-search .spinner {top: 7px}
+#review-widget .note {width: 100%; height: 64px; border: none}
+#review-widget .clear {top: 8px; right: 8px}
+.item-manager {position: relative; z-index: 100}
+.item-manager #manage-items {position: absolute; left: 35px; padding: 10px; width: 280px; background: white; border: 1px solid #999999}
+.item-manager #manage-items .text {width: 210px; font-size: 1em; padding: 2px 5px}
+.item-manager #manage-items dl dt {margin-bottom: 5px; font-weight: bold}
+.item-manager #manage-items #item-parents dd {padding: 5px 10px; background: #eeeeee; margin-bottom: 1px}
+.item-manager #manage-items #item-parents dd a {float: right}
+.item-manager #manage-items #item-match-parent-results {height: 120px; overflow: auto; padding: 10px; background: white; border: 1px solid #cccccc}
+.item-manager #manage-items #item-match-parent-results a {padding: 5px 0; display: block; line-height: 1em; font-size: 90%}
+#nom-the-best .divider {font-size: 70%; color: #666666; padding: 0 2px}
+.dismiss {float: right; width: 17px; height: 17px; text-indent: -10000px; background: transparent url(/images/clear-search.png) no-repeat}
+.dismiss:hover {background-position: -17px 0}
+#thanks {background: #eeeeee; text-align: center; width: 500px; margin: 80px auto 0; padding: 20px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#thanks h3 {font-size: 2em}
+#thanks .sub-head {font-size: 1.1em}
+#cat {margin-top: 10px; text-align: center; font-size: 90%; color: #666666}
+#twtr-widget-1 * {padding: 0}
+#twtr-widget-1 .twtr-hd, #twtr-widget-1 .twtr-tweet-text {margin-bottom: 10px}
+#foodspotting-vision {padding: 10px; border: 1px solid #cccccc; margin-bottom: 10px}
+#foodspotting-vision img {width: 260px}
+#modal {top: 0; left: 0; width: 100%; height: 100%; z-index: 100000; position: absolute}
+#modal #modal-facebox {margin: 200px auto 0; width: 630px; position: relative; z-index: 2}
+#modal #modal-facebox #modal-tabs {float: right}
+#modal #modal-facebox #modal-tabs li {float: left; margin-left: 10px}
+#modal #modal-facebox #modal-tabs li a {display: block; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: #f0eee4; padding: 7px 10px}
+#modal #modal-facebox #modal-tabs li.on a {background: #e1dcc8; box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2); color: #1e0f00; font-weight: bold; cursor: default}
+#modal #modal-facebox #modal-tabs li.on a:hover {text-decoration: none}
+#modal #modal-facebox #modal-content {*display: inline-block; background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; font-size: 0.9em}
+#modal #modal-facebox #modal-content:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#modal #modal-facebox #modal-content #modal-head {padding: 20px; border-bottom: 1px solid #e1dcc8}
+#modal #modal-facebox #modal-content #modal-head h1 {font-size: 1.8em}
+#modal #modal-facebox #modal-content #modal-body {*display: inline-block; background: #f0eee4; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; padding: 20px}
+#modal #modal-facebox #modal-content #modal-body:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#modal #modal-facebox #modal-content #modal-body #modal_scroll_content {height: 310px; overflow: auto; position: relative; margin: -20px -20px}
+#modal #modal-facebox #modal-content #modal-body #modal_scroll_content ul.grid {border-top: 0; padding: 0 0 10px 10px}
+#modal #modal-facebox #modal-content #modal-footer {*display: inline-block; border-top: 1px solid white; padding: 20px}
+#modal #modal-facebox #modal-content #modal-footer:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#modal #modal-facebox #modal-content #modal-footer .pagination a {background-color: #f0eee4; border-color: #e1dcc8}
+#modal #modal-facebox.small {width: 360px}
+#modal #modal-facebox.small .main {width: 320px}
+#modal #modal-facebox.large {width: 620px}
+#modal #modal-facebox.large .main {width: 580px}
+#modal #modal-facebox.guide-sighting {width: 620px}
+#modal #modal-facebox.review {width: 620px}
+#modal #modal-facebox #close-modal {display: block; position: absolute; overflow: hidden; text-indent: -10000px; left: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/images/close-button.png) no-repeat}
+#modal #modal-facebox #close-modal:hover {text-decoration: none}
+#modal #modal-screen {top: 0; left: 0; z-index: 1; position: absolute; width: 100%; height: 100%; opacity: 0.5; filter: alpha(opacity=50); background: black}
+#tooltip {z-index: 100001; position: absolute}
+#tooltip .content {color: white; padding: 8px 10px; font-size: 0.9em; font-weight: bold; line-height: 1.2em; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: transparent url(/images/tooltip-content.png)}
+#tooltip .content .title, #tooltip .content addr {margin-bottom: 5px; display: block}
+#tooltip .content small, #tooltip .content addr {color: #eeeeee; font-size: inherit; font-weight: normal}
+#tooltip .content a {text-decoration: underline; color: #e1dcc8}
+#tooltip .content a:hover {color: #f0eee4}
+#tooltip img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#tooltip .pointer {width: 100%; height: 5px; text-align: center; background: transparent url(/images/tooltip-pointer.png) no-repeat top center}
+.sidebar {float: right; display: inline; width: 300px; padding: 0}
+.main {float: left; width: 620px; display: inline; position: relative}
+.bbox-tabs.four li {width: 154px !important}
+.bbox-tabs.four li.last {width: 154px !important}
+.bbox-tabs.three li {width: 206px !important}
+.bbox-tabs li {float: left; width: 310px; margin-bottom: 15px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
+.bbox-tabs li a {display: block; padding: 15px 20px}
+.bbox-tabs li a strong {font-size: 1.2em; display: block; margin-bottom: 2px}
+.bbox-tabs li a span {color: #777777}
+.bbox-tabs li a:hover {text-decoration: none}
+.bbox-tabs li a:hover strong {text-decoration: underline}
+.bbox-tabs li a:hover span {text-decoration: none}
+.bbox-tabs li.on {border-bottom: 1px solid #f7f6f1}
+.bbox-tabs li.first {border-radius: 5px 0 0 0; -moz-border-radius: 5px 0 0 0; -webkit-border-radius: 5px 0 0 0}
+.bbox-tabs li.first.on {width: 309px; border-bottom: 1px solid #f7f6f1}
+.bbox-tabs li.first.on a {color: black}
+.bbox-tabs li.last {border-radius: 0 5px 0 0; -moz-border-radius: 0 5px 0 0; -webkit-border-radius: 0 5px 0 0}
+.bbox-tabs li.last.on {width: 309px; border-bottom: 1px solid #f7f6f1}
+.bbox-tabs li.last.on a {color: black}
+.bbox-tabs li.on {background-color: #f7f6f1}
+.bbox {padding: 20px; background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0}
+.right {float: right !important}
+.left {float: left !important}
+.full {width: auto !important; float: none !important; display: block !important}
+#header #nav-bar {height: 57px; background: #1e0f00 url(/images/header.png) repeat-x}
+#header #nav-bar #hiring {position: absolute; right: 16px; top: 0; background: transparent url(/images/hiring.png) no-repeat; width: 102px; height: 22px; padding: 3px 0; color: white; text-align: center}
+#header #nav-bar #logo-small {margin: 0 15px 14px 0; float: left}
+#header #nav-bar .content {position: relative; width: 940px; padding: 0 20px; margin: 0 auto}
+#header #nav-bar .logged-out-actions {color: white; text-align: center}
+#header #nav-bar .logged-out-actions a {color: #e1dcc8; text-decoration: underline}
+#header #nav-bar .logged-out-actions a:hover {color: #f7f6f1}
+#header #nav-bar ul {float: left}
+#header #nav-bar ul li {padding: 20px 7px; float: left; margin-right: 5px}
+#header #nav-bar ul li.last {margin-right: 0}
+#header #nav-bar ul li.on {background: #564b40; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px 6px; margin: 15px 4px 14px 0; border-right: 1px solid #1e0f00; border-bottom: 1px solid #1e0f00}
+#header #nav-bar ul li.on a:hover {text-decoration: none}
+#header #nav-bar ul li a {color: white; font-size: 105%; text-transform: uppercase; text-decoration: none}
+#header #nav-bar ul li a:hover {text-decoration: underline}
+#header #nav-bar .logged-out-actions {float: right; padding: 20px 0 0}
+#header #nav-bar #mini-profile {float: right; font-size: 90%; width: 300px; color: white; padding: 12px 0 0}
+#header #nav-bar #mini-profile .divider {padding: 0 4px; font-weight: bold; color: #b4aaa0}
+#header #nav-bar #mini-profile a {color: #e1dcc8}
+#header #nav-bar #mini-profile .current_person {margin-bottom: 2px}
+#header #nav-bar #mini-profile .current_person .name {color: white; font-weight: strong; font-size: 110%}
+#dashboard-profile {*display: inline-block; margin-bottom: 10px}
+#dashboard-profile:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#dashboard-profile .avatar {float: left; width: 90px; height: 90px}
+#dashboard-profile .avatar img {width: 90px; height: 90px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#dashboard-profile .fn a {color: black}
+#dashboard-profile .details {margin-left: 100px}
+#dashboard-profile .details h2 {padding-top: 1px; margin-bottom: 2px; border: none}
+#dashboard-profile .details h3 {font-size: 1.2em; margin-bottom: 5px}
+.following-avatar-list .avatar {float: left; margin-right: 5px}
+.following-avatar-list .avatar img {width: 30px; height: 30px}
+.following-avatar-list .others {width: 35px; float: left; padding-top: 3px; font-size: 80%; font-family: "museo-slab-1", "museo-slab-2", serif; text-align: center}
+.following-avatar-list .others strong {font-weight: normal; display: block}
+#following_counts {*display: inline-block; margin-bottom: 25px}
+#following_counts:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#following_counts li {float: left; text-align: center; background: #eeeeee; padding: 5px; width: 60px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; margin-right: 6px}
+#following_counts li strong {font-size: 1.4em; display: block}
+#following_counts li a {color: black}
+#following_counts li.last {margin-right: 0}
+#yellow-message {color: black; padding: 10px; font-size: 1.1em; margin-bottom: 10px; margin-top: -10px; background: #ffffcc; text-align: center; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#flash_notice {width: 100%; z-index: 102; position: relative; background-image: -moz-linear-gradient(top, #fffea9, #fffe77); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fffea9),color-stop(1, #fffe77)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fffea9', EndColorStr='#fffe77'); border-bottom: 1px solid #e2e161}
+#flash_notice div {color: black; padding: 15px; text-align: center; font-weight: bold; font-size: 110%}
+#logo {color: #1c120e; text-indent: -100000px; display: block; overflow: hidden; width: 408px; height: 66px; font-weight: bold; font-size: 70px; text-decoration: none; letter-spacing: -3px; background: transparent url(/images/logo.png) no-repeat}
+#tagline {font-size: 1.2em; color: #333333}
+#container {font-size: 1em; width: 980px}
+#container #content {padding: 30px 20px 0; background-color: white; min-height: 300px}
+#container #content #content-header {padding: 15px; margin: 0; border-bottom: 1px dotted #aaaaaa}
+#container #content #content-header.home {background: transparent url(/images/pointer-arrow.png) no-repeat 95% 0}
+#container #content #content-header.home h1 {font-family: Georgia, serif; font-style: italic; line-height: 40px; font-size: 30px}
+#container #content #content-header h1 {margin-bottom: 0}
+#embedded #container {margin: 0}
+#embedded #content {width: 940px; padding: 0}
+#spotter {position: absolute; z-index: 3; bottom: -100px; left: -140px}
+#footer {position: relative; z-index: 1; color: white; clear: both; background-image: -moz-linear-gradient(top, white, #bcdfe9); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, white),color-stop(1, #bcdfe9)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='white', EndColorStr='#bcdfe9')}
+#footer #type-kit-love {float: right}
+#footer #foodie-town {position: relative; background: transparent url(/images/footer-v2.png) no-repeat center bottom; height: 450px}
+#footer #footer-content {padding-top: 450px; width: 100%}
+#footer #footer-content .inset {margin: 0 auto; padding-top: 10px 0 20px; width: 960px}
+#footer #footer-content .divider {font-size: 90%; margin: 0 5px}
+#footer #footer-content .copy {float: right}
+#footer #footer-content a {color: #f0eee4}
+#footer #footer-repeat {margin-top: -20px; background: #1e0f00; height: 50px}
+.main-controls {width: 100%; margin-bottom: 5px}
+#sorts li {display: inline; margin-right: 15px}
+#sorts li a {font-size: 100%; padding-top: 1px; text-decoration: none}
+#sorts li a:hover {text-decoration: underline}
+#sorts li.on {font-size: 100%; font-weight: bold}
+#sorts li.on a {padding-top: 0; color: black}
+#sorts li.on a:hover {text-decoration: none}
+#sighting {position: relative; background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; background: #f0eee4}
+#sighting .sighting-box {padding: 15px; background: #f7f6f1; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+#sighting .ribbon {position: absolute; right: 5px; top: 5px; padding-top: 14px; width: 58px; height: 74px; font-size: 180%; line-height: 0.9; text-align: center; color: white; text-indent: 3px; z-index: 10; text-decoration: none; background: transparent url(/images/ribbon-large.png)}
+#sighting #photo-elements {position: relative; height: 590px}
+#sighting #photo-elements #photo-spinner {width: 66px; position: absolute; top: 220px; left: 260px; z-index: 10; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background-color: black; color: #cccccc; font-size: 90%; text-align: center}
+#sighting #photo-elements #photo-spinner img {margin-bottom: 5px}
+#sighting #photo-elements #photo-actions {position: absolute; z-index: 100; padding: 10px; width: 570px; top: 260px}
+#sighting #photo-elements #photo-actions .rotate-left {opacity: 0.6; filter: alpha(opacity=6); float: left; width: 30px; height: 30px; overflow: hidden; text-indent: -100000px; background: transparent url(/images/sprites.png) no-repeat -68px 0}
+#sighting #photo-elements #photo-actions .rotate-left:hover {opacity: 1; filter: alpha(opacity=10)}
+#sighting #photo-elements #photo-actions .rotate-right {opacity: 0.6; filter: alpha(opacity=6); float: right; width: 30px; height: 30px; overflow: hidden; text-indent: -100000px; background: transparent url(/images/sprites.png) no-repeat -68px -30px}
+#sighting #photo-elements #photo-actions .rotate-right:hover {opacity: 1; filter: alpha(opacity=10)}
+#sighting .note {color: #777777; margin-top: 15px; font-size: 1.4em; line-height: 1.3em; font-weight: 300; font-style: italic; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important}
+#sighting .info {color: #444444; margin-top: 15px}
+#sighting .info .avatar {float: left; width: 50px}
+#sighting .info .person-details {margin-left: 65px}
+#promo-ribbon {position: absolute; top: -5px; z-index: 10; right: -5px; width: 112px; height: 112px; background: transparent url(/images/ribbon-beta.png)}
+#sidebar-welcome {display: none; background: #e6ebd2; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; color: #96af4b; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.6em; font-weight: 100}
+#sidebar-welcome a {display: block; margin-top: 10px}
+#sidebar-welcome strong {font-weight: 500}
+.sidebar .cblock {background: #eeeeee; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; padding: 10px}
+ul.list {margin: 0; padding: 0}
+ul.list dl.parents dt {color: #777777; display: inline; margin-right: 5px; font-size: 0.9em}
+ul.list dl.parents dt:after {content: ":"}
+ul.list dl.parents dd {display: inline}
+ul.list li.sighting, ul.list li.entry {background: #f0eee4; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0}
+ul.list li.sighting .spotted-by, ul.list li.entry .spotted-by {margin-bottom: 10px; float: left; width: 410px; padding-bottom: 5px; margin-left: -20px; background: transparent url(/images/corner-ribbon-green.png) no-repeat bottom left}
+ul.list li.sighting .spotted-by .label, ul.list li.entry .spotted-by .label {float: left; background: #96af4b; padding: 6px 10px 5px 18px; color: white; margin: 0 5px 0 0; font-weight: 100; font-style: italic; font-size: 120%; font-family: "museo-slab-1", "museo-slab-2", serif}
+ul.list li.sighting .spotted-by .avatar, ul.list li.entry .spotted-by .avatar {float: left; margin-right: 5px}
+ul.list li.sighting .spotted-by .avatar img, ul.list li.entry .spotted-by .avatar img {width: 30px; height: 30px}
+ul.list li.sighting .spotted-by .others, ul.list li.entry .spotted-by .others {width: 35px; float: left; padding-top: 3px; font-size: 80%; font-family: "museo-slab-1", "museo-slab-2", serif; text-align: center}
+ul.list li.sighting .spotted-by .others strong, ul.list li.entry .spotted-by .others strong {font-weight: normal; display: block}
+ul.list li.sighting .sighting-box, ul.list li.sighting .content-box, ul.list li.entry .sighting-box, ul.list li.entry .content-box {padding: 15px; background: #f7f6f1; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+ul.list li.sighting .guides li, ul.list li.entry .guides li {float: left; width: 50px; height: 50px}
+ul.list li.sighting .sighting-admin-actions, ul.list li.entry .sighting-admin-actions {float: right}
+ul.list li.sighting .sighting-admin-actions.open .follow-action, ul.list li.entry .sighting-admin-actions.open .follow-action {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0; border: 1px solid #999999; margin-left: 0; height: 28px; border-bottom-color: white}
+ul.list li.sighting .sighting-admin-actions.open .action-menu, ul.list li.entry .sighting-admin-actions.open .action-menu {display: block}
+ul.list li.sighting .sighting-admin-actions .follow-action, ul.list li.entry .sighting-admin-actions .follow-action {z-index: 2; position: relative}
+ul.list li.sighting, ul.list li.review, ul.list li.entry {clear: left; position: relative; margin-bottom: 20px; list-style: none}
+ul.list li.sighting .timestamp, ul.list li.review .timestamp, ul.list li.entry .timestamp {font-size: 90%}
+ul.list li.sighting .note, ul.list li.review .note, ul.list li.entry .note {color: #777777; font-size: 1.2em; margin-top: 10px; margin-bottom: 10px; font-weight: 300; font-style: italic; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+ul.list li.sighting .photo.t-170, ul.list li.review .photo.t-170, ul.list li.entry .photo.t-170 {color: white; width: 170px; height: 170px; padding: 10px; margin: 0 0 0 10px; float: right; background: transparent url(/images/stamp-190px.png) no-repeat}
+ul.list li.sighting .photo.t-120, ul.list li.review .photo.t-120, ul.list li.entry .photo.t-120 {float: left; color: white; width: 120px; height: 120px; padding: 10px; margin: 0 10px 0 0; background: transparent url(/images/stamp-140px.png) no-repeat}
+ul.list li.sighting .photo .small-ribbon, ul.list li.review .photo .small-ribbon, ul.list li.entry .photo .small-ribbon {position: absolute; top: 2px; left: 2px}
+ul.list li.sighting h3, ul.list li.review h3, ul.list li.entry h3 {clear: left; font-size: 140%; font-weight: bold; margin-bottom: 10px}
+ul.list li.sighting h3 span, ul.list li.review h3 span, ul.list li.entry h3 span {font-weight: normal; color: #444444}
+ul.list li.sighting h3 a, ul.list li.review h3 a, ul.list li.entry h3 a {color: black; text-decoration: none}
+ul.list li.sighting h3 a:hover, ul.list li.review h3 a:hover, ul.list li.entry h3 a:hover {color: #333333; text-decoration: underline}
+ul.list li.sighting p, ul.list li.review p, ul.list li.entry p {margin-bottom: 10px}
+ul.list li.sighting .created_at, ul.list li.review .created_at, ul.list li.entry .created_at {color: #777777}
+ul.list li.sighting .creator, ul.list li.review .creator, ul.list li.entry .creator {font-weight: bold}
+ul.list li.sighting .last_sighting, ul.list li.review .last_sighting, ul.list li.entry .last_sighting {color: #777777; font-size: 1em; margin-bottom: 10px}
+ul.list li.sighting .guides .badge, ul.list li.review .guides .badge, ul.list li.entry .guides .badge {float: left}
+ul.list li.sighting address, ul.list li.review address, ul.list li.entry address {opacity: 0.6; filter: alpha(opacity=6); color: black; font-weight: normal; font-size: 1em; line-height: 1.3; margin-bottom: 10px; vertical-align: middle; background: transparent url(/images/map-pin-black.png) no-repeat; padding-left: 16px}
+ul.list li.sighting address a, ul.list li.review address a, ul.list li.entry address a {color: black}
+ul.list li.sighting .ribbon, ul.list li.review .ribbon, ul.list li.entry .ribbon {position: absolute; right: 20px; top: 20px; padding-top: 14px; width: 58px; height: 74px; font-size: 180%; line-height: 0.9; text-align: center; color: white; text-indent: 3px; z-index: 10; text-decoration: none; background: transparent url(/images/ribbon-large.png) no-repeat}
+ul.list li.sighting .ribbon.count_0, ul.list li.review .ribbon.count_0, ul.list li.entry .ribbon.count_0 {background-image: url(/images/ribbon-large-grey.png)}
+ul.list li.sighting .ribbon small, ul.list li.review .ribbon small, ul.list li.entry .ribbon small {display: block; font-size: 50%; text-indent: 4px; line-height: 0.8}
+.blog-header {*display: inline-block; background: #1e0f00 url(/images/pattern-wood.jpg) repeat 0 -40px; padding: 0; box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important; box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -moz-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -webkit-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7)}
+.blog-header:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+.blog-header .inset {padding: 10px 0 0; background-color: #564b40}
+.blog-title {font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 2.8em; font-weight: 500; margin-right: 5px; color: white}
+.blog-title a {color: white}
+.blog-subtitle {font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.1em; font-weight: 200; color: #f7f6f1}
+#blog-categories {padding: 10px 0 0; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1em; font-weight: 500; text-transform: uppercase}
+#blog-categories li {float: left; margin-right: 25px; padding: 3px 0 13px}
+#blog-categories li a {float: left; padding: 2px 0; color: #fbd7aa}
+#blog-categories li a:hover {color: white}
+#blog-categories li.on {background: transparent url(/images/white-arrow-up.gif) no-repeat center 26px}
+#blog-categories li.on a {color: white; cursor: default}
+#blog-categories li.on a:hover {text-decoration: none}
+#blog-subscribe {float: right; padding-top: 5px}
+#blog-subscribe strong {float: left; margin-right: 5px; line-height: 30px; color: white}
+#blog-subscribe a {float: left; margin-left: 5px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; background: #f0eee4; box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2); padding: 7px 10px}
+#blog-subscribe a:hover {background: #e1dcc8; box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2)}
+#blog-subscribe a img {width: 16px; height: 16px; vertical-align: middle}
+#blog-subscribe a.twitter img {background: transparent url(/images/share-sprite.png) no-repeat 0 0}
+#blog-subscribe a.foursquare img {background: transparent url(/images/share-sprite.png) no-repeat 0 -16px}
+#blog-subscribe a.facebook img {background: transparent url(/images/share-sprite.png) no-repeat 0 -32px}
+#blog-subscribe a.flickr img {background: transparent url(/images/share-sprite.png) no-repeat 0 -80px}
+.categories li {margin-bottom: 5px}
+.author-list li {margin-bottom: 10px}
+.author-list li .avatar {float: left; width: 30px; height: 30px}
+.author-list li .avatar img {width: 30px; height: 30px}
+.author-list li .author-details {margin-left: 35px}
+ul.blog li.entry {margin-bottom: 40px}
+ul.blog li.entry p {margin-bottom: 15px}
+ul.blog li.entry object, ul.blog li.entry embed {border: 1px solid #cccccc; background: white; padding: 5px; margin-bottom: 10px}
+ul.blog li.entry h1.title, ul.blog li.entry h2.title {font: 1.8em "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 300; font-size: 2em; color: black; margin-bottom: 15px}
+ul.blog li.entry h1.title a, ul.blog li.entry h2.title a {color: black}
+ul.blog li.entry .post-body {color: #222222; line-height: 1.5; margin-bottom: 10px}
+ul.blog li.entry .post-body img {max-width: 580px; border: 1px solid #cccccc; background: white; padding: 5px}
+ul.blog li.entry .meta {color: #888888; margin-top: 10px}
+ul.blog li.entry .meta .avatar {float: left; margin-right: 10px}
+ul.blog li.entry .meta .avatar img {width: 30px; height: 30px}
+ul.blog li.entry .timestamp {color: #888888}
+ul.blog li.entry ul.admin-links {float: right}
+ul.blog li.entry ul.admin-links li {float: left; margin-right: 5px; padding-right: 5px; border-right: 1px solid #cccccc}
+ul.blog li.entry ul.admin-links li.last {margin: 0; padding: 0; border: 0}
+ul.reviews {margin: 0; padding: 0; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; border-top: 1px solid #e1dcc8; background-color: #f0eee4}
+ul.reviews li.all-reviews {text-align: center; border-top: 1px solid #e1dcc8 !important}
+ul.reviews li.all-reviews a {border-top: 1px solid white; display: block; padding: 10px}
+ul.reviews li.review {padding: 15px; margin-bottom: 0 !important; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8}
+ul.reviews li.review.loading {text-align: center; font-size: 90%}
+ul.reviews li.review.loading img {margin-right: 5px}
+ul.reviews li.review.last, ul.reviews li.review.loading {border-bottom: 0}
+ul.reviews li.review .review-container {width: 435px; display: inline; float: right}
+ul.reviews li.review .creator-bar {*display: inline-block; font-size: 90%; margin-bottom: 10px}
+ul.reviews li.review .creator-bar:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+ul.reviews li.review .creator-bar .avatar {margin-right: 10px; float: left}
+ul.reviews li.review .creator-bar .avatar img {width: 30px; height: 30px}
+.action-bar .actions {padding: 8px 15px; height: 16px; color: black; font-size: 89%; box-shadow: inset 0 2px 2px #e1dcc8; -moz-box-shadow: inset 0 2px 2px #e1dcc8; -webkit-box-shadow: inset 0 2px 2px #e1dcc8}
+.action-bar .actions a.more-link {color: #777777; line-height: 18px; margin-left: 10px}
+.action-bar .actions a.more-link:hover {color: #333333}
+.action-bar .actions .more {position: relative; float: right}
+.action-bar .actions .more .more-actions {position: absolute; padding: 5px 0; width: 150px; background: #f7f6f1; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; box-shadow: 2px 2px 0 #aaaaaa; -moz-box-shadow: 2px 2px 0 #aaaaaa; -webkit-box-shadow: 2px 2px 0 #aaaaaa}
+.action-bar .actions .more .more-actions a {color: #777777; display: block; padding: 5px 10px}
+.action-bar .actions .more .more-actions a:hover {color: white; text-decoration: none; background-color: #196473}
+.action-bar ul {float: left; text-transform: uppercase}
+.action-bar ul li {float: left; margin-right: 12px}
+.action-bar ul li.show-sightings {font-weight: bold}
+.action-bar ul li.map-it a {padding-left: 12px; background: transparent url(/images/pin-off.png) no-repeat}
+.action-bar ul li.map-it.on a {background-image: url(/images/pin-on.png)}
+.action-bar ul li.tried-it a {padding-left: 20px; background: transparent url(/images/check-off.png) no-repeat}
+.action-bar ul li.tried-it.on a, .action-bar ul li.tried-it:hover a {background-image: url(/images/check-on.png)}
+.action-bar ul li.want-it a {padding-left: 20px; background: transparent url(/images/star-off.png) no-repeat}
+.action-bar ul li.want-it.on a, .action-bar ul li.want-it:hover a {background-image: url(/images/star-on.png)}
+.action-bar ul li.nom-it a {padding-left: 20px; background: transparent url(/images/ribbon-off-16px.png) no-repeat}
+.action-bar ul li.nom-it.on a, .action-bar ul li.nom-it:hover a {background-image: url(/images/ribbon-16px.png)}
+.action-bar ul li.flag-it a {padding-left: 20px; background: transparent url(/images/flag-off.png) no-repeat}
+.action-bar ul li.flag-it.on a, .action-bar ul li.flag-it:hover a {background-image: url(/images/flag-on.png)}
+.action-bar ul li.edit-it a {padding-left: 20px; background: transparent url(/images/sighting-action-edit.png) no-repeat}
+.action-bar ul li.delete-it a {padding-left: 20px; background: transparent url(/images/sighting-action-delete.png) no-repeat}
+.action-bar ul li.print-it a {padding-left: 20px; background: transparent url(/images/print-it.png) no-repeat}
+.action-bar ul li a {color: #333333; display: block; line-height: 18px}
+.action-bar ul li a:hover {text-decoration: underline}
+.action-bar ul a {color: #333333}
+.action-bar ul a.sighting-count {background: transparent url(/images/review-arrow.png) no-repeat left center; padding-left: 12px}
+.comments-container {background: #e1dcc8; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+.comments-container .new-comment .text-box {width: 375px; padding: 0; margin-right: 0}
+.comments-container .new-comment .text-box textarea {width: 365px; height: 22px; padding: 4px}
+.comments-container .new-comment .text-box textarea.focused {height: 50px}
+.comments-container.full {width: 580px; float: none; display: block}
+.comments-container.full .text-box {width: 530px; margin-right: 0; padding: 0}
+.comments-container.full .text-box textarea {width: 520px; height: 22px; padding: 4px}
+.comments-container.full .text-box textarea.focused {height: 50px}
+.comments-container .avatar {float: right; margin-left: 5px}
+.comments-container .avatar img {width: 30px; height: 30px}
+.comments-container .comments {color: #444444}
+.comments-container .comments .comment {margin-bottom: 15px}
+.comments-container .comments .comment a {font-weight: bold}
+.comments-container .comments .comment p {margin-bottom: 5px; margin-right: 40px}
+.comments-container .comments .comment .timestamp {font-size: 80%}
+.comments-container .comments .compliments {font-size: 90%}
+.comments-container .comments .compliments p {margin-bottom: 15px}
+.comments-container .comments .compliments a {font-weight: bold}
+.comments-container .new-comment .perfect-blue {margin-top: 8px}
+.comment_count {color: #777777; font-weight: bold}
+ul.dishes li .photo {float: left; margin-right: 15px}
+ul.list .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+ul.people li.person .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+ul.people li.person .avatar {float: left; width: 50px; height: 50px}
+ul.people li.person .avatar img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+ul.people li.person .details {color: #555555; margin-left: 65px}
+ul.people li.person .details p.title {line-height: 1.4}
+ul.people li.person .details .bio {font-size: 95%; margin-bottom: 5px}
+ul.people li.person .details h3 {font-size: 1.1em; font-weight: bold}
+ul.people li.person .details h3 span {font-weight: normal; font-size: 95%}
+ul.people li.person .details h4 {margin-top: 5px; font-size: 1em}
+ul.people li.person .details small {color: #555555}
+ul.people li.person .photos a {display: inline-block}
+ul.people li.person .comments-container .avatar {width: 30px; height: 30px; float: right; margin: 0}
+ul.people li.person .comments-container .new-comment .text-box {width: 465px; padding: 0; margin-right: 0}
+ul.people li.person .comments-container .new-comment .text-box textarea {width: 455px; height: 22px; padding: 4px}
+ul.people li.person .comments-container .new-comment .text-box textarea.focused {height: 50px}
+.main ul.people, .main ul.places, .main ul.flags, .main ul#guides, .main ul.notifications {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; margin-bottom: 20px}
+.main ul.people li.person, .main ul.people li.place, .main ul.people li.flag, .main ul.people li.guide, .main ul.people li.notification, .main ul.places li.person, .main ul.places li.place, .main ul.places li.flag, .main ul.places li.guide, .main ul.places li.notification, .main ul.flags li.person, .main ul.flags li.place, .main ul.flags li.flag, .main ul.flags li.guide, .main ul.flags li.notification, .main ul#guides li.person, .main ul#guides li.place, .main ul#guides li.flag, .main ul#guides li.guide, .main ul#guides li.notification, .main ul.notifications li.person, .main ul.notifications li.place, .main ul.notifications li.flag, .main ul.notifications li.guide, .main ul.notifications li.notification {padding: 15px; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; margin: 0 !important}
+.main ul.people li.person.first, .main ul.people li.place.first, .main ul.people li.flag.first, .main ul.people li.guide.first, .main ul.people li.notification.first, .main ul.places li.person.first, .main ul.places li.place.first, .main ul.places li.flag.first, .main ul.places li.guide.first, .main ul.places li.notification.first, .main ul.flags li.person.first, .main ul.flags li.place.first, .main ul.flags li.flag.first, .main ul.flags li.guide.first, .main ul.flags li.notification.first, .main ul#guides li.person.first, .main ul#guides li.place.first, .main ul#guides li.flag.first, .main ul#guides li.guide.first, .main ul#guides li.notification.first, .main ul.notifications li.person.first, .main ul.notifications li.place.first, .main ul.notifications li.flag.first, .main ul.notifications li.guide.first, .main ul.notifications li.notification.first {border-top: 0}
+.main ul.people li.person.last, .main ul.people li.place.last, .main ul.people li.flag.last, .main ul.people li.guide.last, .main ul.people li.notification.last, .main ul.places li.person.last, .main ul.places li.place.last, .main ul.places li.flag.last, .main ul.places li.guide.last, .main ul.places li.notification.last, .main ul.flags li.person.last, .main ul.flags li.place.last, .main ul.flags li.flag.last, .main ul.flags li.guide.last, .main ul.flags li.notification.last, .main ul#guides li.person.last, .main ul#guides li.place.last, .main ul#guides li.flag.last, .main ul#guides li.guide.last, .main ul#guides li.notification.last, .main ul.notifications li.person.last, .main ul.notifications li.place.last, .main ul.notifications li.flag.last, .main ul.notifications li.guide.last, .main ul.notifications li.notification.last {border-bottom: 0}
+.main ul.people .follow-button, .main ul.places .follow-button, .main ul.flags .follow-button, .main ul#guides .follow-button, .main ul.notifications .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; margin-left: 10px}
+#modal-content ul.people, #modal-content ul.places, #modal-content ul.items {background-color: #f0eee4}
+#modal-content ul.people li.person, #modal-content ul.people li.place, #modal-content ul.people li.item, #modal-content ul.people li.guide, #modal-content ul.places li.person, #modal-content ul.places li.place, #modal-content ul.places li.item, #modal-content ul.places li.guide, #modal-content ul.items li.person, #modal-content ul.items li.place, #modal-content ul.items li.item, #modal-content ul.items li.guide {padding: 10px; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; margin: 0 !important}
+#modal-content ul.people li.person.first, #modal-content ul.people li.place.first, #modal-content ul.people li.item.first, #modal-content ul.people li.guide.first, #modal-content ul.places li.person.first, #modal-content ul.places li.place.first, #modal-content ul.places li.item.first, #modal-content ul.places li.guide.first, #modal-content ul.items li.person.first, #modal-content ul.items li.place.first, #modal-content ul.items li.item.first, #modal-content ul.items li.guide.first {border-top: 0}
+#modal-content ul.people li.person.last, #modal-content ul.people li.place.last, #modal-content ul.people li.item.last, #modal-content ul.people li.guide.last, #modal-content ul.places li.person.last, #modal-content ul.places li.place.last, #modal-content ul.places li.item.last, #modal-content ul.places li.guide.last, #modal-content ul.items li.person.last, #modal-content ul.items li.place.last, #modal-content ul.items li.item.last, #modal-content ul.items li.guide.last {border-bottom: 0}
+#modal-content ul.people .follow-button, #modal-content ul.places .follow-button, #modal-content ul.items .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; margin-left: 10px}
+#settings {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; *display: inline-block}
+#settings:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+ul.reviews.sidebar {margin: 0; padding: 0; border-bottom: none}
+ul.reviews.sidebar li {margin: 0 0 20px 20px}
+ul.reviews.sidebar li.first {margin-left: 0}
+ul.reviews.sidebar li .photo.t-120 {color: #eeeeee; background: transparent url(/images/stamp-grey-140px.png) no-repeat}
+ul.reviews li.review {padding: 15px}
+ul.reviews li.review .photo {float: right; margin-left: 15px; margin-right: 0}
+ul.reviews li.review h3 {font-weight: normal; font-size: 140%; font-weight: bold; margin-bottom: 10px}
+ul.reviews li.review h3 a {color: black}
+ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
+.review-meta {margin-bottom: 10px}
+.review-meta .views {float: right; background-color: #f0eee4; padding: 3px 6px; font-size: 90%; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px}
+.review-meta .like-button {padding-top: 2px; float: left}
+.review-meta a {float: left; background: #41aab9; color: white; font-size: 80%; font-weight: normal; padding: 4px 5px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; box-shadow: inset -1px -1px 1px #196473; -moz-box-shadow: inset -1px -1px 1px #196473; -webkit-box-shadow: inset -1px -1px 1px #196473; margin-right: 10px}
+.review-meta a:hover {text-decoration: none}
+.review-meta a:active, .review-meta a.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473}
+.collect {padding-top: 15px}
+.collect li.sighting {float: left; width: 170px; height: 170px; padding: 10px; margin-left: 10px; margin-bottom: 10px; background: transparent url(/images/stamp-190px.png) no-repeat; position: relative}
+.collect li.sighting.first {margin-left: 15px}
+.collect li.sighting .photo {display: block}
+.collect li.sighting .photo img {width: 170px; height: 170px; background-color: white}
+.collect li.sighting .visual {position: absolute}
+.collect li.sighting .visual .small-ribbon {position: absolute; top: 5px; left: 5px}
+.collect li.sighting .detail {overflow: hidden; height: 170px}
+.collect li.sighting h3 {font-weight: normal; font-size: 1.3em; font-weight: bold; margin-bottom: 10px}
+.collect li.sighting h3 a {color: black}
+.collect li.sighting .note {color: #777777; font-size: 1em; margin-bottom: 10px; font-family: Georgia, "Times New Roman", serif}
+.collect li.sighting .actions ul {float: left; text-transform: uppercase}
+.collect li.sighting .actions ul li {float: left; margin-right: 10px}
+.collect li.sighting .actions ul li.want-it {padding-left: 20px; background: transparent url(/images/star-off.png) no-repeat}
+.collect li.sighting .actions ul li.want-it.on {background-image: url(/images/star-on.png)}
+.collect li.sighting .actions ul li.nom-it {padding-left: 20px; background: transparent url(/images/ribbon-off-16px.png) no-repeat}
+.collect li.sighting .actions ul li.nom-it.on {background-image: url(/images/ribbon-16px.png)}
+.collect li.sighting .actions ul li.comment-on-it {padding-left: 20px; background: transparent url(/images/comment-16px.png) no-repeat}
+.collect li.sighting .actions ul li a {color: #333333; display: block}
+.collect li.sighting .actions ul li a span {display: none}
+.collect li.sighting .actions ul li a:hover {text-decoration: underline}
+.top_foodspotters {list-style: none}
+.top_foodspotters li {position: relative}
+.top_foodspotters li .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; margin-top: 5px}
+.top_foodspotters li strong, .top_foodspotters li small {color: #666666}
+.top_foodspotters li .points {font-weight: bold; font-size: 90%}
+.top_foodspotters li strong {float: right; color: #96af4b; font-size: 250%; line-height: 1.4em; padding-right: 5px}
+.top_foodspotters li a.person {color: black; font-size: 14px; display: block; padding: 6px 0; text-decoration: none}
+.top_foodspotters li a.person img {float: left; margin-right: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+.top_foodspotters li.you {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; padding: 5px 10px; margin: 0 -10px}
+#set_personal_url strong {padding-right: 20px}
+#set_personal_url form {padding: 10px 15px; background: #f0eee4; border-bottom: 1px dotted #e1dcc8}
+#set_personal_url form .fspot-url {width: 470px; float: left; margin-right: 5px; font-size: 1.1em}
+#set_personal_url form .fspot-url label {float: left; line-height: 34px; margin-right: 10px}
+#set_personal_url form .fspot-url .fake-input {float: left; width: 340px; line-height: 20px}
+#set_personal_url form .fspot-url .fake-input input {padding: 0; width: 120px; border: none; font-family: inherit; font-size: 1em}
+#set_personal_url form .fspot-url .fake-input img {position: absolute; top: 8px; right: 8px}
+#set_personal_url form .submit {padding: 0; height: 34px; width: 60px}
+#set_personal_url form #name_status {display: none; float: right; color: #666666; line-height: 34px; font-size: 1.1em}
+#set_personal_url form #name_status.available {display: block; color: green}
+#set_personal_url form #name_status.taken {display: block; color: red}
+#new-badges li {font-size: 1.1em; margin-bottom: 10px}
+#new-badges li a {color: black; display: block; min-height: 50px; padding: 0 0 0 60px; background-repeat: no-repeat; background-position: 0 0}
+#new-badges li a .title {padding-top: 5px}
+#new-badges li a .title .levelup {display: block; margin-top: 3px; font-size: 80%; color: #888888}
+#new-badges li a:hover {text-decoration: none}
+#new-badges li a .bar {border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; height: 3px; padding: 1px; width: 120px; background-color: #dddddd; margin-top: 3px}
+#new-badges li a .bar .progress {border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; background-color: #96af4b; height: 3px}
+#new-badges li.level_1 a {background-image: url(/images/badges/starsticker-bronze.png)}
+#new-badges li.level_2 a {background-image: url(/images/badges/starsticker-bronze.png)}
+#new-badges li.level_3 a {background-image: url(/images/badges/starsticker-silver.png)}
+#new-badges li.level_4 a {background-image: url(/images/badges/starsticker-gold.png)}
+#new-badges li.level_5 a {background-image: url(/images/badges/starsticker-platinum.png)}
+#badges li {float: left; width: 90px; height: 90px; position: relative; background-repeat: no-repeat; background-color: transparent}
+#badges li.level_1 {background-image: url(/images/badges/badge-novice.png)}
+#badges li.level_2 {background-image: url(/images/badges/badge-bronze.png)}
+#badges li.level_3 {background-image: url(/images/badges/badge-silver.png)}
+#badges li.level_4 {background-image: url(/images/badges/badge-gold.png)}
+#badges li.level_5 {background-image: url(/images/badges/badge-platinum.png)}
+#badges li.level_5 .level {text-shadow: -1px -1px white !important; color: #6f7067 !important}
+#badges li.level_5 a {color: #6f7067 !important}
+#badges li.level_5 a:hover {color: #6f7067 !important}
+#badges li a {width: 90px; height: 90px; display: table}
+#badges li a:hover {color: white; text-decoration: none}
+#badges li img {width: 90px; height: 90px; display: block; position: absolute; margin-bottom: 2px}
+#badges li.first {margin-left: 0; clear: left}
+#badges li .level {display: table-cell; vertical-align: middle; text-shadow: -1px -1px #444444; font-weight: bold; padding: 0 8px; color: white; opacity: 0.95; font-size: 0.8em; line-height: 1.1; text-align: center; text-transform: uppercase}
+.levelup {white-space: nowrap}
+.job {background-color: #eeeeee; padding: 15px; margin-bottom: 20px; font-size: 1.1em}
+.job h3 {font-weight: bold; font-size: 1.4em}
+.twtr-hd {display: none}
+.twtr-tweet-text {margin-top: 10px}
+#connect-to-buttons {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2); cursor: pointer; color: #333333; text-shadow: 1px 1px white; width: auto; height: 34px !important; display: block; line-height: 34px !important; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #888888 #888888 #666666; background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f2f2f2),color-stop(1, #e2e2e2)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f2f2f2', EndColorStr='#e2e2e2'); float: right}
+#connect-to-buttons:hover {color: black; border-color: #777777; text-decoration: none}
+#connect-to-buttons:active {background: #dddddd}
+.press strong {display: block}
+#guide-to-sxsw {background: #636466; padding: 20px; margin: 0 -25px 20px}
+#guide-to-sxsw #foodspotting-guide-title {color: white; text-transform: uppercase; line-height: 1.3em; font-size: 2.2em; font-weight: 300; width: 225px; letter-spacing: 1px; float: left; font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue Bold Condesnsed", "Helvetica Neue", Helvetica, Arial, sans-serif}
+#guide-to-sxsw ul {float: right; width: 690px}
+#guide-to-sxsw ul li {float: left; width: 215px; margin-right: 22px}
+#guide-to-sxsw ul li.last {margin-right: 0}
+#guide-to-sxsw ul li h3 {cursor: text; font-size: 2.2em; margin-bottom: 8px; font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue Bold Condesnsed", "Helvetica Neue", Helvetica, Arial, sans-serif}
+#guide-to-sxsw ul li p {font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.1em; font-weight: 300; color: white}
+#guide-to-sxsw ul li p a {color: #ffffcc}
+#guide-to-sxsw #expert-guide h3 {color: #f7a633}
+#guide-to-sxsw #foods-sightings h3 {color: #00bbcc}
+#guide-to-sxsw #free-food h3 {color: #c3d021}
+#guide-to-sxsw .sxsw-button {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2); cursor: pointer; color: #333333; text-shadow: 1px 1px white; width: auto; height: 34px !important; display: block; line-height: 34px !important; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #888888 #888888 #666666; background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f2f2f2),color-stop(1, #e2e2e2)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f2f2f2', EndColorStr='#e2e2e2'); border: 1px solid #f2f2f2; box-shadow: 0 1px #444444; -moz-box-shadow: 0 1px #444444; -webkit-box-shadow: 0 1px #444444; text-align: center; font-size: 1.1em}
+#guide-to-sxsw .sxsw-button:hover {color: black; border-color: #777777; text-decoration: none}
+#guide-to-sxsw .sxsw-button:active {background: #dddddd}
+#guide-to-sxsw .sxsw-button.on {cursor: default; color: #cccccc; text-shadow: -1px -1px #111111; background: #444444; border-color: #444444}
+#blog .post {margin-bottom: 2em}
+#blog .post .title {border-bottom: 1px solid #cccccc; padding: 1em}
+#blog .post .title h2 {font-size: 2.2em; border: 0; padding: 0; margin-bottom: 0}
+#blog .post .title .date {font-family: Georgia; font-style: italic; color: #777777}
+#blog .post .content {padding: 1em}
+#blog .post .content p {color: #333333; line-height: 1.4em}
+#matching-places li {padding: 10px 0; border-bottom: 1px solid #eeeeee}
+#matching-places li .index {float: left; margin: 0 15px 0 10px; font-size: 2.5em; line-height: 0.9}
+#matching-places li a {line-height: 1.2em; color: black}
+#matching-places li a small {color: #999999; display: block}
+#profile-guides {margin-bottom: 20px}
+#notifications ul li {margin-bottom: 15px}
+#notifications ul li .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+#notifications ul li .content {margin-left: 60px}
+#notifications ul li .person_name {font-weight: bold}
+#notifications ul li .timestamp {display: block; margin-top: 10px; color: #666666; white-space: nowrap; line-height: 1.4}
+#notifications ul li .action {line-height: 1.4}
+#notifications ul li .points {color: white; text-align: center; min-width: 22px; display: inline-block; font-size: 100%; white-space: nowrap; font-weight: bold; background: #96af4b; padding: 1px 5px 1px 4px; margin-right: 2px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; box-shadow: inset -1px -1px rgba(0, 0, 0, 0.2); -moz-box-shadow: inset -1px -1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset -1px -1px rgba(0, 0, 0, 0.2)}
+#notifications ul li .avatar {float: left; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#notifications ul li .avatar img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; width: 50px; height: 50px}
+.sidebar #notifications .timestamp {display: inline}
+#widgets #sighting_code {display: code; border: 1px solid #dddddd; border-top-color: #aaaaaa; border-left-color: #aaaaaa; width: 770px; height: 120px; overflow: auto}
+#widgets .main-preview {margin-left: 165px}
+#widgets .main-preview .preview-box {padding: 10px; margin-bottom: 20px; border: 1px solid #cccccc; overflow: scroll}
+#widgets .widget form {float: left; width: 130px; padding: 10px; background-color: #eeeeee; border: 1px solid #cccccc}
+#widgets .widget form .row {border-bottom: 1px solid #dddddd; padding-bottom: 10px}
+#widgets .widget form .row .text-box {width: 130px; margin: 0; padding: 0; background: none; border: none}
+#widgets .widget form .row .text-box .spinner {top: 4px; right: 6px}
+#widgets .widget form .row .text-box input {background: white; width: 122px}
+#widgets .widget form .row .text-box .results-container {top: 25px; left: 0}
+#widgets .widget form .row .text-box .results {border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; width: 200px; border: 1px solid #cccccc}
+#widgets .widget form .row .text-box .results img {width: 24px; height: 24px; vertical-align: middle}
+#widgets .widget form .x {float: left; padding: 5px}
+#widgets .widget form .layout {float: left; position: relative}
+#widgets .widget form .layout .up {position: absolute; display: block; top: 1px; right: 1px; padding: 6px 4px 3px}
+#widgets .widget form .layout .up img {background: transparent url(/images/input-arrows.png) no-repeat; width: 7px; height: 4px}
+#widgets .widget form .layout .down {position: absolute; display: block; bottom: 1px; right: 1px; padding: 3px 4px 6px}
+#widgets .widget form .layout .down img {background: transparent url(/images/input-arrows.png) no-repeat -7px 0; width: 7px; height: 4px}
+#widgets .widget form label {color: #333333; display: block; margin-bottom: 5px; font-weight: bold}
+#widgets .widget form input.text {font-size: 1em; padding: 3px; width: 80px; border: 1px solid #aaaaaa}
+#friend-body h3 img {vertical-align: middle}
+#import-friend-options .friend-import-button {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2); cursor: pointer; color: #333333; text-shadow: 1px 1px white; width: auto; height: 34px !important; display: block; line-height: 34px !important; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #888888 #888888 #666666; background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f2f2f2),color-stop(1, #e2e2e2)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f2f2f2', EndColorStr='#e2e2e2')}
+#import-friend-options .friend-import-button:hover {color: black; border-color: #777777; text-decoration: none}
+#import-friend-options .friend-import-button:active {background: #dddddd}
+#import-friend-options .friend-import-button.disabled {background: white; border: 1px solid #eeeeee; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; cursor: default; color: black}
+#import-friend-options .friend-import-button img {background: transparent url(/images/share-sprite.png) no-repeat; width: 16px; height: 16px; overflow: hidden; vertical-align: middle; margin-right: 4px; margin-top: -3px}
+#import-friend-options li {width: 49%; margin-left: 2%; margin-bottom: 2%; float: left}
+#import-friend-options li.first {margin-left: 0}
+#import-friend-options .twitter img {background-position: 0 0}
+#import-friend-options .foursquare img {background-position: 0 -16px}
+#import-friend-options .facebook img {background-position: 0 -32px}
+#import-friend-options .search img {background-position: 0 -48px}
+#import-friend-options .email img {background-position: 0 -64px}
+#import-friend-options .flickr img {background-position: 0 -80px}
+#invite-email-form {margin-top: 10px}
+#partner-header {z-index: 100; position: relative; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3)}
+#partner-header .content {width: 940px; margin: 0 auto}
+.missing-header {display: block; border: 2px dashed #dddddd; height: 180px; line-height: 180px; text-align: center; color: #999999; font-weight: bold; margin-bottom: 20px}
+.missing-header:hover {border-color: #999999}
+.pod {margin-bottom: 20px}
+.pod.inset {padding: 0 10px}
+.pod-section {border-bottom: 1px solid #e1dcc8; border-top: 1px solid white; padding: 10px; margin: 0 -10px}
+.pod-section.first {border-top: none; padding-top: 0}
+.pod-section.last {border-bottom: none; padding-bottom: 0}
+.cpod {background: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px}
+.cpod h2 {font-weight: bold; font-size: 1em; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; color: #96af4b; text-transform: uppercase; margin: 0 0 10px 0 !important}
+.cpod h2 small {font-size: 80%; text-transform: lowercase}
+.sidebar-counts a {color: black}
+.sidebar-counts a:hover {text-decoration: none}
+.sidebar-counts strong {font-size: 3em; line-height: 1em; display: block}
+.sidebar-counts table {width: 100%}
+.sidebar-counts table tr td .inset {color: #666666; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 6px 0; text-align: center; margin-right: 10px; background: #f7f6f1}
+.sidebar-counts table tr td.last .inset {margin-right: 0 !important}
+.sidebar-counts li {float: left; margin-right: 20px; background: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px 0; text-align: center}
+.sidebar-counts li.last {margin-right: 0}
+.marker-style {margin: 3px 0 0 3px !important}
+.marker-style-multi {margin: 6px 0 0 7px !important}
+.marker-border {border: 2px solid white !important; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85); -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85); -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85); background-color: #dddddd; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px}
+.marker-rotate {-webkit-transform: rotate(-8deg); -o-transform: rotate(-8deg); -moz-transform: rotate(-8deg); border: 3px solid white !important; margin: -1px 0 0 -1px !important}
+#back_to_map {padding: 10px; position: fixed; z-index: 10; background: #eeeeee; right: 100px; top: -1px; border: 1px solid #999999; box-shadow: 0 1px 5px #cccccc; -moz-box-shadow: 0 1px 5px #cccccc; -webkit-box-shadow: 0 1px 5px #cccccc; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px}
+#mapContainer {width: 280px; height: 180px; position: relative; overflow: hidden}
+#map, #discover-map {width: 100%; height: 100%}
+#discover-map {width: 100%; height: 400px; position: relative}
+#discover-map #map-promo {z-index: 1001; position: absolute; top: 70px; right: 20px; width: 320px; height: 270px}
+#discover-map #map-promo .promo {padding: 10px; position: relative; z-index: 10}
+#discover-map #map-promo .screen {position: absolute; top: 0; width: 320px; height: 270px; background: #111111; border: 1px solid black; opacity: 0.6; filter: alpha(opacity=6); border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#discover-map #map-loading-box {z-index: 1000; text-align: center; font-weight: bold; font-size: 90%; margin: 180px 0 0 -30px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; width: 60px; height: 60px; left: 50%; position: absolute; opacity: 0.5; filter: alpha(opacity=5); background: black url(/images/spinner-large-999999.gif) no-repeat 14px 14px}
+#discover-map #map-message-box, #discover-map #map-welcome-box {color: white; z-index: 1000; text-align: center; font-weight: 300; font-size: 160%; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 18px; margin: 180px 20% 0; left: 0; right: 0; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; position: absolute; background: black}
+#discover-map #map-welcome-box {margin: 80px auto; font-size: 100%; font-weight: 100; padding: 18px 30px; width: 600px; background: rgba(0, 0, 0, 0.8)}
+#discover-map #map-welcome-box .title {font-size: 200%; margin-bottom: 20px}
+#discover-map #map-welcome-box .body {font-size: 160%; margin-bottom: 20px}
+#discover-map #map-welcome-box .follow-button {margin: 0 30%}
+#map_redo_search {padding: 0 5px 5px; position: absolute; width: 200px; top: 370px; left: 20px; z-index: 10000; background-color: white}
+#map-pagination {text-align: center; width: 940px; margin-top: 300px; padding:140px; z-index: 6000; position: absolute;}
+#map-pagination #map-sorts {margin: 0 auto; width: 500px; text-align: center; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#map-pagination #map-sorts a {width: 100px; padding: 5px 0; float: left; font-weight: bold; background-color: white; width: 99px; border-left: 1px solid #dddddd}
+#map-pagination #map-sorts a.last {border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px}
+#map-pagination #map-sorts a.first {width: 100px; border-left: 0; border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px}
+#map-pagination #map-sorts a.on {color: black; background-color: #dddddd; background-image: -moz-linear-gradient(top, #f6f6f6, #dddddd); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f6f6f6),color-stop(1, #dddddd)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f6f6f6', EndColorStr='#dddddd')}
+#map-pagination #map-sorts a.on:hover {cursor: default; text-decoration: none}
+#map-pagination #page-right {background-color: #cccccc; padding: 5px 15px; color: #999999; font-weight: bold; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; text-shadow: 1px 1px #eeeeee; float: right}
+#map-pagination #page-right:hover {cursor: default; text-decoration: none}
+#map-pagination #page-right.enabled {color: #268ca0; text-shadow: none; background-color: white; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666}
+#map-pagination #page-right.enabled:hover {cursor: pointer; text-decoration: underline}
+#map-pagination #page-left {background-color: #cccccc; padding: 5px 15px; color: #999999; font-weight: bold; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; text-shadow: 1px 1px #eeeeee; float: left}
+#map-pagination #page-left:hover {cursor: default; text-decoration: none}
+#map-pagination #page-left.enabled {color: #268ca0; text-shadow: none; background-color: white; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666}
+#map-pagination #page-left.enabled:hover {cursor: pointer; text-decoration: underline}
+#map_search {left: 50%; width: 940px; padding: 0 20px; margin: 10px 0 0 -490px; z-index: 10001; position: absolute}
+#map_search fieldset .text-box {box-shadow: inset 1px 1px 2px #555555; -moz-box-shadow: inset 1px 1px 2px #555555; -webkit-box-shadow: inset 1px 1px 2px #555555; padding-top: 9px !important; padding-bottom: 9px !important; border: none !important; float: left; position: relative; margin-top: 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#map_search fieldset .text-box .clear {top: 10px; right: 8px; width: 17px; height: 17px; position: absolute; text-indent: -10000px; background: transparent url(/images/clear-search.png) no-repeat}
+#map_search fieldset .text-box .clear:hover {background-position: -17px 0}
+#map_search fieldset .text-box label, #map_search fieldset .text-box input {font-size: 14px; line-height: 19px; font-family: inherit; margin: 0 !important; padding: 0 !important}
+#map_search fieldset .text-box label {color: #666666; cursor: text; text-align: left; position: absolute; overflow: hidden; white-space: nowrap}
+#map_search fieldset .text-box label strong {color: #111111}
+#map_search fieldset .text-box input {border: none; background: transparent}
+#map_search .submit {float: right; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1em; padding: 10px 19px 11px; padding: 0; width: 80px; height: 36px; font-weight: normal; display: inline; margin-top: 0}
+#map_search .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
+#map_search .submit:active, #map_search .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+#map_search .submit:hover {text-decoration: none}
+#map_search #genius-search-input {float: left}
+#map_search .location-color {color: #196473 !important}
+#map_search #location-input {width: 580px; float: left}
+#map_search #location-input .text-box {float: none; margin-right: 0; width: 550px}
+#map_search #location-input .text-box label, #map_search #location-input .text-box input {width: 530px}
+#map_search #location-input .text-box label.prompted {overflow: hidden; white-space: nowrap}
+#map_search #location-input .text-box.focused {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+#map_search #saved_locations {width: 568px; position: absolute; z-index: 100; top: 36px; left: 0; background: white; border: 1px solid #cccccc; border-top: 1px solid #eeeeee; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px}
+#map_search #saved_locations li {background-color: #f8f8f8; position: relative; z-index: 2}
+#map_search #saved_locations li img {float: left; width: 15px; height: 15px; border: 0; margin-right: 5px}
+#map_search #saved_locations li.saved-locations-title {float: right; color: #999999; padding: 5px 10px; position: relative; z-index: 1; background-color: transparent}
+#map_search #saved_locations li.current-location {background-color: white; border-bottom: 1px solid #eeeeee}
+#map_search #saved_locations li.current-location a img {background: transparent url(/images/icons-worldandlocate.png) 15px 15px}
+#map_search #saved_locations li.current-location a:hover img {background-position: 0 15px}
+#map_search #saved_locations li.anywhere {background-color: white; border-bottom: 1px solid #eeeeee}
+#map_search #saved_locations li.anywhere a img {background: transparent url(/images/icons-worldandlocate.png) 15px 0}
+#map_search #saved_locations li.anywhere a:hover img {background-position: 0 0}
+#map_search #saved_locations li a {padding: 5px 10px; display: block; line-height: 1.2}
+#map_search #saved_locations li a:hover {color: white; text-decoration: none; background-color: #196473}
+#map_search .target {padding: 0; width: 34px; height: 33px; float: right; background: transparent url(/images/sprites.png) no-repeat -34px 0; margin: 0; border: 0}
+#map_search .target:hover {background-position: -34px -33px}
+#genius-search-input {float: left; width: 250px; margin-right: 0}
+#genius-search-input .spinner {top: 11px}
+#genius-search-input.focus {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+#genius-search-input label, #genius-search-input input {width: 240px; background-color: transparent}
+#genius-search-input label.prompted {width: 240px}
+#genius-search-input #genius_results {width: 257px; position: absolute; z-index: 100; background: white; border: 1px solid #cccccc; border-top: 1px solid #f3f3f3; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; width: 270px; top: 5px}
+#genius-search-input #genius_results .status {color: #222222; font-size: 90%; padding: 6px 8px}
+#genius-search-input #genius_results .status.selected {color: white; background-color: #c3d021}
+#genius-search-input #genius_results dt {text-transform: uppercase; background: #f2f2f2; border-top: 1px solid #eeeeee; font-size: 93%; padding: 5px 8px}
+#genius-search-input #genius_results dt a {float: right; text-transform: none}
+#genius-search-input #genius_results .item.selected {background-color: #196473}
+#genius-search-input #genius_results .item.selected a, #genius-search-input #genius_results .item.selected small {color: white; display: block}
+#genius-search-input #genius_results .item a {border-top: 1px solid #eeeeee; color: #222222; display: block; font-size: 93%; font-weight: bold; padding: 4px 8px; text-decoration: none}
+#genius-search-input #genius_results .item a small {color: #555555; display: block; font-size: 11px; font-weight: normal}
+#genius-search-input #genius_results .item a:hover {color: white; background: #196473}
+#genius-search-input #genius_results .item a:hover small {color: white}
+#genius-search-input #genius_results .item.status a {color: inherit; padding: 0; border: none; font-size: 100%; font-weight: normal; text-decoration: underline}
+#dashboard-search #genius-search-input .spinner {top: 2px; right: 7px; padding: 5px; background: white; z-index: 30}
+#dashboard-search #genius-search-input #genius_results {width: 266px; top: 0}
+#dashboard-search #genius-search-input .results-container {top: 30px !important}
+#edit-review {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; background-color: #f0eee4; padding: 20px; *display: inline-block}
+#edit-review:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#edit-review #edit-review-fields {margin-left: 320px}
+#edit-review #edit-review-photo {float: left}
+#place-founder .avatar, #place-top-spotter .avatar {float: right}
+#place-founder h2, #place-top-spotter h2 {margin-bottom: 5px !important}
+#place-founder .timestamp, #place-top-spotter .timestamp {color: #777777; font-size: 90%}
+#admin-links li, .admin-links li {margin-bottom: 5px}
+#sidebar-promo iframe {margin-bottom: 5px}
+#empty-spotter {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: white; padding: 10px}
+.action-bar .ddthis_default_style {font-size: 110%}
+#super_spotters li {float: left; margin: 0 14px 14px 0; padding: 5px; border: 1px solid #cccccc}
+#super_spotters li a {display: block}
+#super_spotters li img {width: 90px; height: 90px}
+#super_spotters li .super-spotter-title {font-size: 3.8em; padding-top: 40px; vertical-align: baseline; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 200}
+#super_spotters li .super-spotter-class {line-height: 1em; color: #e1973d}
+.rounded {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+.connect-buttons {margin-top: 10px; text-align: center}
+#onboard-verify {font-size: 1.2em; color: #e1dcc8; text-align: center; display: block}
+#onboard-people {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px; width: 540px; margin: 20px auto 0; background-color: white}
+#onboard-people #onboard-loader {padding: 15px 0 20px; color: #666666}
+#onboard-people #onboard-loader .onboard-follow-options {margin: 10px 15px 0 10px}
+#onboard-people #onboard-loader h2, #onboard-people #onboard-loader .loader {text-align: center}
+#onboard-people #onboard-loader img {vertical-align: middle}
+#onboard-people #onboard-loader h2 {color: black}
+#onboard-people #onboard-loader .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.1em}
+#onboard-people #list_scroll {height: 286px; overflow: auto; position: relative; border: 1px solid #e1dcc8; background-color: #f7f6f1}
+#onboard-people #list_scroll li {padding: 10px; border-bottom: 1px solid #f0eee4}
+#onboard-people .hide-followings {display: none}
+#h2-tabs a {font-weight: bold}
+#h2-tabs .on {color: #333333}
+#stats-sparrkline {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #f0eee4; margin-bottom: 10px}
+#dashboard-stats ul#dashboard-stats-ul {margin: -10px}
+#dashboard-stats ul#dashboard-stats-ul li {color: #666666; margin-bottom: 0 !important; padding: 5px 15px; border-bottom: 1px solid #f0eee4}
+#dashboard-stats ul#dashboard-stats-ul li.spinner {border: none; text-align: center; padding: 87px 0}
+#dashboard-stats ul#dashboard-stats-ul li.last {border: none}
+#dashboard-stats ul#dashboard-stats-ul li strong {color: #333333; font-size: 1.4em; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 500; margin-right: 5px}
+#dashboard .followable-links a {float: left; border: 1px solid #cccccc; padding: 8px 8px 7px; background-color: white; margin-left: 5px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#dashboard .followable-links a img {width: 16px; height: 16px; vertical-align: middle}
+#dashboard .followable-links a.twitter img {background: transparent url(/images/share-sprite.png) no-repeat 0 0}
+#dashboard .followable-links a.foursquare img {background: transparent url(/images/share-sprite.png) no-repeat 0 -16px}
+#dashboard .followable-links a.facebook img {background: transparent url(/images/share-sprite.png) no-repeat 0 -32px}
+#dashboard .followable-links a.flickr img {background: transparent url(/images/share-sprite.png) no-repeat 0 -80px}
+#dashboard #followings_manager {background: #f0eee4; border-bottom: 1px solid #e1dcc8}
+#dashboard #followings_manager #list-header {box-shadow: inset 0 2px 2px #e1dcc8; -moz-box-shadow: inset 0 2px 2px #e1dcc8; -webkit-box-shadow: inset 0 2px 2px #e1dcc8; padding: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8}
+#dashboard #followings_manager #list-title {padding: 20px 10px; color: #666666; text-align: center}
+#dashboard #followings_manager #list-title h3 {font-weight: bold; color: #333333; margin-bottom: 5px}
+#dashboard #followings_manager #list-title img {vertical-align: middle}
+#dashboard #followings_manager ul {box-shadow: 0 0 0 white; -moz-box-shadow: 0 0 0 white; -webkit-box-shadow: 0 0 0 white; margin-bottom: 0; background: #f0eee4}
+#dashboard #followings_manager ul li {padding: 10px; background: #f0eee4}
+#dashboard #followings_manager #list_scroll {height: 286px; overflow: auto; position: relative; border-top: 1px solid #f7f6f1}
+#dashboard #followings_manager li {background-color: #f0eee4}
+#dashboard #followings_manager li.title {padding: 7px 10px 8px; color: white; background-image: -moz-linear-gradient(top, #cbc1b6, #b4aaa0); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #cbc1b6),color-stop(1, #b4aaa0)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#cbc1b6', EndColorStr='#b4aaa0'); border-top: 1px solid #b4aaa0; border-bottom: 1px solid #f7f6f1; margin: 0 !important}
+#dashboard #followings_manager li.title h4 {margin-bottom: 0}
+#dashboard #manage-followings {padding: 10px; border-bottom: 1px solid #e1dcc8; background-color: #f7f6f1}
+#dashboard #manage-followings a.small-avatar {float: left; margin-right: 2px}
+#dashboard #manage-followings a.small-avatar img {width: 30px; height: 30px}
+#dashboard #manage-followings span.divider {float: right; color: #b4aaa0; padding: 8px}
+#dashboard #manage-followings a.f-button {font-weight: bold; float: right; padding: 8px 0}
+#dashboard a.hide-followings {cursor: n-resize; height: 10px; display: block; text-indent: -10000px; overflow: hidden; background-image: -moz-linear-gradient(top, #f0eee4, #e1dcc8); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f0eee4),color-stop(1, #e1dcc8)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f0eee4', EndColorStr='#e1dcc8')}
+#dashboard a.hide-followings:hover {background-image: -moz-linear-gradient(top, #e1dcc8, #b4aaa0); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e1dcc8),color-stop(1, #b4aaa0)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e1dcc8', EndColorStr='#b4aaa0')}
+#dashboard #db-following-tabs li {margin-bottom: 0}
+#dashboard #more-reviews {text-align: center; margin: 0 auto; width: 400px; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0; background-color: #f0eee4; box-shadow: inset 0 -2px 2px #e1dcc8; -moz-box-shadow: inset 0 -2px 2px #e1dcc8; -webkit-box-shadow: inset 0 -2px 2px #e1dcc8}
+#dashboard #more-reviews a {display: block; padding: 10px}
+#dashboard .db-actions {padding-top: 5px}
+#dashboard .db-location {float: left}
+#dashboard .db-location .location {float: left; line-height: 16px; padding-left: 15px; font-size: 90%; color: #666666; background: transparent url(/images/pin-off.png) no-repeat}
+#dashboard .db-location .location.on {background: transparent url(/images/pin-on.png) no-repeat}
+#dashboard .db-location .location:hover {text-decoration: none; color: #333333}
+#dashboard .db-mark-it {float: right}
+#dashboard .db-mark-it a {float: right; margin-left: 5px; width: 16px; height: 16px; overflow: hidden; text-indent: -10000px}
+#dashboard .db-mark-it a.tried {background: transparent url(/images/check-off.png) no-repeat}
+#dashboard .db-mark-it a.tried.on, #dashboard .db-mark-it a.tried:hover {background-image: url(/images/check-on.png)}
+#dashboard .db-mark-it a.want {background: transparent url(/images/star-off.png) no-repeat}
+#dashboard .db-mark-it a.want.on, #dashboard .db-mark-it a.want:hover {background-image: url(/images/star-on.png)}
+#dashboard .db-mark-it a.nom {background: transparent url(/images/ribbon-off-16px.png) no-repeat}
+#dashboard .db-mark-it a.nom.on, #dashboard .db-mark-it a.nom:hover {background-image: url(/images/ribbon-16px.png)}
+#dashboard .review-block {float: left; width: 280px; padding: 8px; position: relative; background-color: white; border: 1px solid #e1dcc8; margin-bottom: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#dashboard .review-block .review-photo {position: relative}
+#dashboard .review-block .review-photo .processing {display: block; width: 280px; height: 280px; background: #eeeeee; z-index: 6; position: relative}
+#dashboard .review-block .review-photo .processing .spinner {display: block; text-align: center; padding-top: 140px}
+#dashboard .review-block .review-photo .processing .spinner img {vertical-align: middle}
+#dashboard .review-block .review-photo .photo {width: 280px; height: 280px; z-index: 5; background: white; position: relative}
+#dashboard .review-block .db-actions {height: 16px; overflow: hidden}
+#dashboard .review-block .db-actions .db-location {white-space: nowrap}
+#dashboard .review-block .db-actions .db-mark-it {width: 70px; right: 7px; bottom: 8px; padding-left: 5px; position: absolute; background: transparent url(/images/actions-location-fade.png) no-repeat}
+#dashboard .small_map {top: 0; right: 0; z-index: 1; width: 227px; height: 280px; position: absolute}
+#dashboard .small_map .map {z-index: 10; width: 227px; height: 280px}
+#dashboard .street-address {display: block}
+#dashboard .review a {display: block}
+#dashboard .hidden {display: none}
+#dashboard .db-spinner {height: 450px}
+#dashboard .db-spinner img {margin: 100px auto 0; display: block; width: 32px; height: 32px}
+#dashboard #db-reviews {border-radius: 0px; -moz-border-radius: 0px; -webkit-border-radius: 0px; background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0}
+#dashboard #db-reviews .more {background-color: #e1dcc8; background-image: -moz-linear-gradient(top, #cbc1b6, #b4aaa0); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #cbc1b6),color-stop(1, #b4aaa0)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#cbc1b6', EndColorStr='#b4aaa0'); border-top: 1px solid #f7f6f1; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px}
+#dashboard #db-reviews .more a {border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; text-align: center; color: white; padding: 10px; display: block; font-weight: bold; font-size: 1.1em}
+#dashboard #db-reviews .people .note {margin-bottom: 10px}
+#dashboard #db-reviews .people .action-bar {font-size: 89%; padding: 6px 0 0; margin-bottom: -2px}
+#dashboard #db-reviews .people .action-bar li {margin-right: 8px}
+#dashboard #db-reviews .people .action-bar li.last {margin-right: 0; text-transform: none}
+#dashboard #db-reviews .people .action-bar .icon a {float: left; padding: 0; width: 16px; height: 16px; overlay: hidden; text-indent: -10000px}
+#dashboard #db-reviews .people .action-bar .ribbon {top: 0; left: 220px; z-index: 10; width: 58px; height: 90px; position: absolute; background: transparent url(/images/ribbon-large.png)}
+#dashboard #db-reviews .people h3.title {margin: 5px 0 10px}
+#dashboard #db-reviews .people h3.title a {color: #555555}
+#dashboard #db-reviews .people h3.title span {display: block}
+#dashboard #db-reviews .people h3.title span a {color: #777777 !important}
+#dashboard #discover-wanted ul li {float: left; margin-left: 5px; position: relative}
+#dashboard #discover-wanted ul li a {display: block; background-color: white; padding: 5px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border: 1px solid #e1dcc8}
+#dashboard #discover-wanted ul li.more-box {width: 55px; padding-top: 40px}
+#dashboard #discover-wanted ul li.more-box a {display: block; width: 55px; color: #666666; text-align: center; font-size: 1.1em; padding: 0; border: 0; background-color: transparent}
+#dashboard #discover-wanted ul li.first {margin-left: 0}
+#dashboard #discover-wanted ul li .db-actions {padding: 1px; position: absolute; border: 1px solid #e1dcc8; right: 4px; bottom: 4px; background-color: white; border-right-color: white; border-bottom-color: white; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px}
+#dashboard #discover-wanted ul li .db-actions a {padding: 0; border: 0; margin-left: 2px}
+.sidebar-note .sidebar-note-arrow {background: transparent url(/images/sidebar-note-arrow.png) no-repeat; width: 100%; height: 9px; margin-left: 55px}
+.sidebar-note .content {background-color: #ffffcc; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px 5px; text-align: center; box-shadow: 2px 2px 0 #fbeeaf; -moz-box-shadow: 2px 2px 0 #fbeeaf; -webkit-box-shadow: 2px 2px 0 #fbeeaf; line-height: 1.3}
+#admin a.admin-stats {font-weight: 500; width: 260px; float: left; margin-right: 10px; margin-bottom: 10px; font-size: 2.2em; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px 20px; border-bottom: 1px solid #564b40; background: #b4aaa0; color: white; line-height: 1.4; letter-spacing: -1px}
+#admin a.admin-stats small {letter-spacing: 0; font-weight: 300; display: block; font-size: 50%}
+#admin .scrollable {display: inline; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0; border: 1px solid #b4aaa0}
+#admin .scrollable h2.title {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0; padding: 6px 15px; margin: 0; border-bottom: 1px solid #564b40; background: #b4aaa0; color: white}
+#admin .scrollable h2.title a {line-height: 1.6; color: white}
+#admin .scrollable ul.list {width: 450px; height: 455px; overflow: auto; margin-bottom: 0; border-radius: 0; -moz-border-radius: 0; -webkit-border-radius: 0; box-shadow: 0 0 0 white; -moz-box-shadow: 0 0 0 white; -webkit-box-shadow: 0 0 0 white}
+.map-box {margin-left: 10px; float: left; width: 290px; padding: 5px; border: 1px solid #cccccc; color: #666666}
+.map-box strong {color: black}
+.map-box a {display: block}
+.map-box a img {margin-bottom: 5px; width: 290px}
+.map-box a:hover {border-color: #999999}
+.map-box.first {margin-left: 0}
+.autocomplete-w1 {z-index: 10000; position: absolute; top: 0; left: 0; width: 480px}
+.autocomplete {width: 480px; border: 1px solid #cccccc; background: white; cursor: default; text-align: left; max-height: 350px; overflow: auto; overflow-x: hidden}
+.autocomplete .selected {color: white; background: #268ca0}
+.autocomplete .selected strong {background: #41aab9}
+.autocomplete .selected span {color: #eeeeee}
+.autocomplete div {color: black; padding: 5px 10px; white-space: nowrap}
+.autocomplete strong {font-weight: bold; background: #e7f7fa}
+.autocomplete span {display: block; color: #666666}
+html, body {margin: 0; padding: 0; overflow-x:hidden}
+.photo.t-280 {color: #FFF; width: 280px; height: 280px; padding: 10px; background: transparent url(/images/stamp-300px.png) no-repeat}
+ul.grid {margin: 0; padding: 0 15px 15px; list-style: none}
+ul.grid li {float: left; position: relative; margin-top: 10px; margin-left: 10px}
+ul.grid li .delete {display: none; z-index: 2; width: 15px; height: 15px; position: absolute; right: 15px; top: 15px; background: transparent url(/images/delete-review-btn.png) no-repeat}
+ul.grid li .delete:hover {background-position: -15px 0}
+ul.grid li .edit {top: 10px; left: 10px; display: none; width: 120px; height: 120px; position: absolute; background: transparent url(/images/complete-this-sighting.png) no-repeat}
+ul.grid li:hover .edit, ul.grid li:hover .delete {display: block}
+ul.grid li.first {margin-left: 0}
+ul.grid li .photo.t-120 {color: #FFF; width: 120px; height: 120px; padding: 10px; margin: 0; display: block; background: transparent url(/images/stamp-140px.png) no-repeat}
+#guide-text-list {margin-bottom: 30px}
+#guide-text-list ol {padding-right: 30px; float: left; width: 255px}
+#guide-text-list ol.last {padding-right: 0}
+#guide-text-list ol a {color: black}
+#progress .bar {margin-bottom: 15px; height: 12px; width: 278px}
+#progress .bar .progress {height: 12px}
+#guide_nav_bar.three li {width: 206px !important}
+#guide_nav_bar li {float: left; width: 310px; margin-bottom: 15px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8}
+#guide_nav_bar li a {display: block; padding: 20px}
+#guide_nav_bar li a strong {font-size: 1.2em; display: block; margin-bottom: 5px}
+#guide_nav_bar li a span {color: #777777}
+#guide_nav_bar li a:hover {text-decoration: none}
+#guide_nav_bar li a:hover strong {text-decoration: underline}
+#guide_nav_bar li a:hover span {text-decoration: none}
+#guide_nav_bar li.first {border-radius: 5px 0 0 0; -moz-border-radius: 5px 0 0 0; -webkit-border-radius: 5px 0 0 0; border-right: 1px solid #e1dcc8}
+#guide_nav_bar li.first.on {width: 309px; border-bottom: 1px solid #f7f6f1}
+#guide_nav_bar li.first.on a {color: black}
+#guide_nav_bar li.last {border-radius: 0 5px 0 0; -moz-border-radius: 0 5px 0 0; -webkit-border-radius: 0 5px 0 0}
+#guide_nav_bar li.last.on {width: 309px; border-bottom: 1px solid #f7f6f1}
+#guide_nav_bar li.last.on a {color: black}
+#guide_nav_bar li.on {background-color: #f7f6f1}
+.add-note {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; float: left}
+.add-note:hover {color: white; background-color: #64bcc9; text-decoration: none}
+.add-note:active, .add-note.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+.people-on-guide-title {font-size: 90%; font-weight: bold; display: block; margin-bottom: 2px}
+#guide-sighting-picker {height: 310px; overflow: auto; position: relative; margin: -20px -20px}
+#guide-sighting-picker ul.grid {border-top: 0; padding: 0 0 10px 10px}
+#guide-list-view .sidebar {width: 220px}
+#guide-list-view .main {width: 700px}
+.guide-creation-flow-full {box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important; box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -moz-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -webkit-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); padding: 0}
+.guide-creation-flow-full .inset {padding: 20px 0; background-color: #564b40}
+.guide-creation-flow-full #create-guide-promo {float: right; width: 373px; height: 260px; opacity: 0.85; filter: alpha(opacity=8.5); background: transparent url(/images/create-guide-promo.png) no-repeat}
+#guide-category .category-list {width: 460px; float: left; margin-left: 20px}
+#guide-category .category-list.first {margin-left: 0}
+#guide-category .category-list ul li {margin-bottom: 20px}
+#guide-category .category-list ul li a {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; padding: 20px; display: block; color: #111111}
+#guide-category .category-list ul li a:hover {background-color: #f0eee4; text-decoration: none}
+#guide-category .category-list ul li a strong {color: #268ca0; font-size: 1.4em; font-weight: 500; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; display: block}
+a.start-from-scratch {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; padding: 20px; display: block; color: #111111; text-align: center}
+a.start-from-scratch:hover {background-color: #f0eee4; text-decoration: none}
+a.start-from-scratch strong {color: #268ca0; font-size: 1.4em; font-weight: 500; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; display: block}
+a.start-from-scratch strong {font-style: italic}
+#guide-creation-navigation {border-bottom: 1px solid #41382e; background-color: #675d53; background-image: -moz-linear-gradient(top, #736555, #605446); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #736555),color-stop(1, #605446)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#736555', EndColorStr='#605446'); box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5); -moz-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 2px 0 4px rgba(0, 0, 0, 0.5); margin-bottom: -1px; position: relative; z-index: 101; height: 45px}
+#guide-creation-navigation .inset {width: 940px; margin: 0 auto}
+#guide-creation-navigation .label {float: left; color: white; font-size: 1.3em; line-height: 45px; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+#guide-creation-navigation .label a {color: #f0eee4}
+#guide-creation-navigation ul {float: right; border-left: 1px solid #605446}
+#guide-creation-navigation ul li {float: left; font-size: 1em; display: block; height: 45px; line-height: 45px; padding: 0 15px; cursor: default; border-right: 1px solid #605446; border-left: 1px solid #736555; color: #b4aaa0}
+#guide-creation-navigation ul li a {color: #b4aaa0}
+#guide-creation-navigation ul li.complete {color: #41382e; text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1); background-image: url(/images/step-check.png); background-repeat: no-repeat; background-position: 8px 14px; padding-left: 30px}
+#guide-creation-navigation ul li.on {background-color: #605446; background-image: -moz-linear-gradient(top, #605446, #605446); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #605446),color-stop(1, #605446)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#605446', EndColorStr='#605446'); border: 1px solid #41382e; border-top: 0; border-bottom: 0}
+#guide-creation-flow {position: relative}
+#guide-creation-flow .title {font-size: 2.2em; color: white; font-weight: 100; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+#guide-creation-flow .title strong {font-weight: 500}
+#guide-creation-flow .sub-title {color: white; font-size: 1.6em; margin-top: 10px; font-weight: 100 !important; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+#guide-creation-flow .sub-title a {color: #ffff99}
+#guide-creation-flow .guide-flow-button {float: left; margin-top: 20px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 10px 20px; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.65em}
+#guide-creation-flow .guide-flow-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
+#guide-creation-flow .guide-flow-button:active, #guide-creation-flow .guide-flow-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+#guide-creation-flow .guide-learn-more {margin-top: 25px; margin-left: 20px; float: left; font-size: 110%; color: white; width: 250px}
+#guide-creation-flow .guide-learn-more a {color: #fbd7aa}
+#guide_photo_contest .row {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; margin-bottom: 20px}
+#guide_photo_contest .row .submit-photo-action {margin-left: 5px}
+#guide_photo_contest .row .super-text {font-size: 90%}
+#guide_photo_contest .row .title {*display: inline-block; padding: 10px 15px}
+#guide_photo_contest .row .title:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#guide_photo_contest .row .title h3 {margin-bottom: 0}
+#guide_photo_contest .row .items {padding-top: 10px}
+#guide_photo_contest .row .items .collect {background-color: #f0eee4; margin-top: 0}
+#guide_photo_contest .row .items .action a {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2); cursor: pointer; color: #333333; text-shadow: 1px 1px white; width: auto; height: 34px !important; display: block; line-height: 34px !important; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #888888 #888888 #666666; background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f2f2f2),color-stop(1, #e2e2e2)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f2f2f2', EndColorStr='#e2e2e2'); text-align: center; margin-top: 10px}
+#guide_photo_contest .row .items .action a:hover {color: black; border-color: #777777; text-decoration: none}
+#guide_photo_contest .row .items .action a:active {background: #dddddd}
+#guide_photo_contest .row .items .none {text-align: center; font-size: 1.1em; padding: 0 10px 10px}
+#guide_photo_contest .row .items .great-shots-count {bottom: -10px; right: -10px; width: 64px; height: 64px; color: #333333; text-indent: -2px; font-size: 2.4em; text-align: center; line-height: 60px; font-weight: bold; position: absolute; background: transparent url(/images/great-shots-count.png)}
+#guide_photo_contest .row .items .detail {color: #333333}
+#guide_photo_contest .row .items .detail strong {margin-bottom: 5px; display: block}
+#guide_photo_contest .row .items .detail p {display: block; margin-bottom: 5px}
+#sorts .create-tab {float: right !important}
+#sorts .create-tab a {background-color: #f8f8f8 !important; border: 1px solid #eeeeee; color: #666666; border-bottom: none; padding-right: 15px; padding-left: 15px}
+#sorts .create-tab a:hover {text-decoration: underline}
+#sorts .create-tab img {width: 9px; height: 9px; margin-right: 2px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -34px -83px}
+.print-button {margin: 5px 0 0}
+.print-button:hover {text-decoration: none}
+.print-button:hover span {text-decoration: underline}
+.print-button img {width: 16px; height: 16px; overflow: hidden; vertical-align: middle; text-indent: -100000px; background: transparent url(/images/sprites.png) no-repeat 0 -184px}
+#guide-container #guide_content {background: #f0eee4; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0}
+#guide-container #guide_content #guide-map {padding: 15px; background: #f7f6f1; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+#guide-container #guide_content #guide-sightings-container {border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; background-color: #f0eee4; margin-bottom: 2px}
+#guide-container #review-widget {padding: 20px; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; *display: inline-block; float: none}
+#guide-container #review-widget:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#guide-container #review-widget #review-widget-form {width: 100%}
+#powered-by h3 {font-weight: bold; margin-bottom: 10px !important}
+#powered-by .sidebar-logo {color: black; font-size: 3.7em; letter-spacing: -1px; font-weight: bold}
+#map-wide {overflow: hidden; width: 100%; position: relative; height: 280px}
+input#follow-button {width: 100%}
+#sidebar-more-guides li {float: left}
+#sidebar-more-guides li a {display: block}
+#about-this-guide {color: #333333}
+#about-this-guide .description {line-height: 1.3em; word-wrap: break-word}
+#about-this-guide .description ul {list-style-type: disc; margin-left: 18px; margin-bottom: 1em}
+#about-this-guide .description ul li {margin-bottom: 0.4em}
+#unfinished li {margin-bottom: 10px}
+#unfinished li .delete-guide {float: right; font-size: 90%}
+#unfinished li .custom-badge {width: 50px; height: 50px; float: left; margin-right: 10px}
+#unfinished li h3 {font-weight: bold; margin-bottom: 0; font-size: 1.2em}
+#unfinished li h3 a {color: black}
+#unfinished li p {color: #666666; font-size: 90%}
+ul.guide-filters {list-style: none; padding: 0; margin: 0}
+ul.guide-filters li {padding: 0; margin: 0}
+ul.guide-filters li.on a {background-color: #268ca0; border-radius: 18px; -moz-border-radius: 18px; -webkit-border-radius: 18px; font-weight: bold; color: white}
+ul.guide-filters li a {display: block; padding: 5px 10px}
+#featured-collections {margin-bottom: 30px}
+#featured-collections li {float: left; width: 220px; margin-left: 17px; background-color: white; border: 1px solid #dddddd; box-shadow: 1px 1px 0 #dddddd; -moz-box-shadow: 1px 1px 0 #dddddd; -webkit-box-shadow: 1px 1px 0 #dddddd}
+#featured-collections li h3 {color: black; margin-bottom: 0}
+#featured-collections li .guide-count {color: #555555}
+#featured-collections li .image {height: 150px; margin-bottom: 10px; background-color: white !important}
+#featured-collections li a {display: block; padding: 10px}
+#featured-collections li a:hover {color: black}
+#featured-collections li.first {margin-left: 0}
+.tagline {color: #333333; padding-top: 2px; font-size: 1.1em}
+#guides li.guide {clear: left; padding: 15px; border-bottom: 1px dotted #dddddd; list-style: none; position: relative}
+#guides li.guide .timestamp {margin-top: 10px; color: #777777}
+#guides li.guide .unpublished {width: 76px; height: 76px; position: absolute; top: -1px; right: 0; background: transparent url(/images/guide-unpublished-badge.png) no-repeat}
+#guides li.guide .delete-guide {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2); cursor: pointer; color: #333333; text-shadow: 1px 1px white; width: auto; height: 34px !important; display: block; line-height: 34px !important; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #888888 #888888 #666666; background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f2f2f2),color-stop(1, #e2e2e2)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f2f2f2', EndColorStr='#e2e2e2'); float: right}
+#guides li.guide .delete-guide:hover {color: black; border-color: #777777; text-decoration: none}
+#guides li.guide .delete-guide:active {background: #dddddd}
+#guides li.guide .custom-badge {float: left; width: 100px}
+#guides li.guide .custom-badge a {display: block}
+#guides li.guide .guide-details {margin-left: 105px; margin-top: 10px}
+#guides li.guide .guide-details .bar {height: 12px; width: 260px}
+#guides li.guide .guide-details .bar .progress {height: 12px}
+#guides li.guide .title {margin-bottom: 10px}
+#guides li.guide h3 {font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 500; font-size: 150%; margin-bottom: 0}
+#guides li.guide h3 a {color: black}
+#profile-guides {*display: inline-block; background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; padding: 20px}
+#profile-guides:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#profile-guides li.guide {float: left; margin-left: 0; margin-bottom: 0}
+#profile-guides li.guide .custom-badge {float: left; background-color: transparent; background-repeat: no-repeat; width: 90px; height: 90px}
+#profile-guides li.guide .custom-badge a {display: block}
+.profile-guides-list li.links {margin-bottom: 10px}
+.profile-guides-list li.guide {margin-bottom: 10px}
+.profile-guides-list li.guide .custom-badge {float: left; background-color: transparent; background-repeat: no-repeat; width: 50px !important; height: 50px !important}
+.profile-guides-list li.guide .custom-badge img {width: 50px !important; height: 50px !important}
+.profile-guides-list li.guide .guide-creator {margin-bottom: 5px}
+.profile-guides-list li.guide .guide-creator a {color: #777777}
+.profile-guides-list li.guide .guide-creator .creator-avatar {float: left; margin-right: 5px}
+.profile-guides-list li.guide .guide-creator .creator-avatar img {width: 16px; height: 16px}
+.profile-guides-list li.guide .guide-title {font-weight: bold}
+.profile-guides-list li.guide .guide-stats {padding-top: 2px; margin-left: 60px}
+.profile-guides-list li.guide .guide-standings {display: block; margin-top: 3px; font-size: 80%; color: #888888}
+.bar {border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; height: 3px; padding: 1px; width: 120px; background-color: #dddddd; margin-top: 3px}
+.bar .progress {border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; background-color: #96af4b; height: 3px}
+.custom-badge {background-color: transparent; background-repeat: no-repeat; width: 90px; height: 90px}
+.guide-header .title {margin-bottom: 10px}
+.guide-header .tagline {color: #333333; padding-top: 2px; font-size: 1.2em}
+.guide-header h1 {font-family: "HelveticaNeue-Bold", "Helvetica Neue Bold", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 600 !important; font-size: 1.8em !important; margin-bottom: 0 !important; line-height: 1.1em !important}
+.guide-header h1 a {color: black}
+.guide-header .custom-badge {float: left; width: 100px}
+.guide-header .guide-details {padding-top: 5px !important; display: inline; float: right; width: 485px}
+.guide-header .guide-details h4 {margin-bottom: 0}
+#guide-message {bottom: -80px; left: 10px; width: 600px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; opacity: 0.9; background: white; z-index: 10; position: absolute; box-shadow: 1px 1px 3px #888888; -moz-box-shadow: 1px 1px 3px #888888; -webkit-box-shadow: 1px 1px 3px #888888}
+#guide-message .inset {padding: 15px 20px}
+#guide-message .inset h3 {font-size: 1.4em; margin-bottom: 10px}
+#guide-message.visible {bottom: 10px}
+.at {font-weight: normal; color: #999999}
+#join-competition {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2); cursor: pointer; color: #333333; text-shadow: 1px 1px white; width: auto; height: 34px !important; display: block; line-height: 34px !important; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #888888 #888888 #666666; background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f2f2f2),color-stop(1, #e2e2e2)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f2f2f2', EndColorStr='#e2e2e2'); text-align: center; font-size: 1.3em}
+#join-competition:hover {color: black; border-color: #777777; text-decoration: none}
+#join-competition:active {background: #dddddd}
+.personal-standings span {color: #666666}
+#guide-sightings li {*display: inline-block; position: relative; padding: 20px; border-bottom: 1px solid #e1dcc8; border-top: 1px solid white}
+#guide-sightings li:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+#guide-sightings li#add-item .empty {background-color: #f7f6f1}
+#guide-sightings li#add-item a {font-weight: 100; font-style: italic; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; display: block; font-size: 2.2em; line-height: 1.3em; padding: 40px 0}
+#guide-sightings li.hover .photo {display: none}
+#guide-sightings li.first {margin-left: 0}
+#guide-sightings li.odd .photo {-moz-transform: rotate(-4deg) !important; -webkit-transform: rotate(-4deg) !important}
+#guide-sightings li .photo {width: 170px; height: 170px; padding: 12px; position: absolute; z-index: 10; top: 18px; left: 18px; background: transparent url(/images/stamp-shadow-195px.png) no-repeat; -moz-transform: rotate(4deg); -webkit-transform: rotate(4deg)}
+#guide-sightings li .photo img {width: 170px; height: 170px}
+#guide-sightings li .rank {float: right; font-size: 2.8em; margin-top: -10px; font-weight: bold; color: #777777; margin-left: 20px}
+#guide-sightings li .content {float: right; display: inline; width: 370px}
+#guide-sightings li .empty {-moz-transform: rotate(0); color: #777777; text-align: center; width: 186px; height: 186px; border: 2px dashed #b4aaa0; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; float: left; display: inline}
+#guide-sightings li .remove-guide-sighting {top: 10px; left: 10px; width: 30px; height: 30px; display: block; overflow: hidden; position: absolute; text-indent: -10000px; background: transparent url(/images/close-button.png) no-repeat}
+#guide-sightings li .remove-guide-sighting:hover {text-decoration: none}
+#guide-sightings li h3 {font-size: 1.5em; font-weight: bold; margin-bottom: 10px}
+#guide-sightings li h3 a {color: #111111}
+#guide-sightings li p {margin-bottom: 10px}
+#guide-sightings li .votes {margin-bottom: 10px; text-transform: uppercase; cursor: default}
+#guide-sightings li .votes a {color: #999999}
+#guide-sightings li .votes a:hover {color: #444444; text-decoration: none}
+#guide-sightings li .editable .text {margin-bottom: 10px}
+#guide-sightings li .editable p:hover {cursor: text; background-color: #ffff99}
+#guide-sightings li .editable form {margin-bottom: 10px}
+#guide-sightings li .editable textarea {display: block; margin-bottom: 5px; height: 60px; width: 98%; font-size: 1em; font-family: inherit}
+#guide-sightings li .submitted-by {color: #777777}
+#guide-sightings li .spot-it a {padding: 50px; display: block}
+.guide_sighting_spotted a {float: left; margin-right: 5px; margin-bottom: 5px}
+.guide_sighting_spotted a img {width: 40px; height: 40px}
+#guide-sidebar-details {background-image: url(/images/guide-sidebar-badge-bg.png); background-repeat: no-repeat; background-position: top right}
+
+/* create user join popup window */					    
+/* Z-index of #mask must lower than #boxes .window */  
+#mask { 
+position:fixed;
+  z-index:9000;  
+background-color:black;  
+width: 100%; 
+height: 100%; 
+top: 0px; 
+left: 0px;
+  display:none;  
+  opacity:0.5;
+  filter:alpha(opacity=50)
+
+}  
+/* id="boxes" class = "window"*/      
+#boxes .window {  
+  position:fixed;
+  
+  display:none;  
+  z-index:9999;  
+  padding:20px;  
+}  
+  
+  
+/* Customize your modal window here, you can add background image too */  
+#boxes #dialog {  
+  width:375px;   
+  height:320px;  
+}  
+
+/* /////////////////////////////////////////////////////  */
+/* create user setting popup window */	 
+ #setting
+ {
+ 	background-color:white;
+	padding:15px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px
+	}      
+ #setting .buttons{margin-top:15px}      
+ #setting .buttons input.save{font-weight:bold}     
+ #setting .buttons a.l_closedialog{margin-left:7px}      
+ .popupmenu
+ {
+ 	z-index:9000;
+	border:1px solid gray;
+	background-color:white;
+	padding:3px
+	}    
+ .popupmenu .item{padding:1px}      
+
+  
+/* Z-index of #mask must lower than #boxes .window */  
+#mask2 { 
+position:fixed;
+  z-index:9000;  
+background-color:black;  
+width: 100%; 
+height: 100%; 
+top: 0px; 
+left: 0px;
+  display:none;  
+  opacity:0.5;
+  filter:alpha(opacity=50)
+}  
+
+
+    
+#settingboxes .settingdialogdiv {  
+  position:fixed;  
+  display:none;  
+  z-index:9999;  
+  padding:20px;  
+}  
+  
+  
+/* Customize your modal window here, you can add background image too */  
+#settingboxes #setting {  
+  width:540px;   
+  height:500px;  
+}  
+
+			

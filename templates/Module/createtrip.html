@@ -1,0 +1,124 @@
+  <!-- #customize your modal window here -->  
+  
+ <div id="createtripdialog" class="window">  
+ <div style="width:350px; padding-left:5px; padding-right:5px; padding-top:5px" class="createform">
+    <b>TripShare is extremely flexible. They can even be used to share privately with a trip or as public discussion forums.</b> 
+    <a href="/about">Learn more about TripShare</a></div><br>
+        
+<form name="create_trip" action="/createtrip" method="post" onsubmit="return check_createtrip_form(this);">
+	{{ xsrf_form_html() }}
+<table class="form">
+<tbody>
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Trip Name:</td>
+<td class="value" style="width:100%">
+<div class="textbox">
+<input type="text" name="title" id="title" size="20" maxlength="35" autocomplete="off">
+</div>
+</td>
+</tr>
+
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Start from:</td>
+<td class="value" style="width:70%">
+<div class="textbox" style="margin-bottom:3pt">
+<input type="text" name="start" id="start" size="20" maxlength="25" autocomplete="off" value="12312312" onfocus="">
+</div>
+</tr>
+
+
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Ahead for:</td>
+<td class="value" style="width:70%">
+<div class="textbox" style="margin-bottom:3pt">
+<input type="text" name="destination" id="destination" size="20" maxlength="25" autocomplete="off" value="" onfocus="">
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td >Start Date:</td>
+<td >
+	<input type="text" id="date1x" name="start_date" value="" size="20">
+<script language="JavaScript" id="jscal1x">
+var cal1x = new CalendarPopup("testdiv1");
+
+</script>
+
+
+
+<div id="testdiv1" style="display:none;background-color:white;layer-background-color:white;"></div>
+<a href="#" onclick="cal1x.select(document.forms['create_trip'].start_date,'anchor1x','MM/dd/yyyy'); return false;" title="start date" name="anchor1x" id="anchor1x">select</a>
+</td>
+</tr>
+
+<tr>
+<td>End Date:</td>
+<td >
+<input type="text" id="date2x" name="end_date" value="" size="20">
+
+<script language="JavaScript" id="jscal2x">
+var cal2x = new CalendarPopup("testdiv2");
+
+</script>
+
+
+<div id="testdiv2" style="display:none;background-color:white;layer-background-color:white;"></div>
+<a href="#" onclick="cal2x.select(document.forms['create_trip'].end_date,'anchor2x','MM/dd/yyyy'); return false;" title="end date" name="anchor2x" id="anchor2x">select</a>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Description:</td>
+<td class="value" style="width:70%">
+<div class="textbox" style="margin-bottom:3pt">
+<input type="text" name = "description" id="description" size="20" maxlength="25" autocomplete="off" value=''>
+</div>
+
+</td>
+</tr>
+<tr>
+<td class="value" colspan="2">
+<table class="feedoptions">
+<tbody><tr>
+<td class="radio"><input type="radio" name="privacy" value="private" id="private" checked="checked"></td>
+<td class="optionname"><label for="feedoptionprivate">Private trip</label></td>
+</tr>
+<tr>
+<td></td>
+<td class="desc"><label for="feedoptiongroup">Only the people you invite can view and edit the trip</label></td>
+</tr>
+<tr>
+<td class="radio"><input type="radio" name="privacy" value="public" id="public"></td>
+<td class="optionname"><label for="feedoptionpublic">Public trip</label></td>
+</tr>
+<tr>
+<td></td>
+<td class="desc"><label for="feedoptionpublic">Anyone can post messages to and comment on the trip</label></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td class="buttons" style="padding-top:10px" colspan="2">
+
+<!-- add map here   --> 
+<!--<input type="submit" value="Create trip" class="save" onclick="addMap(); return false"> --> 
+<input type="submit" value="Create trip">
+<a href="#" class="close">Cancel</a>
+
+
+</td>
+</tr>
+</tbody></table>
+</form>   
+</div>  
+  
+      
+    <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->    
+<div id="mask3"></div>  
+</div>

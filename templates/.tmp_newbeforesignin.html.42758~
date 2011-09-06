@@ -1,0 +1,476 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>TripShare</title> 
+
+<style type="text/css"><!--
+	
+ 
+	#boxes {
+		font-family: Arial, sans-serif;
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
+		width: 300px;
+	}
+	#boxes li {
+		cursor: move;
+		position: relative;
+		float: left;
+		margin: 2px 2px 0px 0px;
+		width: 33px;
+		height: 28px;
+		border: 1px solid #000;
+		text-align: center;
+		padding-top: 5px;
+		background-color: #eeeeff;
+	}
+ 
+	
+	//-->
+</style> 
+
+<script src="{{ static_url("javascript/dragdroptool/core.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/dragsort.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/drag.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/events.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/coordinates.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/css.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/cookies.js") }}" type="text/javascript"></script>
+
+<script language="JavaScript" type="text/javascript"><!--
+	var dragsort = ToolMan.dragsort();
+	var junkdrawer = ToolMan.junkdrawer();
+
+	window.onload = function() {
+		junkdrawer.restoreListOrder("boxes");
+
+		dragsort.makeListSortable(document.getElementById("boxes"),saveOrder);
+	}
+		
+	function verticalOnly(item) {
+		item.toolManDragGroup.verticalOnly()
+	}
+ 
+	function speak(id, what) {
+		var element = document.getElementById(id);
+		element.innerHTML = 'Clicked ' + what;
+	}
+ 
+	function saveOrder(item) {
+		var group = item.toolManDragGroup
+		var list = group.element.parentNode
+		var id = list.getAttribute("id")
+		if (id == null) return
+		group.register('dragend', function() {
+			ToolMan.cookies().set("list-" + id, 
+					junkdrawer.serializeList(list), 365)
+		})
+	}
+//-->
+</script>
+
+
+
+ 
+</head> 
+<body> 
+ 
+  {% include "Module/CreateTripSlide1.html" %}
+
+<div id="header"> 
+<div id="nav-bar"  >
+ {% include "Module/headline.html" %}
+
+{{ modules.UserEntry() }}
+
+{{ modules.UserSetting() }}
+
+<div id="partner-header" style="background-color:#99b2ce;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;">
+  <form action="http://www.foodspotting.com/" class="default" id="map_search" method="post" onsubmit="if (FSMap.check_submittable()) { FSMap.prepare_search(); new Ajax.Request('http://www.foodspotting.com/', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); }; return false;">
+<div style="display:none">
+<input id="ajax_datetime" name="ajax" type="hidden" value="1298607224614">
+<input id="page_hidden_field" name="page" type="hidden" value="">
+<input id="sort_hidden_field" name="sort" type="hidden">
+<input id="filter_hidden_field" name="filter" type="hidden">
+<input id="query_hidden_field" name="q" type="hidden">
+<input id="loc_hidden_field" name="loc" type="hidden" value="">
+<input id="sw_hidden_field" name="sw" type="hidden" value="20.13847031245115, 174.111328125">
+<input id="ne_hidden_field" name="ne" type="hidden" value="48.574789910928864, -46.58203125">
+<input id="lat_hidden_field" name="lat" type="hidden">
+<input id="lng_hidden_field" name="lng" type="hidden">
+<input id="track_search" name="track_search" type="hidden" value="">
+<input id="track_location" name="track_location" type="hidden" value="">
+</div>
+<fieldset id="map_fields">
+<input class="submit" type="submit" value="Search">
+<div id="location-input">
+<div class="text-box">
+<a class="clear" href="#" id="location_clear_button" onclick="clear_location();; return false;" style="">x</a>
+<label class="prompted" for="location" id="set_location_label">YOUR LOCATION: <strong class="location-color">Map Area</strong></label>
+<input class="text" id="location" onfocus="show_saved_locations()" type="text" value="" autocomplete="off">
+<div id="saved_locations" style="display:none">
+<ul id="saved_location_ul"><li class="current-location"><a href="" onclick="FSMap.get_client_location();return false;"><img src="/images/clear.png" alt="" border="0">Current Location</a></li>
+<li class="anywhere"><a href="#" onclick="clear_location(); return false;"><img alt="Clear" src="/images/clear.png?1298606992">Anywhere</a></li>
+<li class="saved-locations-title">Saved Locations:</li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+<div class="text-box" id="genius-search-input" style="z-index:1">
+<a class="clear" href="#" id="query_clear_button" onclick="clear_query(); return false;" style="display:none">x</a>
+<label class="prompted" for="query" id="genius-label">SEARCH BY: <strong>food, place or person</strong></label>
+<div id="genius-search" class="live-search">
+  <div class="spinner" style="display: none; "><img alt="Spinner" src="{{ static_url("image/spinner.gif") }}"></div>
+  <input class="text" id="query" name="query" onkeydown="if(event.keyCode == 9) {return false;}" type="text" value="" autocomplete="off">
+  <div class="results-container" style="position:absolute">
+    <ul id="genius_results" class="results" style="display: none; ">
+      <li class="status"></li>
+      <li style="display:none"></li>
+    </ul>
+  </div>
+</div>
+
+
+
+</div>
+</fieldset>
+    </form>
+	
+<div id="map-pagination" style="z-index :5000">
+<a href="#" id="page-right" onclick="; return false;" class="enabled">Next 20</a>
+<a href="#" id="page-left" onclick="; return false;" class="">Previous 20</a>
+<div class="clearfix" id="map-sorts">
+<a class="first on" href="#" id="map-sort-best" onclick="FSMap.update_sort('hottest'); return false;">Hottest</a>
+<a href="#" id="map-sort-latest" onclick="FSMap.update_sort('latest'); return false;" class="">Latest</a>
+<a href="#" id="map-sort-ended" onclick="FSMap.update_filter('mine'); return false;" class="">Mine</a>
+<a class="last" href="#" id="map-sort-guides" onclick="FSMap.update_filter('guides'); return false;">Guides</a>
+</div>
+</div>
+
+<div id="discover-map" style="height: 500px;">
+<div id="map-loading-box" style="display: none; opacity: 0.75; "></div>
+<div id="map-message-box" style="display: none; "></div>
+<div id="map" style="position: relative; background-color: rgb(229, 227, 223); ">
+<div style="position: absolute; left: 0px; top: 0px; overflow-x: hidden; overflow-y: hidden; width: 100%; height: 100%; ">
+<div style="z-index: 0; position: absolute; left: 3px; top: 32px; cursor: url(http://maps.gstatic.com/intl/en_us/mapfiles/openhand_8_8.cur), default; ">
+<div style="position: absolute; left: 0px; top: 0px; display: none; ">
+<div style="position: absolute; left: 0px; top: 0px; z-index: 0; ">
+
+</div></div></div></div>
+</div>
+</div>
+
+
+
+<div class="clearfix" id="container">
+<a href="#" id="back_to_map" onclick="FS.hide_back_to_map();; return false;" style="display:none">Take me Back To The Map!</a>
+<div class="clearfix" id="content">
+
+<div id="discover-bar">
+<div class="hgroup clearfix">
+<div id="social-icons">
+<a href="http://twitter.com/tripsharer" class=""><img alt="Twitter-icon" src="{{ static_url("images/twitter-icon.png") }}"></a>
+<a href="http://www.facebook.com/TripShare" class=""><img alt="Facebook-icon" src="{{ static_url("images/facebook-icon.png") }}"></a>
+</div>
+<h1 id="list-view-title">Tell us <strong>when</strong> and <strong>where</strong> you plan to go</h1>
+</div>
+</div>
+
+
+<div class="clearfix" id="new-sighting-form">
+<div id="user-info-window">
+<div class="tip"></div>
+<strong>Welcome to TripShare!</strong>
+Share your trip or see what others have recommended near you!
+</div>
+
+<div class="pod clearfix" id="sidebar-auth-buttons">
+<div id="review-widget">
+{% if current_user%}
+<a href="#create_trip_step_1" name="createtrip" value="Create a Trip" style="width:180px;margin-right:10px" class="sidebar-auth-button">Create Trip</a>
+<input class="sidebar-auth-button"  type="button" name="invitefriend"  value="Invite friends" style="width:180px;margin-right:10px" src ="#invitefriendtotrip" >
+{% else %}
+<a href="#login" name="modal2" value="login" style="width:180px;margin-right:10px" class="sidebar-auth-button">Create Trip</a>
+<input class="sidebar-auth-button"  type="button" name="invitefriend"  value="Invite friends" style="width:180px;margin-right:10px" src ="#login" >
+{% end %}
+
+
+</div>
+</div>
+
+<div class="sidebar right">
+<div id="sidebar-home">
+<div class="pod inset" id="sidebar-welcome">
+TripShare answers the question, "<strong>What's good around here?</strong>" by making finding &amp; sharing food recommendations as easy as snapping a photo.
+<a href="/about">Learn More »</a>
+</div>
+
+<div class="pod" id="home-featured">
+<div class="pod" id="sidebar-promo">
+<h2>Featured Guide</h2>
+<iframe frameborder="0" height="250" scrolling="no" src="" width="300"></iframe>
+
+</div>
+
+</div>
+
+<div class="pod clearfix">
+<div class="left" style="margin-right: 10px">
+<a href="/iphone"><img alt="Iphone-half" src="{{ static_url("images/mobile/iphone.png") }}"></a>
+</div>
+<div class="left">
+<a href="/android"><img alt="Android-half" src="{{ static_url("images/mobile/android.png") }}"></a>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+ 
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#start").autocomplete(cities);
+	$("#destination").autocomplete(cities, {
+		matchContains: true,
+		minChars: 0
+	});
+
+	$("#clear").click(function() {
+		$(":input").unautocomplete();
+	});
+});
+
+
+function changeScrollHeight() {
+    var h = parseInt(window.prompt('Please type new scroll height (number in pixels):', jQuery.Autocompleter.defaults.scrollHeight));
+    if(h > 0) {
+        $("#suggest1").setOptions({
+			scrollHeight: h
+		});
+    }
+}
+
+
+</script>
+ 
+ 
+ 
+<script type="text/javascript">
+//<![CDATA[
+function checkform(form)
+{
+	
+	
+	if (form.email.value == "") 
+	{
+	  alert("Please enter email address");
+	  form.email.focus();
+	  return false;
+	}
+	
+	if (form.password.length < 6 || form.password.length >25 ) 
+	{
+	  alert("Please enter password longer than 6 and shorter than 25");
+	  form.password.focus();
+	  return false;
+	}
+	
+	if(!form.user[accept_terms].checked)
+	{
+		 alert("Please agree to the term before sign up");
+		 form.user[accept_terms].focus();
+		 return false;
+	}
+	
+	return true;
+}
+
+
+function check_createtrip_form(form)
+{
+	
+	
+	if (form.title.value == "") 
+	{
+	  alert("Please enter trip title");
+	  form.title.focus();
+	  return false;
+	}
+	
+	
+	if (form.start.value == "") 
+	{
+	  alert("Please enter trip start");
+	  form.start.focus();
+	  return false;
+	}
+	
+	if (form.destination.value == "") 
+	{
+	  alert("Please enter trip destination");
+	  form.destination.focus();
+	  return false;
+	}
+	
+	if (form.start_date.value == "") 
+	{
+	  alert("Please enter trip start_date");
+	  form.start_date.focus();
+	  return false;
+	}
+	
+	if (form.end_date.value == "") 
+	{
+	  alert("Please enter trip end_date");
+	  form.end_date.focus();
+	  return false;
+	}
+	
+	return true;
+}
+</script>
+
+
+<script type="text/javascript">
+
+
+jQuery.getJSON = function(_url, callback) {
+	
+    
+    $.ajax({
+      url: _url, 
+      success: function(response) {
+	  	console.log("success:", response)
+        if (callback) callback(response);
+      }, 
+	  error: function(response) {
+        console.log("ERROR:", response)
+		}
+});
+};
+	
+function set_section(section, _url) {
+	    var trips = null;
+		//alert('a');
+		
+		$("#section_value").val(section);
+        //alert('b');
+        $('#tabs > .on').removeClass('on');
+	    
+        $('#'+section + '-tab').addClass('on');
+	
+		$.getJSON(_url, function(response) {
+        //alert('test');
+		ShowTrip(response);
+		
+    }); 
+      }
+	  
+function ShowTrip(message) {
+		var node;
+		
+		var trips = message.split("||||");
+		$("#latest_trip").empty();
+		
+		$.each(trips, function(index, value) {
+	         node = $(value);
+             node.hide();
+		     
+             $("#latest_trip").append(node);
+             node.show();
+         });	
+    }
+</script>
+
+
+<script type="text/javascript">
+	//subscribe trip
+function subscribe_trip(_url) {
+		
+		
+		$.getJSON('/subscribe_trip/'+_url, function(response) {
+        alert(response.ToString());
+        });
+        }	
+		
+function unsubscribe_trip(_url) {
+		
+		
+		$.getJSON('/unsubscribe_trip/'+_url, function(response) {
+        alert(response.ToString());
+        }); 
+        }
+		
+jQuery.getJSON = function(_url, callback) {
+    $.ajax({
+      url: _url, 
+      success: function(response) {
+	  	console.log("success:", response)
+        if (callback) callback(response);
+      }, 
+	  error: function(response) {
+        console.log("ERROR:", response)
+		}
+});
+};
+			
+</script>
+
+<script type="text/javascript">
+function getCookie(name) {
+    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return r ? r[1] : undefined;
+}
+	
+	$(document).ready(function() {
+		xsrf = getCookie("_xsrf");
+	var $dialog = $('{% if current_user %}<div class="dialogdiv"></div>')
+		.html('<div id="dialog"><form action="/a/changepicture" method="post" onsubmit="return checkRequired(this)" enctype="multipart/form-data"><input type="hidden" name="_xsrf" value='+xsrf+'><div><img src="{{current_user["picture"]}}" alt="{{current_user["username"]}}" class="picture large"></div><div style="margin-top: 1em"><input type="file" size="40" name="picture" value="/tmp/test.gif" id="pictureupload"></div><div class="buttons"><input type="submit" value="Upload picture" class="save"><a href="#" class="l_closedialog">Cancel</a></div></form></div>{% end %}')
+		.dialog({
+			autoOpen: false,
+			title: 'User Profile Picture'
+		});
+
+	$('.l_editpicture').click(function(e) {
+		e.preventDefault();  
+		//alert('test');
+		$('.settingdialogdiv').hide();  
+		$dialog.dialog('open');
+		// prevent the default action, e.g., following a link
+		return false;
+	});
+	
+	$('.l_closedialog').click(function() {
+		
+		$dialog.dialog('close');
+		// prevent the default action, e.g., following a link
+		return false;
+	});
+});
+</script>
+
+<ul id="boxes"> 
+	<li class="box">A<a href="/user/messages"><img src="../static/icon/dest.png" alt="" border="0"></a></li> 
+	<li class="box">B<a href="/user/messages"><img src="../static/icon/dest.png" alt="" border="0"></a></li> 
+	<li class="box">C<a href="/user/messages"><img src="../static/icon/dest.png" alt="" border="0"></a></li> 
+	<li class="box">D<a href="/user/messages"><img src="../static/icon/dest.png" alt="" border="0"></a></li> 
+	<li class="box">E</li> 
+	<li class="box">F</li> 
+	<li class="box">G</li> 
+
+</ul> 
+</body> 
+</html> 

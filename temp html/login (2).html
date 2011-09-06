@@ -1,0 +1,329 @@
+<!DOCTYPE html 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:fb='http://www.facebook.com/2008/fbml' class="index"> 
+<head> 
+ <link type="text/css" rel="stylesheet" href="/stylesheets/search.css" />
+ <link rel="stylesheet" href="/stylesheets/nano.css?v=3927" type="text/css">
+<!-- comet chat --> 
+
+ 
+<title>MTGTrade</title> 
+<div id="header">
+<table>
+<tbody>
+<tr>
+<td class="logo"><a href="/"><img src="http://www.wizards.com/Magic/Assets/magic_logo.gif" alt="MTGTrade1"></a></td>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="Search"> 
+<form action="/search" method="get" id="searchform">
+<input type="text" size="25" name="search_term" value="Search cards..." onblur="if (value == '') {value = 'Search cards...';}" onfocus="if(value == 'Search cards...') {value = '';}" class="textbox" />
+<input type="submit" id="searchbox" value="Search" style="font-size:15px"/>
+</form>
+</div>
+</td>
+<td class="image" style="padding-left:450px"><a href="/blurjp" sid="5d993f60e35c40fea505d5d2b1285ee4" class="l_profile"><img src="" alt="jason huang" class="picture medium"></a></td>
+<td >
+ <p>{{greeting}}</p>
+ <p>{{userprofile.nickname}}</p>
+ <p>{{show_info}}</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+</tr>
+</tbody></table>
+	
+</div>
+
+
+<style type="text/css">
+table.oneclickicons td {line-height:0; padding-right:7px;}
+</style>
+
+</head>
+
+<body>
+
+ 
+<div id="container" class="nosidebar">
+
+<div class="box white" id="page">
+
+<div class="box-top default-bar">
+<div class="box-corner"></div>
+<div class="box-spacer"></div>
+</div>
+
+<div class="box-body">
+
+
+<div class="oneclick">
+<div id="sidebar">
+
+
+<div class="box">
+<div class="box-bar friends">
+<div class="box-corner"></div>
+
+</div>
+<div class="subbar friends" style="display:none"></div>
+
+<div class="box-body">
+<div class="section">
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/mycards", action="/mycards">My Cards</a></li>
+<li><a href="/filter/direct">Direct messages</a></li>
+<li><a href="/filter/discussions">My discussions</a></li>
+<li><a href="/summary/1">Best of day</a></li>
+</ul>
+</div>
+
+<ul>
+
+
+<li><a href="/list/favorites">Favorites</a></li>
+
+
+<li><a href="/list/personal">Personal</a></li>
+
+
+<li><a href="/list/professional">Professional</a></li>
+
+</ul>
+
+<div class="footer"><a href="/friends">Browse/edit friends</a></div>
+</div>
+<div class="box-bottom">
+<div class="box-corner"></div>
+<div class="box-spacer"></div>
+</div>
+</div>
+
+<div class="box">
+<div class="box-bar groups">
+<div class="box-corner"></div>
+<div class="box-bar-text">
+
+
+<span class="title"><a href="/groups">Groups</a></span>
+</div>
+</div>
+<div class="subbar groups" style="display:none"></div>
+
+<div class="box-body">
+<div class="emptymessage">You aren't a member of any groups yet.</div>
+<div class="emptymessage" style="margin-top:8px"><a href="/groups/search">Browse/create groups</a></div>
+</div>
+<div class="box-bottom">
+<div class="box-corner"></div>
+<div class="box-spacer"></div>
+</div>
+</div>
+
+
+</div>				
+</div>
+</div>
+
+
+<div class="box white" id="page">
+<div class="box-bar home">
+<div class="box-corner"></div>
+<div class="box-bar-text">
+
+
+<div id="realtimectl" class="control"><div class="l_realtimepause paused" title="Resume real-time updates"></div></div>
+
+<div class="control"><a href="#" class="l_deliveryoptions" feedid="00000000000000000000000000000000" category="lists">Email / IM</a></div>
+
+<div id="realtimestatus" class="control">Paused</div>
+
+<span class="title"><a href="/">Home</a></span>
+</div>
+</div>
+<div class="subbar home" style="display:none"></div>
+
+<div class="box-body">
+
+
+
+
+
+
+<div class="sharebox">
+<form action="/a/share" method="post" enctype="multipart/form-data" onsubmit="return shareSubmit($(this))">
+<div class="to">
+<table>
+<tbody><tr>
+<td>To:&nbsp;</td>
+<td class="tobody">
+<ul class="l_tolist">
+<li class="spacer"></li>
+
+<li class="l_tocard public" sid="blurjp+friends">My feed <img src="/static/images/to-delete.png?v=f1c8" class="l_toremove" title="Delete"></li>
+
+<li class="addedit"><a href="#">add/edit</a></li>
+<input type="text" class="l_toinput" maxlength="50">
+</ul>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="title"><div class="textbox"><textarea name="title" class="title" rows="2" cols="40"></textarea></div></div>
+<div class="progress"><table></table></div>
+
+
+<div class="files"></div>
+<div class="ops">
+<table>
+<tbody><tr>
+
+<td class="attach">
+<table style="width:auto">
+<tbody><tr>
+<td>Add:&nbsp;</td>
+<td>
+<div id="attachlinks" style="position: relative">
+<a href="#" class="l_attachphotos" style="padding-left:2px">Photos</a>
+- <a href="#" class="l_attachphotos">Files</a>
+
+<div style="line-height:0;position:absolute;top:0;left:0"><embed type="application/x-shockwave-flash" src="/static/flash/UploaderLink.swf?v=1297b465" width="92px" height="17px" id="fileuploader" name="fileuploader" wmode="transparent" quality="high" menu="false"></div></div>
+</td>
+</tr>
+</tbody></table>
+</td>
+
+<td class="button">
+<table>
+<tbody><tr>
+
+<td class="cc">
+<div class="ccbody">
+<table>
+<tbody><tr>
+<td class="ccmain"><span class="ccremaining"></span> Cc:</td>
+<td class="ccbox"><input type="checkbox" name="sharetwitter" value="1" class="l_sharetwitter"><input type="hidden" name="maybetweet" value="0"></td>
+<td class="cclabel"><a href="#" class="l_sharetwitter">Twitter</a></td>
+</tr>
+</tbody></table>
+</div>
+</td>
+
+<td class="post">
+<input type="submit" value="Post">
+<input type="hidden" name="next" value="/">
+<input type="hidden" name="streams" value="blurjp">
+
+
+
+
+<input type="hidden" name="at" value="1087110562413692277_1281451601">
+
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</div>
+</form>
+
+
+
+
+<div class="pager bottom">
+
+<a style="margin:0px" href="/summary/1">Best of day</a> -
+
+
+<a href="/?start=30">Older items »</a>
+
+</div>
+
+
+<div class="feedformats">Other ways to read this feed:<a href="/?auth=8nUjX7gxKHh7xOwl&amp;format=atom" title="Feed reader"><img src="/static/images/icons/blog.png?v=d3fe" alt="Feed reader" class="icon"></a><a href="/connect" title="Facebook" rel="nofollow"><img src="/static/images/icons/facebook.png?v=3188" alt="Facebook" class="icon"></a><a href="http://www.google.com/ig/add?url=http://friendfeed.com/embed/googlegadget/spec" title="iGoogle"><img src="/static/images/icons/googleshared.png?v=9558" alt="iGoogle" class="icon"></a></div>
+
+
+
+<input class="savedhtml" name="html_7614aceae6fc0f4850e90d641f2b40e0" value="" type="hidden">
+
+<input class="savedhash" name="hash_7614aceae6fc0f4850e90d641f2b40e0" value="" type="hidden">
+
+<input class="savedloadid" name="loadid_7614aceae6fc0f4850e90d641f2b40e0" value="" type="hidden">
+
+<input class="savedtoken" name="token_7614aceae6fc0f4850e90d641f2b40e0" value="" type="hidden">
+
+
+
+
+
+<div style="clear:both; height:12px"></div>
+</div>
+<div class="box-bottom">
+<div class="box-corner"></div>
+<div class="box-spacer"></div>
+</div>
+</div>
+
+<div>
+<p>{{show_info}}</p>
+
+<table name="card_table" class="card_table" id="card_table" border="1">
+    <tr>
+    
+    <th>Name</th>
+    <th>Edition</th>
+    <th>Color</th>
+    <th>Type</th>
+    <th>Rarity</th>
+    <th>Cost</th>
+    <th>PT</th>
+    <th>Text</th>
+    <th>CMC</th>
+    <th>Selected</th>
+     </tr>
+    {% for card in cards %}
+        <tr>
+        <td>{{ card.name }}</td>
+        <td>{{ card.edition }}</td>
+        <td>{{ card.color }}</td>
+        <td>{{ card.type }}</td>
+        <td>{{ card.rarity }}</td>
+        <td>{{ card.cost }}</td>
+        <td>{{ card.pt }}</td>
+        <td>{{ card.text }}</td>
+        <td>{{ card.cmc }}</td>
+        <td><INPUT TYPE=CHECKBOX class="cardcheck" id="cardcheck" NAME="cardcheck"></td>
+        </tr>
+    {% endfor %}
+    </table>	
+  </div>
+</div> 
+</div>
+
+<div id="footer">
+
+- <a href="/about/">About</a>
+- <a href="/about/tools">Tools &amp; Widgets</a>
+- <a href="">Blog</a>
+- <a href="/about/help">Help</a>
+- <a href="/about/privacy">Privacy</a>
+- <a href="/about/terms">Terms</a>
+
+</div>	
+</body>
+</html>
+  

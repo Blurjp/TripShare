@@ -1,0 +1,58 @@
+<ul class="trips list">
+{% if trips %}
+{% for trip in trips %} 
+<li class="show_trips" id="{{trip.trip_id}}">
+<div class="item hproduct">
+<div class="sighting-box clearfix">
+<h2><a href="/trip/{{trip.title}}">Trip: {{trip.title}}</a></h2>
+
+<ul>
+  <li>Start: {{trip.start_place}}</li>
+  <li>Destination: {{trip.dest_place}}</li>
+  <li>Description: {{trip.description}}</li>
+</ul>
+
+
+<div class="last_sighting">
+Last updated by
+<a href="/{{trip.last_updated_by}}">{{trip.last_updated_by}}</a>
+{{trip.last_updated_by}}
+</div>
+</div>
+<div class="action-bar">
+<div class="actions">
+<div class="sighting-admin-actions">
+</div>
+<div class="right">
+<strong>More:</strong>
+<a href="/items/149-shack-burger">like this</a> / 
+<a href="/places/246-shake-shack-new-york">at this place</a>
+</div>
+
+<div class="spotted-by">
+<div class="clearfix">
+<span class="label">Spotted by...</span>
+<a href="/seriouseats" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/foodspotting-ec2/people/147/small_thumb.jpg?1257379333"></a>
+<a href="/buzz" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/foodspotting-ec2/people/40/small_thumb.jpg?1256158882"></a>
+<a href="/kimtaro" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/foodspotting-ec2/people/10/small_thumb.jpg?1254810254"></a>
+<a href="/foodiehunter" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/foodspotting-ec2/people/148/small_thumb.jpg?1258174058"></a>
+<a href="/23560-pui" class="avatar"><img alt="Missing" src="/avatars/small_thumb/missing.png?1299396894"></a>
+<a href="/89948-sweet-spotter" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/foodspotting-ec2/people/89948/small_thumb.jpg?1291744393"></a>
+<a href="/alexa" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/foodspotting-ec2/people/9/small_thumb.png?1258172648"></a>
+<span class="others">
+11 others
+</span>
+</div>
+</div>
+</div>
+
+
+</div>
+</li>
+{% end %}
+{% else %}
+<div class="emptymessage">You aren't a member of any trips yet.</div>  
+{% end %}
+
+<div class="pager-container clearfix"><div class="pagination"><span class="disabled prev_page">« Previous</span> <span class="current">1</span> <a href="/?page=2" rel="next">2</a> <a href="/?page=3">3</a> <a href="/?page=4">4</a> <a href="/?page=5">5</a> <a href="/?page=6">6</a> <a href="/?page=7">7</a> <a href="/?page=8">8</a> <a href="/?page=9">9</a> <span class="gap">…</span> <a href="/?page=49">49</a> <a href="/?page=50">50</a> <a href="/?page=2" class="next_page" rel="next">Next »</a></div></div>
+

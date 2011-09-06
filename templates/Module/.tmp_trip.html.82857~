@@ -1,0 +1,49 @@
+<li class="show_trips" id="{{trip['trip_id']}}">
+<div class="item hproduct">
+<div class="sighting-box clearfix">
+<h2><a href="/trip/{{trip['slug']}}">{{trip['title']}}</a></h2>
+
+<ul class="trip_details">
+  <li ><b>Organizer</b>: <a href="/people/{{trip['owner_name']}}">{{trip['owner_name']}}</a></li>
+  <li >Start: {{trip['start_place']}}</li>
+  <li >Destination: {{trip['dest_place']}}</li>
+  <li >Start Date: {{trip['start_date']}}</li>
+  <li >Last updated by <a href="/people/{{trip['last_updated_by']['slug']}}">{{trip['last_updated_by']['username']}}</a></li>
+  <li><div class="members">
+<span class="label">Members are...</span>
+{% for member in trip['members'] %} 
+  <a href="/people/{{member['slug']}}" class = "avatar"><img alt="Small_thumb" src={{member['picture']}}></a>
+{% end %}
+
+</div>
+</li>
+</ul>
+
+<a href="/trip/{{trip['slug']}}" class="photo">
+	<img alt="{{trip['slug']}}" src="http://localhost/static/images/site.jpg">
+</a>
+</div>
+</div>
+<div class="action-bar">
+<div class="actions">
+
+<div class="right">
+
+{% if not current_user %}
+<input type ="button" class="l_subscribe fancy" sid={{trip['trip_id']}} value="Join" href="#login">
+{% else %}
+{% if current_user not in trip['members']%}
+
+<input type ="button" class="l_subscribe fancy" sid={{trip['trip_id']}} value="Join" href="#" onclick="subscribe_trip('{{trip['trip_id']}}'); return false;">
+{% else %}
+
+<input type ="button" class="l_unsubscribe fancy" sid={{trip['trip_id']}} value="Leave the trip" href="#" onclick="unsubscribe_trip('{{trip['trip_id']}}'); return false;"> /
+{% end %}
+{% end %}
+<a href="/like/{{trip['slug']}}">like this</a> / 
+<a href="/places/{{trip['start_place']}}">You have been there</a>
+</div>
+
+</div>
+</div>
+</li>

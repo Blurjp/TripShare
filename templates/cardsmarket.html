@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>MTGTrade - Cards Market</title> 
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="FriendFeed Search"/> 
+ 
+ 
+ 
+<link type="text/css" rel="stylesheet" href="/stylesheets/search.css" />
+ 
+ <link rel="stylesheet" href="/stylesheets/nano.css?v=3927" type="text/css"/> 
+ 
+ 
+ 
+<link rel="alternate" href="/filter/discussions?auth=8nUjX7gxKHh7xOwl&amp;format=atom" type="application/atom+xml"/></head> 
+<body onload="analytics()"> 
+ 
+<div id="bodydiv"> 
+ 
+ 
+<div id="container"> 
+ 
+ 
+<div id="header"> 
+<table> 
+<tr> 
+<td class="logo"><a href="/"><img src="/static/images/magic_logo.gif" alt="FriendFeed" style="height:50px;"/></a></td> 
+<td> 
+<table> 
+<tr> 
+<td> 
+<form action="/search" method="get" id="searchform"> 
+<input type="text" size="25" name="q" value="" class="textbox" id="searchbox" autocomplete="off"/> 
+<input type="submit" value="Search" style="font-size:15px"/> 
+</form> 
+</td> 
+ 
+<td id="extralinks"> 
+<div><a href="/search/advanced">Advanced search</a></div> 
+<div><a href="/about/tools">Tools</a></div> 
+</td> 
+ 
+</tr> 
+</table> 
+ 
+</td> 
+</tr> 
+</table> 
+</div> 
+ 
+<div id="sidebar"> 
+<div id="profile"> 
+<table> 
+<tr> 
+<td class="image"><a href="/blurjp" sid="5d993f60e35c40fea505d5d2b1285ee4" class="l_profile"><img src="http://m.friendfeed-media.com/p-5d993f60e35c40fea505d5d2b1285ee4-medium-1000" alt="jason huang" class="picture medium"/></a></td> 
+<td class="body"> 
+<div class="name"><a href="/blurjp" sid="5d993f60e35c40fea505d5d2b1285ee4" class="l_profile">{{greeting}}</a></div> 
+
+</td> 
+</tr> 
+</table> 
+</div> 
+ 
+<div class="box"> 
+<div class="box-bar friends"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/friends">Friends</a></span> 
+</div> 
+</div> 
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+<div class="section"> 
+<ul> 
+<li><a href="/">Home</a></li>
+<li><a href="/mycards">My Cards</a></li> 
+<li><a href="/cardsmarket">Cards Market</a></li> 
+<li><a href="/filter/direct">Direct messages</a></li> 
+<li><a href="/filter/discussions">My discussions</a></li> 
+<li><a href="/summary/1">Best of day</a></li> 
+<li><a href="/mymap">My Map</a></li> 
+</ul> 
+</div> 
+ 
+<ul> 
+ 
+ 
+<li><a href="/list/favorites">Favorites</a></li> 
+ 
+ 
+<li><a href="/list/personal">Personal</a></li> 
+ 
+ 
+<li><a href="/list/professional">Professional</a></li> 
+ 
+</ul> 
+ 
+<div class="footer"><a href="/friends">Browse/edit friends</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+<div class="box"> 
+<div class="box-bar groups"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/groups">Groups</a></span> 
+</div> 
+</div> 
+<div class="subbar groups" style="display:none"></div> 
+ 
+<div class="box-body"> 
+<div class="emptymessage">You aren't a member of any groups yet.</div> 
+<div class="emptymessage" style="margin-top:8px"><a href="/groups/search">Browse/create groups</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+ 
+</div> 
+ 
+<div id="body"> 
+<div class="box white" id="page"> 
+<div class="box-bar friends"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<div id="realtimectl" class="control"><div class="l_realtimepause" title="Pause updates"></div></div> 
+ 
+<div class="control"><a href="#" class="l_deliveryoptions" feedid="discussions" category="special">Email / IM</a></div> 
+ 
+<div id="realtimestatus" class="control"></div> 
+ 
+<span class="title"><a href="/mycards">My Cards</a></span> 
+</div> 
+</div> 
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+ 
+ 
+ 
+<div class="sharebox"> 
+<p>{{show_info}}</p>
+
+<div>
+<table name="card_table" class="card_table" id="card_table" border="1">
+    <tr>
+    
+    <th>Name</th>
+    <th>Edition</th>
+    <th>Color</th>
+    <th>Type</th>
+    <th>Rarity</th>
+    <th>Cost</th>
+    <th>PT</th>
+    <th>Text</th>
+    <th>Owner</th>
+    <th>Sell</th>
+    <th>Demand</th>
+    <th>Selected</th>
+     </tr>
+    {% for card_owner in cards %}
+        <tr>
+        <td>{{ card_owner.card.name }}</td>
+        <td>{{ card_owner.card.edition }}</td>
+        <td>{{ card_owner.card.color }}</td>
+        <td>{{ card_owner.card.type }}</td>
+        <td>{{ card_owner.card.rarity }}</td>
+        <td>{{ card_owner.card.cost }}</td>
+        <td>{{ card_owner.card.pt }}</td>
+        <td>{{ card_owner.card.text }}</td>
+        <td>{{ card_owner.owner.card_user }}</td>
+        <td>{{ card_owner.sell }}</td>
+        <td>{{ card_owner.demand }}</td>
+        <td><INPUT TYPE=CHECKBOX class="cardcheck" id="cardcheck" NAME="cardcheck"></td>
+        </tr>
+    {% endfor %}
+    </table>	
+    
+    
+<form name="select" action="SubmitCard" method="POST">
+<div align="left">
+<p>You want to sell
+<select name="sell" class="sell">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+of this
+</p>
+
+
+<p>You want to buy
+<select name="demand" class="demand">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+</select>
+of this
+</p>
+</div>
+<input type="hidden" name="hidden cards" class="hidden cards" id="hidden_cards">
+<div style="margin-bottom:10px">
+<P><INPUT TYPE=SUBMIT VALUE="submit" class="submit_button" onclick=get_check_value()>
+
+</div>
+</form>
+</div> 
+</div>
+ 
+ 
+<input class="savedhtml" name="html_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+<input class="savedhash" name="hash_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+<input class="savedloadid" name="loadid_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+<input class="savedtoken" name="token_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+ 
+ 
+ 
+<div style="clear:both; height:12px"></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+</div> 
+<div id="footer"> 
+&copy;2010 MTGTrade
+ 
+- <a href="/about/">About</a> 
+- <a href="/about/help">Help</a> 
+- <a href="/about/privacy">Privacy</a> 
+- <a href="/about/terms">Terms</a> 
+ 
+</div> 
+</div> 
+</div><div id="extradiv"></div><div id="extradivtoo"></div> 
+ 
+ 
+<script src="/static/javascript/jquery-1.3.js?v=bb38" type="text/javascript"></script> 
+ 
+<script type="text/javascript"> 
+//<![CDATA[
+var gCurrentUserId = "5d993f60e35c40fea505d5d2b1285ee4";
+ 
+var gTwitLogin = '';
+var gHttpsPrefix = 'https://friendfeed.com';
+var gRTL = false;
+//]]>
+</script> 
+ 
+<script src="/static/javascript/nano.en.js?v=418d" type="text/javascript"></script> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<script type="text/javascript"> 
+//<![CDATA[
+function analytics() {
+ 
+ 
+var analyticsHost = ((document.location.protocol == "https:") ? "https://ssl." : "http://www.");
+$(document.body).append(unescape('%3Cscript src="' + analyticsHost + 'google-analytics.com/ga.js" type="text/javascript"%3E%3C/script%3E'));
+var analyticsPoller = window.setInterval(function() {
+if (window._gat) {
+window.clearInterval(analyticsPoller);
+var tracker = _gat._getTracker("UA-7980419-1");
+tracker._setVar(':Xs:locen:nano:in:');
+tracker._trackPageview();
+}
+}, 500);
+ 
+ 
+ 
+}
+ 
+//]]>
+</script> 
+<script type="text/javascript"> 
+//<![CDATA[
+$(function() {$('.sharebox textarea.title').makeExpandable(350,function(ta){shareSubmit($(ta).parents('form'))}).focus(shareFocus);$('.sharebox .l_toinput').focus(shareToFocus).blur(shareToBlur);gFileExt = '*.3gp;*.aac;*.ac3;*.ai;*.aif;*.aiff;*.as;*.bmp;*.c;*.cc;*.cpp;*.cs;*.css;*.csv;*.cxx;*.doc;*.docx;*.dot;*.dotx;*.eps;*.gif;*.html;*.java;*.jpeg;*.jpg;*.js;*.kml;*.m3u;*.m4a;*.mid;*.midi;*.mp3;*.ogg;*.pdf;*.pl;*.png;*.potx;*.pps;*.ppsx;*.ppt;*.pptx;*.ps;*.psd;*.py;*.ra;*.rb;*.rtf;*.swa;*.swf;*.tif;*.tiff;*.txt;*.vb;*.vcf;*.wav;*.wma;*.xls;*.xlsx;*.xltx'; gFileExtDesc = 'All files (*.*)'; gFileUpload = true;});
+var searchOrder = [3,2,1];var searchOptions = [["Search for %(term)s",{}],["Search everybody for %(term)s",{}],["Search my friends for %(term)s",{"friends":"blurjp"}],["Search my discussions for %(term)s",{"mydiscussions":"1"}]];var searchScope = new RegExp("(comment|group|room|who|list|from|friends|like):");$('#searchbox').bind('focus keydown', setupSearchBox);
+window.gFeedSpec={"hash":"d41d8cd98f00b204e9800998ecf8427e","token":"Lc47SIJhGMVxE4LCKaSlmnIIFIuGMKSiQSrUgoaWgmoJtHLQoSALEr4izUHaW8Ilu2mXSSFoCApHXVpraA4a8oLh9z_Tj_O-D-d51obq7TfL8wR2zGDAgf4uPJvCiz4sD2JjFA8msX8bHa2a6dscOb6sPV4sruDpOAb9WLLh5YD6l_B7Hv_WtS-AH0eLbSy2Y6zvYCyBjThGI1hMYTOJPTHN7eGCtJ9g7ya-7KMzilX1_Up3GEPaZz1El4GruzimO191n6dgNy1dY0bZeMSmsu8BK3lM6_3zDoeVZ69w4xZ_sjii_4R6XU84ncMt9bzf45d6zrU3o5zTXOcNdhtu039Lc2o7","start":0,"pauseid":"filter-discussions","num":30,"type":3};realtime.token=gFeedSpec.token;realtime.args=$.extend({tz:240}, gFeedSpec);$(function(){ maybeRestoreHtml(); realtime.start(); });
+//]]>
+</script> 
+</body> 
+
+<script type="text/javascript">
+function get_check_value()
+{
+var cards = "";
+var _rows = document.getElementById('card_table').rows;
+   for (var i=0; i < _rows.length; i++)
+   {
+   if (_rows[i].cells[9].childNodes[0].checked)
+      {
+      cards = cards + _rows[i].cells[0].innerHTML + "\t";
+      }
+      
+   }
+   document.getElementById('hidden_cards').value=cards;
+}
+</script>
+</html> 

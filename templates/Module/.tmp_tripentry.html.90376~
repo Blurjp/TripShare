@@ -1,0 +1,30 @@
+
+<li class="clearfix" id="db-following-tabs">
+<ul class="bbox-tabs four" id="tabs">
+<li id="newtrips-tab" class="on">
+<a href="#" onclick="set_section('newtrips', '/newtrips'); return false;"><strong>Newest Trip</strong><span>Following 0</span></a>
+</li>
+<li id="hottrips-tab" >
+<a href="#" onclick="set_section('hottrips', '/hottrips'); return false;"><strong>Hottest Trip</strong><span>Following 0</span></a>
+</li>
+<li id="endtrips-tab" >
+<a href="#" onclick="set_section('endtrips', '/endtrips'); return false;"><strong>Ended Trip</strong><span>Following 0</span></a>
+</li>
+</ul>
+
+</li>
+
+
+<li id="following_items">
+	<ul class="latest_trip" id="latest_trip">
+{% for trip in latest_trip_ids %} 
+   {% include "trip.html" %}
+
+{% end %}
+
+<li class="more" id="following-more">
+<a href="#" onclick="$(this).update('Loading...'); new Ajax.Request('/dashboard?list=people&page=2', {asynchronous:true, evalScripts:true, method:'get'}); return false;">More...</a>
+</li>
+
+</ul>
+</li>

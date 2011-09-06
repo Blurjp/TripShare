@@ -1,0 +1,127 @@
+{% if current_user %}
+<div id="mini-profile">
+<div class="current_person">
+	
+<a href="/people/{{current_user['slug']}}" class="name">{{current_user['username']}}</a>
+</div>
+<a href="#setting" name="usersetting" class="l_editprofile">Setting</a>
+<span class="divider">·</span>
+<a href="/notifications">Notifications</a>
+<span class="divider">·</span>
+<a href="/messages">Messages</a>
+<span class="divider">·</span>
+<a href="/auth/logout">Log out</a>
+</div>	
+
+
+{% else %}
+<div class="logged-out-actions">
+
+Welcome
+<a href="#dialog" name="modal" class="signin_modal">Join</a>
+</strong>
+or
+<strong>
+<a href="#login" name="modal2" class="login_modal">Log in</a>
+</strong>
+<span id="connect-button" style="margin-left: 20px"></span>
+
+{% end %}
+</div>
+
+<div id="boxes">  
+  
+      
+    <!-- #customize your modal window here -->  
+  
+ <div id="dialog" class="window">  
+ <div style="width:350px; background-color:#99b2ce;padding-left:5px; padding-right:5px; padding-top:5px" class="createform">
+    <b>TripShare feeds are extremely flexible. They can even be used to share privately with a trip or as public discussion forums.</b> 
+    <a href="/about/betafaq#feeds">Learn more about trip feeds</a></div><br>
+        
+<form name="login_form" action="/account/create" method="post" onsubmit="return checkform(this);">
+	{{ xsrf_form_html() }}
+<table class="form">
+<tbody><tr>
+<td class="label">Username</td>
+<td class="value"><input name="username" id="username" type="text" size="25" value=""></td>
+</tr>
+<tr>
+<td class="label">Email</td>
+<td class="value"><input name="email" id="email" type="text" size="25" value=""></td>
+
+</tr>
+<tr>
+<td class="label">Password</td>
+<td class="value"><input name="password" id="password" type="password" size="25"></td>
+
+</tr>
+<td class="label">Password Again</td>
+<td class="value"><input name="confirm_password" id="confirm_password" type="password" size="25"></td>
+</tr>
+<tr>
+<td class="value"><input name="user[accept_terms]" type="hidden" value="0"><input class="check" id="user_accept_terms" name="user[accept_terms]" type="checkbox" value="1"><label for="user_accept_terms">I agree to the <a href="/about/terms" target="_blank">Terms of Use</a> and <a href="/about/privacy" target="_blank">Privacy Policy</a></label></td>	
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="buttons">
+<input type="submit" value="Sign Up" style="font-weight:bold">
+<a href="#" class="close">Cancel</a>
+</td>
+</tr>
+</tbody></table>
+</form> 
+</div>  
+  
+      
+    <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->    
+<div id="mask"></div>  
+
+    <!-- #customize your modal window here -->  
+  
+ <div id="login" class="window">  
+ <div style="width:350px; background-color:#99b2ce;padding-left:5px; padding-right:5px; padding-top:5px" class="createform">
+   </div><br>
+<ul id="modal-tabs">
+<li>
+<a href="#" onclick="new Ajax.Request('/signup', {asynchronous:true, evalScripts:true, parameters:'authenticity_token=' + encodeURIComponent('6oQ88tNznbRRZiUNkMp9wDgLjDR3oHXLtJS0fjh4Pgw=')}); return false;">Join</a>
+</li>
+<li class="on">
+<a href="#" onclick="new Ajax.Request('/login', {asynchronous:true, evalScripts:true, parameters:'authenticity_token=' + encodeURIComponent('6oQ88tNznbRRZiUNkMp9wDgLjDR3oHXLtJS0fjh4Pgw=')}); return false;">Log in</a>
+</li>
+</ul>
+	    
+<form name="login_form" action="/account/login" method="post" onsubmit="return checkform(this);">
+	{{ xsrf_form_html() }}
+<table class="form">
+<tbody>
+<tr>
+<td class="label">Email</td>
+<td class="value"><input name="email" id="email" type="text" size="25" value=""></td>
+</tr>
+<tr>
+<td class="label">Password</td>
+<td class="value"><input name="password" id="password" type="password" size="25"></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="buttons">
+<input type="submit" value="Log in" style="font-weight:bold">
+<a href="#" class="close">Cancel</a>
+
+
+</td>
+</tr>
+</tbody></table>
+</form> 
+</div>  
+  
+      
+    <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->    
+<div id="mask2"></div> 
+</div>
+
+
+</div> 
+ </div> 
+ 

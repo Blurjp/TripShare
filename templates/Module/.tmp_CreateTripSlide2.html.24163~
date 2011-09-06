@@ -1,0 +1,23 @@
+<div id="create_trip_setp_2" class="window">
+                <div class="step">
+                  <img alt="Step 2 of 2" src="{{ static_url("icon/tripshare_2.png") }}">
+                </div>
+                <fieldset>
+                  <div class="input_three_steps">
+                    <div class="header_three_steps">
+                      <img alt="Input_Date" src="">
+                    </div>
+                    <div class="field subscription_email_address text"><label class="medium" for="subscription_email_address">&nbsp;</label><input class="prompting_field email required input prompting" id="subscription_email_address" name="subscription[email_address]" size="30" title="Please enter a valid email address." type="text"></div>
+                  </div>
+                </fieldset>
+                <div class="button_container">
+                  <div class="button_sub">
+                    <div class="buttons" label="false"><input class="button see_deal disabled_on_submit button" id="subscription_submit" name="commit" type="submit" value="Ready to Go"></div>
+                  </div>
+                </div>
+                <div class="legal">
+                  <a href="/login">LogIn</a>
+                  |
+                  <a href="/privacy">Privacy Statement</a>
+                </div>
+            </div>

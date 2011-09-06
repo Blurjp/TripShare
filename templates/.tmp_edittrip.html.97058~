@@ -1,0 +1,1904 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>TripShare - Edit Trip</title> 
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="TripShare Feed Search"/> 
+
+<link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
+
+<link type="text/css" href="{{ static_url("stylesheets/css/smoothness/jquery-ui-1.8.7.custom.css") }}" rel="Stylesheet" />	
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry"></script>
+
+
+
+<script src="{{ static_url("javascript/json2.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/popup.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
+
+<link rel="alternate" href="/filter/discussions?auth=8nUjX7gxKHh7xOwl&amp;format=atom" type="application/atom+xml"/>
+
+
+<script type="text/javascript">
+    	
+    //
+    // As mentioned at http://en.wikipedia.org/wiki/XMLHttpRequest
+    //
+    if( !window.XMLHttpRequest ) XMLHttpRequest = function()
+    {
+      try{ return new ActiveXObject("Msxml2.XMLHTTP.6.0") }catch(e){}
+      try{ return new ActiveXObject("Msxml2.XMLHTTP.3.0") }catch(e){}
+      try{ return new ActiveXObject("Msxml2.XMLHTTP") }catch(e){}
+      try{ return new ActiveXObject("Microsoft.XMLHTTP") }catch(e){}
+      throw new Error("Could not find an XMLHttpRequest alternative.")
+    };
+
+    //
+    // Makes an AJAX request to a local server function w/ optional arguments
+    //
+    // functionName: the name of the server's AJAX function to call
+    // opt_argv: an Array of arguments for the AJAX function
+    //
+  function Request(function_name, opt_argv) {
+
+  if (!opt_argv)
+    opt_argv = new Array();
+
+  // Find if the last arg is a callback function; save it
+  var callback = null;
+  var len = opt_argv.length;
+  if (len > 0 && typeof opt_argv[len-1] == 'function') {
+    callback = opt_argv[len-1];
+    opt_argv.length--;
+  }
+  var async = (callback != null);
+
+  // Build an Array of parameters, w/ function_name being the first parameter
+  var params = new Array(function_name);
+  for (var i = 0; i < opt_argv.length; i++) {
+    params.push(opt_argv[i]);
+  }
+  var body = JSON.stringify(params);
+
+  // Create an XMLHttpRequest 'POST' request w/ an optional callback handler
+  var req = new XMLHttpRequest();
+  req.open('POST', '/rpc', async);
+
+  req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  req.setRequestHeader("Content-length", body.length);
+  req.setRequestHeader("Connection", "close");
+
+  if (async) {
+  	
+    req.onreadystatechange = function() {
+      if(req.readyState == 4 && req.status == 200) {
+        var response = null;
+        try {
+         response = JSON.parse(req.responseText);
+		 alert(response);
+        } catch (e) {
+         response = req.responseText;
+        }
+        callback(response);
+      }
+    }
+  }
+
+  // Make the actual request
+  req.send(body);
+}
+
+    // Adds a stub function that will pass the arguments to the AJAX call
+    function InstallFunction(obj, functionName) {
+      obj[functionName] = function() { Request(functionName, arguments); }
+    }
+
+</script>
+  
+<script type="text/javascript">
+
+    // Server object that will contain the callable methods
+   // var server = {};
+	
+    // Insert 'Save' as the name of a callable method
+   // InstallFunction(server, 'Save');
+
+
+    // Handy "macro"
+  //  function $(id){
+ //     return document.getElementById(id);
+ //   }
+
+    // Client function that calls a server rpc and provides a callback
+ //   function savemap() {
+  //    server.Save($('startPosition').value, onAddSuccess);
+  //  }
+
+    // Callback for after a successful doAdd
+  //  function onAddSuccess(response) {
+  //   $('result').value = response;
+	// alert(response);
+ //   }
+
+</script>
+
+    
+<script type="text/javascript">
+  var rendererOptions = {
+              draggable: true,
+              suppressMarkers: true
+                          };
+  var clickerPixel;
+
+  var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+  var directionsService = new google.maps.DirectionsService();
+  var map;
+  var start;
+  var end;
+  var dragStartPos;
+  
+// map zoom and center  
+  var mapZoom;
+  var mapCenter;
+  
+//  polyline and marker store 
+  var polylineGroup = [];
+  var startMarkerGroup = [];
+  var endMarkerGroup = [];
+  var polylineMarkerGroup = [];
+  var markerGroup = [];
+  var wayptsMarkerGroup = [];
+  
+  var waypts = [];
+  var infoWindow;
+  var clickedOverlay;
+  var markerMenuDiv;
+  var markerMenu;
+  var polylineMenuDiv;
+  var polylineMenu;
+  var mapDiv;
+  var geocoder;
+  var polyline;
+  
+  var createMarkerFlag = true;
+  var selectedMarker;
+  var selectedPolyline;
+  
+  var routeBounds = new google.maps.LatLngBounds();
+  
+  
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+	var polyOptions = {
+    strokeColor: '#000000',
+    strokeOpacity: 1.0,
+    strokeWeight: 3
+    }
+    polyline = new google.maps.Polyline(polyOptions);
+    fetchPath();
+	
+	
+	var _center = new google.maps.LatLng(34.3664951, -89.5192484);
+	if (document.getElementById("startPosition").value ) {
+		var startValue = document.getElementById("startPosition").value;
+		
+		var temp = startValue.substring(1, startValue.length-2);
+		 var a = temp.split(', ')[0];
+		
+		 var b = temp.split(', ')[1];
+		
+		 _center = new google.maps.LatLng(a, b);
+		 calcRoute(false);
+	}
+	
+    var myOptions = {
+      zoom: 6,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: _center
+    }
+     map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+     directionsDisplay.setMap(map);
+     infoWindow = new google.maps.InfoWindow();
+     clickedOverlay = new google.maps.OverlayView();
+     clickedOverlay.draw = function(){};
+     clickedOverlay.setMap(map);
+
+
+     
+
+   // === create the context menu div ===           
+    markerMenuDiv = document.createElement("div");
+    
+    markerMenuDiv.index = 1;               
+    google.maps.event.addListener(map,"click",function(event) {    
+    
+      createMarker('normal',event.latLng);
+                });   
+                
+    google.maps.event.addListener(map,"rightclick",function(event) {    
+     markerMenuDiv.style.visibility = "hidden";
+    // polylineMenuDiv.style.visibility = "hidden";
+                });   
+                
+                
+  // Create the DIV to hold the control and call the HomeControl() constructor
+  // passing in this DIV.
+  var markerControlDiv = document.createElement('DIV');
+  var markerControl = new MarkerControl(markerControlDiv);
+
+  markerControlDiv.index = 1;
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(markerControlDiv);   
+  
+    var homeControlDiv = document.createElement('DIV');
+  var homeControl = new HomeControl(homeControlDiv);
+
+  homeControlDiv.index = 2;
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);          
+                                  
+  }
+  
+  
+  /**
+ * The HomeControl adds a control to the map that simply
+ * returns the user to Chicago. This constructor takes
+ * the control DIV as an argument.
+ */
+
+function MarkerControl(controlDiv) {
+
+  // Set CSS styles for the DIV containing the control
+  // Setting padding to 5 px will offset the control
+  // from the edge of the map
+  controlDiv.style.padding = '5px';
+
+var oImg=document.createElement("img");
+oImg.style.paddingLeft = '1px';
+oImg.style.paddingRight = '1px';
+oImg.setAttribute('src', '{{ static_url("images/normalTag.png") }}');
+oImg.setAttribute('alt', 'na');
+oImg.setAttribute('height', '24px');
+oImg.setAttribute('width', '24px');
+oImg.title = 'Drag and drop the marker to your map';
+
+controlDiv.appendChild(oImg);
+
+ // Setup the click event listeners: simply set the map to Chicago
+  google.maps.event.addDomListener(oImg, 'dragstart', function() {
+   var _latLng = clickedOverlay.getProjection().fromDivPixelToLatLng(oImg);
+    createMarker('normal', _latLng);
+    
+  });
+    
+
+
+}
+  
+function HomeControl(controlDiv) {
+
+  // Set CSS styles for the DIV containing the control
+  // Setting padding to 5 px will offset the control
+  // from the edge of the map
+  controlDiv.style.padding = '5px';
+
+  // Set CSS for the control border
+  var controlUI = document.createElement('DIV');
+  controlUI.style.backgroundColor = 'white';
+  controlUI.style.borderStyle = 'solid';
+  controlUI.style.borderWidth = '2px';
+  controlUI.style.cursor = 'pointer';
+  controlUI.style.textAlign = 'center';
+  controlUI.title = 'Drag and drop the marker to your map';
+  controlDiv.appendChild(controlUI);
+
+  
+  var oImg=document.createElement("img");
+  oImg.style.paddingLeft = '1px';
+  oImg.style.paddingRight = '1px';
+  oImg.setAttribute('src', '{{ static_url("images/model2.png") }}');
+  oImg.setAttribute('alt', 'na');
+  oImg.setAttribute('height', '24px');
+  oImg.setAttribute('width', '24px');
+  controlUI.appendChild(oImg);
+
+  google.maps.event.addDomListener(oImg, 'dragstart', function() {
+   var _latLng = clickedOverlay.getProjection().fromDivPixelToLatLng(oImg);
+    createMarker('normal', _latLng);
+    
+  });
+
+}
+ 
+ Array.prototype.indexof = function(value){
+var ctr = "";
+for (var i=0; i < this.length; i++) {
+// use === to check for Matches. ie., identical (===), ;
+if (this[i] === value) {
+return i;
+}
+}
+return ctr;
+}; 
+
+ Array.prototype.removeAt = function(index){
+     this.splice(index, 1);
+}; 
+  
+ function MarkerWrapper(markerType, marker)
+ {
+     this.markerType = markerType;
+     this.marker = marker;
+ } 
+
+
+  
+ function MarkerMenu(contextMenu)
+{
+   // contextMenu.style.visibility="hidden";      
+    contextMenu.style.background="#ffffff";      
+    contextMenu.style.border="1px solid #8888FF";     
+    // ===context menu HTML for varioys situations ===     
+    
+    contextMenu.innerHTML = '<a href="javascript:setasstart()"><div class="context">&nbsp;&nbsp;Set as Start&nbsp;&nbsp;<\/div><\/a>'
+      + '<a href="javascript:setasdest()"><div class="context">&nbsp;&nbsp;Set as Dest&nbsp;&nbsp;<\/div><\/a>'   
+       + '<a href="javascript:addaswaypoint()"><div class="context">&nbsp;&nbsp;Add as waypoint&nbsp;&nbsp;<\/div><\/a>' 
+         + '<a href="javascript:DeleteMarker()"><div class="context">&nbsp;&nbsp;Delete Marker&nbsp;&nbsp;<\/div><\/a>' ;   
+    
+    var mapObject = document.getElementById("map-canvas");
+    mapObject.appendChild(contextMenu);
+}
+
+ 
+ 
+ function PolylineMenu(contextMenu)
+{
+  // contextMenu.style.visibility="hidden";      
+    contextMenu.style.background="#ffffff";      
+    contextMenu.style.border="1px solid #8888FF";     
+    // ===context menu HTML for varioys situations ===     
+    
+    contextMenu.innerHTML = '<a href="javascript:redline()"><div class="context">&nbsp;&nbsp;Set Red&nbsp;&nbsp;<\/div><\/a>'
+      + '<a href="javascript:greenline()"><div class="context">&nbsp;&nbsp;Set Green&nbsp;&nbsp;<\/div><\/a>'   
+       + '<a href="javascript:blueline()"><div class="context">&nbsp;&nbsp;Set Blue&nbsp;&nbsp;<\/div><\/a>' ;   
+    
+    var mapObject = document.getElementById("map-canvas");
+    mapObject.appendChild(contextMenu);
+}
+
+ function DeleteMarker()
+{
+var markerIndex;
+
+switch (selectedMarker.markerType)
+{
+
+    case 'polylinemarker':
+        markerIndex = polylineMarkerGroup.indexof(selectedMarker.marker);
+        polylineMarkerGroup.removeAt(markerIndex);
+        break;
+    case 'start':
+        markerIndex = startMarkerGroup.indexof(selectedMarker.marker);
+        startMarkerGroup.removeAt(markerIndex);
+        break;
+    case 'end':
+        markerIndex = endMarkerGroup.indexof(selectedMarker.marker);
+        endMarkerGroup.removeAt(markerIndex);
+        break;
+    case 'waypoint':
+        markerIndex = wayptsMarkerGroup.indexof(selectedMarker.marker);
+        wayptsMarkerGroup.removeAt(markerIndex);
+        break;
+    default:
+        markerIndex = markerGroup.indexof(selectedMarker.marker);
+        markerGroup.removeAt(markerIndex);
+}
+
+selectedMarker.marker.setMap(null);
+markerMenuDiv.style.visibility = "hidden";
+}
+
+function setasstart()
+{
+  
+    if(selectedMarker.marker)
+    {   
+	start = selectedMarker;
+    selectedMarker.markerType = 'start';
+    selectedMarker.marker.setIcon('{{ static_url("images/start.png") }}');
+    document.getElementById("startPosition").value = selectedMarker.marker.getPosition();
+	document.getElementById("startPlace").value = selectedMarker.marker.getPosition();
+	
+	codeLatLng('startPosition');
+    ProcessSetMarker();
+    }
+    if(selectedPolyline)
+    {
+    selectedPolyline.setMap(null);
+    }
+    if(document.getElementById("endPosition").value != 'undefined')
+    {
+   // alert("endpo: "+document.getElementById("endPosition").value);
+    calcRoute(false);
+   
+    }
+    markerMenuDiv.style.visibility = "hidden";
+	
+}
+
+function addaswaypoint()
+{
+
+if(selectedMarker.marker)
+    {   
+    selectedMarker.markerType = 'waypoint';
+    selectedMarker.marker.setIcon('{{ static_url("images/tag.png") }}');
+    waypts.push({
+            location: selectedMarker.marker.getPosition(),
+            stopover:true});
+  //  wayptsMarkerGroup.push(selectedMarker);   
+     ProcessSetMarker();       
+    }
+    if(selectedPolyline)
+    {
+    selectedPolyline.setMap(null);
+    }
+    if(document.getElementById("startPosition").value!= 'undefined'  && document.getElementById("endPosition").value != 'undefined')
+    {
+    calcRoute(false);
+    }
+    markerMenuDiv.style.visibility = "hidden";
+}
+
+function setasdest()
+{
+   
+    if(selectedMarker.marker)
+    { 
+    selectedMarker.markerType = 'end';  
+    selectedMarker.marker.setIcon('{{ static_url("images/dest.png") }}');
+    document.getElementById("endPosition").value = selectedMarker.marker.getPosition();
+	document.getElementById("endPlace").value = selectedMarker.marker.getPosition();
+	
+	codeLatLng('endPosition');
+    ProcessSetMarker();       
+    }
+     if(selectedPolyline)
+    {
+    selectedPolyline.setMap(null);
+    
+    }
+    if(document.getElementById("startPosition").value!= 'undefined')
+    {
+	
+    calcRoute(false);
+   
+    }
+    markerMenuDiv.style.visibility = "hidden";
+}
+
+function pushPath() {
+  var path = polyline.getPath();
+  var pathSize = path.getLength();
+  //alert('push path');
+  document.getElementById('startPosition').value = path.getAt(0).lat() + "," + path.getAt(0).lng();
+  document.getElementById('endPosition').value = path.getAt(pathSize - 1).lat() + "," + path.getAt(pathSize - 1).lng();
+	  
+  // Update the text field to display the polyline encodings
+  var encodeString = google.maps.geometry.encoding.encodePath(path);
+  if (encodeString) {
+  //	alert('encodeString');
+      document.getElementById('encodedPolyline').value = encodeString;
+  }
+}
+
+function fetchPath(){
+	var encodingString;
+	
+	if (document.getElementById('encodedPolyline').value ) {
+		encodingString = document.getElementById('encodedPolyline').value;
+        var path = google.maps.geometry.encoding.decodePath(encodingString);
+		
+		
+		document.getElementById('startPosition').value = path[0];
+	
+        document.getElementById('endPosition').value = path[1];
+	
+		polyline.setPath(path);
+		
+		createMarker('start', path[0]);
+		createMarker('end', path[1]);
+	}
+}
+
+function redline()
+{
+if(selectedPolyline)
+{
+selectedPolyline.setOptions({
+
+ strokeColor:'#FF0000'
+}
+)
+}
+polylineMenuDiv.style.visibility = "hidden";
+}
+
+function greenline()
+{
+if(selectedPolyline)
+{
+selectedPolyline.setOptions(
+{
+
+ strokeColor:'#00FF00'
+}
+)
+}
+polylineMenuDiv.style.visibility = "hidden";
+}
+
+function blueline()
+{
+if(selectedPolyline)
+{
+selectedPolyline.setOptions(
+{
+strokeColor:'#0000FF'
+}
+)
+}
+polylineMenuDiv.style.visibility = "hidden";
+}
+
+function updateTag(address, marker)
+{
+//alert('updateTag'); 
+    var myHtml = '<strong>'+address+'</strong><br/>';
+    infoWindow.setContent(myHtml);
+    infoWindow.open(map, marker);
+} 
+
+
+  
+  function reverseGeocodePosition(pos, task, marker) 
+{  
+geocoder.geocode({latLng: pos}, function(responses, status)
+{
+if (status == google.maps.GeocoderStatus.OK) 
+    {
+        if(responses && responses.length > 0)
+        {
+        task(responses[0].formatted_address, marker);
+        }
+    }
+
+else {
+        alert("Geocoder failed due to: " + status);
+     }
+}
+);
+
+ }
+
+function codeLatLng(name) {
+    var input = document.getElementById(name).value;
+	
+	var temp = input.substring(1, input.length-1);
+	
+    var latlngStr = temp.split(",",2);
+    var lat = parseFloat(latlngStr[0]);
+    var lng = parseFloat(latlngStr[1]);
+    var latlng = new google.maps.LatLng(lat, lng);
+	
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+		  tempName = name.replace('Position','');
+          document.getElementById(tempName).value = results[1].formatted_address;
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
+  }
+ 
+
+  function codeAddress(address_id) {
+   // var address = document.getElementById(address_id).value;
+    
+    geocoder.geocode( { 'address': address_id}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) 
+      {
+       map.setCenter(results[0].geometry.location);        
+       
+       return results[0].geometry.location;
+        }
+
+     else {
+        alert("Geocode was not successful for the following reason: " + status);
+        return null;
+      }
+     }); 
+  
+  }
+
+  function calcRoute(createMarkerFlag) {
+  	
+	var polyOptions = {
+      strokeColor: '#000000',
+      strokeOpacity: 1.0,
+      strokeWeight: 3
+    }
+    var poly = new google.maps.Polyline(polyOptions);
+	var _path = poly.getPath();
+	
+     polyline = new google.maps.Polyline({
+       path:[],
+       strokeColor: '#FF0000',
+       strokeWeight: 5
+       });
+    
+    var startPos = document.getElementById("startPosition").value;
+    var endPos = document.getElementById("endPosition").value;
+   //alert(endPos);
+    if(createMarkerFlag == true)
+    {
+    createMarker('start',startPos);
+    createMarker('end',endPos);
+    }
+    
+    var dragPosition = startPos;
+    
+    var checkboxArray = document.getElementById("waypoints");
+    for (var i = 0; i < checkboxArray.length; i++) {
+      if (checkboxArray.options[i].selected == true) {
+        waypts.push({
+            location:checkboxArray[i].value,
+            stopover:true});
+      }
+    }
+
+    var request = {
+        origin: startPos, 
+        destination: endPos,
+        waypoints: waypts,
+        optimizeWaypoints: true,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+    };
+	
+	
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        
+        var route = response.routes[0];
+        path = route.overview_path;
+        
+        var legs = route.legs;                                      
+        for (i=0;i<legs.length;i++) {                                    
+        var steps = legs[i].steps;                                         
+        for (j=0;j<steps.length;j++) {                  
+        var nextSegment = steps[j].path;
+       
+        for (k=0;k<nextSegment.length;k++) {                                                      
+        polyline.getPath().push(nextSegment[k]);                                                       
+        routeBounds.extend(nextSegment[k]);                                                   
+        }   
+        }
+		}                       
+
+         
+         polyline.setMap(map);
+		 var path = polyline.getPath();
+		 var temp = startPos.substring(1, startPos.length-2);
+		 var a = temp.split(', ')[0];
+		// alert(a);
+		 var b = temp.split(', ')[1];
+		// alert(b);
+		 var _start = new google.maps.LatLng(a, b);
+		 
+		 
+		 temp = endPos.substring(1, endPos.length-2);
+		 a = temp.split(', ')[0];
+	//	 alert(a);
+		 b = temp.split(', ')[1];
+	//	 alert(b);
+		 
+		 var _end = new google.maps.LatLng(a, b);
+		 
+		 _path.push(_start);
+		 _path.push(_end);
+		 var encodeString = google.maps.geometry.encoding.encodePath(_path);
+		 //var encodeString = google.maps.geometry.encoding.encodePath(path);
+		 
+		 
+		 document.getElementById('encodedPolyline').value = encodeString;
+		// alert(encodeString);
+		
+        map.fitBounds(routeBounds);
+        polylineGroup.push(polyline);
+        selectedPolyline = polyline;
+      
+      
+       // === set listener for polyline marker ===   
+        polylineMenuDiv = document.createElement("div");    
+        polylineMenuDiv.index = 1;     
+        var dragMarker = createMarker('polylinemarker',dragPosition);
+                      
+        google.maps.event.addListener(polyline,'rightclick', function(event){
+        //dragMarker.visible = false;
+        polylineMenuDiv.style.position = "absolute";
+        var pixel =  clickedOverlay.getProjection().fromLatLngToContainerPixel(event.latLng);     
+                    polylineMenuDiv.style.top = pixel.y+ 'px';
+                    polylineMenuDiv.style.left = pixel.x+ 'px';
+                  
+                   
+       // markerMenuDiv.innerHTML = mapContextHtml;       
+        if(polylineMenuDiv.style.visibility == "visible") 
+        { 
+        //alert("hidden");
+        polylineMenuDiv.style.visibility = "hidden";  
+        }
+        else
+        {
+        //alert("visible");
+        polylineMenuDiv.style.visibility = "visible";  
+        }
+        polylineMenu = new PolylineMenu(polylineMenuDiv);
+         //     alert('right'); 
+        });
+
+       google.maps.event.addListener(polyline,'mousemove', function(event){
+       
+       dragMarker.visible = true;
+       dragMarker.setPosition(event.latLng);
+  
+        });
+      
+
+        // begin to drag the marker
+         google.maps.event.addListener(dragMarker,'drag', function(event){
+         polyline.setMap(null);
+        dragMarker.visible = true;
+    
+        });
+        
+        
+        // end the drag of marker
+        google.maps.event.addListener(dragMarker,'dragend', function(event){
+        
+        waypts.push({
+        location:event.latLng ,stopover:true });
+        calcRoute(false);
+        dragMarker.visible = false;
+        });
+
+      }
+  
+    });
+
+  }
+  
+  function addMarkers() {
+       
+        var bounds = map.getBounds();
+        var southWest = bounds.getSouthWest();
+        var northEast = bounds.getNorthEast();
+        var lngSpan = northEast.lng() - southWest.lng();
+        var latSpan = northEast.lat() - southWest.lat();
+      
+
+        var latLng = new google.maps.LatLng(southWest.lat() + latSpan * Math.random(),
+                                              southWest.lng() + lngSpan * Math.random());
+        createMarker('normal',latLng);
+        
+      }
+      
+   function createPolylineMarker(latLng)
+     {
+        var marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            icon: 'node.gif'
+          });
+         marker.setDraggable(true);
+          //var username = document.getElementById("username").value;
+          google.maps.event.addListener(marker, 'click', function() {
+            var myHtml = '<strong>' + '{{user.name}}' + '</strong><br/>';
+            infoWindow.setContent(myHtml);
+            infoWindow.open(map, marker);
+          });
+          
+          
+      
+        google.maps.event.addListener(marker, 'rightclick', function(){
+       
+        selectedMarker = new MarkerWrapper('polylinemarker',marker);
+         
+       
+        markerMenuDiv.style.position = "absolute";
+      
+        var pixel = marker.getPosition();  
+        markerMenuDiv.style.top = pixel.y+ 'px';
+        markerMenuDiv.style.left = pixel.x+ 'px';
+                  
+        if(markerMenuDiv.style.visibility == "visible") 
+        { 
+            markerMenuDiv.style.visibility = "hidden";  
+        }
+        else
+        {
+        //alert("visible");
+        markerMenuDiv.style.visibility = "visible";  
+        }
+        markerMenu = new MarkerMenu(markerMenuDiv);
+         });
+         
+         return marker;
+     }
+      
+      function createMarker(markerType, latLng) {
+       //  alert(latLng);
+         var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+            
+          });
+          marker.setDraggable(true);
+          
+		  switch (markerType) {
+		 	case 'start':
+			// alert(markerType);
+		 		marker.setIcon('{{ static_url("images/start.png") }}');
+		 		break;
+			case 'end': 
+			// alert(markerType);
+		 		marker.setIcon('{{ static_url("images/dest.png") }}');
+		 		break;
+		    
+		 }
+		 
+		 
+          google.maps.event.addListener(marker, 'click', function() {
+            var myHtml = '<strong>' + '{{user.name}}' + '</strong><br/>';
+            infoWindow.setContent(myHtml);
+            infoWindow.open(map, marker);
+          });
+         google.maps.event.addListener(marker, 'dragstart', function(event){
+         dragStartPos = event.latLng;
+       
+        });
+       
+      
+        google.maps.event.addListener(marker, 'rightclick', function(event){
+       
+        selectedMarker = new MarkerWrapper(markerType, marker);
+        // selectedMarker.setVisible(false);
+        markerMenuDiv.style.position = "absolute";
+        
+        var pixel =  clickedOverlay.getProjection().fromLatLngToContainerPixel(marker.getPosition());     
+        markerMenuDiv.style.top = pixel.y+ 'px';
+        markerMenuDiv.style.left = pixel.x+ 'px';
+                  
+                   
+       // markerMenuDiv.innerHTML = mapContextHtml;       
+        if(markerMenuDiv.style.visibility == "visible") 
+        { 
+        //alert("hidden");
+        markerMenuDiv.style.visibility = "hidden";  
+        }
+        else
+        {
+        //alert("visible");
+        markerMenuDiv.style.visibility = "visible";  
+        }
+        markerMenu = new MarkerMenu(markerMenuDiv);
+         });
+
+		
+         
+         return marker;
+        }
+        
+        function MarkerWarpper(markerType, marker)
+        {
+          this.markerType = markerType;
+          this.marker = marker;
+        }
+        
+        function ProcessSetMarker()
+        {
+            switch (selectedMarker.markerType)
+        {
+            case 'start':
+			
+             startMarkerGroup.push(selectedMarker.marker);
+             
+                break;
+            case 'end':
+			
+             endMarkerGroup.push(selectedMarker.marker);
+           
+                break;
+            case 'waypoint':
+             wayptsMarkerGroup.push(selectedMarker.marker);
+             
+             google.maps.event.addListener(selectedMarker.marker, 'dragend', function(){
+             var _waypointMarker = {
+            location: dragStartPos,
+            stopover:true};
+            
+        
+              var _index;
+              for (var i=0; i < waypts.length; i++) 
+		     {
+
+             if (waypts[i].location === dragStartPos) {
+                 _index = i;
+                }
+             }
+            
+           
+                 if(_index>=0)
+                 {
+                 selectedPolyline.setMap(null);
+                    waypts.removeAt(_index);
+                    waypts.push({
+                    location: selectedMarker.marker.getPosition(),
+                    stopover:true});
+                    calcRoute(false);
+                  
+                 }
+             });
+                break;
+            case 'polylinemarker':
+             polylineMarkerGroup.push(selectedMarker.marker);
+             marker.setIcon('{{ static_url("images/node.gif") }}');
+                break;
+            default:
+             markerGroup.push(selectedMarker.marker);
+        }
+		//alert('finish process');
+        }
+        
+        google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<style type="text/css">
+#map-canvas{
+	
+	float:left;
+	width:500px;
+	height:500px
+}
+
+#HOME_FRIEND_LIST{
+	float:right;
+	width:45px;
+	height:500px
+	
+}
+
+h2.trigger {
+	padding: 0 0 0 50px;
+	margin: 0 0 5px 0;
+	background: url('/static/images/trigger.gif') no-repeat;
+	height: 46px;
+	line-height: 46px;
+	width: 450px;
+	font-size: 2em;
+	font-weight: normal;
+	float: left;
+}
+h2.trigger a {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+}
+h2.trigger a:hover {
+	color: #ccc;
+}
+h2.active {background-position: left bottom;}
+.toggle_container {
+	margin: 0 0 5px;
+	padding: 0;
+	border-top: 1px solid #d6d6d6;
+	
+	overflow: hidden;
+	font-size: 1.2em;
+	width: 500px;
+	clear: both;
+}
+.toggle_container .block {
+	padding: 20px;
+	
+}
+.toggle_container .block p {
+	padding: 5px 0;
+	margin: 5px 0;
+}
+.toggle_container h3 {
+	font: 2.5em normal Georgia, "Times New Roman", Times, serif;
+	margin: 0 0 10px;
+	padding: 0 0 5px 0;
+	
+}
+.toggle_container img {
+	float: left;
+	margin: 10px 15px 15px 0;
+	padding: 5px;
+	background: #ddd;
+	border: 1px solid #ccc;
+}
+
+p.trip_save
+{
+	float: left;
+	margin: 10px 15px 15px 0;
+	padding: 5px;
+	
+	border-bottom: 1px dashed #ccc;
+}
+</style>
+
+
+</head> 
+<body style="font-family: Arial;border: 0 none;"> 
+ 
+<div id="bodydiv"> 
+ 
+ 
+<div id="container"> 
+ 
+ 
+<div id="header"> 
+<table> 
+<tr> 
+<td class="logo"><a href="/"><img src="{{ static_url("images/TripShare.png") }}" alt="TripShareFeed" style="height:50px;"/></a></td> 
+<td> 
+<table> 
+<tr> 
+<td> 
+<form action="/search" method="get" id="searchform"> 
+<input type="text" size="25" name="q" value="" class="textbox" id="searchbox" autocomplete="off"/> 
+<input type="submit" value="Search" style="font-size:15px"/> 
+</form> 
+</td> 
+ 
+<td id="extralinks"> 
+<div><a href="/search/advanced">Advanced search</a></div> 
+<div><a href="/about/tools">Tools</a></div> 
+</td> 
+ 
+</tr> 
+</table> 
+ 
+</td> 
+</tr> 
+</table> 
+</div> 
+
+
+<div id="sidebar"> 
+<div id="profile"> 
+<table> 
+<tr> 
+{% if current_user %}
+<td class="image"><a href={{user.name}} sid={{user.id}} class="l_profile">
+<img src={{user.pictureid}} alt={{user.name}} class="picture medium"/></a>
+</td> 
+<td class="body">
+<div class="name">
+<a href={{user.name}} sid={{user.id}} class="l_profile">{{greeting}}</a>
+</div> 
+
+<div class="signout">
+<a href="#setting" name="usersetting" class="l_editprofile" uid={{user.id}}>settings</a>
+
+
+-
+
+<a href="/auth/logout">{{ _("Sign out") }}</a>
+</div> 
+{% else %}
+   {{ _('<a href="%(url)s">Sign in</a> to create/edit trip') % {"url": "/login"} }}
+{% end %}
+</td> 
+</tr> 
+</table> 
+</div> 
+ 
+ <div id="settingboxes"> 
+<div id="setting" class="settingdialogdiv">
+
+
+<form action="/a/editprofile" method="post">
+{{ xsrf_form_html() }}
+<table class="form">
+<tbody><tr>
+<td class="label">Name:</td>
+<td class="value" style="padding-right:20px"><input name="name" type="text" size="20" value="{{user.name}}" class="textbox" style="width:310px"></td>
+<td rowspan="12" style="border-left:1px solid #ccc; padding-left:20px; vertical-align:top; text-align:center">
+<div><a href="#" class="l_editpicture" sid="5d993f60e35c40fea505d5d2b1285ee4" title="Change picture"><img src="{{user.pictureid}}" alt="{{user.name}}" class="picture large"></a></div>
+<div style="font-size:8pt"><a href="#" class="l_editpicture" sid="5d993f60e35c40fea505d5d2b1285ee4">Change picture</a></div>
+</td>
+</tr>
+
+<tr>
+<td class="label">Username:</td>
+<td class="value"><input name="nickname" type="text" size="20" value="{{user.name}}" class="textbox" style="width:310px"></td>
+</tr>
+
+<tr>
+<td class="label" style="vertical-align:top">Description:</td>
+<td class="value"><textarea rows="2" cols="20" name="description" style="width:310px">a developer</textarea></td>
+</tr>
+
+
+<tr>
+<td class="label">Language:</td>
+<td class="value">
+<select name="locale">
+
+<option value="de">Deutsch</option>
+
+<option value="en" selected="selected">English</option>
+
+<option value="es">Español</option>
+
+<option value="fa">فارسی</option>
+
+<option value="fr">Français</option>
+
+<option value="it">Italiano</option>
+
+<option value="ja">日本語</option>
+
+<option value="ru">русский язык</option>
+
+<option value="tr">Türkçe</option>
+
+<option value="ud">uʍop ǝpısd∩</option>
+
+<option value="zh-cn">中文(简体)</option>
+
+</select>
+</td>
+</tr>
+
+<tr>
+<td class="label">Email:</td>
+<td class="value">
+
+{{user.email}} (<a href="#" class="l_emailaddresses">change</a>)
+
+</td>
+</tr>
+<tr>
+<td class="label">Password:</td>
+<td class="value"><a href="#" class="l_changepassword">Change password</a></td>
+</tr>
+
+
+<tr>
+<td class="label">Notifications:</td>
+<td class="value"><a href="/settings/notifications">Email / IM preferences</a></td>
+</tr>
+
+
+<tr>
+<td class="label" style="vertical-align: top;">Theme:</td>
+<td class="value">
+<table>
+<tbody><tr>
+<td colspan="2">
+<div>
+<a href="/settings/themes">Choose a theme</a>
+</div>
+</td>
+</tr>
+<tr>
+<td style="padding-bottom: 0;">
+
+<a href="/settings/themes"><img style="width: 100px; height: 100px; border: 1px solid #0000cc" src="/static/images/themes/default/preview.png?v=317f" alt="Classic"></a>
+</td>
+<td style="vertical-align: top;">
+<div>
+<input type="checkbox" name="public_theme" id="public_theme" value="1" checked="checked">
+<label for="public_theme">Theme your profile page</label>
+</div>
+<div>
+<input type="checkbox" name="use_profile_themes" id="use_profile_themes" value="1" checked="checked">
+<label for="use_profile_themes">See other people's themes</label>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+
+
+
+
+<tr>
+<td class="label"></td>
+<td class="value"><div class="servicespromo"><a href="/blurjp/services">Import a service</a></div></td>
+</tr>
+
+<tr>
+<td></td>
+<td class="value" style="padding-top:5px">
+<input type="checkbox" name="newwindow" value="1" id="newwindowcheckbox">
+<label for="newwindowcheckbox">Open links in new windows</label>
+</td>
+</tr>
+<tr>
+<td></td>
+<td class="value">
+<table>
+<tbody><tr>
+<td style="vertical-align:top; padding-bottom:0"><input type="checkbox" name="private" value="1" id="publiccheckbox">&nbsp;</td>
+<td style="padding-bottom:0">
+<div><label for="publiccheckbox">Private feed</label></div>
+<div style="font-size:8pt" class="g"><label for="publiccheckbox">Only let people I approve see my feed</label></div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+<tr>
+<td></td>
+<td class="buttons" style="padding-top:8px">
+<input type="submit" value="Save changes" class="save">
+<input type="hidden" name="stream" value="5d993f60e35c40fea505d5d2b1285ee4">
+<input type="hidden" name="next" value="">
+<input type="hidden" name="at" value="8309573725218842769_1293988664">
+
+<a href="#" class="closesetting">Cancel</a>
+</td>
+</tr>
+</tbody></table>
+</form>
+</div>
+ <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->    
+<div id="mask2"> 
+</div></div>
+ 
+ 
+<div class="box"> 
+<div class="box-bar friends"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/friends">Friends</a></span> 
+</div> 
+</div> 
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+
+<div class="section"> 
+<ul> 
+<li><a href="/">Home</a></li>
+<li><a href="/mycards">My Cards</a></li> 
+<li><a href="/cardsmarket">Cards Market</a></li> 
+<li><a href="/filter/direct">Direct messages</a></li> 
+<li><a href="/filter/discussions">My discussions</a></li> 
+<li><a href="/summary/1">Best of day</a></li> 
+<li><a href="/mymap">My Map</a></li> 
+</ul> 
+</div> 
+ 
+<ul> 
+ 
+ 
+<li><a href="/list/favorites">Favorites</a></li> 
+ 
+ 
+<li><a href="/list/personal">Personal</a></li> 
+ 
+ 
+<li><a href="/list/professional">Professional</a></li> 
+ 
+</ul> 
+ 
+<div class="footer"><a href="/friends">Browse/edit friends</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+<div class="box"> 
+<div class="box-bar groups"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/trips">Trips</a></span> 
+</div> 
+</div> 
+<div class="subbar groups" style="display:none"></div> 
+ 
+<div class="box-body"> 
+{% if trips %}
+{% for trip in trips %}  
+<td>
+<div class="name"><a href="/trip/{{ trip.slug }}" sid={{ trip.id }} class="l_profile">{{ trip.title }}</a></div>
+</td>
+{% end %}
+{% else %}
+<div class="emptymessage">You aren't a member of any trips yet.</div>
+{% end %}
+<div class="emptymessage" style="margin-top:8px"><a href="/trips">Browse/create trips</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+ 
+</div> 
+ 
+<div id="body"> 
+<div class="box white" id="page"> 
+<div class="box-bar friends"> 
+
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+
+<div class="profile withbar">
+<div class="header">
+{% if singletrip %}
+<div class="profile"><a href="{{singletrip.slug}}" class="l_editpicture" sid="8f48dc4965f94ecdb7948b37618740c1" title="Change picture"><img src={{user.pictureid}} alt="{{singletrip.title}}" class="picture large"></a></div>
+<div class="body">
+<div class="stats">
+
+<div><a href="{{singletrip.slug}}" + "/subscribers"><span class="num">1</span> subscriber</a></div>
+
+
+</div>
+
+<h1><a class="name" href="{{singletrip.slug}}">{{singletrip.title}}</a> <a href="#" class="l_editprofile" uid={{singletrip.id}}>edit settings</a></h1>
+
+{% end %}
+
+
+
+</div>
+<div class="clear"></div>
+</div>
+
+
+<div class="subbarcontainer">
+<div class="subscribebar">
+<div class="control">
+
+
+<a href="#" class="l_feedinvite" sid="8f48dc4965f94ecdb7948b37618740c1">Invite</a> &nbsp;|&nbsp;
+
+
+<a href="#" class="l_deliveryoptions" feedid="8f48dc4965f94ecdb7948b37618740c1" category="streams">Email / IM</a> &nbsp;|&nbsp;
+
+<a class="l_unsubscribe" sid="8f48dc4965f94ecdb7948b37618740c1" scode="" href="#" style="font-weight:bold">Unsubscribe</a>
+</div>
+Lists: <a href="/">Trip Members</a> (<a href="#" class="l_subscribe" sid="8f48dc4965f94ecdb7948b37618740c1" scode="">edit</a>)
+</div>
+
+
+<div class="subbar home" style="display: block; ">
+<div class="deliveryoptions" style="height:110px">
+<form action="/a/feednotification" method="post">
+<div style="float:right;line-height:25px">
+<a href="#" class="l_subbarclose">Cancel</a>&nbsp;
+<input value="Save changes" type="submit" style="font-weight:bold">
+<input type="hidden" name="category" value="streams">
+<input type="hidden" name="feed" value="8f48dc4965f94ecdb7948b37618740c1">
+<input type="hidden" name="next" value="http://friendfeed.com/tripshare">
+<input type="hidden" name="at" value="8309573725218842769_1293988664">
+
+</div>
+<div style="line-height:25px; margin-bottom:5px">
+<a href="/settings/notifications" class="selected">TripShare notification options</a>
+- <a href="/settings/notifications">view all</a>
+</div>
+<table>
+<tbody><tr>
+<td style="padding-right:3px; vertical-align:top; white-space:nowrap">
+Deliver
+<select name="filter" style="width:150px">
+<option value="0" selected="selected">New posts</option>
+<option value="1">Posts and friends' comments</option>
+<option value="2">Posts and all comments</option>
+</select>
+&nbsp;via&nbsp;
+</td>
+<td style="white-space:nowrap; padding-right:10px; vertical-align:top">
+<div style="line-height:23px">
+<input id="deliveryemail" name="email" value="1" type="checkbox" onclick="$('#deliveryemailtype').css({color:'black'})">
+<label for="deliveryemail">Email</label>
+&nbsp;<select id="deliveryemailtype" name="emailtype" style="color:gray" onclick="$('#deliveryemail').attr('checked', 'checked');$(this).css({color:'black'});">
+<option value="all" selected="selected">In real time</option>
+<option value="daily">best of day</option>
+<option value="weekly">best of week</option>
+</select>
+</div>
+<div style="line-height:23px">
+<input id="deliveryim" name="im" value="1" type="checkbox" class="l_imenable">
+<label for="deliveryim">IM</label>
+</div>
+<div style="line-height:23px">
+<input id="deliveryair" name="air" value="1" type="checkbox" class="l_airenable">
+<label for="deliveryair">Desktop popup</label>
+</div>
+</td>
+</tr>
+</tbody></table>
+</form></div>
+</div>
+</div>
+
+
+<div class="sharebox">
+
+</div>
+
+</div>
+
+<div class="sharebox"> 
+
+
+<div id="map-canvas" style="width: 640px; height: 500px"></div>
+
+<div id="HOME_FRIEND_LIST">
+<div class="wrap avatars" style="height:355px;">
+<div id="allFriendsIcon" class="allFriends friendIcon hvrIE6" onclick="ta.servlet.home.updateFriend(this)" style="display: block; ">
+<span id="thumb_all" class=""><!--photo--></span>
+<img src="http://cdn.tripadvisor.com/img2/facebook/allFriends.gif" alt="All Friends" title="All Friends">
+</div>
+<div id="friendIcon.1" onclick="ta.servlet.home.friendSelect(this, 'Gong Zhe'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: block; ">
+<span id="thumb_1" class="sprite-homeAvatarSelected"><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/3435686/picture?type=square" alt="Gong Zhe" title="Gong Zhe">
+</div>
+<div id="friendIcon.2" onclick="ta.servlet.home.friendSelect(this, 'Pingyi Xiong'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: block; ">
+<span id="thumb_2" class=""><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/1025001233/picture?type=square" alt="Pingyi Xiong" title="Pingyi Xiong">
+</div>
+<div id="friendIcon.3" onclick="ta.servlet.home.friendSelect(this, 'Xiao Wu'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: block; ">
+<span id="thumb_3" class=""><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/634368109/picture?type=square" alt="Xiao Wu" title="Xiao Wu">
+</div>
+<div id="friendIcon.4" onclick="ta.servlet.home.friendSelect(this, 'Yu Zhang'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: block; ">
+<span id="thumb_4" class=""><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/100001555150801/picture?type=square" alt="Yu Zhang" title="Yu Zhang">
+</div>
+<div id="friendIcon.5" onclick="ta.servlet.home.friendSelect(this, 'Xuanti Ying'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: block; ">
+<span id="thumb_5" class=""><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/585513509/picture?type=square" alt="Xuanti Ying" title="Xuanti Ying">
+</div>
+
+<div id="avatarPagingContent" style="display:none"></div>
+<div id="friendIcon.6" onclick="ta.servlet.home.friendSelect(this, 'Fan Ping'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: none; ">
+<span id="thumb_6" class=""><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/1255318084/picture?type=square" alt="Fan Ping" title="Fan Ping">
+</div><div id="friendIcon.7" onclick="ta.servlet.home.friendSelect(this, 'Ping Wang'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: none; ">
+<span id="thumb_7" class=""><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/508868419/picture?type=square" alt="Ping Wang" title="Ping Wang">
+</div><div id="friendIcon.8" onclick="ta.servlet.home.friendSelect(this, 'Yu Zhang'); ta.util.pending.lock('facebook.avatar.clicked', function() { new Ajax('/ActionRecord?action=clickFriendAvatar').request() })" class="friendIcon hvrIE6" style="display: none; ">
+<span id="thumb_8" class=""><!--photo--></span>
+<img class="mapAvatar" src="http://graph.facebook.com/570938731/picture?type=square" alt="Yu Zhang" title="Yu Zhang">
+</div><script type="text/javascript">
+ta.store('maps.marker-data.6', {
+HOME: {"markers":[
+{"lat":34.05332, "lng":-118.24498, "geoId": 32655, customHover: {url:"/MultiPartAjax?parts=FRIENDS_VISITED_LIGHTBOX&g=32655", displayContentHook: ta.servlet.home.homeCall, retryAjax: true}}
+]}
+});
+ta.store('maps.marker-data.7', {
+HOME: {"markers":[
+{"lat":39.96205, "lng":-83.00302, "geoId": 50226, customHover: {url:"/MultiPartAjax?parts=FRIENDS_VISITED_LIGHTBOX&g=50226", displayContentHook: ta.servlet.home.homeCall, retryAjax: true}}
+]}
+});
+ta.store('maps.marker-data.8', {
+HOME: {"markers":[
+{"lat":40.91917, "lng":-73.12964, "geoId": 48692, customHover: {url:"/MultiPartAjax?parts=FRIENDS_VISITED_LIGHTBOX&g=48692", displayContentHook: ta.servlet.home.homeCall, retryAjax: true}}
+]}
+});
+</script></div>
+<div id="avatarPaging" class="gui sprite-gui">
+<span id="avatarPrev" class="sprite-guiPrev" style="display: none; " onclick="ta.servlet.home.prevAvatars()"></span>
+<span id="avatarNext" class="sprite-guiNext pid4131" onclick="ta.util.cookie.setPIDNoA(this);ta.servlet.home.nextAvatars()" style="display: block; "></span>
+</div>
+</div>
+
+<div class="container">
+
+<h2 class="trigger"><a href="#">Start Destination &amp; WayPoints</a></h2>
+<div class="toggle_container" style="display: none; ">
+<div class="block">
+<b>Start:</b>
+{% if singletrip %}
+<input id="start" type="text" size="10" value ={{singletrip.startPlace}}>
+<b>End:</b>
+<input id="end" type="text" size="10" value ={{singletrip.destPlace}}>
+{% else %}
+<input id="start" type="text" size="10" value=''>
+<b>End:</b>
+<input id="end" type="text" size="10" value=''>
+{% end %}
+<br>
+<b>Waypoints:</b> <br>
+<i>(Ctrl-Click for multiple selection)</i> <br>
+<select multiple="" id="waypoints">
+  <option value="montreal, quebec">Montreal, QBC
+  </option><option value="toronto, ont">Toronto, ONT
+  </option><option value="chicago, il">Chicago
+  </option><option value="winnipeg, mb">Winnipeg
+  </option><option value="fargo, nd">Fargo
+  </option><option value="calgary, ab">Calgary
+  </option><option value="spokane, wa">Spokane
+</option></select>
+<br>
+		</div>
+	</div>
+	
+	<h2 class="trigger"><a href="#">Trip Members</a></h2>
+	<div class="toggle_container" style="display: none; ">
+		<div id="speakers">
+	<div class="gasket">
+		
+		<a href="javascript:;" class="previous">Previews examples</a>
+		<div id="speakers_carousel" style="visibility: visible; overflow-x: hidden; overflow-y: hidden; position: relative; z-index: 2; left: 0px; width: 804px; ">
+			<ul style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; position: relative; list-style-type: none; z-index: 1; width: 3618px; left: -1474px; "><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#marksuster"><img src="http://startonomics.com/wp-content/uploads/participant_1230593514.jpg" alt=""></a>
+                <h3>
+                                      Mark Suster                                  </h3>
+                <p><a href="/speakers/?id=2#marksuster">GRP Partners</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#mikejones"><img src="http://startonomics.com/wp-content/uploads/participant_1230584294.jpg" alt=""></a>
+                <h3>
+                                      Mike Jones                                  </h3>
+                <p><a href="/speakers/?id=2#mikejones">Tsavo Media</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#neilpatel"><img src="http://startonomics.com/wp-content/uploads/participant_1231179469.jpg" alt=""></a>
+                <h3>
+                                      Neil Patel                                  </h3>
+                <p><a href="/speakers/?id=2#neilpatel">ACS</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#richardrosenblatt"><img src="http://startonomics.com/wp-content/uploads/participant_1231781930.jpg" alt=""></a>
+                <h3>
+                                      Richard Rosenblatt                                  </h3>
+                <p><a href="/speakers/?id=2#richardrosenblatt">Demand Media</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#seanpercival"><img src="http://startonomics.com/wp-content/uploads/participant_1230594215.jpg" alt=""></a>
+                <h3>
+                                      Sean Percival                                  </h3>
+                <p><a href="/speakers/?id=2#seanpercival">Tsavo Media</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#peterpham"><img src="http://startonomics.com/wp-content/uploads/speaker_1221156851.jpg" alt=""></a>
+                <h3>
+                                      <a href="http://startonomics.com/speakers/#peterpham">Peter Pham</a>
+                                  </h3>
+                <p><a href="/speakers/?id=2#peterpham">BillShrink</a></p>
+              </li>
+                                                                    <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#briangarrett"><img src="http://startonomics.com/wp-content/uploads/participant_1230581716.jpg" alt=""></a>
+                <h3>
+                                      Brian Garrett                                  </h3>
+                <p><a href="/speakers/?id=2#briangarrett">Crosscut Ventures</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#dangould"><img src="http://startonomics.com/wp-content/uploads/participant_1230581301.jpg" alt=""></a>
+                <h3>
+                                      Dan Gould                                  </h3>
+                <p><a href="/speakers/?id=2#dangould">Fox Interactive</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#davidosacks"><img src="http://startonomics.com/wp-content/uploads/participant_1231871210.jpg" alt=""></a>
+                <h3>
+                                      David O. Sacks                                  </h3>
+                <p><a href="/speakers/?id=2#davidosacks">Yammer</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#frankaddante"><img src="http://startonomics.com/wp-content/uploads/participant_1230609388.jpg" alt=""></a>
+                <h3>
+                                      Frank Addante                                  </h3>
+                <p><a href="/speakers/?id=2#frankaddante">Rubicon Project</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#jasonnazar"><img src="http://startonomics.com/wp-content/uploads/participant_1230584388.jpg" alt=""></a>
+                <h3>
+                                      Jason Nazar                                  </h3>
+                <p><a href="/speakers/?id=2#jasonnazar">DocStoc</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#jayweintraub"><img src="http://startonomics.com/wp-content/uploads/participant_1232057028.jpg" alt=""></a>
+                <h3>
+                                      Jay  Weintraub                                  </h3>
+                <p><a href="/speakers/?id=2#jayweintraub">LeadsCon</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#jimbenedetto"><img src="http://startonomics.com/wp-content/uploads/participant_1230593403.jpg" alt=""></a>
+                <h3>
+                                      Jim Benedetto                                  </h3>
+                <p><a href="/speakers/?id=2#jimbenedetto">MySpace</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#tedrheingold"><img src="http://startonomics.com/wp-content/uploads/speaker_1218684771.gif" alt=""></a>
+                <h3>
+                                      <a href="http://startonomics.com/speakers/#tedrheingold">Ted Rheingold</a>
+                                  </h3>
+                <p><a href="/speakers/?id=2#tedrheingold">Dogster, Inc.</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#markjeffrey"><img src="http://startonomics.com/wp-content/uploads/participant_1230581648.jpg" alt=""></a>
+                <h3>
+                                      Mark Jeffrey                                  </h3>
+                <p><a href="/speakers/?id=2#markjeffrey">Mahalo</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#marksuster"><img src="http://startonomics.com/wp-content/uploads/participant_1230593514.jpg" alt=""></a>
+                <h3>
+                                      Mark Suster                                  </h3>
+                <p><a href="/speakers/?id=2#marksuster">GRP Partners</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#mikejones"><img src="http://startonomics.com/wp-content/uploads/participant_1230584294.jpg" alt=""></a>
+                <h3>
+                                      Mike Jones                                  </h3>
+                <p><a href="/speakers/?id=2#mikejones">Tsavo Media</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#neilpatel"><img src="http://startonomics.com/wp-content/uploads/participant_1231179469.jpg" alt=""></a>
+                <h3>
+                                      Neil Patel                                  </h3>
+                <p><a href="/speakers/?id=2#neilpatel">ACS</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#richardrosenblatt"><img src="http://startonomics.com/wp-content/uploads/participant_1231781930.jpg" alt=""></a>
+                <h3>
+                                      Richard Rosenblatt                                  </h3>
+                <p><a href="/speakers/?id=2#richardrosenblatt">Demand Media</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#seanpercival"><img src="http://startonomics.com/wp-content/uploads/participant_1230594215.jpg" alt=""></a>
+                <h3>
+                                      Sean Percival                                  </h3>
+                <p><a href="/speakers/?id=2#seanpercival">Tsavo Media</a></p>
+              </li>
+                                                <li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#peterpham"><img src="http://startonomics.com/wp-content/uploads/speaker_1221156851.jpg" alt=""></a>
+                <h3>
+                                      <a href="http://startonomics.com/speakers/#peterpham">Peter Pham</a>
+                                  </h3>
+                <p><a href="/speakers/?id=2#peterpham">BillShrink</a></p>
+              </li>
+                                                            			<li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#briangarrett"><img src="http://startonomics.com/wp-content/uploads/participant_1230581716.jpg" alt=""></a>
+                <h3>
+                                      Brian Garrett                                  </h3>
+                <p><a href="/speakers/?id=2#briangarrett">Crosscut Ventures</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#dangould"><img src="http://startonomics.com/wp-content/uploads/participant_1230581301.jpg" alt=""></a>
+                <h3>
+                                      Dan Gould                                  </h3>
+                <p><a href="/speakers/?id=2#dangould">Fox Interactive</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#davidosacks"><img src="http://startonomics.com/wp-content/uploads/participant_1231871210.jpg" alt=""></a>
+                <h3>
+                                      David O. Sacks                                  </h3>
+                <p><a href="/speakers/?id=2#davidosacks">Yammer</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#frankaddante"><img src="http://startonomics.com/wp-content/uploads/participant_1230609388.jpg" alt=""></a>
+                <h3>
+                                      Frank Addante                                  </h3>
+                <p><a href="/speakers/?id=2#frankaddante">Rubicon Project</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#jasonnazar"><img src="http://startonomics.com/wp-content/uploads/participant_1230584388.jpg" alt=""></a>
+                <h3>
+                                      Jason Nazar                                  </h3>
+                <p><a href="/speakers/?id=2#jasonnazar">DocStoc</a></p>
+              </li><li style="overflow-x: hidden; overflow-y: hidden; float: left; width: 118px; height: 130px; ">
+                <a href="/speakers/?id=2#jayweintraub"><img src="http://startonomics.com/wp-content/uploads/participant_1232057028.jpg" alt=""></a>
+                <h3>
+                                      Jay  Weintraub                                  </h3>
+                <p><a href="/speakers/?id=2#jayweintraub">LeadsCon</a></p>
+              </li></ul>
+		</div>
+		<a href="javascript:;" class="next">Next examples</a>
+	</div>
+</div>
+	</div>
+	
+	<h2 class="trigger"><a href="#">Seach Engine Optimization</a></h2>
+	<div class="toggle_container" style="display: none; ">
+		<div class="block">
+			
+			<p>Praesent duis vel similis usitas camur, nostrud eros opes verto epulae feugiat ad. Suscipit modo magna letalis amet et tego accumsan facilisi, meus. Vindico luptatum blandit ulciscor mos caecus praesent sed meus velit si quis lobortis praemitto, uxor. </p>
+		</div>
+	</div>
+	
+	<h2 class="trigger"><a href="#">eCommerce</a></h2>
+	<div class="toggle_container" style="display: none; ">
+		<div class="block">
+			<h3>Have Product to Sell?</h3>
+			
+			<p>Consequat te olim letalis premo ad hos olim odio olim indoles ut venio iusto. Euismod, sagaciter diam neque antehabeo blandit, jumentum transverbero luptatum. Lenis vel diam praemitto molior facilisi facilisi suscipere abico, ludus, at. Wisi suscipere nisl ad capto comis esse, autem genitus. Feugiat immitto ullamcorper hos luptatum gilvus eum. Delenit patria nunc os pneum acsi nulla magna singularis proprius autem exerci accumsan. </p>
+			
+			<p>Praesent duis vel similis usitas camur, nostrud eros opes verto epulae feugiat ad. Suscipit modo magna letalis amet et tego accumsan facilisi, meus. Vindico luptatum blandit ulciscor mos caecus praesent sed meus velit si quis lobortis praemitto, uxor. </p>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+ 
+<div style="clear:both; height:12px"></div> 
+
+<div>
+<form action="/savetrip" method="post" id="tripinfoform" onsubmit="return checkTripValue(this)">
+          <table>
+            <tr>
+              
+              <td style="padding-left:5px">
+                <input type="submit" value="{{ _("Save") }}"/>
+				<input name="username" id="username" type="hidden" value={{current_user}} > 
+                <input name="startPlace" id="startPlace" type="hidden" > 
+                <input name="endPlace" id="endPlace" type="hidden" >  
+				<input name="startPosition" id="startPosition" type="hidden" > 
+                <input name="endPosition" id="endPosition" type="hidden" >  
+				<input name="encodedPolyline" id="encodedPolyline" type="hidden" value = {{singletrip.tripPath}}>  
+                <input name="result" id="result" type="hidden" value=''> 
+				<input name="slug" id="slug" type="text" value = {{singletrip.slug}}> 
+                {{ xsrf_form_html() }}
+              </td>
+            </tr>
+          </table>
+        </form>
+		</div> 
+		</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+</div> 
+<div id="footer"> 
+&copy;2010 TripShare
+
+- <a href="/about/">About</a> 
+- <a href="/about/help">Help</a> 
+- <a href="/about/privacy">Privacy</a> 
+- <a href="/about/terms">Terms</a> 
+ 
+</div> 
+</div> 
+</div><div id="extradiv"></div><div id="extradivtoo"></div> 
+ 
+
+  
+<script src="{{ static_url("javascript/jquery-1.3.js") }}" type="text/javascript"></script>  
+
+<script src="{{ static_url("javascript/DropDownContainer.js") }}" type="text/javascript"></script> 
+ 
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$(".toggle_container").hide();
+
+	$("h2.trigger").click(function(){
+		$(this).toggleClass("active").next().slideToggle("slow");
+	});
+
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".deliveryoptions").hide();
+	$(".subbar home").hide();
+	$(".l_deliveryoptions").click(function(){
+		$(".deliveryoptions").slideToggle("slow");
+		$(".subbar home").slideToggle("slow");
+		
+	});
+
+});
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+function checkform(form)
+{
+	if (form.start.value == "") 
+	{
+	  alert("Please enter a valid address");
+	  form.start.focus();
+	  return false;
+	}
+	
+	if (form.dest.value == "") 
+	{
+	  alert("Please enter a valid address");
+	  form.dest.focus();
+	  return false;
+	}
+
+	return true;
+}
+
+function checkRequired(form)
+{
+	if((form.picture.value.lastIndexOf('.jpg')==-1 && form.upload.value.lastIndexOf('.png')==-1 && form.upload.value.lastIndexOf('.gif')==-1)) { 
+	  alert("Please upload a valid picture");
+	  
+	  return false;
+	}
+	return true;
+}
+
+
+function checkTripValue(form)
+{
+	if (form.endPosition.value == "") 	
+	{
+	  alert("Please enter a valid destination");
+	  
+	  return false;
+	}
+	
+	if (form.startPosition.value == "") 
+	{
+	  alert("Please enter a valid start");
+	  
+	  return false;
+	}
+	return  true;
+}
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+	var $dialog = $('<div class="dialogdiv"></div>')
+		.html('<div id="dialog"><form action="/a/changepicture" method="post" onsubmit="return checkRequired(this)" enctype="multipart/form-data"><input type="hidden" name="_xsrf" value="d219da0313b04e1eb5f37eb9d5898501"><div><img src="{{user.pictureid}}" alt="{{user.name}}" class="picture large"></div><div style="margin-top: 1em"><input type="file" size="40" name="picture" value="/tmp/test.gif" id="pictureupload"></div><div class="buttons"><input type="submit" value="Upload picture" class="save"><a href="#" class="l_closedialog">Cancel</a></div></form></div>')
+		.dialog({
+			autoOpen: false,
+			title: 'User Profile Picture'
+		});
+
+	$('.l_editpicture').click(function(e) {
+		e.preventDefault();  
+		$('.settingdialogdiv').hide();  
+		$dialog.dialog('open');
+		// prevent the default action, e.g., following a link
+		return false;
+	});
+	
+	$('.l_closedialog').click(function() {
+		
+		$dialog.dialog('close');
+		// prevent the default action, e.g., following a link
+		return false;
+	});
+});
+</script>
+
+
+
+</body> 
+</html>
+
+
+ 
+
+
+
