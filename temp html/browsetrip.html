@@ -1,0 +1,553 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>TripShare - Trips</title> 
+
+<link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
+<link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
+
+
+<script src="{{ static_url("javascript/createtrippopupintrips.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/CalendarPopup.js") }}" type="text/javascript"></script>
+<script language="JavaScript">document.write(getCalendarStyles());</script>
+</head> 
+
+
+<body> 
+ 
+ <div id="header"> 
+<div id="nav-bar"  >
+<a href="/" id="logo-small">
+<img src="{{ static_url("images/TripShare.png") }}" alt="TripShare" style="height:60px; width:150px"/>
+</a>
+<ul>
+<li><a href="/trips">Trips</a></li>
+<li><a href="/guides">Guides</a></li>
+<li><a href="/friends">Friends</a></li>
+<li><a href="/blog">Blog</a></li>
+</ul>
+
+{{ modules.UserEntry() }}
+
+</div> 
+</div> 
+ 
+<div id="bodydiv"> 
+ 
+ 
+<div id="container"> 
+ 
+
+<div id="header"> 
+<table> 
+<tr>  
+<td> 
+<table>
+<tr> 
+<td> 
+<div class="Search"> 
+<form action="/search" method="get" id="searchform">
+<input type="text" size="25" name="search_term" value="Search trips..." onblur="if (value == '') {value = 'Search trips...';}" onfocus="if(value == 'Search cards...') {value = '';}" class="textbox" />
+<input type="submit" id="searchbox" value="Search" style="font-size:15px"/>
+</form>
+</td> 
+ 
+<td id="extralinks"> 
+<div><a href="/search/advanced">Advanced search</a></div> 
+<div><a href="/about/tools">Tools</a></div> 
+</td> 
+ 
+</tr> 
+</table> 
+
+
+</td> 
+</tr> 
+</table> 
+</div> 
+ 
+<div id="sidebar"> 
+<div id="profile"> 
+
+</div> 
+ 
+
+<div class="box"> 
+<div class="box-bar friends"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/friends">Friends</a></span> 
+</div> 
+</div> 
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+<div class="section"> 
+<ul> 
+<li><a href="/">Home</a></li> 
+<li><a href="/filter/direct">Direct messages</a></li> 
+<li><a href="/filter/discussions">My discussions</a></li> 
+<li><a href="/summary/1">Best of day</a></li> 
+<li><a href="/mymap">My Map</a></li> 
+</ul> 
+</div> 
+ 
+<ul> 
+ 
+ 
+<li><a href="/list/favorites">Favorites</a></li> 
+ 
+ 
+<li><a href="/list/personal">Personal</a></li> 
+ 
+ 
+<li><a href="/list/professional">Professional</a></li> 
+ 
+</ul> 
+ 
+<div class="footer"><a href="/friends">Browse/edit friends</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+<div class="box"> 
+<div class="box-bar groups"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/trips">Trips</a></span> 
+</div> 
+</div> 
+<div class="subbar groups" style="display:none"></div> 
+ 
+<div class="box-body"> 
+{% if trips %}
+{% for trip in trips %}  
+<td>
+<div class="name"><a href="/createtrip?id={{ trip['trip_id'] }}" sid={{ trip['trip_id'] }} class="l_profile">{{ trip['title'] }}</a></div>
+</td>
+{% end %}
+{% else %}
+<div class="emptymessage">You aren't a member of any trips yet.</div>  
+{% end %}
+<div class="emptymessage" style="margin-top:8px"><a href="/trips">Browse/create trips</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+ 
+</div> 
+ 
+<div id="body"> 
+<div class="box white" id="page"> 
+<div class="box-bar friends"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<div id="realtimectl" class="control"><div class="l_realtimepause" title="Pause updates"></div></div> 
+ 
+<div class="control"><a href="#" class="l_deliveryoptions" feedid="discussions" category="special">Email / IM</a></div> 
+ 
+<div id="realtimestatus" class="control"></div> 
+ 
+<span class="title"><a href="/">My Trips</a></span> 
+
+</div> 
+</div> 
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+ 
+<div style="float:right">
+<!-- #dialog is the id of a DIV defined in the code below -->  
+<a href="#createtripdialog" name="createtrip">Create a trip</a>  
+  
+<div id="boxes">  
+  
+      
+    <!-- #customize your modal window here -->  
+  
+ <div id="createtripdialog" class="window">  
+ <div style="width:350px; padding-left:5px; padding-right:5px; padding-top:5px" class="createform">
+    <b>TripShare feeds are extremely flexible. They can even be used to share privately with a trip or as public discussion forums.</b> 
+    <a href="/about/betafaq#feeds">Learn more about trip feeds</a></div><br>
+        
+<form name="create_trip" action="/createtrip" method="post" onsubmit="return check_createtrip_form(this);">
+	{{ xsrf_form_html() }}
+<table class="form">
+<tbody>
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Trip Name:</td>
+<td class="value" style="width:100%">
+<div class="textbox">
+<input type="text" name="title" id="title" size="20" maxlength="35" autocomplete="off">
+</div>
+</td>
+</tr>
+
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Start from:</td>
+<td class="value" style="width:70%">
+<div class="textbox" style="margin-bottom:3pt">
+<input type="text" name="start" id="start" size="20" maxlength="25" autocomplete="off" value="" onfocus="">
+</div>
+</tr>
+
+<tr>
+	
+<ul class="semauto-choices" style="z-index: 9997; left: 532px; top: 289px; display: none; width: 250px;  zoom: 1; opacity: 1; ">
+    <li><span class="autocompleter-queried">New</span> York City</li>
+    <li><span class="autocompleter-queried">New</span> Orleans, Louisiana, USA</li>
+	<li><span class="autocompleter-queried">New</span> Providence Island, Bahamas</li>
+	<li><span class="autocompleter-queried">New</span> Delhi, India</li>
+	<li><span class="autocompleter-queried">New</span>port, Rhode Island, USA</li>
+	<li><span class="autocompleter-queried">New</span>port Beach, California, USA</li>
+	<li><span class="autocompleter-queried">New</span>castle upon Tyne, United Kingdom</li>
+	<li><span class="autocompleter-queried">New</span>quay, United Kingdom</li>
+	<li><span class="autocompleter-queried">New</span>ark, Jersey, USA</li>
+	<li><span class="autocompleter-queried">New</span> Braunfels, Texas, USA</li>
+</ul>
+</tr>
+
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Ahead for:</td>
+<td class="value" style="width:70%">
+<div class="textbox" style="margin-bottom:3pt">
+<input type="text" name="destination" id="destination" size="20" maxlength="25" autocomplete="off" value="" onfocus="">
+</div>
+
+</td>
+</tr>
+
+<tr>
+<td >Start Date:</td>
+<td >
+	<input type="text" id="date1x" name="start_date" value="" size="20">
+<script language="JavaScript" id="jscal1x">
+var cal1x = new CalendarPopup("testdiv1");
+
+</script>
+
+
+
+<div id="testdiv1" style="display:none;background-color:white;layer-background-color:white;"></div>
+<a href="#" onclick="cal1x.select(document.forms['create_trip'].start_date,'anchor1x','MM/dd/yyyy'); return false;" title="start date" name="anchor1x" id="anchor1x">select</a>
+</td>
+</tr>
+
+<tr>
+<td>End Date:</td>
+<td >
+<input type="text" id="date2x" name="end_date" value="" size="20">
+
+<script language="JavaScript" id="jscal2x">
+var cal2x = new CalendarPopup("testdiv2");
+
+</script>
+
+
+<div id="testdiv2" style="display:none;background-color:white;layer-background-color:white;"></div>
+<a href="#" onclick="cal2x.select(document.forms['create_trip'].end_date,'anchor2x','MM/dd/yyyy'); return false;" title="end date" name="anchor2x" id="anchor2x">select</a>
+
+</td>
+</tr>
+
+
+
+<tr>
+<td class="label" style="vertical-align:top; padding-top:4px">Description:</td>
+<td class="value" style="width:70%">
+<div class="textbox" style="margin-bottom:3pt">
+<input type="text" name = "description" id="description" size="20" maxlength="25" autocomplete="off">
+</div>
+
+</td>
+</tr>
+<tr>
+<td class="value" colspan="2">
+<table class="feedoptions">
+<tbody><tr>
+<td class="radio"><input type="radio" name="privacy" value="private" id="private" checked="checked"></td>
+<td class="optionname"><label for="feedoptionprivate">Private trip</label></td>
+</tr>
+<tr>
+<td></td>
+<td class="desc"><label for="feedoptiongroup">Only the people you invite can view and edit the trip</label></td>
+</tr>
+<tr>
+<td class="radio"><input type="radio" name="privacy" value="public" id="public"></td>
+<td class="optionname"><label for="feedoptionpublic">Public trip</label></td>
+</tr>
+<tr>
+<td></td>
+<td class="desc"><label for="feedoptionpublic">Anyone can post messages to and comment on the trip</label></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr>
+<td class="buttons" style="padding-top:10px" colspan="2">
+
+<!-- add map here   --> 
+<!--<input type="submit" value="Create trip" class="save" onclick="addMap(); return false"> --> 
+<input type="submit" value="Create trip">
+<a href="#" class="close">Cancel</a>
+
+
+</td>
+</tr>
+</tbody></table>
+</form>   
+</div>  
+  
+      
+    <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->    
+<div id="mask3"></div>  
+</div>
+ &nbsp;|&nbsp;
+
+<a href="/trips/search" style="font-weight:bold">Find trips</a>
+
+</div> 
+
+
+
+<div style="margin-bottom:20px">
+
+View:
+<a href="/trips">Active trips</a> -
+<a href="?all=1" class="selected">All trips</a>
+
+&nbsp;
+</div> 
+
+<div style="padding-bottom: 16px; border-bottom: 1px solid #eee; margin-bottom: 16px">
+
+
+<table class="usergrid">
+<tbody><tr>
+{% if trips %}
+  {% for trip in trips %}
+  <td>
+  	{% if current_user %}
+ <div class="picture"><a href="/trip/{{ trip['slug'] }}" sid={{ trip['trip_id'] }} class="l_profile"><img src="http://i.friendfeed.com/p-b78247cfb2d94e68b3115a4c489d48fb-large-4" alt="{{ trip['title'] }}" class="picture large"></a></div>
+<div class="name"><a href="/trip/{{ trip['slug'] }}" sid={{ trip['trip_id'] }} class="l_profile">{{ trip['title'] }}</a></div>
+    {% end %}
+  </td>
+  {% end %}
+ {% end %}
+ 
+
+
+
+</tr>
+</tbody></table>
+
+</div><br />
+ 
+ 
+<div id="errors" style="color: #f00; font-weight: bold;"></div> 
+ 
+ 
+<div id="feed"> 
+ 
+ 
+</div> 
+
+<div style="clear:both; height:12px"></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+</div> 
+<div id="footer"> 
+&copy;2010 TripShare
+-
+ 
+- <a href="/about/">About</a> 
+- <a href="/about/help">Help</a> 
+- <a href="/about/privacy">Privacy</a> 
+- <a href="/about/terms">Terms</a> 
+ 
+</div> 
+</div> 
+</div><div id="extradiv"></div><div id="extradivtoo"></div> 
+ 
+<style type="text/css">
+
+ul.semauto-choices
+{
+background-color:white;
+	
+position:absolute;
+}
+
+ul.semauto-choices li { backupground:white;/* change background em accordingly */ }
+ul.semauto-choices li:hover {
+        background: #ffffcc;
+}
+
+</style>
+ 
+<script type="text/javascript">
+var select;
+// When the DOM is ready, initialize the scripts.
+$(document).ready(function() {
+  // Get a reference to the container.
+var dropList = $(".semauto-choices");
+// Bind the link to toggle the slide.
+$('#start').click(
+function( ){
+dropList.toggle();
+});
+
+$('.semauto-choices li').hover(function() {
+    
+    $('.semauto-choices li').removeClass('automated-selected'); // removes the "selected" class from all tabs
+    $(this).addClass('automated-selected'); // adds it to the one that's just been clicked
+});
+
+$('.semauto-choices li').click(function() {
+    //alert('test');
+	//dropList.hide();
+	//('.autocompleter-queried').focus();
+	//$('#start').attr("value") = ('.automated-selected').val();
+	alert(('.automated-selected span').html());
+	
+	$('#start').val('test');
+	dropList.hide();
+	//$('#start').focus();
+});
+
+ });
+ 
+
+</script>
+
+ <script type="text/javascript">
+//<![CDATA[
+function checkform(form)
+{
+	if (form.start.value == "") 
+	{
+	  alert("Please enter a valid address");
+	  form.start.focus();
+	  return false;
+	}
+	
+	if (form.dest.value == "") 
+	{
+	  alert("Please enter a valid address");
+	  form.dest.focus();
+	  return false;
+	}
+
+	return true;
+}
+
+function checkRequired(form)
+{
+	if((form.picture.value.lastIndexOf('.jpg')==-1 && form.upload.value.lastIndexOf('.png')==-1 && form.upload.value.lastIndexOf('.gif')==-1)) { 
+	  alert("Please upload a valid picture");
+	  
+	  return false;
+	}
+	return true;
+}
+</script>
+<script type="text/javascript">
+function check_createtrip_form(form)
+{
+	
+	
+	if (form.title.value == "") 
+	{
+	  alert("Please enter trip title");
+	  form.title.focus();
+	  return false;
+	}
+	
+	
+	if (form.start.value == "") 
+	{
+	  alert("Please enter trip start");
+	  form.start.focus();
+	  return false;
+	}
+	
+	if (form.destination.value == "") 
+	{
+	  alert("Please enter trip destination");
+	  form.destination.focus();
+	  return false;
+	}
+	
+	if (form.start_date.value == "") 
+	{
+	  alert("Please enter trip start_date");
+	  form.start_date.focus();
+	  return false;
+	}
+	
+	if (form.end_date.value == "") 
+	{
+	  alert("Please enter trip end_date");
+	  form.end_date.focus();
+	  return false;
+	}
+	
+	return true;
+}
+</script>
+
+<script type="text/javascript">
+	
+	function getCookie(name) {
+    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return r ? r[1] : undefined;
+    }
+	
+	
+	$(document).ready(function() {
+	var _xsrf = getCookie("_xsrf");
+	var $dialog = $('<div class="dialogdiv"></div>')
+		.html('<div id="dialog"><form action="/a/changepicture" method="post" onsubmit="return checkRequired(this)" enctype="multipart/form-data"><input type="hidden" name="_xsrf" value='+_xsrf+'><div><img src="{{current_user["picture"]}}" alt="{{current_user["username"]}}" class="picture large"></div><div style="margin-top: 1em"><input type="file" size="40" name="picture" value="/tmp/test.gif" id="pictureupload"></div><div class="buttons"><input type="submit" value="Upload picture" class="save"><a href="#" class="l_closedialog">Cancel</a></div></form></div>')
+		.dialog({
+			autoOpen: false,
+			title: 'User Profile Picture'
+		});
+
+	$('.l_editpicture').click(function(e) {
+		e.preventDefault();  
+		$('.settingdialogdiv').hide();  
+		$dialog.dialog('open');
+		// prevent the default action, e.g., following a link
+		return false;
+	});
+	
+	$('.l_closedialog').click(function() {
+		
+		$dialog.dialog('close');
+		// prevent the default action, e.g., following a link
+		return false;
+	});
+});
+</script>
+</body> 
+</html> 

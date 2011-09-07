@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>TripShare - My Trip</title> 
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="FriendFeed Search"/> 
+
+<link rel="stylesheet" href="/stylesheets/nano.css?v=3927" type="text/css"/> 
+<link rel="alternate" href="/filter/discussions?auth=8nUjX7gxKHh7xOwl&amp;format=atom" type="application/atom+xml"/>
+ 
+  
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+
+
+ </head> 
+<body style="font-family: Arial;border: 0 none;"> 
+ 
+<div id="bodydiv"> 
+ 
+ 
+<div id="container"> 
+ 
+ 
+<div id="header"> 
+<table> 
+<tr> 
+<td class="logo"><a href="/"><img src="/static/images/magic_logo.gif" alt="FriendFeed" style="height:50px;"/></a></td> 
+<td> 
+<table> 
+<tr> 
+<td> 
+<form action="/search" method="get" id="searchform"> 
+<input type="text" size="25" name="q" value="" class="textbox" id="searchbox" autocomplete="off"/> 
+<input type="submit" value="Search" style="font-size:15px"/> 
+</form> 
+</td> 
+ 
+<td id="extralinks"> 
+<div><a href="/search/advanced">Advanced search</a></div> 
+<div><a href="/about/tools">Tools</a></div> 
+</td> 
+ 
+</tr> 
+</table> 
+ 
+</td> 
+</tr> 
+</table> 
+</div> 
+ 
+<div id="sidebar"> 
+<div id="profile"> 
+<table> 
+<tr> 
+<td class="image"><a href="/blurjp" sid="5d993f60e35c40fea505d5d2b1285ee4" class="l_profile"><img src="http://m.friendfeed-media.com/p-5d993f60e35c40fea505d5d2b1285ee4-medium-1000" alt="jason huang" class="picture medium"/></a></td> 
+<td class="body"> 
+<div class="name" ><a href="/blurjp" sid="5d993f60e35c40fea505d5d2b1285ee4" class="l_profile">{{greeting}}</a></div> 
+
+</td> 
+</tr> 
+</table> 
+</div> 
+ 
+<div class="box"> 
+<div class="box-bar friends"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/friends">Friends</a></span> 
+</div> 
+</div> 
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+<div class="section"> 
+<ul> 
+<li><a href="/">Home</a></li>
+<li><a href="/mycards">My Cards</a></li> 
+<li><a href="/cardsmarket">Cards Market</a></li> 
+<li><a href="/filter/direct">Direct messages</a></li> 
+<li><a href="/filter/discussions">My discussions</a></li> 
+<li><a href="/summary/1">Best of day</a></li> 
+<li><a href="/mymap">My Map</a></li> 
+</ul> 
+</div> 
+ 
+<ul> 
+ 
+ 
+<li><a href="/list/favorites">Favorites</a></li> 
+ 
+ 
+<li><a href="/list/personal">Personal</a></li> 
+ 
+ 
+<li><a href="/list/professional">Professional</a></li> 
+ 
+</ul> 
+ 
+<div class="footer"><a href="/friends">Browse/edit friends</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+<div class="box"> 
+<div class="box-bar groups"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<span class="title"><a href="/trips">Trips</a></span> 
+</div> 
+</div> 
+<div class="subbar groups" style="display:none"></div> 
+ 
+<div class="box-body"> 
+<div class="emptymessage">You aren't a member of any trips yet.</div> 
+<div class="emptymessage" style="margin-top:8px"><a href="/groups/search">Browse/create trips</a></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+ 
+ 
+</div> 
+ 
+<div id="body"> 
+<div class="box white" id="page"> 
+<div class="box-bar friends"> 
+<div class="box-corner"></div> 
+<div class="box-bar-text"> 
+ 
+ 
+<div id="realtimectl" class="control"><div class="l_realtimepause" title="Pause updates"></div></div> 
+ 
+<div class="control"><a href="#" class="l_deliveryoptions" feedid="discussions" category="special">Email / IM</a></div> 
+ 
+<div id="realtimestatus" class="control"></div> 
+ 
+<span class="title"><a href="/mycards">My Cards</a></span> 
+</div> 
+</div> 
+<div class="subbar friends" style="display:none"></div> 
+ 
+<div class="box-body"> 
+<div class="sharebox"> 
+
+
+<div id="map-canvas" style="width: 500px; height: 500px"></div>
+
+
+<div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px">
+<div style="margin:20px;border-width:2px;">
+<b>Start:</b>
+<select id="start">
+  <option value="Halifax, NS">Halifax, NS</option>
+  <option value="Boston, MA">Boston, MA</option>
+  <option value="New York, NY">New York, NY</option>
+  <option value="Miami, FL">Miami, FL</option>
+</select>
+<br>
+<b>Waypoints:</b> <br>
+<i>(Ctrl-Click for multiple selection)</i> <br>
+<select multiple="" id="waypoints">
+  <option value="montreal, quebec">Montreal, QBC
+  </option><option value="toronto, ont">Toronto, ONT
+  </option><option value="chicago, il">Chicago
+  </option><option value="winnipeg, mb">Winnipeg
+  </option><option value="fargo, nd">Fargo
+  </option><option value="calgary, ab">Calgary
+  </option><option value="spokane, wa">Spokane
+</option></select>
+<br>
+<b>End:</b>
+<select id="end">
+  <option value="Vancouver, BC">Vancouver, BC</option>
+  <option value="Seattle, WA">Seattle, WA</option>
+  <option value="San Francisco, CA">San Francisco, CA</option>
+  <option value="Los Angeles, CA">Los Angeles, CA</option>
+</select>
+<br>
+  <input type="submit" onclick="calcRoute();">
+</div>
+<div id="directions_panel" style="margin:20px;background-color:#FFEE77;"></div>
+</div>
+
+
+</div>
+
+   
+
+ <div >
+<P><INPUT TYPE=SUBMIT VALUE="submit" class="submit_button" onclick=addMarkers()>
+
+</div>
+ 
+<input class="savedhtml" name="html_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+<input class="savedhash" name="hash_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+<input class="savedloadid" name="loadid_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+<input class="savedtoken" name="token_d41d8cd98f00b204e9800998ecf8427e" value="" type="hidden"/> 
+ 
+<input id="username" value={{current_user}} type="hidden"/> 
+ 
+<input id="mapUrl" value={{mapUrl}} type="hidden"/>  
+ 
+<div style="clear:both; height:12px"></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+</div> 
+<div id="footer"> 
+&copy;2010 TripShare
+ 
+- <a href="/about/">About</a> 
+- <a href="/about/help">Help</a> 
+- <a href="/about/privacy">Privacy</a> 
+- <a href="/about/terms">Terms</a> 
+ 
+</div> 
+</div> 
+</div><div id="extradiv"></div><div id="extradivtoo"></div> 
+ 
+ 
+<script src="/static/javascript/jquery-1.3.js?v=bb38" type="text/javascript"></script> 
+ 
+<script type="text/javascript"> 
+//<![CDATA[
+var gCurrentUserId = "5d993f60e35c40fea505d5d2b1285ee4";
+ 
+var gTwitLogin = '';
+var gHttpsPrefix = 'https://friendfeed.com';
+var gRTL = false;
+//]]>
+</script> 
+ 
+ 
+
+</body> 
+</html> 

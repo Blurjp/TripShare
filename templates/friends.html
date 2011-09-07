@@ -1,0 +1,306 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" xml:lang="en" lang="en"> 
+  <head> 
+  	<title>TripShare        |
+        Friend
+    </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+    <meta name="description" content="TripShare is a visual guide to good food and where to find it. It's the easiest way to find and share the foods you love."> 
+    <meta name="keywords" content="dishes, dish, food, reviews, food photos, restaurants, dining, guide, food spotting, menu, local"> 
+    <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
+<link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
+<script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
+
+      
+  	<!--[if lte IE 8]> 
+      <link href="/stylesheets/iex.css?1305156180" media="all" rel="stylesheet" type="text/css" />
+    <![endif]--> 
+ 
+  	<!--[if lte IE 6]> 
+      <link href="/stylesheets/ie6.css?1305156180" media="all" rel="stylesheet" type="text/css" />
+    <![endif]-->	
+  </head> 
+      
+  <body> 
+    <div id='modal' style='display:none'> 
+<div class='small' id='modal-facebox'> 
+<a href="#" id="close-modal" onclick="FS.clear_modal(); return false;">close</a> 
+<div id='modal-content'></div> 
+</div> 
+<div id='modal-screen'></div> 
+</div> 
+ 
+    <div id='wrapper' class='clearfix'> 
+      <div id='tooltip' style='display:none'> 
+<div class='content'></div> 
+<div class='pointer'></div> 
+</div> 
+ 
+      <div id='header'> 
+  <div class='clearfix' id='nav-bar'> 
+<div class='content'> 
+ 
+,re<a href="/" id="logo-small">
+	<img src="{{ static_url("images/TripShare.png") }}" alt="TripShare" style="height:60px; width:150px"/>
+</a> 
+<ul>
+<li><a href="/trips">Trips</a></li>
+<li><a href="/guides">Guides</a></li>
+<li><a href="/travelers">Travelers</a></li>
+<li><a href="/blog">Blog</a></li>
+</ul>
+
+ 
+ 
+{{ modules.UserEntry() }}
+ 
+  <div id='flash_notice' style='display:none'> 
+<div></div> 
+</div> 
+ 
+  
+  
+</div>  
+      
+      
+ 
+      <div id='container' class='clearfix'> 
+        <a href="#" id="back_to_map" onclick="FS.hide_back_to_map();; return false;" style="display:none">Take me Back To The Map!</a> 
+            
+        <div id='content' class='clearfix'> 
+          <div class='main-controls clearfix'> 
+<ul id='sorts'> 
+<li class='on'> 
+<a href="/Friend">Most Active</a> 
+</li> 
+<li class=''> 
+<a href="/Friend?sort=latest">The Latest</a> 
+</li> 
+</ul> 
+</div> 
+<div class='hgroup clearfix'> 
+<h1>Friend</h1> 
+</div> 
+<div class='sidebar'> 
+<div class='pod inset'> 
+<h2>Search all Friend</h2> 
+<form accept-charset="UTF-8" action="/Friend" class="default" id="find-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div> 
+<fieldset> 
+<input id="sort" name="sort" type="hidden" /> 
+<input class="perfect-blue inline right" style="margin:0" type="submit" value="Search" /> 
+<input class="text left" id="q" name="q" size="20" style="margin-right:5px;width:195px" type="text" /> 
+</fieldset> 
+</form> 
+ 
+</div> 
+<div id='sidebar-leaderboard'> 
+<div class='pod cpod'> 
+<h2> 
+Friend to follow
+</h2> 
+<ul class='top_foodspotters'> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_459" onclick="FS.authenticate(&quot;if ($('Person_459').submittable != false) { $('Person_459').addClassName('loading'); new Ajax.Request('/followings?followable_id=459&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_459').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/rfung8" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/459/small_thumb.jpg?1304050232" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/rfung8">Randy F.</a></strong> 
+<span class='points'> 
+183,430
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_17942" onclick="FS.authenticate(&quot;if ($('Person_17942').submittable != false) { $('Person_17942').addClassName('loading'); new Ajax.Request('/followings?followable_id=17942&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_17942').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/17942-justafoodie" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/17942/small_thumb.JPG?1273787329" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/17942-justafoodie">Justafoodie</a></strong> 
+<span class='points'> 
+144,210
+points
+</span> 
+</div> 
+</li> 
+ 
+</ul> 
+</div> 
+ 
+<div class='pod cpod inset'> 
+<h2> 
+This Week's Top Foodspotters
+</h2> 
+<ul class='top_foodspotters'> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_121054" onclick="FS.authenticate(&quot;if ($('Person_121054').submittable != false) { $('Person_121054').addClassName('loading'); new Ajax.Request('/followings?followable_id=121054&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_121054').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/121054-toshie" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/121054/small_thumb.JPG?1295626055" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/121054-toshie">Toshie</a></strong> 
+<span class='points'> 
+17,115
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_40983" onclick="FS.authenticate(&quot;if ($('Person_40983').submittable != false) { $('Person_40983').addClassName('loading'); new Ajax.Request('/followings?followable_id=40983&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_40983').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/40983-darkfaith" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/40983/small_thumb.bmp?1293077197" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/40983-darkfaith">Darkfaith</a></strong> 
+<span class='points'> 
+9,815
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_180178" onclick="FS.authenticate(&quot;if ($('Person_180178').submittable != false) { $('Person_180178').addClassName('loading'); new Ajax.Request('/followings?followable_id=180178&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_180178').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/180178-jo-hew" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/180178/small_thumb.JPG?1305126122" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/180178-jo-hew">Jo Hew</a></strong> 
+<span class='points'> 
+3,155
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_101223" onclick="FS.authenticate(&quot;if ($('Person_101223').submittable != false) { $('Person_101223').addClassName('loading'); new Ajax.Request('/followings?followable_id=101223&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_101223').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/shuureic" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/101223/small_thumb.JPG?1298899313" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/shuureic">추영</a></strong> 
+<span class='points'> 
+79,890
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_177565" onclick="FS.authenticate(&quot;if ($('Person_177565').submittable != false) { $('Person_177565').addClassName('loading'); new Ajax.Request('/followings?followable_id=177565&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_177565').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/delicht" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/177565/small_thumb.jpg?1305089897" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/delicht">MJ</a></strong> 
+<span class='points'> 
+6,165
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_50126" onclick="FS.authenticate(&quot;if ($('Person_50126').submittable != false) { $('Person_50126').addClassName('loading'); new Ajax.Request('/followings?followable_id=50126&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_50126').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/neko" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/50126/small_thumb.jpg?1297240433" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/neko">Pinku Neko</a></strong> 
+<span class='points'> 
+214,880
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_150095" onclick="FS.authenticate(&quot;if ($('Person_150095').submittable != false) { $('Person_150095').addClassName('loading'); new Ajax.Request('/followings?followable_id=150095&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_150095').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/150095-rochelle" class="avatar"><img alt="Missing" src="/avatars/small_thumb/missing.png?1305156176" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/150095-rochelle">Rochelle</a></strong> 
+<span class='points'> 
+2,325
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_38477" onclick="FS.authenticate(&quot;if ($('Person_38477').submittable != false) { $('Person_38477').addClassName('loading'); new Ajax.Request('/followings?followable_id=38477&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_38477').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/LMD" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/38477/small_thumb.jpg?1297111696" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/LMD">LMD</a></strong> 
+<span class='points'> 
+25,290
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_180090" onclick="FS.authenticate(&quot;if ($('Person_180090').submittable != false) { $('Person_180090').addClassName('loading'); new Ajax.Request('/followings?followable_id=180090&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_180090').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/180090-toint" class="avatar"><img alt="Missing" src="/avatars/small_thumb/missing.png?1305156176" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/180090-toint">Toint</a></strong> 
+<span class='points'> 
+1,890
+points
+</span> 
+</div> 
+</li> 
+<li class='person clearfix'> 
+<a class="follow-button primary-background-color" href="#" id="Person_79217" onclick="FS.authenticate(&quot;if ($('Person_79217').submittable != false) { $('Person_79217').addClassName('loading'); new Ajax.Request('/followings?followable_id=79217&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_79217').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
+ 
+<a href="/79217-suse8600" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/79217/small_thumb.JPG?1297374221" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/79217-suse8600">Suse8600</a></strong> 
+<span class='points'> 
+50,750
+points
+</span> 
+</div> 
+</li> 
+ 
+</ul> 
+</div> 
+ 
+</div> 
+ 
+</div> 
+<div class='main'> 
+<ul class='list Friend'> 
+{% if user and trips%}
+   {{ modules.FriendEntry(user, trips) }}
+{% end %}
+</ul> 
+<div class='pager-container clearfix'> 
+<div class="pagination"><span class="previous_page disabled">&#8592; Previous</span> <em>1</em> <a rel="next" href="/Friend?page=2">2</a> <a href="/Friend?page=3">3</a> <a href="/Friend?page=4">4</a> <a href="/Friend?page=5">5</a> <a href="/Friend?page=6">6</a> <a href="/Friend?page=7">7</a> <a href="/Friend?page=8">8</a> <a href="/Friend?page=9">9</a> <span class="gap">&hellip;</span> <a href="/Friend?page=12057">12057</a> <a href="/Friend?page=12058">12058</a> <a class="next_page" rel="next" href="/Friend?page=2">Next &#8594;</a></div> 
+</div> 
+</div> 
+ 
+        </div> 
+      </div> 
+    </div> 
+    
+    <div id='footer'> 
+<div class='inset'> 
+<span class='copy'> 
+&copy;
+2011
+TripShare
+</span> 
+<a href="/about_us">About us</a>
+<small class="divider">·</small>
+<a href="/iphone">iPhone</a>
+<small class="divider">·</small>
+<a href="/jobs">Jobs</a>
+<small class="divider">·</small>
+<a href="/about/terms">Terms</a>
+<small class="divider">·</small>
+<a href="/about/privacy">Privacy</a>
+<small class="divider">·</small>
+<a href="http://twitter.com/TripShare">Twitter</a>
+<small class="divider">·</small>
+<a href="http://www.facebook.com/pages/TripShare/191851192979">Facebook</a>
+</div> 
+</div> 
+<div id='footer-repeat'></div> 
+</div> 
+ 
+ 
+    
+  </body> 
+</html>

@@ -1,0 +1,78 @@
+
+<li class="clearfix" id="db-following-tabs">
+<ul class="bbox-tabs four" id="tabs">
+<li id="newtrips-tab" class="on">
+<a href="#" onclick="set_section('newtrips', '/newtrips'); return false;"><strong>Newest Trip</strong><span>Following 0</span></a>
+</li>
+<li id="hottrips-tab" >
+<a href="#" onclick="set_section('hottrips', '/hottrips'); return false;"><strong>Hottest Trip</strong><span>Following 0</span></a>
+</li>
+<li id="endtrips-tab" >
+<a href="#" onclick="set_section('endtrips', '/endtrips'); return false;"><strong>Ended Trip</strong><span>Following 0</span></a>
+</li>
+</ul>
+
+</li>
+
+
+<li id="following_items">
+	<ul class="latest_trip" id="latest_trip">
+{% for trip in latest_trip_ids %} 
+<li class="show_trips" id="{{trip['trip_id']}}">
+<div class="item hproduct">
+<div class="sighting-box clearfix">
+<h2>Trip: <a href="/trip/{{trip['slug']}}">{{trip['title']}}</a></h2>
+
+<ul>
+  <li ><b>Owner</b>: {{trip['owner_id']}}</li>
+  <li >Start: {{trip['start_place']}}</li>
+  <li >Destination: {{trip['dest_place']}}</li>
+  <li >Description: {{trip['description']}}</li>
+</ul>
+
+
+<div class="last_sighting">
+Last updated by
+<a href="/{{trip['last_updated_by']['slug']}}">{{trip['last_updated_by']['username']}}</a>
+</div>
+
+<div class="action-bar">
+<div class="actions">
+<div class="sighting-admin-actions">
+</div>
+<div class="right">
+<strong>More:</strong>
+{% if not current_user %}
+<button class="l_subscribe fancy" id="subscribe_trip" sid="no" ><b>Join</b> {{trip['title']}}</button>
+
+{% else %}
+{% if trip['check_join'] == False %}
+<button class="l_subscribe fancy" id="subscribe_trip" sid={{trip['trip_id']}}><b>Join</b> {{trip['title']}}</button>
+{% else %}
+<a class="l_unsubscribe" sid={{trip['trip_id']}} scode="" href="#" style="font-weight:bold">Leave the trip</a> /
+{% end %}
+{% end %}
+<a href="/items/149-shack-burger">like this</a> / 
+<a href="/places/246-shake-shack-new-york">at this place</a>
+</div>
+
+
+<div class="members">
+<span class="label">Members are...</span>
+{% for member in trip['members'] %} 
+  <a href={{member['slug']}} class = "avatar"><img alt="Small_thumb" src={{member['picture']}}></a>
+{% end %}
+
+</div>
+
+</div>
+</li>
+
+{% end %}
+
+<li class="more" id="following-more">
+<a href="#" onclick="$(this).update('Loading...'); new Ajax.Request('/dashboard?list=people&page=2', {asynchronous:true, evalScripts:true, method:'get'}); return false;">More...</a>
+</li>
+
+</ul>
+</li>

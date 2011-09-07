@@ -1,0 +1,402 @@
+<!DOCTYPE html 	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:fb='http://www.facebook.com/2008/fbml' class="index"> 
+<head> 
+ 
+<!-- comet chat --> 
+
+ 
+<title>MTGTrade</title> 
+<div id="header">
+<table>
+<tbody>
+<tr>
+<td class="logo"><a href="/"><img src="http://www.wizards.com/Magic/Assets/magic_logo.gif" alt="MTGTrade1"></a></td>
+<td>
+<table>
+<tbody>
+<tr>
+<td>
+<div class="Search"> 
+<form action="/search" method="get" id="searchform">
+<input type="text" size="25" name="search_term" value="Search cards..." onblur="if (value == '') {value = 'Search cards...';}" onfocus="if(value == 'Search cards...') {value = '';}" class="textbox" />
+<input type="submit" id="searchbox" value="Search" style="font-size:15px"/>
+</form>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<style type="text/css">
+table.oneclickicons td {line-height:0; padding-right:7px;}
+</style>
+
+
+<style type="text/css">
+#container.nosidebar {
+width: 960px;
+width: auto !important;
+max-width: 960px;
+margin-top: 50px;
+}
+.form .label {
+white-space: nowrap;
+}
+#page .box-body {
+height: 700px;
+height: auto !important;
+min-height: 575px;
+}
+#page h1,
+#page h2 {
+font-size: 20px;
+margin-bottom: 8px;
+}
+#page h2,
+#page table.oneclickicons {
+margin-bottom: 8px;
+}
+#page .rhs {
+float: right;
+display: inline;
+padding-left: 20px;
+border-left: 1px solid #eee;
+width: 270px;
+}
+#page .lhs {
+margin-right: 320px;
+}
+#page .rhs .oneclick {
+margin-bottom: 35px;
+}
+#page .login {
+background-color: #d1e2f6;
+padding: 15px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+table.tourtabs {
+margin-left: 100px;
+width: 70%;
+}
+table.tourtabs td {
+line-height:0;
+white-space: nowrap;
+background: #eee;
+border-top: 1px solid white;
+border-bottom: 1px solid #d6d6d6;
+}
+table.tourtabs td.tourtab {
+padding: 3px;
+padding-left: 8px;
+padding-right: 8px;
+}
+table.tourtabs td.tourtab.selected {
+border: 1px solid #d6d6d6;
+border-bottom-color: white;
+background: white;
+}
+table.tourtabs td.tourtab.selected a {
+color: black;
+font-weight: bold;
+text-decoration: none;
+}
+.tourcontent {
+
+margin-top: 15px;
+}
+.tourcontent,
+.tourcontent td,
+.tourcontent td h3 {
+
+margin-left: 100px;
+font-size: 15px;
+}
+.tourcontent td h3 {
+
+margin-bottom: 2px;
+}
+table.screenshots {
+
+margin-bottom: 20px;
+}
+.screenshots td {
+
+vertical-align: top;
+padding-bottom: 15px;
+}
+.screenshots td.image {
+
+line-height: 0;
+padding-right: 125px;
+}
+.screenshots td.image img {
+width: 204px;
+height: 116px;
+}
+.snippet {
+font-size: 13px;
+color: #666;
+}
+.bigscreenshot .snippet {
+margin-bottom: 13px;
+}
+.legal {
+margin-top: 2em;
+color: #737373;
+font-size: 13px;
+}
+.legal a {
+color: #7777cc;
+}
+</style>
+
+
+</head>
+
+<body>
+
+ 
+<div id="container" class="nosidebar">
+
+
+
+<div class="box white" id="page">
+
+<div class="box-top default-bar">
+<div class="box-corner"></div>
+<div class="box-spacer"></div>
+</div>
+
+<div class="box-body">
+
+<div class="rhs">
+<div class="oneclick">
+ <p>{{greeting}}</p>
+ <p>{{userprofile.nickname}}</p>
+ 
+
+ <p>{{show_info}}</p>					
+			<div id="login" style=""> 
+				<form method='post'> 
+					<input type="hidden" name="task" value="dologin"> 
+					<ul class="form-list inputs"> 
+						<li class="email"><input type="text" value="Email" maxlength="100" name="email" class="text has-default-text" value="Email" /></li> 
+						<li class="password"><input type="password" value="Password" maxlength="100" name="password" class="text has-default-text" value="" /></li> 
+						<li><input type="submit" value="LOGIN" class="button"></li> 
+					</ul> 
+					
+					<ul class="notes"> 
+						<li class="remember"><input type="checkbox" id="rememberme" value="1" name="persistent" class="checkbox"> Keep me logged in</li> 
+						<li class="forgot"><a href="lostpass.php">Forgot your password?</a></li> 
+					</ul> 
+					
+					<ul class="facebook"> 
+						<li>Have a facebook account?</li> 
+						<li> 
+							  
+<!--<div>--> 
+  <a href="javascript:void(0)" class="openidconnect_facebook_login_button"> 
+  <img id="fb_login_image" src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" alt="Facebook Connect" border="0" /> 
+  </a> 
+<!--</div>--> 
+</div>
+</div>
+</div>
+<div class="lhs">
+
+<div>
+<table class="tourtabs">
+<tbody><tr>
+<td style="padding-right:10px"></td>
+<td class="tourtab selected"><a href="#" class="l_tourtab" tid="why">My Cards</a></td>
+<td>&nbsp; &nbsp;</td>
+<td class="tourtab"><a href="#" class="l_tourtab" tid="who">What can you use it for?</a></td>
+<td>&nbsp; &nbsp;</td>
+<td class="tourtab"><a href="#" class="l_tourtab" tid="how">Deck Analysis</a></td>
+
+<td style="width:100%"></td>
+</tr>
+</tbody></table>
+</div>
+<div class="tourcontent" id="tourwhy">
+<div style="margin-bottom:10px">FriendFeed enables you to discover and discuss the interesting stuff your friends find on the web.</div>
+<table class="bigscreenshot">
+<tbody><tr>
+<td style="vertical-align:top"><a href="#" class="l_introvideo"><img src="/static/images/nano-small-screenshot.jpg?v=1f02" style="width:336px;height:363px" alt="Screenshot"></a></td>
+<td style="vertical-align:top; padding-top:10px; padding-left:20px">
+<div style="margin-bottom:10px"><button class="fancy l_introvideo" style="font-weight:bold; padding-left:6px"><span style="padding-left:18px; background:url('/static/images/play-white.png?v=5882') no-repeat left center">Watch a video!</span></button></div>
+<h3>It's simple</h3>
+<div class="snippet">It takes just a couple clicks to post anything or to start a discussion.</div>
+
+<h3>It’s conversational</h3>
+<div class="snippet">Your friends comment on the things you share, and you see their comments in real-time. So talk with your friends, not at them.</div>
+<h3>It’s open</h3>
+<div class="snippet">Read and share however you want — from your email, your phone or even from Facebook. Publish your FriendFeed to your website or blog, or to services you already use, like Twitter.</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="tourcontent" id="tourwho" style="display:none">
+<table class="screenshots">
+<tbody><tr>
+
+<td class="image"><a href="#" class="l_introvideo"><img alt="Screenshot" src="/static/images/nano-family.png?v=0369"></a></td>
+<td class="text">
+<h3>Sharing with family</h3>
+<div class="snippet">Create a group and use it as a family mailing list. It’s an easy way to plan trips, share baby photos, and post funny YouTube videos.</div>
+</td>
+</tr>
+<tr>
+<td class="image"><a href="#" class="l_introvideo"><img alt="Screenshot" src="/static/images/nano-work.png?v=5bf0"></a></td>
+<td class="text">
+<h3>Sharing with co-workers</h3>
+<div class="snippet">Create a private group for your company or colleagues to collaborate on a research paper, coordinate an upcoming event, or give status updates on the TPS reports.</div>
+</td>
+</tr>
+
+<tr>
+<td class="image"><a href="#" class="l_introvideo"><img alt="Screenshot" src="/static/images/nano-boredom.png?v=e347"></a></td>
+<td class="text">
+<h3>Banishing boredom from your life</h3>
+<div class="snippet">There’s no end to the cool stuff on the internet. Find it on FriendFeed. Discuss it on FriendFeed. Look up, and it’s two hours later. Just don’t forget to eat.</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="tourcontent" id="tourhow" style="display:none">
+<table class="screenshots">
+<tbody><tr>
+<td class="text">
+<div>"Four software designers who were instrumental in the creation of Google's popular e-mail and mapping services have founded a new company with the intent of making it easy for people to find out what Web material their friends are enjoying." - New York Times (John Markoff)</div>
+
+</td>
+</tr>
+<tr>
+<td class="text">
+<div>"FriendFeed is launching the most intuitive interface I’ve seen yet for sharing information with your friends." - VentureBeat (Eric Eldon)</div>
+</td>
+</tr>
+<tr>
+<td class="text">
+<div>"Attention, attention: The latest tech darling has arrived, and it goes by the name of FriendFeed." - BusinessWeek (Heather Green)</div>
+</td>
+
+</tr>
+<tr>
+<td class="text">
+<div>"Unlike competitors, FriendFeed's simple approach may be the way to win." - TechCrunch (Michael Arrington)</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+ 
+<script type="text/javascript"> 
+openidconnect_register_facebook_login_button('http://bemodel.com/login_openid.php?openidservice=facebook');
+</script>						
+</li> 
+					</ul> 
+				</form> 
+			</div> 
+ 
+			<div style="display:none" id="signup"> 
+				
+				<div class="facebook"> 
+					Sign up with Facebook
+					<a class="openidconnect_facebook_login_button" href="/signup_external.php?mode=facebook"> 
+						<img border="0" alt="Facebook Connect" src="http://static.ak.fbcdn.net/images/fbconnect/login-buttons/connect_light_medium_long.gif" id="fb_login_image"> 
+					</a> 
+				</div> 
+ 
+				<form method='post'> 
+					<input type="hidden" name="task" value="dosignup"> 
+					<ul class="form-list"> 
+						<li><label>Username</label><input class="text" type="text" name="signup_username" value="" /></li> 
+						<li><label>First Name</label><input class="text" type="text" name="signup_firstname" value="" /></li> 
+						<li><label>Last Name</label><input class="text" type="text" name="signup_lastname" value="" /></li> 
+						<li><label>Your Email</label><input class="text" type="text" name="signup_email_1" value="" /></li> 
+						<li><label>Verify Email</label><input class="text" type="text" name="signup_email_2" value="" /></li> 
+						<li><label>Password</label><input class="text" type="password" name="signup_password" value="" /></li> 
+						
+						
+						<li> 
+							<label></label> 
+							<input type="submit" value="SIGN UP" class="button submitButton"> 
+						</li> 
+					</ul> 
+				</form> 
+			</div> 
+		
+	
+	</script> 
+ 
+ 
+</script>
+<!-- <script src="http://static.ak.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script> --> 
+<script src="/include/js/FeatureLoader.js" type="text/javascript"></script> 
+ 
+<script type="text/javascript"> 
+  var openidconnect_primary_network = 'facebook';
+ 
+  var openidconnect_facebook_api_key = "8cde2f8484207e1e1ec344486873653a";
+  var openidconnect_facebook_user_id = "0";
+</script> 
+ 
+<div id="openidconnect_autologin_prompt" style="display:none"> 
+ 
+  <div id='form_div'> 
+ 
+    <div style="border-bottom: 1px solid #DDD; margin-bottom: 10px; padding-bottom: 5px;"> 
+      <img style="float:left; padding-right: 5px; width: 16px" src="./images/brands/logo_facebook_mini.gif"> &nbsp; <span style="font-size: 14px">Login via Facebook?</span> 
+    </div> 
+    
+    <br/> 
+ 
+ 
+    <div style="position: relative; text-align: center"> 
+    
+      <div style="margin: 0px auto;width: 500px"> 
+        You are currently logged in to Facebook. Would you like to autologin to the network?      </div> 
+ 
+    </div> 
+ 
+    <br/> 
+    <br/> 
+      
+      <table cellpadding='0' cellspacing='0' style="margin: 0px auto"> 
+      <tr> 
+      <td><input type='submit' style="width: 150px" class='button openidconnect_autologin_prompt_confirmed' onclick="openidconnect_autologin_confirmed()" value='Autologin'>&nbsp;&nbsp;</td> 
+      <td style="padding-left: 10px"> or <a class="openidconnect_autologin_prompt_cancel"  href="javascript:void(0)" onclick="openidconnect_autologin_cancel()">Cancel</a>&nbsp;&nbsp;</td> 
+      </tr> 
+      <tr> 
+      <td> 
+ 
+        <input class="openidconnect_autologin_remember" type='checkbox' style="vertical-align:middle">&nbsp;&nbsp;<label for='openidconnect_autologin_remember' style="vertical-align:middle">Remember my choice</label> 
+ 
+      </td> 
+      <td> &nbsp; </td> 
+      </tr> 
+      </table> 
+ 
+    <br/> 
+ 
+  </div> 
+  
+</div> 
+	
+
+
+
+
+	
+</body>
+</html>
+  

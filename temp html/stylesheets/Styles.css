@@ -1,0 +1,1917 @@
+
+
+@import url('Rounded.css');
+@import url('Inputs.css');
+@import url('Background.css');
+
+/* Element Style Modifications */
+/* ----------------------------------------------- */
+html {
+    font-family: Trebuchet MS;
+}
+
+body {
+    font-family: Trebuchet MS;
+    background-color: #dcd9c8;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+input { 
+    font-family: Trebuchet MS;
+}
+
+textarea {
+    font-family: Trebuchet MS;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color:Blue;
+}
+
+h2 {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #000000;
+}
+
+h3 {
+    font-size: .9em;
+    font-weight: bold;
+    color: #000000;
+}
+
+p, li {
+    color: #000000;
+}
+
+/* Specific Class Styles */
+/* ----------------------------------------------- */
+.cardViewContainer { 
+    padding: 10px 0px 10px 0px;
+}
+
+.centeredPaddedContent {
+    padding: 0px 10px 0px 10px;
+}
+
+.optionsContainer {
+    min-width:108px;
+    position: absolute;
+    margin-left:2px;
+    z-index: 200;
+    height:300px;   
+    background-color:Transparent;
+}
+
+.centeredLoginBox {
+    width: 300px;
+    margin: 0 auto;
+    padding-top:20px;
+}
+
+* html .centeredLoginBox {
+    margin-left: 200px;
+}
+
+.centeredFormBoxes {
+    width: 500px; 
+    margin: 0 auto; 
+    padding-top: 20px;
+}
+
+* html .centeredFormBoxes {
+    margin-left: 100px;
+}
+
+.signInLinks {
+    font-size:.85em;
+    padding-left:15px;
+}
+
+.formLabelSmall {
+    float:left;
+    width:75px;
+    position:relative;
+    text-align:right;
+    padding-right:5px;
+}
+
+.formLabelMedium {
+    float: left; 
+    width: 100px;
+    position:relative;
+    text-align:right;
+    padding-right:5px;
+}
+
+.formLabel {
+    float: left; 
+    width: 125px;
+    position:relative;
+    text-align:right;
+    padding-right:5px;
+}
+
+.formLabelLarge {
+    float: left; 
+    width: 225px;
+    position:relative;
+    text-align:right;
+    padding-right:5px;
+}
+
+.languageLabelLeft {
+    float: left; 
+    width: 225px;
+    position:relative;
+    padding-right:5px;
+}
+
+.formValue {
+    float:left;
+    position:relative;
+}
+
+.formValue .signInLinks {
+    color:Blue;
+}
+
+.pagingControls {
+    font-weight:bold;
+    padding-left:10px;
+    font-size:.7em;
+    line-height:17px;
+}
+
+.pagingControls a {
+    padding: 0px 3px 0px 3px;
+}
+
+.advancedSearchLeft {
+    margin-left: 10px; 
+    width: 420px; 
+}
+
+* html .advancedSearchLeft {
+    width: 410px; 
+    position:relative;
+}
+
+.advancedSearchRight {
+    float: right; 
+    width: 250px; 
+    margin-right: 10px;
+    position:relative;
+}
+
+.advancedSearchRight .loadlast {
+    background: url( '../Images/load_last.gif' ) no-repeat 0px 2px;
+    background-repeat: no-repeat;
+    padding-left:15px;
+    height:11px;
+    line-height:15px;
+    margin-right:10px;
+}
+
+.advancedSearchRight a.deleteall {
+    color:Red;
+}
+
+.advancedSearchRight .deleteall {
+    background: url( '../Images/delete_all.gif' ) no-repeat 0px 4px;
+    font-size:larger;
+    font-weight:bold;
+    padding-left:15px;
+    height:11px;
+    line-height:15px;
+    color:Red;
+}
+.advancedSearchRight a.filterSubmit {
+    font-size:x-large;
+    padding-left:15px;
+    height:11px;
+    line-height:15px;
+}
+
+.visualspoiler {
+    margin: auto;
+    padding-top:2px;
+    width: 100%;
+    text-align: center;
+}
+
+.smalldate {
+    font-size: 1em;
+    font-weight: bold;
+}
+.indicator {
+    float: left;
+}
+
+.contentstuff p {
+    padding-left: 10px;
+}
+
+.layouttable {
+    border: 0px;
+    padding: 0px;
+}
+
+.layouttable td {
+    width: 223px;
+    vertical-align: top;
+}
+
+.red {
+    color: Red;
+}
+
+.blue {
+    color: Blue;
+}
+
+.green {
+    color: Green;
+}
+
+.text {
+    font-size: .8em;
+}
+
+.label {
+    float: left;
+    width: 100px;
+    font-weight: bold;
+    position:relative;
+    text-align:right;
+    padding-right:5px;
+}
+
+.runningTotal {
+    border: 1px dotted black;
+    float: right;
+    width: 250px;
+}
+
+fieldset {
+    padding: 0px;
+}
+
+.section {
+}
+
+.section legend {
+    margin-left: 10px;
+}
+
+.section .rowA {
+    padding: 1px 8px;
+}
+
+.section .odd {
+    background-color: #f2f2f2;
+}
+
+.section .rowA .value {
+    margin-left: 125px;
+    vertical-align: middle;
+}
+
+.section .rowA .value .collapsedNode {
+    font-size: 0.7em;
+}
+
+.section .rowA .value a.collapsedNode {
+    text-decoration: none;
+    color: #0000ff;
+}
+
+.section .rowA .value a:hover.collapsedNode {
+    text-decoration: underline;
+    color: #0000ff;
+}
+
+.section .rowA .value .expandedNode {
+    font-size: 0.7em;
+}
+
+.section .textentry {
+    font-size: 0.8em;
+    width: 140px;
+}
+
+.combobox {
+    font-size: 0.8em;
+    width: 144px;
+}
+
+.specialized li {
+    font-size: 0.9em;
+}
+
+.opts li {
+    text-align: right;
+}
+
+.runningTotal {
+    padding: 8px;
+}
+
+.filters 
+{
+    font-size: 0.9em;
+    text-align:left;
+    width:698px;
+    margin-bottom:5px;
+}
+
+.filterControls {
+    text-align:center;
+}
+.filterList 
+{
+    width:698px;
+}
+
+.filters ul {
+    margin: 0px;
+    padding-left: 12px;
+    text-align: left;
+}
+
+.filters li {
+    list-style: none;
+}
+
+a.remove {
+    text-decoration: none;
+    color: #ff0000;
+}
+
+a:hover.remove {
+    text-decoration: underline;
+    color: #ff0000;
+}
+
+.submitFilters {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section .numerical {
+    width: 90px;
+}
+
+.sortField {
+    background-color: #cfcfcf;
+}
+
+.mainContainer {
+    width: 750px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.leftContainer {
+    float: left;
+}
+
+.rightContainer {
+    float: left;
+    position:relative;
+}
+
+.topBanner {
+    width: 750px;
+    height: 100px;
+    text-align: center;
+}
+
+.topBanner img {
+    border:none;
+}
+
+.topBanner iframe {
+    padding: 0px;
+    margin: 0px;
+    width: 728px;
+    height: 90px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+}
+
+.rightBanner {
+    max-width: 160px;
+}
+
+.rightBanner img {
+    border:none;
+}
+
+.rightBanner iframe {
+    padding: 0px;
+    margin: 0px;
+    width: 160px;
+    height: 600px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+}
+
+.defaultlist {
+    font-size: .8em;
+}
+
+.defaultlist a {
+    text-decoration: none;
+    color: Blue;
+}
+
+.defaultlist a:hover {
+    text-decoration: underline;
+}
+
+.defaultlist .selected a {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.defaultlist li {
+    list-style: none;
+    background-image: url( '../images/symbols/swamp_small.gif' );
+    background-repeat: no-repeat;
+    background-position: left 3px;
+    padding-left: 12px;
+}
+
+.clear {
+    clear: both;
+}
+
+div.clear {
+    font-size:1px;
+    height: 1px;
+}
+
+.logo {
+    height: 104px;
+    width: 212px;
+    float: left;
+    margin-right: 10px;
+}
+
+.logo a.magic {
+    display: block;
+    width: 209px;
+    height: 60px;
+    background: url( '../Resources/Default/MagicLogoGatherer.gif' ) top left no-repeat;
+}
+
+.logo a.magic:hover {
+    background: url( '../Resources/Default/MagicLogoGatherer.gif' ) -209px 0px no-repeat;
+}
+
+.logo a.cardDatabase {
+    display: block;
+    width: 209px;
+    height: 44px;
+    background: url( '../Resources/Default/GathererLogo.gif' ) top left no-repeat;
+}
+
+.logo a.cardDatabase:hover {
+    background: url( '../Resources/Default/GathererLogo.gif' ) -209px 0px no-repeat;
+}
+
+.autoCompleteTitle {
+    font-size: .9em;
+    height: 14px;
+    line-height: 14px;
+    font-weight: bold;
+    padding-left: 4px;
+}
+
+.autoCompleteAllResults {   
+    font-size:.7em;
+    font-weight:bold;
+    color:Blue;
+}
+
+.cardresults {
+    margin-top: 1px;
+}
+
+.cardlink {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: .7em;
+    color: Blue;
+    text-decoration: none;
+    line-height: 1.2;
+    background-color: #ffffff;
+}
+
+a.cardlink {
+    text-decoration: none;
+}
+
+.cardlink:hover {
+    background-color: #ffffaf;
+    text-decoration: none;
+}
+
+.cardlinkhover {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: .7em;
+    color: Blue;
+    text-decoration: none;
+    line-height: 1.2;
+    background-color: #ffffaf;
+}
+
+.cardlinkhover:hover {
+    text-decoration:none;
+}
+
+.cardlink:visited {
+    color: Blue;
+}
+
+.carddescript {
+    font-size: .9em;
+    font-weight: normal;
+    color: Black;
+}
+
+.cardlinkodd {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    font-size: .7em;
+    color: Blue;
+    text-decoration: none;
+    line-height: 1.2;
+    background-color: #f2f2f2;
+}
+
+.cardlinkodd:hover {
+    background-color: #ffffaf;
+}
+
+.gathererContent {
+    min-height: 675px;
+    height: auto !important;
+    height: 675px;
+    background-image: url( '../images/magic_symbols.gif' );
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-color: #ffffff;
+    width: 700px;
+}
+
+.footer {
+    font-size: .7em;
+    text-align: center;
+    width: 750px;
+    line-height:1.7em;
+}
+
+.footer a {
+    color: Blue;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer a:visited {
+    color: Blue;
+}
+
+.searchcontrols {
+    margin-left: 35px;
+}
+
+.searchcontrollinks {
+    margin-left: 35px;
+}
+
+.searchcontrollinks a {
+    color: Blue;
+    margin-right: 10px;
+    font-size: .7em;
+    text-decoration: none;
+}
+
+.searchcontrollinks .current {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.searchcontrollinks a:hover {
+    text-decoration: underline;
+}
+
+.searchcontrollinks a:visited {
+    color: Blue;
+}
+
+.searchboxcontainertop {
+    float: left;
+    margin-top: 5px;
+    width: 385px;
+    height: 24px;
+}
+
+.searchboxcontainer {
+    float: left;
+    margin-top: 5px;
+    width: 385px;
+    height: 24px;
+}
+
+.searchbutton {
+    font-size: .9em;
+    float: left;
+    margin-top: 3px;
+}
+
+.searchresultscontainertop {
+    position: absolute;
+    width: 380px;
+    z-index: 300;
+    margin-left: 187px;
+    margin-top: -53px;
+    display: none;
+}
+
+.searchresultscontainer {
+    position: absolute;
+    width: 380px;
+    z-index: 300;
+    display: none;
+}
+
+.artcontainer {
+}
+
+.artimage {
+    float: left;
+}
+
+.artimage img {
+    border: none;
+    padding: 5px;
+}
+
+.artdescription {
+    float: left;
+}
+
+.searchsettingsdisplaytop {
+    position: absolute;
+    width: 75px;
+    margin-left: 574px;
+    margin-top: -53px;
+}
+    
+.intermediateSearchControlsContainer {
+    padding-top:5px;
+}
+
+.searchsettingsdisplay {
+    position: absolute;
+    width: 75px;
+    margin-left: 386px;
+    margin-top: 0px;
+}
+
+.intermediatesearchsettingsdisplay  
+{
+    position:absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 625px;
+}
+
+.intermediatesearchsection
+{
+    display: block;
+    height:150px;
+    min-height:150px;
+    border-right:1px dotted #898989;
+    float: left;    
+    margin:0px 10px 0px 0px;
+}
+
+.intermediatesearchsection p
+{
+    margin:0px;
+    padding:0px 0px 0px 6px;
+}
+
+p.intermediatesearchsection
+{
+    width: auto;    
+    margin:0px;
+}
+
+.frontpagemessages 
+{
+    padding-top:250px;
+    clear:both;
+}
+
+.frontpagemessages a {
+    color:Blue;
+}
+
+.preconfiguredsearches
+{   
+    position:relative;
+    left: 35px;
+    font-size: 0.8em;   
+}
+
+.preconfiguredsearches ul {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.preconfiguredsearches ul li {
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top:0px;
+    padding-bottom:0px;
+    line-height:20px;
+}
+
+.preconfiguredsearches a {
+    color:Blue;
+}
+
+.intermediatesearchsection b { 
+    font-size: 1.1em; 
+}
+
+.intermediatesearchsection.wide.right select {
+    width:150px;
+    margin:2px 0px 0px 4px;
+    font-family:Trebuchet MS;
+    font-size:1em;
+    height:20px;
+}
+
+.intermediatesearchsection.wide.right {
+    border:none;
+    height:auto;
+}
+
+.intermediatesearchsection.wide.right p {
+    margin-bottom:3px;
+}
+
+.smallGreyBorder.frontPageFeedback {
+    position:relative;
+    width:90%; 
+    margin-top:25px; 
+    left:35px; 
+}
+
+.boxCloseLink {
+    float: right; 
+    font-weight: bold; 
+    padding-right: 6px; 
+    position: relative;
+    margin-top: -20px;
+}
+
+ul.horizontal
+{
+    width: 240px;   
+}
+
+.intermediatesearchsection li
+{
+    margin-left: 10px;  
+}
+
+ul.horizontal li
+{
+    float: left;
+    width: 40px;
+    margin-left: 5px;
+}
+
+ul.horizontal li.first-item { margin-left: 10px; }
+.searchsettings {
+    font-size: 0.7em;
+}
+
+.searchsettings a {
+    color: Blue;
+    font-size: .8em;
+}
+
+.searchsettings ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.searchsettings li {
+    list-style: none;
+}
+
+.opts {
+    padding: 0px;
+    margin: 0px;
+}
+
+.opts li {
+    list-style: none;
+}
+
+.contentcontainer {
+    width: 100%;
+    padding-top: 10px;
+    clear: both;
+}
+
+.contentlinkswrapper {
+    position: relative;
+    right: -4px;
+}
+
+.contentlinks {
+    font-size: .9em;
+    font-weight: bold;
+    list-style: none;
+    padding-top: 0px;
+    margin: 0px;
+    line-height: 1.6;   
+}
+
+.contentlinks li {
+    height: 28px;
+    float: right;
+}
+
+.contentlinks a {
+    float: left;
+    color: #525252;
+    text-decoration: none;
+    height: 28px;
+    display: block;
+    padding-left: 10px;
+    background-image: url( '../images/content_link_left.gif' );
+    background-repeat: no-repeat;
+}
+
+.contentlinks a span {
+    float: left;
+    cursor: pointer;
+    height: 28px;
+    display: block;
+    padding-right: 10px;
+    background-image: url( '../images/content_link_right.gif' );
+    background-position: right;
+    background-repeat: no-repeat;
+    color: #525252;
+}
+
+.contentlinks .current a {
+    float: left;
+    color: #525252;
+    text-decoration: none;
+    height: 28px;
+    display: block;
+    padding-left: 10px;
+    background-image: url( '../images/content_link_selected_left.gif' );
+    background-repeat: no-repeat;
+}
+
+.contentlinks .current a span {
+    float: left;
+    cursor: pointer;
+    height: 28px;
+    display: block;
+    padding-right: 10px;
+    background-image: url( '../images/content_link_selected_right.gif' );
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.contentlinks a:hover {
+    float: left;
+    height: 28px;
+    display: block;
+    padding-left: 10px;
+    background-image: url( '../images/content_link_selected_left.gif' );
+    background-repeat: no-repeat;
+    text-decoration:none;
+}
+
+.contentlinks a:hover span {
+    float: left;
+    cursor: pointer;
+    float: left;
+    height: 28px;
+    display: block;
+    padding-right: 10px;
+    background-image: url( '../images/content_link_selected_right.gif' );
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.baseContentListRow {
+    display: block;
+    clear: both;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.baseContentListRowAlternate {
+    display: block;
+    clear: both;
+    background-color: #f2f2f2;
+    width:100%;
+}
+
+.baseContentListRow .cell {
+    float: left;
+    display: block;
+    background-color: #ffffff;
+}
+
+.baseContentListRowAlternate .cell {
+    float: left;
+    display: block;
+    background-color: #f2f2f2;
+}
+
+.form {
+    font-size: .8em;
+}
+
+.updated {
+    display: none;
+    background: url( '../images/checkmark_small.gif' ) no-repeat;
+    margin-left: 10px;
+    padding-left:25px;
+    float: left;
+    width: 500px;
+}
+
+.changes {
+    display: none;
+    background: url( '../images/Changes.gif' ) no-repeat;   
+    margin-left: 10px;
+    padding-left:15px;
+    float: left;
+    width: 500px;
+}
+
+.error {
+    display: none;
+    background: url( '../images/exclamation_small.gif' ) no-repeat;
+    margin-left: 10px;
+    padding-left:25px;
+    float: left;
+    width: 500px;
+}
+
+.message {
+    height: 22px;
+}
+
+.columnheader {
+    width: 100%;
+    height: 20px;
+    background-color: #f2f2f2;
+    font-size: .8em;
+    font-weight: bold;
+}
+
+.columnheader .item {
+    float: left;
+    text-align: center;
+}
+
+.columnheader a {
+    text-decoration: none;
+}
+
+.columnheader a:hover {
+    text-decoration: underline;
+}
+
+.columnheader a:visited {
+    color: Blue;
+}
+
+.expandedNode {
+    background-image: url( '../Images/minus_icon.jpg' );
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 15px;
+    font-size: .7em;
+    text-decoration:none;
+    color:Blue;
+}
+
+.expandedNode.empty:hover, .collapsedNode.empty:hover {
+    text-decoration:none;
+}
+
+.collapsedNode {
+    background-image: url( '../Images/plus_icon.jpg' );
+    background-position: left center;
+    background-repeat: no-repeat;
+    text-decoration:none;
+    padding-left: 15px;
+    font-size: .7em;
+    color:Blue;
+}
+
+.banner {
+    width: 100%;
+    height: 82px;
+    background-image: url( '../Images/banner_gradient.jpg' );
+    background-repeat: repeat-x;
+}
+
+.banner .leftSide {
+    width: 10%;
+    float: left;
+}
+
+.banner .wizardsLogo {
+    width: 132px;
+    height: 82px;
+    float: left;
+    background-image: url( '../Images/wizards_logo.jpg' );
+    background-repeat: no-repeat;
+}
+
+.banner .wizardsLogo a {
+    display: block;
+    width: 132px;
+    height: 82px;
+}
+
+.starRating .textRating {
+    font-size: .7em;
+    padding-left: 5px;
+}
+
+.starRating a {
+    font-size: .8em;
+    text-decoration: none;
+    color:Blue;
+}
+
+.starRating a:hover {
+    text-decoration: underline;
+}
+
+.starRating a:visited {
+    color: #0000ff;
+}
+
+.starRating span {
+    font-weight: bold;
+}
+
+.starRating img {
+    border: none;
+}
+
+.overallPlayerRating {
+    padding-top: 10px;
+    background-color: #fff;
+    float: left;
+    width: 430px;
+    text-align: center;
+}
+
+.smallImage {
+    float: left;
+    padding: 10px;
+}
+
+.overallPlayerRating .playerRatingWrapper {
+    float: left;
+    padding: 5px;
+    width: 100%;
+}
+
+.overallPlayerRating .playerRatingTitle {
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    height: 25px;
+}
+
+.overallPlayerRating .ratingResult {
+    width: 20px;
+    height: 20px;
+}
+
+.ratingResult img, 
+.overallPlayerRating .ratingResult img {
+    border:none;
+}
+
+.overallPlayerRating .playerRatingSummary {
+    font-size: .8em;
+    margin-bottom: 5px;
+}
+
+.discussion {
+    padding: 0px 10px 0px 10px;
+}
+
+.discussion a {
+    text-decoration: none;
+}
+
+.discussion a:hover {
+    text-decoration: underline;
+}
+
+.discussion a:visited {
+    color: Blue;
+}
+
+.discussion .postForm {
+    padding: 5px;
+}
+
+.discussion .postForm .postDetails {
+    font-size: .9em;
+}
+
+.discussion .postForm .postDetails div {
+    float:left;
+    position:relative;
+}
+
+.discussion .postForm .postDetails .ratingPosted {
+    line-height:2.5em;
+}
+
+.discussion .postForm .postControls {
+    font-size: .8em;
+}
+
+.discussion .postForm .postControls a {
+    color:Blue;
+}
+
+.discussion .postForm textarea {
+    font-size: .7em;
+}
+
+.discussion .postForm .postMessage {
+    padding-top: 5px;
+}
+
+.discussion .postForm .postMessage img {
+    padding: 5px;
+    float: left;
+    position:relative;
+    border:none;
+}
+
+.discussion .postContainer {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.discussion .postContainer .title1 {
+    font-size: .9em;
+    height: 18px;
+    line-height: 1.4;
+    background-color: #b7b7b7;
+    font-weight: bold;
+    padding-left: 4px;
+}
+
+.discussion .pagingControls {
+    float: right;
+    font-size: .75em;
+    font-weight: bold;
+}
+
+.discussionPagingControlsBottom {
+    font-size: .75em;
+    font-weight: bold;
+    padding-left:10px;
+}
+
+.discussion .postContainer a:visited {
+    color: Blue;
+}
+
+.discussion .post {
+    font-size: .75em;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.discussion .post a.autoCard {
+    color: #f02121;
+}
+
+.discussion .postDetails .postedBy {
+    float: right;
+    font-size: .75em;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 250px;
+    position:relative;
+}
+
+.discussion .postDetails .postRating {
+    float: right;
+    padding-left: 5px;
+    padding-right: 5px;
+    position:relative;
+}
+
+.discussion .postDetails .postRatingLabel {
+    float: left;
+    font-size: 0.75em;
+    position:relative;
+}
+
+.discussion .postDetails .reportAbuse {
+    float: left;
+    font-size: 0.75em;
+    position:relative;
+}
+
+.artworkPrintingFormat table {
+    border:1px solid #737373;
+    width:680px;
+    margin-left:9px;
+}
+
+.artworkPrintingFormat a {
+    color:Blue;
+}
+
+.introtogatherer { 
+    float:left; 
+    position:relative; 
+    width:470px; 
+    height:90px;
+}
+
+.introtogatherer .introheader {
+    font-weight: bold; font-size: 14px;
+}
+
+.introtogatherer p {
+    font-size: 12px;
+}
+
+.intermediateSearchManaSymbols {
+    margin:0px 0px 0px 10px;
+}
+
+.intermediateSearchManaSymbols img {
+    width: 17px;
+    height: 17px;
+}
+
+.intermediateSearchManaSymbols .SearchManaContainer {
+    float:left;
+    display:block;
+    height:17px;    
+    width:20%;
+    margin:0px 0px 5px 0px;
+}
+
+.notificationCloseLink {
+    float: right; 
+    font-weight: bold; 
+    padding-right: 6px; 
+    position: relative;
+    margin-top: -13px;
+}
+
+/* Search Results Alternating Display */
+/* ----------------------------------------------- */
+.cardList {
+    width: 698px;
+}
+
+.cardList .smallGreyBorderBottom {
+    width:689px;
+    margin-left:4px;
+}
+
+.contentcontainer .smallGreyBorderBottom {
+    width:689px;
+    margin-left:4px;
+}
+
+.textspoiler { 
+    font-size:.8em;
+}
+
+.textspoiler a {
+    color:Blue;
+}
+
+.cardList .controls {
+    font-size: .7em;
+    width:680px;
+}
+
+.cardList .controls a {
+    text-decoration: none;
+}
+
+.cardList .controls a:hover {
+    text-decoration: underline;
+}
+
+.cardList .nicknames {
+    padding-left: 5px;
+    width: 690px;
+    background-color: #ffffaf;
+}
+
+.cardList .switcher a,
+.cardList .switcher a:visited {
+    color: Blue;
+}
+
+.cardItem p 
+{
+    margin: 0px;
+    padding-bottom: 4px;
+}
+
+.cardList table.compact
+{
+    margin-top: 3px;
+    border-bottom: 1px solid #999;
+}
+.cardList table.checklist
+{
+    margin-top: 3px;
+    border-bottom: 1px solid #999;
+    width: 698px;
+}
+
+.sorter {
+    float: left;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.sorter a {
+    font-size: .9em;
+}
+
+.sorter .refineSearchLink {
+    font-size: 1em;
+}
+
+.cardList .switcher {
+    float: right;
+    padding: 5px;
+}
+
+.cardList .switcher a {
+    display:block;
+}
+
+.spoilersortcontrols {
+    text-align: left;
+}
+
+.cardItemTable {
+    width: 697px;
+    margin-top:2px;
+}
+
+.cardItem {
+    padding: 5px;
+    margin: 0;
+    /*min-height: 140px;*/ /* Commenting this out, not sure why it was here, causes problems where cardItem was used as a table row. */
+    font-size: .8em;
+}
+
+.cardItem div.clear 
+{
+    height: 6px;
+    font-size: 6px;
+}
+
+.cardItem .top {
+    vertical-align: top;
+}
+
+.cardItem .name {
+    width: 225px;
+    border-right: 1px solid grey;
+}
+
+.cardItem .name a {
+    color:Blue;
+}
+
+.cardItem .number,
+.cardItem .artist,
+.cardItem .color,
+.cardItem .rarity 
+{
+    border-right: 1px solid grey;
+}
+.cardItem .mana {
+    width: 90px;
+    border-right: 1px solid grey;
+}
+
+.cardItem .type {
+    width: 195px;
+    border-right: 1px solid grey;
+}
+
+.cardItem .rules {
+    width: 195px;
+    border-right: 1px solid grey;
+}
+
+.cardItem .numerical {
+    width: 10px;
+    border-right: 1px solid grey;
+}
+
+.cardItem .printings {
+    width: 155px;
+}
+
+.cardItem .fullWidth {
+    width: 200px;
+}
+
+.cardItem .fullWidth a {
+    color:Blue;
+}
+
+.cardItem .setVersions {
+    text-align: center;
+    display: block;
+}
+
+.evenItem {
+    background-color: #f2f2f2;
+}
+
+.newItem {
+    background-color: #ffffaf;
+}
+
+.cardItem .leftCol {
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+.cardItem .middleCol {
+    padding-left: 5px;
+    width: 470px;
+    vertical-align: top;
+}
+
+.cardItem .rightCol {
+    vertical-align: top;
+    width: 110px;
+}
+
+.cardItem .cardTitle {
+    font-weight: bold;
+}
+
+.cardItem .cardTitle a {
+    color:Blue;
+}
+
+/* Paging Controls */
+/* ----------------------------------------------- */
+.paging {
+    float: right;
+    color: #0000ff;
+}
+
+* html .paging {
+    margin-top:5px;
+}
+
+.paging a {
+    text-decoration: none;
+    color: #0000ff;
+    font-size: .8em;
+    font-weight: bold;
+}
+
+* html .paging a {
+    font-size:1.2em;
+}
+
+.paging a:hover {
+    text-decoration: underline;
+    color: #0000ff;
+}
+
+.paging span { 
+    padding:0px;
+}
+
+/* Card Details */
+/* ----------------------------------------------- */
+.headerRow {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: .9em;
+}
+
+.editlink {
+    font-size: 0.8em;
+}
+
+.cardDetails {
+    padding: 5px;
+    margin: 0;
+    width: 695px;
+}
+
+.cardDetails .leftCol {
+    vertical-align: top;
+    width: 230px;
+    padding: 2px;
+}
+
+.cardDetails .leftCol .variations {
+    float: left;
+    font-size: .7em;
+    font-weight: bold;
+    width: 205px;
+    text-align: center;
+}
+
+.variations a {
+    margin-left: 2px;
+    margin-right: 2px;
+    text-decoration: none;
+}
+
+.variations a:hover {
+    text-decoration: underline;
+}
+
+.cardDetails .leftCol .rotate {
+    float:right;
+    width: 13px;
+    height: 17px;
+    padding: none;
+}
+
+.cardDetails .leftCol .rotate a {
+    display: block;
+    height: 17px;
+    background-image: url( '../Images/rotate.gif' );
+    background-repeat: no-repeat;
+    width: 13px;
+}
+
+.cardDetails .leftCol .rotate a:hover {
+    display: block;
+    height: 17px;
+    background-image: url( '../Images/rotate_hover.gif' );
+    background-repeat: no-repeat;
+    width: 13px;
+}
+
+.cardDetails .leftCol .rotate img {
+    border: none;
+}
+
+.cardDetails .cardtextbox {
+    padding-bottom: 5px;
+}
+
+.cardDetails .rightCol a {
+    color: #0000ff;
+    text-decoration: none;
+}
+
+.cardDetails .rightCol a:hover {
+    color: #0000ff;
+    text-decoration: underline;
+}
+
+.cardDetails .rightCol {
+    vertical-align: top;
+    width: 450px;
+    padding: 5px;
+}
+
+.cardDetails .row {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+}
+
+.cardDetails .row .label {
+    font-weight: bold;
+    width: 120px;
+    font-size: .85em;
+    text-align:right;
+    position:relative;
+}
+
+.cardDetails .row .value {
+    margin-left: 125px;
+    font-size: .85em;
+}
+
+.cardDetails .row.evenItem {
+     background-color:#ececec; 
+}
+
+#cardUpdateSearch {
+    font-size: 0.8em;
+    padding: 5px;
+    text-align: center;
+}
+
+.imageContainer {
+    position: absolute;
+    width: 684px;
+    z-index: 20;
+    display: none;
+    min-height: 310px;
+}
+
+.imageContainer .imageHolder {
+    text-align: center;
+    height: 310px;
+}
+
+.imageContainer .close a {
+    display: block;
+    height: 17px;
+    background-image: url( '../Images/close.gif' );
+    background-repeat: no-repeat;
+    width: 13px;
+    position:relative;
+    left:655px;
+}
+
+.imageContainer .close a:hover {
+    display: block;
+    height: 17px;
+    background-image: url( '../Images/close_hover.gif' );
+    background-repeat: no-repeat;
+    width: 13px;
+}
+
+.imageContainer .variations {
+    text-align: center;
+    font-size: 0.7em;
+    font-weight: bold;
+    width: 215px;
+    text-align: center;
+}
+
+.imageContainer .rotate {
+    width: 13px;
+    height: 17px;
+    padding: none;
+    position:relative;
+    left:655px;
+}
+
+.imageContainer .rotate a {
+    display: block;
+    height: 17px;
+    background-image: url( '../Images/rotate.gif' );
+    background-repeat: no-repeat;
+    width: 13px;
+}
+
+.imageContainer .rotate a:hover {
+    display: block;
+    height: 17px;
+    background-image: url( '../Images/rotate_hover.gif' );
+    background-repeat: no-repeat;
+    width: 13px;
+}
+
+.imageContainer .rotate img {
+    border: none;
+}
+
+.grey {
+    color: #666666;
+}
+
+.otherSetSection {
+    border-top: 1px solid #585858;
+}
+
+.noOtherLanguagesParent {
+    font-size: .8em;
+}
+
+.cardImageHover {
+    display:block;
+    width:175px; 
+    height:243px;
+}
+
+.loginMessageArea {
+    min-height:20px;
+    vertical-align:20px;
+}
+
+.loginMessageArea img {
+    padding-right:5px;
+}
+
+.wizardsFooterSection {
+    background: url('../Images/Logos/WizardsLogo.png') no-repeat;
+    background-position: 135px center;
+}
+
+/* Advanced Search */
+/* ----------------------------------------------- */
+.advancedSearchTable {
+
+}
+
+.advancedSearchTable th {
+    font-size:1.1em;
+    font-weight:bold;
+    color:#424242;
+    padding-left:5px;
+    text-decoration:underline;
+    text-align:left;
+}
+
+.advancedSearchTable td {
+    height:23px;
+}
+
+.advancedSearchTable .controlCell {
+    padding-right:3px;
+    padding-top:2px;
+}
+
+.advancedSearchTable .controlCell select {
+    width:50px;
+}
+
+.advancedSearchTable .controlCellTextBox {
+    padding:3px 1px 0px 0px;
+}
+
+.advancedSearchTable .addButton {
+    width:50px;
+    height:26px;
+}
+
+.advancedSearchTable .label {
+    font-weight:bold; 
+    text-align:right; 
+    width:95px; 
+    padding-right:5px;
+    margin-top:2px;
+}
+
+.advancedSearchTable .label2 {
+    font-weight:bold; 
+    text-align:right; 
+    width:95px; 
+    padding-right:5px;
+    margin-top:2px;
+}
+
+.contentTitle {
+    float: left; 
+    font-size:1.2em; 
+    font-weight:bold; 
+    padding-left:2px;
+    height:20px;
+}
+
+.discussionLinks {
+    float: left; 
+    position:relative; 
+    padding-left: 5px; 
+    font-size:.7em;
+}
+
+.discussionLinks a {
+    color:Blue;
+}
+
+.advancedSearchOptionsLabel {
+    float:left; 
+    width:100px; 
+    text-align:right; 
+    padding-right:5px;
+}
+
+.advancedSearchOptionsSelect {
+    float:left; 
+    width:130px; 
+    font-family:Trebuchet MS;
+}
+
+/* Dynamic Auto Complete */
+/* ----------------------------------------------- */
+.dynamicAutoComplete {
+    position: absolute; 
+    width: 190px; 
+    z-index: 200;
+    display:none;
+    overflow-x:hidden;
+}
+
+.dynamicAutoCompleteContainer {
+    width:100%; 
+    max-height:200px; 
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+.dynamicAutoCompleteContainer a {
+    display:block;
+    font-size:.8em;
+    padding-left:2px;
+    height:20px;
+    overflow-x:hidden;
+    width:200px;
+}
+
+.dynamicAutoCompleteContainer a:hover {
+    text-decoration:none;
+    background-color: #ffffaf;
+}
+
+.dynamicAutoCompleteContainerHover {
+    text-decoration:none;
+    background-color: #ffffaf;
+}
+
+.discussionAdminOptions {
+    display: none; 
+    padding: 5px 5px 0px 5px;
+}
+
+.discussionAdminOptions table { 
+    float:left;
+}
+
+.discussionCardImage { 
+    float: left; 
+    padding-top: 9px; 
+    padding-bottom: 5px; 
+    padding-right: 5px;
+    position: relative;
+}
+
+/* Server Error */
+/* ----------------------------------------------- */
+.serverError {
+    width:600px;
+    padding-left:75px;
+    height:100px;
+    background: url('../Images/ErrorBig.gif') no-repeat;
+}
+.filterList .smallGreyBorderBottom
+{
+    width:684px;
+    padding-left:5px;
+}

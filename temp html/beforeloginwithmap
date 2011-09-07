@@ -1,0 +1,548 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+<title>TripShare</title> 
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="TripShare Search"/> 
+<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/310c/maps2.api/%7Bmod_stats,mod_api_gc,mod_drag,mod_ctrapi,mod_zoom%7D.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry"></script> 
+<link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
+<link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
+
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry"></script>
+
+<script type="text/javascript">
+	function initialize(){
+	
+		var _center = new google.maps.LatLng(34.3664951, -89.5192484);
+		
+		
+		var myOptions = {
+			zoom: 6,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			center: _center
+		}
+		map = new google.maps.Map(document.getElementById("map"), myOptions);
+		directionsDisplay.setMap(map);
+		infoWindow = new google.maps.InfoWindow();
+		setMarkers(map, user_images);
+		
+	}
+	
+	
+	var user_images = new Array();
+	user_images= document.getElementsByName("image_info");
+	
+	function setMarkers(map, user_images) {
+  
+      var image,shadow;
+	  var image_split;
+	  var image_url, image_title, image_startPlace, image_id;
+     
+    
+  var shape = {
+      coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+      type: 'poly'
+  };
+  for (var i = 0; i < user_images.length; i++) {
+      image_split = user_images.split(';');
+	  image_title = image_split[0];
+	  image_startPlace = image_split[1];
+	  image_url = image_split[2];
+	  image_id = image_split[3];
+	  
+	  image = new google.maps.MarkerImage(image_url,
+      new google.maps.Size(20, 32),    
+      new google.maps.Point(0,0),    
+      new google.maps.Point(0, 32));
+	  
+      shadow = new google.maps.MarkerImage('images/beachflag_shadow.png',
+      new google.maps.Size(37, 32),
+      new google.maps.Point(0,0),
+      new google.maps.Point(0, 32));
+	
+    var myLatLng = new google.maps.LatLng(image_startPlace);
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        shadow: shadow,
+        icon: image,
+        shape: shape,
+        title: image_title,
+        zIndex: image_id
+    });
+  }
+}
+</script>
+
+<style type="text/css"> 
+table.oneclickicons td {line-height:0; padding-right:7px;}
+</style> 
+
+<style type="text/css"> 
+#container.nosidebar {
+width: 960px;
+width: auto !important;
+max-width: 960px;
+}
+.form .label {
+white-space: nowrap;
+}
+#page .box-body {
+height: 700px;
+height: auto !important;
+min-height: 575px;
+}
+#page h1,
+#page h2 {
+font-size: 20px;
+}
+#page h2,
+#page table.oneclickicons {
+margin-bottom: 8px;
+}
+#page .rhs {
+float: right;
+display: inline;
+padding-left: 20px;
+border-left: 1px solid #eee;
+width: 270px;
+}
+#page .lhs {
+margin-right: 320px;
+}
+#page .rhs .oneclick {
+margin-bottom: 35px;
+}
+#page .login {
+background-color: #d1e2f6;
+padding: 15px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+table.tourtabs {
+width: 100%;
+}
+table.tourtabs td {
+white-space: nowrap;
+background: #eee;
+border-top: 1px solid white;
+border-bottom: 1px solid #d6d6d6;
+}
+table.tourtabs td.tourtab {
+padding: 3px;
+padding-left: 8px;
+padding-right: 8px;
+}
+table.tourtabs td.tourtab.selected {
+border: 1px solid #d6d6d6;
+border-bottom-color: white;
+background: white;
+}
+table.tourtabs td.tourtab.selected a {
+color: black;
+font-weight: bold;
+text-decoration: none;
+}
+.tourcontent {
+margin-left: 10px;
+margin-top: 15px;
+}
+.tourcontent,
+.tourcontent td,
+.tourcontent td h3 {
+font-size: 15px;
+}
+.tourcontent td h3 {
+margin-bottom: 2px;
+}
+table.screenshots {
+margin-bottom: 20px;
+}
+.screenshots td {
+vertical-align: top;
+padding-bottom: 15px;
+}
+.screenshots td.image {
+line-height: 0;
+padding-right: 15px;
+}
+.screenshots td.image img {
+width: 204px;
+height: 116px;
+}
+.snippet {
+font-size: 13px;
+color: #666;
+}
+.bigscreenshot .snippet {
+margin-bottom: 13px;
+}
+.legal {
+margin-top: 2em;
+color: #737373;
+font-size: 13px;
+}
+.legal a {
+color: #7777cc;
+}
+</style> 
+
+ 
+</head> 
+<body onload="initialize()"> 
+ 
+
+ 
+ 
+<div id="header"> 
+<div id="nav-bar"  >
+	
+<a href="/" id="logo-small">
+	<img src="{{ static_url("images/TripShare.png") }}" alt="TripShare" style="height:60px; width:150px"/>
+</a>
+<ul>
+<li><a href="/trips">Trips</a></li>
+<li><a href="/guides">Guides</a></li>
+<li><a href="/friends">Friends</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/iphone">iPhone</a></li>
+</ul>
+<div class="logged-out-actions">
+Become a TripSharer!
+<strong>
+<a href="#" onclick="FS.authenticated_prompt = null;FS.authenticated_callback = null;FS.authenticated_goal = null;; new Ajax.Request('/people/new?goal=header', {asynchronous:true, evalScripts:true}); return false;">Join</a>
+</strong>
+or
+<strong>
+<a href="#" onclick="FS.authenticated_prompt = null;FS.authenticated_callback = null;FS.authenticated_goal = null;; new Ajax.Request('/login', {asynchronous:true, evalScripts:true}); return false;">Log in</a>
+</strong>
+<span id="connect-button" style="margin-left: 20px"></span>
+</div>
+
+<form action="/search" method="get" id="searchform"> 
+<input type="text" size="25" name="q" value="" class="textbox" id="searchbox" autocomplete="off"/> 
+<input type="submit" value="Search" style="font-size:15px"/> 
+</form> 
+
+</div> 
+ </div> 
+<div id="partner-header" style="background-color:#99b2ce;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;">
+  <form action="http://www.foodspotting.com/" class="default" id="map_search" method="post" onsubmit="if (FSMap.check_submittable()) { FSMap.prepare_search(); new Ajax.Request('http://www.foodspotting.com/', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); }; return false;">
+<div style="display:none">
+<input id="ajax_datetime" name="ajax" type="hidden" value="1298607224614">
+<input id="page_hidden_field" name="page" type="hidden" value="">
+<input id="sort_hidden_field" name="sort" type="hidden">
+<input id="filter_hidden_field" name="filter" type="hidden">
+<input id="query_hidden_field" name="q" type="hidden">
+<input id="loc_hidden_field" name="loc" type="hidden" value="">
+<input id="sw_hidden_field" name="sw" type="hidden" value="20.13847031245115, 174.111328125">
+<input id="ne_hidden_field" name="ne" type="hidden" value="48.574789910928864, -46.58203125">
+<input id="lat_hidden_field" name="lat" type="hidden">
+<input id="lng_hidden_field" name="lng" type="hidden">
+<input id="track_search" name="track_search" type="hidden" value="">
+<input id="track_location" name="track_location" type="hidden" value="">
+</div>
+<fieldset id="map_fields">
+<input class="submit" type="submit" value="Search">
+<div id="location-input">
+<div class="text-box">
+<a class="clear" href="#" id="location_clear_button" onclick="FSMap.clear_location();; return false;" style="">x</a>
+<label class="prompted" for="location" id="set_location_label">YOUR LOCATION: <strong class="location-color">Map Area</strong></label>
+<input class="text" id="location" onfocus="FSMap.show_saved_locations()" type="text" value="" autocomplete="off">
+<div id="saved_locations" style="display:none">
+<ul id="saved_location_ul"><li class="current-location"><a href="" onclick="FSMap.get_client_location();return false;"><img src="/images/clear.png" alt="" border="0">Current Location</a></li>
+<li class="anywhere"><a href="#" onclick="FSMap.clear_location(); return false;"><img alt="Clear" src="/images/clear.png?1298606992">Anywhere</a></li>
+<li class="saved-locations-title">Saved Locations:</li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+<div class="text-box" id="genius-search-input" style="z-index:1">
+<a class="clear" href="#" id="query_clear_button" onclick="FSMap.clear_query(); return false;" style="display:none">x</a>
+<label class="prompted" for="query" id="genius-label">SEARCH BY: <strong>food, place or person</strong></label>
+<div id="genius-search" class="live-search">
+  <div class="spinner" style="display: none; "><img alt="Spinner" src="/images/spinner.gif?1298599556"></div>
+  <input class="text" id="query" name="query" onkeydown="if(event.keyCode == 9) {return false;}" type="text" value="" autocomplete="off">
+  <div class="results-container" style="position:absolute">
+    <ul id="genius_results" class="results" style="display: none; ">
+      <li class="status"></li>
+      <li style="display:none"></li>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.observe("dom:loaded", function() {
+    $("genius-search").searcher = new LiveSearch("genius-search", "/search/genius", "", "Start typing to get suggestions...", (false || false))
+  });
+</script>
+
+</div>
+</fieldset>
+    </form>
+<div id="map-pagination">
+<a href="#" id="page-right" onclick="; return false;" class="enabled">Next 20</a>
+<a href="#" id="page-left" onclick="; return false;" class="">Previous 20</a>
+<div class="clearfix" id="map-sorts">
+<a class="first on" href="#" id="map-sort-best" onclick="FSMap.update_sort('best'); return false;">Best</a>
+<a href="#" id="map-sort-latest" onclick="FSMap.update_sort('latest'); return false;" class="">Latest</a>
+<a href="#" id="map-sort-following" onclick="FSMap.update_filter('following'); return false;" class="">Following</a>
+<a href="#" id="map-sort-wanted" onclick="FSMap.update_filter('wanted'); return false;" class="">Wanted</a>
+<a class="last" href="#" id="map-sort-guides" onclick="FSMap.update_filter('guides'); return false;">Guides</a>
+</div>
+</div>
+
+<div id="discover-map" style="height: 400px;">
+<div id="map-loading-box" style="display: none; opacity: 0.75; "></div>
+<div id="map-message-box" style="display: none; "></div>
+<div id="map" style="position: relative; background-color: rgb(229, 227, 223); ">
+<div style="position: absolute; left: 0px; top: 0px; overflow-x: hidden; overflow-y: hidden; width: 100%; height: 100%; ">
+<div style="z-index: 0; position: absolute; left: 3px; top: 32px; cursor: url(http://maps.gstatic.com/intl/en_us/mapfiles/openhand_8_8.cur), default; ">
+<div style="position: absolute; left: 0px; top: 0px; display: none; ">
+<div style="position: absolute; left: 0px; top: 0px; z-index: 0; ">
+
+</div></div></div></div>
+</div>
+</div>
+
+
+<div id="bodydiv"> 
+ 
+ 
+<div id="container" class="nosidebar"> 
+
+<div class="box white" id="page"> 
+ 
+<div class="box-top default-bar"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+
+ 
+ 
+<div class="rhs"> 
+<div class="oneclick"> 
+<h2><a href="https://TripShare.com/account/create">Join TripShare</a> + find your friends with one click via:</h2> 
+<table class="oneclickicons"> 
+<tr> 
+<td><a href="http://TripShare.com/friends/facebookoneclick"><img style="width:80px;height:82px;" src="/static/images/button-facebook.png?v=68ac" alt="Facebook" title="Join TripShare with your Facebook account"/></a></td> 
+<!--<td><a href="https://TripShare.com/account/google/oauth/redirect?next=http%3A%2F%2FTripShare.com%2Ffriends%2Fgoogleoneclick"><img style="width:80px;height:82px;" src="/static/images/button-google.png?v=ce4c" alt="Google" title="Join TripShare with your Google account"/></a></td>--> 
+<td><a href="https://TripShare.com/account/twitter/redirect?authenticate=1&amp;next=http%3A%2F%2FTripShare.com%2Ffriends%2Ftwitteroneclick"><img style="width:80px;height:82px;" src="/static/images/button-twitter.png?v=28d5" alt="Twitter" title="Join TripShare with your Twitter account"/></a></td> 
+</tr> 
+</table> 
+ 
+<div>or <a href="https://TripShare.com/account/create?formonly=1" style="font-weight:bold">sign up</a> with your email address</div> 
+</div> 
+<div class="login"> 
+<div style="font-weight:bold; margin-bottom:10px;">Already have an account?</div> 
+<form action="/account/login" method="post" onsubmit="return checkform(this);"> 
+{{ xsrf_form_html() }}
+<table class="form" style="width:100%"> 
+<tr> 
+<td class="label">Username</td> 
+<td class="value" style="width:100%"><div class="textbox"><input name="email" id="email" type="text" size="15"/></div></td> 
+</tr> 
+<tr> 
+<td class="label">Password</td> 
+<td class="value"><div class="textbox"><input name="password" id="password" type="password" size="15"/></div></td> 
+</tr> 
+<tr> 
+<td>&nbsp;</td> 
+<td class="buttons"> 
+<input type="submit" value="Sign in" style="font-weight:bold"/> 
+</td> 
+</tr> 
+</table> 
+<div><input type="hidden" name="next" value="http://TripShare.com/"/></div> 
+<input type="hidden" name="at" value="13052850823769209931_1293491235"/> 
+ 
+</form> 
+<div style="margin-top:10px">Created an account via Google, Facebook, or Twitter? <a href="/account/login">Sign in here</a></div> 
+</div> 
+</div> 
+<div class="lhs"> 
+<div style="margin-bottom: 15px; margin-left:10px"> 
+<h1>TripShare is the easiest way to share trip idea online</h1> 
+</div> 
+<div> 
+<table class="tourtabs"> 
+<tr> 
+<td style="padding-right:10px"></td> 
+<td class="tourtab selected"><a href="#" class="l_tourtab" tid="why">Why TripShare?</a></td> 
+<td>&nbsp; &nbsp;</td> 
+<td class="tourtab"><a href="#" class="l_tourtab" tid="who">What can you use it for?</a></td> 
+<td>&nbsp; &nbsp;</td> 
+<td class="tourtab"><a href="#" class="l_tourtab" tid="how">Testimonials</a></td> 
+<td style="width:100%"></td> 
+</tr> 
+</table> 
+</div> 
+<div class="tourcontent" id="tourwhy"> 
+<div style="margin-bottom:10px">TripShare enables you to discover and discuss the interesting stuff your friends find on the web.</div> 
+<table class="bigscreenshot"> 
+<tr> 
+<td style="vertical-align:top"><a href="#" class="l_introvideo"><img src="/static/images/nano-small-screenshot.jpg?v=1f02" style="width:336px;height:363px" alt="Screenshot"/></a></td> 
+<td style="vertical-align:top; padding-top:10px; padding-left:20px"> 
+<div style="margin-bottom:10px"><button class="fancy l_introvideo" style="font-weight:bold; padding-left:6px"><span style="padding-left:18px; background:url('/static/images/play-white.png?v=5882') no-repeat left center">Watch a video!</span></button></div> 
+<h3>It's simple</h3> 
+<div class="snippet">It takes just a couple clicks to post anything or to start a discussion.</div> 
+<h3>It’s conversational</h3> 
+<div class="snippet">Your friends comment on the things you share, and you see their comments in real-time. So talk with your friends, not at them.</div> 
+<h3>It’s open</h3> 
+<div class="snippet">Read and share however you want &mdash; from your email, your phone or even from Facebook. Publish your TripShare to your website or blog, or to services you already use, like Twitter.</div> 
+</td> 
+</tr> 
+</table> 
+</div> 
+<div class="tourcontent" id="tourwho" style="display:none"> 
+<table class="screenshots"> 
+<tr> 
+<td class="image"><a href="#" class="l_introvideo"><img alt="Screenshot" src="/static/images/nano-family.png?v=0369"/></a></td> 
+<td class="text"> 
+<h3>Sharing with family</h3> 
+<div class="snippet">Create a group and use it as a family mailing list. It’s an easy way to plan trips, share baby photos, and post funny YouTube videos.</div> 
+</td> 
+</tr> 
+<tr> 
+<td class="image"><a href="#" class="l_introvideo"><img alt="Screenshot" src="/static/images/nano-work.png?v=5bf0"/></a></td> 
+<td class="text"> 
+<h3>Sharing with co-workers</h3> 
+<div class="snippet">Create a private group for your company or colleagues to collaborate on a research paper, coordinate an upcoming event, or give status updates on the TPS reports.</div> 
+</td> 
+</tr> 
+<tr> 
+<td class="image"><a href="#" class="l_introvideo"><img alt="Screenshot" src="/static/images/nano-boredom.png?v=e347"/></a></td> 
+<td class="text"> 
+<h3>Banishing boredom from your life</h3> 
+<div class="snippet">There’s no end to the cool stuff on the internet. Find it on TripShare. Discuss it on TripShare. Look up, and it’s two hours later. Just don’t forget to eat.</div> 
+</td> 
+</tr> 
+</table> 
+</div> 
+<div class="tourcontent" id="tourhow" style="display:none"> 
+<table class="screenshots"> 
+<tr> 
+<td class="text"> 
+<div>&quot;Four software designers who were instrumental in the creation of Google's popular e-mail and mapping services have founded a new company with the intent of making it easy for people to find out what Web material their friends are enjoying.&quot; - New York Times (John Markoff)</div> 
+</td> 
+</tr> 
+<tr> 
+<td class="text"> 
+<div>&quot;TripShare is launching the most intuitive interface I’ve seen yet for sharing information with your friends.&quot; - VentureBeat (Eric Eldon)</div> 
+</td> 
+</tr> 
+<tr> 
+<td class="text"> 
+<div>&quot;Attention, attention: The latest tech darling has arrived, and it goes by the name of TripShare.&quot; - BusinessWeek (Heather Green)</div> 
+</td> 
+</tr> 
+<tr> 
+<td class="text"> 
+<div>&quot;Unlike competitors, TripShare's simple approach may be the way to win.&quot; - TechCrunch (Michael Arrington)</div> 
+</td> 
+</tr> 
+</table> 
+</div> 
+<div style="margin-left:10px"> 
+<table> 
+<tr> 
+<td><button class="fancy" onclick="location.href='https://TripShare.com/account/create'" style="font-weight:bold; border-color: #da8319; background-color: #da8319; font-size:18px">Join TripShare</button></td> 
+<td>&nbsp;&nbsp;or <a href="https://TripShare.com/account/login">sign in</a> to get started</td> 
+</tr> 
+</table> 
+</div> 
+</div> 
+ 
+<div style="clear:both; height:12px"></div> 
+</div> 
+<div class="box-bottom"> 
+<div class="box-corner"></div> 
+<div class="box-spacer"></div> 
+</div> 
+</div> 
+</div> 
+<div id="footer"> 
+&copy;2010 TripShare
+-
+<select onchange="setLocale(this.options[this.selectedIndex].value)"> 
+ 
+<option value="de">Deutsch</option> 
+ 
+<option value="en" selected="selected">English</option> 
+ 
+<option value="es">Español</option> 
+ 
+<option value="fa">فارسی</option> 
+ 
+<option value="fr">Français</option> 
+ 
+<option value="it">Italiano</option> 
+ 
+<option value="ja">日本語</option> 
+ 
+<option value="ru">русский язык</option> 
+ 
+<option value="tr">Türkçe</option> 
+ 
+<option value="ud">uʍop ǝpısd∩</option> 
+ 
+<option value="zh-cn">中文(简体)</option> 
+ 
+</select> 
+ 
+- <a href="/about/">About</a> 
+- <a href="/about/tools">Tools &amp; Widgets</a> 
+- <a href="http://blog.TripShare.com/">Blog</a> 
+- <a href="/api/">API</a> 
+- <a href="/about/help">Help</a> 
+- <a href="/about/privacy">Privacy</a> 
+- <a href="/about/terms">Terms</a> 
+ 
+ 
+- <a href="/public">Everyone</a> 
+- <a href="/groups/search">Popular Groups</a> 
+ 
+</div> 
+</div> 
+</div><div id="extradiv"></div><div id="extradivtoo"></div> 
+ 
+ 
+{% for image in image_info %}
+  <input name="image_info" type="hidden" value = {{image}}> 
+  
+{% end %}
+ 
+<script type="text/javascript">
+//<![CDATA[
+function checkform(form)
+{
+	
+	
+	if (form.email.value == "") 
+	{
+	  alert("Please enter email address");
+	  form.email.focus();
+	  return false;
+	}
+	
+	if (form.password.length < 6 || form.password.length >25 ) 
+	{
+	  alert("Please enter password longer than 6 and shorter than 25");
+	  form.password.focus();
+	  return false;
+	}
+	
+	return true;
+}
+</script>
+ 
+</body> 
+</html> 

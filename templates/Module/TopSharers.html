@@ -1,0 +1,21 @@
+<div class="pod inset">
+<h2>
+This Week's Top Tripsharers
+</h2>
+<ul class="top_foodspotters">
+{% for top_share in top_shares %}
+<li class="">
+<a class="person clearfix" href="/people/{{top_share['slug']}}">
+<strong>1</strong>
+<img alt="Small_thumb" src={{top_share['picture']}}>
+<span>{{top_share['username']}}</span>
+<br>
+<span class="points">
+129 people joined his
+trip this week
+</span>
+</a>
+</li>
+{% end %}
+</ul>
+</div>

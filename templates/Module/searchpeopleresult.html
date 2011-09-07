@@ -1,0 +1,24 @@
+<ul class="list_people"> 
+{% if searchuserresults %}             
+ {% for user in searchuserresults %} 
+<li class="person_result">
+<div class="user_modal">
+<div class="userpicture">
+<a href="/people/{{user['slug']}}" ><img alt="Small_thumb" class="picture medium" src="{{user['picture']}}"></a>
+</div>
+<strong><a class="username" href="/people/{{user['slug']}}" style="padding: 0">{{user['username']}}</a></strong>
+<a class="addusertotrip-button" href="#" onclick="AddUserToTrip('{{user['user_id']}}'); return false;">Add</a>
+<div>
+</li>
+{% end %}
+{% else %} 
+  <li class="person_result">
+  <div class="user_modal">
+  <strong>Traveler not found.</strong>	
+  <div>
+  </li>
+
+{% end %}
+</ul>
+
+

@@ -1,0 +1,210 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TripShare - Sign in</title>
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="TripShare Search">
+
+
+
+<link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css">
+<style type="text/css">
+table.oneclickicons td {line-height:0; padding-right:7px;}
+</style>
+
+<style type="text/css">
+.createaccount {
+margin-top: 30px;
+font-size:18px;
+}
+.createaccount a {
+font-weight: bold;
+}
+</style>
+
+</head>
+<body onload="analytics()">
+
+<div id="bodydiv">
+
+
+<div id="container" class="nosidebar">
+
+
+<div id="header">
+<table>
+<tbody><tr>
+<td class="logo"><a href="/"><img src="{{ static_url("images/TripShare.png") }}" alt="TripShare" style="width:227px;height:50px;"></a></td>
+<td></td>
+</tr>
+</tbody></table>
+</div>
+
+<div id="body">
+<div class="box white" id="page">
+
+<div class="box-top default-bar">
+<div class="box-corner"></div>
+<div class="box-spacer"></div>
+</div>
+
+<div class="box-body">
+
+
+<h1 style="margin-bottom:15px; font-size:20px">Sign up</h1>
+<form name="login_form" action="/account/create" method="post" onsubmit="return checkform(this);">
+	 {{% raw xsrf_form_html() %}}  
+<table class="form">
+<tbody><tr>
+<td class="label">Username</td>
+<td class="value"><input name="username" id="username" type="text" size="25" value=""></td>
+</tr>
+<tr>
+<td class="label">Email</td>
+<td class="value"><input name="email" id="email" type="text" size="25" value=""></td>
+</tr>
+<tr>
+<td class="label">Password</td>
+<td class="value"><input name="password" id="password" type="password" size="25"></td>
+
+</tr>
+<td class="label">Password Again</td>
+<td class="value"><input name="confirm_password" id="confirm_password" type="password" size="25"></td>
+</tr>
+<tr>
+<td class="value"><input name="user[accept_terms]" type="hidden" value="0"><input class="check" id="user_accept_terms" name="user[accept_terms]" type="checkbox" value="1"><label for="user_accept_terms">I agree to the <a href="/terms" target="_blank">Terms of Use</a> and <a href="/privacy" target="_blank">Privacy Policy</a></label></td>	
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td class="buttons">
+<input type="submit" value="Sign Up" style="font-weight:bold">
+</td>
+</tr>
+</tbody></table>
+<div><input type="hidden" name="next" value="http://TripShare.com/"></div>
+<input type="hidden" name="at" value="13052850823769209931_1293491235">
+
+</form>
+<div style="margin-top:15px; margin-bottom:5px">Created an account via Google, Facebook, or Twitter? Sign in with the buttons below:</div>
+<div><table class="oneclickicons">
+<tbody><tr>
+<td><a href="http://TripShare.com/friends/facebookoneclicklogin"><img style="width:80px;height:82px;" src="/static/images/button-facebook.png?v=68ac" alt="Facebook" title="Join TripShare with your Facebook account"></a></td>
+<!--<td><a href="https://TripShare.com/account/google/oauth/redirect?next=http%3A%2F%2FTripShare.com%2Ffriends%2Fgoogleoneclicklogin"><img style="width:80px;height:82px;" src="/static/images/button-google.png?v=ce4c" alt="Google" title="Join TripShare with your Google account"/></a></td>-->
+<td><a href="https://TripShare.com/account/twitter/redirect?authenticate=1&amp;next=http%3A%2F%2FTripShare.com%2Ffriends%2Ftwitteroneclicklogin"><img style="width:80px;height:82px;" src="/static/images/button-twitter.png?v=28d5" alt="Twitter" title="Join TripShare with your Twitter account"></a></td>
+</tr>
+</tbody></table>
+</div>
+<div class="createaccount">New to TripShare? <a href="/account/create">Create an account »</a></div>
+
+<div style="clear:both; height:12px"></div>
+</div>
+<div class="box-bottom">
+<div class="box-corner"></div>
+<div class="box-spacer"></div>
+</div>
+</div>
+</div>
+<div id="footer">
+©2010 TripShare
+-
+<select onchange="setLocale(this.options[this.selectedIndex].value)">
+
+<option value="de">Deutsch</option>
+
+<option value="en" selected="selected">English</option>
+
+<option value="es">Español</option>
+
+<option value="fa">فارسی</option>
+
+<option value="fr">Français</option>
+
+<option value="it">Italiano</option>
+
+<option value="ja">日本語</option>
+
+<option value="ru">русский язык</option>
+
+<option value="tr">Türkçe</option>
+
+<option value="ud">uʍop ǝpısd∩</option>
+
+<option value="zh-cn">中文(简体)</option>
+
+</select>
+
+- <a href="/about/">About</a>
+- <a href="/about/tools">Tools &amp; Widgets</a>
+- <a href="http://blog.TripShare.com/">Blog</a>
+- <a href="/api/">API</a>
+- <a href="/about/help">Help</a>
+- <a href="/about/privacy">Privacy</a>
+- <a href="/about/terms">Terms</a>
+
+</div>
+</div>
+</div><div id="extradiv"></div><div id="extradivtoo"></div>
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+function checkform(form)
+{
+	if (form.user[accept_terms].checked != true) 
+	{
+	   alert("Accept term must be checked");
+	   return false;
+	}
+	
+	if (form.email.value == "") 
+	{
+	  alert("Please enter email address");
+	  form.email.focus();
+	  return false;
+	}
+	
+	if (form.password.length < 6 || form.password.length >25 ) 
+	{
+	  alert("Please enter password longer than 6 and shorter than 25");
+	  form.password.focus();
+	  return false;
+	}
+	
+	if (form.password != form.confirm_password ) 
+	{
+	  alert("Password doesn't match confirmation");
+	  form.confirm_password.focus();
+	  return false;
+	}
+	
+	return true;
+}
+</script>
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+function analytics() {
+
+
+var analyticsHost = ((document.location.protocol == "https:") ? "https://ssl." : "http://www.");
+$(document.body).append(unescape('%3Cscript src="' + analyticsHost + 'google-analytics.com/ga.js" type="text/javascript"%3E%3C/script%3E'));
+var analyticsPoller = window.setInterval(function() {
+if (window._gat) {
+window.clearInterval(analyticsPoller);
+var tracker = _gat._getTracker("UA-7980419-1");
+tracker._setVar(':locen:nano:');
+tracker._trackPageview();
+}
+}, 500);
+
+
+
+}
+
+//]]>
+</script>
+
+
+</body></html>

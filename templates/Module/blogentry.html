@@ -1,0 +1,17 @@
+<ul class='top_foodspotters'> 
+<li class='person clearfix'> 
+{% if current_user not in user['friends'] %} 	
+<a class="follow-button primary-background-color" href="#" id="{{user['slug']}}" onclick="followpeople('{{user['slug']}}'); return false;">Follow</a>
+{% else %}
+<a class="follow-button primary-background-color" href="#" id="{{user['slug']}}" onclick="unfollowpeople('{{user['slug']}}'); return false;">UnFollow</a>
+{% end %}
+<a href="/people/{{user['slug']}}" class="avatar"><img alt="Small_thumb" src="{{user['picture']}}" /></a> 
+<div class='meta'> 
+<strong class='name'><a href="/people/{{user['slug']}}">{{user['username']}}</a></strong> 
+<span class='points'> 
+183,430
+points
+</span> 
+</div> 
+</li> 
+</ul>
