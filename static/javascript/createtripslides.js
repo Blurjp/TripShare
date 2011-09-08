@@ -308,6 +308,14 @@ jQuery.fn.enable = function(opt_enable) {
     });  
 	
 	
+	$(".add_user_link").click(function () {
+		var image_link = this.siblings(".picture").attr("src");
+		var slug = this.siblings(".picture").attr("alt");
+		var username = this.siblings(".picture").attr("title");
+		$('.people_search_result ul').append('<li><a class="user_link" href="#removeuserfromtrip"><span class="user_image"><img class="picture medium" alt=' + slug + ' src=' + image_link + '></span><span class="user_name">' + username + '</span></a></li>');
+
+	});
+	
 	     /* Click current location */
      $('#current_location').click(function(e) {  
       e.preventDefault();  
@@ -779,39 +787,42 @@ jQuery.postJSON = function(url, args, callback) {
 	
 	
 $(document).ready(function() {   
-$('input.add_member').click(function(e) { 
-        e.preventDefault();  
-        $('#manage_member_dropdown').show();
-});
+
 
 $('input.add_member').focus(function() {
-   $('.friend_dropdown_list ul').empty();
+	if (this.value == '' || this.value == null) {
+		$('.friend_dropdown_list ul').hide();
+		$('.friend_dropdown_list ul').empty();
+	}
 });
 
 $('input.add_member').keyup(function() {
+	
    $.getJSON('/realtime_searchpeople/'+this.value, function(response) {
-        ShowResultInDropList(response);
+        ShowResultInCreateTripDropList(response);
         });
 });
 
-function ShowResultInDropList(response)
+
+
+function ShowResultInCreateTripDropList(response)
 {
 	$('.friend_dropdown_list ul').empty();
 	//alert(response);
-	var _object = JSON.parse(response);
-	//alert(_object.length);
-	 for (var i = 0; i < _object.length; i++)
-	{
-	
-	$('.friend_dropdown_list ul').append(
-     '<li><a href="/addusertotrip/'+_object[i]['slug']+'"><span><img class="picture medium" alt='+_object[i]['username']+' src='+_object[i]['picture']+'></span><span class="user_name">'+_object[i]["username"]+'</span></a></li>'
-    );	
+	if (response != '' && response != 'not found') {
+		var _object = JSON.parse(response);
+		//alert(_object.length);
+		for (var i = 0; i < _object.length; i++) {
+		
+			$('.friend_dropdown_list ul').append('<li><a class="add_user_link" href="#"><span class="user_image"><img class="picture medium" title='+  _object[i]['username']  +' alt=' + _object[i]['slug'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li>');
+		}
+		$('.friend_dropdown_list ul').show();
 	}
 }
 
 $('#mask4').click(function(e) { 
         e.preventDefault();  
-        $('#manage_member_dropdown').hide();
+        $('.friend_dropdown_list ul').hide();
 		
 });
 

@@ -287,7 +287,7 @@ class SearchUserHandler(BaseHandler):
 class RealTimeSearchUserHandler(BaseHandler):  
     def get(self, name):   
         users = self.syncdb.users.find({'username': {'$regex':'^'+name}})
-        if users.count() >= 1 :
+        if users.count() >0 :
             
             self.write(unicode(simplejson.dumps(users, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
             #self.write(users[0]);

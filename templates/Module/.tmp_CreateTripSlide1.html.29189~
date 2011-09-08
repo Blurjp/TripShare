@@ -28,7 +28,6 @@
 				
 				</div>
                 </fieldset>
-
 <td class="value" colspan="2">
 <table class="feedoptions">
 <tbody><tr>
@@ -60,7 +59,7 @@
 				    <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->    
                
 </div>
-  
+ <div id="mask4"></div>  
 <div id="create_trip_step_2" class="window2">
 	<a href="#" id="close-modal2" class="close">close</a>
                 <div class="step">
@@ -144,7 +143,7 @@
                 <div class="step">
                   <img alt="Step 3 of 3" src="{{ static_url("icon/tripshare_3.png") }}">
                 </div>
-				<div id="add_member_dropdown">
+				<div id="manage_member_dropdown">
                 <fieldset>
                   <div id="search_member">
                   	<h2> Add Member </h2>
@@ -152,10 +151,9 @@
                       
                     <div class="clear"></div>
 					</div>
-
+					
 					<div class="people_search_result">
-                    <ul> 
-					</ul>
+						
 					</div>
 					<div class="friend_dropdown_list">
 					<ul> 
@@ -168,7 +166,7 @@
                 <div class="button_container">
                   
 				   <a href="#Go_back_to_Step2" name="Go_back_to_Step2" value="Go back to Step 2" style="width:180px;margin-right:10px" class="sidebar-auth-button">Go back to Step 2</a>
-
+				  
 				  <!-- <a href="#create_trip_finish" name="create_trip_finish" value="Publish" style="width:180px;margin-right:10px" class="sidebar-auth-button">Publish</a> --> 
 				   <input type="submit" href="#create_trip_finish" name="create_trip_finish" value="Publish" style="width:180px;margin-right:10px" class="sidebar-auth-button">
                 </div>
@@ -178,4 +176,5 @@
 	        
 </form>  
 
+	
 			

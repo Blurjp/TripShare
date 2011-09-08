@@ -973,7 +973,7 @@ $('input.manage_member').click(function(e) {
 		 $.getJSON('/getfriends', function(response) {
         ShowResultInDropList(response);
         });
-		$('#mask6').show();   
+		$('#mask6').show();
 		
 
 });

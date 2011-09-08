@@ -383,19 +383,16 @@ color: #7777cc;
 <body> 
 
    
-
+ {% include "Module/CreateTripSlide1.html" %}
 
 
 <div id="header"> 
-
 <div id="nav-bar"  >
  {% include "Module/headline.html" %}
  
  {% include "Module/userentry.html" %}
  
  {% include "Module/usersetting.html" %}
- 
-
 
 <div id="partner-header">
   <form action="http://www.foodspotting.com/" class="default" id="map_search" method="post" onsubmit="if (FSMap.check_submittable()) { FSMap.prepare_search(); new Ajax.Request('http://www.foodspotting.com/', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); }; return false;">
@@ -476,7 +473,6 @@ color: #7777cc;
 </div>
 
 
-
 <div class="clearfix" id="new-sighting-form">
 <div id="user-info-window">
 <div class="tip"></div>
@@ -488,12 +484,10 @@ Share your trip or see what others have recommended near you!
 <div id="review-widget">
 {% if current_user%}
 <a href="#create_trip_step_1" name="createtrip" value="Create a Trip" style="width:180px;margin-right:10px" class="sidebar-auth-button">Create Trip</a>
-<!--<a href="#pinplace" name="pinplace"  value="Pin a Place" style="width:180px;margin-right:10px" class="sidebar-auth-button" >Pin a Place</a>-->
-<a href="#create_guide_step_1" name="createguide"  value="Create Guide" style="width:180px;margin-right:10px" class="sidebar-auth-button" >Create Guide</a>
+<a href="#pinplace" name="pinplace"  value="Pin a Place" style="width:180px;margin-right:10px" class="sidebar-auth-button" >Pin a Place</a>
 {% else %}
 <a href="#login" name="modal2" value="login" style="width:180px;margin-right:10px" class="sidebar-auth-button">Create Trip</a>
-<!--<a href="#login" name="pinplace"  value="Pin a Place" style="width:180px;margin-right:10px" class="sidebar-auth-button">Pin a Place</a>-->
-<a href="#login" name="createguide"  value="Create Guide" style="width:180px;margin-right:10px" class="sidebar-auth-button" >Create Guide</a>
+<a href="#pinplace" name="pinplace"  value="Pin a Place" style="width:180px;margin-right:10px" class="sidebar-auth-button">Pin a Place</a>
 {% end %}
 
 
@@ -560,8 +554,6 @@ TripShare answers the question, "<strong>What's good around here?</strong>" by m
 </div>
 
 {% include "Module/footer.html" %}
-
-  {% include "Module/CreateTripSlide1.html" %}
 
 <script type="text/javascript">
 $(document).ready(function() {
