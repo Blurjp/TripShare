@@ -1009,11 +1009,12 @@ $('#mask6').click(function(e) {
 
   $('.post-button').click(function(e) { 
         e.preventDefault();  
-        //$('.comment_list li').before($('.comment_list li').first())
+        
 		var content  = $('.commentBody').val();
+		var data = {'content': content, 'trip_id':'' };
 		$('.comment_list li').last().before('<li>'+content+'</li>');
 		$('.commentBody').val('');
-		$.postJSON('/postcomment/', content, function(response){
+		$.postJSON('/postcomment/', data, function(response){
 			    PostCommentResponse(response);
 			});	
 });
