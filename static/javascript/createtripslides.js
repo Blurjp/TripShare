@@ -308,12 +308,18 @@ jQuery.fn.enable = function(opt_enable) {
     });  
 	
 	
-	$(".add_user_link").click(function () {
-		var image_link = this.siblings(".picture").attr("src");
-		var slug = this.siblings(".picture").attr("alt");
-		var username = this.siblings(".picture").attr("title");
-		$('.people_search_result ul').append('<li><a class="user_link" href="#removeuserfromtrip"><span class="user_image"><img class="picture medium" alt=' + slug + ' src=' + image_link + '></span><span class="user_name">' + username + '</span></a></li>');
-
+	$('a[class=add_user_link]').live("click",function () {
+		
+		var usernode = $(this).find('img');
+		var image_link = usernode.attr('src');
+		
+		var userid = usernode.attr('alt');
+		var username = usernode.attr('title');
+		
+		jQ_append('#user_ids_for_trips', userid + '||');
+		$('.people_search_result ul').append('<li><a class="user_link" href="#removeuserfromtrip"><span class="user_image"><img class="picture medium" alt=' + userid + ' src=' + image_link + '></span><span class="user_name">' + username + '</span></a></li>');
+	    $('.friend_dropdown_list ul').empty();
+		$('.add_member').val('');
 	});
 	
 	     /* Click current location */
@@ -797,10 +803,14 @@ $('input.add_member').focus(function() {
 });
 
 $('input.add_member').keyup(function() {
-	
-   $.getJSON('/realtime_searchpeople/'+this.value, function(response) {
-        ShowResultInCreateTripDropList(response);
-        });
+   if (this.value == '' || this.value == null) {
+       $('.friend_dropdown_list ul').empty();
+   }
+   else {
+   	$.getJSON('/realtime_searchpeople/' + this.value, function(response){
+   		ShowResultInCreateTripDropList(response);
+   	});
+   }
 });
 
 
@@ -814,7 +824,7 @@ function ShowResultInCreateTripDropList(response)
 		//alert(_object.length);
 		for (var i = 0; i < _object.length; i++) {
 		
-			$('.friend_dropdown_list ul').append('<li><a class="add_user_link" href="#"><span class="user_image"><img class="picture medium" title='+  _object[i]['username']  +' alt=' + _object[i]['slug'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li>');
+			$('.friend_dropdown_list ul').append('<li><a class="add_user_link"><span class="user_image"><img class="picture medium" title='+  _object[i]['username']  +' alt=' + _object[i]['user_id'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li>');
 		}
 		$('.friend_dropdown_list ul').show();
 	}

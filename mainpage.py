@@ -172,6 +172,7 @@ class Application(tornado.web.Application):
                                       (r"/a/changepicture", UserPictureHandler),
                                       (r"/guides", BrowseGuidesHandler),
                                       (r"/blog", Blog),
+                                      (r"/postcomment", CommentHandler),
                                       (r"/searchpeople/([^/]+)", SearchUserHandler),
                                       (r"/realtime_searchpeople/([^/]+)", RealTimeSearchUserHandler),
                                       (r"/checkuserintrip/([^/]+)/([^/]+)", CheckUserinTripHandler),

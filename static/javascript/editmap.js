@@ -956,9 +956,6 @@ function codeLatLng(name) {
 	  	var timeoutId = setTimeout(function(){ panel.hide(); panel2.hide();panel3.hide(); panel4.hide();}, 650);
 		$(this).data('timeoutId', timeoutId); 
        });
-	   
-	
- 
 });
 
 $(".comment form").live("submit",function(a){a.preventDefault();var c=$(this).parents("li.feed"),
@@ -1009,5 +1006,19 @@ $('#mask6').click(function(e) {
         $('#manage_member_dropdown').hide();
 		$('#mask6').hide();
 });
+
+  $('.post-button').click(function(e) { 
+        e.preventDefault();  
+        //$('.comment_list li').before($('.comment_list li').first())
+		var content  = $('.commentBody').val();
+		$('.comment_list li').last().before('<li>'+content+'</li>');
+		$('.commentBody').val('');
+		$.postJSON('/postcomment/', content, function(response){
+			    PostCommentResponse(response);
+			});	
+});
+
+function PostCommentResponse(response)
+{ }
 
 });
