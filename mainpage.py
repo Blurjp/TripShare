@@ -39,6 +39,8 @@ from Users.UserInfo import AddUserToTripHandler
 from Users.UserInfo import CheckUserinTripHandler
 from Guides.GuidesHandler import BrowseGuidesHandler
 from Comment.CommentHandler import PostCommentHandler
+from Comment.CommentHandler import DeleteCommentHandler
+from Comment.CommentHandler import PostFeedHandler
 #import tornado.database
 import tornado.httpserver
 import tornado.ioloop
@@ -174,6 +176,8 @@ class Application(tornado.web.Application):
                                       (r"/guides", BrowseGuidesHandler),
                                       (r"/blog", Blog),
                                       (r"/postcomment", PostCommentHandler),
+                                      (r"/deletecomment", DeleteCommentHandler),
+                                      (r"/postfeed", PostFeedHandler),
                                       (r"/searchpeople/([^/]+)", SearchUserHandler),
                                       (r"/realtime_searchpeople/([^/]+)", RealTimeSearchUserHandler),
                                       (r"/checkuserintrip/([^/]+)/([^/]+)", CheckUserinTripHandler),

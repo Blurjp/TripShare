@@ -219,7 +219,22 @@
 </div>
 
 <div class='overview'>
-	<ul class="feedsUI">
+	<div class="left">
+    <img alt="{{current_user['username']}}" src="{{current_user['picture']}}" title="{{current_user['username']}}" class="picture medium "> 
+	
+     </div>
+	<div class="comment post right">
+		<form action="#" method="post">
+		{% raw xsrf_form_html() %}
+        <div class="FORM-text">
+        <div class="area">
+        <input type="text" name="feedBody" class="feedBody" placeholder="Post a comment…">
+        </div>
+        </div>
+        <input type="button" class="post-button postfeed" href="#post_feed" value="Post">
+        </form>
+        </div>
+	  <ul class="feedsUI">
 		  {% include "Module/comment.html" %}
 	</ul>
 </div>

@@ -211,26 +211,9 @@ width: 302px;
 	 .entry .fof a{color:#737373;font-weight:bold}       
 	 .entry .title .name{margin-bottom:2px}       
 	 .entry .title .name a.l_profile{font-weight:bold}       
-	 .entry .info,.entry .likes,.entry .comments,.entry .bottomcomment,.entry .info a.date,.entry .info a.service,.entry .comments a.via,.entry .commentform textarea{font-size:13px;line-height:16px;/* necessary to prevent font-shifting with realtime */ color:#666}       
+	 .entry .info,.entry .likes,.entry ,.entry ,.entry .info a.date,.entry .info a.service,.entry a.via,.entry  textarea{font-size:13px;line-height:16px;/* necessary to prevent font-shifting with realtime */ color:#666}       
 	 
-	 .fbiframe .entry .info,.fbiframe .entry .likes,.fbiframe .entry .comments,.fbiframe .entry .bottomcomment,.fbiframe .entry .info a.date,.fbiframe .entry .info a.service,.fbiframe .entry .comments a.via,.fbiframe .entry .commentform textarea{font-size:11px;line-height:15px;/* necessary to prevent font-shifting with realtime */}      
-	  .entry.private .info,.entry.direct .info{padding-left:16px;background-position:left center;background-repeat:no-repeat}       .entry.private .info{padding-left:14px;background-image:url("/static/images/lock.png?v=7e91")}       .entry.direct .info{background-image:url("/static/images/direct-small.png?v=9e5a")}       .entry input{font-size:14px}       .fbiframe .entry input{font-size:11px}       .entry .info a,.entry .likes a,.entry .comment a,.entry .expandcomment a{color:#7777cc}    
-	     .entry .likes,.entry .expandcomment,.entry .comment,.entry .commentform,.entry .clusterlink{margin-top:8px}       .entry .commentform textarea{width:95%;height:18px}       .entry.large .commentform textarea{height:35px}       .entry .commentform .buttons{margin-top:2px}       .entry .commentform .l_cancelcomment{margin-left:7px}       .entry .commentform .buttons{width:95%}       .entry .commentform .ccount{float:right;margin-right:-5px}      
-		  .entry .commentform .ccount span{color:black}       .entry .info{margin-top:2px}       #page .entry a.main{padding:0;margin:0}       .entry .likes{background:url("/static/images/smile.png?v=4b9a") no-repeat top left}       .entry .comment,.entry .commentform{background:url("/static/images/comment-unknown.png?v=8733") no-repeat top left}       .entry .comment.deleted,.entry .comment.friend,.entry .comment.owner,.entry .commentform{background-image:url("/static/images/comment.png?v=d534")}  
-		  .entry .comment.new{background-image:url("/static/images/comment-new.png?v=e406")}       .entry .comment.bottomcomment{background-image:url("/static/images/comment-add-blue.png?v=28fd")}       .entry .likes,.entry .expandcomment,.entry .commentform,.entry .comment.deleted{padding-left:21px}       .entry .comment .content{margin-left:21px}       .entry .comment .quote{display:inline;float:left;height:16px;width:16px}       .entry .expandcomment,.entry .bottomcomment{font-style:italic}      
-		   .entry .media{line-height:0;margin-top:5px;margin-bottom:5px;overflow:hidden;position:relative}       .entry.large .media{margin-top:10px}       .entry .media .container{position:relative}       .entry .media img{border:1px solid silver;padding:1px;margin-right:8px;vertical-align:middle}       .entry .media div.l_play{position:absolute;z-index:50;cursor:pointer}       .entry .media div.l_play img{border:0;padding:0}       
-		   .entry .media a.l_audio{display:block;width:81px;height:28px;background:url("/static/images/audioplay.png?v=d731") no-repeat}       .entry .media a.l_audio:hover{background:url("/static/images/audioplay-hover.png?v=99fe") no-repeat}       .entry .media td.more img{border:0}       .entry .hiddencomments{display:none}       .entry.nopicture .comments,.entry.nopicture .bottomcomment,.entry.nopicture .likes{margin-left:16px}       .hidetoggle{margin-top:14px;margin-bottom:14px}       
-		   .l_togglehide{padding-left:12px;background:url("/static/images/arrow-collapsed.png?v=3328") left center no-repeat}       .hiddenentries{display:none}       .entry .info .l_editentry{background:url("/static/images/menut.png?v=a61a") no-repeat right center;padding-right:8px}       .entry.hidemore,.entry.deleted{padding-left:63px}       .entry.hidemore .title{font-style:italic}       
-.entry.hidemore .list{margin:15px}      
- .entry.hidemore .list label.l_checkboxhide{padding-left:30px}       .entry.hidemore .hideexplain{margin:10px}       
-.entry.hidemore .list label.disabled{color:#737373}       
-.entry .editentryform .edittitle{height:36px}      
-.entry .editentryform .actions{margin-top:3px}       
-.entry .file,.sharebox .file{margin-top:3px;margin-bottom:3px}       
-.entry .file a,.sharebox .file a{padding-left:20px;background:url("/static/images/filetypes/default.png?v=a311") no-repeat left center}       .sharebox .file a.l_removefile{padding:0;background:none;color:#77c}       
-.entry .file .filesize,.sharebox .file .filesize{font-size:11px;color:#999;padding-left:3px}       
-.feedformats{margin-top:32px}       
-.feedformats img{margin-left:5px;vertical-align:middle}       
+	
 /* Share box */ 
 .sharebox div.title,.sharebox div.photo{margin-bottom:4px}       .sharebox div.to{padding-bottom:4px}      
  .sharebox .to table,.sharebox .to td.tobody{width:100%}      
@@ -1104,6 +1087,8 @@ h2 .user_name {margin-left:150px !important}
 .overview ul.feedsUI a  {font-size: 1.0em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
 .overview .post-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: left; margin-left:21px}
 .overview .post-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
+.overview .post-comment-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: left; margin-left:21px}
+.overview .post-comment-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
 p.message{font-size:15px;line-height:1.35em;height:7px;}
 p.message{font-size:12px;margin-right:84px;padding-bottom:3px;}
 p.message span.meta{color:#a1a1a1;display:block;font-size:10px;}
@@ -1112,7 +1097,7 @@ ul.feedsUI li.feed .right p.details a{font-weight:normal;}
 .FORM-text{float:left;width:368px;}
 .FORM-text .area input{-moz-border-radius:3px;-moz-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);-webkit-border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);background:#ffffff;border:1px solid #888888;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);color:#666666;font-family:"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size:12px;font-weight:bold;height:14px;line-height:14px;margin-right:-10px;padding:5px;position:relative;right:0;width:100%;}
 .FORM-text.large .area input{font-size:14px;height:20px;line-height:20px;}.FORM-text .area input:hover, .FORM-text .area input:focus{border-color:#555555;color:#333333;}
-
+.comments ul.comment_list li.comment{-moz-border-radius:3px;-webkit-border-radius:3px;background:#f0f0f0;border-radius:3px;margin-top:2px;overflow:hidden;padding:6px;}
 
 a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow:hidden; background:url("/static/images/facebook_sign_in.png") no-repeat transparent; z-index:5000;  text-decoration:none;margin-top:5px; margin-left:15px}
 .friend_dropdown_list {float:left;width:150px}
