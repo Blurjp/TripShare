@@ -1,0 +1,70 @@
+diff --git a/Users/UserInfo.pyc b/Users/UserInfo.pyc
+index 8fbc080..5e6e958 100644
+Binary files a/Users/UserInfo.pyc and b/Users/UserInfo.pyc differ
+diff --git a/asyncmongo b/asyncmongo
+--- a/asyncmongo
++++ b/asyncmongo
+@@ -1 +1 @@
+-Subproject commit a4824d44b30aada48c0c5d9a4855162e5a33ed07
++Subproject commit a4824d44b30aada48c0c5d9a4855162e5a33ed07-dirty
+diff --git a/templates/Module/CreateTripSlide1.html b/templates/Module/CreateTripSlide1.html
+index 051febc..1ea8e48 100644
+--- a/templates/Module/CreateTripSlide1.html
++++ b/templates/Module/CreateTripSlide1.html
+@@ -144,11 +144,11 @@
+                 <div class="step">
+                   <img alt="Step 3 of 3" src="{{ static_url("icon/tripshare_3.png") }}">
+                 </div>
+-<<<<<<< HEAD
++
+ 				<div id="manage_member_dropdown">
+-=======
++
+ 				<div id="add_member_dropdown">
+->>>>>>> 02cbbc8325d293288c0ae21ec46520951d041a97
++
+                 <fieldset>
+                   <div id="search_member">
+                   	<h2> Add Member </h2>
+diff --git a/templates/newbeforesignin.html b/templates/newbeforesignin.html
+index 4a4ee93..12796a3 100644
+--- a/templates/newbeforesignin.html
++++ b/templates/newbeforesignin.html
+@@ -383,16 +383,19 @@ color: #7777cc;
+ <body> 
+ 
+    
+- {% include "Module/CreateTripSlide1.html" %}
++
+ 
+ 
+ <div id="header"> 
++
+ <div id="nav-bar"  >
+  {% include "Module/headline.html" %}
+  
+  {% include "Module/userentry.html" %}
+  
+  {% include "Module/usersetting.html" %}
++ 
++
+ 
+ <div id="partner-header">
+   <form action="http://www.foodspotting.com/" class="default" id="map_search" method="post" onsubmit="if (FSMap.check_submittable()) { FSMap.prepare_search(); new Ajax.Request('http://www.foodspotting.com/', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); }; return false;">
+@@ -473,6 +476,7 @@ color: #7777cc;
+ </div>
+ 
+ 
++
+ <div class="clearfix" id="new-sighting-form">
+ <div id="user-info-window">
+ <div class="tip"></div>
+@@ -555,6 +559,8 @@ TripShare answers the question, "<strong>What's good around here?</strong>" by m
+ 
+ {% include "Module/footer.html" %}
+ 
++  {% include "Module/CreateTripSlide1.html" %}
++
+ <script type="text/javascript">
+ $(document).ready(function() {
+ 	$("#start").autocomplete(cities);

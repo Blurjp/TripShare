@@ -1,0 +1,48 @@
+<div id="manage_member_dropdown">
+                <fieldset>
+                  <div id="searchmemberentry">
+                  	
+                  		<table>
+                  			<tr>
+                  		<td>
+                       <input type="text" autocomplete="off" class="member_input">
+					   </td>
+					   <td>
+					   <button onclick="SearchMember('{{singletrip['trip_id']}}'); return false;">Search</button>
+                          </td>  
+						  </tr>
+						  </table> 
+                    <div class="clear"></div>
+					</div>
+					
+					<div class="people_search_result">
+						
+					</div>
+					<div class="friend_dropdown_list">
+						<ul> 
+{% for member in singletrip['members'] %}
+<li>
+	<a href="/addusertotrip/{{member['slug']}}">
+<span>
+
+<img class="picture medium" alt="{{member['username']}}"  src="{{member['picture']}}" >
+
+</span>
+<span class="user_name">
+{{member['username']}}
+</span>
+</a>
+</li>
+{% end %}
+
+</ul>
+<<<<<<< HEAD
+					</div>
+					<input class="user_ids" type="hidden" value="" name="user_ids">
+                </fieldset>             
+=======
+		</div>
+			<input class="user_ids" type="hidden" value="" name="user_ids">
+        </fieldset>             
+>>>>>>> 02cbbc8325d293288c0ae21ec46520951d041a97
+</div>
