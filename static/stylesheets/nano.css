@@ -403,37 +403,11 @@ opacity:0.5;
 #search_bar #submit_location{float:left; width:100px;border-top-left-radius:0;-moz-border-radius-topleft:0;-webkit-border-top-left-radius:0;border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;-webkit-border-bottom-left-radius:0}
 .feedoptions {margin-top:5px}
 
-#create_trip_step_1 .button_container
-{
-	position: absolute;
-	right: 15px; 
-	bottom: 15px;
-	overflow: hidden
-}
-
-#create_trip_step_2 .button_container
-{
-	position: absolute;
-	right: 15px; 
-	bottom: 15px;
-	overflow: hidden
-}
-
-#create_trip_step_3 .button_container
-{
-	position: absolute;
-	right: 15px; 
-	bottom: 15px;
-	overflow: hidden
-}
-
-#dest_list {
-		font-family: Arial, sans-serif;
-		list-style-type: none;
-		margin: 0px;
-		padding-top: 50px;
-		width: 700px;
-	}
+#create_trip_step_1 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
+#create_trip_step_2 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
+#create_trip_step_3 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
+#create_guide_step_1 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
+#dest_list{font-family:Arial,sans-serif;list-style-type:none;margin:0;padding-top:50px;width:700px}
 
 #dest_list .delete_dest
 {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/to-delete.png) no-repeat}
@@ -451,6 +425,8 @@ opacity:0.5;
 		padding-top: 5px;
 		
 	}
+ 
+
  
 
  .sidebar-auth-button { border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 60%; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left}

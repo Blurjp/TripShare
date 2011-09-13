@@ -1037,6 +1037,7 @@ $('#mask6').click(function(e) {
 });
 
 
+
 function PostCommentResponse(response){
 	$('.comment_list li').last().before('<li class="comment item" data-commentid="' + response.comment_id + '"><a href="#"><img alt="' + response.from.username + '" src="' + response.from.picture + '" title="' + response.from.username + '" class="picture medium"></a>' + response.body + '</li><div class="body"><p class="message"><a class="name" href="">' + response.from.username + '</a> '+$('.commentBody').val() +'</p><p class="timestamp"> <a class="remove_comment" href="#">Delete</a></p></div>');
 	$('.commentBody').val('');

@@ -174,6 +174,7 @@ class Application(tornado.web.Application):
                                       
                                       (r"/a/changepicture", UserPictureHandler),
                                       (r"/guides", BrowseGuidesHandler),
+                                      (r"/createguide", CreateGuidesHandler),
                                       (r"/blog", Blog),
                                       (r"/postcomment", PostCommentHandler),
                                       (r"/deletecomment", DeleteCommentHandler),
