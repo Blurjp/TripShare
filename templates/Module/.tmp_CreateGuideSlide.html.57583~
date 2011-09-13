@@ -20,7 +20,7 @@
   </div>
   <div class="right " style="margin:0 50px 22px 12px;">
     <label>on  
-  <select name="day">
+  <select class="day">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>

@@ -38,6 +38,7 @@ from Users.UserInfo import TravelersHandler
 from Users.UserInfo import AddUserToTripHandler
 from Users.UserInfo import CheckUserinTripHandler
 from Guides.GuidesHandler import BrowseGuidesHandler
+from Guides.GuidesHandler import CreateGuidesHandler
 from Comment.CommentHandler import PostCommentHandler
 from Comment.CommentHandler import DeleteCommentHandler
 from Comment.CommentHandler import PostFeedHandler
