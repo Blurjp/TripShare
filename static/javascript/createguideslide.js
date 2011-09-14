@@ -69,9 +69,16 @@ $(document).ready(function() {
  
  jQuery.fn.guideformToDict = function(){
      var fields = this.serializeArray();
+	
 	 var json = {};
-	 for (var i = 0; i < fields.length; i++) {
-	 json[fields[i].name+i.toString()] = fields[i].value;
+	 json ['title'] = fields[1].value;
+	 p=1;
+	 for (var i = 2; i < fields.length; i++) {
+	 	 
+	 json['dest'+(i-p).toString()] = fields[i].value;
+	 json['day'+(i-p).toString()] = fields[i+1].value;
+	  i++;
+	  p++;
 	 }
 	 
 	 if (json.next) delete json.next;
@@ -87,7 +94,7 @@ $(document).ready(function() {
   {
   	   //alert('guide');
 	   $('.add_another_box').remove();
-  	   $('.guide-row-wrapper').append('<li class="lh-tighter place-0-element multihop-row goodbox"><div class="left c1of5 tright" style="margin-top:2px;"><label for="place-0-text">Destination:</label></div><div class="left c2of5 tright"><input id="place-0-text" name="place-0-text" type="text" class="text destination margin-right-thin" value=""><input id="place-0" name="place-0" type="hidden" value=""></div><div class="right " style="margin:0 50px 22px 12px;"><label>on <select class="day"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> day</label></div></li><li class="add_another_box"><div class="right" style="margin-right:40px;"><a class="add_another_destination" href="#" >Add another destination on this guide</a></div></li>');
+  	   $('.guide-row-wrapper').append('<li class="lh-tighter place-0-element multihop-row goodbox"><div class="left c1of5 tright" style="margin-top:2px;"><label for="place-0-text">Destination:</label></div><div class="left c2of5 tright"><input id="place-0-text" name="place-0-text" type="text" class="text destination margin-right-thin" value=""></div><div class="right " style="margin:0 50px 22px 12px;"><label>on <select name="day"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> day</label></div></li><li class="add_another_box"><div class="right" style="margin-right:40px;"><a class="add_another_destination" href="#" >Add another destination on this guide</a></div></li>');
   });
 })
 	
