@@ -39,6 +39,7 @@ from Users.UserInfo import AddUserToTripHandler
 from Users.UserInfo import CheckUserinTripHandler
 from Guides.GuidesHandler import BrowseGuidesHandler
 from Guides.GuidesHandler import CreateGuidesHandler
+from Guides.GuidesHandler import EntryGuidesHandler
 from Comment.CommentHandler import PostCommentHandler
 from Comment.CommentHandler import DeleteCommentHandler
 from Comment.CommentHandler import PostFeedHandler
@@ -175,6 +176,7 @@ class Application(tornado.web.Application):
                                       
                                       (r"/a/changepicture", UserPictureHandler),
                                       (r"/guides", BrowseGuidesHandler),
+                                      (r"/guides/([^/]+)", EntryGuidesHandler),
                                       (r"/createguide", CreateGuidesHandler),
                                       (r"/blog", Blog),
                                       (r"/postcomment", PostCommentHandler),

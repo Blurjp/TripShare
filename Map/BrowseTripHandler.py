@@ -31,7 +31,7 @@ class BaseHandler(tornado.web.RequestHandler):
         #self.clear_all_cookies()
         user_id = self.get_secure_cookie("user")
         if not user_id: return None
-        print("get_current_user++++++++++++++++++++++++++++++++=")
+        
         #return tornado.escape.json_decode(user_id)
         return self.syncdb.users.find_one({'user_id': bson.ObjectId(str(user_id))})
     
