@@ -196,7 +196,7 @@ $(document).ready(function() {
 	  //var formData = form2object('create_trip_form');
 	  
 	  var formData = $('#create_trip_form').formToDict();
-	 // var _formData=JSON.stringify(formData, null, '\t');
+	  var _formData=JSON.stringify(formData, null, '\t');
       //alert(_formData);
       var disabled = $('#create_trip_form').find("input[type=submit]");
       disabled.disable();

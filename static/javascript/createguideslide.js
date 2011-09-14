@@ -69,18 +69,19 @@ $(document).ready(function() {
  
  jQuery.fn.guideformToDict = function(){
      var fields = this.serializeArray();
-	
+	var destinations = []
 	 var json = {};
 	 json ['title'] = fields[1].value;
-	 p=1;
+	 json ['_xsrf'] = fields[0].value;
 	 for (var i = 2; i < fields.length; i++) {
-	 	 
-	 json['dest'+(i-p).toString()] = fields[i].value;
-	 json['day'+(i-p).toString()] = fields[i+1].value;
+	 destinations.push({
+	 	'dest': fields[i].value,
+	 	'day': fields[i + 1].value
+	 })
+	
 	  i++;
-	  p++;
 	 }
-	 
+	 json['destinations'] = destinations;
 	 if (json.next) delete json.next;
 	 return json;
  }
