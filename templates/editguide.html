@@ -85,9 +85,11 @@
 </div>
 	
 <div class="map-detail">
-				<input name="guideId" id="guideId" type="hidden" value = "{{guide['guide_id']}}">
+				<input name="guideId" id="guideId" type="hidden" value = {{guide['guide_id']}}>
 				<input name="slug" id="guide_slug" type="hidden" value = {{guide['slug']}}> 
 				<input name="title" id="guide_title" type="hidden" value = {{guide['title']}}> 
+				<input name="typeId" id="typeId" type="hidden" value = {{guide['guide_id']}}>
+				<input id="type" type="hidden" value = "guide">
 </div> 
 </div> 
 
@@ -168,7 +170,7 @@
     <img alt="{{current_user['username']}}" src="{{current_user['picture']}}" title="{{current_user['username']}}" class="picture medium "> 
 	
      </div>
-	<div class="comment post right">
+	<div class="comment post ">
 		<form action="#" method="post">
 		{% raw xsrf_form_html() %}
         <div class="FORM-text">

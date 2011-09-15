@@ -1009,28 +1009,30 @@ $('#mask6').click(function(e) {
 
   $('.post-button').click(function(e) { 
         e.preventDefault();  
-        var trip_id = $('#tripId').val();
-		alert(trip_id);
+        var id = $('#typeId').val();
+		var type = $('#type').val();
+		alert(id);
 		var content  = $('.feedBody').val();
-		alert(content);
+		//alert(content);
 		var xsrf = $('input[name=_xsrf]').val();
-		alert(xsrf);
-		var message = {"content": content, "trip_id":trip_id , "_xsrf":xsrf};
+		//alert(xsrf);
+		var message = {"content": content, "id":id , "_xsrf":xsrf, "type":type};
 		//alert(jQuery.parseJSON(message));
 		$('.feedsUI li').last().before('<li class="feed item">'+content+'</li>');
 		$('.feedBody').val('');
-		$.postJSON('/postfeed', message, function(response){PostCommentResponse(response)});	
+		$.postJSON('/postfeed', message, null);	
 });
 
   $('.post-comment-button').click(function(e) { 
         e.preventDefault();  
+		var type = $('#type').val();
         var feed_id = $(this).parent('.feed').attr('data-feedid');
 		alert(feed_id);
 		var content  = $('.commentBody').val();
 		alert(content);
 		var xsrf = $('input[name=_xsrf]').val();
 		alert(xsrf);
-		var message = {"content": content, "feed_id":feed_id , "_xsrf":xsrf};
+		var message = {"content": content, "feed_id":feed_id , "_xsrf":xsrf, "type":type};
 		//alert(jQuery.parseJSON(message));
 		
 		$.postJSON('/postcomment', message, function(response){PostCommentResponse(response)});	
@@ -1043,9 +1045,16 @@ function PostCommentResponse(response){
 	$('.commentBody').val('');
 }
 
+function PostFeedResponse(response){
+	$('.comment_list li').last().before('<li class="comment item" data-commentid="' + response.comment_id + '"><a href="#"><img alt="' + response.from.username + '" src="' + response.from.picture + '" title="' + response.from.username + '" class="picture medium"></a>' + response.body + '</li><div class="body"><p class="message"><a class="name" href="">' + response.from.username + '</a> '+$('.commentBody').val() +'</p><p class="timestamp"> <a class="remove_comment" href="#">Delete</a></p></div>');
+	$('.commentBody').val('');
+}
+
     $('.remove_comment').click(function(){
 		var message = {"comment_id": $(this).parent('.feed').attr('data-feedid')};
 		message._xsrf = getCookie("_xsrf");
 		$.postJSON('/deletecomment', message, null);	
 	})
 });
+
+

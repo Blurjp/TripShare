@@ -1074,7 +1074,7 @@ p.message{font-size:12px;margin-right:84px;padding-bottom:3px;}
 p.message span.meta{color:#a1a1a1;display:block;font-size:10px;}
 p.details{color:#999999;clear:both;font-size:11px;font-weight:normal;margin-right:425px;}
 ul.feedsUI li.feed .right p.details a{font-weight:normal;}
-.FORM-text{float:left;width:368px;}
+.FORM-text{float:left;width:368px;padding-left:10px}
 .FORM-text .area input{-moz-border-radius:3px;-moz-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);-webkit-border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);background:#ffffff;border:1px solid #888888;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);color:#666666;font-family:"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size:12px;font-weight:bold;height:14px;line-height:14px;margin-right:-10px;padding:5px;position:relative;right:0;width:100%;}
 .FORM-text.large .area input{font-size:14px;height:20px;line-height:20px;}.FORM-text .area input:hover, .FORM-text .area input:focus{border-color:#555555;color:#333333;}
 .comments ul.comment_list li.comment{-moz-border-radius:3px;-webkit-border-radius:3px;background:#f0f0f0;border-radius:3px;margin-top:2px;overflow:hidden;padding:6px;}
