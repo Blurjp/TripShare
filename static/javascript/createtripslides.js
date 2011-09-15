@@ -204,8 +204,9 @@ $(document).ready(function() {
 	  $.postJSON('/createtrip/'+_formData, formData, function(response){
 			    ShowCreateTripResponse(response);
 			});			
-      $('#create_trip_form').reset();
       
+      document.getElementById("create_trip_form").reset();	
+	  disabled.enable();
  });
  
  jQuery.fn.disable = function() {

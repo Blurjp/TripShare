@@ -7,6 +7,7 @@ import simplejson
 import bson
 import datetime
 import re
+import pymongo
 import random
 import tornado.web
 import unicodedata
@@ -132,7 +133,7 @@ class ComposeHandler(BaseHandler):
             trip_path = ""
             waypoints=[]
             members.append(self.current_user)
-            self.syncdb.trips.ensure_index([('start_place_position', GEO2D), ('dest_place_position', GEO2D), ('published',DESCENDING)])
+            self.syncdb.trips.ensure_index([('start_place_position', pymongo.GEO2D), ('dest_place_position', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
             #self.syncdb.trips.ensure_index([('dest_place_position', '2d')])
             self.syncdb.trips.ensure_index('trip_id', unique=True)
             self.syncdb.trips.ensure_index('slug', unique=True)
