@@ -1,6 +1,6 @@
 {% if 'feeds' in singletrip %}
 {% for feed in singletrip['feeds'] %}
-<li class="feed" data-feedid="{{feed['feed_id']}}">
+<li class="feed item" data-feedid="{{feed['feed_id']}}">
 					<div class="left">
 						<img alt="{{feed['from']['username']}}" src="{{feed['from']['picture']}}" title="{{feed['from']['username']}}" class="picture medium"><div class="type"></div>
 					</div>
@@ -11,8 +11,6 @@
 						</p>
 						<div class="comments">
 						<ul class="comment_list" style="display: none">
-							
-							
 							{% if 'comments' in feed %}
 							{% for comment in feed['comments'] %}
 							<li class="comment item" data-commentid="{{comment['comment_id']}}"><a href="#"><img alt="{{comment['from']['username']}}" src="{{comment['from']['picture']}}" title="{{comment['from']['username']}}" class="picture medium"></a>

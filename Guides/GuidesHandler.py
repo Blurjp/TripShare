@@ -18,6 +18,7 @@ class BrowseGuidesHandler(BaseHandler):
 class EntryGuidesHandler(BaseHandler):
     def get(self, slug):
         guide = self.syncdb.guides.find_one({'slug': slug})
+        
         if not guide: raise tornado.web.HTTPError(404)
         self.render("editguide.html", guide=guide)
         #self.render("terms.html")

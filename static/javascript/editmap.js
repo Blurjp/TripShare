@@ -994,7 +994,6 @@ function ShowResultInDropList(response)
 	//alert(_object.length);
 	 for (var i = 0; i < _object.length; i++)
 	{
-	
 	$('.friend_dropdown_list ul').append(
      '<li><a href="/addusertotrip/'+_object[i]['slug']+'"><span><img class="picture medium" alt='+_object[i]['username']+' src='+_object[i]['picture']+'></span><span class="user_name">'+_object[i]["username"]+'</span></a></li>'
     );	
@@ -1011,16 +1010,16 @@ $('#mask6').click(function(e) {
         e.preventDefault();  
         var id = $('#typeId').val();
 		var type = $('#type').val();
-		alert(id);
+		//alert(id);
 		var content  = $('.feedBody').val();
 		//alert(content);
 		var xsrf = $('input[name=_xsrf]').val();
 		//alert(xsrf);
 		var message = {"content": content, "id":id , "_xsrf":xsrf, "type":type};
 		//alert(jQuery.parseJSON(message));
-		$('.feedsUI li').last().before('<li class="feed item">'+content+'</li>');
-		$('.feedBody').val('');
-		$.postJSON('/postfeed', message, null);	
+		//$('.feedsUI li').last().before('<li class="feed item">'+content+'</li>');
+		//$('.feedBody').val('');
+		$.postJSON('/postfeed', message, function(response){PostFeedResponse(response)});	
 });
 
   $('.post-comment-button').click(function(e) { 
@@ -1041,13 +1040,22 @@ $('#mask6').click(function(e) {
 
 
 function PostCommentResponse(response){
-	$('.comment_list li').last().before('<li class="comment item" data-commentid="' + response.comment_id + '"><a href="#"><img alt="' + response.from.username + '" src="' + response.from.picture + '" title="' + response.from.username + '" class="picture medium"></a>' + response.body + '</li><div class="body"><p class="message"><a class="name" href="">' + response.from.username + '</a> '+$('.commentBody').val() +'</p><p class="timestamp"> <a class="remove_comment" href="#">Delete</a></p></div>');
+	alert('post');
+	response = JSON.parse(data);
+	alert(response.username);
+	var node = '<li class="comment item" data-commentid="' + _object['id'] + '"><a href="#"><img alt="' + _object['from']['username'] + '" src="' + _object['from']['picture'] + '" title="' + _object['from']['username'] + '" class="picture medium"></a>' + _object['body'] + '</li><div class="body"><p class="message"><a class="name" href="">' + _object['from']['username'] + '</a> ' + $('.commentBody').val() + '</p><p class="timestamp"> <a class="remove_comment" href="#">Delete</a></p></div>';
+	$('.comment_list li').first().before(node);
 	$('.commentBody').val('');
 }
 
 function PostFeedResponse(response){
-	$('.comment_list li').last().before('<li class="comment item" data-commentid="' + response.comment_id + '"><a href="#"><img alt="' + response.from.username + '" src="' + response.from.picture + '" title="' + response.from.username + '" class="picture medium"></a>' + response.body + '</li><div class="body"><p class="message"><a class="name" href="">' + response.from.username + '</a> '+$('.commentBody').val() +'</p><p class="timestamp"> <a class="remove_comment" href="#">Delete</a></p></div>');
-	$('.commentBody').val('');
+	if (response != '') {
+		var _object = JSON.parse(response);
+		var node = '<li class="feed item left" data-feedid="' + _object['id'] + '"><div class="left"><img alt="' + _object['from']['username'] + '" src="' + _object['from']['picture'] + '" title="' + _object['from']['username'] + '" class="picture medium"></div><div class="right"><p class="message">' + _object['body'] + '</p><p class="details"><span class="timestamp">' + _object['date'] + '</span>  · <a class="comment" href="#">Comment</a></p></div></li>';
+		$('.feedsUI li').first().before(node);
+		
+	}
+	$('.feedBody').val('');
 }
 
     $('.remove_comment').click(function(){
