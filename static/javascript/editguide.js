@@ -52,56 +52,7 @@
    // alert(document.getElementById("startPosition").value);
 	//alert(document.getElementById("startPlace").value);
 	var _center = new google.maps.LatLng(34.3664951, -89.5192484);
-	if (document.getElementById("startPosition").value != 'undefined' && document.getElementById("endPosition").value != 'undefined' && document.getElementById("startPosition").value != '' && document.getElementById("endPosition").value != '')
-	{
-		//alert("enter position");
-		var startValue = document.getElementById("startPosition").value;
-		//alert("startValue: "+startValue + "Thsi should be two number.");
-		var temp = startValue.substring(1, startValue.length-2);
-		 var a = temp.split(', ')[0];
-		 var b = temp.split(', ')[1];
-		
-		 _center = new google.maps.LatLng(a, b);
-		// alert("calcRoute");
-		 calcRoute(false);
-	}
-	else if (document.getElementById("startPlace").value != 'undefined' && document.getElementById("endPlace").value != 'undefined' && document.getElementById("startPlace").value != '' && document.getElementById("endPlace").value != '')
-	{
-		//alert("enter place");
-		var address_id = document.getElementById("startPlace").value;
-		var end_address_id = document.getElementById("endPlace").value;
-		//alert("start palce: "+address_id + " This should be place name.");
-		geocoder.geocode( { 'address': address_id}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) 
-      {
-        _center = results[0].geometry.location;        
-       document.getElementById("startPosition").value = _center;
-      // alert(_center);
-        }
 
-     else {
-        alert("Geocode was not successful for the following reason: " + status);
-        return null;
-      }
-     }); 
-	 
-	 geocoder.geocode( { 'address': end_address_id}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) 
-      {
-        
-       document.getElementById("endPosition").value = results[0].geometry.location;        
-      // alert(document.getElementById("endPosition").value);
-	   calcRoute(false);
-        }
-
-     else {
-        alert("Geocode was not successful for the following reason: " + status);
-        return null;
-      }
-     }); 
-	 
-	 
-	}
 	
 	
     var myOptions = {
@@ -145,7 +96,7 @@
 
   homeControlDiv.index = 2;
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);          
-  fetchPath();                                
+  //fetchPath();                                
   }
   
   
@@ -691,8 +642,11 @@ function codeLatLng(name) {
         calcRoute(false);
         dragMarker.visible = false;
         });
+
       }
+  
     });
+
   }
   
   function addMarkers() {

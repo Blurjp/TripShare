@@ -67,12 +67,7 @@ class ComposeHandler(BaseHandler):
            if member_id != '' and member_id != None: 
               _member = self.syncdb.users.find_one({'user_id':bson.ObjectId(member_id)})
               members.append(_member)
-                        
-                        
-        #destinations = self.get_argument("destinations_for_trips").split('//')
-        #for i in range(0,len(destinations)-1):
-        #    arguments = self.get_argument('dest'+i).split('//')
-        #    destinations[i].append[arguments[2]]
+
         radio = _formData['privacy']
 
         if radio == 'private':
@@ -84,12 +79,11 @@ class ComposeHandler(BaseHandler):
         
         dest_string = ""                
         destinations = _formData['destinations']
-        #print("len:++++++++++++++"+len(destinations))
+        
         for dest in destinations:
             if(dest!=""):
                 dest_string += " to "+ dest['text']
-                #print("dest.text+++++++++++++++++++++++=: "+dest['text'])
-            
+ 
         title = "From "+start+dest_string
         tripStartPosition = ""
         tripDestPosition = "" 

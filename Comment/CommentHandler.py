@@ -48,12 +48,12 @@ class PostFeedHandler(BaseHandler):
             self.syncdb.guides.update({'guide_id':bson.ObjectId(id)},  {'$push': {'feeds':
             {'feed_id': feed_id,'body': content,'date': current_date,'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}}})
             self.syncdb.guides.ensure_index('feeds.feed_id')
-            self.syncdb.guides.ensure_index('feeds.date', pymongo.DESCENDING)
+            #self.syncdb.guides.ensure_index('feeds.date', 1)
         elif type == 'trip':
             self.syncdb.trips.update({'trip_id':bson.ObjectId(id)},  {'$push': {'feeds':
             {'feed_id': feed_id,'body': content,'date': current_date,'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}}})
             self.syncdb.trips.ensure_index('feeds.feed_id')
-            self.syncdb.trips.ensure_index('feeds.date', pymongo.DESCENDING)
+            #self.syncdb.trips.ensure_index('feeds.date', pymongo.DESCENDING)
         
         json_data = {'id': feed_id, 'body': content, 'date': current_date,'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'],'picture': self.current_user['picture']}}
         self.write(unicode(simplejson.dumps(json_data, cls=MongoEncoder.MongoEncoder.MongoEncoder)))

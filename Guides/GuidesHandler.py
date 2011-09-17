@@ -6,6 +6,8 @@ Created on Aug 31, 2011
 import bson
 import random
 import datetime
+import simplejson
+import pymongo
 import re
 import unicodedata
 import tornado.web
@@ -13,7 +15,14 @@ from Map.BrowseTripHandler import BaseHandler
 
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
-        self.render("guides/guides.html")  
+        # change the order to rate later
+        guides = self.syncdb.guides.find().limit(10).sort("published", pymongo.DESCENDING)
+        _guides = []
+        for latest_guide_id in guides:
+                latest_guide_id['html'] = self.render_string("Guides/guideentry.html", trip = latest_guide_id)
+                _guides.append(latest_trip_id)
+                        
+        self.render("Guides/guides.html", guides=_guides)
 
 class EntryGuidesHandler(BaseHandler):
     def get(self, slug):
@@ -28,9 +37,15 @@ class CreateGuidesHandler(BaseHandler):
     slug = None
     @tornado.web.authenticated
     def post(self):
-        title = self.get_argument('title')
-        #print("len:++++++++++++++"+len(destinations))
-        destinations = self.get_arguments('destinations')
+        
+        
+        for ele in self.request.arguments:
+            print(ele);
+        content = simplejson.loads(self.get_argument('data'))
+        title = content['title']
+        print(title);
+        destinations = content['destinations']
+        
         description = ''
         #for idx, dest in enumerate(destinations):
         #    if(dest!=""):

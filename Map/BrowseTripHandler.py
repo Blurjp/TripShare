@@ -112,7 +112,7 @@ class TripPageHandler(BaseHandler):
         index = string.atoi(_index)
 
         skip_number = index*3
-        if section == 'newtrips':
+        if section == "newtrips":
             latest_trip_ids = self.syncdb.trips.find().skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
         elif section == "hottrips":
             

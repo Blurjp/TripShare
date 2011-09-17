@@ -904,7 +904,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 .marker-rotate {-webkit-transform: rotate(-8deg); -o-transform: rotate(-8deg); -moz-transform: rotate(-8deg); border: 3px solid white !important; margin: -1px 0 0 -1px !important}
 #back_to_map {padding: 10px; position: fixed; z-index: 10; background: #eeeeee; right: 100px; top: -1px; border: 1px solid #999999; box-shadow: 0 1px 5px #cccccc; -moz-box-shadow: 0 1px 5px #cccccc; -webkit-box-shadow: 0 1px 5px #cccccc; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px}
 #mapContainer {width: 280px; height: 100px; position: relative; overflow: hidden}
-#map, #discover-map {width: 100%; height: 100%}
+#map, #discover-map {width: 100%; height: 100%; }
 #discover-map {width: 100%; height: 400px; position: relative}
 #discover-map #map-promo {z-index: 1001; position: absolute; top: 70px; right: 20px; width: 320px; height: 270px}
 #discover-map #map-promo .promo {padding: 10px; position: relative; z-index: 10}
@@ -931,7 +931,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #map-pagination #page-left:hover {cursor: default; text-decoration: none}
 #map-pagination #page-left.enabled {color: #268ca0; text-shadow: none; background-color: white; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666}
 #map-pagination #page-left.enabled:hover {cursor: pointer; text-decoration: underline}
-#map_search {left: 50%; width: 940px; padding: 0 20px; margin: 10px 0 0 -490px; z-index: 4000; position: absolute}
+#map_search {left: 50%; width: 940px; padding: 0 20px; margin: 20px 0 0 -490px; z-index: 4000; position: absolute}
 #map_search fieldset .text-box {box-shadow: inset 1px 1px 2px #555555; -moz-box-shadow: inset 1px 1px 2px #555555; -webkit-box-shadow: inset 1px 1px 2px #555555; padding-top: 9px !important; padding-bottom: 9px !important; border: none !important; float: left; position: relative; margin-top: 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #map_search fieldset .text-box .clear {top: 10px; right: 8px; width: 17px; height: 17px; position: absolute; text-indent: -10000px; background: transparent url(/images/clear-search.png) no-repeat}
 #map_search fieldset .text-box .clear:hover {background-position: -17px 0}

@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 <title>TripShare</title> 
 
+<script type="text/javascript" charset="UTF-8" src="http://maps.gstatic.com/cat_js/intl/en_us/mapfiles/310c/maps2.api/%7Bmod_stats,mod_api_gc,mod_drag,mod_ctrapi,mod_zoom%7D.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry"></script> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/>  
@@ -265,6 +266,114 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 </style> 
 
+<style type="text/css"> 
+#container.nosidebar {
+width: 960px;
+width: auto !important;
+max-width: 960px;
+}
+.form .label {
+white-space: nowrap;
+}
+#page .box-body {
+height: 700px;
+height: auto !important;
+min-height: 575px;
+}
+#page h1,
+#page h2 {
+font-size: 20px;
+}
+#page h2,
+#page table.oneclickicons {
+margin-bottom: 8px;
+}
+#page .rhs {
+float: right;
+display: inline;
+padding-left: 20px;
+border-left: 1px solid #eee;
+width: 270px;
+}
+#page .lhs {
+margin-right: 320px;
+}
+#page .rhs .oneclick {
+margin-bottom: 35px;
+}
+#page .login {
+background-color: #d1e2f6;
+padding: 15px;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+}
+table.tourtabs {
+width: 100%;
+}
+table.tourtabs td {
+white-space: nowrap;
+background: #eee;
+border-top: 1px solid white;
+border-bottom: 1px solid #d6d6d6;
+}
+table.tourtabs td.tourtab {
+padding: 3px;
+padding-left: 8px;
+padding-right: 8px;
+}
+table.tourtabs td.tourtab.selected {
+border: 1px solid #d6d6d6;
+border-bottom-color: white;
+background: white;
+}
+table.tourtabs td.tourtab.selected a {
+color: black;
+font-weight: bold;
+text-decoration: none;
+}
+.tourcontent {
+margin-left: 10px;
+margin-top: 15px;
+}
+.tourcontent,
+.tourcontent td,
+.tourcontent td h3 {
+font-size: 15px;
+}
+.tourcontent td h3 {
+margin-bottom: 2px;
+}
+table.screenshots {
+margin-bottom: 20px;
+}
+.screenshots td {
+vertical-align: top;
+padding-bottom: 15px;
+}
+.screenshots td.image {
+line-height: 0;
+padding-right: 15px;
+}
+.screenshots td.image img {
+width: 204px;
+height: 116px;
+}
+.snippet {
+font-size: 13px;
+color: #666;
+}
+.bigscreenshot .snippet {
+margin-bottom: 13px;
+}
+.legal {
+margin-top: 2em;
+color: #737373;
+font-size: 13px;
+}
+.legal a {
+color: #7777cc;
+}
+</style> 
 
  
 </head> 
@@ -433,6 +542,7 @@ TripShare answers the question, "<strong>What's good around here?</strong>" by m
 <iframe frameborder="0" height="250" scrolling="no" src="" width="300"></iframe>
 
 </div>
+
 </div>
 
 <div class="pod clearfix">
@@ -633,8 +743,6 @@ function set_section(section, _url) {
     }
 	  
 function ShowTrip(message) {
-		if(message!=null)
-		{
 		var node;
 		
 		var trips = message.split("||||");
@@ -647,7 +755,6 @@ function ShowTrip(message) {
              $("#latest_trip").append(node);
              node.show();
          });	
-		 }
     }
 </script>
 

@@ -142,7 +142,7 @@
 <li class="lh-tighter place-{{counter}}-element multihop-row">
 <label for="place-{{counter}}-text">Destination:</label>
 
-<input id="place-{{counter}}-text" name="place-{{counter}}-text" type="text" class="text destination margin-right-thin" value="{{dest['dest']}}">
+<input id="place-{{counter}}-text" name="place-{{counter}}-text" type="text" class="text destination margin-right-thin" value="{{dest['text']}}">
 <input id="place-{{counter}}" name="place-{{counter}}" type="hidden" value="">
 <input id="place-{{counter}}-date" name="place-{{counter}}-date" type="text" value="{{dest['day']}}" class="text">
 

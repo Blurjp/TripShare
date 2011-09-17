@@ -54,15 +54,13 @@ $(document).ready(function() {
 	  $('#mask4').hide();  
 	  $('#closeguide-modal').hide();
 	  
-	  //var formData = form2object('create_guide_form');
-	  
 	  var formData = $('#create_guide_form').guideformToDict();
-	  var _formData=JSON.stringify(formData, null, '\t');
-      //alert(_formData);
+	  var _formData = JSON.stringify(formData, null, '\t');
+	  var content = {'_xsrf': getCookie("_xsrf"), 'data' : _formData};
       var disabled = $('#create_guide_form').find("input[type=submit]");
       disabled.disable();
 	  
-	  $.postJSON('/createguide', formData, function(response){
+	  $.postJSON('/createguide', content, function(response){
 			    ShowCreateguideResponse(response);
 			});	
 	 
@@ -72,10 +70,10 @@ $(document).ready(function() {
  
  jQuery.fn.guideformToDict = function(){
      var fields = this.serializeArray();
-	var destinations = []
+	 var destinations = []
 	 var json = {};
 	 json ['title'] = fields[1].value;
-	 json ['_xsrf'] = fields[0].value;
+	 
 	 for (var i = 2; i < fields.length; i++) {
 	 destinations.push({
 	 	'dest': fields[i].value,

@@ -76,8 +76,6 @@ class MainPage(BaseHandler):
         """ Get RANDOM trips to show in the map"""
         #trips = self.db.query("SELECT * FROM trips ORDER BY RAND() LIMIT 10")
         trips = self.syncdb.trips.find().limit(10)
-       
-        
         if trips.count() > 0:
             for trip in trips:
                 #trip_user = self.db.query("SELECT * FROM users WHERE user_id = %s", trip.owner_id )
@@ -101,12 +99,12 @@ class MainPage(BaseHandler):
                         
                         members = latest_trip_id['members']
                         if self.current_user:
-                            print("+++++++++++++++++++++++++++++=true")
+                            
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:
                                     latest_trip_id['check_join'] = True
-                                    print("+++++++++++++++++++++++++++++=true")
                                     break
+                                
                         latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
                         _trips.append(latest_trip_id)
                         
@@ -143,13 +141,8 @@ class ResetPassword(BaseHandler):
         self.render("resetpassword.html", greeting = greeting)   
         
 class Privacy(BaseHandler):
-    def get(self):
-        
+    def get(self):        
         self.render("privacy.html") 
-
-
-
-
 
 class Application(tornado.web.Application):
     def __init__(self):   

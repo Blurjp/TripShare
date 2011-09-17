@@ -203,7 +203,7 @@ $(document).ready(function() {
 	  
 	  $.postJSON('/createtrip/'+_formData, formData, function(response){
 			    ShowCreateTripResponse(response);
-			});			
+			}, "text");			
       
       document.getElementById("create_trip_form").reset();	
 	  disabled.enable();
@@ -562,8 +562,14 @@ jQuery.getJSON = function(_url, callback) {
 
 
 jQuery.postJSON = function(url, args, callback) {
-    $.ajax({url: url, data: $.param(args),type: "POST",dataType: "text",success: function(data, textStatus) {if (callback) callback(data);}, error: function(response) {console.log("ERROR:", response)}});};
-});
+	
+	//alert(_data);
+    $.ajax({url: url, data: $.param(args), type: "POST", dataType:"text", success: function(data, textStatus) {if (callback) callback(data);}, error: function(response) {console.log("ERROR:", response)}});
+	
+	
+	};
+    
+
 	  
 	  
   function magic_date_fixup( value ) {
@@ -839,6 +845,6 @@ $('#mask4').click(function(e) {
 
 });
 
-
+});
 
 	  
