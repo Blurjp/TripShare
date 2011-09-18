@@ -7,9 +7,10 @@
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/autocomplete.css") }}" type="text/css"/> 
+<link rel="stylesheet" href="{{ static_url("stylesheets/plan.css") }}" type="text/css"/>
+
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
-
 
 <script src="{{ static_url("javascript/createtrippopupintrips.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/CalendarPopup.js") }}" type="text/javascript"></script>
@@ -26,10 +27,13 @@
 <div id="header"> 
 <div id="nav-bar"  >
 
-{% include "Module/headline.html" %}
 
-
-{{ modules.UserEntry() }}
+ {% include "Module/headline.html" %}
+ 
+ {% include "Module/userentry.html" %}
+ 
+ {% include "Module/usersetting.html" %}
+ 
 
 </div> 
 </div> 
@@ -47,7 +51,7 @@
 <div id="sidebar"> 
 <div id="profile"> 
 
-{{ modules.UserSetting() }}
+
 
 </div> 
  

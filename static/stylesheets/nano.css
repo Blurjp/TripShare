@@ -1082,3 +1082,8 @@ ul.feedsUI li.feed .right p.details a{font-weight:normal;}
 
 a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow:hidden; background:url("/static/images/facebook_sign_in.png") no-repeat transparent; z-index:5000;  text-decoration:none;margin-top:5px; margin-left:15px}
 .friend_dropdown_list {float:left;width:150px}
+
+.show_guides {padding-top:5px}
+.guide_action {padding-right:10px}
+.guide_details {width:50%; float:left}
+.guide_photo {padding-left:200px}

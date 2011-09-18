@@ -17,12 +17,8 @@ class BrowseGuidesHandler(BaseHandler):
     def get(self):
         # change the order to rate later
         guides = self.syncdb.guides.find().limit(10).sort("published", pymongo.DESCENDING)
-        _guides = []
-        for latest_guide_id in guides:
-                latest_guide_id['html'] = self.render_string("Guides/guideentry.html", trip = latest_guide_id)
-                _guides.append(latest_trip_id)
-                        
-        self.render("Guides/guides.html", guides=_guides)
+        print(guides.count())
+        self.render("Guides/guides.html", guides=guides)
 
 class EntryGuidesHandler(BaseHandler):
     def get(self, slug):

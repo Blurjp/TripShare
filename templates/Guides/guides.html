@@ -11,6 +11,7 @@ Guides
 <meta content='dishes, dish, food, reviews, food photos, restaurants, dining, guide, food spotting, menu, local' name='keywords' /> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
+<link rel="stylesheet" href="{{ static_url("stylesheets/plan.css") }}" type="text/css"/>
 <script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
 <script type='text/javascript'> 
 <!--
@@ -30,354 +31,7 @@ try{Typekit.load();}catch(e){}
 <link href="/stylesheets/ie6.css?1299537645" media="all" rel="stylesheet" type="text/css" />
 <![endif]--> 
 
-<style type="text/css"> 
-#container                              { width: 1440px; margin: auto; text-align: left; position: relative; padding: 10px 10px 25px 10px; }
 
-#main                                   { min-height: 300px; position: relative; }
-#main .list li                          { margin: 0 0 10px 5px; }
-#main .list li label                    { margin: 0 0 0 5px; }
-#main .list_disc                        { list-style: disc; margin-left: 15px; }
-#main table .c1                         { width: 90px; vertical-align: top; padding-top: 11px; }
-
-/* Plan page */
-
-#plan_top                               { position: relative; padding: 0 25px 0 0; border-bottom: 1px solid #EDEDED;  }
-#plan_top_syndication_options                       { position: absolute; top: 5px; right: -20px; padding-right: 10px; }
-#plan_top_syndication_options li                { float: right; margin-left: 13px; }
-#plan_top_what                          { font-size: 2em; font-weight: bold; margin: 0 0 5px 0; padding-right: 315px; overflow: hidden }
-#plan_top_details                       { font-size: 1.3em; margin: 0 0 10px 0; }
-#plan_top_location                                          { cursor: pointer; }
-#plan_top_location:hover                                { color: #0062c4 }
-.plan_top_meta li                       { float: left; margin: 0 10px 15px 0; background: url(/images/dot.png) 0% 50% no-repeat; padding: 0 0 0 10px; font-size: 1em; color: #999999; }
-.plan_top_meta a                        { color: #428eda }
-.plan_top_meta > li:first-child         { background: none !important; padding: 0 !important; }
-
-
-/* Plan categories */
-
-#plan_categories                                                                                            { border-bottom: 1px solid #EDEDED; display: block; padding: 10px 0 5px 22px; background: url(/images/icons/tag.png) no-repeat 0 13px; margin-bottom: 5px  }
-#plan_categories li                                                                                     { float: left; margin: 0px 5px 5px 0 }
-
-.category_button                                                                                            { position: relative;}
-.category_button a                                                                                      { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
-.category_button a:hover                                                                            { background: #5495d7; text-decoration: none; }
-.category_button_remove                                                                             { background: url(/images/close_category.png) no-repeat 4px 7px #9ebedf; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
-.category_button_remove:hover                                                                   { background-color: #5495d7 }
-.category_button_a_edit_active                                                              { -webkit-border-radius: 5px 0 0 5px !important; -moz-border-radius: 5px 0 0 5px !important; }
-
-#plan_categories_add_show                                                                           { position: relative; color: white; background: url(/images/add_category_plus.png) no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
-#plan_categories_add_show:hover                                                             { background-color: #59d859  }
-
-#plan_categories_add_form                                                                           { position: relative;  }
-#plan_categories_add_input_exterior input                                       { border: 1px solid #BEBEBE; padding: 2px; min-width: 50px; font-size: 1.2em; }
-
-/* Plan edit options */
-
-#plan_edit_options                                                                  { }
-#plan_edit_options_li                                                               { margin: -5px 0 15px 0; padding-left: 0; background: none; position: relative; }
-#plan_edit_options_link                                                         { }
-.plan_edit_options_link_active                                          { background: #EBEBEB; color: gray !important; padding: 5px 10px 10px 10px; font-weight: normal; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0 }
-.plan_edit_options_link_active:hover                                { color: gray; text-decoration: none; }
-.plan_edit_options_li_active                                                { background: none !important; padding: 0 !important; }
-
-
-#plan_syndicate_options li,
-#plan_calendar_export_options li,
-#user_export_options li                                     { background: no-repeat 0% 50%; padding: 2px 0 2px 27px; font-size: 1.2em; margin-bottom: 3px; font-weight: bold; color: #0062c4; cursor: pointer;  }
-#plan_syndicate_options li:hover,
-#plan_calendar_export_options li:hover,
-#user_export_options li:hover                                   { text-decoration: underline; }
-#plan_syndicate_options li a:hover,
-#plan_calendar_export_options li a:hover,
-#user_export_options li a:hover                       { background: none; }
-
-#plan_permalink_span                                { padding: 15px 0 0 5px !important }
-#plan_permalink                                     { font-size: 1em; width: 170px; border-color: #c4c4c4; padding: 3px }
-
-/* Three column layout */
-
-.three_column_layout                                                                                                { position: relative; }
-
-.three_column_layout #col1                                                                                  { width: 150px; position: absolute; }
-.three_column_layout #col2                                                                          { margin-left: 150px; float:left; width:818px; padding: 2px; background: #ebebeb; border: 4px solid #f3f3f3; position: relative; }
-.three_column_layout #col3                                                                          { float:left; width:260px; }
-
-.three_column_layout #col1_interior                                                     { background: #f3f3f3; padding: 15px 0 15px 0; -moz-border-radius: 3px 0 0 3px;  }
-.three_column_layout #col1_interior a,                                          {  }
-.three_column_layout #col1_interior a:hover                                     { text-decoration: none; }
-
-.three_column_layout #col1_options                                                                  { margin: 10px 10px 0 10px; text-align: right; }
-.three_column_layout #col1_options li                                                       { margin: 0; cursor: pointer; font-size: .9em; color: gray; padding: 5px; }
-.three_column_layout #col1_options li span                                          {  }
-.three_column_layout #col1_options li   img                                             { vertical-align: bottom; margin-left: 5px; opacity: .5 }
-.three_column_layout #col1_options li:hover span                                { color: #0062C4 }
-.three_column_layout #col1_options li:hover img                                 { opacity: 1 }
-.three_column_layout #col1_options_feeds li                                                 { float: right; }
-.three_column_layout #col1_options_feeds li img                                         { margin-left: 0; }
-
-.three_column_layout #col2_interior                                                     { padding: 15px 15px 15px 10px; border: 1px solid #cdcdcd; background: white; min-height: 500px; }
-.three_column_layout #col2 #plans_load_more                                                 { margin-left: 5px; }
-
-.three_column_layout #col3_interior                                                     { padding: 15px 0 30px 0; width: 260px; position: absolute; }
-.three_column_layout .col3_header                                                                       { border-bottom: 2px solid #EDEDED; font-weight: bold; border-bottom-width:1px; font-size:1.4em; padding: 0 0 5px 15px; margin: 0 0 10px 0; color: #4B4B4B }
-.three_column_layout .col3_content                                                                  { padding-left: 15px; margin-bottom: 40px; }
-
-/* Plan listings */
-
-#plans_tabs a                                                                                           { font-size: 1.21em; cursor: pointer; color: #616161; position: relative; display: block; text-align: right; margin: 3px 0 3px 0; padding: 5px 10px 5px 0px; font-weight: normal; }
-#plans_tabs a:hover                                                                                     { color: #0062C4; background: #f9f9f9; margin: 3px 0 3px 15px; -moz-border-radius: 3px; -webkit-border-radius: 3px; width: 125px; padding-right: 25px; padding-left: 0; }
-
-#plans_tabs_categories                                                                                          { border-top: 1px solid white; border-bottom: 1px solid white; padding: 5px 0 10px 0; margin: 5px 0 5px 0; }
-
-.plans_tabs_category_remove                                                                                 { position: absolute; top: 4px; left: 5px; opacity: .3; }
-.plans_tabs_category_remove:hover                                                                       { opacity: 1; }
-
-#plans_tabs_categories .plans_tabs_small                                                        { font-size: 1.1em !important; margin: 0 !important; padding: 4px 10px 4px 0 !important; color: #777777 !important; }
-#plans_tabs_categories .plans_tabs_small:hover                                          { color: #0062C4 !important; margin: 0 0 0 15px !important; }
-
-#plans_tabs_categories .plans_tabs_selected,                                                                                    
-#plans_tabs_categories .plans_tabs_selected:hover                                                                               { cursor: default !important; position: relative; z-index: 1; font-weight: bold !important; background: white !important; color: black !important; margin: 0 0 0 15px !important; -moz-border-radius: 3px 0 0 3px !important; width: 116px !important; padding-right: 15px !important; border: 1px solid #ebebeb !important; border-bottom: 1px solid #cdcdcd !important; border-right: none !important; padding-left: 10px !important; }
-
-
-.plans_tabs_selected,                                                                                       
-.plans_tabs_selected:hover                                                                              { cursor: default !important; position: relative; z-index: 1; font-weight: bold !important; background: white !important; color: black !important; margin: 0 0 0 15px !important; -moz-border-radius: 3px 0 0 3px !important; width: 116px !important; padding-right: 15px !important; border: 1px solid #ebebeb !important; border-bottom: 1px solid #cdcdcd !important; border-right: none !important; padding-left: 10px !important; }
-
-/* Plans scope menu */
-
-#plans_scope_menu                                                                               { float: right; top: -11px; right: 16px; position: absolute; z-index: 10 }
-#plans_scope_menu_label                                                                 { float: left; padding: 5px 10px 5px 10px; color: #8A8A8A; background: white; -moz-border-radius: 5px 0 0 5px; -webkit-border-radius: 5px 0 0 5px; }
-#plans_scope_menu_other                                                                 { text-align: center; font-weight: normal; padding-left: 15px; padding-right: 15px; }
-
-#plans_scope                                                                                        { float: left; }
-
-#plans_scope_options                                                        { margin-bottom: 15px; }    
-#plans_scope_options li                                                     { float: left; font-size: .95em; margin: 0 9px 0 0; color: black; cursor: pointer; padding: 5px 10px 5px 10px }
-#plans_scope_options li:hover                                           { background: #f3f3f3; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
-#plans_scope_options li img                                                 { float: right; margin: 2px 0 0 5px; }
-#plans_scope_options .selected                                              { color: black; background: #f3f3f3; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
-#plans_scope_options .selected:hover                                        { background: #ebebeb; }
-
-#plans_pending                                                                                  { text-align: center; padding: 70px; }
-
-/* Listings */
-
-.plans_list                                                                                         { margin-bottom: 15px; padding-left: 15px; }
-.plans_list_group_header                                                                { position: relative; background:url("/images/backgrounds/plan_listings_group_header.png") repeat-x scroll 0 2px transparent; color:#808080; font-size:1.1em; margin:0 0 12px 5px; letter-spacing: 3px; text-transform:uppercase; }
-.plans_list_group_header span                                                       { background: url("/images/backgrounds/plan_listings_group_header_span.png") no-repeat scroll left top white; padding: 1px 5px 0 18px; }
-.plans_list > li:last-child > .plan_right                               { border-bottom: 0; }
-#plans > div:first-child                                                                {  }
-
-.plan                                                                   { list-style: none; position: relative; min-height: 50px; margin-bottom: 8px; }
-.plan_left                                                              { position: absolute; top: 5px; left: 0; width: 50px; }
-.plan_right                                                             { border-bottom: 1px dotted #bababa; min-height: 45px; padding-bottom: 14px; }
-
-.plan_attendance_toggle                                                                 { width: 104px; height: 26px; background: url(/images/buttons/plan_attendance_toggle.png) top left no-repeat; cursor: pointer; }
-.plan_attendance_toggle_attend                                                  { background-position: 0 0; }
-.plan_attendance_toggle_attend:hover                                        { background-position: 0 -26px; }
-.plan_attendance_toggle_unattend_fixed                                  { background-position: 0 -52px; }
-.plan_attendance_toggle_unattend                                                { background-position: 0 -52px; }
-.plan_attendance_toggle_unattend:hover                                  { background-position: 0 -78px; }
-
-.plan_favorite_toggle                                                                       { display: none; margin-top: 1px; width: 21px; height: 20px; background: url(/images/buttons/plan_favorite_toggle.png) top left no-repeat; cursor: pointer; }
-.plan_favorite_toggle_favorite                                                  { background-position: 0 -20px; }
-.plan_favorite_toggle_unfavorite                                                { background-position: 0 0px; }
-
-.plan_options                                                       { float: right; margin: 5px 5px 5px 15px; cursor: pointer }
-.plan_options li                                                                                { float: right; margin-left: 7px; }
-.plan_options_save                                                                          { padding-top: 3px; }
-
-.plan_what                                                              { font-size: 1.3em; margin-bottom: 2px  }
-.plan_what a:hover                                                      { background: none !important }
-.plan_details                                                           { font-size: 1em; color: #8A8A8A; line-height: 150%; }
-.plan_details li                                                        { float: left; margin: 0 8px 0 0;  line-height: 150%; }
-.plan_when                                                                  { padding: 0 0 0 10px; background: url(/images/dot.png) 0% 50% no-repeat; }
-
-.plan_meta                                                                                          { font-size: 1em; }
-.plan_meta li                                                                                       { float: left; margin: 7px 15px 0 0 }
-.plan_meta_attendees                                                                        { margin-right: 10px; display: list-item; float: left; position: relative; }
-.plan_meta_attendee                                                                         { margin-right: 5px !important; }
-.plan_meta_name                                                                                 { padding-top: 10px; color: #8A8A8A; font-size: .95em; }
-.plan_meta_stat                                                                                 { padding: 0; cursor: pointer; padding-top: 10px; margin-top: 0 !important; }
-.plan_meta_stat img                                                                         { float: left; }
-.plan_meta_stat .pseudo_link                                                        { float: left; margin-left: 7px; color: #4186be }
-.plan_meta_w_attendees .plan_meta_stat                                  { margin-top: 7px !important; }
-.plan_meta_w_attendees .plan_meta_categories                        { }
-.plan_meta_w_attendees .plan_meta_categories span               { margin-top: 0px; }
-.plan_meta_categories                                                                       { padding-top: 10px; }
-.plan_meta_categories   a                                                                   { font-weight: normal; }
-
-.plan_location_link:hover                                                               { color: #0062c4 }
-
-.plan_bottom                                                            { padding: 10px 0 0px 0; position: relative; margin-bottom: 5px; }
-.plan_bottom li                                                         { float:left; margin: 0 5px 0 0 }
-.plan_bottom .user_pic_square                                       { width: 35px !important; height: 35px !important; }
-.plan_bottom .user_pic_square img                                   { width: 35px; height: 35px; }
-.plan_bottom .user_pic_square img                                   { width: 35px; height: 35px; }
-.plan_bottom_with                                                       { font-style: italic; color: #9F9F9F }
-.plan_bottom_with_others                                                { text-align: right; padding: 7px 0 0 5px; font-size: 1.2em; }
-.plan_bottom_with_others a                                              {  }
-.plan_bottom_with_others a:hover                                        { text-decoration: none !important }
-.plan_bottom ul                                                         { display: block; float: left; }
-
-.plan_description                                                                               { font-size: 12px; position: absolute; top: -17px; right: -275px; background: url(/images/backgrounds/gray_trans2.png); width: 255px; line-height: 150%; z-index: 5; padding: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
-.plan_description_interior                                                          { background: white; padding: 15px; overflow: hidden; min-height: 30px  }
-.plan_description img                                                                       { position: absolute; top: 25px; left: -10px; }
-
-.plans_scope_widened_notice                                                         { font-size: 1.2em; margin: 10px 10px 25px; padding: 0 0 0 25px; position: relative; }
-.plans_scope_widened_notice img                                                 { position: absolute; top: 2px; left: 0; }
-
-/* Plan prompt */
-
-.plan_prompt_footer                                                                         { margin-top: 20px; text-align: right; font-size: 1.2em }
-
-/** Plan Page **/
-
-#plan_cols                                                                  { background: url(/images/backgrounds/2col.png) top left repeat-y; }
-
-#plan_col1                                  { float: left; width: 780px; }
-#plan_col1_interior                         { position: relative;  }
-#plan_col1 h1                               { border-bottom: 2px solid #EDEDED; border-left: 0; padding-left: 0; font-size: 1.8em; }
-#plan_col1 h2                                                               { font-size: 1.5em; border-width: 1px }
-
-#plan_col2                                                                  { float: left; width: 260px; }
-.plan_col2_section                                                  { padding-left: 25px; margin-bottom: 25px; }
-#plan_col2 h2                                                               { font-size: 1.4em; padding-left: 20px; border-bottom-width: 1px; margin-bottom: 15px; margin-left: 5px }
-
-#plan_page_attendance_toggle                                                        { width: 230px; height: 36px; background: url(/images/buttons/plan_page_attendance_toggle.png) top left no-repeat; cursor: pointer; }
-.plan_page_attendance_toggle_attend                                         { background-position: 0 0 !important; }
-.plan_page_attendance_toggle_unattend                                       { background-position: 0 -36px !important; }
-
-
-#plan_count_me_in                                                           {  }
-#plan_count_me_in img                                                                       { cursor: pointer; }
-#plan_count_me_out                                                          {  }
-#plan_count_me_out img                                                                  { cursor: pointer; }
-
-#plan_details                                                                                       { padding: 0 25px 25px 0;  border-bottom: 1px solid #EDEDED; font-size: 1.2em; overflow: hidden }
-#plan_contribution_options                                                          { font-size: 1.2em; padding: 0 0 0 23px; margin: 15px 0 0 0; -moz-border-radius: 3px; -webkit-border-radius: 3px; background: url(/images/icons/question.png) no-repeat 0 50%; }
-.plan_contribution_options_w_desc                                               { padding-bottom: 15px !important; background-position: 0 3px !important; border-bottom: 2px dotted #EDEDED; }
-
-#plan_contribution_options_description                                  { text-align: right; padding: 0 25px 25px 0; border-bottom: 2px dotted #EDEDED; }
-#plan_contribution_options_description_input                        { margin: 15px 0 0 0; width: 723px; height: 100px; font-size: 1.2em; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
-#plan_contribution_options_description img                          { margin-top: 5px; }
-
-#plan_description                       { margin: 15px 0 15px 0; line-height: 150%;  }
-#plan_description strong                { color: #2d2d2d; }
-
-#plan_external_url                                          { margin: 15px 0 15px 0; color: #999999 }
-#plan_external_url img                                  { vertical-align: -20% }
-
-#plan_where_add_exterior                                        { background:#f7f7f7; padding: 5px; margin-right: 25px; -moz-border-radius: 5px; -webkit-border-radius: 5px }
-#plan_where_add                             { position: relative; border: 1px solid #dfdfdf; padding: 10px 5px 10px 5px; text-align: center; font-size: 1.2em; background: url(/images/backgrounds/plan_where_add.png) no-repeat top left;  }
-#plan_where_add a                           { }
-
-#plan_where                                                                     { background:#f7f7f7; padding: 5px; margin-right: 25px; -moz-border-radius: 5px; -webkit-border-radius: 5px }
-#prompt_plan_place #plan_where_exterior             { margin-right: 0 !important; }
-#plan_where_interior                          { position: relative; height: 300px; }
-#plan_where img                                                             { border: 1px solid #dfdfdf; padding: 1px; }
-#plan_where_overlay                                 { position: absolute; top: 10px; left: 10px; width: 600px; background: url(/images/plan_where_overlay_bg.png); padding: 10px; }
-#plan_where_options                                 { float: right; font-size: 1.2em }
-#plan_where_options li                              { float: right;  }
-#plan_where_read_reviews                            { margin: 0 0 0 10px; padding: 0 0 0 10px; background: url(/images/dot.png) 0% 50% no-repeat; }
-
-#plan_where_name                        { font-weight: bold; font-size: 1.4em; margin: 0 0 5px 0 }
-#plan_where_address                     { }
-
-#plan_attendees                                                 { padding: 8px 0 5px 0; border-bottom: 1px solid #EDEDED; }
-.plan_attendees_small .user_pic_square                      { width: 35px !important; height: 35px !important; }
-.plan_attendees_small .user_pic_square img                  { width: 35px; height: 35px; }
-#plan_attendees ul                                              { float: left;  }
-#plan_attendees li                                              { float: left; margin: 0 8px 8px 0 }
-.plan_attendees_load_more                                                               { text-align:right; margin:5px 25px 5px 0; font-size:1.3em; height:24px; }
-.plan_attendees_load_more a                                                         { display: inline-block; padding-left: 20px; background: url(/images/arrows/down1.png) no-repeat 0% 50%; }
-
-.plan_attendees_section                                                                 { position: relative; }
-.plan_attendees_section_header                                                  { display: none; color: #999999; font-weight: bold; font-size: 1.3em; margin-bottom: 10px }
-.plan_attendees_split .plan_attendees_section                       {  }
-.plan_attendees_split                                                                       {  }
-.plan_attendees_split ul                                                                { margin-left: 8px; }
-.plan_attendees_split .plan_attendees_section_header        { display: block !important;  }
-
-#plan_suggestion_recipients_header                                          { color: #999999; font-weight: bold; font-size: 1.3em; margin: 10px 0 10px 0; }
-#plan_suggestion_recipients                             { padding: 0 0 5px 8px; border-bottom: 1px solid #EDEDED; }
-#plan_suggestion_recipients ul                          { }
-#plan_suggestion_recipients li                          { float: left; margin: 0 8px 8px 0 }
-#plan_suggestion_recipients li img                      { width: 50px; height: 50px; }
-
-/* Plan comments */
-
-.plan_comments_add                                                          { position: relative; border-bottom: 1px dotted #E0E0E0; padding-bottom: 5px; margin-bottom: 10px }
-.plan_comments_add .user_pic_square                     { position: absolute; top: 2px; left: 0 }
-.plan_comments_add_content                                          { margin-left: 40px; }
-.plan_comments_add_input_exterior                               { width: 589px }
-.plan_comments_add_input                            { float: left; border: 1px solid #8f8f8f; padding: 7px; width: 573px; font-size: 1.5em; -moz-border-radius: 3px; -webkit-border-radius: 3px }
-#plan_comments_add_submit_button                                { float: left; cursor: pointer; margin: 2px 0 0 5px; }
-
-.plan_comments                          {  }
-.plan_comments h2                       { margin: 0 0 5px 0; border: 0; }
-.plan_comments li                       { margin: 0 0 5px 0; padding: 0 0 7px 0; border-bottom: 1px dotted #E0E0E0; position: relative; }
-.plan_comments .user_pic_square         { float: left; position: absolute; top: 2px; left: 0; }
-.plan_comments .plan_comment_content    { margin-left: 40px; }
-.plan_comments .plan_comment_value      { font-size: 1.3em; margin: 3px 0 3px 0; padding: 0 0 0 3px; overflow: hidden;  }
-.plan_comments .plan_comment_meta       { padding: 0 0 0 3px; color: #999999 }
-
-/* Edit plan */
-
-#edit_plan                                                                                  { width: 485px; }
-#edit_plan_form                                             { position: relative; }
-#edit_plan_where_suggestions                                    { background: url(/images/header_input_suggestions_bg.png); width: 352px; position: absolute; padding: 5px; right: 2px; z-index: 20; -moz-border-radius: 5px; -webkit-border-radius: 5px }
-#edit_plan_where_suggestions li                                 { font-size: 1.1em; padding: 10px; border-bottom: 1px solid #BEBEBE; cursor: pointer; float: none !important; margin: 0 !important; background: white; }
-#edit_plan_where_suggestions li:hover,
-.selected_edit_plan_where_suggestion                            { background: #d2e6f5 !important; }
-.edit_plan_where_suggestion_header                                  { font-weight: bold; }
-.edit_plan_where_suggestion_subheader                               { font-size: .9em; color: #6b6b6b;}
-
-#edit_plan_form .text_input_exterior                    { border: 2px solid #f2f2f2; width: 362px; }
-#edit_plan_form .text_input                             { border: 1px solid #8f8f8f; padding: 10px; width: 340px; font-size: 1.5em }
-#edit_plan_form .c1                                     { width: 120px !important; vertical-align: top; padding-top: 18px !important; font-size: 1.2em }
-
-#edit_plan_footer li                                                                { float: right; }
-
-#edit_plan textarea                                                                 { height: 200px; }
-
-/* Plan merge prompt */
-
-#plan_merge_prompt_header                                   { font-weight:bold;font-size:2em;margin-bottom:15px; }
-#plan_merge_prompt_cover                                                        { position: absolute; top: 0; left: 0; z-index: 200; background: url("/images/icons/wait/30.gif") no-repeat scroll 93% 39px transparent }
-#plan_merge_prompt .text_input                                          { font-size: 1.5em; width: 478px; padding: 10px;  }
-#plan_merge_prompt_footer                                                       { margin-top: 10px; }
-#plan_merge_prompt_footer img                                               { cursor: pointer; }
-#plan_merge_prompt_footer li                                                { float: right; margin-left: 5px }
-#plan_merge_prompt_note                                                         { margin-top:15px; font-size:.8em; border-top:1px solid #EDEDED; padding-top:15px; }
-
-/* Plan suggestions */
-
-#plan_suggestions ul                                        { padding-bottom: 5px; font-size: 1.3em; }
-#plan_suggestions li                                            { margin: 0 0 5px 0; background: url(/images/check.png) 100% 2px no-repeat; }
-#plan_suggestions li span                                       { max-width: 182px; display:block; overflow:hidden }
-#plan_suggestions li div                                        { float: right; margin-left: 5px; font-weight: bold; font-size: .9em; color: #139d0f }
-
-/* Load more */
-
-#plans_load_more                                                                        { background: url(/images/buttons/load_more/base.png) repeat-x; text-align: center; cursor: pointer; margin-bottom: 5px; }
-#plans_load_more_interior1                                                  { background: url(/images/buttons/load_more/left.png) no-repeat left top; }
-#plans_load_more_interior2                                                  { background: url(/images/buttons/load_more/right.png) no-repeat right top; }
-
-/* Add details prompts */
-
-#plan_add_description_input                                                 { font-size: 1.3em; padding: 15px; width: 512px; height: 100px }
-#plan_add_external_url_input                                                { font-size: 1.5em; padding: 10px; width: 522px; }
-#plan_add_place_input                                                               { font-size: 1.5em; padding: 10px; width: 375px; }
-
-.plan_add_place_input_pending                                               { background: url(/images/icons/wait/24trans.gif) no-repeat 98% 50% }
-
-/* Invitations prompt */
-#plan_invitations_prompt                                                        {  }
-#plan_invitations_prompt img                                                { cursor: pointer; }
-#plan_invitations_prompt_friends                                        { margin: 8px 0 0 4px; border-bottom: 1px solid #EDEDED; padding-bottom: 15px; }
-#plan_invitations_prompt_friends img                                { width: 25px; height: 25px; float: left; margin-right: 3px; opacity: .8; cursor: default;  }
-
-</style>
 
 </head> 
 <body> 
@@ -488,16 +142,11 @@ try{Typekit.load();}catch(e){}
     <ul style="display: none">
       
       <li id="plans_scope_everywhere" onclick="plans_scope_select('everywhere')">Everywhere</li>
-      
-            
-                
+     
           <li place_id="713048" onclick="plans_scope_select('local', $(this).attr('place_id'))">New York, NY</li>
-        
-                
+                       
           <li place_id="2012255" onclick="plans_scope_select('local', $(this).attr('place_id'))">Beijing, Beijing</li>
-        
-                
-            
+   
       <li onclick="prompt_toggle(true,'user_new_place');" id="plans_scope_menu_other">View Other Location</li>
       
     </ul>
@@ -515,14 +164,15 @@ try{Typekit.load();}catch(e){}
     <div id="plans">
     <ul id="latest_guides">
     {% for guide in guides %} 
-    {% include "../Guides/guideentry.html" %}
+	{% include "../Guides/guideentry.html" %}
     {% end %}
 	</ul>
     </div>
 </div>  
+</div>
   <div id="col3">
     
-    <div id="col3_interior" style="top: 0px; position: absolute; bottom: auto; "><div id="col3_user_sidebar">
+    <div id="col3_interior"><div id="col3_user_sidebar">
 
   <style type="text/css">
   #sidebar_import_plans ul            {  }
@@ -537,14 +187,20 @@ try{Typekit.load();}catch(e){}
       <div style="line-height: 150%">Save yourself the time of sharing plans manually by hooking up your Facebook, Eventbrite and Meetup accounts. We'll automatically import your RSVPs from there.</div>
       <ul>
         
-                  <li>
-            <img src="/images/icons/facebook.png">            <a href="/user/settings/external-services#facebook">Connect Facebook</a>          </li>
+             <li>
+            <img src="/images/icons/facebook.png">           
+			 <a href="/user/settings/external-services#facebook">Connect Facebook</a>          
+			 </li>
                 
-                  <li>
-            <img src="/images/icons/eventbrite.png">            <a href="/user/settings/external-services#eventbrite">Connect Eventbrite</a>          </li>
+            <li>
+            <img src="/images/icons/eventbrite.png">            
+			<a href="/user/settings/external-services#eventbrite">Connect Eventbrite</a>          
+			</li>
                 
-                  <li>
-            <img src="/images/icons/meetup.png">            <a href="/user/settings/external-services#meetup">Connect Meetup</a>          </li>
+              <li>
+            <img src="/images/icons/meetup.png">           
+			 <a href="/user/settings/external-services#meetup">Connect Meetup</a>          
+			  </li>
               </ul>
   </div>
 </div>

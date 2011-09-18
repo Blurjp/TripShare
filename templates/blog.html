@@ -43,11 +43,12 @@
 <div class='content'> 
  
 
-
-{% include "Module/headline.html" %}
  
+ {% include "Module/headline.html" %}
  
-{{ modules.UserEntry() }}
+ {% include "Module/userentry.html" %}
+ 
+ {% include "Module/usersetting.html" %}
  
   <div id='flash_notice' style='display:none'> 
 <div></div> 

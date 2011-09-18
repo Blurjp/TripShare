@@ -105,7 +105,7 @@ class MainPage(BaseHandler):
                                     latest_trip_id['check_join'] = True
                                     break
                                 
-                        latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
+                        #latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
                         _trips.append(latest_trip_id)
                         
                        
