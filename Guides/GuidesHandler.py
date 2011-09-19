@@ -14,23 +14,27 @@ import unicodedata
 import tornado.web
 from Map.BrowseTripHandler import BaseHandler
 
-class MyGuidesHandler(BaseHandler):
-    def get(self):
-        #guides = self.syncdb.guides.find('$or' : ['owner_id': user_id, user_id: { "$in" : 'likes' }]).limit(10).sort("published", pymongo.DESCENDING)
-        guides = self.syncdb.guides.find( { "$in" : self.current_user['guides'] }).sort("published", pymongo.DESCENDING)
-        print(guides.count())
-        self.render("Guides/guides.html", guides=guides)
+
 
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
         # set "my collection" as default; change the order to saved date later
-        guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).sort("published", pymongo.DESCENDING)
-        print(guides.count())
+        guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).limit(5).sort("slug")
+        
         self.render("Guides/guides.html", guides=guides)
 
 class EntryGuidesHandler(BaseHandler):
     def get(self, slug):
-        guide = self.syncdb.guides.find_one({'slug': slug})
+        guide = self.syncdb.guides.find({"tag":slug}).limit(5).sort("slug")
+        
+        if not guide: raise tornado.web.HTTPError(404)
+        self.render("editguide.html", guide=guide)
+        #self.render("terms.html")
+        print('render')
+        
+class CategoryGuidesHandler(BaseHandler):
+    def get(self, tag):
+        guide = self.syncdb.guides.find({'slug': slug})
         
         if not guide: raise tornado.web.HTTPError(404)
         self.render("editguide.html", guide=guide)
@@ -45,16 +49,18 @@ class GuidePageHandler(BaseHandler):
         index = string.atoi(_index)
 
         skip_number = index*3
+        if section == "my":
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).skip(skip_number).limit(5).sort("slug")
         if section == "park":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+            latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).skip(skip_number).limit(5).sort("slug")
         elif section == "city":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'city'}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+            latest_guide_ids = self.syncdb.guides.find({"tag":'city'}).skip(skip_number).limit(5).sort("slug")
         elif section == "world":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+            latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).skip(skip_number).limit(5).sort("slug")
             
         if latest_guide_ids.count() > 0:
                 for latest_guide_id in latest_guide_ids:                        
-                        self.write(self.render_string("Guide/guide.html", guide = latest_guide_id) + "||||")
+                        self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
      
     
 

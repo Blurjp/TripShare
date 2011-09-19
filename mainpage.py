@@ -168,10 +168,12 @@ class Application(tornado.web.Application):
                                       (r"/hottrips", ShowHotTrips),
                                       (r"/endtrips", ShowEndTrips),
                                       (r"/guides", BrowseGuidesHandler),
+                                      (r"/guides/([^/]+)", CategoryGuidesHandler),
+                                      (r"/guide/([^/]+)", EntryGuidesHandler),
                                       (r"/guides/([^/]+)/([^/]+)", GuidePageHandler),
                                       
                                       (r"/createguide", CreateGuidesHandler),
-                                      (r"/guides/([^/]+)", EntryGuidesHandler),
+                                      
                                       (r"/a/changepicture", UserPictureHandler),
                                   
                                      
