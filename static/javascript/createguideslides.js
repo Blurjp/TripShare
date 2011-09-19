@@ -42,6 +42,7 @@ $(document).ready(function() {
         e.preventDefault();  
         $('#mask4').hide();  
 		$('#create_guide_step_1').hide();
+		document.getElementById('create_guide_form').reset();
     }); 
 
 

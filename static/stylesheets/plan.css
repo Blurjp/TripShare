@@ -105,7 +105,7 @@
 #plans_tabs_categories .plans_tabs_small:hover                                          { color: #0062C4 !important; margin: 0 0 0 15px !important; }
 
 #plans_tabs_categories .plans_tabs_selected,                                                                                    
-#plans_tabs_categories .plans_tabs_selected:hover                                                                               { cursor: default !important; position: relative; z-index: 1; font-weight: bold !important; background: white !important; color: black !important; margin: 0 0 0 15px !important; -moz-border-radius: 3px 0 0 3px !important; width: 116px !important; padding-right: 15px !important; border: 1px solid #ebebeb !important; border-bottom: 1px solid #cdcdcd !important; border-right: none !important; padding-left: 10px !important; }
+#plans_tabs_categories .plans_tabs_selected:hover                                                                               { cursor: default !important; position: relative; z-index: 1; background: white !important; color: black !important; margin: 0 0 0 15px !important; -moz-border-radius: 3px 0 0 3px !important; width: 116px !important; padding-right: 15px !important; border: 1px solid #ebebeb !important; border-bottom: 1px solid #cdcdcd !important; border-right: none !important; padding-left: 10px !important; }
 
 
 .plans_tabs_selected,                                                                                       

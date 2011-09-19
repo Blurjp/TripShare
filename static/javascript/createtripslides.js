@@ -42,6 +42,8 @@ $(document).ready(function() {
         e.preventDefault();  
         $('#mask4').hide();  
 		$('#create_trip_step_1').hide();
+		document.getElementById('create_trip_form').reset();
+		
     }); 
 
 	  /* Click go back step1 button */
@@ -96,6 +98,7 @@ $(document).ready(function() {
         $('#mask4').hide();  
 		$('#create_trip_step_2').hide();
 		$('#create_trip_step_1').hide();
+		document.getElementById('create_trip_form').reset();
     });   
 	
 /* add start*/
@@ -306,6 +309,7 @@ jQuery.fn.enable = function(opt_enable) {
         $('#mask4').hide();  
 		$('#create_trip_step_3').hide();
 		$('#create_trip_step_2').hide();
+		document.getElementById('create_trip_form').reset();
     });  
 	
 	

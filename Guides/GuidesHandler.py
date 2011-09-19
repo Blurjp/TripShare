@@ -6,6 +6,7 @@ Created on Aug 31, 2011
 import bson
 import random
 import datetime
+import string
 import simplejson
 import pymongo
 import re
@@ -13,10 +14,17 @@ import unicodedata
 import tornado.web
 from Map.BrowseTripHandler import BaseHandler
 
+class MyGuidesHandler(BaseHandler):
+    def get(self):
+        #guides = self.syncdb.guides.find('$or' : ['owner_id': user_id, user_id: { "$in" : 'likes' }]).limit(10).sort("published", pymongo.DESCENDING)
+        guides = self.syncdb.guides.find( { "$in" : self.current_user['guides'] }).sort("published", pymongo.DESCENDING)
+        print(guides.count())
+        self.render("Guides/guides.html", guides=guides)
+
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
-        # change the order to rate later
-        guides = self.syncdb.guides.find().limit(10).sort("published", pymongo.DESCENDING)
+        # set "my collection" as default; change the order to saved date later
+        guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).sort("published", pymongo.DESCENDING)
         print(guides.count())
         self.render("Guides/guides.html", guides=guides)
 
@@ -28,6 +36,27 @@ class EntryGuidesHandler(BaseHandler):
         self.render("editguide.html", guide=guide)
         #self.render("terms.html")
         print('render')
+        
+class GuidePageHandler(BaseHandler):
+
+    def get(self, _section, _index):
+       
+        section = _section
+        index = string.atoi(_index)
+
+        skip_number = index*3
+        if section == "park":
+            latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+        elif section == "city":
+            latest_guide_ids = self.syncdb.guides.find({"tag":'city'}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+        elif section == "world":
+            latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+            
+        if latest_guide_ids.count() > 0:
+                for latest_guide_id in latest_guide_ids:                        
+                        self.write(self.render_string("Guide/guide.html", guide = latest_guide_id) + "||||")
+     
+    
 
 class CreateGuidesHandler(BaseHandler):
     slug = None
@@ -48,10 +77,10 @@ class CreateGuidesHandler(BaseHandler):
         
         self.slug = unicodedata.normalize("NFKD", unicode(title)).encode("ascii", "ignore")      
         self.slug = re.sub(r"[^\w]+", " ", self.slug)
-        self.slug = "-".join(self.slug.lower().strip().split())
+        self.slug = "-".join(self.slug.lower().sguide().split())
         if not self.slug: self.slug = "guide"
         while True:
-                #e = self.db.get("SELECT * FROM trips WHERE slug = %s", slug)
+                #e = self.db.get("SELECT * FROM guides WHERE slug = %s", slug)
             e = self.syncdb.guides.find_one({'slug':self.slug})
             if not e: break
             self.slug += "-2"

@@ -4,18 +4,15 @@
 <title> 
 TripShare
 |
-Guides
+trips
 </title> 
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type' /> 
-<meta content="TripShare is a visual guide to good food and where to find it. It's the easiest way to find and share the foods you love." name='description' /> 
-<meta content='dishes, dish, food, reviews, food photos, restaurants, dining, guide, food spotting, menu, local' name='keywords' /> 
+<meta content="TripShare is a visual trip to good food and where to find it. It's the easiest way to find and share the foods you love." name='description' /> 
+<meta content='dishes, dish, food, reviews, food photos, restaurants, dining, trip, food spotting, menu, local' name='keywords' /> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/plan.css") }}" type="text/css"/>
-<script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
 <script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/jquery.pagination.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
 <script type='text/javascript'> 
 <!--
  
@@ -61,17 +58,31 @@ try{Typekit.load();}catch(e){}
     
     <div id="plans_tabs">
     
-   
+            
+        <a id="plans_tabs_user_subscriptions" href="/home/friends/everywhere" class="">Friends' Plans</a>        
+        <a id="plans_tabs_user" href="/home/me/everywhere" class="plans_tabs_selected">My Plans</a>        
+                
         <div id="plans_tabs_categories" style="display: block;">
 
-              <a id="plans_tabs_category_subscriptions" href="/guides/me/everywhere" class="plans_tabs_selected">My Collections</a>
-
-              <a id="plans_tabs_category_park" class="plans_tabs_small" href="/guides/park">Park<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
-
-              <a id="plans_tabs_category_city" class="plans_tabs_small" href="/guides/city">City<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
-
-              <a id="plans_tabs_category_world" class="plans_tabs_small" href="/guides/world">World<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
- 
+          <a id="plans_tabs_category_subscriptions" href="/trips/categories/everywhere" class="">My Collections</a>
+          
+            
+              <a id="plans_tabs_category_30" category_id="30" class="plans_tabs_small" href="/trips/park">US Park<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
+<script type="text/javascript">
+  new PlansTabsCategory('plans_tabs_category_30');
+</script>
+            
+              <a id="plans_tabs_category_32" category_id="32" class="plans_tabs_small" href="/trips/city">US City<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
+<script type="text/javascript">
+  new PlansTabsCategory('plans_tabs_category_32');
+</script>
+            
+              <a id="plans_tabs_category_7" category_id="7" class="plans_tabs_small" href="/trips/world">World<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
+<script type="text/javascript">
+  new PlansTabsCategory('plans_tabs_category_7');
+</script>
+            
+              
 <script type="text/javascript">
   new PlansTabsCategory('plans_tabs_category_8');
 </script>
@@ -79,13 +90,26 @@ try{Typekit.load();}catch(e){}
           
         </div>
         
-        <a id="plans_tabs_categorized" href="/home/all/everywhere">All Guides</a>        
+        <a id="plans_tabs_categorized" href="/home/all/everywhere">All Plans</a>        
             
     </div>
   
   </div>
   
-
+    
+    <ul id="col1_options">
+      <li onclick="prompt_toggle(true,'suggested_users');"><span>Find Friends</span> <img src="/images/icons/people.png"></li>
+      
+      <li style="border-bottom: 1px solid #F3F3F3; padding-bottom: 15px" onclick="scroll_top(); prompt_toggle(true,'suggested_categories');"><span>Find Categories</span> <img src="/images/icons/tag.png"></li>
+      
+      <ul id="col1_options_feeds" style="margin-top: 10px">
+        
+        <li onclick="prompt_toggle(true,'calendar_export',{ type: plans_params['type'], category_id: plans_params['category_id'], user_id: plans_params['user_id'], scope: plans_params['scope'], place_id: plans_params['place_id'], export_options: 'rss' });"><img src="/images/icons/rss.png" onmouseover="show_tooltip($(this), 'Export RSS Feed')" onmouseout="hide_tooltip()"></li>
+        
+        <li onclick="prompt_toggle(true,'calendar_export',{ type: plans_params['type'], scope: plans_params['scope'], category_id: plans_params['category_id'], user_id: plans_params['user_id'], place_id: plans_params['place_id'], export_options: 'ical' });"><img src="/images/icons/ical_format.png" onmouseover="show_tooltip($(this), 'Export Calendar Feed')" onmouseout="hide_tooltip()"></li>
+        
+      </ul>
+    </ul>
     
     
 </div>
@@ -138,16 +162,11 @@ try{Typekit.load();}catch(e){}
 </div>    
     <div id="plans_pending" style="display: none; "><img src="/images/icons/wait/30.gif"></div>
     <div id="plans">
-    {% if guides.count()>0 %}
-    <ul id="latest_guides">
-    {% for guide in guides %} 
-	{% include "Guides/guideentry.html" %}
+    <ul id="latest_trips">
+    {% for trip in trips %} 
+	{% include "../trips/tripentry.html" %}
     {% end %}
 	</ul>
-	{% else %}
-	<div id="notice_no_plans"><img src="{{ static_url("../static/images/no_plans_me.png") }}"></div>
-	{% end %}
-	<div style="clear:both"></div>
     </div>
 </div>  
 </div>

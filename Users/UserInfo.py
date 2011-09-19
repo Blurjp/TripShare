@@ -277,16 +277,17 @@ class UnFollowUserHandler(BaseHandler):
 class SearchUserHandler(BaseHandler):  
     def get(self, name):   
             
-        
-        users = self.syncdb.users.find({'username': {'$regex':'^'+name}})
+        _name = name.upper()
+        users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
         if users.count() >= 1 :
             self.write(self.render_string("Module/searchpeopleresult.html", searchuserresults = users)) 
         else:
             self.write(self.render_string("Module/searchpeopleresult.html", searchuserresults = None)) 
 
 class RealTimeSearchUserHandler(BaseHandler):  
-    def get(self, name):   
-        users = self.syncdb.users.find({'username': {'$regex':'^'+name}})
+    def get(self, name): 
+        _name = name.upper()  
+        users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
         if users.count() >0 :
             
             self.write(unicode(simplejson.dumps(users, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
@@ -296,14 +297,15 @@ class RealTimeSearchUserHandler(BaseHandler):
         
 class GetFriendHandler(BaseHandler):  
     def get(self):    
+        
         user = self.syncdb.users.find({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
         self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
         
 class SearchFriendHandler(BaseHandler):  
     def get(self, name):   
-            
-        users = self.syncdb.users.find({'username': {'$regex':'^'+name}})
+        _name = name.upper()
+        users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
         if users.count() >= 1 :
             self.write(self.render_string("Module/searchfriendresult.html", searchuserresults = users)) 
         else:

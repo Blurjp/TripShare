@@ -1,13 +1,15 @@
 <li class="show_guides" id="{{guide['guide_id']}}">
 <div class="item hproduct">
 <div class="sighting-box clearfix">
-<h2><a href="/guides/{{guide['slug']}}">{{guide['title']}}</a></h2>
+<a href="/guides/{{guide['slug']}}"><h2>{{guide['title']}}</h2></a>
 
 <ul class="guide_details">
   
-  <li >Destination: 
+  <li >Sights: <br>
   {% for place in guide['dest_place'] %} 
-    <span>{{place['dest']}} </span><br>
+  <a href="/sights/{{place['dest']}}">
+    <span class="guide_sights">{{place['dest']}} </span><br>
+  </a>
   {% end %}
   </li>
 </ul>
@@ -27,7 +29,8 @@
 {% else %}
 <input type ="button" class="l_subscribe fancy" sid={{guide['guide_id']}} value="Import" href="{{current_user['user_id']}}">
 {% end %}
-<a href="/like/{{guide['slug']}}">like this</a>
+<a href="/like/{{guide['slug']}}">like this</a> \ 
+<a href="/save/{{guide['slug']}}">save this</a>
 </div>
 
 </div>

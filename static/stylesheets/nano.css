@@ -397,8 +397,7 @@ opacity:0.5;
 }
 #search_bar #start:focus{outline:none}
 .current_location {height:40px ;}
-#current_location .h2{float: right; font-size:100%;color: black; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
-#current_location .h2:hover {color: white; text-decoration: none}
+
 #search_bar #start{float:left;width:300px;padding:8px 8px;font-size:1.50em;color: #96af4b; font-weight: 300;font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 #search_bar #submit_location{float:left; width:100px;border-top-left-radius:0;-moz-border-radius-topleft:0;-webkit-border-top-left-radius:0;border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;-webkit-border-bottom-left-radius:0}
 .feedoptions {margin-top:5px}
@@ -444,11 +443,6 @@ opacity:0.5;
 {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 
-#create_trip_step_1 .start_from .h2 
-{font-size:50%;color: black; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
-
-#create_trip_step_1 .add_dest .h2 
-{font-size:100%;color: black; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 
 /* /////////////////////////////////////////////////////  */
 /* create trip slide 2*/	
@@ -529,9 +523,6 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 #search_member #submit_member{float:left; width:100px;border-top-left-radius:0;-moz-border-radius-topleft:0;-webkit-border-top-left-radius:0;border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;-webkit-border-bottom-left-radius:0}
 
 
-#create_trip_step_3 #search_member .h2 
-{font-size:100%;color: black; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
-
 /* /////////////////////////////////////////////////////  */
 /* create user setting popup window */	 
  #setting {background-color:white;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px}      
@@ -562,7 +553,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
  
  
  .sighting-box {padding: 15px; background: #f7f6f1; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
- .sighting-box h2 a {color: #333333}
+
 
  li.show_trips {margin:0 0 20px 0}	
  li.show_trips.first {margin-left: 15px}
@@ -585,24 +576,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 #tooltip_interior div{margin-top:2px;font-size:1em;}
 #tooltip_micro{font-size:.8em!important;}
  
-/* Subscription grids */ .usergrid td{vertical-align:top;padding-right:10px;padding-bottom:10px;font-size:11px;text-align:center}       .usergrid td.last{padding-right:0}       .usergrid div{width:77px;overflow:hidden}       .usergrid a{color:#737373}       .streampager{margin-top:1em}       .moderategrid td{vertical-align:top}       .moderategrid td.cell{padding-right:15px;padding-bottom:15px}       .moderategrid td.cell.last{padding-right:0}      
- .moderategrid td.picture{padding-right:7px;line-height:0}      
- .moderategrid td.body{width:100px}    
- .moderategrid div.action{font-size:14px;margin-top:1px}      
- .moderategrid div.name{white-space:nowrap;overflow:hidden;width:100px}     
- .moderategrid .action a{color:#7777cc}       
-/* Friend chooser */ .streamchooser{width:690px}       
-.streamchooser .title{margin-bottom:10px}       
-.streamchooser h2{font-size:21px}       
-.streamchooser .instructions{margin-top:3px}       
-.streamchooser .filters{background:#e2e2e2;border:1px solid #ccc;border-bottom:0;padding:2px;padding-left:5px;padding-right:10px;-moz-border-radius-topleft:5px;-moz-border-radius-topright:5px;-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px}       .streamchooser .searchbox{margin-left:0px;margin-bottom:10px}       .streamchooser .choices{border:1px solid #ccc;overflow:auto;height:339px;padding:3px}       
-.streamchooser .buttons{margin-left:5px;margin-top:10px;margin-right:7px}   
-.streamchooser .searchbox input.textbox{width:300px}       
-.streamchooser .l_streamchoice{float:left;width:160px;height:68px;overflow:hidden;cursor:pointer;-moz-user-select:none}       
-.streamchooser .l_streamchoice .body{border:1px solid white;-moz-border-radius:4px;-webkit-border-radius:4px;padding:5px;margin:2px;overflow:hidden}       .streamchooser .l_streamchoice:hover .body{border-color:#e0e0e0;background-color:#f4f4f4}       
-.streamchooser .l_streamchoice.selected .body,.streamchooser .l_streamchoice.selected:hover .body{border-color:#93baeb;background-color:#c4d9f4}       .streamchooser .l_streamchoice.selected .body img.picture{border-color:#93baeb}       .streamchooser .l_streamchoice td{vertical-align:top}       .streamchooser .l_streamchoice td.photo{line-height:0;padding-right:5px}       .streamchooser .l_streamchoice .nickname{margin-top:1px;font-size:11px;color:#737373;white-space:nowrap}       
-.sharedmsg{position:fixed;top:2px;right:2px;padding:4px 8px 4px 8px}       
-      
+
 
 /*  edit trip */
 #tooltip {position: absolute;background: url(/static/images/dark_arrow.png) 50% 0 no-repeat;padding: 7px 0 0 0;z-index: 500;}
@@ -1084,6 +1058,8 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 .friend_dropdown_list {float:left;width:150px}
 
 .show_guides {padding-top:5px}
-.guide_action {padding-right:10px}
+.guide_action {padding-right:50px}
 .guide_details {width:50%; float:left}
 .guide_photo {padding-left:200px}
+.guide_sights {padding-left:20px}
+.notice_no_plans {text-align: center;margin: 150px;width:50%}
