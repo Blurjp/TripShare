@@ -57,6 +57,7 @@ $(document).ready(function() {
 	  
 	  var formData = $('#create_guide_form').guideformToDict();
 	  var _formData = JSON.stringify(formData, null, '\t');
+	  alert(_formData);
 	  var content = {'_xsrf': getCookie("_xsrf"), 'data' : _formData};
       var disabled = $('#create_guide_form').find("input[type=submit]");
       disabled.disable();
@@ -74,8 +75,8 @@ $(document).ready(function() {
 	 var destinations = []
 	 var json = {};
 	 json ['title'] = fields[1].value;
-	 
-	 for (var i = 2; i < fields.length; i++) {
+	 json ['tag'] = fields[2].value;
+	 for (var i = 3; i < fields.length; i++) {
 	 destinations.push({
 	 	'dest': fields[i].value,
 	 	'day': fields[i + 1].value

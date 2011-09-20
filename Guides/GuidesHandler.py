@@ -34,6 +34,7 @@ class EntryGuidesHandler(BaseHandler):
         
 class CategoryGuidesHandler(BaseHandler):
     def get(self, section):
+        latest_guide_ids =[]
         if section == "my":
             latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).limit(5).sort("slug")
         if section == "park":
@@ -43,7 +44,7 @@ class CategoryGuidesHandler(BaseHandler):
         elif section == "world":
             latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).limit(5).sort("slug")
             
-        if latest_guide_ids.count() > 0:
+        if len(latest_guide_ids) > 0:
                 for latest_guide_id in latest_guide_ids:                        
                         self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
      
@@ -54,7 +55,7 @@ class GuidePageHandler(BaseHandler):
        
         section = _section
         index = string.atoi(_index)
-
+        latest_guide_ids =[]
         skip_number = index*3
         if section == "my":
             latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).skip(skip_number).limit(5).sort("slug")
@@ -65,7 +66,7 @@ class GuidePageHandler(BaseHandler):
         elif section == "world":
             latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).skip(skip_number).limit(5).sort("slug")
             
-        if latest_guide_ids.count() > 0:
+        if len(latest_guide_ids) > 0:
                 for latest_guide_id in latest_guide_ids:                        
                         self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
      
@@ -81,29 +82,29 @@ class CreateGuidesHandler(BaseHandler):
             print(ele);
         content = simplejson.loads(self.get_argument('data'))
         title = content['title']
+        tag = content['tag']
         print(title);
         destinations = content['destinations']
         
         description = ''
-        #for idx, dest in enumerate(destinations):
-        #    if(dest!=""):
+       
         
         self.slug = unicodedata.normalize("NFKD", unicode(title)).encode("ascii", "ignore")      
         self.slug = re.sub(r"[^\w]+", " ", self.slug)
-        self.slug = "-".join(self.slug.lower().sguide().split())
+        self.slug = "-".join(self.slug.lower().strip().split())
         if not self.slug: self.slug = "guide"
         while True:
-                #e = self.db.get("SELECT * FROM guides WHERE slug = %s", slug)
+               
             e = self.syncdb.guides.find_one({'slug':self.slug})
             if not e: break
             self.slug += "-2"
         
         self.syncdb.guides.ensure_index('guide_id',  unique = True)                        
         #self.db.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()}, callback=self._create_guide)
-        self.syncdb.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()})
+        self.syncdb.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':tag, 'random' : random.random()})
         
         self.redirect("/guides/" + str(self.slug))
-        #self.render("Guides/guides.html", )
+       
     def _create_guide(self, response, error):
             if error:
                     raise tornado.web.HTTPError(500)
