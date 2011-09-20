@@ -616,14 +616,9 @@ function check_createguide_form(form)
 	
 function set_section(section, _url) {
 	    var trips = null;
-		//alert('a');
-		
 		$("#section_value").val(section);
-        //alert('b');
         $('#tabs > .on').removeClass('on');
-	    
         $('#'+section + '-tab').addClass('on');
-	
 		$.getJSON(_url, function(response) {
         //alert('test');
 		history.pushState(null, null, _url);

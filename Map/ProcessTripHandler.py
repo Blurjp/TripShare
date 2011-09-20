@@ -105,21 +105,7 @@ class ShowNewTrips(BaseHandler):
                         #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
                         self.write(latest_trip_id['html'])
          
-        def _on_new_trips(self, latest_trip_ids):
-            if latest_trip_ids.count() > 0:
-                for latest_trip_id in latest_trip_ids:
-                        latest_trip_id['check_join'] = False
-                        
-                        members = latest_trip_id['members']
-                        if self.current_user:
-                            for member in members:
-                                if member['user_id'] == self.current_user['user_id']:
-                                    latest_trip_id['check_join'] = True
-                                    print("true")
-                                    break
-                        latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
-                        #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
-                        self.write(latest_trip_id['html']) 
+
 
 class ShowHotTrips(BaseHandler):
         

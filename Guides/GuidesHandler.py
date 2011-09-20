@@ -33,13 +33,20 @@ class EntryGuidesHandler(BaseHandler):
         print('render')
         
 class CategoryGuidesHandler(BaseHandler):
-    def get(self, tag):
-        guide = self.syncdb.guides.find({'slug': slug})
-        
-        if not guide: raise tornado.web.HTTPError(404)
-        self.render("editguide.html", guide=guide)
-        #self.render("terms.html")
-        print('render')
+    def get(self, section):
+        if section == "my":
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).limit(5).sort("slug")
+        if section == "park":
+            latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).limit(5).sort("slug")
+        elif section == "city":
+            latest_guide_ids = self.syncdb.guides.find({"tag":'city'}).limit(5).sort("slug")
+        elif section == "world":
+            latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).limit(5).sort("slug")
+            
+        if latest_guide_ids.count() > 0:
+                for latest_guide_id in latest_guide_ids:                        
+                        self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
+     
         
 class GuidePageHandler(BaseHandler):
 
