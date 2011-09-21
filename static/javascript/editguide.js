@@ -53,8 +53,6 @@
 	//alert(document.getElementById("startPlace").value);
 	var _center = new google.maps.LatLng(34.3664951, -89.5192484);
 
-	
-	
     var myOptions = {
       zoom: 6,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -96,7 +94,7 @@
 
   homeControlDiv.index = 2;
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);          
-  //fetchPath();                                
+  SetSights();                                
   }
   
   
@@ -846,7 +844,7 @@ function codeLatLng(name) {
 		//alert('finish process');
         }
         
-   //   google.maps.event.addDomListener(window, 'load', initialize);
+      google.maps.event.addDomListener(window, 'load', initialize);
 	
 	/*  Set map hover effect   */
 	  $(document).ready(function(){

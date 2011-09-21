@@ -25,7 +25,7 @@ class BrowseGuidesHandler(BaseHandler):
 
 class EntryGuidesHandler(BaseHandler):
     def get(self, slug):
-        guide = self.syncdb.guides.find({"tag":slug}).limit(5).sort("slug")
+        guide = self.syncdb.guides.find_one({"slug":slug})
         
         if not guide: raise tornado.web.HTTPError(404)
         self.render("editguide.html", guide=guide)
@@ -34,8 +34,8 @@ class EntryGuidesHandler(BaseHandler):
         
 class CategoryGuidesHandler(BaseHandler):
     def get(self, section):
-        latest_guide_ids =[]
-        if section == "my":
+        latest_guide_ids = None
+        if section == "me":
             latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).limit(5).sort("slug")
         if section == "park":
             latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).limit(5).sort("slug")
@@ -44,10 +44,12 @@ class CategoryGuidesHandler(BaseHandler):
         elif section == "world":
             latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).limit(5).sort("slug")
             
-        if len(latest_guide_ids) > 0:
+        if latest_guide_ids.count() >0:
+                
                 for latest_guide_id in latest_guide_ids:                        
                         self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
-     
+        else:
+            self.write('<li><span>No guide for this category yet....</span></li>')
         
 class GuidePageHandler(BaseHandler):
 
@@ -55,9 +57,9 @@ class GuidePageHandler(BaseHandler):
        
         section = _section
         index = string.atoi(_index)
-        latest_guide_ids =[]
+        latest_guide_ids = None
         skip_number = index*3
-        if section == "my":
+        if section == "me":
             latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).skip(skip_number).limit(5).sort("slug")
         if section == "park":
             latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).skip(skip_number).limit(5).sort("slug")
@@ -66,7 +68,7 @@ class GuidePageHandler(BaseHandler):
         elif section == "world":
             latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).skip(skip_number).limit(5).sort("slug")
             
-        if len(latest_guide_ids) > 0:
+        if latest_guide_ids!= None:
                 for latest_guide_id in latest_guide_ids:                        
                         self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
      
@@ -99,11 +101,12 @@ class CreateGuidesHandler(BaseHandler):
             if not e: break
             self.slug += "-2"
         
-        self.syncdb.guides.ensure_index('guide_id',  unique = True)                        
+        self.syncdb.guides.ensure_index('guide_id',  unique = True)  
+        guide_id = bson.ObjectId()                      
         #self.db.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()}, callback=self._create_guide)
-        self.syncdb.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':tag, 'random' : random.random()})
-        
-        self.redirect("/guides/" + str(self.slug))
+        self.syncdb.guides.save({ 'guide_id':guide_id, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':[], 'random' : random.random()})
+        self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tag': tag}})
+        self.redirect("/guide/" + str(self.slug))
        
     def _create_guide(self, response, error):
             if error:
@@ -111,4 +114,4 @@ class CreateGuidesHandler(BaseHandler):
             
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'guides': self.slug} })     
             print('redirect')
-            self.redirect("/guides/" + str(self.slug))
+            self.redirect("/guide/" + str(self.slug))

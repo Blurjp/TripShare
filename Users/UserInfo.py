@@ -229,7 +229,7 @@ class UserHandler(BaseHandler):
 class AddUserToTripHandler(BaseHandler):
     def get(self, userid, tripid):  
         user = self.syncdb.users.find_one({'user_id':bson.ObjectId(userid)})
-        self.db.trips.update({'trip_id':bson.ObjectId(tripid)}, { '$addToSet':{'members': user} }, callback = self._add_user_to_trip)  
+        self.db.trips.update({'trip_id':bson.ObjectId(tripid)}, { '$addToSet':{'members': user}, '$inc' : { 'member_count' : 1 }}, callback = self._add_user_to_trip)  
     
     def _add_user_to_trip(self, response, error):
         if error:

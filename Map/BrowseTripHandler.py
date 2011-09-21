@@ -117,7 +117,7 @@ class TripPageHandler(BaseHandler):
         elif section == "hottrips":
             
             t = datetime.datetime.now()  
-            latest_trip_ids = self.syncdb.trips.find({"end_date": {"$gt": t}}).skip(skip_number).limit(3).sort("members", pymongo.DESCENDING)
+            latest_trip_ids = self.syncdb.trips.find({"end_date": {"$gt": t}}).skip(skip_number).limit(3).sort("members_count", pymongo.DESCENDING)
         elif section == "endtrips":
             t = datetime.datetime.now()
             latest_trip_ids = self.syncdb.trips.find({"end_date": {"$lt": t}}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)

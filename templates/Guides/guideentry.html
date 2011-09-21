@@ -1,7 +1,7 @@
-<li class="show_guides" id="{{guide['guide_id']}}">
+<li class="show_guide" id="{{guide['guide_id']}}">
 <div class="item hproduct">
 <div class="sighting-box clearfix">
-<a href="/guides/{{guide['slug']}}"><h2>{{guide['title']}}</h2></a>
+<a href="/guide/{{guide['slug']}}"><h2>{{guide['title']}}</h2></a>
 
 <ul class="guide_details">
   
@@ -13,7 +13,7 @@
   {% end %}
   </li>
 </ul>
-<a href="/guides/{{guide['slug']}}" class="guide_photo">
+<a href="/guide/{{guide['slug']}}" class="guide_photo">
 	<img alt="{{guide['slug']}}" src="{{ static_url("images/site.jpg") }}" class = "picture xlarge">
 </a>
 

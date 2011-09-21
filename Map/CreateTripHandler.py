@@ -133,7 +133,7 @@ class ComposeHandler(BaseHandler):
             self.syncdb.trips.ensure_index('slug', unique=True)
             
             
-            self.db.trips.save({ 'trip_id':bson.ObjectId(), 'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'slug':self.slug, 'members': members,'description': str(description), 'start_place':start, 'dest_place':destinations, 'start_place_position':tripStartPosition, 'dest_place_position':tripDestPosition, 'way_points':waypoints ,'trip_path':trip_path, 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'start_date': start_date_object, 'finish_date': finish_date_object, 'random' : random.random()}, callback=self._create_trips)
+            self.db.trips.save({ 'trip_id':bson.ObjectId(), 'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'slug':self.slug, 'members': members,'member_count':len(members),'description': str(description), 'start_place':start, 'dest_place':destinations, 'start_place_position':tripStartPosition, 'dest_place_position':tripDestPosition, 'way_points':waypoints ,'trip_path':trip_path, 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'start_date': start_date_object, 'finish_date': finish_date_object, 'random' : random.random()}, callback=self._create_trips)
 
         
     def _create_trips(self, response, error):

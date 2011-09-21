@@ -64,17 +64,17 @@ try{Typekit.load();}catch(e){}
 
               <a id="plans_tabs_category_me" class="plans_tabs_selected" onclick="set_tab('me');">My Collections</a>
 
-              <a id="plans_tabs_category_park" class="plans_tabs_small" onclick="set_tab('park');">Park<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
+              <a id="plans_tabs_category_park" class="plans_tabs_small" onclick="set_tab('park');">Park<img src="{{ static_url("../static/icon/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
 
-              <a id="plans_tabs_category_city" class="plans_tabs_small" onclick="set_tab('city');">City<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
+              <a id="plans_tabs_category_city" class="plans_tabs_small" onclick="set_tab('city');">City<img src="{{ static_url("../static/icon/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
 
-              <a id="plans_tabs_category_world" class="plans_tabs_small" onclick="set_tab('world');">World<img src="{{ static_url("/images/icons/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
+              <a id="plans_tabs_category_world" class="plans_tabs_small" onclick="set_tab('world');">World<img src="{{ static_url("../static/icon/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
 
             
           
         </div>
         
-        <a id="plans_tabs_categorized" href="/home/all/everywhere">All Guides</a>        
+        <a id="plans_tabs_category_popular" onclick="set_rate_tab();">Most popular Guides</a>        
             
     </div>
   
@@ -217,7 +217,7 @@ try{Typekit.load();}catch(e){}
 	
 function set_tab(tag) {
 	    
-		var _url = '/guides/'+tag;
+		var _url = '/guides/'+tag.toString();
 		
         $('#plans_tabs_categories > .plans_tabs_selected').removeClass('plans_tabs_selected');
         $('#plans_tabs_category_'+tag).addClass('plans_tabs_selected');
@@ -228,11 +228,15 @@ function set_tab(tag) {
 		
     }); 
     }
+	
+function set_rate_tab(){
+	    
+}
 	  
 function ShowGuide(message) {
 		if(message!=null)
 		{
-		alert(message);
+		
 		var node;
 		var trips = message.split("||||");
 		$("#plans").empty();
@@ -244,6 +248,15 @@ function ShowGuide(message) {
          });	
 		 }
     }
+	
+	jQuery.getJSON = function(_url, callback) {
+    $.ajax({
+      url: _url, success: function(data, textStatus) {console.log("success:", data)
+        if (callback) callback(data);
+      }, 
+	  error: function(response) {console.log("ERROR:", response)}
+});
+};
 </script>
  
 
