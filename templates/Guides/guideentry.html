@@ -21,16 +21,21 @@
 </div>
 <div class="action-bar">
 <div class="actions">
-
 <div class="right guide_action">
 
 {% if not current_user %}
-<input type ="button" class="l_subscribe fancy" sid={{guide['guide_id']}} value="Import" href="#login">
+<input type ="button" value="Import" href="#login">
+<a href="#login" >like this</a> \ 
+<a href="#login" >save this</a>
 {% else %}
 <input type ="button" class="l_subscribe fancy" sid={{guide['guide_id']}} value="Import" href="{{current_user['user_id']}}">
+<a href="#" class="default_like_message">like</a>
+<a href="#" class="saving_like_message">unlike</a>
+ \ 
+<a href="#" class="default_save_message">save to pack</a>
+<a href="#" class="saving_save_message">in your pack</a>
 {% end %}
-<a href="/like/{{guide['slug']}}">like this</a> \ 
-<a href="/save/{{guide['slug']}}">save this</a>
+
 </div>
 
 </div>

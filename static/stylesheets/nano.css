@@ -1059,7 +1059,10 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
 .show_guides {padding-top:5px}
 .guide_action {padding-right:50px}
+.guide_action .saving_like_message, .guide_action .saving_save_message {display:none}
 .guide_details {width:50%; float:left}
 .guide_photo {padding-left:200px}
 .guide_sights {padding-left:20px}
 .notice_no_plans {text-align: center;margin: 150px;width:50%}
+
+

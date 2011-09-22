@@ -72,14 +72,23 @@ class GuidePageHandler(BaseHandler):
                 for latest_guide_id in latest_guide_ids:                        
                         self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
      
-    
+class SaveGuidesHandler(BaseHandler):  
+    @tornado.web.authenticated  
+    def post(self, slug):
+        self.syncdb.users.save({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'save_guides': slug}})
+        
+        self.write('This guide is in your pack now')
+     
+class LikeGuidesHandler(BaseHandler):
+    @tornado.web.authenticated  
+    def post(self, slug):
+        self.syncdb.users.save({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'like_guides': slug}})
+        self.syncdb.guides.save({'slug': slug}, {'$inc':{'rate': 1}})
 
 class CreateGuidesHandler(BaseHandler):
     slug = None
     @tornado.web.authenticated
     def post(self):
-        
-        
         for ele in self.request.arguments:
             print(ele);
         content = simplejson.loads(self.get_argument('data'))

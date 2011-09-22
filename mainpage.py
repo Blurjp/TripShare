@@ -37,6 +37,8 @@ from Users.UserInfo import UnFollowUserHandler
 from Users.UserInfo import TravelersHandler
 from Users.UserInfo import AddUserToTripHandler
 from Users.UserInfo import CheckUserinTripHandler
+from Guides.GuidesHandler import SaveGuidesHandler
+from Guides.GuidesHandler import LikeGuidesHandler
 from Guides.GuidesHandler import BrowseGuidesHandler
 from Guides.GuidesHandler import CreateGuidesHandler
 from Guides.GuidesHandler import EntryGuidesHandler
@@ -172,7 +174,8 @@ class Application(tornado.web.Application):
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),
                                       (r"/guides/([^/]+)/([^/]+)", GuidePageHandler),
-                                      
+                                      (r"/saveguide/([^/]+)", SaveGuidesHandler),
+                                      (r"/likeguide/([^/]+)", LikeGuidesHandler),
                                       (r"/createguide", CreateGuidesHandler),
                                       
                                       (r"/a/changepicture", UserPictureHandler),

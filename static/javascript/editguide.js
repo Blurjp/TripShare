@@ -97,11 +97,7 @@
   SetSights();                                
   }
  
-function SetSights()
-{
-	dest_places = jQuery.parseJSON('dest_place:{'+$('#dest_place').val()+'}');
-	alert(dest_places.length);
-}
+
   
   /**
  * The HomeControl adds a control to the map that simply

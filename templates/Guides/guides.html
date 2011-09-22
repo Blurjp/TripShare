@@ -213,8 +213,46 @@ try{Typekit.load();}catch(e){}
  {% include "../Module/footer.html" %} 
 
 <script type="text/javascript">
+$('.save_guide').click(function(e) {
+	guide_id = $('.l_subscribe').attr('sid').val();
+	$.postJSON(url, function(response){
+		ShowSaveResponse(response);
+	});
+	});
 
+function ShowSaveResponse(response)
+{
+	alert(response);
+}
+
+$('.default_like_message').click(function(e) {
+	guide_id = $('.l_subscribe').attr('sid').val();
+	url = '/likeguide/'+ guide_id;
+	$.postJSON(url, function(response){
+		ShowSaveResponse(response);
+	});
+
+    $('.default_like_message').toggleClass('default_like_message').toggleClass('saving_like_message');
+	});
 	
+$('.default_save_message').click(function(e) {
+	guide_id = $('.l_subscribe').attr('sid').val();
+	url = '/saveguide/'+ guide_id;
+	$.postJSON(url, function(response){
+		ShowSaveResponse(response);
+	});
+$('.default_save_message').toggleClass('default_save_message').toggleClass('saving_save_message');
+	});
+	
+$('.like_guide').click(function(e) {
+	guide_id = $('.l_subscribe').attr('sid').val();
+	url = 
+	$.postJSON(url, function(response){
+		ShowSaveResponse(response);
+	});
+
+	});
+
 function set_tab(tag) {
 	    
 		var _url = '/guides/'+tag.toString();

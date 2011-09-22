@@ -113,11 +113,15 @@
   var homeControl = new HomeControl(homeControlDiv);
 
   homeControlDiv.index = 2;
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);          
-  SetSights();                                
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);
+  var geo_results = [];         
+  SetSights(geo_results); 
+  for (var i = 0; i < dest_places.length; i++) {
+		createMarker('waypoint',geo_results[i],dest_places[i]['day'], i);
+	}                                                       
   }
   
-  function SetSights()
+  function SetSights(geo_results)
   {
   	dest_places = document.getElementById('dest_place').value;
 	
@@ -127,16 +131,18 @@
 	dest_places= jQuery.parseJSON(temp);
 	alert(dest_places.length);
 	var day = '';
-	var geo_results = [];
+	//var geo_results = [];
 	for (var i=0; i < dest_places.length; i++) 
 	{
-	  //day = dest_places[i]['day'];
+	  day = dest_places[i]['day'];
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	map.setCenter(results[0].geometry.location);
-        //createMarker('waypoint',results[0].geometry.location,day, i);
+		
+        createMarker('waypoint',results[0].geometry.location,day, i);
 		//alert(i);
 		geo_results.push(results[0].geometry.location);
+		alert('push');
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
@@ -145,10 +151,8 @@
 		
 	    
 	}
-	alert(geo_results.length);
-	for (var i = 0; i < dest_places.length; i++) {
-		createMarker('waypoint',geo_results[i],dest_places[i]['day'], i);
-	}
+	
+	
 	
   }
   /**
