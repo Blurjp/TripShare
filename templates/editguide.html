@@ -119,13 +119,37 @@
   
   function SetSights()
   {
-  	dest_place = document.getElementById('dest_place').value;
-	alert(dest_place.value.ToString());
+  	dest_places = document.getElementById('dest_place').value;
 	
-	for(i in dest_place)
+	temp = dest_places.replace(/u'/g,"\"");
+	temp = temp.replace(/\'/g,'\"');;
+	
+	dest_places= jQuery.parseJSON(temp);
+	alert(dest_places.length);
+	var day = '';
+	var geo_results = [];
+	for (var i=0; i < dest_places.length; i++) 
 	{
-	  createMarker(i);	
+	  //day = dest_places[i]['day'];
+	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+	  	map.setCenter(results[0].geometry.location);
+        //createMarker('waypoint',results[0].geometry.location,day, i);
+		//alert(i);
+		geo_results.push(results[0].geometry.location);
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+		
+		
+	    
 	}
+	alert(geo_results.length);
+	for (var i = 0; i < dest_places.length; i++) {
+		createMarker('waypoint',geo_results[i],dest_places[i]['day'], i);
+	}
+	
   }
   /**
  * The HomeControl adds a control to the map that simply
@@ -736,15 +760,14 @@ function codeLatLng(name) {
          return marker;
      }
       
-      function createMarker(markerType, latLng) {
+      function createMarker(markerType, latLng, day, index) {
        //  alert(latLng);
          var marker = new google.maps.Marker({
             position: latLng,
             map: map
             
           });
-          marker.setDraggable(true);
-          marker.setIcon('{{ static_url("images/start.png") }}');
+          
 		  switch (markerType) {
 		 	case 'start':
 			
@@ -756,7 +779,7 @@ function codeLatLng(name) {
 		 		break;
 			case 'waypoint': 
 			
-		 		marker.setIcon('{{ static_url("images/waypoint.png") }}');
+		 		marker.setIcon('{{ static_url("icon/tripshare_'+index+'.png") }}');
 		 		break;
 				
 			case 'polylinemarker': 
@@ -873,7 +896,7 @@ function codeLatLng(name) {
 		//alert('finish process');
         }
         
-      google.maps.event.addDomListener(window, 'load', initialize);
+     // google.maps.event.addDomListener(window, 'load', initialize);
 	
 	/*  Set map hover effect   */
 	  $(document).ready(function(){
@@ -1105,10 +1128,10 @@ function PostFeedResponse(response){
 </div>
 	
 <div class="map-detail">
-				<input name="guideId" id="guideId" type="hidden" value = {{guide['guide_id']}}>
-				<input name="slug" id="guide_slug" type="hidden" value = {{guide['slug']}}> 
-				<input name="title" id="guide_title" type="hidden" value = {{guide['title']}}> 
-				<input name="typeId" id="typeId" type="hidden" value = {{guide['guide_id']}}>
+				<input name="guideId" id="guideId" type="hidden" value = "{{guide['guide_id']}}">
+				<input name="slug" id="guide_slug" type="hidden" value = "{{guide['slug']}}"> 
+				<input name="title" id="guide_title" type="hidden" value = "{{guide['title']}}"> 
+				<input name="typeId" id="typeId" type="hidden" value = "{{guide['guide_id']}}">
 				<input name="dest_place" id="dest_place" type="hidden" value = "{{guide['dest_place']}}">
 				<input id="type" type="hidden" value = "guide">
 </div> 

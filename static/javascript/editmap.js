@@ -56,7 +56,7 @@
 	{
 		//alert("enter position");
 		var startValue = document.getElementById("startPosition").value;
-		//alert("startValue: "+startValue + "Thsi should be two number.");
+		//alert("startValue: "+startValue + "This should be two number.");
 		var temp = startValue.substring(1, startValue.length-2);
 		 var a = temp.split(', ')[0];
 		 var b = temp.split(', ')[1];
