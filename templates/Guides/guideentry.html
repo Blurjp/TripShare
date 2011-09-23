@@ -29,11 +29,24 @@
 <a href="#login" >save this</a>
 {% else %}
 <input type ="button" class="l_subscribe fancy" sid={{guide['guide_id']}} value="Import" href="{{current_user['user_id']}}">
-<a href="#" class="default_like_message">like</a>
-<a href="#" class="saving_like_message">unlike</a>
- \ 
-<a href="#" class="default_save_message">save to pack</a>
-<a href="#" class="saving_save_message">in your pack</a>
+
+
+
+{% if guide['guide_id'] in  current_user['like_guide'] %}
+<input type ="button" class="like_guide action" sid={{guide['guide_id']}} value="unlike" actiontype="like" targettype="guide">
+
+{% else %}
+<input type ="button" class="like_guide action" sid={{guide['guide_id']}} value="like" actiontype="like" targettype="guide">
+
+{% end %}
+\
+{% if guide['guide_id'] in  current_user['save_guide'] %}
+<input type="button" class="save_guide action" sid={{guide['guide_id']}} value="remove" actiontype="save" targettype="guide">
+
+{% else %}
+<input type="button" class="save_guide action" sid={{guide['guide_id']}} value="save" actiontype="save" targettype="guide">
+
+{% end %}
 {% end %}
 
 </div>

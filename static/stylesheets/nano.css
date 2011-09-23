@@ -257,9 +257,12 @@ width: 302px;
   .subscribebar a,.subscribebar .g{color:white}       
   .subscribebar .control{float:right}       
   .profile .subscribebar .l_feedinvite{background:url("/static/images/mail-nano.png?v=1f0b") no-repeat left center;padding-left:19px}      
-   .topbar{margin-bottom:21px}      
-   button.fancy{-moz-border-radius:12px;-webkit-border-radius:12px;border:1px solid #2f72c4;background:url("/static/images/button-shine.png?v=d64f") repeat-x top;background-color:#2f72c4;color:white;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
-    #signuppromo button{font-weight:bold;border-color:#da8319;background-color:#da8319;font-size:18px;white-space:nowrap}       .profile .subscribe .block{float:right;padding-top:3px}       .profile .subscribe .stats,.subview .subscribe .stats{color:#737373;font-size:14px;padding-left:10px}       
+   .topbar{margin-bottom:21px}  
+       
+   button.fancy{-moz-border-radius:12px;-webkit-border-radius:12px;border:1px solid #2f72c4;background:url("/static/icon/button-shine.png") repeat-x top;background-color:#2f72c4;color:white;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
+    #signuppromo button{font-weight:bold;border-color:#da8319;background-color:#da8319;font-size:18px;white-space:nowrap}      
+	 .profile .subscribe .block{float:right;padding-top:3px}      
+	  .profile .subscribe .stats,.subview .subscribe .stats{color:#737373;font-size:14px;padding-left:10px}       
 
 
 /* Profile popup */ 
@@ -543,7 +546,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 		
 /* Trips in the main page  */		
  ul.trip_details li{ margin:0 0 15px 0 }
- input.fancy{-moz-border-radius:12px;-webkit-border-radius:12px;border:1px solid #2f72c4;background:url("/static/images/button-shine.png?v=d64f") repeat-x top;background-color:#2f72c4;color:white;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
+ input.fancy{-moz-border-radius:12px;-webkit-border-radius:12px;border:1px solid #2f72c4;background:url("/static/icon/button-shine.png") repeat-x top;background-color:#2f72c4;color:white;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
 
  .action-bar {padding-right: 3px; background-color: #f0eee4; border-radius: 0 0 0 5px; -webkit-border-bottom-right-radius: 5px;-moz-border-radius-bottomright: 5px}
  .members, .member_count {float:left; margin-left: 2px; margin-right: 10px; margin-top: 3px; }
@@ -1057,8 +1060,11 @@ ul.feedsUI li.feed .right p.details a{font-weight:normal;}
 a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow:hidden; background:url("/static/images/facebook_sign_in.png") no-repeat transparent; z-index:5000;  text-decoration:none;margin-top:5px; margin-left:15px}
 .friend_dropdown_list {float:left;width:150px}
 
+/* guides  */
 .show_guides {padding-top:5px}
 .guide_action {padding-right:50px}
+.guide_action .action {text-align: center;width: 60px;solid #2f72c4;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
+
 .guide_action .saving_like_message, .guide_action .saving_save_message {display:none}
 .guide_details {width:50%; float:left}
 .guide_photo {padding-left:200px}

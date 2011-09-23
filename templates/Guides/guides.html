@@ -225,29 +225,21 @@ function ShowSaveResponse(response)
 	//alert(response);
 }
 
-$('.default_like_message').live("click",function(e) {
+$('.action').live("click",function(e) {
 	//alert('test');
-	guide_id = $('.l_subscribe').attr('sid');
-	url = '/likeguide/'+ guide_id;
+	id = $(this).attr('sid');
+    type = $(this).attr('targettype');
+	action = $(this).attr('actiontype');
+	url = '/'+action+type+'/'+ id;
 	var formData = {};
 	formData._xsrf = getCookie("_xsrf");
 	$.postJSON(url, formData, function(response){
 		ShowSaveResponse(response);
 	});
-	SwapClass($(this),'default_like_message', 'saving_like_message');
+	SwapValue($(this),action, 'un'+action);
 
 	});
-	
-$('.default_save_message').live("click",function(e) {
-	guide_id = $('.l_subscribe').attr('sid');
-	url = '/saveguide/'+ guide_id;
-	var formData = {};
-	formData._xsrf = getCookie("_xsrf");
-	$.postJSON(url, formData, function(response){
-		ShowSaveResponse(response);
-	});
-    SwapClass($(this),'default_save_message', 'saving_save_message');
-	});
+
 	
 
 
@@ -306,6 +298,15 @@ function SwapClass(self, a, b)
 	self.parent().find('.'+a).addClass('unlike').removeClass(a);
 	self.parent().find('.'+b).addClass(a).removeClass(b);
 	self.parent().find('.unlike').addClass(b).removeClass('unlike');
+	
+}	
+
+function SwapValue(self, a, b)
+{
+	if(self.val()==a)
+	self.val(b);
+	else
+	self.val(a);
 	
 }	
 

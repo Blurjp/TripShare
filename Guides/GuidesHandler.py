@@ -19,7 +19,7 @@ from Map.BrowseTripHandler import BaseHandler
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
         # set "my collection" as default; change the order to saved date later
-        guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).limit(5).sort("slug")
+        guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort("slug")
         
         self.render("Guides/guides.html", guides=guides)
 
@@ -36,7 +36,7 @@ class CategoryGuidesHandler(BaseHandler):
     def get(self, section):
         latest_guide_ids = None
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guides'] }}).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort("slug")
         if section == "park":
             latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).limit(5).sort("slug")
         elif section == "city":
@@ -60,7 +60,7 @@ class GuidePageHandler(BaseHandler):
         latest_guide_ids = None
         skip_number = index*3
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['guides'] }}).skip(skip_number).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(skip_number).limit(5).sort("slug")
         if section == "park":
             latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).skip(skip_number).limit(5).sort("slug")
         elif section == "city":

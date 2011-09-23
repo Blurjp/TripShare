@@ -102,6 +102,8 @@ class CreateAccountHandler(BaseHandler):
                            'trips':[],
                            'bio':'',
                            'link': '',
+                           'like_guide':[],
+                           'save_guide':[],
                            'friends':[],
                                }
                 
