@@ -222,36 +222,34 @@ $('.save_guide').click(function(e) {
 
 function ShowSaveResponse(response)
 {
-	alert(response);
+	//alert(response);
 }
 
-$('.default_like_message').click(function(e) {
-	guide_id = $('.l_subscribe').attr('sid').val();
+$('.default_like_message').live("click",function(e) {
+	//alert('test');
+	guide_id = $('.l_subscribe').attr('sid');
 	url = '/likeguide/'+ guide_id;
-	$.postJSON(url, function(response){
+	var formData = {};
+	formData._xsrf = getCookie("_xsrf");
+	$.postJSON(url, formData, function(response){
 		ShowSaveResponse(response);
 	});
+	SwapClass($(this),'default_like_message', 'saving_like_message');
 
-    $('.default_like_message').toggleClass('default_like_message').toggleClass('saving_like_message');
 	});
 	
-$('.default_save_message').click(function(e) {
-	guide_id = $('.l_subscribe').attr('sid').val();
+$('.default_save_message').live("click",function(e) {
+	guide_id = $('.l_subscribe').attr('sid');
 	url = '/saveguide/'+ guide_id;
-	$.postJSON(url, function(response){
+	var formData = {};
+	formData._xsrf = getCookie("_xsrf");
+	$.postJSON(url, formData, function(response){
 		ShowSaveResponse(response);
 	});
-$('.default_save_message').toggleClass('default_save_message').toggleClass('saving_save_message');
+    SwapClass($(this),'default_save_message', 'saving_save_message');
 	});
 	
-$('.like_guide').click(function(e) {
-	guide_id = $('.l_subscribe').attr('sid').val();
-	url = 
-	$.postJSON(url, function(response){
-		ShowSaveResponse(response);
-	});
 
-	});
 
 function set_tab(tag) {
 	    
@@ -287,7 +285,7 @@ function ShowGuide(message) {
 		 }
     }
 	
-	jQuery.getJSON = function(_url, callback) {
+jQuery.getJSON = function(_url, callback) {
     $.ajax({
       url: _url, success: function(data, textStatus) {console.log("success:", data)
         if (callback) callback(data);
@@ -295,6 +293,26 @@ function ShowGuide(message) {
 	  error: function(response) {console.log("ERROR:", response)}
 });
 };
+
+jQuery.postJSON = function(url, args, callback) {
+	
+	//alert(_data);
+    $.ajax({url: url, data: $.param(args), type: "POST", dataType:"text", success: function(data, textStatus) {if (callback) callback(data);}, error: function(response) {console.log("ERROR:", response)}});
+
+	};
+
+function SwapClass(self, a, b)
+{
+	self.parent().find('.'+a).addClass('unlike').removeClass(a);
+	self.parent().find('.'+b).addClass(a).removeClass(b);
+	self.parent().find('.unlike').addClass(b).removeClass('unlike');
+	
+}	
+
+function getCookie(name) {
+    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return r ? r[1] : undefined;
+    }
 </script>
  
 
