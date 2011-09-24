@@ -100,6 +100,7 @@ class CreateAccountHandler(BaseHandler):
                            'city': [],
                            'country': [],
                            'trips':[],
+                           'like_trip':[],
                            'bio':'',
                            'link': '',
                            'like_guide':[],

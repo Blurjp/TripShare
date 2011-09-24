@@ -373,9 +373,9 @@ function setasdest()
     if(selectedMarker.marker)
     { 
     selectedMarker.markerType = 'end';  
-    selectedMarker.marker.setIcon('{{ static_url("static/images/dest.png") }}');
+    selectedMarker.marker.setIcon('{{ static_url("images/dest.png") }}');
     document.getElementById("endPosition").value = selectedMarker.marker.getPosition();
-	//document.getElementById("endPlace").value = selectedMarker.marker.getPosition();
+	
 	
 	codeLatLng('endPosition');
     ProcessSetMarker();       
@@ -792,8 +792,8 @@ function codeLatLng(name) {
 		 		marker.setIcon('{{ static_url("images/dest.png") }}');
 		 		break;
 			case 'waypoint': 
-			
-		 		marker.setIcon('{{ static_url("icon/tripshare_'+index+'.png") }}');
+			    var url = '/static/icon/tripshare_'+index+'.png';
+		 		marker.setIcon(url);
 		 		break;
 				
 			case 'polylinemarker': 
@@ -1191,7 +1191,6 @@ function PostFeedResponse(response){
 <div class="tripRank first" id="tripRank">
 <a href="">Route:</a>
 {% if guide %}
-
 <ul class="route">
 
 {% for counter,dest in enumerate(guide['dest_place']) %}
@@ -1210,9 +1209,6 @@ function PostFeedResponse(response){
 </div>
 </li>
 </div>
-
-
-
 {% end %}
 {% end %}
 </ul>
