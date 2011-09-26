@@ -94,7 +94,7 @@ class MainPage(BaseHandler):
         
         latest_trip_ids = self.syncdb.trips.find().limit(10).sort("published", pymongo.DESCENDING)
         
-        top_shares = self.syncdb.users.find().limit(10)
+        top_shares = self.syncdb.users.find().limit(2).sort("trip_count", pymongo.DESCENDING)
         
         _trips = []
         if latest_trip_ids.count() > 0:

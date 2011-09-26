@@ -3,18 +3,20 @@
 This Week's Top Tripsharers
 </h2>
 <ul class="top_foodspotters">
-{% for counter in enumerate(top_shares['trips']) %}
+{% if top_shares %}
+{% for counter, user in enumerate(top_shares) %}
 <li class="">
-<a class="person clearfix" href="/people/{{top_share['slug']}}">
-<strong>{{counter}}</strong>
-<img alt="Small_thumb" src="{{top_share['picture']}}">
-<span>{{top_share['username']}}</span>
+<a class="person clearfix" href="/people/{{user['slug']}}">
+<strong>{{counter+1}}</strong>
+<img alt="Small_thumb" src="{{user['picture']}}">
+<span>{{user['username']}}</span>
 <br>
 <span class="points">
-He has created {{counter}} trips so far
+He has created {{user['trip_count']}} trips so far
 </span>
 </a>
 </li>
+{% end %}
 {% end %}
 </ul>
 </div>
