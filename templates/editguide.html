@@ -45,6 +45,9 @@
   var polylineMarkerGroup = [];
   var markerGroup = [];
   var wayptsMarkerGroup = [];
+  var serviceMarkerGroup = [];
+  var selectedTypes = [];
+  var sightsMarkerGroup = [];
   
   var waypts = [];
   var infoWindow;
@@ -94,7 +97,7 @@
 
         autocomplete.bindTo('bounds', map);
 
-        var infowindow = new google.maps.InfoWindow();
+        
         var marker = new google.maps.Marker({
           map: map
         });
@@ -158,10 +161,7 @@
                 
     google.maps.event.addListener(map,"rightclick",function(event) {    
      markerMenuDiv.style.visibility = "hidden";
-  
                 });   
-                
-                
   // Create the DIV to hold the control and call the HomeControl() constructor
   // passing in this DIV.
   var markerControlDiv = document.createElement('DIV');
@@ -177,9 +177,7 @@
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);
   var geo_results = [];         
   SetSights(geo_results); 
-  for (var i = 0; i < dest_places.length; i++) {
-		createMarker('waypoint',geo_results[i],dest_places[i]['day'], i);
-	}                                                       
+                                                     
   }
   
   function SetSights(geo_results)
@@ -199,7 +197,7 @@
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	map.setCenter(results[0].geometry.location);
-        createMarker('waypoint',results[0].geometry.location,day, i);
+        createSightsMarker(results[0].geometry.location,day, i);
 		//alert(i);
 		geo_results.push(results[0].geometry.location);
 		//alert('push');
@@ -237,12 +235,8 @@ controlDiv.appendChild(oImg);
  // Setup the click event listeners: simply set the map to Chicago
   google.maps.event.addDomListener(oImg, 'dragstart', function() {
    var _latLng = clickedOverlay.getProjection().fromDivPixelToLatLng(oImg);
-    createMarker('normal', _latLng);
-    
+    createMarker('normal', _latLng);    
   });
-    
-
-
 }
   
 function HomeControl(controlDiv) {
@@ -336,6 +330,8 @@ return ctr;
     mapObject.appendChild(contextMenu);
 }
 
+
+
  function DeleteMarker()
 {
 var markerIndex;
@@ -428,8 +424,6 @@ function setasdest()
     selectedMarker.markerType = 'end';  
     selectedMarker.marker.setIcon('{{ static_url("images/dest.png") }}');
     document.getElementById("endPosition").value = selectedMarker.marker.getPosition();
-	
-	
 	codeLatLng('endPosition');
     ProcessSetMarker();       
     }
@@ -447,26 +441,34 @@ function setasdest()
     markerMenuDiv.style.visibility = "hidden";
 }
 
+var serviceType;
 $('.mapfilter li img').live('click', function(){
-	//alert('filter');
-	if (selectedMarker!=null) {
+
 		var places = [];
-		var place = $(this).attr('class');
-		places.push($(this).attr('class'));
-		var pyrmont =selectedMarker.marker.getPosition();
-		var request = {
-			location: pyrmont,
-			radius: '500',
-			types: ['park']
-		};
-		
-		placeService.search(request, filtercallback);
+		var pyrmont;
+		serviceType = $(this).attr('class');
+		if (!Include(selectedTypes, serviceType)) {
+			alert('not exist!');
+			places.push(serviceType);
+			selectedTypes.push(serviceType);
+			for (var i = 0; i < sightsMarkerGroup.length; i++) {
+				pyrmont = sightsMarkerGroup[i].getPosition();
+				
+				var request = {
+					location: pyrmont,
+					radius: '500',
+					types: places
+				};
+				placeService.search(request, filtercallback);
+			}
+		}
+		else
+		{
+			alert('exist!');
+			RemoveMarkers(serviceMarkerGroup, serviceType);
+			selectedTypes = [];
+		}
 		//alert(pyrmont.toString());
-	}
-	else
-	{
-		alert("Please select a location.");
-	}
 });
 
 function filtercallback(results, status){
@@ -474,12 +476,80 @@ function filtercallback(results, status){
 	if (status == google.maps.places.PlacesServiceStatus.OK) {
 		
 		for (var i = 0; i < results.length; i++) {
-			alert(i);
+			
 			//createMarker(results[i].types[0], results[i].geometry.location);
-			createMarker(results[i]);
+			createMarkerFromService(results[i]);
 		}
 	}
 }
+
+function createMarkerFromService(place){
+			alert(serviceType);
+			var placeLoc = place.geometry.location;
+			var marker = new google.maps.Marker({
+				map: map,
+				position: place.geometry.location,
+				reference: place.reference,
+				type : serviceType
+			});
+			alert(place.types[0]);
+			switch (serviceType) {
+				case 'airport':
+					marker.setIcon('{{ static_url("icon/airport.png") }}');
+					break;
+				case 'lodgin':
+					marker.setIcon('{{ static_url("icon/hotel.png") }}');
+					break;
+				case 'restaurant':
+					marker.setIcon('{{ static_url("icon/restaurant.png") }}');
+					break;
+				case 'cafe':
+					marker.setIcon('{{ static_url("icon/Cafe.png") }}');
+					break;
+				case 'gas_station':
+					marker.setIcon('{{ static_url("icon/gas_station.png") }}');
+					break;
+				case 'campground':
+					marker.setIcon('{{ static_url("icon/campground.png") }}');
+					break;
+				case 'park':
+					marker.setIcon('{{ static_url("icon/park.png") }}');
+					break;
+				default:
+					marker.setIcon('{{ static_url("images/dest.png") }}');
+					break;
+			}
+			serviceMarkerGroup.push(marker);
+			google.maps.event.addListener(marker, 'click', function() {
+				var request = {
+				reference: place.reference
+			    };
+				
+				
+				placeService.getDetails(request, detailcallback);
+		
+          });					
+		}
+
+function Include(arr,obj) {
+    return (arr.indexOf(obj) != -1);
+}
+
+function RemoveMarkers(group, type)
+{
+	//alert(group.length);
+	
+	for(var index = 0; index<group.length; index++)
+	{
+		//alert(group[index]['type']);
+		if(group[index]['type'] == type)
+		{
+			group[index].setMap(null);
+			group.splice(index, 1);
+			
+		}
+	}
+} 
 
 function pushPath() {
   var path = polyline.getPath();
@@ -854,58 +924,31 @@ function codeLatLng(name) {
          return marker;
      }
       
-	    function createMarker(place){
-			alert('create');
-			var placeLoc = place.geometry.location;
-			var marker = new google.maps.Marker({
-				map: map,
-				position: place.geometry.location
-			});
-			
-			var request = {
-				reference: place.reference
-			};
-			placeService.getDetails(request, detailcallback);
-		}
+	
 		
 	   function detailcallback(place, status){
 				if (status == google.maps.places.PlacesServiceStatus.OK) {
-					switch (place.types[0]) {
-						case 'airport':
-							marker.setIcon('{{ static_url("icon/airport.png") }}');
-							break;
-						case 'lodgin':
-							marker.setIcon('{{ static_url("icon/hotel.png") }}');
-							break;
-						case 'restaurant':
-							marker.setIcon('{{ static_url("icon/restaurant.png") }}');
-							break;
-						case 'cafe':
-							marker.setIcon('{{ static_url("icon/Cafe.png") }}');
-							break;
-						case 'gas_station':
-							marker.setIcon('{{ static_url("icon/gas_station.png") }}');
-							break;
-						case 'campground':
-							marker.setIcon('{{ static_url("icon/campground.png") }}');
-							break;
-						case 'park':
-							marker.setIcon('{{ static_url("icon/park.png") }}');
-							break;
-						default:
-							marker.setIcon('{{ static_url("images/dest.png") }}');
-							break;
-							
 							var myHtml = '<strong>' + place.name + '</strong><br/><ul><li>' + place.formatted_phone_number + '</li><li>' + place.formatted_address + '</li><li>' + place.rating + '</li><li>' + place.vicinity + '</li></ul>';
-							google.maps.event.addListener(marker, 'click', function(){
+							google.maps.event.addListener(selectedMarker, 'click', function(){
 								infowindow.setContent(myHtml);
 								infowindow.open(map, this);
 							});
 					}
 				}
 				
-				
-			}
+	  function createSightsMarker(latLng, day, index)
+	  {
+	  	var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+            
+          });
+		 var url = '/static/icon/tripshare_'+index+'.png';
+		 marker.setIcon(url);
+		 
+		 sightsMarkerGroup.push(marker);
+	  }		
+			
 	  
 	  function createMarker(markerType, latLng)
 	  {

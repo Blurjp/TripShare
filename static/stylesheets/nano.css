@@ -925,7 +925,7 @@ p.trip_save
     cursor: pointer;
 }
 
-#mapfilter li{
+.mapfilter li{
 	cursor: pointer;
 }
 
