@@ -98,6 +98,15 @@ class LikeGuidesHandler(BaseHandler):
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'like_guide': bson.ObjectId(id)}})
             self.syncdb.guides.update({'guide_id': bson.ObjectId(id)}, {'$inc':{'rate': -1}})
 
+
+class DeleteGuidesHandler(BaseHandler):
+    @tornado.web.authenticated
+    def post(self):
+        id = self.get_argument('id')
+        
+        self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
+        self.redirect('/guides')
+
 class CreateGuidesHandler(BaseHandler):
     slug = None
     @tornado.web.authenticated

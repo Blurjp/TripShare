@@ -206,7 +206,7 @@ $(document).ready(function() {
 	  
 	  $.postJSON('/createtrip/'+_formData, formData, function(response){
 			    ShowCreateTripResponse(response);
-			}, "text");			
+			});			
       
       document.getElementById("create_trip_form").reset();	
 	  disabled.enable();
@@ -569,8 +569,6 @@ jQuery.postJSON = function(url, args, callback) {
 	
 	//alert(_data);
     $.ajax({url: url, data: $.param(args), type: "POST", dataType:"text", success: function(data, textStatus) {if (callback) callback(data);}, error: function(response) {console.log("ERROR:", response)}});
-	
-	
 	};
     
 
@@ -805,6 +803,10 @@ jQuery.postJSON = function(url, args, callback) {
 	
 $(document).ready(function() {   
 
+function getCookie(name) {
+    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return r ? r[1] : undefined;
+    }
 
 $('input.add_member').focus(function() {
 	if (this.value == '' || this.value == null) {
