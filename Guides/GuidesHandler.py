@@ -135,8 +135,10 @@ class CreateGuidesHandler(BaseHandler):
         self.syncdb.guides.ensure_index('guide_id',  unique = True)  
         guide_id = bson.ObjectId()                      
         #self.db.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()}, callback=self._create_guide)
-        self.syncdb.guides.save({ 'guide_id':guide_id, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':[], 'random' : random.random()})
+        self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':'', 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':[], 'random' : random.random()})
         self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tag': tag}})
+        self.syncdb.guides.ensure_index('rating', pymongo.DESCENDING);
+        self.syncdb.guides.ensure_index('guide_id', unique=True);
         self.redirect("/guide/" + str(self.slug))
        
     def _create_guide(self, response, error):

@@ -75,7 +75,7 @@ class CreateAccountHandler(BaseHandler):
                 slug  = name
                 
                 while True:
-                    e = self.syncdb.trips.find_one({'slug':slug})
+                    e = self.syncdb.users.find_one({'slug':slug})
                     if not e: break
                     slug += "-2"
                 password = self.get_argument("password")
@@ -145,7 +145,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
             return
         self.authorize_redirect(redirect_uri=my_url,
                               client_id=self.settings["facebook_api_key"],
-                              extra_params={"scope": "user_about_me,user_location,user_website,publish_stream,sms,read_friendlists"})
+                              extra_params={"scope": "user_about_me,email,user_website,publish_stream,read_friendlists"})
  
     def handle_request(self, response):
         print('++++++++++++++++++++++++++++++'+response.body)
@@ -160,9 +160,26 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'email': user[0]['email'],
                     'picture': user[0]['pic'],
                     'current_location': user[0]['current_location'],
-                    'access_token': self.access_token
+                    'access_token': self.access_token,
+                    'save_guide':[],
+                    'like_guide':[],
+                    'friends':[],
+                    'city': [],
+                    'country': [],
+                    'trips':[],
+                    'like_trip':[],
+                    'bio':'',
+                    'link': '',
+                    
                 }
-        _user_db = self.syncdb.users.findone({'email': user[0]['email']})
+        _user_db = self.syncdb.users.find_one({'email': user[0]['email']})
+        
+        slug = unicodedata.normalize("NFKD", unicode(user[0]['name'])).encode("ascii", "ignore")
+        while True:
+                    e = self.syncdb.users.find_one({'slug':slug})
+                    if not e: break
+                    slug += "-2"
+        
         user_id = ''
         if _user_db:    
             user_id = _user_db['user_id']
@@ -170,8 +187,9 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
         else:
             user_id = _user['user_id'] = bson.ObjectId()
             _user['createdtime']=datetime.datetime.utcnow()
+        _user['slug'] = slug
         self.db.users.save(_user, callback=self._on_action)
-        self.set_secure_cookie("user", user_id)
+        self.set_secure_cookie("user", str(user_id))
         self.redirect(self.get_argument("next", "/"))
     
     def _on_auth(self, user):
