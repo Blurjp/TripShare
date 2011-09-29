@@ -82,6 +82,13 @@ class SaveGuidesHandler(BaseHandler):
         else:
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'save_guide': bson.ObjectId(id)}})
             
+class UpdateGuidesHandler(BaseHandler):
+    @tornado.web.authenticated  
+    def post(self):
+        #content = simplejson.loads(self.get_argument('content'))
+        dest_place = self.get_argument('dest_place')
+        guide_id = self.get_argument('id')
+        self.syncdb.guides.update({'guide_id':guide_id}, {'$set':{'dest_place':dest_place}})
         
      
 class LikeGuidesHandler(BaseHandler):

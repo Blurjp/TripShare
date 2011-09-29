@@ -3,6 +3,8 @@ Created on July 19, 2010
 
 @author: Jason Huang
 '''
+#!/usr/bin/env python
+
 import pymongo
 import asyncmongo
 import os

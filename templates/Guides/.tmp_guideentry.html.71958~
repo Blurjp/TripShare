@@ -28,7 +28,7 @@
 <a href="#login" >like this</a> \ 
 <a href="#login" >save this</a>
 {% else %}
-<input type ="button" class="l_importguide fancy" sid={{guide['guide_id']}} value="Import" href="{{current_user['user_id']}}">
+<input type ="button" class="l_subscribe fancy" sid={{guide['guide_id']}} value="Import" href="{{current_user['user_id']}}">
 
 
 

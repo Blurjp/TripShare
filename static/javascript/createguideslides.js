@@ -79,7 +79,8 @@ $(document).ready(function() {
 	 for (var i = 3; i < fields.length; i++) {
 	 destinations.push({
 	 	'dest': fields[i].value,
-	 	'day': fields[i + 1].value
+	 	'day': fields[i + 1].value,
+		'geo':[]
 	 })
 	
 	  i++;
