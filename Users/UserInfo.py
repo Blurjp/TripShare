@@ -248,13 +248,18 @@ class UserHandler(BaseHandler):
         self.render("userentry.html", user = self.user[0], trips = response)
 
 class AddUserToTripHandler(BaseHandler):
+    userid = None
+    tripid = None
     def get(self, userid, tripid):  
+        self.userid = userid
+        self.tripid = tripid
         user = self.syncdb.users.find_one({'user_id':bson.ObjectId(userid)})
         self.db.trips.update({'trip_id':bson.ObjectId(tripid)}, { '$addToSet':{'members': user}, '$inc' : { 'member_count' : 1 }}, callback = self._add_user_to_trip)  
     
     def _add_user_to_trip(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
+        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': self.tripid}})
         self.write('success') 
      
     

@@ -18,8 +18,8 @@
 <script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/followuser.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/js/all.js") }}" type="text/javascript"></script> 
-<script src="{{ static_url("javascript/createguideslides.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/createtripslides.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/exportguide.js") }}" type="text/javascript"></script>
 <script type="text/javascript">
   var rendererOptions = {
               draggable: true,
@@ -175,12 +175,12 @@
 
   homeControlDiv.index = 2;
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);
-  var geo_results = [];         
-  SetSights(geo_results); 
+          
+  SetSights(); 
                                                      
   }
-  
-  function SetSights(geo_results)
+  var geo_results = []; 
+  function SetSights()
   {
   	dest_places = document.getElementById('dest_place').value;
 	
@@ -188,22 +188,20 @@
 	temp = temp.replace(/\'/g,'\"');;
 	
 	dest_places= jQuery.parseJSON(temp);
-	//alert(dest_places.length);
+	
 	var day = '';
-	//var geo_results = [];
+	
 	for (var i=0; i < dest_places.length; i++) 
 	{
 	  day = dest_places[i]['day'];
-	  
-	  //createSightsMarker(dest_places[i]['geo'],day, i);
 	  
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	map.setCenter(results[0].geometry.location);
         createSightsMarker(results[0].geometry.location,day, i);
 		
-		geo_results.push(results[0].geometry.location);
-		dest_places[i]['geo']=results[0].geometry.location;
+		geo_results.push(results[0]);
+		//dest_places[i]['geo'].push(results[0].geometry.location);
 		
       } else {
         alert("Geocode was not successful for the following reason: " + status);
@@ -211,7 +209,7 @@
       });
  
 	}
-	$('#geo').val(dest_places);
+	$('#geo').val(geo_results);
 	
   }
   /**
@@ -1367,7 +1365,7 @@ function PostFeedResponse(response){
 </div>
 
 <h1><a class="name" href="{{guide['slug']}}">{{guide['title']}}</a> </h1>
-<a href="#" class="l_importguide" uid="{{guide['guide_id']}}">import</a>
+<a href="#export_guide_step_1" name="exportguide" uid="{{guide['guide_id']}}">export</a>
 /
 <a href="#" class="l_deleteguide" uid="{{guide['guide_id']}}">delete</a>
 /
@@ -1509,6 +1507,8 @@ function PostFeedResponse(response){
 	 
 </div>
 
+{% include "Module/ExportGuide.html" %}
+
 <!-- AddThis script-->
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>
 <!-- AddThis Button END -->
@@ -1520,21 +1520,18 @@ function PostFeedResponse(response){
 		$.postJSON('/deleteguide', content, function(response){ alert(response);});
 	});
 
-function getCookie(name) {
+    function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
     return r ? r[1] : undefined;
     }
 	
-	$('.l_importguide'.click(function(){
-		
-	}));
-	
-	$('.l_updateguide'.click(function(){
+	$('.l_updateguide').click(function(){
+		alert('update');
 		var geo = $('#geo').attr('value');
-		var content = {'_xsrf': getCookie("_xsrf"), 'dest_place' : geo};
+		var content = {'_xsrf': getCookie("_xsrf"), 'geo' : geo};
 		
 		$.postJSON('/updateguide', content, function(response){ alert(response);});
-	}));
+	});
 </script>
 
 <div id="editmap_footer">

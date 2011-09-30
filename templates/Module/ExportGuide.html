@@ -1,0 +1,22 @@
+<form name="export_guide" id="export_guide_form" onsubmit="return check_export_guide_form(this);">
+	 {% raw xsrf_form_html() %}
+<div id="export_guide_step_1" class="window1">
+	<a href="#" id="closeexportguide-modal" class="close">close</a>
+             <fieldset>
+             <div style="margin:20px 0;heigh:10px">
+             <h2 style="float:left"> Trip List </h2>   
+             </div>
+			<ul>
+				{% if len(trips) >0 %}
+				{% for trip in trips %}
+				{% include "trip.html" %}
+				{% end %}
+				{% end %}
+			</ul>		
+            </fieldset>
+            <div class="button_container">
+			<input type="submit" href="#export_guide_finish" name="export_guide_finish" value="Finish" style="width:180px;margin-right:10px" class="sidebar-auth-button">
+            </div>
+</div>
+</form>  
+<div id="mask4"></div>

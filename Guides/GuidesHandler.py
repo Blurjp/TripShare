@@ -28,7 +28,10 @@ class EntryGuidesHandler(BaseHandler):
         guide = self.syncdb.guides.find_one({"slug":slug})
         
         if not guide: raise tornado.web.HTTPError(404)
-        self.render("editguide.html", guide=guide)
+        trips = []
+        for id in self.current_user['trips']:
+            trips.append(self.syncdb.trips.find_one({'trip_id': bson.ObjectId(id)}))
+        self.render("editguide.html", guide=guide, trips = trips)
         #self.render("terms.html")
         print('render')
         
@@ -86,9 +89,9 @@ class UpdateGuidesHandler(BaseHandler):
     @tornado.web.authenticated  
     def post(self):
         #content = simplejson.loads(self.get_argument('content'))
-        dest_place = self.get_argument('dest_place')
+        geo = self.get_argument('geo')
         guide_id = self.get_argument('id')
-        self.syncdb.guides.update({'guide_id':guide_id}, {'$set':{'dest_place':dest_place}})
+        self.syncdb.guides.update({'guide_id':guide_id}, {'$set':{'geo':geo}})
         
      
 class LikeGuidesHandler(BaseHandler):
