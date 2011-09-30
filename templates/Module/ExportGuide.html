@@ -3,13 +3,11 @@
 <div id="export_guide_step_1" class="window1">
 	<a href="#" id="closeexportguide-modal" class="close">close</a>
              <fieldset>
-             <div style="margin:20px 0;heigh:10px">
-             <h2 style="float:left"> Trip List </h2>   
-             </div>
-			<ul>
+           
+			<ul class='export_trip_list'>
 				{% if len(trips) >0 %}
 				{% for trip in trips %}
-				{% include "trip.html" %}
+				{% include "tripinexportlist.html" %}
 				{% end %}
 				{% end %}
 			</ul>		

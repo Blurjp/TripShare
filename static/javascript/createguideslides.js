@@ -57,7 +57,7 @@ $(document).ready(function() {
 	  
 	  var formData = $('#create_guide_form').guideformToDict();
 	  var _formData = JSON.stringify(formData, null, '\t');
-	  alert(_formData);
+	  //alert(_formData);
 	  var content = {'_xsrf': getCookie("_xsrf"), 'data' : _formData};
       var disabled = $('#create_guide_form').find("input[type=submit]");
       disabled.disable();

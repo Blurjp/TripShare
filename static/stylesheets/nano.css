@@ -381,7 +381,7 @@ opacity:0.5;
 #mask4 { position:fixed ;z-index:9000;background-color:black;  width: 100%; height: 100%; top: 0px; left: 0px;display:none;  opacity:0.5;filter:alpha(opacity=50)}  
 
 #create_trip_step_1, #create_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:575px;   height:350px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
-#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:575px;   height:350px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
+#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%;   height:60%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
 
 .start_from{width:500px;}
 
@@ -1072,5 +1072,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 .guide_photo {padding-left:200px}
 .guide_sights {padding-left:20px}
 .notice_no_plans {text-align: center;margin: 150px;width:50%}
-
+ul.export_trip_list {overflow:auto}
+#export_guide_step_1 .trip_pic .picture {position:absolute;right:50px;}
+#export_guide_step_1 .sighting-box.guideexport {padding: 15px 15px 10px 25px; background: #f7f6f1; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px}
 

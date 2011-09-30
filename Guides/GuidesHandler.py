@@ -121,8 +121,7 @@ class CreateGuidesHandler(BaseHandler):
     slug = None
     @tornado.web.authenticated
     def post(self):
-        for ele in self.request.arguments:
-            print(ele);
+        
         content = simplejson.loads(self.get_argument('data'))
         title = content['title']
         tag = content['tag']

@@ -45,7 +45,7 @@ or
 Join TripShare
 </h1>
 </div>
-<form name="signup_form" accept-charset="UTF-8" class="user-form" id="new_person" action="/account/create" method="post" onsubmit="return checkform(this);">
+<form name="signup_form" accept-charset="UTF-8" class="user-form" id="new_person" action="/account/create" method="post" autocomplete="off" onsubmit="return checkform(this);">
 <div style="margin:0;padding:0;display:inline">
 	<input name="utf8" type="hidden" value="✓">
 	<input name="authenticity_token" type="hidden" value="z4uwbpArKKyEj43F24XSFITmMLQ58ujj02kIknVtaYo=">
@@ -120,7 +120,7 @@ Or,
 </li>
 </ul>
 	    
-<form name="login_form" action="/account/login" method="post" onsubmit="return checkform(this);">
+<form name="login_form" action="/account/login" method="post" onsubmit="return checkform(this);" autocomplete="off">
 	{% raw xsrf_form_html() %}
 <table class="form">
 <tbody>

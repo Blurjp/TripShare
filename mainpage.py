@@ -85,7 +85,7 @@ class MainPage(BaseHandler):
         trips = self.syncdb.trips.find().limit(10)
         if trips.count() > 0:
             for trip in trips:
-                #trip_user = self.db.query("SELECT * FROM users WHERE user_id = %s", trip.owner_id )
+                
                 trip_user = self.syncdb.users.find_one({'user_id': trip['owner_id']})
                
                 if (trip_user):
@@ -168,7 +168,7 @@ class Application(tornado.web.Application):
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
                                       (r"/trips/([^/]+)/([^/]+)", TripPageHandler),
-                                      (r"/createtrip/([^/]+)", ComposeHandler),
+                                      (r"/createtrip", ComposeHandler),
                                       (r"/savetrip", SaveTrips),
                                       (r"/newtrips", ShowNewTrips),
                                       (r"/hottrips", ShowHotTrips),

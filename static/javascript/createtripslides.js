@@ -201,12 +201,13 @@ $(document).ready(function() {
 	  var formData = $('#create_trip_form').formToDict();
 	  var _formData=JSON.stringify(formData, null, '\t');
       //alert(_formData);
+	  var content = {'_xsrf': getCookie("_xsrf"), 'data' : _formData};
       var disabled = $('#create_trip_form').find("input[type=submit]");
       disabled.disable();
 	  
-	  $.postJSON('/createtrip/'+_formData, formData, function(response){
+	  $.postJSON('/createtrip', content, function(response){
 			    ShowCreateTripResponse(response);
-			});			
+			});		
       
       document.getElementById("create_trip_form").reset();	
 	  disabled.enable();

@@ -50,10 +50,11 @@ class ComposeHandler(BaseHandler):
         
     @tornado.web.asynchronous
     @tornado.web.authenticated
-    def post(self, formData):
+    def post(self):
         
         members = []
-        _formData = simplejson.loads(formData)
+        _formData = simplejson.loads(self.get_argument('data'))
+        #_formData = simplejson.loads(formData)
         #id = self.get_argument("id", None)
         #start = self.get_argument("start")
        
@@ -98,10 +99,12 @@ class ComposeHandler(BaseHandler):
         self.slug = unicodedata.normalize("NFKD", unicode(title)).encode("ascii", "ignore")
         start_date_object = FromStringtoDate.ToDate(start_date)
         finish_date_object = FromStringtoDate.ToDate(finish_date)
-        
+        trip_path = ""
+        waypoints=[]
+        members.append(self.current_user)
         
         if _formData.has_key('id'):
-            trip =  self.syncdb.trips.find_one({'trip_id':_formData['id']})
+            trip =  self.syncdb.trips.find_one({'trip_id':bson.ObjectId(_formData['id'])})
             if not trip: raise tornado.web.HTTPError(404)
             self.slug = trip.slug
         
@@ -113,35 +116,30 @@ class ComposeHandler(BaseHandler):
             trip.description = description
             trip.privacy = privacy
             trip.last_updated_by = self.current_user.username
+            self.syncdb.trips.save(trip)
         else:
             self.slug = unicodedata.normalize("NFKD", unicode(title)).encode("ascii", "ignore")      
             self.slug = re.sub(r"[^\w]+", " ", self.slug)
             self.slug = "-".join(self.slug.lower().strip().split())
             if not self.slug: self.slug = "trip"
             while True:
-                #e = self.db.get("SELECT * FROM trips WHERE slug = %s", slug)
+                
                 e = self.syncdb.trips.find_one({'slug':self.slug})
                 if not e: break
                 self.slug += "-2"
-   
 
-            trip_path = ""
-            waypoints=[]
-            members.append(self.current_user)
-            self.syncdb.trips.ensure_index([('start_place_position', pymongo.GEO2D), ('dest_place_position', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
-            #self.syncdb.trips.ensure_index([('dest_place_position', '2d')])
-            self.syncdb.trips.ensure_index('trip_id', unique=True)
-            self.syncdb.trips.ensure_index('slug', unique=True)
-            
             self.trip_id = bson.ObjectId()
             self.db.trips.save({ 'trip_id':self.trip_id, 'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'slug':self.slug, 'members': members,'member_count':len(members),'description': str(description), 'start_place':start, 'dest_place':destinations, 'start_place_position':tripStartPosition, 'dest_place_position':tripDestPosition, 'way_points':waypoints ,'trip_path':trip_path, 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'start_date': start_date_object, 'finish_date': finish_date_object, 'random' : random.random()}, callback=self._create_trips)
-
+            
         
     def _create_trips(self, response, error):
             if error:
                     raise tornado.web.HTTPError(500)
             
-            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id} })     
+            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id} })    
+            self.syncdb.trips.ensure_index([('dest_place_position', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
+            self.syncdb.trips.ensure_index('trip_id', unique=True)
+            self.syncdb.trips.ensure_index('slug', unique=True) 
             print('redirect')
             self.redirect("/trip/" + str(self.slug))
             

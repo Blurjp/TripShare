@@ -15,8 +15,7 @@ $(document).ready(function() {
     $('a[name=exportguide]').click(function(e) {  
         
 		$('#closeexportguide-modal').show();
-		alert('export');
-        //Get the A tag  
+		
         var id = $(this).attr('href');  
         //Set height and width to mask to fill up the whole screen  
         $('#mask4').css({'width':maskWidth,'height':maskHeight});  
