@@ -11,16 +11,12 @@
 <a href="#" onclick="set_section('endtrips', '/endtrips'); return false;"><strong>Ended Trip</strong><span>Following 0</span></a>
 </li>
 </ul>
-
 </li>
-
-
 <li id="following_items">
 	<ul id="latest_trip">
 {% for trip in latest_trip_ids %} 
    {% include "trip.html" %}
 {% end %}
-
 <li class="more" id="following-more">
 <a href="#" onclick="$(this).update('Loading...'); new Ajax.Request('/dashboard?list=people&page=2', {asynchronous:true, evalScripts:true, method:'get'}); return false;">More...</a>
 </li>

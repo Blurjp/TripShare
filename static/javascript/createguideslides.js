@@ -80,9 +80,8 @@ $(document).ready(function() {
 	 destinations.push({
 	 	'dest': fields[i].value,
 	 	'day': fields[i + 1].value,
-		'geo':[]
+
 	 })
-	
 	  i++;
 	 }
 	 json['destinations'] = destinations;

@@ -381,7 +381,6 @@ opacity:0.5;
 #mask4 { position:fixed ;z-index:9000;background-color:black;  width: 100%; height: 100%; top: 0px; left: 0px;display:none;  opacity:0.5;filter:alpha(opacity=50)}  
 
 #create_trip_step_1, #create_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:575px;   height:350px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
-#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%;   height:60%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
 
 .start_from{width:500px;}
 
@@ -446,8 +445,6 @@ opacity:0.5;
 #closeguide-modal
 {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
-#closeexportguide-modal
-{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 /* /////////////////////////////////////////////////////  */
 /* create trip slide 2*/	
@@ -1025,14 +1022,14 @@ h2 .user_name {margin-left:150px !important}
 .xf{margin-right:10px; background:#3c8ae0;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d92e6',endColorstr='#3a7fd6');background:-webkit-gradient(linear,0 0,0 100%,from(#3d92e6),to(#3a7fd6));background:-moz-linear-gradient(top,#3d92e6,#3a7fd6);-webkit-box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);-moz-box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);-o-box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);text-shadow:0 -1px 0 rgba(0,0,0,.55);border:1px solid #35649d;color:#fff!important;}
 .xe{background:#3c8ae0;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d92e6',endColorstr='#3a7fd6');background:-webkit-gradient(linear,0 0,0 100%,from(#3d92e6),to(#3a7fd6));background:-moz-linear-gradient(top,#3d92e6,#3d92e6);-webkit-box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);-moz-box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);-o-box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);text-shadow:0 1px 0 rgba(0,0,0,.55);border:1px solid #35649d;color:##fff!important;min-width:56px;width:auto!important;_width:56px;}
 
-.xgt{position:absolute;left:980px;top:10px;margin:0;padding:10;min-width:120px;z-index: 6000}
+.xgt{position:absolute;left:980px;top:10px;margin:0;padding:10;min-width:200px;z-index: 6000}
 .xft{display:none;}.xet{display:block;border-top:1px solid rgba(255,255,255,0.1);-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.6);-moz-box-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 1px 2px rgba(0,0,0,0.6);width:90px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;height:39px;line-height:39px;padding:0 0 0 40px;color:#fff!important;text-shadow:0 1px 1px rgba(0,0,0,0.5);text-decoration:none;}#xdt{display:block;}
 .xct:hover{border-bottom:solid 1px white!important;}
 .xgt:hover>.xft{display:block;}.xet:hover{background-color:white!important;text-decoration:none;}
 .xgt:hover>.xft>.xct{background-color:white!important;text-decoration:none;}
-.xct{padding:0;width:120px;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;border-top-left-radius:4px;border-top-right-radius:4px;background:transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;position:relative;overflow:hidden;}
+.xct{padding:0;width:200px;-webkit-border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topleft:4px;-moz-border-radius-topright:4px;border-top-left-radius:4px;border-top-right-radius:4px;background:transparent;box-shadow:none;-moz-box-shadow:none;-webkit-box-shadow:none;position:relative;overflow:hidden;}
 .xbt{float:left;width:25px;height:25px;overflow:hidden;border:1px solid rgba(0,0,0,0.1);margin:6px 0 0 6px;box-shadow:0 1px 0 rgba(255,255,255,.15);}
-.xat{color:black;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding:12px 0 5px 0;margin:0 0 0 40px;width:85px;line-height:14px;display:block;}
+.xat{color:black;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding:12px 0 5px 0;margin:0 0 0 40px;width:125px;line-height:14px;display:block;}
 .xzt,.xyt,.xxs,.xws{background:#e1dcc8 url("/static/images/icons_v3.png") scroll no-repeat 0 0;}.xzt{background-position:-115px -816px;}.xyt{background-position:-113px -778px;}
 .xyt>.xaw{background:#e1dcc8;text-shadow:none;}
 .xxs{background-position:-113px -851px;}.xws{background-position:-113px -743px;-webkit-border-bottom-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomright:4px;-moz-border-radius-bottomleft:4px;border-bottom-right-radius:4px;border-bottom-left-radius:4px;}.xvs{float:left;margin:4px 20px 0 0;position:relative;}.xus{padding:0;margin:0;}.xts{position:relative;float:left;margin:10px 0 0 30px;list-style:none;}.xss,.xss:visited,.xss:active{color:#EEE;}
@@ -1065,14 +1062,15 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 /* guides  */
 .show_guides {padding-top:5px}
 .guide_action {padding-right:50px}
-.guide_action .action {text-align: center;width: 60px;solid #2f72c4;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
+.guide_action .action {-moz-border-radius:12px;-webkit-border-radius:12px;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
 
 .guide_action .saving_like_message, .guide_action .saving_save_message {display:none}
 .guide_details {width:50%; float:left}
 .guide_photo {padding-left:200px}
 .guide_sights {padding-left:20px}
 .notice_no_plans {text-align: center;margin: 150px;width:50%}
-ul.export_trip_list {overflow:auto}
+
 #export_guide_step_1 .trip_pic .picture {position:absolute;right:50px;}
 #export_guide_step_1 .sighting-box.guideexport {padding: 15px 15px 10px 25px; background: #f7f6f1; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px}
-
+#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
+#closeexportguide-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}

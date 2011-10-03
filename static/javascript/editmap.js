@@ -52,55 +52,56 @@
    // alert(document.getElementById("startPosition").value);
 	//alert(document.getElementById("startPlace").value);
 	var _center = new google.maps.LatLng(34.3664951, -89.5192484);
-	if (document.getElementById("startPosition").value != 'undefined' && document.getElementById("endPosition").value != 'undefined' && document.getElementById("startPosition").value != '' && document.getElementById("endPosition").value != '')
-	{
+	if (document.getElementById("startPosition").value != 'undefined' && document.getElementById("startPosition").value != '') {
 		//alert("enter position");
 		var startValue = document.getElementById("startPosition").value;
 		//alert("startValue: "+startValue + "This should be two number.");
-		var temp = startValue.substring(1, startValue.length-2);
-		 var a = temp.split(', ')[0];
-		 var b = temp.split(', ')[1];
+		var temp = startValue.substring(1, startValue.length - 2);
+		var a = temp.split(', ')[0];
+		var b = temp.split(', ')[1];
 		
-		 _center = new google.maps.LatLng(a, b);
+		_center = new google.maps.LatLng(a, b);
 		// alert("calcRoute");
-		 calcRoute(false);
+		calcRoute(false);
 	}
-	else if (document.getElementById("startPlace").value != 'undefined' && document.getElementById("endPlace").value != 'undefined' && document.getElementById("startPlace").value != '' && document.getElementById("endPlace").value != '')
+	else 
+		if (document.getElementById("startPlace").value != 'undefined' && document.getElementById("startPlace").value != '') {
+			//alert(document.getElementById("startPlace").value);
+			var address_id = document.getElementById("startPlace").value;
+			geocoder.geocode({
+				'address': address_id
+			}, function(results, status){
+				if (status == google.maps.GeocoderStatus.OK) {
+					_center = results[0].geometry.location;
+					document.getElementById("startPosition").value = _center;
+				// alert(_center);
+				}
+				else {
+					alert("Geocode was not successful for the following reason: " + status);
+					return null;
+				}
+			});
+		}
+	   
+	var  dest_places = document.getElementById('dest_place').value;
+	temp = dest_places.replace(/u'/g,"\"");
+	temp = temp.replace(/\'/g,'\"');;
+	dest_places= jQuery.parseJSON(temp);
+	
+	for (var i=0; i < dest_places.length; i++) 
 	{
-		//alert("enter place");
-		var address_id = document.getElementById("startPlace").value;
-		var end_address_id = document.getElementById("endPlace").value;
-		//alert("start palce: "+address_id + " This should be place name.");
-		geocoder.geocode( { 'address': address_id}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) 
-      {
-        _center = results[0].geometry.location;        
-       document.getElementById("startPosition").value = _center;
-      // alert(_center);
-        }
-
-     else {
+	  day = dest_places[i]['day'];
+	  
+	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+	  	map.setCenter(results[0].geometry.location);
+        //createSightsMarker(results[0].geometry.location,day, i);
+		createMarker('normal', results[0].geometry.location);
+		//geo_results.push(results[0]);
+      } else {
         alert("Geocode was not successful for the following reason: " + status);
-        return null;
       }
-     }); 
-	 
-	 geocoder.geocode( { 'address': end_address_id}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) 
-      {
-        
-       document.getElementById("endPosition").value = results[0].geometry.location;        
-      // alert(document.getElementById("endPosition").value);
-	   calcRoute(false);
-        }
-
-     else {
-        alert("Geocode was not successful for the following reason: " + status);
-        return null;
-      }
-     }); 
-	 
-	 
+      });
 	}
 	
 	
@@ -176,12 +177,8 @@ controlDiv.appendChild(oImg);
  // Setup the click event listeners: simply set the map to Chicago
   google.maps.event.addDomListener(oImg, 'dragstart', function() {
    var _latLng = clickedOverlay.getProjection().fromDivPixelToLatLng(oImg);
-    createMarker('normal', _latLng);
-    
+    createMarker('normal', _latLng); 
   });
-    
-
-
 }
   
 function HomeControl(controlDiv) {
@@ -1057,7 +1054,7 @@ function PostFeedResponse(response){
 		var message = {"comment_id": $(this).parent('.feed').attr('data-feedid')};
 		message._xsrf = getCookie("_xsrf");
 		$.postJSON('/deletecomment', message, null, "text");	
-	})
+	});
 });
 
 

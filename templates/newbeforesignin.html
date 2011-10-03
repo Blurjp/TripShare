@@ -622,10 +622,9 @@ function set_section(section, _url) {
 		$.getJSON(_url, function(response) {
         //alert('test');
 		history.pushState(null, null, _url);
-		ShowTrip(response);
-		
-    }); 
-    }
+		ShowTrip(response); 
+        }); 
+        }
 	  
 function ShowTrip(message) {
 		if(message!=null)

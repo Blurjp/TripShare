@@ -133,7 +133,7 @@ try{Typekit.load();}catch(e){}
 </div>    
     <div id="plans_pending" style="display: none; "><img src="/images/icons/wait/30.gif"></div>
     <div id="plans">
-    {% if guides.count()>0 %}
+    {% if guides %}
     <ul id="latest_guides">
     {% for guide in guides %} 
 	{% include "guideentry.html" %}

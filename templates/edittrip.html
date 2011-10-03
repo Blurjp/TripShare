@@ -121,11 +121,10 @@
 				<input name="username" id="username" type="hidden" value="{{current_user['username']}}" > 
 				<input name="tripId" id="tripId" type="hidden" value = "{{singletrip['trip_id']}}">
                 <input name="startPlace" id="startPlace" type="hidden" value = "{{singletrip['start_place']}}"> 
-                <input name="endPlace" id="endPlace" type="hidden" value = "{{singletrip['dest_place']}}">  
+                <input name="dest_place" id="dest_place" type="hidden" value = "{{singletrip['dest_place']}}">  
 				<input name="startPosition" id="startPosition" type="hidden" value = "{{singletrip['start_place_position']}}"> 
 				<input name="wayPoints" id="wayPoints" type="hidden" value = "{{singletrip['way_points']}}"> 
-                <input name="endPosition" id="endPosition" type="hidden" value = "{{singletrip['dest_place_position']}}">  
-				<input name="encodedPolyline" id="encodedPolyline" type="hidden" value = "{{singletrip['trip_path']}}">  
+                <input name="encodedPolyline" id="encodedPolyline" type="hidden" value = "{{singletrip['trip_path']}}">  
                 <input name="result" id="result" type="hidden" value=''> 
 				<input name="slug" id="trip_slug" type="hidden" value = "{{singletrip['slug']}}"> 
 				<input name="title" id="trip_title" type="hidden" value = "{{singletrip['title']}}">
@@ -184,7 +183,7 @@
 <li class="lh-tighter place-{{counter}}-element multihop-row">
 <label for="place-{{counter}}-text">Destination:</label>
 
-<input id="place-{{counter}}-text" name="place-{{counter}}-text" type="text" class="text destination margin-right-thin" value="{{dest['text']}}">
+<input id="place-{{counter}}-text" name="place-{{counter}}-text" type="text" class="text destination margin-right-thin" value="{{dest['dest']}}">
 <input id="place-{{counter}}" name="place-{{counter}}" type="hidden" value="">
 <input id="place-{{counter}}-date" name="place-{{counter}}-date" type="text" value="{{dest['date']}}" class="text date multihop-calendar hasCalendar">
  <div class="margin-right-thin"><select class="transport-selector" id="place-0-transport-type" name="place-0-transport-type"><option value="by plane">{{dest['type']}}</option>

@@ -12,19 +12,26 @@ from BrowseTripHandler import BaseHandler
 
 
   
-class ShowTrips(BaseHandler):
-        def get(self):
+class GetTrips(BaseHandler):
+        def get(self): 
             
-            zipcode = self.get_argument("zcnew")
-            tripLocation = self.get_argument("tripLocation")
-            tripScope = self.get_argument("tripScope")
-        
-            trips = self.db.query("SELECT * FROM trips where privacy = %s", str(2))
-            greeting = "Welcome "+ str(self.get_current_username())
-        
-            user = self.db.get("SELECT * FROM users WHERE user_id = %s", self.current_user.id)
-            self.render("TripSearch.html", trips=trips, greeting  = greeting, user = user, token = self.xsrf_token)    
-
+            latest_trip_ids = self.syncdb.trips.find().limit(20).sort("published", pymongo.DESCENDING)
+           
+            if latest_trip_ids.count() > 0:
+                for latest_trip_id in latest_trip_ids:
+                        latest_trip_id['check_join'] = False
+                        
+                        members = latest_trip_id['members']
+                        if self.current_user:
+                            for member in members:
+                                if member['user_id'] == self.current_user['user_id']:
+                                    latest_trip_id['check_join'] = True
+                                    print("true")
+                                    break
+                        latest_trip_id['html'] = self.render_string("Module/tripinexportlist.html", trip = latest_trip_id) + "||||"
+                        #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
+                        self.write(latest_trip_id['html'])
+                        
 class SaveTrips(BaseHandler):
         slug = None
         
@@ -84,6 +91,8 @@ class UnsubscribeTrip(BaseHandler):
             
             else:
                 self.redirect("/login")
+
+
         
 class ShowNewTrips(BaseHandler):
         def get(self): 
@@ -121,7 +130,7 @@ class ShowHotTrips(BaseHandler):
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:
                                     latest_trip_id['check_join'] = True
-                                    print("true")
+                                    #print("true")
                                     break
                         latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
                         #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))

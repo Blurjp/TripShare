@@ -171,6 +171,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'like_trip':[],
                     'bio':'',
                     'link': '',
+                    'trip_count':''
                     
                 }
         _user_db = self.syncdb.users.find_one({'email': user[0]['email']})

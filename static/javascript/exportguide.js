@@ -14,7 +14,13 @@ $(document).ready(function() {
     //select all the tag with name equal to createguide
     $('a[name=exportguide]').click(function(e) {  
         
+		$.getJSON('/gettrips', function(response) {
+		ShowTripInGuideList(response);
+		
+    }); 
+		
 		$('#closeexportguide-modal').show();
+		
 		
         var id = $(this).attr('href');  
         //Set height and width to mask to fill up the whole screen  
@@ -36,35 +42,67 @@ $(document).ready(function() {
         e.preventDefault();  
         $('#mask4').hide();  
 		$('#export_guide_step_1').hide();
+	
 		document.getElementById('export_guide_form').reset();
     }); 
 
-	    /* Click finish button */
-  $('input[name=export_guide_finish]').click(function(e) {  
-      e.preventDefault();  
-      
-	 $('#export_guide_step_1').animate({right: winW});
-	  $('#mask4').hide();  
-	  $('#closeexportguide-modal').hide();
-	  
-      var tripid='';
-	  var content = {'_xsrf': getCookie("_xsrf"), 'tripid' : tripid};
-      var disabled = $('#export_guide_form').find("input[type=submit]");
-      disabled.disable();
-	  
-	  $.postJSON('/exportguide', content, function(response){
-			    ShowExportGuideResponse(response);
-			});	
-	 
-	  document.getElementById("create_guide_form").reset();	
-	  disabled.enable();
- });
+//	    /* Click finish button */
+//  $('input[name=export_guide_finish]').click(function(e) {  
+//      e.preventDefault();  
+//      
+//	 $('#export_guide_step_1').animate({right: winW});
+//	  $('#mask4').hide();  
+//	  $('#closeexportguide-modal').hide();
+//	  
+//      var tripid='';
+//	  var content = {'_xsrf': getCookie("_xsrf"), 'tripid' : tripid};
+//      var disabled = $('#export_guide_form').find("input[type=submit]");
+//      disabled.disable();
+//	  
+//	  $.postJSON('/exportguide', content, function(response){
+//			    ShowExportGuideResponse(response);
+//			});	
+//	 
+//	  document.getElementById("create_guide_form").reset();	
+//	  disabled.enable();
+// });
+ 
+ function ShowTripInGuideList(message) {
+		if(message!=null)
+		{
+		var node;
+		var trips = message.split("||||");
+		$("#tripinexportlist").empty();
+		
+		$.each(trips, function(index, value) {
+	         node = $(value);
+             node.hide();
+		     
+             $("#tripinexportlist").append(node);
+             node.show();
+         });
+		 }
+    }
  
  
  function ShowExportGuideResponse(response)
  {
- 	//alert(response);
+ 	 alert('guide export successfully!');
+	 $('#mask4').hide();  
+	 $('#export_guide_step_1').hide();
+	 document.getElementById('export_guide_form').reset();
+	 
  }
     
+	$(".l_exporttotrip").live('click', function (e) {  
+        //Cancel the link behavior  
+        e.preventDefault();  
+		var content = {'_xsrf': getCookie("_xsrf"), 'trip_id' : $(this).attr('sid'), 'guide_id': $('#guideId').val()};
+    	$.postJSON('/exportguide', content, function(response){
+        ShowExportGuideResponse(response);
+			});	
+		
+		});
+	
 })
 	

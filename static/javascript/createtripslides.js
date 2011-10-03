@@ -225,7 +225,7 @@ jQuery.fn.formToDict = function() {
 	var destinations = [];
 	var tempString = [];
 	var index = temp = 0;
-	
+	var name;
     for (var i = 0; i < fields.length; i++) {
 		if(fields[i].name.indexOf('place-')==0)
 		{
@@ -233,7 +233,12 @@ jQuery.fn.formToDict = function() {
 			index = fields[i].name.substring(6,7);
 			if(temp==index)
 			{
-				subjson[fields[i].name.substring(fields[i].name.lastIndexOf('-')+1, fields[i].name.length)] = fields[i].value;
+				name = fields[i].name.substring(fields[i].name.lastIndexOf('-')+1, fields[i].name.length);
+				if(name=='text')
+				{
+					name = 'dest';
+				}
+				subjson[name] = fields[i].value;
 			}
 			else
 			{

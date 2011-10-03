@@ -5,7 +5,7 @@
 <title> 
 TripShare
 |
-Notifications for jason
+Notifications
 </title> 
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type' /> 
 <meta content="TripShare is a visual guide to good food and where to find it. It's the easiest way to find and share the foods you love." name='description' /> 
@@ -15,43 +15,25 @@ Notifications for jason
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
-
+<script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
 
 </head> 
-<body onload="initialize()"> 
+<body> 
 
 <div id="header"> 
 <div id="nav-bar"  >
-{% include "Module/headline.html" %}
-
-{{ modules.UserEntry() }}
-
-</div> 
-</div> 
+ {% include "Module/headline.html" %}
  
-<div id='flash_notice' style='display:none'> 
-<div></div> 
-</div> 
+ {% include "Module/userentry.html" %}
  
- 
- 
-</div> 
+ {% include "Module/usersetting.html" %}
  
  
 <div class='clearfix' id='container'> 
 <a href="#" id="back_to_map" onclick="FS.hide_back_to_map();; return false;" style="display:none">Take me Back To The Map!</a> 
 <div class='clearfix' id='content'> 
-<div class='main-controls clearfix'> 
-<ul id='sorts'> 
-<li class=""><a href="/137006-jason">Spotted</a></li> 
-<li class=""><a href="/137006-jason/nommed">Nommed</a></li> 
-<li class=""><a href="/137006-jason/wanted">Wanted</a></li> 
-<li class=""><a href="/137006-jason/guides">Guides</a></li> 
-<li class="on"><a href="/137006-jason/notifications">Recent Activity</a></li> 
-</ul> 
- 
-</div> 
+
 <div class='hgroup'> 
 <div class='right'><a href="/settings/notifications">Notification Preferences</a></div> 
 <h1>Notifications</h1> 
@@ -179,6 +161,7 @@ Collect Guide Badges by completing
 <div class='main'> 
 <div id='notifications'> 
 <ul class='notifications'> 
+
 <li class='clearfix first last notification'> 
 <div class='avatar'> 
 <a href="/152976-regan"><img alt="Missing" src="/avatars/small_thumb/missing.png?1301466039" /></a> 
@@ -205,80 +188,10 @@ based on your sighting
  
 </div> 
 </div> 
-<div id='footer'> 
-<div id='foodie-town'> 
-<div id='footer-content'> 
-<div class='inset'> 
-<span class='copy'> 
-&copy;
-2011
-TripShare
-</span> 
-<a href="/about">About</a> 
-<small class='divider'>&middot;</small> 
-<a href="/iphone">iPhone</a> 
-<small class='divider'>&middot;</small> 
-<a href="/jobs">Jobs</a> 
-<small class='divider'>&middot;</small> 
-<a href="/blog">Blog</a> 
-<small class='divider'>&middot;</small> 
-<a href="/terms">Terms</a> 
-<small class='divider'>&middot;</small> 
-<a href="/privacy">Privacy</a> 
-<small class='divider'>&middot;</small> 
-<a href="http://twitter.com/TripShare">Twitter</a> 
-<small class='divider'>&middot;</small> 
-<a href="http://www.facebook.com/pages/TripShare/191851192979">Facebook</a> 
-<small class='divider'>&middot;</small> 
-<a href="http://typekit.com/colophons/gmg0plj" target="_blank">Fonts from Typekit</a> 
-</div> 
-</div> 
-</div> 
-<div id='footer-repeat'></div> 
-</div> 
+  {% include "Module/footer.html" %}
  
- 
-<script type='text/javascript'> 
-var is_ssl = ("https:" == document.location.protocol);
-var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
-document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
-</script> 
-<script type='text/javascript'> 
-var feedback_widget_options = {};
- 
-feedback_widget_options.display = "overlay";  
-feedback_widget_options.company = "TripShare";
-feedback_widget_options.placement = "right";
-feedback_widget_options.color = "#000";
-feedback_widget_options.style = "idea";
- 
-var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
-</script> 
- 
-<script type='text/javascript'> 
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script> 
-<script type='text/javascript'> 
-try {
-  var pageTracker = _gat._getTracker("UA-10073389-1");
-  pageTracker._trackPageview();
-} catch(err) {}
-</script> 
-<!-- KISSinsights for TripShare.com --> 
-<script type='text/javascript'> 
-var _kiq = _kiq || [];
-</script> 
-<script src='//s3.amazonaws.com/j.kissinsights.com/u/5809/c22b9a859d0f06f366ba29866e085afb4b07cdca.js' type='text/javascript'></script> 
-<script type='text/javascript'> 
-_qoptions={
-qacct:"p-67HM1Vig24MFw"
-};
-</script> 
-<script src='http://edge.quantserve.com/quant.js' type='text/javascript'></script> 
-<noscript> 
-<img alt='Quantcast' border='0' height='1' src='http://pixel.quantserve.com/pixel/p-67HM1Vig24MFw.gif' style='display: none;' width='1' />
-</noscript> 
+
+
  
 </body> 
 </html> 

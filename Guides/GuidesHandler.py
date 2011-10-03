@@ -18,9 +18,10 @@ from Map.BrowseTripHandler import BaseHandler
 
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
-        # set "my collection" as default; change the order to saved date later
-        guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort("slug")
-        
+        if self.current_user:  
+            guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort("slug")    
+        else:
+            guides = None    
         self.render("Guides/guides.html", guides=guides)
 
 class EntryGuidesHandler(BaseHandler):
@@ -28,12 +29,13 @@ class EntryGuidesHandler(BaseHandler):
         guide = self.syncdb.guides.find_one({"slug":slug})
         
         if not guide: raise tornado.web.HTTPError(404)
-        trips = []
-        for id in self.current_user['trips']:
-            trips.append(self.syncdb.trips.find_one({'trip_id': bson.ObjectId(id)}))
-        self.render("editguide.html", guide=guide, trips = trips)
-        #self.render("terms.html")
-        print('render')
+        #trips = []
+        #if self.current_user:  
+        #    for id in self.current_user['trips']:
+        #        trips.append(self.syncdb.trips.find_one({'trip_id': bson.ObjectId(id)}))
+        #self.render("editguide.html", guide=guide, trips = trips)
+        self.render("editguide.html", guide=guide)
+        
         
 class CategoryGuidesHandler(BaseHandler):
     def get(self, section):
@@ -116,6 +118,17 @@ class DeleteGuidesHandler(BaseHandler):
         
         self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
         self.redirect('/guides')
+        
+class ExportGuidesHandler(BaseHandler):
+    @tornado.web.authenticated
+    def post(self):
+        guide_id = self.get_argument('guide_id')
+        trip_id = self.get_argument('trip_id')
+        dest_place = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})['dest_place']
+        for dest in dest_place:
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
+        #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
+        self.write('Export successfully!')
 
 class CreateGuidesHandler(BaseHandler):
     slug = None

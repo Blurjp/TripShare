@@ -8,6 +8,7 @@ Created on July 19, 2010
 import pymongo
 import asyncmongo
 import os
+from Map.ProcessTripHandler import GetTrips
 from Map.ProcessTripHandler import ShowNewTrips
 from Map.ProcessTripHandler import ShowHotTrips
 from Map.ProcessTripHandler import ShowEndTrips
@@ -43,6 +44,7 @@ from Guides.GuidesHandler import SaveGuidesHandler
 from Guides.GuidesHandler import LikeGuidesHandler
 from Guides.GuidesHandler import BrowseGuidesHandler
 from Guides.GuidesHandler import CreateGuidesHandler
+from Guides.GuidesHandler import ExportGuidesHandler
 from Guides.GuidesHandler import DeleteGuidesHandler
 from Guides.GuidesHandler import EntryGuidesHandler
 from Guides.GuidesHandler import GuidePageHandler
@@ -79,9 +81,7 @@ class MainPage(BaseHandler):
     def get(self):
        
         image_info=[]
-        
         """ Get RANDOM trips to show in the map"""
-        #trips = self.db.query("SELECT * FROM trips ORDER BY RAND() LIMIT 10")
         trips = self.syncdb.trips.find().limit(10)
         if trips.count() > 0:
             for trip in trips:
@@ -89,8 +89,6 @@ class MainPage(BaseHandler):
                 trip_user = self.syncdb.users.find_one({'user_id': trip['owner_id']})
                
                 if (trip_user):
-                    #trip['owner_name'] = trip_user['username']
-                    #trip['picture'] = trip_user['picture']
                     image_info.append(trip['title']+';'+trip_user['picture'] +';'+str(trip['trip_id']))
         
         """ Get latest trips to show in the list"""
@@ -168,6 +166,7 @@ class Application(tornado.web.Application):
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
                                       (r"/trips/([^/]+)/([^/]+)", TripPageHandler),
+                                      (r"/gettrips", GetTrips),
                                       (r"/createtrip", ComposeHandler),
                                       (r"/savetrip", SaveTrips),
                                       (r"/newtrips", ShowNewTrips),
@@ -180,6 +179,7 @@ class Application(tornado.web.Application):
                                       (r"/saveguide/([^/]+)", SaveGuidesHandler),
                                       (r"/likeguide/([^/]+)", LikeGuidesHandler),
                                       (r"/createguide", CreateGuidesHandler),
+                                      (r"/exportguide", ExportGuidesHandler),
                                       (r"/deleteguide", DeleteGuidesHandler),
                                       (r"/a/changepicture", UserPictureHandler),
                                   
