@@ -86,7 +86,7 @@ class ComposeHandler(BaseHandler):
             if(dest!=""):
                 dest_string += " to "+ dest['dest']
                 dest['geo'] = ''
-                
+                dest['date'] = FromStringtoDate.ToDate(dest['date'])
  
         title = "From "+start+dest_string
         tripStartPosition = ""
@@ -94,11 +94,9 @@ class ComposeHandler(BaseHandler):
         finish_date = _formData['finish-date']
 
         description = title
-      
-
-     
+        
         self.slug = unicodedata.normalize("NFKD", unicode(title)).encode("ascii", "ignore")
-        start_date_object = FromStringtoDate.ToDate(start_date)
+        start_date_object = start_date
         finish_date_object = FromStringtoDate.ToDate(finish_date)
         trip_path = ""
         waypoints=[]

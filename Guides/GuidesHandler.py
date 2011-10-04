@@ -13,6 +13,7 @@ import re
 import unicodedata
 import tornado.web
 from Map.BrowseTripHandler import BaseHandler
+from Utility.DateProcessor import FromStringtoDate
 
 
 
@@ -29,11 +30,6 @@ class EntryGuidesHandler(BaseHandler):
         guide = self.syncdb.guides.find_one({"slug":slug})
         
         if not guide: raise tornado.web.HTTPError(404)
-        #trips = []
-        #if self.current_user:  
-        #    for id in self.current_user['trips']:
-        #        trips.append(self.syncdb.trips.find_one({'trip_id': bson.ObjectId(id)}))
-        #self.render("editguide.html", guide=guide, trips = trips)
         self.render("editguide.html", guide=guide)
         
         
@@ -124,9 +120,18 @@ class ExportGuidesHandler(BaseHandler):
     def post(self):
         guide_id = self.get_argument('guide_id')
         trip_id = self.get_argument('trip_id')
+        trip_dest_place = self.syncdb.guides.find_one({'trip_id':bson.ObjectId(trip_id)})['dest_place']
+        last_trip = trip_dest_place[len(trip_dest_place)-1]
+        #date = FromStringtoDate.ToDate(last_trip['date'])
+        date = last_trip['date']
+        one_day = datetime.timedelta(days=1)
+        next_day = date+one_day
         dest_place = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})['dest_place']
         for dest in dest_place:
+            dest['date'] = next_day
+            dest['type'] = 'car'
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
+            next_day+=one_day
         #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
         self.write('Export successfully!')
 

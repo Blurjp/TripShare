@@ -244,7 +244,13 @@ jQuery.fn.formToDict = function() {
 			{
 				tempString[temp]= subjson;
 				subjson = {};
-				subjson[fields[i].name.substring(fields[i].name.lastIndexOf('-')+1, fields[i].name.length)] = fields[i].value;
+				//subjson[fields[i].name.substring(fields[i].name.lastIndexOf('-')+1, fields[i].name.length)] = fields[i].value;
+				name = fields[i].name.substring(fields[i].name.lastIndexOf('-')+1, fields[i].name.length);
+				if(name=='text')
+				{
+					name = 'dest';
+				}
+				subjson[name] = fields[i].value;
 			}
 			//tempString[index] += fields[i].name.substring(fields[i].name.lastIndexOf('-')+1, fields[i].name.length)+" : "+fields[i].value+" ,";
 			//tempString[index][fields[i].name.substring(fields[i].name.lastIndexOf('-')+1,fields[i].name.length) ] += fields[i].value;

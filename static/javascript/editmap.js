@@ -166,7 +166,7 @@ function MarkerControl(controlDiv) {
 var oImg=document.createElement("img");
 oImg.style.paddingLeft = '1px';
 oImg.style.paddingRight = '1px';
-oImg.setAttribute('src', '{{ static_url("images/normalTag.png") }}');
+oImg.setAttribute('src', '../static/images/normalTag.png');
 oImg.setAttribute('alt', 'na');
 oImg.setAttribute('height', '24px');
 oImg.setAttribute('width', '24px');
@@ -202,7 +202,7 @@ function HomeControl(controlDiv) {
   var oImg=document.createElement("img");
   oImg.style.paddingLeft = '1px';
   oImg.style.paddingRight = '1px';
-  oImg.setAttribute('src', '{{ static_url("images/model2.png") }}');
+  oImg.setAttribute('src', '../static/images/model2.png');
   oImg.setAttribute('alt', 'na');
   oImg.setAttribute('height', '24px');
   oImg.setAttribute('width', '24px');
@@ -311,7 +311,7 @@ function setasstart()
     {   
 	start = selectedMarker;
     selectedMarker.markerType = 'start';
-    selectedMarker.marker.setIcon('{{ static_url("images/start.png") }}');
+    selectedMarker.marker.setIcon('../static/images/start.png');
     document.getElementById("startPosition").value = selectedMarker.marker.getPosition();
 	//document.getElementById("startPlace").value = selectedMarker.marker.getPosition();
 	
@@ -338,7 +338,7 @@ function addaswaypoint()
 if(selectedMarker.marker)
     {   
     selectedMarker.markerType = 'waypoint';
-    selectedMarker.marker.setIcon('{{ static_url("images/tag.png") }}');
+    selectedMarker.marker.setIcon('../static/images/tag.png');
     waypts.push({
             location: selectedMarker.marker.getPosition(),
             stopover:true});
@@ -362,7 +362,7 @@ function setasdest()
     if(selectedMarker.marker)
     { 
     selectedMarker.markerType = 'end';  
-    selectedMarker.marker.setIcon('{{ static_url("static/images/dest.png") }}');
+    selectedMarker.marker.setIcon('../static/images/dest.png');
     document.getElementById("endPosition").value = selectedMarker.marker.getPosition();
 	//document.getElementById("endPlace").value = selectedMarker.marker.getPosition();
 	
@@ -715,7 +715,7 @@ function codeLatLng(name) {
             icon: 'node.gif'
           });
 		  
-		 marker.setIcon('{{ static_url("images/node.gif") }}');
+		 marker.setIcon('../static/images/node.gif');
          marker.setDraggable(true);
           //var username = document.getElementById("username").value;
           google.maps.event.addListener(marker, 'click', function() {
@@ -760,28 +760,28 @@ function codeLatLng(name) {
             
           });
           marker.setDraggable(true);
-          marker.setIcon('{{ static_url("images/start.png") }}');
+          marker.setIcon('../static/images/start.png');
 		  switch (markerType) {
 		 	case 'start':
 			
-		 		marker.setIcon('{{ static_url("images/start.png") }}');
+		 		marker.setIcon('../static/images/start.png');
 		 		break;
 			case 'end': 
 			
-		 		marker.setIcon('{{ static_url("images/dest.png") }}');
+		 		marker.setIcon('../static/images/dest.png');
 		 		break;
 			case 'waypoint': 
 			
-		 		marker.setIcon('{{ static_url("images/waypoint.png") }}');
+		 		marker.setIcon('../static/images/waypoint.png');
 		 		break;
 				
 			case 'polylinemarker': 
 			
-		 		marker.setIcon('{{ static_url("images/node.gif") }}');
+		 		marker.setIcon('../static/images/node.gif');
 		 		break;
 				
 		    default:
-			    marker.setIcon('{{ static_url("images/dest.png") }}');
+			    marker.setIcon('../static/images/dest.png');
 		 		break;
 		 }
 		 
@@ -880,7 +880,7 @@ function codeLatLng(name) {
                 break;
             case 'polylinemarker':
              polylineMarkerGroup.push(selectedMarker.marker);
-             marker.setIcon('{{ static_url("images/node.gif") }}');
+             marker.setIcon('../static/images/node.gif');
                 break;
             default:
              markerGroup.push(selectedMarker.marker);
