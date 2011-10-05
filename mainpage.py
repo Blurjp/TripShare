@@ -90,7 +90,8 @@ class MainPage(BaseHandler):
                 trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
                
                 if (trip_user):
-                    image_info.append(trip['title']+';'+trip_user['picture'] +';'+str(trip['trip_id']))
+                    image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug']+';'+str(trip['dest_place']))
+        
         
         """ Get latest trips to show in the list"""
         
