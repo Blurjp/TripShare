@@ -57,6 +57,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
+import bson
 from tornado.options import define, options
 
 define("port", default=80, help="run on the given port", type=int)
@@ -86,7 +87,7 @@ class MainPage(BaseHandler):
         if trips.count() > 0:
             for trip in trips:
                 
-                trip_user = self.syncdb.users.find_one({'user_id': trip['owner_id']})
+                trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
                
                 if (trip_user):
                     image_info.append(trip['title']+';'+trip_user['picture'] +';'+str(trip['trip_id']))
@@ -104,7 +105,6 @@ class MainPage(BaseHandler):
                         
                         members = latest_trip_id['members']
                         if self.current_user:
-                            
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:
                                     latest_trip_id['check_join'] = True

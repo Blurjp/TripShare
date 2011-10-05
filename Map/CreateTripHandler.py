@@ -86,7 +86,7 @@ class ComposeHandler(BaseHandler):
             if(dest!=""):
                 dest_string += " to "+ dest['dest']
                 dest['geo'] = ''
-                dest['date'] = FromStringtoDate.ToDate(dest['date'])
+                dest['date'] = dest['date']
  
         title = "From "+start+dest_string
         tripStartPosition = ""
@@ -135,7 +135,7 @@ class ComposeHandler(BaseHandler):
             if error:
                     raise tornado.web.HTTPError(500)
             
-            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id} })    
+            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id} }, {'$inc':{'trip_count':1}})    
             self.syncdb.trips.ensure_index([('dest_place_position', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
             self.syncdb.trips.ensure_index('trip_id', unique=True)
             self.syncdb.trips.ensure_index('slug', unique=True) 

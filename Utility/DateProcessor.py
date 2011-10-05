@@ -10,7 +10,7 @@ from datetime import datetime
 class FromStringtoDate:    
     @staticmethod  
     def ToDate(date_string):
-        print('date++++++++++'+date_string)
+        #print('date++++++++++'+date_string)
         if(len(str(date_string))==9):
             day = date_string[8:9]
         else:
@@ -20,3 +20,6 @@ class FromStringtoDate:
         date = datetime.strptime(year+'-'+month+'-'+day, "%Y-%m-%d")
         #print("date++++++++++"+str(date))
         return date
+    
+
+        

@@ -113,6 +113,23 @@
             
 </script> 
  
+<script  type="text/javascript">
+  $('[placeholder]').focus(function() {
+  var input = $(this);
+  if (input.val() == input.attr('placeholder')) {
+    input.val('');
+    input.removeClass('placeholder');
+  }
+}).blur(function() {
+  var input = $(this);
+  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+    input.addClass('placeholder');
+    input.val(input.attr('placeholder'));
+  }
+}).blur();
+
+</script>
+ 
 <script type="text/javascript">
 	
 	var initialLocation;
@@ -134,6 +151,52 @@ var browserSupportFlag =  new Boolean();
 		//infoWindow = new google.maps.InfoWindow();
 		
 		setMarkers(map);
+		
+		   /*   Autocomplete   */
+        var input = document.getElementById('location');
+		alert('test');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.bindTo('bounds', map);
+
+        var marker = new google.maps.Marker({
+          map: map
+        });
+		
+		 google.maps.event.addListener(autocomplete, 'place_changed', function() {
+          infowindow.close();
+          var place = autocomplete.getPlace();
+		  
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+          }
+
+          var image = new google.maps.MarkerImage(
+              place.icon,
+              new google.maps.Size(71, 71),
+              new google.maps.Point(0, 0),
+              new google.maps.Point(17, 34),
+              new google.maps.Size(35, 35));
+          marker.setIcon(image);
+          marker.setPosition(place.geometry.location);
+
+          var address = '';
+          if (place.address_components) {
+            address = [(place.address_components[0] &&
+                        place.address_components[0].short_name || ''),
+                       (place.address_components[1] &&
+                        place.address_components[1].short_name || ''),
+                       (place.address_components[2] &&
+                        place.address_components[2].short_name || '')
+                      ].join(' ');
+          }
+
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.open(map, marker);
+        });
 		
 //		// Try W3C Geolocation (Preferred)
 //  if(navigator.geolocation) {
@@ -192,10 +255,7 @@ var browserSupportFlag =  new Boolean();
  
   for (var i = 0; i < user_images.length; i++) {
       image_split = user_images.item(i).value.split(';');
-	
 	  image_title = image_split[0];
-	
-	  
 	  image_startPlace  = google.maps.geometry.encoding.decodePath(image_split[1])[0].toString();
 	//  alert(image_startPlace.length);
 	  
@@ -205,11 +265,7 @@ var browserSupportFlag =  new Boolean();
       var lat = parseFloat(latlngStr[0]);
       var lng = parseFloat(latlngStr[1]);
       var latlng = new google.maps.LatLng(lat, lng);
-	  
-	//  alert(latlng);
-	  
-	  
-	  
+
 	  image_url = image_split[2];
 	//  alert(image_url);
 	  image_id = image_split[3];
@@ -268,7 +324,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
  
 </head> 
-<body> 
+<body onload="initialize()"> 
 
 <div id="header"> 
 
@@ -301,9 +357,9 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <input class="submit" type="submit" value="Search">
 <div id="location-input">
 <div class="text-box">
-<a class="clear" href="#" id="location_clear_button" onclick="clear_location();; return false;" style="">x</a>
+<a class="clear" href="#" id="location_clear_button" onclick="clear_location(); return false;" style="">x</a>
 <label class="prompted" for="location" id="set_location_label">YOUR LOCATION: <strong class="location-color">Map Area</strong></label>
-<input class="text" id="location" onfocus="show_saved_locations()" type="text" value="" autocomplete="off">
+<input class="text" id="location" type="text" autocomplete="off">
 <div id="saved_locations" style="display:none">
 <ul id="saved_location_ul"><li class="current-location"><a href="" onclick="FSMap.get_client_location();return false;">Current Location</a></li>
 <li class="anywhere"><a href="#" onclick="clear_location(); return false;">Anywhere</a></li>
@@ -394,8 +450,6 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <h1 id="list-view-title">Tell us <strong>when</strong> and <strong>where</strong> you plan to go</h1>
 </div>
 </div>
-
-
 
 <div class="clearfix" id="new-sighting-form">
 <div id="user-info-window">

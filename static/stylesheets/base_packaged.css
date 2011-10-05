@@ -54,7 +54,7 @@ small {font-size: 85%}
 .avatar-list a {float: left; width: 30px; height: 30px; overflow: hidden}
 .avatar-list a img {width: 30px; height: 30px}
 .tags a {line-height: 18px; text-decoration: none}
-.tags a img {width: 12px; height: 12px; vertical-align: middle; margin-right: 5px; background: transparent url(/images/sprites.png) no-repeat -52px -83px}
+.tags a img {width: 12px; height: 12px; vertical-align: middle; margin-right: 5px; background: transparent url(/static/images/sprites.png) no-repeat -52px -83px}
 .tags a:hover {text-decoration: none}
 .tags a:hover span {text-decoration: underline}
 .tags a.delete {color: #777777; font-size: 90%; padding: 1px 4px; line-height: 0.9em}
@@ -78,16 +78,16 @@ dl.dlist.inline dd {margin-left: 70px}
 .submit-photo-action:active, .submit-photo-action.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
 .flag-action, .follow-action {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; cursor: pointer; color: #666666; width: auto; height: 30px; display: block; line-height: 30px; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #dddddd; background: white; float: right; margin-left: 5px}
 .flag-action:hover, .follow-action:hover {color: black; border-color: #999999; text-decoration: none}
-.flag-action.add img, .follow-action.add img {width: 9px; height: 9px; margin-right: 2px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -34px -83px}
-.flag-action.remove img, .follow-action.remove img {width: 9px; height: 9px; overflow: hidden; margin-right: 2px; background: transparent url(/images/sprites.png) no-repeat -43px -83px}
-.flag-action.loading, .follow-action.loading {background: white url(/images/spinner.gif) no-repeat 6px 7px}
+.flag-action.add img, .follow-action.add img {width: 9px; height: 9px; margin-right: 2px; overflow: hidden; background: transparent url(/static/images/sprites.png) no-repeat -34px -83px}
+.flag-action.remove img, .follow-action.remove img {width: 9px; height: 9px; overflow: hidden; margin-right: 2px; background: transparent url(/static/images/sprites.png) no-repeat -43px -83px}
+.flag-action.loading, .follow-action.loading {background: white url(/static/images/spinner.gif) no-repeat 6px 7px}
 .flag-action.loading img, .follow-action.loading img {background: none}
 .grid-button, .list-button {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; cursor: pointer; color: #666666; width: auto; height: 30px; display: block; line-height: 30px; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #dddddd; background: white; float: right; margin-left: 5px; padding: 6px 7px 5px; height: 19px}
 .grid-button:hover, .list-button:hover {color: black; border-color: #999999; text-decoration: none}
 .grid-button.on, .list-button.on {border-color: #999999}
-.grid-button img {width: 19px; height: 19px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -98px -19px}
+.grid-button img {width: 19px; height: 19px; overflow: hidden; background: transparent url(/static/images/sprites.png) no-repeat -98px -19px}
 .grid-button:hover img, .grid-button.on img {background-position: -117px -19px}
-.list-button img {width: 19px; height: 19px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -98px -39px}
+.list-button img {width: 19px; height: 19px; overflow: hidden; background: transparent url(/static/images/sprites.png) no-repeat -98px -39px}
 .list-button:hover img, .list-button.on img {background-position: -116px -39px}
 span.divider {padding: 0 2px}
 .tag-input {float: left; font-size: 1em; padding: 4px 2px 5px; margin-top: 0; width: 180px; font-family: inherit}
@@ -96,7 +96,7 @@ span.divider {padding: 0 2px}
 .add-button:active {background: #ccd7a5}
 .item-assocation-action {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; cursor: pointer; color: #666666; width: auto; height: 30px; display: block; line-height: 30px; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #dddddd; background: white; float: right; margin-left: 5px; font-size: 2.4em; padding: 0 6px}
 .item-assocation-action:hover {color: black; border-color: #999999; text-decoration: none}
-.item-assocation-action img {width: 20px; height: 19px; overflow: hidden; vertical-align: middle; margin-top: 6px; background: transparent url(/images/sprites.png) no-repeat -98px 0}
+.item-assocation-action img {width: 20px; height: 19px; overflow: hidden; vertical-align: middle; margin-top: 6px; background: transparent url(/static/images/sprites.png) no-repeat -98px 0}
 .item-assocation-action:hover img {background-position: -118px 0}
 .qmark {font-weight: bold; color: black}
 .code {width: 550px; cursor: text; display: block; white-space: pre; overflow: auto; height: 80px; padding: 0; line-height: 1.2em; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px}
@@ -123,9 +123,9 @@ address {color: #777777; font-style: normal}
 .pagination .disabled {color: #999999}
 .pagination .prev_page {padding-left: 0}
 .pagination .prev_page:hover, .pagination .next_page:hover {border-color: white}
-#iphone-app-link {width: 145px; height: 73px; text-indent: -10000px; overflow: hidden; display: block; background: transparent url(/images/iphone-app-teaser-button.png) no-repeat}
+#iphone-app-link {width: 145px; height: 73px; text-indent: -10000px; overflow: hidden; display: block; background: transparent url(/static/images/iphone-app-teaser-button.png) no-repeat}
 #iphone-app-link:hover {background-position: 0 -73px}
-#opentable-button {margin: -10px -10px 10px; background: transparent url(/images/opentable-button.png) no-repeat; display: block; width: 300px; height: 36px; overflow: hidden; text-indent: -10000px}
+#opentable-button {margin: -10px -10px 10px; background: transparent url(/static/images/opentable-button.png) no-repeat; display: block; width: 300px; height: 36px; overflow: hidden; text-indent: -10000px}
 #opentable-button:hover {background-position: 0 -36px}
 dl#sidebar-nav dt {display: block; margin: 0.5em 0 0.5em; font-size: 1.1em}
 dl#sidebar-nav dt:after {content: ""}
@@ -168,11 +168,11 @@ form.default .text-box.small {width: 119px}
 form.default .text-box.small input, form.default .text-box.small label {width: 119px}
 form.default .text-box.medium {width: 236px; padding: 6px 8px}
 form.default .text-box.medium input, form.default .text-box.medium label {width: 236px}
-form.default .text-box.valid {background: #edffe1 url(/images/little-check.png) no-repeat 8px center}
+form.default .text-box.valid {background: #edffe1 url(/static/images/little-check.png) no-repeat 8px center}
 form.default .text-box.valid input {color: #336600; width: 200px; margin: 0 !important; padding-left: 16px}
-form.default .text-box .text-box-search {background: transparent url(/images/text-box-search.png) no-repeat; width: 18px !important; height: 18px !important; border: none; margin: 0; padding: 0; position: absolute; top: 5px; right: 10px; cursor: pointer; z-index: 20}
+form.default .text-box .text-box-search {background: transparent url(/static/images/text-box-search.png) no-repeat; width: 18px !important; height: 18px !important; border: none; margin: 0; padding: 0; position: absolute; top: 5px; right: 10px; cursor: pointer; z-index: 20}
 form.default .text-box .text-box-search:hover {background-position: -18px 0}
-form.default .text-box .clear {position: absolute; text-indent: -10000px; right: 6px; top: 8px; width: 17px; height: 17px; background: transparent url(/images/clear-search.png) no-repeat}
+form.default .text-box .clear {position: absolute; text-indent: -10000px; right: 6px; top: 8px; width: 17px; height: 17px; background: transparent url(/static/images/clear-search.png) no-repeat}
 form.default .text-box .clear:hover {background-position: -17px 0}
 form.default .text-box label, form.default .text-box input, form.default .text-box textarea {width: 260px; font-size: 15px; line-height: 18px; font-family: inherit}
 form.default .text-box label {color: #777777; cursor: text; position: absolute}
@@ -193,8 +193,8 @@ form.default .row.inline-300 .submit {float: left; margin: 0; padding: 0; width:
 form.default #errorExplanation {margin-bottom: 20px}
 form.default #errorExplanation p {margin-bottom: 5px}
 form.default #errorExplanation ul {color: #444444; list-style-type: decimal; margin-left: 20px}
-form.default #photo-field {width: 416px; height: 35px; cursor: pointer; overflow: hidden; position: relative; background: transparent url(/images/upload-user-photo.png) no-repeat 0 0}
-form.default #photo-field.px300 {width: 287px; height: 34px; background: transparent url(/images/file-field-300px.png) no-repeat 0 0}
+form.default #photo-field {width: 416px; height: 35px; cursor: pointer; overflow: hidden; position: relative; background: transparent url(/static/images/upload-user-photo.png) no-repeat 0 0}
+form.default #photo-field.px300 {width: 287px; height: 34px; background: transparent url(/static/images/file-field-300px.png) no-repeat 0 0}
 form.default #photo-field.px300.complete {background-position: 0 -34px}
 form.default #photo-field.px300 .file-field {width: 190px; overflow: hidden}
 form.default #photo-field.complete {background-position: 0 -35px}
@@ -217,10 +217,10 @@ ul.uploadContainer li div.progress {position: absolute; top: 17px; height: 5px; 
 .recessed-buttons li {float: left; margin-right: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: #e1dcc8; box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); padding: 7px 10px; cursor: default}
 .recessed-buttons li img {width: 16px; height: 16px; vertical-align: middle}
 .recessed-buttons li .review-connect-btn {margin-left: 3px}
-.recessed-buttons li.twitter img {background: transparent url(/images/share-sprite.png) no-repeat 0 0}
-.recessed-buttons li.foursquare img {background: transparent url(/images/share-sprite.png) no-repeat 0 -16px}
-.recessed-buttons li.facebook img {background: transparent url(/images/share-sprite.png) no-repeat 0 -32px}
-.recessed-buttons li.flickr img {background: transparent url(/images/share-sprite.png) no-repeat 0 -80px}
+.recessed-buttons li.twitter img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 0}
+.recessed-buttons li.foursquare img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -16px}
+.recessed-buttons li.facebook img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -32px}
+.recessed-buttons li.flickr img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -80px}
 .text-box-note {position: absolute; right: 10px; top: 5px; color: #999999; font-size: 90%; line-height: 20px}
 #modal-errors {margin-bottom: 10px; padding: 10px; background: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #modal-errors h3 {margin-bottom: 5px}
@@ -329,7 +329,7 @@ body {background: white}
 #social-icons a {float: right; margin-left: 5px}
 #user-info-window {float: right; width: 270px; padding: 11px 15px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; color: #f0f5ec; min-height: 50px; background: #196473; position: relative}
 #user-info-window strong {font-size: 110%; display: block; margin-bottom: 5px}
-#user-info-window .tip {left: -15px; top: 17px; position: absolute; background: transparent url(/images/tip-speechbubble.png) no-repeat; width: 20px; height: 40px}
+#user-info-window .tip {left: -15px; top: 17px; position: absolute; width: 20px; height: 40px}
 #user-info-window img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #user-info-window #user-stats {font-size: 90%}
 #user-info-window a {color: #f7f6f1}
@@ -341,12 +341,12 @@ body {background: white}
 #review-widget #review-widget-error strong {color: #ad3843}
 #review-widget #uploading {height: 130px; text-align: center}
 #review-widget #uploading div {padding-top: 40px}
-#review-widget #file-upload {width: 577px; height: 34px; cursor: pointer; overflow: hidden; background: transparent url(/images/spotting-file-upload.png)}
+#review-widget #file-upload {width: 577px; height: 34px; cursor: pointer; overflow: hidden; background: transparent url(/static/images/spotting-file-upload.png)}
 #review-widget #file-upload #file-value {color: #777777; font-size: 15px; line-height: 33px; position: absolute; cursor: pointer; padding-left: 10px}
 #review-widget #file-upload .file-field {cursor: pointer; opacity: 0; filter: alpha(opacity=0); display: block; font-size: 80px; z-index: 0; width: 277px; height: 34px; left: 0; position: absolute}
 #review-widget #file-upload .file-field2 {cursor: pointer; opacity: 0; filter: alpha(opacity=0); display: block; font-size: 80px; z-index: 0; width: 277px; height: 34px; left: 0; position: absolute}
-#review-widget #file-upload.complete #file-value {background: transparent url(/images/spotting-check.png) no-repeat 10px 10px; padding-left: 30px}
-#review-widget #file-upload.full {width: 620px; background: white url(/images/review-browse-full.png) no-repeat}
+#review-widget #file-upload.complete #file-value {background: transparent url(/static/images/spotting-check.png) no-repeat 10px 10px; padding-left: 30px}
+#review-widget #file-upload.full {width: 620px; background: white url(/static/images/review-browse-full.png) no-repeat}
 #review-widget #file-upload.full:hover, #review-widget #file-upload.full.complete {background-position: 0 0}
 #review-widget #file-upload.full .file-field {width: 200px}
 #review-widget #file-upload.full .file-field2 {width: 200px}
@@ -354,13 +354,13 @@ body {background: white}
 #review-widget .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
 #review-widget .submit:active, #review-widget .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
 #review-widget .submit:hover {text-decoration: none}
-#review-widget #award_ribbon {float: right; margin-right: 10px; padding: 9px 0 8px 16px; background: transparent url(/images/ribbon-16px.png) no-repeat 0 50%}
+#review-widget #award_ribbon {float: right; margin-right: 10px; padding: 9px 0 8px 16px; background: transparent url(/static/images/ribbon-16px.png) no-repeat 0 50%}
 #review-widget #optional-fields {margin-top: 10px}
 #review-widget .text-box {float: left; width: 250px; padding: 6px 10px !important; position: relative; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #review-widget .text-box.focus {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
 #review-widget .text-box.valid {background: #96af4b !important; border-color: #96af4b !important; color: white !important}
 #review-widget .text-box.valid input {color: white !important; -webkit-text-fill-color: white !important; margin: 0 !important; font-weight: bold}
-#review-widget .text-box .clear {position: absolute; text-indent: -10000px; right: 6px; top: 7px; width: 17px; height: 17px; background: transparent url(/images/sprites.png) no-repeat -34px -66px}
+#review-widget .text-box .clear {position: absolute; text-indent: -10000px; right: 6px; top: 7px; width: 17px; height: 17px; background: transparent url(/static/images/sprites.png) no-repeat -34px -66px}
 #review-widget .text-box .clear:hover {background-position: -51px -66px}
 #review-widget .text-box .center {text-align: center}
 #review-widget .text-box label, #review-widget .text-box input {width: 230px; font-size: 15px; line-height: 19px; font-family: inherit; margin: 0 !important; background-color: transparent}
@@ -391,7 +391,7 @@ body {background: white}
 .item-manager #manage-items #item-match-parent-results {height: 120px; overflow: auto; padding: 10px; background: white; border: 1px solid #cccccc}
 .item-manager #manage-items #item-match-parent-results a {padding: 5px 0; display: block; line-height: 1em; font-size: 90%}
 #nom-the-best .divider {font-size: 70%; color: #666666; padding: 0 2px}
-.dismiss {float: right; width: 17px; height: 17px; text-indent: -10000px; background: transparent url(/images/clear-search.png) no-repeat}
+.dismiss {float: right; width: 17px; height: 17px; text-indent: -10000px; background: transparent url(/static/images/clear-search.png) no-repeat}
 .dismiss:hover {background-position: -17px 0}
 #thanks {background: #eeeeee; text-align: center; width: 500px; margin: 80px auto 0; padding: 20px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #thanks h3 {font-size: 2em}
@@ -425,17 +425,17 @@ body {background: white}
 #modal #modal-facebox.large .main {width: 580px}
 #modal #modal-facebox.guide-sighting {width: 620px}
 #modal #modal-facebox.review {width: 620px}
-#modal #modal-facebox #close-modal {display: block; position: absolute; overflow: hidden; text-indent: -10000px; left: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/images/close-button.png) no-repeat}
+#modal #modal-facebox #close-modal {display: block; position: absolute; overflow: hidden; text-indent: -10000px; left: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 #modal #modal-facebox #close-modal:hover {text-decoration: none}
 #modal #modal-screen {top: 0; left: 0; z-index: 1; position: absolute; width: 100%; height: 100%; opacity: 0.5; filter: alpha(opacity=50); background: black}
 #tooltip {z-index: 100001; position: absolute}
-#tooltip .content {color: white; padding: 8px 10px; font-size: 0.9em; font-weight: bold; line-height: 1.2em; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: transparent url(/images/tooltip-content.png)}
+#tooltip .content {color: white; padding: 8px 10px; font-size: 0.9em; font-weight: bold; line-height: 1.2em; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: transparent url(/static/images/tooltip-content.png)}
 #tooltip .content .title, #tooltip .content addr {margin-bottom: 5px; display: block}
 #tooltip .content small, #tooltip .content addr {color: #eeeeee; font-size: inherit; font-weight: normal}
 #tooltip .content a {text-decoration: underline; color: #e1dcc8}
 #tooltip .content a:hover {color: #f0eee4}
 #tooltip img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
-#tooltip .pointer {width: 100%; height: 5px; text-align: center; background: transparent url(/images/tooltip-pointer.png) no-repeat top center}
+#tooltip .pointer {width: 100%; height: 5px; text-align: center; background: transparent url(/static/images/tooltip-pointer.png) no-repeat top center}
 .sidebar {float: right; display: inline; width: 300px; padding: 0}
 .main {float: left; width: 620px; display: inline; position: relative}
 .bbox-tabs.four li {width: 205px !important}
@@ -501,7 +501,7 @@ body {background: white}
 #yellow-message {color: black; padding: 10px; font-size: 1.1em; margin-bottom: 10px; margin-top: -10px; background: #ffffcc; text-align: center; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #flash_notice {width: 100%; z-index: 102; position: relative; background-image: -moz-linear-gradient(top, #fffea9, #fffe77); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #fffea9),color-stop(1, #fffe77)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fffea9', EndColorStr='#fffe77'); border-bottom: 1px solid #e2e161}
 #flash_notice div {color: black; padding: 15px; text-align: center; font-weight: bold; font-size: 110%}
-#logo {color: #1c120e; text-indent: -100000px; display: block; overflow: hidden; width: 408px; height: 66px; font-weight: bold; font-size: 70px; text-decoration: none; letter-spacing: -3px; background: transparent url(/images/logo.png) no-repeat}
+#logo {color: #1c120e; text-indent: -100000px; display: block; overflow: hidden; width: 408px; height: 66px; font-weight: bold; font-size: 70px; text-decoration: none; letter-spacing: -3px; background: transparent url(/static/images/logo.png) no-repeat}
 #tagline {font-size: 1.2em; color: #333333}
 
 
@@ -516,11 +516,11 @@ body {background: white}
 
 
 #footer {float:right; width:1000px; border-top:1px solid #E4E4E4;margin-top:50px;padding:15px 15px 15px 15px;background:white}
-#footer li {background:url(/images/dot.png) 100% 60% no-repeat;margin-right:10px;padding:3px 10px 3px 0;}
+#footer li {background:url(/static/images/dot.png) 100% 60% no-repeat;margin-right:10px;padding:3px 10px 3px 0;}
 #footer a {font-weight: bold}
 
 #editmap_footer {float:right; width:700px; border-top:1px solid #E4E4E4;margin-top:50px;padding:15px 15px 15px 15px;background:white}
-#editmap_footer li {background:url(/images/dot.png) 100% 60% no-repeat;margin-right:10px;padding:3px 10px 3px 0;}
+#editmap_footer li {background:url(/static/images/dot.png) 100% 60% no-repeat;margin-right:10px;padding:3px 10px 3px 0;}
 #editmap_footer a {font-weight: bold}
 
 
@@ -533,20 +533,20 @@ body {background: white}
 #sorts li.on a:hover {text-decoration: none}
 #sighting {position: relative; background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; background: #f0eee4}
 #sighting .sighting-box {padding: 15px; background: #f7f6f1; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
-#sighting .ribbon {position: absolute; right: 5px; top: 5px; padding-top: 14px; width: 58px; height: 74px; font-size: 180%; line-height: 0.9; text-align: center; color: white; text-indent: 3px; z-index: 10; text-decoration: none; background: transparent url(/images/ribbon-large.png)}
+#sighting .ribbon {position: absolute; right: 5px; top: 5px; padding-top: 14px; width: 58px; height: 74px; font-size: 180%; line-height: 0.9; text-align: center; color: white; text-indent: 3px; z-index: 10; text-decoration: none; background: transparent url(/static/images/ribbon-large.png)}
 #sighting #photo-elements {position: relative; height: 590px}
 #sighting #photo-elements #photo-spinner {width: 66px; position: absolute; top: 220px; left: 260px; z-index: 10; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background-color: black; color: #cccccc; font-size: 90%; text-align: center}
 #sighting #photo-elements #photo-spinner img {margin-bottom: 5px}
 #sighting #photo-elements #photo-actions {position: absolute; z-index: 100; padding: 10px; width: 570px; top: 260px}
-#sighting #photo-elements #photo-actions .rotate-left {opacity: 0.6; filter: alpha(opacity=6); float: left; width: 30px; height: 30px; overflow: hidden; text-indent: -100000px; background: transparent url(/images/sprites.png) no-repeat -68px 0}
+#sighting #photo-elements #photo-actions .rotate-left {opacity: 0.6; filter: alpha(opacity=6); float: left; width: 30px; height: 30px; overflow: hidden; text-indent: -100000px; background: transparent url(/static/images/sprites.png) no-repeat -68px 0}
 #sighting #photo-elements #photo-actions .rotate-left:hover {opacity: 1; filter: alpha(opacity=10)}
-#sighting #photo-elements #photo-actions .rotate-right {opacity: 0.6; filter: alpha(opacity=6); float: right; width: 30px; height: 30px; overflow: hidden; text-indent: -100000px; background: transparent url(/images/sprites.png) no-repeat -68px -30px}
+#sighting #photo-elements #photo-actions .rotate-right {opacity: 0.6; filter: alpha(opacity=6); float: right; width: 30px; height: 30px; overflow: hidden; text-indent: -100000px; background: transparent url(/static/images/sprites.png) no-repeat -68px -30px}
 #sighting #photo-elements #photo-actions .rotate-right:hover {opacity: 1; filter: alpha(opacity=10)}
 #sighting .note {color: #777777; margin-top: 15px; font-size: 1.4em; line-height: 1.3em; font-weight: 300; font-style: italic; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important}
 #sighting .info {color: #444444; margin-top: 15px}
 #sighting .info .avatar {float: left; width: 50px}
 #sighting .info .person-details {margin-left: 65px}
-#promo-ribbon {position: absolute; top: -5px; z-index: 10; right: -5px; width: 112px; height: 112px; background: transparent url(/images/ribbon-beta.png)}
+#promo-ribbon {position: absolute; top: -5px; z-index: 10; right: -5px; width: 112px; height: 112px; background: transparent url(/static/images/ribbon-beta.png)}
 #sidebar-welcome {display: none; background: #e6ebd2; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; color: #96af4b; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.6em; font-weight: 100}
 #sidebar-welcome a {display: block; margin-top: 10px}
 #sidebar-welcome strong {font-weight: 500}
@@ -556,7 +556,7 @@ ul.list dl.parents dt {color: #777777; display: inline; margin-right: 5px; font-
 ul.list dl.parents dt:after {content: ":"}
 ul.list dl.parents dd {display: inline}
 ul.list li.sighting, ul.list li.entry {background: #f0eee4; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0}
-ul.list li.sighting .spotted-by, ul.list li.entry .spotted-by {margin-bottom: 10px; float: left; width: 410px; padding-bottom: 5px; margin-left: -20px; background: transparent url(/images/corner-ribbon-green.png) no-repeat bottom left}
+ul.list li.sighting .spotted-by, ul.list li.entry .spotted-by {margin-bottom: 10px; float: left; width: 410px; padding-bottom: 5px; margin-left: -20px; background: transparent url(/static/images/corner-ribbon-green.png) no-repeat bottom left}
 ul.list li.sighting .spotted-by .label, ul.list li.entry .spotted-by .label {float: left; background: #96af4b; padding: 6px 10px 5px 18px; color: white; margin: 0 5px 0 0; font-weight: 100; font-style: italic; font-size: 120%; font-family: "museo-slab-1", "museo-slab-2", serif}
 ul.list li.sighting .spotted-by .avatar, ul.list li.entry .spotted-by .avatar {float: left; margin-right: 5px}
 ul.list li.sighting .spotted-by .avatar img, ul.list li.entry .spotted-by .avatar img {width: 30px; height: 30px}
@@ -571,8 +571,8 @@ ul.list li.sighting .sighting-admin-actions .follow-action, ul.list li.entry .si
 ul.list li.sighting, ul.list li.review, ul.list li.entry {clear: left; position: relative; margin-bottom: 20px; list-style: none}
 ul.list li.sighting .timestamp, ul.list li.review .timestamp, ul.list li.entry .timestamp {font-size: 90%}
 ul.list li.sighting .note, ul.list li.review .note, ul.list li.entry .note {color: #777777; font-size: 1.2em; margin-top: 10px; margin-bottom: 10px; font-weight: 300; font-style: italic; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
-ul.list li.sighting .photo.t-170, ul.list li.review .photo.t-170, ul.list li.entry .photo.t-170 {color: white; width: 170px; height: 170px; padding: 10px; margin: 0 0 0 10px; float: right; background: transparent url(/images/stamp-190px.png) no-repeat}
-ul.list li.sighting .photo.t-120, ul.list li.review .photo.t-120, ul.list li.entry .photo.t-120 {float: left; color: white; width: 120px; height: 120px; padding: 10px; margin: 0 10px 0 0; background: transparent url(/images/stamp-140px.png) no-repeat}
+ul.list li.sighting .photo.t-170, ul.list li.review .photo.t-170, ul.list li.entry .photo.t-170 {color: white; width: 170px; height: 170px; padding: 10px; margin: 0 0 0 10px; float: right; background: transparent url(/static/images/stamp-190px.png) no-repeat}
+ul.list li.sighting .photo.t-120, ul.list li.review .photo.t-120, ul.list li.entry .photo.t-120 {float: left; color: white; width: 120px; height: 120px; padding: 10px; margin: 0 10px 0 0; background: transparent url(/static/images/stamp-140px.png) no-repeat}
 ul.list li.sighting .photo .small-ribbon, ul.list li.review .photo .small-ribbon, ul.list li.entry .photo .small-ribbon {position: absolute; top: 2px; left: 2px}
 ul.list li.sighting h3, ul.list li.review h3, ul.list li.entry h3 {clear: left; font-size: 140%; font-weight: bold; margin-bottom: 10px}
 ul.list li.sighting h3 span, ul.list li.review h3 span, ul.list li.entry h3 span {font-weight: normal; color: #444444}
@@ -583,12 +583,12 @@ ul.list li.sighting .created_at, ul.list li.review .created_at, ul.list li.entry
 ul.list li.sighting .creator, ul.list li.review .creator, ul.list li.entry .creator {font-weight: bold}
 ul.list li.sighting .last_sighting, ul.list li.review .last_sighting, ul.list li.entry .last_sighting {color: #777777; font-size: 1em; margin-bottom: 10px}
 ul.list li.sighting .guides .badge, ul.list li.review .guides .badge, ul.list li.entry .guides .badge {float: left}
-ul.list li.sighting address, ul.list li.review address, ul.list li.entry address {opacity: 0.6; filter: alpha(opacity=6); color: black; font-weight: normal; font-size: 1em; line-height: 1.3; margin-bottom: 10px; vertical-align: middle; background: transparent url(/images/map-pin-black.png) no-repeat; padding-left: 16px}
+ul.list li.sighting address, ul.list li.review address, ul.list li.entry address {opacity: 0.6; filter: alpha(opacity=6); color: black; font-weight: normal; font-size: 1em; line-height: 1.3; margin-bottom: 10px; vertical-align: middle; background: transparent url(/static/images/map-pin-black.png) no-repeat; padding-left: 16px}
 ul.list li.sighting address a, ul.list li.review address a, ul.list li.entry address a {color: black}
-ul.list li.sighting .ribbon, ul.list li.review .ribbon, ul.list li.entry .ribbon {position: absolute; right: 20px; top: 20px; padding-top: 14px; width: 58px; height: 74px; font-size: 180%; line-height: 0.9; text-align: center; color: white; text-indent: 3px; z-index: 10; text-decoration: none; background: transparent url(/images/ribbon-large.png) no-repeat}
-ul.list li.sighting .ribbon.count_0, ul.list li.review .ribbon.count_0, ul.list li.entry .ribbon.count_0 {background-image: url(/images/ribbon-large-grey.png)}
+ul.list li.sighting .ribbon, ul.list li.review .ribbon, ul.list li.entry .ribbon {position: absolute; right: 20px; top: 20px; padding-top: 14px; width: 58px; height: 74px; font-size: 180%; line-height: 0.9; text-align: center; color: white; text-indent: 3px; z-index: 10; text-decoration: none; background: transparent url(/static/images/ribbon-large.png) no-repeat}
+ul.list li.sighting .ribbon.count_0, ul.list li.review .ribbon.count_0, ul.list li.entry .ribbon.count_0 {background-image: url(/static/images/ribbon-large-grey.png)}
 ul.list li.sighting .ribbon small, ul.list li.review .ribbon small, ul.list li.entry .ribbon small {display: block; font-size: 50%; text-indent: 4px; line-height: 0.8}
-.blog-header {*display: inline-block; background: #1e0f00 url(/images/pattern-wood.jpg) repeat 0 -40px; padding: 0; box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important; box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -moz-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -webkit-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7)}
+.blog-header {*display: inline-block; background: #1e0f00 url(/static/images/pattern-wood.jpg) repeat 0 -40px; padding: 0; box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important; box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -moz-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -webkit-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7)}
 .blog-header:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
 .blog-header .inset {padding: 10px 0 0; background-color: #564b40}
 .blog-title {font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 2.8em; font-weight: 500; margin-right: 5px; color: white}
@@ -598,7 +598,7 @@ ul.list li.sighting .ribbon small, ul.list li.review .ribbon small, ul.list li.e
 #blog-categories li {float: left; margin-right: 25px; padding: 3px 0 13px}
 #blog-categories li a {float: left; padding: 2px 0; color: #fbd7aa}
 #blog-categories li a:hover {color: white}
-#blog-categories li.on {background: transparent url(/images/white-arrow-up.gif) no-repeat center 26px}
+#blog-categories li.on {background: transparent url(/static/images/white-arrow-up.gif) no-repeat center 26px}
 #blog-categories li.on a {color: white; cursor: default}
 #blog-categories li.on a:hover {text-decoration: none}
 #blog-subscribe {float: right; padding-top: 5px}
@@ -606,10 +606,10 @@ ul.list li.sighting .ribbon small, ul.list li.review .ribbon small, ul.list li.e
 #blog-subscribe a {float: left; margin-left: 5px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; background: #f0eee4; box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.2); padding: 7px 10px}
 #blog-subscribe a:hover {background: #e1dcc8; box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.2)}
 #blog-subscribe a img {width: 16px; height: 16px; vertical-align: middle}
-#blog-subscribe a.twitter img {background: transparent url(/images/share-sprite.png) no-repeat 0 0}
-#blog-subscribe a.foursquare img {background: transparent url(/images/share-sprite.png) no-repeat 0 -16px}
-#blog-subscribe a.facebook img {background: transparent url(/images/share-sprite.png) no-repeat 0 -32px}
-#blog-subscribe a.flickr img {background: transparent url(/images/share-sprite.png) no-repeat 0 -80px}
+#blog-subscribe a.twitter img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 0}
+#blog-subscribe a.foursquare img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -16px}
+#blog-subscribe a.facebook img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -32px}
+#blog-subscribe a.flickr img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -80px}
 .categories li {margin-bottom: 5px}
 .author-list li {margin-bottom: 10px}
 .author-list li .avatar {float: left; width: 30px; height: 30px}
@@ -651,23 +651,23 @@ ul.reviews li.review .creator-bar .avatar img {width: 30px; height: 30px}
 .action-bar ul {float: left; text-transform: uppercase}
 .action-bar ul li {float: left; margin-right: 12px}
 .action-bar ul li.show-sightings {font-weight: bold}
-.action-bar ul li.map-it a {padding-left: 12px; background: transparent url(/images/pin-off.png) no-repeat}
-.action-bar ul li.map-it.on a {background-image: url(/images/pin-on.png)}
-.action-bar ul li.tried-it a {padding-left: 20px; background: transparent url(/images/check-off.png) no-repeat}
-.action-bar ul li.tried-it.on a, .action-bar ul li.tried-it:hover a {background-image: url(/images/check-on.png)}
-.action-bar ul li.want-it a {padding-left: 20px; background: transparent url(/images/star-off.png) no-repeat}
-.action-bar ul li.want-it.on a, .action-bar ul li.want-it:hover a {background-image: url(/images/star-on.png)}
-.action-bar ul li.nom-it a {padding-left: 20px; background: transparent url(/images/ribbon-off-16px.png) no-repeat}
-.action-bar ul li.nom-it.on a, .action-bar ul li.nom-it:hover a {background-image: url(/images/ribbon-16px.png)}
-.action-bar ul li.flag-it a {padding-left: 20px; background: transparent url(/images/flag-off.png) no-repeat}
-.action-bar ul li.flag-it.on a, .action-bar ul li.flag-it:hover a {background-image: url(/images/flag-on.png)}
-.action-bar ul li.edit-it a {padding-left: 20px; background: transparent url(/images/sighting-action-edit.png) no-repeat}
-.action-bar ul li.delete-it a {padding-left: 20px; background: transparent url(/images/sighting-action-delete.png) no-repeat}
-.action-bar ul li.print-it a {padding-left: 20px; background: transparent url(/images/print-it.png) no-repeat}
+.action-bar ul li.map-it a {padding-left: 12px; background: transparent url(/static/images/pin-off.png) no-repeat}
+.action-bar ul li.map-it.on a {background-image: url(/static/images/pin-on.png)}
+.action-bar ul li.tried-it a {padding-left: 20px; background: transparent url(/static/images/check-off.png) no-repeat}
+.action-bar ul li.tried-it.on a, .action-bar ul li.tried-it:hover a {background-image: url(/static/images/check-on.png)}
+.action-bar ul li.want-it a {padding-left: 20px; background: transparent url(/static/images/star-off.png) no-repeat}
+.action-bar ul li.want-it.on a, .action-bar ul li.want-it:hover a {background-image: url(/static/images/star-on.png)}
+.action-bar ul li.nom-it a {padding-left: 20px; background: transparent url(/static/images/ribbon-off-16px.png) no-repeat}
+.action-bar ul li.nom-it.on a, .action-bar ul li.nom-it:hover a {background-image: url(/static/images/ribbon-16px.png)}
+.action-bar ul li.flag-it a {padding-left: 20px; background: transparent url(/static/images/flag-off.png) no-repeat}
+.action-bar ul li.flag-it.on a, .action-bar ul li.flag-it:hover a {background-image: url(/static/images/flag-on.png)}
+.action-bar ul li.edit-it a {padding-left: 20px; background: transparent url(/static/images/sighting-action-edit.png) no-repeat}
+.action-bar ul li.delete-it a {padding-left: 20px; background: transparent url(/static/images/sighting-action-delete.png) no-repeat}
+.action-bar ul li.print-it a {padding-left: 20px; background: transparent url(/static/images/print-it.png) no-repeat}
 .action-bar ul li a {color: #333333; display: block; line-height: 18px}
 .action-bar ul li a:hover {text-decoration: underline}
 .action-bar ul a {color: #333333}
-.action-bar ul a.sighting-count {background: transparent url(/images/review-arrow.png) no-repeat left center; padding-left: 12px}
+.action-bar ul a.sighting-count {background: transparent url(/static/images/review-arrow.png) no-repeat left center; padding-left: 12px}
 .comments-container {background: #e1dcc8; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 .comments-container .new-comment .text-box {width: 375px; padding: 0; margin-right: 0}
 .comments-container .new-comment .text-box textarea {width: 365px; height: 22px; padding: 4px}
@@ -720,7 +720,7 @@ ul.people li.person .comments-container .new-comment .text-box textarea.focused 
 ul.reviews.sidebar {margin: 0; padding: 0; border-bottom: none}
 ul.reviews.sidebar li {margin: 0 0 20px 20px}
 ul.reviews.sidebar li.first {margin-left: 0}
-ul.reviews.sidebar li .photo.t-120 {color: #eeeeee; background: transparent url(/images/stamp-grey-140px.png) no-repeat}
+ul.reviews.sidebar li .photo.t-120 {color: #eeeeee; background: transparent url(/static/images/stamp-grey-140px.png) no-repeat}
 ul.reviews li.review {padding: 15px}
 ul.reviews li.review .photo {float: right; margin-left: 15px; margin-right: 0}
 ul.reviews li.review h3 {font-weight: normal; font-size: 140%; font-weight: bold; margin-bottom: 10px}
@@ -733,7 +733,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 .review-meta a:hover {text-decoration: none}
 .review-meta a:active, .review-meta a.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473}
 .collect {padding-top: 15px}
-.collect li.sighting {float: left; width: 170px; height: 170px; padding: 10px; margin-left: 10px; margin-bottom: 10px; background: transparent url(/images/stamp-190px.png) no-repeat; position: relative}
+.collect li.sighting {float: left; width: 170px; height: 170px; padding: 10px; margin-left: 10px; margin-bottom: 10px; background: transparent url(/static/images/stamp-190px.png) no-repeat; position: relative}
 .collect li.sighting.first {margin-left: 15px}
 .collect li.sighting .photo {display: block}
 .collect li.sighting .photo img {width: 170px; height: 170px; background-color: white}
@@ -745,11 +745,11 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 .collect li.sighting .note {color: #777777; font-size: 1em; margin-bottom: 10px; font-family: Georgia, "Times New Roman", serif}
 .collect li.sighting .actions ul {float: left; text-transform: uppercase}
 .collect li.sighting .actions ul li {float: left; margin-right: 10px}
-.collect li.sighting .actions ul li.want-it {padding-left: 20px; background: transparent url(/images/star-off.png) no-repeat}
-.collect li.sighting .actions ul li.want-it.on {background-image: url(/images/star-on.png)}
-.collect li.sighting .actions ul li.nom-it {padding-left: 20px; background: transparent url(/images/ribbon-off-16px.png) no-repeat}
-.collect li.sighting .actions ul li.nom-it.on {background-image: url(/images/ribbon-16px.png)}
-.collect li.sighting .actions ul li.comment-on-it {padding-left: 20px; background: transparent url(/images/comment-16px.png) no-repeat}
+.collect li.sighting .actions ul li.want-it {padding-left: 20px; background: transparent url(/static/images/star-off.png) no-repeat}
+.collect li.sighting .actions ul li.want-it.on {background-image: url(/static/images/star-on.png)}
+.collect li.sighting .actions ul li.nom-it {padding-left: 20px; background: transparent url(/static/images/ribbon-off-16px.png) no-repeat}
+.collect li.sighting .actions ul li.nom-it.on {background-image: url(/static/images/ribbon-16px.png)}
+.collect li.sighting .actions ul li.comment-on-it {padding-left: 20px; background: transparent url(/static/images/comment-16px.png) no-repeat}
 .collect li.sighting .actions ul li a {color: #333333; display: block}
 .collect li.sighting .actions ul li a span {display: none}
 .collect li.sighting .actions ul li a:hover {text-decoration: underline}
@@ -780,17 +780,17 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #new-badges li a:hover {text-decoration: none}
 #new-badges li a .bar {border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; height: 3px; padding: 1px; width: 120px; background-color: #dddddd; margin-top: 3px}
 #new-badges li a .bar .progress {border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; background-color: #96af4b; height: 3px}
-#new-badges li.level_1 a {background-image: url(/images/badges/starsticker-bronze.png)}
-#new-badges li.level_2 a {background-image: url(/images/badges/starsticker-bronze.png)}
-#new-badges li.level_3 a {background-image: url(/images/badges/starsticker-silver.png)}
-#new-badges li.level_4 a {background-image: url(/images/badges/starsticker-gold.png)}
-#new-badges li.level_5 a {background-image: url(/images/badges/starsticker-platinum.png)}
+#new-badges li.level_1 a {background-image: url(/static/images/badges/starsticker-bronze.png)}
+#new-badges li.level_2 a {background-image: url(/static/images/badges/starsticker-bronze.png)}
+#new-badges li.level_3 a {background-image: url(/static/images/badges/starsticker-silver.png)}
+#new-badges li.level_4 a {background-image: url(/static/images/badges/starsticker-gold.png)}
+#new-badges li.level_5 a {background-image: url(/static/images/badges/starsticker-platinum.png)}
 #badges li {float: left; width: 90px; height: 90px; position: relative; background-repeat: no-repeat; background-color: transparent}
-#badges li.level_1 {background-image: url(/images/badges/badge-novice.png)}
-#badges li.level_2 {background-image: url(/images/badges/badge-bronze.png)}
-#badges li.level_3 {background-image: url(/images/badges/badge-silver.png)}
-#badges li.level_4 {background-image: url(/images/badges/badge-gold.png)}
-#badges li.level_5 {background-image: url(/images/badges/badge-platinum.png)}
+#badges li.level_1 {background-image: url(/static/images/badges/badge-novice.png)}
+#badges li.level_2 {background-image: url(/static/images/badges/badge-bronze.png)}
+#badges li.level_3 {background-image: url(/static/images/badges/badge-silver.png)}
+#badges li.level_4 {background-image: url(/static/images/badges/badge-gold.png)}
+#badges li.level_5 {background-image: url(/static/images/badges/badge-platinum.png)}
 #badges li.level_5 .level {text-shadow: -1px -1px white !important; color: #6f7067 !important}
 #badges li.level_5 a {color: #6f7067 !important}
 #badges li.level_5 a:hover {color: #6f7067 !important}
@@ -858,9 +858,9 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #widgets .widget form .x {float: left; padding: 5px}
 #widgets .widget form .layout {float: left; position: relative}
 #widgets .widget form .layout .up {position: absolute; display: block; top: 1px; right: 1px; padding: 6px 4px 3px}
-#widgets .widget form .layout .up img {background: transparent url(/images/input-arrows.png) no-repeat; width: 7px; height: 4px}
+#widgets .widget form .layout .up img {background: transparent url(/static/images/input-arrows.png) no-repeat; width: 7px; height: 4px}
 #widgets .widget form .layout .down {position: absolute; display: block; bottom: 1px; right: 1px; padding: 3px 4px 6px}
-#widgets .widget form .layout .down img {background: transparent url(/images/input-arrows.png) no-repeat -7px 0; width: 7px; height: 4px}
+#widgets .widget form .layout .down img {background: transparent url(/static/images/input-arrows.png) no-repeat -7px 0; width: 7px; height: 4px}
 #widgets .widget form label {color: #333333; display: block; margin-bottom: 5px; font-weight: bold}
 #widgets .widget form input.text {font-size: 1em; padding: 3px; width: 80px; border: 1px solid #aaaaaa}
 #friend-body h3 img {vertical-align: middle}
@@ -868,7 +868,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #import-friend-options .friend-import-button:hover {color: black; border-color: #777777; text-decoration: none}
 #import-friend-options .friend-import-button:active {background: #dddddd}
 #import-friend-options .friend-import-button.disabled {background: white; border: 1px solid #eeeeee; box-shadow: none; -moz-box-shadow: none; -webkit-box-shadow: none; cursor: default; color: black}
-#import-friend-options .friend-import-button img {background: transparent url(/images/share-sprite.png) no-repeat; width: 16px; height: 16px; overflow: hidden; vertical-align: middle; margin-right: 4px; margin-top: -3px}
+#import-friend-options .friend-import-button img {background: transparent url(/static/images/share-sprite.png) no-repeat; width: 16px; height: 16px; overflow: hidden; vertical-align: middle; margin-right: 4px; margin-top: -3px}
 #import-friend-options li {width: 49%; margin-left: 2%; margin-bottom: 2%; float: left}
 #import-friend-options li.first {margin-left: 0}
 #import-friend-options .twitter img {background-position: 0 0}
@@ -909,7 +909,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #discover-map #map-promo {z-index: 1001; position: absolute; top: 70px; right: 20px; width: 320px; height: 270px}
 #discover-map #map-promo .promo {padding: 10px; position: relative; z-index: 10}
 #discover-map #map-promo .screen {position: absolute; top: 0; width: 320px; height: 270px; background: #111111; border: 1px solid black; opacity: 0.6; filter: alpha(opacity=6); border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
-#discover-map #map-loading-box {z-index: 1000; text-align: center; font-weight: bold; font-size: 90%; margin: 180px 0 0 -30px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; width: 60px; height: 60px; left: 50%; position: absolute; opacity: 0.5; filter: alpha(opacity=5); background: black url(/images/spinner-large-999999.gif) no-repeat 14px 14px}
+#discover-map #map-loading-box {z-index: 1000; text-align: center; font-weight: bold; font-size: 90%; margin: 180px 0 0 -30px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; width: 60px; height: 60px; left: 50%; position: absolute; opacity: 0.5; filter: alpha(opacity=5); background: black url(/static/images/spinner-large-999999.gif) no-repeat 14px 14px}
 #discover-map #map-message-box, #discover-map #map-welcome-box {color: white; z-index: 1000; text-align: center; font-weight: 300; font-size: 160%; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; padding: 18px; margin: 180px 20% 0; left: 0; right: 0; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; position: absolute; background: black}
 #discover-map #map-welcome-box {margin: 80px auto; font-size: 100%; font-weight: 100; padding: 18px 30px; width: 600px; background: rgba(0, 0, 0, 0.8)}
 #discover-map #map-welcome-box .title {font-size: 200%; margin-bottom: 20px}
@@ -933,7 +933,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #map-pagination #page-left.enabled:hover {cursor: pointer; text-decoration: underline}
 #map_search {left: 50%; width: 940px; padding: 0 20px; margin: 20px 0 0 -490px; z-index: 4000; position: absolute}
 #map_search fieldset .text-box {box-shadow: inset 1px 1px 2px #555555; -moz-box-shadow: inset 1px 1px 2px #555555; -webkit-box-shadow: inset 1px 1px 2px #555555; padding-top: 9px !important; padding-bottom: 9px !important; border: none !important; float: left; position: relative; margin-top: 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
-#map_search fieldset .text-box .clear {top: 10px; right: 8px; width: 17px; height: 17px; position: absolute; text-indent: -10000px; background: transparent url(/images/clear-search.png) no-repeat}
+#map_search fieldset .text-box .clear {top: 10px; right: 8px; width: 17px; height: 17px; position: absolute; text-indent: -10000px; background: transparent url(/static/images/clear-search.png) no-repeat}
 #map_search fieldset .text-box .clear:hover {background-position: -17px 0}
 #map_search fieldset .text-box label, #map_search fieldset .text-box input {font-size: 14px; line-height: 19px; font-family: inherit; margin: 0 !important; padding: 0 !important}
 #map_search fieldset .text-box label {color: #666666; cursor: text; text-align: left; position: absolute; overflow: hidden; white-space: nowrap}
@@ -955,14 +955,14 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #map_search #saved_locations li img {float: left; width: 15px; height: 15px; border: 0; margin-right: 5px}
 #map_search #saved_locations li.saved-locations-title {float: right; color: #999999; padding: 5px 10px; position: relative; z-index: 1; background-color: transparent}
 #map_search #saved_locations li.current-location {background-color: white; border-bottom: 1px solid #eeeeee}
-#map_search #saved_locations li.current-location a img {background: transparent url(/images/icons-worldandlocate.png) 15px 15px}
+#map_search #saved_locations li.current-location a img {background: transparent url(/static/images/icons-worldandlocate.png) 15px 15px}
 #map_search #saved_locations li.current-location a:hover img {background-position: 0 15px}
 #map_search #saved_locations li.anywhere {background-color: white; border-bottom: 1px solid #eeeeee}
-#map_search #saved_locations li.anywhere a img {background: transparent url(/images/icons-worldandlocate.png) 15px 0}
+#map_search #saved_locations li.anywhere a img {background: transparent url(/static/images/icons-worldandlocate.png) 15px 0}
 #map_search #saved_locations li.anywhere a:hover img {background-position: 0 0}
 #map_search #saved_locations li a {padding: 5px 10px; display: block; line-height: 1.2}
 #map_search #saved_locations li a:hover {color: white; text-decoration: none; background-color: #196473}
-#map_search .target {padding: 0; width: 34px; height: 33px; float: right; background: transparent url(/images/sprites.png) no-repeat -34px 0; margin: 0; border: 0}
+#map_search .target {padding: 0; width: 34px; height: 33px; float: right; background: transparent url(/static/images/sprites.png) no-repeat -34px 0; margin: 0; border: 0}
 #map_search .target:hover {background-position: -34px -33px}
 #genius-search-input {float: left; width: 250px; margin-right: 0}
 #genius-search-input .spinner {top: 11px}
@@ -1023,10 +1023,10 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #dashboard-stats ul#dashboard-stats-ul li strong {color: #333333; font-size: 1.4em; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 500; margin-right: 5px}
 #dashboard .followable-links a {float: left; border: 1px solid #cccccc; padding: 8px 8px 7px; background-color: white; margin-left: 5px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #dashboard .followable-links a img {width: 16px; height: 16px; vertical-align: middle}
-#dashboard .followable-links a.twitter img {background: transparent url(/images/share-sprite.png) no-repeat 0 0}
-#dashboard .followable-links a.foursquare img {background: transparent url(/images/share-sprite.png) no-repeat 0 -16px}
-#dashboard .followable-links a.facebook img {background: transparent url(/images/share-sprite.png) no-repeat 0 -32px}
-#dashboard .followable-links a.flickr img {background: transparent url(/images/share-sprite.png) no-repeat 0 -80px}
+#dashboard .followable-links a.twitter img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 0}
+#dashboard .followable-links a.foursquare img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -16px}
+#dashboard .followable-links a.facebook img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -32px}
+#dashboard .followable-links a.flickr img {background: transparent url(/static/images/share-sprite.png) no-repeat 0 -80px}
 #dashboard #followings_manager {background: #f0eee4; border-bottom: 1px solid #e1dcc8}
 #dashboard #followings_manager #list-header {box-shadow: inset 0 2px 2px #e1dcc8; -moz-box-shadow: inset 0 2px 2px #e1dcc8; -webkit-box-shadow: inset 0 2px 2px #e1dcc8; padding: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8}
 #dashboard #followings_manager #list-title {padding: 20px 10px; color: #666666; text-align: center}
@@ -1050,17 +1050,17 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #dashboard #more-reviews a {display: block; padding: 10px}
 #dashboard .db-actions {padding-top: 5px}
 #dashboard .db-location {float: left}
-#dashboard .db-location .location {float: left; line-height: 16px; padding-left: 15px; font-size: 90%; color: #666666; background: transparent url(/images/pin-off.png) no-repeat}
-#dashboard .db-location .location.on {background: transparent url(/images/pin-on.png) no-repeat}
+#dashboard .db-location .location {float: left; line-height: 16px; padding-left: 15px; font-size: 90%; color: #666666; background: transparent url(/static/images/pin-off.png) no-repeat}
+#dashboard .db-location .location.on {background: transparent url(/static/images/pin-on.png) no-repeat}
 #dashboard .db-location .location:hover {text-decoration: none; color: #333333}
 #dashboard .db-mark-it {float: right}
 #dashboard .db-mark-it a {float: right; margin-left: 5px; width: 16px; height: 16px; overflow: hidden; text-indent: -10000px}
-#dashboard .db-mark-it a.tried {background: transparent url(/images/check-off.png) no-repeat}
-#dashboard .db-mark-it a.tried.on, #dashboard .db-mark-it a.tried:hover {background-image: url(/images/check-on.png)}
-#dashboard .db-mark-it a.want {background: transparent url(/images/star-off.png) no-repeat}
-#dashboard .db-mark-it a.want.on, #dashboard .db-mark-it a.want:hover {background-image: url(/images/star-on.png)}
-#dashboard .db-mark-it a.nom {background: transparent url(/images/ribbon-off-16px.png) no-repeat}
-#dashboard .db-mark-it a.nom.on, #dashboard .db-mark-it a.nom:hover {background-image: url(/images/ribbon-16px.png)}
+#dashboard .db-mark-it a.tried {background: transparent url(/static/images/check-off.png) no-repeat}
+#dashboard .db-mark-it a.tried.on, #dashboard .db-mark-it a.tried:hover {background-image: url(/static/images/check-on.png)}
+#dashboard .db-mark-it a.want {background: transparent url(/static/images/star-off.png) no-repeat}
+#dashboard .db-mark-it a.want.on, #dashboard .db-mark-it a.want:hover {background-image: url(/static/images/star-on.png)}
+#dashboard .db-mark-it a.nom {background: transparent url(/static/images/ribbon-off-16px.png) no-repeat}
+#dashboard .db-mark-it a.nom.on, #dashboard .db-mark-it a.nom:hover {background-image: url(/static/images/ribbon-16px.png)}
 #dashboard .review-block {float: left; width: 280px; padding: 8px; position: relative; background-color: white; border: 1px solid #e1dcc8; margin-bottom: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #dashboard .review-block .review-photo {position: relative}
 #dashboard .review-block .review-photo .processing {display: block; width: 280px; height: 280px; background: #eeeeee; z-index: 6; position: relative}
@@ -1069,7 +1069,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #dashboard .review-block .review-photo .photo {width: 280px; height: 280px; z-index: 5; background: white; position: relative}
 #dashboard .review-block .db-actions {height: 16px; overflow: hidden}
 #dashboard .review-block .db-actions .db-location {white-space: nowrap}
-#dashboard .review-block .db-actions .db-mark-it {width: 70px; right: 7px; bottom: 8px; padding-left: 5px; position: absolute; background: transparent url(/images/actions-location-fade.png) no-repeat}
+#dashboard .review-block .db-actions .db-mark-it {width: 70px; right: 7px; bottom: 8px; padding-left: 5px; position: absolute; background: transparent url(/static/images/actions-location-fade.png) no-repeat}
 #dashboard .small_map {top: 0; right: 0; z-index: 1; width: 227px; height: 280px; position: absolute}
 #dashboard .small_map .map {z-index: 10; width: 227px; height: 280px}
 #dashboard .street-address {display: block}
@@ -1085,7 +1085,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #dashboard #db-reviews .people .action-bar li {margin-right: 8px}
 #dashboard #db-reviews .people .action-bar li.last {margin-right: 0; text-transform: none}
 #dashboard #db-reviews .people .action-bar .icon a {float: left; padding: 0; width: 16px; height: 16px; overlay: hidden; text-indent: -10000px}
-#dashboard #db-reviews .people .action-bar .ribbon {top: 0; left: 220px; z-index: 10; width: 58px; height: 90px; position: absolute; background: transparent url(/images/ribbon-large.png)}
+#dashboard #db-reviews .people .action-bar .ribbon {top: 0; left: 220px; z-index: 10; width: 58px; height: 90px; position: absolute; background: transparent url(/static/images/ribbon-large.png)}
 #dashboard #db-reviews .people h3.title {margin: 5px 0 10px}
 #dashboard #db-reviews .people h3.title a {color: #555555}
 #dashboard #db-reviews .people h3.title span {display: block}
@@ -1097,7 +1097,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #dashboard #discover-wanted ul li.first {margin-left: 0}
 #dashboard #discover-wanted ul li .db-actions {padding: 1px; position: absolute; border: 1px solid #e1dcc8; right: 4px; bottom: 4px; background-color: white; border-right-color: white; border-bottom-color: white; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px}
 #dashboard #discover-wanted ul li .db-actions a {padding: 0; border: 0; margin-left: 2px}
-.sidebar-note .sidebar-note-arrow {background: transparent url(/images/sidebar-note-arrow.png) no-repeat; width: 100%; height: 9px; margin-left: 55px}
+.sidebar-note .sidebar-note-arrow {background: transparent url(/static/images/sidebar-note-arrow.png) no-repeat; width: 100%; height: 9px; margin-left: 55px}
 .sidebar-note .content {background-color: #ffffcc; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px 5px; text-align: center; box-shadow: 2px 2px 0 #fbeeaf; -moz-box-shadow: 2px 2px 0 #fbeeaf; -webkit-box-shadow: 2px 2px 0 #fbeeaf; line-height: 1.3}
 #admin a.admin-stats {font-weight: 500; width: 260px; float: left; margin-right: 10px; margin-bottom: 10px; font-size: 2.2em; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 10px 20px; border-bottom: 1px solid #564b40; background: #b4aaa0; color: white; line-height: 1.4; letter-spacing: -1px}
 #admin a.admin-stats small {letter-spacing: 0; font-weight: 300; display: block; font-size: 50%}
@@ -1120,15 +1120,15 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 .autocomplete strong {font-weight: bold; background: #e7f7fa}
 .autocomplete span {display: block; color: #666666}
 html, body {margin: 0; padding: 0; overflow-x:hidden}
-.photo.t-280 {color: #FFF; width: 280px; height: 280px; padding: 10px; background: transparent url(/images/stamp-300px.png) no-repeat}
+.photo.t-280 {color: #FFF; width: 280px; height: 280px; padding: 10px; background: transparent url(/static/images/stamp-300px.png) no-repeat}
 ul.grid {margin: 0; padding: 0 15px 15px; list-style: none}
 ul.grid li {float: left; position: relative; margin-top: 10px; margin-left: 10px}
-ul.grid li .delete {display: none; z-index: 2; width: 15px; height: 15px; position: absolute; right: 15px; top: 15px; background: transparent url(/images/delete-review-btn.png) no-repeat}
+ul.grid li .delete {display: none; z-index: 2; width: 15px; height: 15px; position: absolute; right: 15px; top: 15px; background: transparent url(/static/images/delete-review-btn.png) no-repeat}
 ul.grid li .delete:hover {background-position: -15px 0}
-ul.grid li .edit {top: 10px; left: 10px; display: none; width: 120px; height: 120px; position: absolute; background: transparent url(/images/complete-this-sighting.png) no-repeat}
+ul.grid li .edit {top: 10px; left: 10px; display: none; width: 120px; height: 120px; position: absolute; background: transparent url(/static/images/complete-this-sighting.png) no-repeat}
 ul.grid li:hover .edit, ul.grid li:hover .delete {display: block}
 ul.grid li.first {margin-left: 0}
-ul.grid li .photo.t-120 {color: #FFF; width: 120px; height: 120px; padding: 10px; margin: 0; display: block; background: transparent url(/images/stamp-140px.png) no-repeat}
+ul.grid li .photo.t-120 {color: #FFF; width: 120px; height: 120px; padding: 10px; margin: 0; display: block; background: transparent url(/static/images/stamp-140px.png) no-repeat}
 #guide-text-list {margin-bottom: 30px}
 #guide-text-list ol {padding-right: 30px; float: left; width: 255px}
 #guide-text-list ol.last {padding-right: 0}
@@ -1160,7 +1160,7 @@ ul.grid li .photo.t-120 {color: #FFF; width: 120px; height: 120px; padding: 10px
 #guide-list-view .main {width: 700px}
 .guide-creation-flow-full {box-shadow: none !important; -webkit-box-shadow: none !important; -moz-box-shadow: none !important; box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -moz-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); -webkit-box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.7); padding: 0}
 .guide-creation-flow-full .inset {padding: 20px 0; background-color: #564b40}
-.guide-creation-flow-full #create-guide-promo {float: right; width: 373px; height: 260px; opacity: 0.85; filter: alpha(opacity=8.5); background: transparent url(/images/create-guide-promo.png) no-repeat}
+.guide-creation-flow-full #create-guide-promo {float: right; width: 373px; height: 260px; opacity: 0.85; filter: alpha(opacity=8.5); background: transparent url(/static/images/create-guide-promo.png) no-repeat}
 #guide-category .category-list {width: 460px; float: left; margin-left: 20px}
 #guide-category .category-list.first {margin-left: 0}
 #guide-category .category-list ul li {margin-bottom: 20px}
@@ -1178,7 +1178,7 @@ a.start-from-scratch strong {font-style: italic}
 #guide-creation-navigation ul {float: right; border-left: 1px solid #605446}
 #guide-creation-navigation ul li {float: left; font-size: 1em; display: block; height: 45px; line-height: 45px; padding: 0 15px; cursor: default; border-right: 1px solid #605446; border-left: 1px solid #736555; color: #b4aaa0}
 #guide-creation-navigation ul li a {color: #b4aaa0}
-#guide-creation-navigation ul li.complete {color: #41382e; text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1); background-image: url(/images/step-check.png); background-repeat: no-repeat; background-position: 8px 14px; padding-left: 30px}
+#guide-creation-navigation ul li.complete {color: #41382e; text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.1); background-image: url(/static/images/step-check.png); background-repeat: no-repeat; background-position: 8px 14px; padding-left: 30px}
 #guide-creation-navigation ul li.on {background-color: #605446; background-image: -moz-linear-gradient(top, #605446, #605446); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #605446),color-stop(1, #605446)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#605446', EndColorStr='#605446'); border: 1px solid #41382e; border-top: 0; border-bottom: 0}
 #guide-creation-flow {position: relative}
 #guide-creation-flow .title {font-size: 2.2em; color: white; font-weight: 100; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
@@ -1202,18 +1202,18 @@ a.start-from-scratch strong {font-style: italic}
 #guide_photo_contest .row .items .action a:hover {color: black; border-color: #777777; text-decoration: none}
 #guide_photo_contest .row .items .action a:active {background: #dddddd}
 #guide_photo_contest .row .items .none {text-align: center; font-size: 1.1em; padding: 0 10px 10px}
-#guide_photo_contest .row .items .great-shots-count {bottom: -10px; right: -10px; width: 64px; height: 64px; color: #333333; text-indent: -2px; font-size: 2.4em; text-align: center; line-height: 60px; font-weight: bold; position: absolute; background: transparent url(/images/great-shots-count.png)}
+#guide_photo_contest .row .items .great-shots-count {bottom: -10px; right: -10px; width: 64px; height: 64px; color: #333333; text-indent: -2px; font-size: 2.4em; text-align: center; line-height: 60px; font-weight: bold; position: absolute; background: transparent url(/static/images/great-shots-count.png)}
 #guide_photo_contest .row .items .detail {color: #333333}
 #guide_photo_contest .row .items .detail strong {margin-bottom: 5px; display: block}
 #guide_photo_contest .row .items .detail p {display: block; margin-bottom: 5px}
 #sorts .create-tab {float: right !important}
 #sorts .create-tab a {background-color: #f8f8f8 !important; border: 1px solid #eeeeee; color: #666666; border-bottom: none; padding-right: 15px; padding-left: 15px}
 #sorts .create-tab a:hover {text-decoration: underline}
-#sorts .create-tab img {width: 9px; height: 9px; margin-right: 2px; overflow: hidden; background: transparent url(/images/sprites.png) no-repeat -34px -83px}
+#sorts .create-tab img {width: 9px; height: 9px; margin-right: 2px; overflow: hidden; background: transparent url(/static/images/sprites.png) no-repeat -34px -83px}
 .print-button {margin: 5px 0 0}
 .print-button:hover {text-decoration: none}
 .print-button:hover span {text-decoration: underline}
-.print-button img {width: 16px; height: 16px; overflow: hidden; vertical-align: middle; text-indent: -100000px; background: transparent url(/images/sprites.png) no-repeat 0 -184px}
+.print-button img {width: 16px; height: 16px; overflow: hidden; vertical-align: middle; text-indent: -100000px; background: transparent url(/static/images/sprites.png) no-repeat 0 -184px}
 #guide-container #guide_content {background: #f0eee4; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0}
 #guide-container #guide_content #guide-map {padding: 15px; background: #f7f6f1; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
 #guide-container #guide_content #guide-sightings-container {border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px; background-color: #f0eee4; margin-bottom: 2px}
@@ -1251,7 +1251,7 @@ ul.guide-filters li a {display: block; padding: 5px 10px}
 .tagline {color: #333333; padding-top: 2px; font-size: 1.1em}
 #guides li.guide {clear: left; padding: 15px; border-bottom: 1px dotted #dddddd; list-style: none; position: relative}
 #guides li.guide .timestamp {margin-top: 10px; color: #777777}
-#guides li.guide .unpublished {width: 76px; height: 76px; position: absolute; top: -1px; right: 0; background: transparent url(/images/guide-unpublished-badge.png) no-repeat}
+#guides li.guide .unpublished {width: 76px; height: 76px; position: absolute; top: -1px; right: 0; background: transparent url(/static/images/guide-unpublished-badge.png) no-repeat}
 #guides li.guide .delete-guide {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2); cursor: pointer; color: #333333; text-shadow: 1px 1px white; width: auto; height: 34px !important; display: block; line-height: 34px !important; font-size: 1em; font-weight: bold; padding: 0 12px; overflow: hidden; border-width: 1px; border-style: solid; border-color: #888888 #888888 #666666; background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f2f2f2),color-stop(1, #e2e2e2)); -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f2f2f2', EndColorStr='#e2e2e2'); float: right}
 #guides li.guide .delete-guide:hover {color: black; border-color: #777777; text-decoration: none}
 #guides li.guide .delete-guide:active {background: #dddddd}
@@ -1305,12 +1305,12 @@ ul.guide-filters li a {display: block; padding: 5px 10px}
 #guide-sightings li.hover .photo {display: none}
 #guide-sightings li.first {margin-left: 0}
 #guide-sightings li.odd .photo {-moz-transform: rotate(-4deg) !important; -webkit-transform: rotate(-4deg) !important}
-#guide-sightings li .photo {width: 170px; height: 170px; padding: 12px; position: absolute; z-index: 10; top: 18px; left: 18px; background: transparent url(/images/stamp-shadow-195px.png) no-repeat; -moz-transform: rotate(4deg); -webkit-transform: rotate(4deg)}
+#guide-sightings li .photo {width: 170px; height: 170px; padding: 12px; position: absolute; z-index: 10; top: 18px; left: 18px; background: transparent url(/static/images/stamp-shadow-195px.png) no-repeat; -moz-transform: rotate(4deg); -webkit-transform: rotate(4deg)}
 #guide-sightings li .photo img {width: 170px; height: 170px}
 #guide-sightings li .rank {float: right; font-size: 2.8em; margin-top: -10px; font-weight: bold; color: #777777; margin-left: 20px}
 #guide-sightings li .content {float: right; display: inline; width: 370px}
 #guide-sightings li .empty {-moz-transform: rotate(0); color: #777777; text-align: center; width: 186px; height: 186px; border: 2px dashed #b4aaa0; border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; float: left; display: inline}
-#guide-sightings li .remove-guide-sighting {top: 10px; left: 10px; width: 30px; height: 30px; display: block; overflow: hidden; position: absolute; text-indent: -10000px; background: transparent url(/images/close-button.png) no-repeat}
+#guide-sightings li .remove-guide-sighting {top: 10px; left: 10px; width: 30px; height: 30px; display: block; overflow: hidden; position: absolute; text-indent: -10000px; background: transparent url(/static/images/close-button.png) no-repeat}
 #guide-sightings li .remove-guide-sighting:hover {text-decoration: none}
 #guide-sightings li h3 {font-size: 1.5em; font-weight: bold; margin-bottom: 10px}
 #guide-sightings li h3 a {color: #111111}
@@ -1326,5 +1326,5 @@ ul.guide-filters li a {display: block; padding: 5px 10px}
 #guide-sightings li .spot-it a {padding: 50px; display: block}
 .guide_sighting_spotted a {float: left; margin-right: 5px; margin-bottom: 5px}
 .guide_sighting_spotted a img {width: 40px; height: 40px}
-#guide-sidebar-details {background-image: url(/images/guide-sidebar-badge-bg.png); background-repeat: no-repeat; background-position: top right}
+#guide-sidebar-details {background-image: url(/static/images/guide-sidebar-badge-bg.png); background-repeat: no-repeat; background-position: top right}
 

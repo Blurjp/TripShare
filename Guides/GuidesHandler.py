@@ -120,18 +120,23 @@ class ExportGuidesHandler(BaseHandler):
     def post(self):
         guide_id = self.get_argument('guide_id')
         trip_id = self.get_argument('trip_id')
-        trip_dest_place = self.syncdb.guides.find_one({'trip_id':bson.ObjectId(trip_id)})['dest_place']
+        #print('tripid++++++++'+trip_id)
+        trip_dest_place = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['dest_place']
         last_trip = trip_dest_place[len(trip_dest_place)-1]
-        #date = FromStringtoDate.ToDate(last_trip['date'])
-        date = last_trip['date']
+        date = FromStringtoDate.ToDate(last_trip['date'])
+        #date = last_trip['date']
         one_day = datetime.timedelta(days=1)
-        next_day = date+one_day
-        dest_place = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})['dest_place']
+        trip = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
+        dest_place = trip['dest_place']
+        title = trip['title']
         for dest in dest_place:
-            dest['date'] = next_day
+            next_day = date+one_day
+            dest['date'] = next_day.isoformat()
             dest['type'] = 'car'
+            title +=' to '+ dest['dest']
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
-            next_day+=one_day
+        
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})  
         #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
         self.write('Export successfully!')
 

@@ -97,7 +97,6 @@
 
         autocomplete.bindTo('bounds', map);
 
-        
         var marker = new google.maps.Marker({
           map: map
         });
@@ -197,7 +196,8 @@
 	  
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-	  	map.setCenter(results[0].geometry.location);
+	  	bounds.extend(results[0].geometry.location);
+		map.fitBounds(bounds);
         createSightsMarker(results[0].geometry.location,day, i);
 		
 		geo_results.push(results[0]);

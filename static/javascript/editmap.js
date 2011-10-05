@@ -87,17 +87,17 @@
 	temp = dest_places.replace(/u'/g,"\"");
 	temp = temp.replace(/\'/g,'\"');;
 	dest_places= jQuery.parseJSON(temp);
-	
+	var bounds = new google.maps.LatLngBounds();
 	for (var i=0; i < dest_places.length; i++) 
 	{
 	  day = dest_places[i]['day'];
 	  
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-	  	map.setCenter(results[0].geometry.location);
-        //createSightsMarker(results[0].geometry.location,day, i);
+	  	//map.setCenter(results[0].geometry.location);
+		bounds.extend(results[0].geometry.location);
+		map.fitBounds(bounds);
 		createMarker('normal', results[0].geometry.location);
-		//geo_results.push(results[0]);
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
@@ -111,6 +111,7 @@
       center: _center
     }
      map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
      directionsDisplay.setMap(map);
      infoWindow = new google.maps.InfoWindow();
      clickedOverlay = new google.maps.OverlayView();
@@ -146,7 +147,8 @@
 
   homeControlDiv.index = 2;
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);          
-  fetchPath();                                
+  fetchPath();                 
+   
   }
   
   
@@ -784,19 +786,16 @@ function codeLatLng(name) {
 			    marker.setIcon('../static/images/dest.png');
 		 		break;
 		 }
-		 
-		 
+
           google.maps.event.addListener(marker, 'click', function() {
             var myHtml = '<strong>' + '{{current_user["username"]}}' + '</strong><br/>';
             infoWindow.setContent(myHtml);
             infoWindow.open(map, marker);
           });
          google.maps.event.addListener(marker, 'dragstart', function(event){
-         dragStartPos = event.latLng;
-       
+         dragStartPos = event.latLng;       
         });
-       
-      
+
         google.maps.event.addListener(marker, 'rightclick', function(event){
        
         selectedMarker = new MarkerWrapper(markerType, marker);
@@ -807,7 +806,6 @@ function codeLatLng(name) {
         markerMenuDiv.style.top = pixel.y+ 'px';
         markerMenuDiv.style.left = pixel.x+ 'px';
                   
-                   
        // markerMenuDiv.innerHTML = mapContextHtml;       
         if(markerMenuDiv.style.visibility == "visible") 
         { 
@@ -821,9 +819,8 @@ function codeLatLng(name) {
         }
         markerMenu = new MarkerMenu(markerMenuDiv);
          });
-
-		
-         
+		 
+		 markerGroup.push(marker);
          return marker;
         }
         
@@ -854,8 +851,7 @@ function codeLatLng(name) {
              var _waypointMarker = {
             location: dragStartPos,
             stopover:true};
-            
-        
+
               var _index;
               for (var i=0; i < waypts.length; i++) 
 		     {
@@ -864,8 +860,6 @@ function codeLatLng(name) {
                  _index = i;
                 }
              }
-            
-           
                  if(_index>=0)
                  {
                  selectedPolyline.setMap(null);
