@@ -103,7 +103,7 @@ class CreateAccountHandler(BaseHandler):
                            'like_trip':[],
                            'bio':'',
                            'link': '',
-                           'trip_count':'',
+                           'trip_count':0,
                            'like_guide':[],
                            'save_guide':[],
                            'friends':[],

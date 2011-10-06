@@ -96,15 +96,15 @@ class LikeGuidesHandler(BaseHandler):
     @tornado.web.authenticated  
     def post(self, id):
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'like_guide': bson.ObjectId(id)})
-        print(check)
+        
         if check == None:
-            print('not check')
-            self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'like_guide': bson.ObjectId(id)}})
-            self.syncdb.guides.update({'guide_id': bson.ObjectId(id)}, {'$inc':{'rate': 1}})
-        else:
             print('check')
+            self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'like_guide': bson.ObjectId(id)}})
+            self.syncdb.guides.update({'guide_id': bson.ObjectId(id)}, {'$inc':{'rating': 1}, '$addToSet':{'user_like': bson.ObjectId(self.current_user['user_id'])}})
+        else:
+            print('uncheck')
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'like_guide': bson.ObjectId(id)}})
-            self.syncdb.guides.update({'guide_id': bson.ObjectId(id)}, {'$inc':{'rate': -1}})
+            self.syncdb.guides.update({'guide_id': bson.ObjectId(id)}, {'$inc':{'rating': -1}, '$pull':{'user_like': bson.ObjectId(self.current_user['user_id'])}})
 
 
 class DeleteGuidesHandler(BaseHandler):
@@ -167,7 +167,7 @@ class CreateGuidesHandler(BaseHandler):
         self.syncdb.guides.ensure_index('guide_id',  unique = True)  
         guide_id = bson.ObjectId()                      
         #self.db.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()}, callback=self._create_guide)
-        self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':'', 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':[], 'random' : random.random()})
+        self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':0, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':[], 'user_like':[], 'random' : random.random()})
         self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tag': tag}})
         self.syncdb.guides.ensure_index('rating', pymongo.DESCENDING);
         self.syncdb.guides.ensure_index('guide_id', unique=True);

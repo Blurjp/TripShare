@@ -64,7 +64,7 @@
   var selectedMarker;
   var selectedPolyline;
   
-  var routeBounds = new google.maps.LatLngBounds();
+  var bounds = new google.maps.LatLngBounds();
   var placeService;
   
   function initialize() {
@@ -108,7 +108,7 @@
             map.fitBounds(place.geometry.viewport);
           } else {
             map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
+            map.setZoom(10);  // Why 17? Because it looks good.
           }
 
           var image = new google.maps.MarkerImage(
@@ -176,8 +176,9 @@
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(homeControlDiv);
           
   SetSights(); 
-                                                     
+  //map.setZoom(10);                                                  
   }
+  
   var geo_results = []; 
   function SetSights()
   {
@@ -203,11 +204,9 @@
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	bounds.extend(results[0].geometry.location);
-		map.fitBounds(bounds);
-        createSightsMarker(results[0].geometry.location,day, i);
 		
+        createSightsMarker(results[0].geometry.location,day, i);
 		geo_results.push(results[0]);
-		//dest_places[i]['geo'].push(results[0].geometry.location);
 		
       } else {
         alert("Geocode was not successful for the following reason: " + status);
@@ -215,6 +214,7 @@
       });
  
 	}
+	map.fitBounds(bounds);
 }
   /**
  * The HomeControl adds a control to the map that simply
