@@ -488,6 +488,12 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 </div>
 
 <div class="clearfix" id="new-sighting-form">
+<div id="user-info-window">
+<div class="tip"></div>
+<strong>Welcome to TripShare!</strong>
+Share your trip or see what others have recommended near you!
+</div>
+
 <div class="pod clearfix" id="sidebar-auth-buttons">
 <div id="review-widget">
 {% if current_user%}
@@ -502,6 +508,22 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 
 </div>
+</div>
+
+<div class="sidebar right">
+<div id="sidebar-home">
+<div class="pod inset" id="sidebar-welcome">
+TripShare answers the question, "<strong>What's good around here?</strong>" by making finding &amp; sharing food recommendations as easy as snapping a photo.
+<a href="/about">Learn More »</a>
+</div>
+
+<div class="pod" id="home-featured">
+<div class="pod" id="sidebar-promo">
+<h2>Featured Guide</h2>
+<iframe frameborder="0" height="250" scrolling="no" src="" width="300"></iframe>
+
+</div>
+</div>
 
 <div class="pod clearfix">
 <div class="left" style="margin-right: 10px">
@@ -511,21 +533,6 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <a href="/android"><img alt="Android-half" src="{{ static_url("images/mobile/android.png") }}"></a>
 </div>
 </div>
-</div>
-</div>
-
-
-<div class="sidebar right">
-<div id="sidebar-home">
-<div class="pod" id="home-featured">
-<div class="pod" id="sidebar-promo">
-<h2>Featured Guide</h2>
-<iframe frameborder="0" height="250" scrolling="no" src="" width="300"></iframe>
-
-</div>
-</div>
-
-
 </div>
 
 
@@ -558,7 +565,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 {% for image in image_info %} 
 <input name="image_info" value = "{{image}}" type = "hidden">
 {% end %}
-
+</div>
 
 {% include "Module/footer.html" %}
 

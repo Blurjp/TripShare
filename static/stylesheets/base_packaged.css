@@ -916,7 +916,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #discover-map #map-welcome-box .body {font-size: 160%; margin-bottom: 20px}
 #discover-map #map-welcome-box .follow-button {margin: 0 30%}
 #map_redo_search {padding: 0 5px 5px; position: absolute; width: 200px; top: 370px; left: 20px; z-index: 10000; background-color: white}
-#map-pagination {padding-left: 140px; text-align: center; width: 980px; margin-top: 320px;z-index: 6000; position: absolute;}
+#map-pagination {padding-left: 140px; text-align: center; width: 980px; margin-top: 360px;z-index: 6000; position: absolute;}
 #map-pagination #map-sorts {margin: 0 auto; width: 400px; text-align: center; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #map-pagination #map-sorts a {width: 100px; padding: 5px 0; float: left; font-weight: bold; background-color: white; width: 99px; border-left: 1px solid #dddddd}
 #map-pagination #map-sorts a.last {border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px}

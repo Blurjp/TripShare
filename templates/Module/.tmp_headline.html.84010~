@@ -3,6 +3,7 @@
 <img src="{{ static_url("images/TripShare.png") }}" alt="TripShare">
 </a>
 <ul class="headline">
+<li><a href="/trips">Trips</a></li>
 <li><a href="/guides">Guides</a></li>
 {% if current_user%}
 <li><a href="/travelers/friends">Travelers</a></li>
