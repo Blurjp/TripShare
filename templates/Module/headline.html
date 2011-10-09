@@ -10,6 +10,21 @@
 <li><a href="/travelers/active">Travelers</a></li>
 {% end %}
 <li><a href="/blog">Blog</a></li>
+<li id="map_search">
+<fieldset id="map_fields">
+
+<div id="location-input">
+<div class="text-box active">
+<a class="clear" href="#" id="location_clear_button" onclick="clear_location(); return false;" style="">x</a>
+<input id="search_item" style="margin:5px" type="text" autocomplete="off" placeholder="People or Place">
+</div>
+</div>
+</fieldset>
+
+</li>
+<li>
+<a href="#create_trip_step_1" name="createtrip" value="Create a Trip" type="button" class="fancy">Create Trip</a>
+</li>
 </ul>
 
 <div id="loadingimage">

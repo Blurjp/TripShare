@@ -109,9 +109,6 @@ span.divider {padding: 0 2px}
 .primary-text-color, .primary-text-color a {color: #96af4b !important}
 .widget-download {display: block; margin: 15px 0}
 #sidebar-home {float: left}
-#sidebar-auth-buttons .sidebar-auth-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 100%; font-weight: 300; font-family: angie-sans,sans-serif;; font-size: 1.65em; float: left}
-#sidebar-auth-buttons .sidebar-auth-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
-#sidebar-auth-buttons .sidebar-auth-button:active, #sidebar-auth-buttons .sidebar-auth-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
 address {color: #777777; font-style: normal}
 .pager-container {height: 20px}
 .pagination {clear: both}
@@ -335,53 +332,6 @@ body {background: white}
 #user-info-window a {color: #f7f6f1}
 #new-sighting-form {z-index: 1000; margin-bottom: 20px}
 #new-sighting-form #review-widget {background-color: #f7f6f1; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0; float: left; background: #f0eee4; padding: 20px; width: 580px}
-#review-widget {z-index: 20; position: relative; float: left; height: 60px}
-#review-widget form {width: 280px; margin: 0}
-#review-widget #review-widget-error {margin: -20px -20px 10px -20px; color: #564b40; padding: 15px; text-align: center; background: #e1dcc8; font-size: 1.1em; border-bottom: 1px solid #b4aaa0; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
-#review-widget #review-widget-error strong {color: #ad3843}
-#review-widget #uploading {height: 130px; text-align: center}
-#review-widget #uploading div {padding-top: 40px}
-#review-widget #file-upload {width: 577px; height: 34px; cursor: pointer; overflow: hidden; background: transparent url(/static/images/spotting-file-upload.png)}
-#review-widget #file-upload #file-value {color: #777777; font-size: 15px; line-height: 33px; position: absolute; cursor: pointer; padding-left: 10px}
-#review-widget #file-upload .file-field {cursor: pointer; opacity: 0; filter: alpha(opacity=0); display: block; font-size: 80px; z-index: 0; width: 277px; height: 34px; left: 0; position: absolute}
-#review-widget #file-upload .file-field2 {cursor: pointer; opacity: 0; filter: alpha(opacity=0); display: block; font-size: 80px; z-index: 0; width: 277px; height: 34px; left: 0; position: absolute}
-#review-widget #file-upload.complete #file-value {background: transparent url(/static/images/spotting-check.png) no-repeat 10px 10px; padding-left: 30px}
-#review-widget #file-upload.full {width: 620px; background: white url(/static/images/review-browse-full.png) no-repeat}
-#review-widget #file-upload.full:hover, #review-widget #file-upload.full.complete {background-position: 0 0}
-#review-widget #file-upload.full .file-field {width: 200px}
-#review-widget #file-upload.full .file-field2 {width: 200px}
-#review-widget .submit {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1em; padding: 8px 12px; font-weight: normal; display: inline}
-#review-widget .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
-#review-widget .submit:active, #review-widget .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
-#review-widget .submit:hover {text-decoration: none}
-#review-widget #award_ribbon {float: right; margin-right: 10px; padding: 9px 0 8px 16px; background: transparent url(/static/images/ribbon-16px.png) no-repeat 0 50%}
-#review-widget #optional-fields {margin-top: 10px}
-#review-widget .text-box {float: left; width: 250px; padding: 6px 10px !important; position: relative; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
-#review-widget .text-box.focus {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
-#review-widget .text-box.valid {background: #96af4b !important; border-color: #96af4b !important; color: white !important}
-#review-widget .text-box.valid input {color: white !important; -webkit-text-fill-color: white !important; margin: 0 !important; font-weight: bold}
-#review-widget .text-box .clear {position: absolute; text-indent: -10000px; right: 6px; top: 7px; width: 17px; height: 17px; background: transparent url(/static/images/sprites.png) no-repeat -34px -66px}
-#review-widget .text-box .clear:hover {background-position: -51px -66px}
-#review-widget .text-box .center {text-align: center}
-#review-widget .text-box label, #review-widget .text-box input {width: 230px; font-size: 15px; line-height: 19px; font-family: inherit; margin: 0 !important; background-color: transparent}
-#review-widget .text-box label {width: 260px; color: #777777; cursor: text; text-align: left; position: absolute}
-#review-widget .text-box input {border: none; padding: 0; background: transparent}
-#review-widget .text-box.text-area-box {width: 556px; float: none}
-#review-widget .text-box.text-area-box label {width: 556px; text-align: left}
-#review-widget .text-box.text-area-box textarea {width: 556px; height: 40px; font-size: 15px; font-family: inherit; background: transparent}
-#review-widget .text-box.category {margin-right: 10px; width: 200px}
-#review-widget .text-box.category input, #review-widget .text-box.category label {width: 200px}
-#review-widget .text-box.category .results-container .results {width: 220px}
-#review-widget .text-box.tags {width: 324px; padding: 6px}
-#review-widget .text-box.tags input, #review-widget .text-box.tags label {width: 318px}
-#review-widget .text-box.tags .results {width: 344px}
-#review-widget .text-box.full label, #review-widget .text-box.full input {width: 550px; font-size: 15px; line-height: 19px; font-family: inherit; margin: 0 !important; background-color: transparent}
-#review-widget .text-box.full label {width: 550px; color: #777777; cursor: text; text-align: left; position: absolute}
-#review-widget .at {text-align: center; font-size: 1.4em; float: left; color: black; line-height: 32px; width: 33px}
-#review-widget .live-search .spinner {top: 7px}
-#review-widget .note {width: 100%; height: 64px; border: none}
-#review-widget .clear {top: 8px; right: 8px}
-#review-widget .sidebar-auth-button {margin-top:3px}
 .item-manager {position: relative; z-index: 100}
 .item-manager #manage-items {position: absolute; left: 35px; padding: 10px; width: 280px; background: white; border: 1px solid #999999}
 .item-manager #manage-items .text {width: 210px; font-size: 1em; padding: 2px 5px}
@@ -931,9 +881,9 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #map-pagination #page-left:hover {cursor: default; text-decoration: none}
 #map-pagination #page-left.enabled {color: #268ca0; text-shadow: none; background-color: white; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666}
 #map-pagination #page-left.enabled:hover {cursor: pointer; text-decoration: underline}
-#map_search {left: 50%; width: 940px; padding: 0 20px; margin: 20px 0 0 -490px; z-index: 4000; position: absolute}
-#map_search fieldset .text-box {box-shadow: inset 1px 1px 2px #555555; -moz-box-shadow: inset 1px 1px 2px #555555; -webkit-box-shadow: inset 1px 1px 2px #555555; padding-top: 9px !important; padding-bottom: 9px !important; border: none !important; float: left; position: relative; margin-top: 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
-#map_search fieldset .text-box .clear {top: 10px; right: 8px; width: 17px; height: 17px; position: absolute; text-indent: -10000px; background: transparent url(/static/images/clear-search.png) no-repeat}
+#map_search {margin-left:30px;width: 450px;}
+#map_search fieldset .text-box {box-shadow: inset 1px 1px 2px #555555; -moz-box-shadow: inset 1px 1px 2px #555555; -webkit-box-shadow: inset 1px 1px 2px #555555; padding-top: 5px !important; padding-left:5px !important;padding-bottom: 5px !important; border: none !important; float: left; position: relative; margin-top: 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#map_search fieldset .text-box .clear {top: 5px; right: 8px; width: 17px; height: 17px; position: absolute; text-indent: -10000px; background: transparent url(/static/images/clear-search.png) no-repeat}
 #map_search fieldset .text-box .clear:hover {background-position: -17px 0}
 #map_search fieldset .text-box label, #map_search fieldset .text-box input {font-size: 14px; line-height: 19px; font-family: inherit; margin: 0 !important; padding: 0 !important}
 #map_search fieldset .text-box label {color: #666666; cursor: text; text-align: left; position: absolute; overflow: hidden; white-space: nowrap}
@@ -945,9 +895,9 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #map_search .submit:hover {text-decoration: none}
 #map_search #genius-search-input {float: left}
 #map_search .location-color {color: #196473 !important}
-#map_search #location-input {width: 580px; float: left; padding-left: 100px;}
-#map_search #location-input .text-box {float: none;  width: 550px}
-#map_search #location-input .text-box label, #map_search #location-input .text-box input {width: 530px}
+#map_search #location-input {width: 480px; right:300px}
+#map_search #location-input .text-box {float: none;  width: 450px}
+#map_search #location-input .text-box label, #map_search #location-input .text-box input {width: 380px; padding-left:10px}
 #map_search #location-input .text-box label.prompted {overflow: hidden; white-space: nowrap}
 #map_search #location-input .text-box.focused {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
 #map_search #saved_locations {width: 568px; position: absolute; z-index: 100; top: 36px; left: 0; background: white; border: 1px solid #cccccc; border-top: 1px solid #eeeeee; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px}
