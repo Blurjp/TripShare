@@ -219,11 +219,11 @@ class TravelersHandler(BaseHandler):
     def get(self, type):
 
         if (type == '' or type == 'friends'):
-                self.render("travelers.html", users = self.db.users['friends'])
+                self.db.users.find(sort = [('trips.count()', -1)], callback=self._people_entry)
         elif (type == 'active'):
-                self.db.users.find(sort = ['trips.count()', -1], callback=self._people_entry)
+                self.db.users.find(sort = [('trips.count()', -1)], callback=self._people_entry)
         elif (type == 'latest'):
-                self.db.users.find(sort = ['createdtime', -1] , callback=self._people_entry)  
+                self.db.users.find(sort = [('createdtime', -1)] , callback=self._people_entry)  
                   
     def _people_entry(self, response, error):
         if error:
@@ -237,9 +237,9 @@ class UserHandler(BaseHandler):
     @tornado.web.asynchronous
     def get(self, slug):
         
-        self.user = self.syncdb.users.find({'slug':slug}).limit(1)
+        self.user = self.syncdb.users.find_one({'slug':slug})
         if self.user:
-            self.db.trips.find({'owner_id':self.user[0]['user_id']}, sort = [('published', -1)], callback=self._user_entry)
+            self.db.trips.find({'trip_id':{'$in':self.user['trips']}}, sort = [('published', -1)], callback=self._user_entry)
         else:
             self.redirect("exception.html")
                   
@@ -247,7 +247,7 @@ class UserHandler(BaseHandler):
         if error:
             raise tornado.web.HTTPError(500)
         
-        self.render("userentry.html", user = self.user[0], trips = response)
+        self.render("userentry.html", user = self.user, trips = response)
 
 class AddUserToTripHandler(BaseHandler):
     userid = None

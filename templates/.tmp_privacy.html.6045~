@@ -28,7 +28,8 @@ Privacy Policy
 <div id='nav-bar'> 
 
  {% include "Module/headline.html" %}
-
+ 
+ {% include "Module/userentry.html" %}
  
  {% include "Module/usersetting.html" %}
  

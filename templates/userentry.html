@@ -42,12 +42,10 @@
       <div id='header'> 
 <div class='clearfix' id='nav-bar'> 
 
- 
  {% include "Module/headline.html" %}
-
-{{ modules.UserEntry() }}
-
-{{ modules.UserSetting() }}
+ 
+ 
+ {% include "Module/usersetting.html" %}
   
 
 <div id='container'> 
@@ -57,86 +55,27 @@
 <div class='hgroup clearfix'> 
 <h1></h1> 
 </div> 
-<div class='sidebar'> 
-<div id="xri">
-
-
-<a href="/addfriend/{{user['user_id']}}" name="focus" class="xf xbj">Add friend</a>
-
-
-
-<a class="xe" title="Send Message" target="_blank" href="/inbox/{{user['user_id']}}"><span class="xi"></span></a>
-
-</div>
-<div class='pod inset'> 
-<h2>Search all Friend</h2> 
-<form accept-charset="UTF-8" action="/Friend" class="default" id="find-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div> 
-<fieldset> 
-<input id="sort" name="sort" type="hidden" /> 
-<input class="perfect-blue inline right" style="margin:0" type="submit" value="Search" /> 
-<input class="text left" id="q" name="q" size="20" style="margin-right:5px;width:195px" type="text" /> 
-</fieldset> 
-</form> 
- 
-</div> 
-<div id='sidebar-leaderboard'> 
-<div class='pod cpod'> 
-<h2> 
-Friend to follow
-</h2> 
-<ul class='top_foodspotters'> 
-<li class='person clearfix'> 
-<a class="follow-button primary-background-color" href="#" id="Person_459" onclick="FS.authenticate(&quot;if ($('Person_459').submittable != false) { $('Person_459').addClassName('loading'); new Ajax.Request('/followings?followable_id=459&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_459').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
- 
-<a href="/rfung8" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/459/small_thumb.jpg?1304050232" /></a> 
-<div class='meta'> 
-<strong class='name'><a href="/rfung8">Randy F.</a></strong> 
-<span class='points'> 
-183,430
-points
-</span> 
-</div> 
-</li> 
- 
-</ul> 
-</div> 
- 
-<div class='pod cpod inset'> 
-<h2> 
-This Week's Top Foodspotters
-</h2> 
-<ul class='top_foodspotters'> 
-<li class='person clearfix'> 
-<a class="follow-button primary-background-color" href="#" id="Person_121054" onclick="FS.authenticate(&quot;if ($('Person_121054').submittable != false) { $('Person_121054').addClassName('loading'); new Ajax.Request('/followings?followable_id=121054&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('WBPgpiEO/hJfSPl1Lqhl6ZiQ3T51ql30oMcveoQOuZs=')}); $('Person_121054').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1305156180" />Follow</a> 
- 
-<a href="/121054-toshie" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/Friend/121054/small_thumb.JPG?1295626055" /></a> 
-<div class='meta'> 
-<strong class='name'><a href="/121054-toshie">Toshie</a></strong> 
-<span class='points'> 
-17,115
-points
-</span> 
-</div> 
-</li>  
- 
-</ul> 
-</div> 
- 
-</div> 
- 
-</div> 
-<div class='main'> 
-<ul class='list Friend'> 
 {% if user %}
-   {{ modules.FriendEntry(user, trips) }}
+{% include "Module/user_detail.html" %}
 {% end %}
-</ul> 
+<div class='main'> 
 
+<ul class='list Friend'>
+{% if user %}
+{% include "Module/friendentry.html" %}
+{% end %}
+</ul>
+
+<h2>Trips:</h2>
+<ul class="trip_list" id="db-reviews">
+  {% for trip in trips %} 
+   {% include "Module/trip.html" %}
+  {% end %}
+</ul>
 </div> 
- 
-        </div> 
-      </div> 
-    </div> 
+</div> 
+</div> 
+</div> 
     
 {% include "Module/footer.html" %}
  

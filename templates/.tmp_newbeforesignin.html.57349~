@@ -154,7 +154,7 @@
 		setMarkers(map);
 		
 		   /*   Autocomplete   */
-        var input = document.getElementById('location');
+        var input = document.getElementById('search_item');
 		
         var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -249,12 +249,7 @@
       var image,shadow;
 	  var image_split;
 	  var image_url, image_title, image_startPlace, image_id;
-     
-    
-      
-  
 
- 
   for (var i = 0; i < user_images.length; i++) {
       image_split = user_images.item(i).value.split(';');
 //	  temp = image_split[0].split(' to ');
@@ -306,6 +301,7 @@ function DestToMarker(dest_places, image, shadow)
 	
 	for (var i=0; i < dest_places.length; i++) 
 	{
+	
 	  day = dest_places[i]['day'];
 	  
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
@@ -374,42 +370,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 
 <div id="partner-header">
-  <form action="http://www.foodspotting.com/" class="default" id="map_search" method="post" onsubmit="if (FSMap.check_submittable()) { FSMap.prepare_search(); new Ajax.Request('http://www.foodspotting.com/', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); }; return false;">
-<div style="display:none">
-<input id="ajax_datetime" name="ajax" type="hidden" value="1298607224614">
-<input id="page_hidden_field" name="page" type="hidden" value="">
-<input id="sort_hidden_field" name="sort" type="hidden">
-<input id="filter_hidden_field" name="filter" type="hidden">
-<input id="query_hidden_field" name="q" type="hidden">
-<input id="loc_hidden_field" name="loc" type="hidden" value="">
-<input id="sw_hidden_field" name="sw" type="hidden" value="20.13847031245115, 174.111328125">
-<input id="ne_hidden_field" name="ne" type="hidden" value="48.574789910928864, -46.58203125">
-<input id="lat_hidden_field" name="lat" type="hidden">
-<input id="lng_hidden_field" name="lng" type="hidden">
-<input id="track_search" name="track_search" type="hidden" value="">
-<input id="track_location" name="track_location" type="hidden" value="">
-</div>
-<fieldset id="map_fields">
-<input class="submit" type="submit" value="Search">
-<div id="location-input">
-<div class="text-box">
-<a class="clear" href="#" id="location_clear_button" onclick="clear_location(); return false;" style="">x</a>
-<label class="prompted" for="location" id="set_location_label">YOUR LOCATION: <strong class="location-color">Map Area</strong></label>
-<input class="text" id="location" type="text" autocomplete="off">
-<div id="saved_locations" style="display:none">
-<ul id="saved_location_ul"><li class="current-location"><a href="" onclick="FSMap.get_client_location();return false;">Current Location</a></li>
-<li class="anywhere"><a href="#" onclick="clear_location(); return false;">Anywhere</a></li>
-<li class="saved-locations-title">Saved Locations:</li>
-</ul>
-</div>
 
-
-
-</div>
-</div>
-
-</fieldset>
-    </form>
 	
 <div id="map-pagination">
 <a href="#" id="page-right" onclick="; return false;" class="enabled">Next 20</a>
@@ -487,36 +448,11 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 </div>
 </div>
 
-<div class="clearfix" id="new-sighting-form">
-<div id="user-info-window">
-<div class="tip"></div>
-<strong>Welcome to TripShare!</strong>
-Share your trip or see what others have recommended near you!
-</div>
-
-<div class="pod clearfix" id="sidebar-auth-buttons">
-<div id="review-widget">
-{% if current_user%}
-<a href="#create_trip_step_1" name="createtrip" value="Create a Trip" style="width:180px;margin-right:10px" class="sidebar-auth-button">Create Trip</a>
-<!--<a href="#pinplace" name="pinplace"  value="Pin a Place" style="width:180px;margin-right:10px" class="sidebar-auth-button" >Pin a Place</a>-->
-<a href="#create_guide_step_1" name="createguide"  value="Create Guide" style="width:180px;margin-right:10px" class="sidebar-auth-button" >Create Guide</a>
-{% else %}
-<a href="#login" name="modal2" value="login" style="width:180px;margin-right:10px" class="sidebar-auth-button">Create Trip</a>
-<!--<a href="#login" name="pinplace"  value="Pin a Place" style="width:180px;margin-right:10px" class="sidebar-auth-button">Pin a Place</a>-->
-<a href="#login" name="createguide"  value="Create Guide" style="width:180px;margin-right:10px" class="sidebar-auth-button" >Create Guide</a>
-{% end %}
 
 
-</div>
-</div>
 
 <div class="sidebar right">
 <div id="sidebar-home">
-<div class="pod inset" id="sidebar-welcome">
-TripShare answers the question, "<strong>What's good around here?</strong>" by making finding &amp; sharing food recommendations as easy as snapping a photo.
-<a href="/about">Learn More »</a>
-</div>
-
 <div class="pod" id="home-featured">
 <div class="pod" id="sidebar-promo">
 <h2>Featured Guide</h2>
@@ -525,14 +461,7 @@ TripShare answers the question, "<strong>What's good around here?</strong>" by m
 </div>
 </div>
 
-<div class="pod clearfix">
-<div class="left" style="margin-right: 10px">
-<a href="/iphone"><img alt="Iphone-half" src="{{ static_url("images/mobile/iphone.png") }}"></a>
-</div>
-<div class="left">
-<a href="/android"><img alt="Android-half" src="{{ static_url("images/mobile/android.png") }}"></a>
-</div>
-</div>
+
 </div>
 
 
@@ -565,7 +494,7 @@ TripShare answers the question, "<strong>What's good around here?</strong>" by m
 {% for image in image_info %} 
 <input name="image_info" value = "{{image}}" type = "hidden">
 {% end %}
-</div>
+
 
 {% include "Module/footer.html" %}
 

@@ -1,0 +1,96 @@
+<div class='sidebar vcard'> 
+<div class='pod sidebar-counts clearfix'> 
+<table> 
+<tr> 
+<td> 
+<div class='inset'> 
+<strong class='primary-text-color'>{{len(current_user['city'])}}</strong> 
+city have been
+</div> 
+</td> 
+<td class='last'> 
+<div class='inset'> 
+<strong class='primary-text-color'>{{len(current_user['trips'])}}</strong> 
+trips created
+</div> 
+</td> 
+</tr> 
+</table> 
+</div> 
+<div class='pod cpod'> 
+<div id='dashboard-profile'> 
+<a href="{{current_user['picture']}}" class="avatar" target="_blank"><img class="picture medium" src="{{current_user['picture']}}" /></a> 
+<div class='details'>
+<strong class='fn'>{{current_user['slug']}}</strong> 
+<div class='url' rel='me nofollow'><a href="/people/notifications" target="_blank" title=""></a></div> 
+<small style='white-space:nowrap'> 
+{{current_user['link']}}
+</small> 
+</div> 
+</div> 
+<h2> 
+<small class='right'> 
+<a href="/settings">Edit Profile and Settings</a> 
+</small> 
+About
+</h2> 
+<dl class='dlist' style='margin-bottom:0'> 
+<dt>Location:</dt> 
+<dd class='adr'>New york</dd> 
+</dl> 
+</div> 
+<div class='pod cpod'> 
+<h2>Friends</h2> 
+<dl class='dlist pod clearfix' style='margin-bottom:0'> 
+
+<dd class='following-avatar-list clearfix'> 
+{% for user in current_user['friends'] %}
+<span class='avatar tooltip vcard' title="{{user['slug']}}"> 
+<a href="/{{user['slug']}}" class="url" rel="contact"><img alt="Small_thumb" class="photo fn" src="{{user['picture']}}" /></a> 
+</span> 
+{% end %}
+</dd> 
+</dl> 
+</div> 
+<div class='pod inset clearfix'> 
+<h2>Find your friends</h2> 
+<div id='import-friend-options'> 
+<ul class='clearfix'> 
+<li class='twitter first'> 
+<a href="/twitter_auth" class="friend-import-button" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;f.submit();return false;"><img alt="Clear" src="/images/clear.png?1301466043" /> Twitter</a> 
+</li> 
+<li class='facebook'> 
+<a href="/find_friends?client=facebook" class="friend-import-button"><img alt="Clear" src="/images/clear.png?1301466043" /> Facebook</a> 
+</li> 
+<li class='search first'> 
+<a href="/people" class="friend-import-button"><img alt="Clear" src="/images/clear.png?1301466043" /> Search</a> 
+</li> 
+<li class='email'> 
+<a class="friend-import-button" href="#" id="email-friend-button" onclick="$('invite-email-form').toggle(); return false;"><img alt="Clear" src="/images/clear.png?1301466043" /> Invite</a> 
+</li> 
+</ul> 
+<form action="/find_friends/email" class="default" id="invite-email-form" method="post" onsubmit="new Ajax.Request('/find_friends/email', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;" style="display: none"> 
+<div> 
+<input id="client" name="client" type="hidden" value="email" /> 
+</div> 
+<div class='row cleafix'> 
+<div class='text-box'> 
+<label class="prompted" for="emails">Emails (comma-separated)</label> 
+<textarea id="emails" name="emails"></textarea> 
+</div> 
+</div> 
+<div class='row cleafix'> 
+<a href="#" onclick="$(this).hide();$('email-custom-message').show(); return false;">Add a custom message</a> 
+<div class='text-box' id='email-custom-message' style='display:none'> 
+<textarea id="message" name="message"></textarea> 
+</div> 
+</div> 
+<input class="submit" name="commit" type="submit" value="Send Invites" /> 
+  </form> 
+ 
+</div> 
+ 
+</div> 
+
+
+</div> 

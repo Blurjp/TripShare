@@ -412,22 +412,20 @@ body {background: white}
 .right {float: right !important}
 .left {float: left !important}
 .full {width: auto !important; float: none !important; display: block !important}
-#header #nav-bar {height: 65px;}
-#header #nav-bar #logo-small {margin: 0 0px 14px 0; float: left}
+#header #nav-bar {height: 55px;}
+#header #nav-bar #logo-small {margin:  0; float: left}
 #header #nav-bar #logo-small a {font-weight: 100; font-style: italic; font-size: 120%; font-family: "museo-slab-1", "museo-slab-2", serif}
-#header #nav-bar #logo-small img {padding-left: 50px;padding-right:10px; height:60px; width: 140px}
+#header #nav-bar #logo-small img {padding-left: 50px;padding-right:10px; height:55px; width: 140px}
 
-#header #nav-bar .logged-out-actions {color: white; text-align: center}
-#header #nav-bar .logged-out-actions a {color: #e1dcc8; text-decoration: underline}
-#header #nav-bar .logged-out-actions a:hover {color: #f7f6f1}
-#header #nav-bar ul.headline {float: left}
+#header #nav-bar .content {position: relative;width: 1240px;padding: 0 20px;margin: 0 auto; }
+#header #nav-bar ul.headline { float: left; }
 #header #nav-bar ul.headline li {padding: 20px 7px; float: left; margin-right: 5px}
 #header #nav-bar ul.headline li.last {margin-right: 0}
 #header #nav-bar ul.headline li.on {background: #564b40; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px 6px; margin: 15px 4px 14px 0; border-right: 1px solid #1e0f00; border-bottom: 1px solid #1e0f00}
 #header #nav-bar ul.headline li.on a:hover {text-decoration: none}
 #header #nav-bar ul.headline li a {font-size: 1.2em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
 #header #nav-bar ul.headline li a:hover {}
-#header #nav-bar .logged-out-actions {float: right; padding: 20px 0 0}
+#header #nav-bar #mini-profile {float: right;padding: 12px 0 0; }
 
 
 #dashboard-profile {*display: inline-block; margin-bottom: 10px}
@@ -435,7 +433,7 @@ body {background: white}
 #dashboard-profile .avatar {float: left; width: 90px; height: 90px}
 #dashboard-profile .avatar img {width: 90px; height: 90px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #dashboard-profile .fn a {color: black}
-#dashboard-profile .details {margin-left: 100px}
+#dashboard-profile .details {float: left;margin-left:10px}
 #dashboard-profile .details h2 {padding-top: 1px; margin-bottom: 2px; border: none}
 #dashboard-profile .details h3 {font-size: 1.2em; margin-bottom: 5px}
 .following-avatar-list .avatar {float: left; margin-right: 5px}
@@ -854,8 +852,8 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 .marker-rotate {-webkit-transform: rotate(-8deg); -o-transform: rotate(-8deg); -moz-transform: rotate(-8deg); border: 3px solid white !important; margin: -1px 0 0 -1px !important}
 #back_to_map {padding: 10px; position: fixed; z-index: 10; background: #eeeeee; right: 100px; top: -1px; border: 1px solid #999999; box-shadow: 0 1px 5px #cccccc; -moz-box-shadow: 0 1px 5px #cccccc; -webkit-box-shadow: 0 1px 5px #cccccc; border-radius: 0 0 5px 5px; -moz-border-radius: 0 0 5px 5px; -webkit-border-radius: 0 0 5px 5px}
 #mapContainer {width: 280px; height: 100px; position: relative; overflow: hidden}
-#map, #discover-map {width: 100%; height: 100%; }
-#discover-map {width: 100%; height: 400px; position: relative}
+#map{width: 100%; height: 100%; }
+#discover-map {width: 100%; height: 420px; position: relative}
 #discover-map #map-promo {z-index: 1001; position: absolute; top: 70px; right: 20px; width: 320px; height: 270px}
 #discover-map #map-promo .promo {padding: 10px; position: relative; z-index: 10}
 #discover-map #map-promo .screen {position: absolute; top: 0; width: 320px; height: 270px; background: #111111; border: 1px solid black; opacity: 0.6; filter: alpha(opacity=6); border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
@@ -881,22 +879,19 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #map-pagination #page-left:hover {cursor: default; text-decoration: none}
 #map-pagination #page-left.enabled {color: #268ca0; text-shadow: none; background-color: white; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666}
 #map-pagination #page-left.enabled:hover {cursor: pointer; text-decoration: underline}
-#map_search {margin-left:30px;width: 450px;}
-#map_search fieldset .text-box {box-shadow: inset 1px 1px 2px #555555; -moz-box-shadow: inset 1px 1px 2px #555555; -webkit-box-shadow: inset 1px 1px 2px #555555; padding-top: 5px !important; padding-left:5px !important;padding-bottom: 5px !important; border: none !important; float: left; position: relative; margin-top: 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#map_search {width: 350px;}
+#map_search fieldset .text-box {box-shadow: inset 1px 1px 2px #555555; -moz-box-shadow: inset 1px 1px 2px #555555; -webkit-box-shadow: inset 1px 1px 2px #555555; padding-top: 5px !important; padding-left:5px !important;border: none !important; float: left; position: relative; margin-top: 0; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #map_search fieldset .text-box .clear {top: 5px; right: 8px; width: 17px; height: 17px; position: absolute; text-indent: -10000px; background: transparent url(/static/images/clear-search.png) no-repeat}
 #map_search fieldset .text-box .clear:hover {background-position: -17px 0}
 #map_search fieldset .text-box label, #map_search fieldset .text-box input {font-size: 14px; line-height: 19px; font-family: inherit; margin: 0 !important; padding: 0 !important}
 #map_search fieldset .text-box label {color: #666666; cursor: text; text-align: left; position: absolute; overflow: hidden; white-space: nowrap}
 #map_search fieldset .text-box label strong {color: #111111}
 #map_search fieldset .text-box input {border: none; background: transparent}
-#map_search .submit { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1em;  width: 80px; height: 36px; font-weight: normal; display: inline; margin-top: 0}
-#map_search .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
-#map_search .submit:active, #map_search .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
-#map_search .submit:hover {text-decoration: none}
+
 #map_search #genius-search-input {float: left}
 #map_search .location-color {color: #196473 !important}
-#map_search #location-input {width: 480px; right:300px}
-#map_search #location-input .text-box {float: none;  width: 450px}
+#map_search #location-input {width: 380px; right:300px}
+#map_search #location-input .text-box {float: none;  width: 350px}
 #map_search #location-input .text-box label, #map_search #location-input .text-box input {width: 380px; padding-left:10px}
 #map_search #location-input .text-box label.prompted {overflow: hidden; white-space: nowrap}
 #map_search #location-input .text-box.focused {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
