@@ -38,19 +38,12 @@
 </div> 
  
 <div id='header'> 
-<div id='nav-bar'> 
+<div class='clearfix'  id='nav-bar'> 
 
- 
  {% include "Module/headline.html" %}
-
-{{ modules.UserEntry() }}
-
-{{ modules.UserSetting() }}
-  
-
-      
-      
  
+ 
+ {% include "Module/usersetting.html" %}
       <div id='container'> 
         <a href="#" id="back_to_map" onclick="FS.hide_back_to_map();; return false;" style="display:none">Take me Back To The Map!</a> 
          
@@ -69,17 +62,7 @@
 <h1>People</h1>
 </div>
 <div class="sidebar">
-<div class="pod inset">
-<h2>Search all people</h2>
-<form accept-charset="UTF-8" action="/people" class="default" id="find-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
-<fieldset>
-<input id="sort" name="sort" type="hidden">
-<input class="perfect-blue inline right" style="margin:0" type="submit" value="Search">
-<input class="text left" id="q" name="q" size="20" style="margin-right:5px;width:195px" type="text">
-</fieldset>
-</form>
 
-</div>
 <div class="pod inset clearfix">
 <h2>Find your friends</h2>
 <div id="import-friend-options">

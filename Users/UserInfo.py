@@ -329,6 +329,20 @@ class GetFriendHandler(BaseHandler):
         user = self.syncdb.users.find({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
         self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
+class FriendActionHandler(BaseHandler):  
+    @tornado.web.authenticated
+    def get(self):
+        
+        user_id = self.get_argument('user_id')
+        friend = self.syncdb.users.find({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$in':{'friends':user_id}})
+        if friend:
+            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'friends':user_id}})
+        else:
+            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'friends':user_id}})
+        
+        #self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+
+
         
 class SearchFriendHandler(BaseHandler):  
     def get(self, name):   
@@ -342,6 +356,7 @@ class SearchFriendHandler(BaseHandler):
         
 class UserPictureHandler(BaseHandler):
     
+    @tornado.web.authenticated
     @tornado.web.asynchronous 
     def post(self):
         user_id = self.get_secure_cookie("user")

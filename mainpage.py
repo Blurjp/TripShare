@@ -36,6 +36,7 @@ from Users.UserInfo import FollowUserHandler
 from Users.UserInfo import SearchUserHandler
 from Users.UserInfo import SearchFriendHandler
 from Users.UserInfo import GetFriendHandler
+from Users.UserInfo import FriendActionHandler
 from Users.UserInfo import UnFollowUserHandler
 from Users.UserInfo import TravelersHandler
 from Users.UserInfo import AddUserToTripHandler
@@ -192,8 +193,11 @@ class Application(tornado.web.Application):
                                       (r"/searchpeople/([^/]+)", SearchUserHandler),
                                       (r"/realtime_searchpeople/([^/]+)", RealTimeSearchUserHandler),
                                       (r"/checkuserintrip/([^/]+)/([^/]+)", CheckUserinTripHandler),
+                                      
                                       (r"/searchfriend/([^/]+)", SearchFriendHandler),
                                       (r"/getfriends", GetFriendHandler),
+                                      (r"/getfriends", FriendActionHandler),
+                                      
                                       (r"/travelers/([^/]+)", TravelersHandler),
                                       (r"/people/([^/]+)", UserHandler),
                                       (r"/addusertotrip/([^/]+)/([^/]+)", AddUserToTripHandler),

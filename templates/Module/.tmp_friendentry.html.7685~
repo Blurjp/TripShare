@@ -15,19 +15,10 @@
 <strong><h2 class="user_name">{{user['username']}}</h2></strong>
 
 <span class="city">{{user['city']}}</span>
-<span class="hobby">{{user['hobby']}}</span>
+
 <a href="{{user['link']}}" rel="nofollow" target="_blank">{{user['link']}}</a>
 </div>
 
 <div class="details">
-
-
-<ul class="list" id="db-reviews">
-{% if trips %}
-
-   {{ modules.Entry(trips) }}
-
-{% end %}
-</ul>
 </div>
 </li>
