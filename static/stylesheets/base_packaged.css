@@ -417,6 +417,10 @@ body {background: white}
 #header #nav-bar #logo-small a {font-weight: 100; font-style: italic; font-size: 120%; font-family: "museo-slab-1", "museo-slab-2", serif}
 #header #nav-bar #logo-small img {padding-left: 50px;padding-right:10px; height:55px; width: 140px}
 
+#header #nav-bar .logged-out-actions {color: white; text-align: center}
+#header #nav-bar .logged-out-actions a {color: #e1dcc8; text-decoration: underline}
+#header #nav-bar .logged-out-actions a:hover {color: #f7f6f1}
+#header #nav-bar .logged-out-actions {float: right; padding: 20px 0 0}
 #header #nav-bar .content {position: relative;width: 1240px;padding: 0 20px;margin: 0 auto; }
 #header #nav-bar ul.headline { float: left; }
 #header #nav-bar ul.headline li {padding: 20px 7px; float: left; margin-right: 5px}

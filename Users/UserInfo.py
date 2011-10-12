@@ -247,7 +247,8 @@ class UserHandler(BaseHandler):
         if error:
             raise tornado.web.HTTPError(500)
         
-        self.render("userentry.html", user = self.user, trips = response)
+       
+        self.render("userentry.html", custom_user = self.user, trips = response)
 
 class AddUserToTripHandler(BaseHandler):
     userid = None
@@ -331,20 +332,23 @@ class GetFriendHandler(BaseHandler):
 
 class FriendActionHandler(BaseHandler):  
     @tornado.web.authenticated
-    def get(self):
+    def post(self):
         
         user_id = self.get_argument('user_id')
-        friend = self.syncdb.users.find({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$in':{'friends':user_id}})
-        if friend:
-            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'friends':user_id}})
-        else:
+        
+        user_friends = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.current_user['user_id'])})['friends']
+        if user_id in user_friends:
+            
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'friends':user_id}})
+        else:
+            print(user_id)
+            self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'friends':user_id}})
         
         #self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
 
         
-class SearchFriendHandler(BaseHandler):  
+class SearchFriendHandler(BaseHandler):
     def get(self, name):   
         _name = name.upper()
         users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})

@@ -53,6 +53,7 @@ from Guides.GuidesHandler import CategoryGuidesHandler
 from Comment.CommentHandler import PostCommentHandler
 from Comment.CommentHandler import DeleteCommentHandler
 from Comment.CommentHandler import PostFeedHandler
+from Exception.ExceptionHandler import ExceptionPage
 #import tornado.database
 import tornado.httpserver
 import tornado.ioloop
@@ -196,7 +197,7 @@ class Application(tornado.web.Application):
                                       
                                       (r"/searchfriend/([^/]+)", SearchFriendHandler),
                                       (r"/getfriends", GetFriendHandler),
-                                      (r"/getfriends", FriendActionHandler),
+                                      (r"/friendaction", FriendActionHandler),
                                       
                                       (r"/travelers/([^/]+)", TravelersHandler),
                                       (r"/people/([^/]+)", UserHandler),
@@ -214,6 +215,8 @@ class Application(tornado.web.Application):
                                       (r"/messages", MessageHandler),
                                       (r"/notifications", NotificationHandler),
                                       (r"/static/images/(.*)", tornado.web.StaticFileHandler, {"path": "/home/jason/workspace/TripShare/static/images"}),
+                                      
+                                      (r"/exception", ExceptionPage),
                           ]
                             settings = dict(
                                       blog_title=u"Tornado Trip",

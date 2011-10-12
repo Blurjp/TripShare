@@ -1,22 +1,12 @@
 <li class="person clearfix">
-{% if current_user['slug'] not in user['slug'] %}
-<div class="actions right">
 
-{% if current_user not in user['friends'] %} 	
-<a class="follow-button primary-background-color" href="#{{user['user_id']}}" id="{{user['user_id']}}" onclick="followpeople(); return false;">Follow</a>
-{% else %}
-<a class="follow-button primary-background-color" href="#{{user['user_id']}}" id="{{user['user_id']}}" onclick="unfollowpeople(); return false;">UnFollow</a>
-{% end %}
-
-</div>
-{% end %}
 <div class="hsubgroup">
-	<a href="/people/{{user['slug']}}" class="avatar"><img class="picture xlarge" alt="Small_thumb" src="{{user['picture']}}"></a>
-<strong><h2 class="user_name">{{user['username']}}</h2></strong>
+	<a href="/people/{{custom_user['slug']}}" class="avatar"><img class="picture xlarge" alt="Small_thumb" src="{{custom_user['picture']}}"></a>
+<strong><h2 class="user_name">{{custom_user['username']}}</h2></strong>
 
-<span class="city">{{user['city']}}</span>
+<span class="city">{{custom_user['city']}}</span>
 
-<a href="{{user['link']}}" rel="nofollow" target="_blank">{{user['link']}}</a>
+<a href="{{custom_user['link']}}" rel="nofollow" target="_blank">{{custom_user['link']}}</a>
 </div>
 
 <div class="details">

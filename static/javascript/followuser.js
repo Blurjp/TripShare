@@ -1,4 +1,23 @@
 
+$('.friendaction').live('click',function(){
+	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid')};
+	 $.postJSON('/friendaction',content,function(response){
+	 	
+	 	
+	 });
+});	
+
+function getCookie(name) {
+    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return r ? r[1] : undefined;
+    }
+	
+jQuery.postJSON = function(url, args, callback) {
+	
+	//alert(_data);
+    $.ajax({url: url, data: $.param(args), type: "POST", dataType:"text", success: function(data, textStatus) {if (callback) callback(data);}, error: function(response) {console.log("ERROR:", response)}});
+	};
+	
 	//add as friend
 function followpeople(_url) {
 

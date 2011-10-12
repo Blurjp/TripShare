@@ -52,15 +52,17 @@
 <div class='hgroup clearfix'> 
 <h1></h1> 
 </div> 
-{% if user %}
+{% if current_user %}
+{% include "Module/self_detail.html" %}
+{% else %}
 {% include "Module/user_detail.html" %}
 {% end %}
 <div class='main'> 
 
 <ul class='list Friend'>
-{% if user %}
+
 {% include "Module/friendentry.html" %}
-{% end %}
+
 </ul>
 
 <h2>Trips:</h2>

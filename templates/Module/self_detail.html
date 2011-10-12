@@ -1,4 +1,14 @@
 <div class='sidebar vcard'> 
+<div id="xri">
+
+   {% if custom_user['user_id'] not in current_user['friends']%}
+<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Add friend</a>
+   {% else %}
+<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Remove friend</a>
+   {% end %}
+
+<a class="xe" title="Send Message" target="_blank" sid="{{custom_user['user_id']}}" href="/sendmessage"><span class="xi"></span></a>
+</div>
 <div class='pod sidebar-counts clearfix'> 
 <table> 
 <tr> 
