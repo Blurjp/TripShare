@@ -1,19 +1,8 @@
 <div class='sidebar vcard'> 
 <div id="xri">
-{%if current_user %}
-{%if custom_user['user_id'] in current_user['friends'] %}
-<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Add friend</a>
-{%else%}
-<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Remove friend</a>
-{%end %}
-{%else%}
 <a href="/login" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Add friend</a>
-{%end %}
-
-
-<a class="xe" title="Send Message" target="_blank" sid="{{custom_user['user_id']}}" href="/sendmessage"><span class="xi"></span></a>
+<a class="xe" title="Send Message" target="_blank" sid="{{custom_user['user_id']}}" href="/login"><span class="xi"></span></a>
 </div>
-
 <div class="pod sidebar-counts clearfix">
 <table>
 <tbody><tr>
@@ -51,13 +40,18 @@ About
 </h2>
 <dl class="dlist" style="margin-bottom:0">
 <dt>Location:</dt>
-<dd class="adr">New york</dd>
+<dd class="adr">{{custom_user['current_location']}}</dd>
 </dl>
 </div>
 <div class="pod cpod">
 <h2>Friends</h2>
 <dl class="dlist pod clearfix" style="margin-bottom:0">
 <dd class="following-avatar-list clearfix">
+{% for user in custom_user['friends'] %}
+<span class='avatar tooltip vcard' title="{{user['slug']}}"> 
+<a href="/people/{{user['slug']}}" class="url" rel="contact"><img alt="Small_thumb" class="photo fn" src="{{user['picture']}}" /></a> 
+</span> 
+{% end %}
 </dd>
 </dl>
 </div>

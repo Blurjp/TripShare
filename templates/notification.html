@@ -25,8 +25,6 @@ Notifications
 <div id="nav-bar"  >
  {% include "Module/headline.html" %}
  {% include "Module/usersetting.html" %}
- 
- 
 <div class='clearfix' id='container'> 
 <a href="#" id="back_to_map" onclick="FS.hide_back_to_map();; return false;" style="display:none">Take me Back To The Map!</a> 
 <div class='clearfix' id='content'> 
@@ -35,11 +33,14 @@ Notifications
 <div class='right'><a href="/settings/notifications">Notification Preferences</a></div> 
 <ul class="user_action">
 	<li>
-	<a id="tf-efe4eef5cd217b1b7b8782b87c664767" name="focus" class="xb xdg">关注</a>
+	<a id="tf-efe4eef5cd217b1b7b8782b87c664767" name="focus" class="xb xdg">focus</a>
 	</li>	
+	<a>action1</a>
 	<li>
+		<a  >action2</a>
 	</li>
 	<li>
+		<a  >action3</a>
 	</li>
 </ul>
 <h1>Notifications</h1> 
@@ -50,35 +51,32 @@ Notifications
 <div class='main'> 
 <div id='notifications'> 
 <ul class='notifications'> 
-
+{% for notification in current_user['notifications'] %}
 <li class='clearfix first last notification'> 
 <div class='avatar'> 
-<a href="/152976-regan"><img alt="Missing" src="/avatars/small_thumb/missing.png?1301466039" /></a> 
+<a href="/people/{{notification['slug']}}"><img alt="Missing" src="{{notification['picture']}}" /></a> 
 </div> 
+{% if notification['type'] == 'friend_request' %}
 <div class='content'> 
-<span class='points'>+20</span> 
-<span class='person_name'><a href="/152976-regan">regan</a></span> 
-wanted
-<span class='item'><a href="/reviews/378505">Bubble Tea @ Teariffic Cafe</a></span> 
-based on your sighting
-<span class='timestamp'>11 days ago</span> 
+<span class='person_name'><a href="/people/{{notification['slug']}}">{{notification['slug']}}</a></span> 
+send a friend request, 
+<span class='item'><a href="/acceptrequest/{{notification['id']}}">accept</a></span> 
+the request or 
+<span class='item'><a href="/declinerequest/{{notification['id']}}">decline</a></span>
+<span class='timestamp'>notification['created']</span> 
 </div> 
- 
+{% end %}
 </li> 
+{% end %}
 </ul> 
 </div> 
 
 </div> 
  
 </div> 
-<img alt="Spotter" id="spotter" src="/images/spotter.png?1301466043" /> 
  
 </div> 
 </div> 
   {% include "Module/footer.html" %}
- 
-
-
- 
 </body> 
 </html> 
