@@ -12,6 +12,8 @@ import hmac
 import unicodedata
 import tornado.web
 import MongoEncoder.MongoEncoder
+import Users.Notification
+import Users.Friend
 from Map.BrowseTripHandler import BaseHandler
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
@@ -331,40 +333,46 @@ class GetFriendHandler(BaseHandler):
         user = self.syncdb.users.find({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
         self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
-class FriendActionHandler(BaseHandler):  
+class FriendRemoveHandler(BaseHandler):  
     @tornado.web.authenticated
     def post(self):
-        exist = False
-        temp_friend = {}
         user_id = self.get_argument('user_id')
         friend= self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
-        temp_friend['user_id'] = friend['user_id']
-        temp_friend['slug'] = friend['slug']
-        temp_friend['picture'] = friend['picture']
-        user_friends = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.current_user['user_id'])})
-        if user_friends:
-            for item in user_friends['friends']:
-                if user_id == item['user_id']:
-                    exist = True
-                    self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'friends':temp_friend}})
-                    temp_friend['user_id'] = self.current_user['user_id']
-                    temp_friend['slug'] = self.current_user['slug']
-                    temp_friend['picture'] = self.current_user['picture']
-                    self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$pull':{'friends':temp_friend}})
-                    break
-                
-        if exist == False:
-                notification = {} 
-                notification['slug'] = self.current_user['slug']
-                notification['type'] = 'friend_request'
-                notification['id'] = bson.ObjectId()
-                self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'friends_request_receive':temp_friend}}, {'$addToSet':{'notification':notification}}, {'$addToSet':{'new_notifications':notification}})
-                self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'friends_request_send':temp_friend}})
-                
-         
-        #self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+        _temp_friend = Users.Friend.FriendRequestHandler(friend)
+        for item in self.current_user['friends']:
+            if user_id == item['user_id']:
+                self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'friends':_temp_friend.temp_friend}})
+                _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
+                self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$pull':{'friends':_temp_friend.temp_friend}})
+                   
+            
+class FriendRequestHandler(BaseHandler):  
+    @tornado.web.authenticated
+    def post(self):
+        user_id = self.get_argument('user_id')
+        _notification = Users.Notification.NotificationGenerator('friend_request')
+        _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
+        self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'friends_request_receive':_temp_friend.temp_friend}}, {'$addToSet':{'notification':_notification.notification}}, {'$addToSet':{'new_notifications':_notification.notification}})
+        friend= self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
+        _temp_friend = Users.Friend.FriendRequestHandler(friend)
+        self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'friends_request_send':_temp_friend.temp_friend}})
 
-
+class FriendConfirmHandler(BaseHandler):
+    @tornado.web.authenticated
+    def post(self):
+        user_id = self.get_argument('user_id')
+        type = self.get_argument('type')
+        friend= self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
+        _temp_friend = Users.Friend.FriendRequestHandler(friend)
+        if type == 'accept':
+           
+            self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'friends':_temp_friend.temp_friend}})
+            _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
+            self.syncdb.users.update({'user_id':bson.ObjectId(current_user['user_id'])}, {'$addToSet':{'friends':_temp_friend.temp_friend}})
+        elif type == 'decline':
+            self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$pull':{'friends_request_receive':_temp_friend.temp_friend}})
+            _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
+            self.syncdb.users.update({'user_id':bson.ObjectId(current_user['user_id'])}, {'$pull':{'friends':_temp_friend.temp_friend}})
         
 class SearchFriendHandler(BaseHandler):
     def get(self, name):   

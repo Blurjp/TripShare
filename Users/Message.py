@@ -10,7 +10,7 @@ from Map.BrowseTripHandler import BaseHandler
 class MessageHandler(BaseHandler):
     @tornado.web.asynchronous
     def get(self):
-        self.db.users.find({'user_id': self.current_user.user_id}, limit=1, callback=self._on_response)
+        self.db.users.find_one({'user_id': self.current_user.user_id}, callback=self._on_response)
         # or
         # conn = self.db.connection(collectionname="...", dbname="...")
         # conn.find(..., callback=self._on_response)

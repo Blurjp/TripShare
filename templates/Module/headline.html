@@ -38,8 +38,8 @@
 </a>
 <li class="xft"><a class="xet xxs l_editprofile" href="#setting" name="usersetting">Setting</a>
 <li class="xft"><a class="xet xzt" href="/notifications">Notifications
-{% if len(current_user['new_notification'])>0 %}
-<span id="xbd" class="xtv xl" style="visibility:visible;">{{len(current_user['new_notification'])}}</span>
+{% if len(current_user['new_notifications'])>0 %}
+<span id="xbd" class="xtv xl" style="visibility:visible;">{{len(current_user['new_notifications'])}}</span>
 {% end %}
 </a>
 <li class="xft"><a class="xet xyt" href="/messages">Messages</a>

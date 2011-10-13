@@ -2,9 +2,9 @@
 <div id="xri">
 {% if current_user['user_id'] != custom_user['user_id'] %}
 {%if current_user['user_id'] in [p['user_id'] for p in custom_user['friends'] if p['user_id'] == current_user['user_id'] ]%}
-<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Remove friend</a>
+<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="removefriend xf xbj">Remove friend</a>
 {% else%}
-<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Add friend</a>
+<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
 {% end %}
 <a class="xe" title="Send Message" target="_blank" sid="{{custom_user['user_id']}}" href="#"><span class="xi"></span></a>
 {% end %}

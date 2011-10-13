@@ -1,11 +1,17 @@
 
-$('.friendaction').live('click',function(){
+$('.requestfriend').live('click',function(){
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid')};
-	 $.postJSON('/friendaction',content,function(response){
-	 	
-	 	
+	 $.postJSON('/requestfriend',content,function(response){
 	 });
 });	
+
+$('.removefriend').live('click',function(){
+	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid')};
+	 $.postJSON('/removefriend',content,function(response){
+	 });
+});	
+
+
 
 function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
