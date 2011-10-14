@@ -1014,7 +1014,7 @@ h2 .user_name {margin-left:150px !important}
 
 #mini-profile{position:relative;}
 .xgt{position:absolute;right:90px;top:10px;min-width:200px;z-index: 6000}
-.xft{display:none;}.xet{display:block;border-top:1px solid rgba(255,255,255,0.1);-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.6);-moz-box-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 1px 2px rgba(0,0,0,0.6);width:90px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;height:39px;line-height:39px;padding:0 0 0 40px;color:#fff!important;text-shadow:0 1px 1px rgba(0,0,0,0.5);text-decoration:none;}#xdt{display:block;}
+.xft{display:none;}.xet{display:block;border-top:1px solid rgba(255,255,255,0.1);-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.6);-moz-box-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 1px 2px rgba(0,0,0,0.6);width:110px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;height:39px;line-height:39px;padding:0 0 0 40px;color:#fff!important;text-shadow:0 1px 1px rgba(0,0,0,0.5);text-decoration:none;}#xdt{display:block;}
 .xct:hover{border-bottom:solid 1px white!important;}
 .xgt:hover>.xft{display:block;}.xet:hover{background-color:white!important;text-decoration:none;}
 .xgt:hover>.xft>.xct{background-color:white!important;text-decoration:none;}

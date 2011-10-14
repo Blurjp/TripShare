@@ -350,12 +350,18 @@ class FriendRequestHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
         user_id = self.get_argument('user_id')
-        _notification = Users.Notification.NotificationGenerator('friend_request')
-        _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
-        self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'friends_request_receive':_temp_friend.temp_friend}}, {'$addToSet':{'notification':_notification.notification}}, {'$addToSet':{'new_notifications':_notification.notification}})
+        _notification = Users.Notification.NotificationGenerator('friend_request', self.current_user['username'], self.current_user['slug'], self.current_user['picture'], datetime.datetime.utcnow())
+        
+        _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)
+        self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'new_notifications':_notification.notification}})
+        self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'notifications':_notification.notification}})
+        self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'friends_request_receive':_temp_friend.temp_friend}})
+        
         friend= self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
         _temp_friend = Users.Friend.FriendRequestHandler(friend)
         self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'friends_request_send':_temp_friend.temp_friend}})
+
+
 
 class FriendConfirmHandler(BaseHandler):
     @tornado.web.authenticated
