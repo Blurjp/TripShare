@@ -25,6 +25,7 @@ from Map.CreateTripHandler import ComposeHandler
 from Map.CreateTripHandler import CreateTripModule
 from Users.Message import MessageHandler
 from Users.Notification import NotificationHandler
+from Settings.Settings import SettingsHandler
 from Users.Friend import FriendEntryModule
 from Users.UserInfo import CreateAccountHandler
 from Users.UserInfo import LoginHandler
@@ -191,7 +192,7 @@ class Application(tornado.web.Application):
                                       (r"/deleteguide", DeleteGuidesHandler),
                                       (r"/a/changepicture", UserPictureHandler),
                                   
-                                     
+                                      (r"/settings", SettingsHandler),
                                       (r"/blog", Blog),
                                       (r"/postcomment", PostCommentHandler),
                                       (r"/deletecomment", DeleteCommentHandler),

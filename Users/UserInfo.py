@@ -109,7 +109,9 @@ class CreateAccountHandler(BaseHandler):
                            'like_guide':[],
                            'save_guide':[],
                            'friends':[],
-                           'current_location':''
+                           'current_location':'',
+                           'new_notifications':[],
+                           'notifications':[],
                                }
                 
                 self.db.users.insert(user, callback=self._on_action)
@@ -174,7 +176,10 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'like_trip':[],
                     'bio':'',
                     'link': '',
-                    'trip_count':0
+                    'trip_count':0,
+                    'new_notifications':[],
+                    'notifications':[],
+                    
                     
                 }
         _user_db = self.syncdb.users.find_one({'email': user[0]['email']})

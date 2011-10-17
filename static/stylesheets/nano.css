@@ -534,7 +534,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 /* Z-index of #mask must lower than #boxes .window */  
 #mask2 { position:fixed;z-index:9000;background-color:black;  width: 100%; height: 100%; top: 0px; left: 0px;display:none;  opacity:0.5;filter:alpha(opacity=50)}  
   
-#settingboxes .settingdialogdiv {  position:fixed;  display:none;  z-index:9999;  padding:20px;  }  
+#settingboxes .settingdialogdiv {  position:fixed;  z-index:9999;  padding:20px;  }  
   
 /* Customize your modal window here, you can add background image too */  
 #settingboxes #setting {  width:540px;   height:500px;  }  
