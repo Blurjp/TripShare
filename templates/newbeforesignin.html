@@ -20,7 +20,7 @@
 <script src="{{ static_url("javascript/createtripslides.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/createguideslides.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/CalendarPopup.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/localdata.js") }}" type="text/javascript"></script>
+
 <script src="{{ static_url("javascript/jquery.pagination.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/dragdroptool/core.js") }}" type="text/javascript"></script>
@@ -153,51 +153,8 @@
 		
 		setMarkers(map);
 		
-		   /*   Autocomplete   */
-        var input = document.getElementById('search_item');
-		
-        var autocomplete = new google.maps.places.Autocomplete(input);
-
-        autocomplete.bindTo('bounds', map);
-
-        var marker = new google.maps.Marker({
-          map: map
-        });
-		
-		 google.maps.event.addListener(autocomplete, 'place_changed', function() {
-          infowindow.close();
-          var place = autocomplete.getPlace();
-		  
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(10);  
-          }
-
-          var image = new google.maps.MarkerImage(
-              place.icon,
-              new google.maps.Size(71, 71),
-              new google.maps.Point(0, 0),
-              new google.maps.Point(17, 34),
-              new google.maps.Size(35, 35));
-          marker.setIcon(image);
-          marker.setPosition(place.geometry.location);
-
-          var address = '';
-          if (place.address_components) {
-            address = [(place.address_components[0] &&
-                        place.address_components[0].short_name || ''),
-                       (place.address_components[1] &&
-                        place.address_components[1].short_name || ''),
-                       (place.address_components[2] &&
-                        place.address_components[2].short_name || '')
-                      ].join(' ');
-          }
-
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-          infowindow.open(map, marker);
-        });
+		setAutoComplete('start');
+		setAutoComplete('place-0-text');
 		
 //		// Try W3C Geolocation (Preferred)
 //  if(navigator.geolocation) {
@@ -224,6 +181,18 @@
 //    handleNoGeolocation(browserSupportFlag);
 //  }
 		
+	}
+	
+	function setAutoComplete(searchId)
+	{
+		   /*   Autocomplete   */
+        var input = document.getElementById(searchId);
+		
+        var autocomplete = new google.maps.places.Autocomplete(input);
+		
+		 google.maps.event.addListener(autocomplete, 'place_changed', function() {
+         var place = autocomplete.getPlace();
+        });
 	}
 	
 	 function handleNoGeolocation(errorFlag) {

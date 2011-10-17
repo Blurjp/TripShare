@@ -1023,7 +1023,117 @@ $('#mask6').click(function(e) {
 		$.postJSON('/postcomment', message, function(response){PostCommentResponse(response)}, "text");	
 });
 
+$('.importguide').click(function(e){
+	    content = {'_xsrf': getCookie('_xsrf'),'tag':document.getElementById('tag').value};
+	    $.postJSON('/getguidesforimport', content, function(response) {
+		ShowGuideInList(response);
+	 });
+	 	$('#closeimporttemplate-modal').show();
+		
+		
+        var id = $(this).attr('href');  
+        //Set height and width to mask to fill up the whole screen  
+        $('#mask4').css({'width':maskWidth,'height':maskHeight});  
+          
+        //transition effect       
+        $('#mask4').fadeIn();             
+		//slide from right to left, Set the popup window to center  
+		
+		$(id).show();
+		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
+	    $(id).animate({right: winW/2-$(id).width()/2});
+        $(id).css("position", "fixed");
+	 });
+ 
+function ShowGuideInList(message)
+{
+		if(message!=null)
+		{
+		var node;
+		var trips = message.split("||||");
+		$("#guideinimportlist").empty();
+		
+		$.each(trips, function(index, value) {
+	         node = $(value);
+             node.hide();
+		     
+             $("#guideinimportlist").append(node);
+             node.show();
+         });
+		 }
+}
 
+function trip_tag_show_toggle(status)
+{
+    if(!$('#trip_tag_add_show').length) { return; } 
+    
+    if(status && !trip_tag_add_form_displayed)
+    {
+        $('#trip_tag_add_show').show();
+    }
+    else
+    {
+        $('#trip_tag_add_show').hide();
+    }
+}
+
+function trip_tag_add_form_toggle(display)
+{ 
+    if(display)
+    {
+        trip_tag_add_form_displayed = true;
+        
+        $('#trip_tag').show();
+        $('#trip_tag_add_show').hide(); 
+        $('#trip_tag_add_form').show(); 
+        
+        // Show remove buttons for each category
+        var plan_category_as = $('#trip_tag').find('.category_button_a');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.addClass('category_button_a_edit_active');
+        }
+        
+        var plan_category_removes = $('#trip_tag').find('.category_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.show();
+        }
+
+        setTimeout("$('#trip_tag_add_input').focus();", 50);
+    }
+    else
+    { 
+        trip_tag_add_form_displayed = false;
+        
+        $('#trip_tag_add_form').hide(); 
+        $('#trip_tag_add_show').show();
+        
+        // Show remove buttons for each category
+        var plan_category_as = $('#trip_tag').find('.category_button_a');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.removeClass('category_button_a_edit_active');
+        }
+        
+        var plan_category_removes = $('#trip_tag').find('.category_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+
+        var lis = $('#trip_tag').find('li');
+
+        if(lis.length == 2)
+        {
+            $('#trip_tag').hide();
+        }
+    }
+}
 
 function PostCommentResponse(response){
 	alert('post');

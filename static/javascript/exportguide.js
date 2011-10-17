@@ -12,7 +12,7 @@ $(document).ready(function() {
         var winW = $(window).width();  
 					 
     //select all the tag with name equal to createguide
-    $('a[name=exportguide]').click(function(e) {  
+    $('.l_exportguide').click(function(e) {  
         
 		$.getJSON('/gettrips', function(response) {
 		ShowTripInGuideList(response);

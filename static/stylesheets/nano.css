@@ -582,7 +582,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 .section li {padding-top:10px}
 .section .lively-user {padding-left:10px;font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .managemember {font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
-.conv-head {margin-top: 65px; border-top:1px solid #ccc;}
+.conv-head {margin-top: 15px; border-top:1px solid #ccc;}
 .conv-head li {float: left; padding:4px}
 .conv-head img.searchmemberfortrip {width:25px; height:25px; padding-top:15px; padding-left:15px}
 .map-detail {padding-top: 120px}

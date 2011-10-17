@@ -7,11 +7,20 @@ $('.requestfriend').live('click',function(){
 
 $('.removefriend').live('click',function(){
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid')};
-	 $.postJSON('/removefriend',content,function(response){
-	 });
+	 $.postJSON('/removefriend',content,function(response){});
 });	
 
+$('.acceptfriend').live('click',function(){
+	alert('tet');
+	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'accept'};
+	 $.postJSON('/confirmfriend',content,function(response){});
+});	
 
+$('.declinefriend').live('click',function(){
+	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'decline'};
+	 $.postJSON('/confirmfriend',content,function(response){
+	 });
+});	
 
 function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");

@@ -14,12 +14,13 @@ class NotificationHandler(BaseHandler):
         
 class NotificationGenerator():
      
-     def __init__(self, type, username, slug, picture, time):
+     def __init__(self, type, username, slug, picture, time, user_id):
          
          self.notification = {} 
          self.notification['username'] = username
          self.notification['slug'] = slug
          self.notification['type'] = type
+         self.notification['user_id'] = user_id
          self.notification['picture'] = picture
          self.notification['id'] = bson.ObjectId()
          self.notification['created'] = time

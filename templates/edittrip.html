@@ -26,11 +26,7 @@
 <div id="header"> 
 <div id="nav-bar">
  {% include "Module/headline.html" %}
- 
- {% include "Module/userentry.html" %}
- 
  {% include "Module/usersetting.html" %}
-
 </div> 
 </div> 
  
@@ -70,6 +66,28 @@
 </div>
 </div>
 
+<ul id="trip_tag" onmouseover="trip_tag_show_toggle(true);" onmouseout="trip_tag_show_toggle(false);" style="display:block">
+{% for tag in singletrip['tags']%}
+<li class="tag_button">
+  <a class="tag_button_add" style="" rel="tag" href="/category/technology">{{tag}}</a>
+  <div class="tag_button_remove" style="display:none"></div>
+  <div style="clear:both"></div>
+</li>
+{% end %}
+
+<li id="trip_tag_add_show" style="display: none;" onclick="trip_tag_add_form_toggle(true); event.stopPropagation(); return false"></li>
+  
+<li id="trip_tag_add_form" style="display:none;">
+   <div id="trip_tag_add_input_exterior" style="position: relative; float: left">
+   <div id="trip_tag_add_input_exterior"><input type="text" id="trip_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small"></div>
+    </div>    
+    <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="plan_categories_add_form_toggle(false); return false">done</a>
+  </li>
+  
+  <div style="clear:both"></div>
+  
+</ul>
+
 <div class="conv-head"> 
 <ul> 
 {% for member in singletrip['members'] %}
@@ -87,7 +105,7 @@
 <input type="button" class="regular-button invitefriend" href="#invite_friend_pop" value="Invite Friends">
 </li>
 <li>	
-<input type="button" class="regular-button importtemplate" href="#import_trip_template" value="Import Template">
+<input type="button" class="regular-button importguide" href="#" value="Import Guide">
 </li>
 </ul> 
 </div> 
@@ -178,41 +196,8 @@
 
 <ul class="route">
 
-{% for counter,dest in enumerate(singletrip['dest_place']) %}
-<div id="place-{{counter}}-wrapper" class="row-wrapper">
-<li class="lh-tighter place-{{counter}}-element multihop-row">
-<label for="place-{{counter}}-text">Destination:</label>
-
-<input id="place-{{counter}}-text" name="place-{{counter}}-text" type="text" class="text destination margin-right-thin" value="{{dest['dest']}}">
-<input id="place-{{counter}}" name="place-{{counter}}" type="hidden" value="">
-<input id="place-{{counter}}-date" name="place-{{counter}}-date" type="text" value="{{dest['date']}}" class="text date multihop-calendar hasCalendar">
- <div class="margin-right-thin"><select class="transport-selector" id="place-0-transport-type" name="place-0-transport-type"><option value="by plane">{{dest['type']}}</option>
-<option value="train">by train</option>
-<option value="car">by car</option>
-<option value="bus">by bus</option>
-<option value="ferry">by ferry</option>
-<option value="motorcycle">by motorcycle</option>
-<option value="cycle">by bicycle</option>
-<option value="walk">on foot</option>
-<option value="other">other</option></select></div>
-  </div>
-<div class="right" style="padding-right:20px">
-<a href="#" id="place-{{counter}}-move-up-link" class="pad-left-thin f2 lh-tight move-up-link"></a>
-<a href="#" id="place-{{counter}}-move-down-link" class="f2 lh-tight move-down-link"></a>
-<a href="#" id="place-{{counter}}-remove-link" class="pad-left-thin f2 lh-tight remove-trip-link"></a>
-</div>
-</li>
-<li id="follows-disambiguators">
-<input id="finish-date" name="finish-date" type="text" class="text date multihop-calendar hasCalendar" value="{{singletrip['finish_date']}}">
-</li>
-</div>
-
-
-
-{% end %}
-{% end %}
 </ul>
-
+{% end %}
 </div>
 
 </div>
@@ -239,6 +224,8 @@
 		  {% include "Module/comment.html" %}
 	</ul>
 </div>
+
+{% include "Guides/ImportGuide.html" %}
 
 <!-- AddThis script-->
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>

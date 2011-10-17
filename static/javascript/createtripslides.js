@@ -698,6 +698,9 @@ jQuery.postJSON = function(url, args, callback) {
       $("#"+id+"-wrapper").find("input.destination").focus().animate({ backgroundColor: '#f8f4ac' }, 1).animate({opacity: 1.0}, 100).animate({ backgroundColor: '#ffffff' }, 300);
       
       disambiguator_index += 1;
+	 
+	  setAutoComplete(id+"-text");
+	  
       return false;
     }
     

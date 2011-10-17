@@ -15,8 +15,10 @@ Notifications
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
+<script src="{{ static_url("javascript/followuser.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
+
 
 </head> 
 <body> 
@@ -59,10 +61,11 @@ Notifications
 {% if notification['type'] == 'friend_request' %}
 <div class='content'> 
 <span class='person_name'><a href="/people/{{notification['slug']}}">{{notification['slug']}}</a></span> 
-send a friend request, 
-<span class='item'><a href="/acceptrequest/{{notification['id']}}">accept</a></span> 
-the request or 
-<span class='item'><a href="/declinerequest/{{notification['id']}}">decline</a></span>
+send you a friend request, 
+<span class='item'><a class="acceptfriend" href="#" sid="{{notification['user_id']}}">accept</a></span> 
+or 
+<span class='item'><a class="declinefriend" href="#" sid="{{notification['user_id']}}">decline</a></span>
+.
 <span class='timestamp'>{{notification['created']}}</span> 
 </div> 
 {% end %}
@@ -79,4 +82,5 @@ the request or
 </div> 
   {% include "Module/footer.html" %}
 </body> 
+ 
 </html> 

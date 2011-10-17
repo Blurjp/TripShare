@@ -49,6 +49,7 @@ from Guides.GuidesHandler import LikeGuidesHandler
 from Guides.GuidesHandler import BrowseGuidesHandler
 from Guides.GuidesHandler import CreateGuidesHandler
 from Guides.GuidesHandler import ExportGuidesHandler
+from Guides.GuidesHandler import GetGuidesForImportHandler
 from Guides.GuidesHandler import DeleteGuidesHandler
 from Guides.GuidesHandler import EntryGuidesHandler
 from Guides.GuidesHandler import GuidePageHandler
@@ -186,6 +187,7 @@ class Application(tornado.web.Application):
                                       (r"/likeguide/([^/]+)", LikeGuidesHandler),
                                       (r"/createguide", CreateGuidesHandler),
                                       (r"/exportguide", ExportGuidesHandler),
+                                      (r"/getguidesforimport", GetGuidesForImportHandler),
                                       (r"/deleteguide", DeleteGuidesHandler),
                                       (r"/a/changepicture", UserPictureHandler),
                                   

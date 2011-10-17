@@ -217,7 +217,8 @@ class AuthLogoutFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
 class TravelersHandler(BaseHandler):
     user = None
     
-    #get most active or lastest or user's friends
+
+        
     @tornado.web.asynchronous
     def get(self, type):
 
@@ -350,7 +351,7 @@ class FriendRequestHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
         user_id = self.get_argument('user_id')
-        _notification = Users.Notification.NotificationGenerator('friend_request', self.current_user['username'], self.current_user['slug'], self.current_user['picture'], datetime.datetime.utcnow())
+        _notification = Users.Notification.NotificationGenerator('friend_request', self.current_user['username'], self.current_user['slug'], self.current_user['picture'], datetime.datetime.utcnow(), self.current_user['user_id'])
         
         _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)
         self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'new_notifications':_notification.notification}})
@@ -369,17 +370,21 @@ class FriendConfirmHandler(BaseHandler):
         user_id = self.get_argument('user_id')
         type = self.get_argument('type')
         friend= self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
-        _temp_friend = Users.Friend.FriendRequestHandler(friend)
-        if type == 'accept':
-           
-            self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'friends':_temp_friend.temp_friend}})
-            _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
-            self.syncdb.users.update({'user_id':bson.ObjectId(current_user['user_id'])}, {'$addToSet':{'friends':_temp_friend.temp_friend}})
-        elif type == 'decline':
-            self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$pull':{'friends_request_receive':_temp_friend.temp_friend}})
-            _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
-            self.syncdb.users.update({'user_id':bson.ObjectId(current_user['user_id'])}, {'$pull':{'friends':_temp_friend.temp_friend}})
-        
+        if friend:
+            _temp_friend = Users.Friend.FriendRequestHandler(friend)
+            if type == 'accept':
+                self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'friends':_temp_friend.temp_friend}})
+                _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
+                self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$addToSet':{'friends':_temp_friend.temp_friend}})
+                print('accept')
+            elif type == 'decline':
+                self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'friends_request_receive':_temp_friend.temp_friend}})
+                _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
+                self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$pull':{'friends_request_send':_temp_friend.temp_friend}})
+                print('decline')
+        else:
+            print('error')
+
 class SearchFriendHandler(BaseHandler):
     def get(self, name):   
         _name = name.upper()

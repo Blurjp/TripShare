@@ -140,6 +140,15 @@ class ExportGuidesHandler(BaseHandler):
         #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
         self.write('Export successfully!')
 
+class GetGuidesForImportHandler(BaseHandler):
+    @tornado.web.authenticated
+    def post(self):
+        tag = self.get_argument('tag').split('++')
+        trips_all_match = self.syncdb.find({'tag':{'$in':tag}})
+        if trips_all_match.count()<1:
+            trips_part_match = self.syncdb.find({'tag':{'$in':tag}})
+        
+
 class CreateGuidesHandler(BaseHandler):
     slug = None
     @tornado.web.authenticated
