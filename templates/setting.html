@@ -8,8 +8,8 @@ TripShare
 Setting
 </title> 
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type' /> 
-<meta content="TripShare is a visual guide to good food and where to find it. It's the easiest way to find and share the foods you love." name='description' /> 
-<meta content='dishes, dish, food, reviews, food photos, restaurants, dining, guide, food spotting, menu, local' name='keywords' /> 
+<meta content="TripShare is the easiest way to  help you to find the right trip and people." name='description' /> 
+<meta content='trips, travel, trail, reviews, camping, local' name='keywords' /> 
 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
@@ -35,10 +35,10 @@ Setting
 {% include "Module/self_detail.html" %}
  
 <div class='main'> 
-
+<h1>Settings</h1>
 {% if current_user %}
 <div id="user_settingboxes"> 
-
+<div id="setting" class="settingdialogdiv">
 
 <form>
 <table class="form">
@@ -53,6 +53,10 @@ Setting
 <td><textarea rows="2" cols="20" name="description" style="width:310px">{{current_user['bio']}}</textarea></td>
 </tr>
 
+<tr>
+<td class="label" style="vertical-align:top">Photo:</td>
+<td><a href="#" class="l_editpicture" sid="{{current_user['user_id']}}">Change picture</a></td>
+</tr>
 
 <tr>
 <td class="label">Language:</td>
@@ -136,18 +140,7 @@ Setting
 </td>
 </tr>
 
-<tr>
-<td class="label"></td>
-<td class="value"><div class="servicespromo"><a href="/blurjp/services">Import a service</a></div></td>
-</tr>
 
-<tr>
-<td></td>
-<td class="value" style="padding-top:5px">
-<input type="checkbox" name="newwindow" value="1" id="newwindowcheckbox">
-<label for="newwindowcheckbox">Open links in new windows</label>
-</td>
-</tr>
 <tr>
 <td></td>
 <td class="value">
@@ -165,7 +158,7 @@ Setting
 
 <tr>
 <td></td>
-<td class="buttons" style="padding-top:8px">
+<td>
 <input type="submit" value="Update" class="sidebar-auth-button">
 
 </td>
@@ -173,7 +166,7 @@ Setting
 </tbody></table>
 </form>
 </div>
-
+</div>
 {% end %}
 
 </div> 

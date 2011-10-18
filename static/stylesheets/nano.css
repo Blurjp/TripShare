@@ -38,7 +38,7 @@ img{-ms-interpolation-mode:bicubic}
  div.textbox input,div.textbox textarea{width:100%;padding:0;border:0;background:white;outline-color:-moz-use-text-color;outline-style:none;outline-width:0px}       span.searchbold{font-weight:bold;color:black} 
  table.form td{padding-bottom:8px} 
  table.form td.label{padding-right:9px}  
- table.form td.buttons{padding-top:4px}   
+  
  textarea.blur,input.blur{color:silver;text-decoration:none} 
  #alertmessage{z-index:2}      
  .infomessage,#infomessage,#errormessage{padding:8px;font-weight:bold;border:1px solid}    
@@ -520,21 +520,17 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 
 /* /////////////////////////////////////////////////////  */
 /* create user setting popup window */	 
- #setting .input .textarea{border-radius: 10px; -webkit-border-radius: 10px;-moz-border-radius: 10px}
- #setting {background-color:white;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px}      
- #setting .buttons{margin-top:15px}      
- #setting .buttons input.save{font-weight:bold}     
- #setting .buttons a.l_closedialog{margin-left:7px}      
+    
+     
  .popupmenu{z-index:9999;border:1px solid gray;background-color:white;padding:3px}    
- .popupmenu .item{padding:1px}      
- #user_settingboxes .form input{-moz-border-radius:3px;-moz-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);-webkit-border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);background:#ffffff;border:1px solid #888888;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);color:#666666;font-family:"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size:12px;font-weight:bold;height:14px;line-height:14px;margin-right:-10px;padding:5px;position:relative;right:0;width:100%;}
- #user_settingboxes .form textarea{-moz-border-radius:3px;-moz-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);-webkit-border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);background:#ffffff;border:1px solid #888888;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);color:#666666;font-family:"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size:12px;font-weight:bold;}
+ .popupmenu .item{padding:1px}  
+  #user_settingboxes  { padding-top:20px; width:540px;   height:500px;  }     
+  #user_settingboxes .form textarea{-moz-border-radius:3px;-moz-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);-webkit-border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);background:#ffffff;border:1px solid #888888;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);color:#666666;font-family:"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size:12px;font-weight:bold;}
 
-  
 /* Z-index of #mask must lower than #boxes .window */  
 #mask2 { position:fixed;z-index:9000;background-color:black;  width: 100%; height: 100%; top: 0px; left: 0px;display:none;  opacity:0.5;filter:alpha(opacity=50)}  
   
-#settingboxes .settingdialogdiv {  position:fixed; display:none; z-index:9999;  padding:20px;  }  
+#settingboxes .settingdialogdiv { display:none; z-index:9999;  padding:20px;  }  
  
 /* Customize your modal window here, you can add background image too */  
 #settingboxes #setting {  width:540px;   height:500px;  }  
@@ -1043,9 +1039,6 @@ p.message{font-size:12px;margin-right:84px;padding-bottom:3px;}
 p.message span.meta{color:#a1a1a1;display:block;font-size:10px;}
 p.details{color:#999999;clear:both;font-size:11px;font-weight:normal;margin-right:425px;}
 ul.feedsUI li.feed .right p.details a{font-weight:normal;}
-.FORM-text{float:left;width:368px;padding-left:10px; padding-bottom:10px}
-.FORM-text .area input{-moz-border-radius:3px;-moz-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);-webkit-border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);background:#ffffff;border:1px solid #888888;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);color:#666666;font-family:"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size:12px;font-weight:bold;height:14px;line-height:14px;margin-right:-10px;padding:5px;position:relative;right:0;width:100%;}
-.FORM-text.large .area input{font-size:14px;height:20px;line-height:20px;}.FORM-text .area input:hover, .FORM-text .area input:focus{border-color:#555555;color:#333333;}
 
 
 a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow:hidden; background:url("/static/images/facebook_sign_in.png") no-repeat transparent; z-index:5000;  text-decoration:none;margin-top:5px; margin-left:15px}
@@ -1072,7 +1065,13 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #import_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
 #closeimportguide-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
-.trip_tag {margin-top:30px;float:left;padding-right:10px}
-#trip_tag li.tag_button {height:10px;margin-top:30px; padding-right:10px;float: left}
-.tag_button_add {-moz-border-radius:12px;-webkit-border-radius:12px;border:1px solid #2f72c4;background:url("/static/icon/button-shine.png") repeat-x top;background-color:#2f72c4;color:white;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
+.trip_tag_icon {margin-top:30px;float:left;padding-right:10px}
+.trip_tag_add_icon {margin-top:25px;}
+
+#trip_tag li.tag_button {height:10px;margin-top:30px; padding-right:10px;float: left;  position: relative}
+.tag_button_add {-moz-border-radius:12px;-webkit-border-radius:12px;border:1px solid #2f72c4;background:url("/static/icon/button-shine.png") repeat-x top;background-color:#2f72c4;color:white;padding: 0px 5px 0px 5px;cursor:pointer}     
 .tag_button_add:hover{background:#105CB6;border:1px solid #105CB6;}
+.tag_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat 4px 7px #9ebedf; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
+.tag_button_remove { background-color: #5495d7 }
+#trip_tag_add_show {display:none}
+#trip_tag_add_form {display:none}

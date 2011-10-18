@@ -67,23 +67,27 @@
 </div>
 </div>
 <div style="clear:both"></div>
-<img class="trip_tag" src="/static/images/trip_tag.png" alt="trip tag" />
-<ul id="trip_tag" onmouseover="trip_tag_show_toggle(true);" onmouseout="trip_tag_show_toggle(false);" style="display:block">
+<img class="trip_tag_icon" src="/static/images/trip_tag.png" alt="trip tag" />
+<ul id="trip_tag" onmouseover="trip_tag_add_show(true);" onmouseout="trip_tag_add_show(false);" style="display:block">
 {% for tag in singletrip['tags']%}
 <li class="tag_button">
-  <a class="tag_button_add" style="" rel="tag" href="/category/technology">{{tag}}</a>
-  <div class="tag_button_remove" style="display:none"></div>
+  <a class="tag_button_add" rel="tag" href="/tag">{{tag}}</a>
+  <div class="tag_button_remove" ></div>
   <div style="clear:both"></div>
 </li>
 {% end %}
 
-<li id="trip_tag_add_show" style="display: none;" onclick="trip_tag_add_form_toggle(true); event.stopPropagation(); return false"></li>
+<li id="trip_tag_add_show" onclick="trip_tag_add_form_toggle(true); event.stopPropagation(); return false">
+	<img class='picture small trip_tag_add_icon' src="/static/icon/add.png">
+</li>
   
-<li id="trip_tag_add_form" style="display:none;">
+<li id="trip_tag_add_form">
    <div id="trip_tag_add_input_exterior" style="position: relative; float: left">
-   <div id="trip_tag_add_input_exterior"><input type="text" id="trip_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small"></div>
-    </div>    
-    <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="plan_categories_add_form_toggle(false); return false">done</a>
+   <div id="trip_tag_add_input_exterior">
+   <input type="text" id="trip_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small">
+   </div>
+   </div>    
+    <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="trip_tag_add_form_toggle(false); return false">done</a>
   </li>
   
   <div style="clear:both"></div>
@@ -113,7 +117,81 @@
 </div> 
 {% include "Module/manage_member_dropdown.html" %}
  
-	  
+<script type='text/javascript'> 
+var trip_tag_add_form_displayed;
+function trip_tag_add_show(status)
+{
+	
+    if(!$('#trip_tag_add_show').length) { return; } 
+    
+    if(status && !trip_tag_add_form_displayed)
+    {
+        $('#trip_tag_add_show').show();
+    }
+    else
+    {
+        $('#trip_tag_add_show').hide();
+    }
+}
+
+function trip_tag_add_form_toggle(display)
+{ 
+    if(display)
+    {
+        trip_tag_add_form_displayed = true;
+        
+        $('#trip_tag').show();
+        $('#trip_tag_add_show').hide(); 
+        $('#trip_tag_add_form').show(); 
+        
+        // Show remove buttons for each category
+        var plan_category_as = $('#trip_tag').find('.tag_button_add');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.addClass('tag_button_a_edit_active');
+        }
+        
+        var plan_category_removes = $('#trip_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.show();
+        }
+
+        setTimeout("$('#trip_tag_add_input').focus();", 50);
+    }
+    else
+    { 
+        trip_tag_add_form_displayed = false;
+        
+        $('#trip_tag_add_form').hide(); 
+        $('#trip_tag_add_show').show();
+        
+        // Show remove buttons for each category
+        var plan_category_as = $('#trip_tag').find('.category_button_a');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.removeClass('category_button_a_edit_active');
+        }
+        
+        var plan_category_removes = $('#trip_tag').find('.category_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+
+        var lis = $('#trip_tag').find('li');
+
+        if(lis.length == 2)
+        {
+            $('#trip_tag').hide();
+        }
+    }
+}
+</script>
 <div id="map-canvas"></div>
 <div class="container">
 
