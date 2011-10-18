@@ -143,10 +143,11 @@ class ExportGuidesHandler(BaseHandler):
 class GetGuidesForImportHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
-        tag = self.get_argument('tag').split('++')
-        trips_all_match = self.syncdb.find({'tag':{'$in':tag}})
-        if trips_all_match.count()<1:
-            trips_part_match = self.syncdb.find({'tag':{'$in':tag}})
+        trip_id = self.get_argument('trip_id')
+        tags = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['tags']
+        trips_all_match = self.syncdb.find({tags:{'$in':'tags'}})
+        #if trips_all_match.count()<1:
+        #    trips_part_match = self.syncdb.find({'tag':{'$in':tag}})
         
 
 class CreateGuidesHandler(BaseHandler):

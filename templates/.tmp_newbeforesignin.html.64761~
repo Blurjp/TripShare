@@ -462,9 +462,37 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 
 {% include "Module/footer.html" %}
-{% include "Module/CreateTripSlide1.html" %}
-{% include "Module/CreateGuideSlide.html" %}
-   
+
+  {% include "Module/CreateTripSlide1.html" %}
+  
+  {% include "Module/CreateGuideSlide.html" %}
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#start").autocomplete(cities);
+	$("#destination").autocomplete(cities, {
+		matchContains: true,
+		minChars: 0
+	});
+
+	$("#clear").click(function() {
+		$(":input").unautocomplete();
+	});
+});
+
+
+function changeScrollHeight() {
+    var h = parseInt(window.prompt('Please type new scroll height (number in pixels):', jQuery.Autocompleter.defaults.scrollHeight));
+    if(h > 0) {
+        $("#suggest1").setOptions({
+			scrollHeight: h
+		});
+    }
+}
+</script>
+ 
+ 
+ 
 <script type="text/javascript">
 //<![CDATA[
 function checkform(form)

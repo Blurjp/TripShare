@@ -1,0 +1,43 @@
+<li class="show_trips" id="{{trip['trip_id']}}">
+
+<div class="guideexport sighting-box clearfix">
+<a href="/trip/{{trip['slug']}}"><h2>{{trip['title']}}</h2></a>
+
+<ul class="trip_details">
+  <li >Start: {{trip['start_place']}}</li>
+  <li >Destination: 
+  {% for place in trip['dest_place'] %} 
+    <span>{{place['dest']}} </span><br>
+  {% end %}
+  </li>
+  <li >Start Date: {{trip['start_date']}}</li>
+
+</ul>
+<div class='trip_pic'>
+	<img class="picture large" alt="{{trip['slug']}}" src="{{ static_url("images/site.jpg") }}">
+</div>
+</div>
+
+<div class="action-bar">
+<div class="actions">
+<div class="members">
+<img alt="members" class="members" src="{{ static_url("images/people.png") }}">
+<a href="showmembers" class="member_count">{{ len(trip['members']) }}</a>
+{% for member in trip['members'] %} 
+  <a href="/people/{{member['slug']}}" class = "avatar" alt="{{member['user_id']}}"><img alt="{{member['username']}}" src={{member['picture']}}></a>
+{% end %}
+
+</div>
+<div class="right">
+
+{% if not current_user %}
+<input type ="button" class="l_exporttotrip fancy" sid={{trip['trip_id']}} value="Join" href="#login">
+{% else %}
+<input type ="button" class="l_exporttotrip fancy" sid={{trip['trip_id']}} value="Export to this trip" href="#exporttotrip">
+{% end %}
+
+</div>
+
+</div>
+</div>
+</li>

@@ -16,7 +16,7 @@
 <div id="location-input">
 <div class="text-box active">
 <a class="clear" href="#" id="location_clear_button" onclick="clear_location(); return false;" style="">x</a>
-<input id="search_all" style="margin:5px;width:100%" type="text" autocomplete="off" placeholder="People, Trip or Guide">
+<input id="search_all" style="margin:5px" type="text" autocomplete="off" placeholder="People, Trip or Guide">
 </div>
 </div>
 </fieldset>

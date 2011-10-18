@@ -37,20 +37,30 @@ Setting
 <div class='main'> 
 
 {% if current_user %}
-<div id="user_settingboxes"> 
+<div id="settingboxes"> 
+<div id="setting" class="settingdialogdiv">
 
 
-<form>
+<form action="/a/editprofile" method="post">
+ {% raw xsrf_form_html() %}  
 <table class="form">
-<tbody>
-<tr>
-<td class="label">Username:</td>
-<td><input name="nickname" type="text" size="20" value="{{current_user['username']}}" class="textbox" style="width:310px"></td>
+<tbody><tr>
+<td class="label">Name:</td>
+<td class="value" style="padding-right:20px"><input name="name" type="text" size="20" value="{{current_user['username']}}" class="textbox" style="width:310px"></td>
+<td rowspan="12" style="border-left:1px solid #ccc; padding-left:20px; vertical-align:top; text-align:center">
+<div><a href="#" class="l_editpicture" sid="5d993f60e35c40fea505d5d2b1285ee4" title="Change picture"><img src="{{current_user['picture']}}" alt="{{current_user['username']}}" class="picture large"></a></div>
+<div style="font-size:8pt"><a href="#" class="l_editpicture" sid="5d993f60e35c40fea505d5d2b1285ee4">Change picture</a></div>
+</td>
 </tr>
 
 <tr>
-<td class="label" style="vertical-align:top">Bio:</td>
-<td><textarea rows="2" cols="20" name="description" style="width:310px">{{current_user['bio']}}</textarea></td>
+<td class="label">Username:</td>
+<td class="value"><input name="nickname" type="text" size="20" value="{{current_user['username']}}" class="textbox" style="width:310px"></td>
+</tr>
+
+<tr>
+<td class="label" style="vertical-align:top">Description:</td>
+<td class="value"><textarea rows="2" cols="20" name="description" style="width:310px">a developer</textarea></td>
 </tr>
 
 
@@ -166,14 +176,18 @@ Setting
 <tr>
 <td></td>
 <td class="buttons" style="padding-top:8px">
-<input type="submit" value="Update" class="sidebar-auth-button">
+<input type="submit" value="Save changes" class="save">
+<input type="hidden" name="stream" value="5d993f60e35c40fea505d5d2b1285ee4">
+<input type="hidden" name="next" value="">
+<input type="hidden" name="at" value="8309573725218842769_1293988664">
 
+<a href="#" class="closesetting">Cancel</a>
 </td>
 </tr>
 </tbody></table>
 </form>
 </div>
-
+</div>
 {% end %}
 
 </div> 
