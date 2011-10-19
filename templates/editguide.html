@@ -1359,10 +1359,7 @@ function PostFeedResponse(response){
 
 <div id="header"> 
 <div id="nav-bar">
- {% include "Module/headline.html" %}
- 
- {% include "Module/userentry.html" %}
- 
+ {% include "Module/headline.html" %} 
  {% include "Module/usersetting.html" %}
 
 </div> 
@@ -1417,6 +1414,110 @@ function PostFeedResponse(response){
       <label for="changetype-geocode">Geocodes
     </label>
 </div>
+
+<div style="clear:both"></div>
+<img class="guide_tag_icon" src="/static/images/guide_tag.png" alt="guide tag" />
+<ul id="guide_tag" onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);" style="display:block">
+{% for tag in guide['tags']%}
+<li class="tag_button">
+  <a class="tag_button_add" rel="tag" href="/tag">{{tag}}</a>
+  <div class="tag_button_remove" ></div>
+  <div style="clear:both"></div>
+</li>
+{% end %}
+
+<li id="guide_tag_add_show" onclick="guide_tag_add_form_toggle(true); event.stopPropagation(); return false">
+	<img class='picture small guide_tag_add_icon' src="/static/icon/add.png">
+</li>
+  
+<li id="guide_tag_add_form">
+   <div id="guide_tag_add_input_exterior" style="position: relative; float: left">
+   <div id="guide_tag_add_input_exterior">
+   <input type="text" id="guide_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small">
+   </div>
+   </div>    
+    <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="guide_tag_add_form_toggle(false); return false">done</a>
+  </li>
+  
+  <div style="clear:both"></div>
+  
+</ul>
+
+<script type='text/javascript'> 
+var guide_tag_add_form_displayed;
+function guide_tag_add_show(status)
+{
+	
+    if(!$('#guide_tag_add_show').length) { return; } 
+    
+    if(status && !guide_tag_add_form_displayed)
+    {
+        $('#guide_tag_add_show').show();
+    }
+    else
+    {
+        $('#guide_tag_add_show').hide();
+    }
+}
+
+function guide_tag_add_form_toggle(display)
+{ 
+    if(display)
+    {
+        guide_tag_add_form_displayed = true;
+        
+        $('#guide_tag').show();
+        $('#guide_tag_add_show').hide(); 
+        $('#guide_tag_add_form').show(); 
+        
+        // Show remove buttons for each category
+        var plan_category_as = $('#guide_tag').find('.tag_button_add');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.addClass('tag_button_a_edit_active');
+        }
+        
+        var plan_category_removes = $('#guide_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.show();
+        }
+
+        setTimeout("$('#guide_tag_add_input').focus();", 50);
+    }
+    else
+    { 
+        guide_tag_add_form_displayed = false;
+        
+        $('#guide_tag_add_form').hide(); 
+        $('#guide_tag_add_show').show();
+        
+        // Show remove buttons for each category
+        var plan_category_as = $('#guide_tag').find('.category_button_a');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.removeClass('category_button_a_edit_active');
+        }
+        
+        var plan_category_removes = $('#guide_tag').find('.category_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+
+        var lis = $('#guide_tag').find('li');
+
+        if(lis.length == 2)
+        {
+            $('#guide_tag').hide();
+        }
+    }
+}
+</script>
 
 <div id="map-canvas" style="margin-top:50px"></div>
 <div class="container">

@@ -111,9 +111,10 @@
 <input type="button" class="regular-button invitefriend" href="#invite_friend_pop" value="Invite Friends">
 </li>
 <li>	
-<input type="button" class="regular-button importguide" href="#" value="Import Guide">
+<input type="button" class="regular-button importguide" href="#import_guide_step_1" value="Import Guide">
 </li>
 </ul> 
+
 </div> 
 {% include "Module/manage_member_dropdown.html" %}
  
@@ -238,11 +239,11 @@ function trip_tag_add_form_toggle(display)
 <div class="last"></div>
 </div>
 
-<div id="photoBarContent" class="right photoId_195202220">
+<div id="photoBarContent" class="right">
 <div class="photoRank first" id="photoRank">
 <a href="">Drag to add Destination: <img src="{{ static_url("images/tag.png") }}" title="Drag to add destination" border="0" hspace="0" vspace="0" onload="" style="margin-bottom: 5px;"></a>
-
 </div>
+
 <div class="mapfilter" id="mapfilter"><h4>Show</h4><ul><li><img src="{{ static_url("icon/park.png") }}" title="Show park" border="0" hspace="0" vspace="0" onload="" style="margin-bottom: 5px;"></li>
 <li><img src="{{ static_url("icon/hotel.png") }}" title="Show hotel" border="0" hspace="0" vspace="0" onload="" style="margin-bottom: 5px;"></li>
 <li><img src="{{ static_url("icon/gas.png") }}" title="Show gas station" border="0" hspace="0" vspace="0" onload="" style="margin-bottom: 5px;"></li>
@@ -282,7 +283,7 @@ function trip_tag_add_form_toggle(display)
 
 </div>
 
-</div>
+
 
 <div class='overview'>
 	<div class="left">
@@ -299,8 +300,9 @@ function trip_tag_add_form_toggle(display)
         </div>
         <input type="button" class="post-button postfeed" href="#post_feed" value="Post">
         </form>
-        </div>
-	  <ul class="feedsUI">
+     </div>
+	 <div style="clear:both"></div>
+	 <ul class="feedsUI">
 		  {% include "Module/comment.html" %}
 	</ul>
 </div>

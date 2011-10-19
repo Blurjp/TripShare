@@ -14,7 +14,8 @@ $(document).ready(function() {
     //select all the tag with name equal to createguide
     $('.importguide').click(function(e) {  
         
-		$.getJSON('/getguides', function(response) {
+		content = {'_xsrf' : getCookie('_xsrf'),'trip_id':document.getElementById('tripId').value}
+		$.postJSON('/getguidesforimport', content, function(response) {
 		ShowGuideInList(response);
 		
     }); 

@@ -145,10 +145,19 @@ class GetGuidesForImportHandler(BaseHandler):
     def post(self):
         trip_id = self.get_argument('trip_id')
         tags = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['tags']
-        trips_all_match = self.syncdb.find({tags:{'$in':'tags'}})
-        #if trips_all_match.count()<1:
-        #    trips_part_match = self.syncdb.find({'tag':{'$in':tag}})
-        
+        guides= []
+        # need improvement here!
+        guides_all_match = self.syncdb.guides.find({'tags':{'$in':tags}}).limit(10)
+        for guide in guides_all_match:
+            guides.append(guide)
+        if guides_all_match.count()<5:
+            guides_part_match = self.syncdb.guides.find({}).limit(5)
+            for guide in guides_part_match:
+                guides.append(guide)
+            
+        if len(guides)>0:
+            for guide in guides:                        
+                    self.write(self.render_string("Guides/guideentry.html", guide = guide) + "||||")
 
 class CreateGuidesHandler(BaseHandler):
     slug = None
@@ -177,7 +186,7 @@ class CreateGuidesHandler(BaseHandler):
         self.syncdb.guides.ensure_index('guide_id',  unique = True)  
         guide_id = bson.ObjectId()                      
         #self.db.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()}, callback=self._create_guide)
-        self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':0, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tag':[], 'user_like':[], 'random' : random.random()})
+        self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':0, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'random' : random.random()})
         self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tag': tag}})
         self.syncdb.guides.ensure_index('rating', pymongo.DESCENDING);
         self.syncdb.guides.ensure_index('guide_id', unique=True);
