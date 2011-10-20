@@ -567,15 +567,13 @@ function check_createguide_form(form)
 
 
 <script type="text/javascript">
-
-	
 function set_section(section, _url) {
 	    var trips = null;
 		$("#section_value").val(section);
         $('#tabs > .on').removeClass('on');
         $('#'+section + '-tab').addClass('on');
 		$.getJSON(_url, function(response) {
-        //alert('test');
+        
 		history.pushState(null, null, _url);
 		ShowTrip(response); 
         }); 
@@ -591,10 +589,11 @@ function ShowTrip(message) {
 		
 		$.each(trips, function(index, value) {
 	         node = $(value);
-             node.hide();
+            // node.hide();
 		     
              $("#latest_trip").append(node);
-             node.show();
+             //node.show();
+			 
          });	
 		 }
     }

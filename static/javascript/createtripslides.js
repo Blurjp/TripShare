@@ -211,6 +211,7 @@ $(document).ready(function() {
       
       document.getElementById("create_trip_form").reset();	
 	  disabled.enable();
+	  set_section('newtrips', '/newtrips');
  });
  
  jQuery.fn.disable = function() {

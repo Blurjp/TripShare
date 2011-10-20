@@ -996,11 +996,8 @@ $('#mask6').click(function(e) {
         e.preventDefault();  
         var id = $('#typeId').val();
 		var type = $('#type').val();
-		//alert(id);
 		var content  = $('.feedBody').val();
-		//alert(content);
 		var xsrf = $('input[name=_xsrf]').val();
-		//alert(xsrf);
 		var message = {"content": content, "id":id , "_xsrf":xsrf, "type":type};
 		//alert(jQuery.parseJSON(message));
 		//$('.feedsUI li').last().before('<li class="feed item">'+content+'</li>');
