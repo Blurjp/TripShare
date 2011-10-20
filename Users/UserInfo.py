@@ -449,6 +449,11 @@ class UserPictureHandler(BaseHandler):
         
         self.redirect('/')
     
+class UserSettingHandler(BaseHandler):
+    @tornado.web.asynchronous
+    @tornado.web.authenticated
+    def post(self):
+         _formData = simplejson.loads(self.get_argument('data'))
 
 class UserEntryModule(tornado.web.UIModule):
     def render(self):

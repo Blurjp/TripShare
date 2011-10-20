@@ -116,10 +116,10 @@ $(document).ready(function() {
 	  });
 
 
-      		xsrf = getCookie("_xsrf");
-		var fileName;
-	var $dialog = $('{% if current_user %}<div class="pic_dialogdiv"></div>')
-		.html('<div id="pic_dialog"><form name="upload_pic_form" action="/a/changepicture" method="post" onsubmit="return checkRequired(this)" enctype="multipart/form-data"><input type="hidden" name="_xsrf" value='+xsrf+'><div><img src="{{current_user["picture"]}}" alt="{{current_user["username"]}}" class="picture large"></div><div style="margin-top: 1em"><input type="file" size="40" name="picture" value="/tmp/test.gif" id="pictureupload"></div><div class="buttons"><input type="submit" value="Upload picture" class="save"><a href="#" class="l_closedialog">Cancel</a></div></form></div>{% end %}')
+      xsrf = getCookie("_xsrf");
+	  var fileName;
+	  var $dialog = $('<div class="pic_dialogdiv"></div>')
+		.html('<div id="pic_dialog"><form name="upload_pic_form" action="/a/changepicture" method="post" onsubmit="return checkRequired(this)" enctype="multipart/form-data"><input type="hidden" name="_xsrf" value='+xsrf+'><div><img src="{{current_user["picture"]}}" alt="{{current_user["username"]}}" class="picture large"></div><div style="margin-top: 1em"><input type="file" size="40" name="picture" value="/tmp/test.gif" id="pictureupload"></div><div class="buttons"><input type="submit" value="Upload picture" class="save"><a href="#" class="l_closedialog">Cancel</a></div></form></div>')
 		.dialog({
 			autoOpen: false,
 			title: 'User Profile Picture',
@@ -159,6 +159,8 @@ $(document).ready(function() {
     // if we get to this point send the form
     return true;
     });
+	
+	
 });  
 
 function getCookie(name) {

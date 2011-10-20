@@ -16,7 +16,7 @@ Setting
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
 <script src="{{ static_url("javascript/followuser.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/updateusersetting.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
 
 
@@ -40,7 +40,7 @@ Setting
 <div id="user_settingboxes"> 
 <div id="setting" class="settingdialogdiv">
 
-<form>
+<form id="usersettingform">
 <table class="form">
 <tbody>
 <tr>
@@ -55,7 +55,7 @@ Setting
 
 <tr>
 <td class="label" style="vertical-align:top">Photo:</td>
-<td><a href="#" class="l_editpicture" sid="{{current_user['user_id']}}">Change picture</a></td>
+<td><input class="file-field" id="person_avatar" name="person[avatar]" type="file"></td>
 </tr>
 
 <tr>
@@ -159,7 +159,7 @@ Setting
 <tr>
 <td></td>
 <td>
-<input type="submit" value="Update" class="sidebar-auth-button">
+<input type="submit" value="Update" class="updateusersetting sidebar-auth-button">
 
 </td>
 </tr>

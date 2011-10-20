@@ -35,6 +35,7 @@ from Users.UserInfo import AuthLogoutFBHandler
 from Users.UserInfo import UserHandler
 from Users.UserInfo import FollowUserHandler
 from Users.UserInfo import SearchUserHandler
+from Users.UserInfo import UserSettingHandler
 from Users.UserInfo import SearchFriendHandler
 from Users.UserInfo import FriendRequestHandler
 from Users.UserInfo import FriendRemoveHandler
@@ -170,6 +171,7 @@ class Application(tornado.web.Application):
                                       (r"/auth/logout", AuthLogoutHandler),
                                       (r"/auth/fblogin", AuthLoginFBHandler),
                                       (r"/auth/fblogout", AuthLogoutFBHandler),
+                                      (r"/updateusersetting", UserSettingHandler),
                                       # 
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
