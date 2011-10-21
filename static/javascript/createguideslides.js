@@ -15,7 +15,7 @@ $(document).ready(function() {
     $('a[name=createguide]').click(function(e) {  
         
 		//each time before create guide, clear all the cache information for 
-		alert('test');
+		
 		$('#destinations_for_guide').val('');
 		
         e.preventDefault();

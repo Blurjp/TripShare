@@ -110,6 +110,7 @@ class CreateAccountHandler(BaseHandler):
                            'save_guide':[],
                            'friends':[],
                            'current_location':'',
+                           'current_position':[],
                            'new_notifications':[],
                            'notifications':[],
                                }
@@ -166,6 +167,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'email': user[0]['email'],
                     'picture': user[0]['pic'],
                     'current_location': user[0]['current_location'],
+                    'current_position':[],
                     'access_token': self.access_token,
                     'save_guide':[],
                     'like_guide':[],
@@ -221,9 +223,6 @@ class AuthLogoutFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
 
 class TravelersHandler(BaseHandler):
     user = None
-    
-
-        
     @tornado.web.asynchronous
     def get(self, type):
 
@@ -233,6 +232,8 @@ class TravelersHandler(BaseHandler):
                 self.db.users.find(sort = [('trips.count()', -1)], callback=self._people_entry)
         elif (type == 'latest'):
                 self.db.users.find(sort = [('createdtime', -1)] , callback=self._people_entry)  
+        elif (type == 'nearest'):
+                self.db.users.find({ 'current_position' : { '$near' : self.current_user['current_position']} } , callback=self._people_entry)  
                   
     def _people_entry(self, response, error):
         if error:

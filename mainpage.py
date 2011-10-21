@@ -209,8 +209,8 @@ class Application(tornado.web.Application):
                                       (r"/searchfriend/([^/]+)", SearchFriendHandler),
                                       (r"/getfriends", GetFriendHandler),
                                       
-                                      
-                                      (r"/travelers/([^/]+)", TravelersHandler),
+                                    
+                                      (r"/travelers/([^/]*)", TravelersHandler),
                                       (r"/people/([^/]+)", UserHandler),
                                       (r"/addusertotrip/([^/]+)/([^/]+)", AddUserToTripHandler),
                                       (r"/followpeople/([^/]+)", FollowUserHandler),

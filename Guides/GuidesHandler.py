@@ -167,7 +167,7 @@ class CreateGuidesHandler(BaseHandler):
         content = simplejson.loads(self.get_argument('data'))
         title = content['title']
         tag = content['tag']
-        print(title);
+        
         destinations = content['destinations']
         
         description = ''
@@ -187,6 +187,11 @@ class CreateGuidesHandler(BaseHandler):
         guide_id = bson.ObjectId()                      
         #self.db.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()}, callback=self._create_guide)
         self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':0, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'random' : random.random()})
+        
+        for dest in destinations:
+            if(dest!=""):
+                self.syncdb.sites.save({'site_id':bson.ObjectId(), 'guide_id':guide_id, 'type':'', 'site_name':dest['dest'], 'location':[]})
+            
         self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tag': tag}})
         self.syncdb.guides.ensure_index('rating', pymongo.DESCENDING);
         self.syncdb.guides.ensure_index('guide_id', unique=True);

@@ -55,21 +55,14 @@ class ComposeHandler(BaseHandler):
         tags = []
         members = []
         _formData = simplejson.loads(self.get_argument('data'))
-        #_formData = simplejson.loads(formData)
-        #id = self.get_argument("id", None)
-        #start = self.get_argument("start")
-       
         start = _formData['start']
-        
-        #print('------------------------------'+start)    
-           
         added_members = _formData['user_ids'].split('||')
                 #added_members = dic["user_ids"].split('//') 
         for member_id in added_members:
                     #print(member_id+'------------------------------')
-           if member_id != '' and member_id != None: 
-              _member = self.syncdb.users.find_one({'user_id':bson.ObjectId(member_id)})
-              members.append(_member)
+            if member_id != '' and member_id != None: 
+                _member = self.syncdb.users.find_one({'user_id':bson.ObjectId(member_id)})
+                members.append(_member)
 
         radio = _formData['privacy']
 
