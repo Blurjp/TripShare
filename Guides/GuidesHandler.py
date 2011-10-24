@@ -6,6 +6,7 @@ Created on Aug 31, 2011
 import bson
 import random
 import datetime
+import StringIO
 import string
 import simplejson
 import pymongo
@@ -20,7 +21,7 @@ from Utility.DateProcessor import FromStringtoDate
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
         if self.current_user:  
-            guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort("slug")    
+            guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort('title')
         else:
             guides = None    
         self.render("Guides/guides.html", guides=guides)
@@ -37,13 +38,13 @@ class CategoryGuidesHandler(BaseHandler):
     def get(self, section):
         latest_guide_ids = None
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort('title')
         if section == "park":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).limit(5).sort('title')
         elif section == "city":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'city'}).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).limit(5).sort('title')
         elif section == "world":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).limit(5).sort('title')
             
         if latest_guide_ids.count() >0:
                 
@@ -61,13 +62,13 @@ class GuidePageHandler(BaseHandler):
         latest_guide_ids = None
         skip_number = index*3
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(skip_number).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(skip_number).limit(5).sort("title")
         if section == "park":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'park'}).skip(skip_number).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).skip(skip_number).limit(5).sort('title')
         elif section == "city":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'city'}).skip(skip_number).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).skip(skip_number).limit(5).sort('title')
         elif section == "world":
-            latest_guide_ids = self.syncdb.guides.find({"tag":'world'}).skip(skip_number).limit(5).sort("slug")
+            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(skip_number).limit(5).sort('title')
             
         if latest_guide_ids!= None:
                 for latest_guide_id in latest_guide_ids:                        
@@ -204,3 +205,44 @@ class CreateGuidesHandler(BaseHandler):
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'guides': self.slug} })     
             print('redirect')
             self.redirect("/guide/" + str(self.slug))
+
+class ImportGuidesHandler(BaseHandler):
+    @tornado.web.authenticated
+    def post(self):
+        user_id = self.get_secure_cookie("user")
+        if not user_id: return None
+        if len(self.request.files)>0:
+            
+            file = self.request.files['guidefile'][0]
+            if not file: return None
+            local_file_path = "/tmp/" + user_id +str(file['filename'])
+            output_file = open(local_file_path, 'w')
+            output_file.write(file['body'])
+            output_file.close()
+            temp_file = open(local_file_path, 'r')
+            file_list = temp_file.readlines()
+            temp_file.close()  
+            
+            guide_id = None
+
+            for line in file_list:
+                if line !='' and line !='\n':
+                    print(line)
+                    data = simplejson.loads(line)
+                    if data['type'] == 'national_park':
+                        print(str(data['parent_site_name']))
+                        guide_id = bson.ObjectId()
+                        
+                        print(str(guide_id))
+                        guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'title': data['parent_site_name'], 'description': '', 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'type':data['type'], 'random' : random.random()}
+                        self.syncdb.guides.save(guide)
+                        #temp = self.syncdb.guide.find_one({'guide_id':guide_id})['title']
+                        #print(temp)
+                        print('finish')
+                    site_id = bson.ObjectId()
+                    self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location']})       
+             
+        self.redirect('/guides')
+          
+            
+        

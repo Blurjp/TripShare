@@ -15,7 +15,7 @@ from Map.ProcessTripHandler import ShowEndTrips
 from Map.ProcessTripHandler import SaveTrips
 from Map.ProcessTripHandler import SubscribeTrip
 from Map.ProcessTripHandler import UnsubscribeTrip
-from Users.UserInfo import UserPictureHandler
+from Users.UserInfo import UpdateUserProfileHandler
 from Users.UserInfo import RealTimeSearchUserHandler
 from Map.BrowseTripHandler import BaseHandler
 from Map.BrowseTripHandler import BrowseHandler
@@ -55,6 +55,7 @@ from Guides.GuidesHandler import GetGuidesForImportHandler
 from Guides.GuidesHandler import DeleteGuidesHandler
 from Guides.GuidesHandler import EntryGuidesHandler
 from Guides.GuidesHandler import GuidePageHandler
+from Guides.GuidesHandler import ImportGuidesHandler
 from Guides.GuidesHandler import CategoryGuidesHandler
 from Comment.CommentHandler import PostCommentHandler
 from Comment.CommentHandler import DeleteCommentHandler
@@ -192,7 +193,9 @@ class Application(tornado.web.Application):
                                       (r"/exportguide", ExportGuidesHandler),
                                       (r"/getguidesforimport", GetGuidesForImportHandler),
                                       (r"/deleteguide", DeleteGuidesHandler),
-                                      (r"/a/changepicture", UserPictureHandler),
+                                      (r"/importguidefile", ImportGuidesHandler),
+                                      #(r"/a/changepicture", UserPictureHandler),
+                                      (r"/updateuserprofile", UpdateUserProfileHandler),
                                   
                                       (r"/settings", SettingsHandler),
                                       (r"/blog", Blog),

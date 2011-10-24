@@ -400,7 +400,52 @@ class SearchFriendHandler(BaseHandler):
         else:
             self.write(self.render_string("Module/searchpeopleresult.html", searchuserresults = None)) 
            
+class UpdateUserProfileHandler(BaseHandler):
+    @tornado.web.authenticated
+    @tornado.web.asynchronous 
+    def post(self): 
+        user_id = self.get_secure_cookie("user")
+        if not user_id: return None
         
+        bio = self.get_argument('description')
+        self.syncdb.users.update({"user_id": bson.ObjectId(user_id)}, {"$set": { "bio": bio}})
+        
+        if len(self.request.files)>0:
+            file = self.request.files['picture'][0]
+        #file = self.request.files.get('picture')[0]
+            if not file: return None
+
+            local_file_path = "/tmp/" +str(user_id) +str(file['filename'])
+            output_file = open(local_file_path, 'w')
+            output_file.write(file['body'])
+        
+            size = 50, 40
+
+            im = Image.open(StringIO.StringIO(self.request.files.items()[0][1][0]['body']))
+        
+            im.thumbnail(size, Image.ANTIALIAS)
+            im.save(local_file_path + ".thumbnail", "JPEG")
+        
+            s3_path = "/userpix_thumbs/"+str(user_id)+str(file['filename'])
+        
+            access_key = "AKIAJLDHNWC3WXD6PGVA"
+            secret_key = "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"
+            bucket = "tripshare"
+
+            conn = S3Connection(access_key, secret_key)
+            bucket = conn.get_bucket(bucket)
+        
+            k = Key(bucket)
+            k.key = s3_path
+            k.set_contents_from_filename(local_file_path, cb=percent_cb, num_cb=10)
+            k.set_acl('public-read')
+            output_file.close()
+            self.syncdb.users.update({"user_id": bson.ObjectId(user_id)}, {"$set": { "picture": "http://tripshare.s3.amazonaws.com"+s3_path}}, upsert = False, safe=True)
+        
+        self.redirect('/settings')
+         
+     
+     
 class UserPictureHandler(BaseHandler):
     
     @tornado.web.authenticated
@@ -408,8 +453,6 @@ class UserPictureHandler(BaseHandler):
     def post(self):
         user_id = self.get_secure_cookie("user")
         if not user_id: return None
-        
-        
         file = self.request.files['picture'][0]
         #file = self.request.files.get('picture')[0]
         if not file: return None
