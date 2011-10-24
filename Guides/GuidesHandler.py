@@ -39,7 +39,7 @@ class CategoryGuidesHandler(BaseHandler):
         latest_guide_ids = None
         if section == "me":
             latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort('title')
-        if section == "park":
+        elif section == "national_park":
             latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).limit(5).sort('title')
         elif section == "city":
             latest_guide_ids = self.syncdb.guides.find({"type":'city'}).limit(5).sort('title')
@@ -235,7 +235,7 @@ class ImportGuidesHandler(BaseHandler):
                         
                         print(str(guide_id))
                         guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'title': data['parent_site_name'], 'description': '', 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'type':data['type'], 'random' : random.random()}
-                        self.syncdb.guides.save(guide)
+                        self.syncdb.guides.save(guide, safe=True)
                         #temp = self.syncdb.guide.find_one({'guide_id':guide_id})['title']
                         #print(temp)
                         print('finish')
