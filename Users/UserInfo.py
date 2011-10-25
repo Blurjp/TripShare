@@ -7,6 +7,7 @@ import tornado.auth
 import simplejson
 import bson
 import StringIO
+import pymongo
 import datetime
 import hmac
 import unicodedata
@@ -234,12 +235,13 @@ class TravelersHandler(BaseHandler):
                 self.db.users.find(sort = [('createdtime', -1)] , callback=self._people_entry)  
         elif (type == 'nearest'):
                 self.db.users.find({ 'current_position' : { '$near' : self.current_user['current_position']} } , callback=self._people_entry)  
-                  
+        
+        
     def _people_entry(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
-        
-        self.render("travelers.html", users = response)
+        top_shares = self.syncdb.users.find().limit(10).sort("trip_count", pymongo.DESCENDING)
+        self.render("travelers.html", users = response, top_shares = top_shares)
 
 class UserHandler(BaseHandler):
     user = None

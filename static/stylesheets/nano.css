@@ -1000,8 +1000,6 @@ p.trip_save
     height: 50px;
     }
 
-.hsubgroup .avatar{float:left}
-.details {float: right; padding-top:10px}
 h2 .user_name {margin-left:150px !important}
 
 .xi,.xh{background:url("/static/images/email.png") no-repeat scroll 0 0 transparent;display:inline-block;height:18px;margin:2px;vertical-align:bottom;width:29px;}
@@ -1086,4 +1084,3 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 .tag_button_remove { background-color: #5495d7 }
 #guide_tag_add_show {display:none}
 #guide_tag_add_form {display:none}
-

@@ -230,16 +230,13 @@ class ImportGuidesHandler(BaseHandler):
                     print(line)
                     data = simplejson.loads(line)
                     if data['type'] == 'national_park':
-                        print(str(data['parent_site_name']))
                         guide_id = bson.ObjectId()
-                        
-                        print(str(guide_id))
                         guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'title': data['parent_site_name'], 'description': '', 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'type':data['type'], 'random' : random.random()}
                         self.syncdb.guides.save(guide, safe=True)
-                        #temp = self.syncdb.guide.find_one({'guide_id':guide_id})['title']
-                        #print(temp)
-                        print('finish')
                     site_id = bson.ObjectId()
+                    dest = {'dest':data['site_name'],'type':'car','date':''}
+                    self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'dest_place':dest}})
+                    self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'tags':data['site_name']}})
                     self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location']})       
              
         self.redirect('/guides')

@@ -41,8 +41,6 @@
 <div class='clearfix'  id='nav-bar'> 
 
  {% include "Module/headline.html" %}
- 
- 
  {% include "Module/usersetting.html" %}
       <div id='container'> 
         <a href="#" id="back_to_map" onclick="FS.hide_back_to_map();; return false;" style="display:none">Take me Back To The Map!</a> 
@@ -60,7 +58,7 @@
 </div>
 <div class="hgroup clearfix">
 <h1>People</h1>
-
+ {% include "Module/userentry.html" %}
 </div>
 <div class="sidebar">
 
@@ -69,19 +67,19 @@
 <div id="import-friend-options">
 <ul class="clearfix">
 <li class="twitter first">
-<a href="/twitter_auth" class="friend-import-button" data-method="post" rel="nofollow"><img alt="Clear" src="/images/clear.png?1308166951"> Twitter</a>
+<a href="/twitter_auth" class="friend-import-button" data-method="post" rel="nofollow"><img alt="Clear" src="/images/clear.png"> Twitter</a>
 </li>
 <li class="facebook">
-<a href="/find_friends?client=facebook" class="friend-import-button"><img alt="Clear" src="/images/clear.png?1308166951"> Facebook</a>
+<a href="/find_friends/facebook" class="friend-import-button"><img alt="Clear" src="/images/clear.png?1308166951"> Facebook</a>
 </li>
 <li class="foursquare first">
-<a href="/foursquare_auth" class="friend-import-button" data-method="post" rel="nofollow"><img alt="Clear" src="/images/clear.png?1308166951"> Foursquare</a>
+<a href="/foursquare_auth" class="friend-import-button" data-method="post" rel="nofollow"><img alt="Clear" src="/images/clear.png"> Foursquare</a>
 </li>
 <li class="search">
-<a class="friend-import-button" href="#" onclick="$('q').focus();$('content-header').highlight({endcolor:'#EEEEEE'}); return false;"><img alt="Clear" src="/images/clear.png?1308166951"> Search</a>
+<a class="friend-import-button" href="#"><img alt="Clear" src="/images/clear.png"> Search</a>
 </li>
 <li class="email first" style="width: 100%;text-align:center">
-<a class="friend-import-button" href="#" id="email-friend-button" onclick="$('invite-email-form').toggle(); return false;"><img alt="Clear" src="/images/clear.png?1308166951"> Invite</a>
+<a class="friend-import-button" href="#" id="email-friend-button"><img alt="Clear" src="/images/clear.png"> Invite</a>
 </li>
 </ul>
 <form accept-charset="UTF-8" action="/find_friends/email" class="default" id="invite-email-form" method="post" onsubmit="new Ajax.Request('/find_friends/email', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;" style="display: none"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><input name="authenticity_token" type="hidden" value="IqtF77VV+3tEQDfSj9lpfHl0iIG6kNYFREU8SamS8UA="></div>
@@ -107,54 +105,10 @@
 </div>
 </div>
 <div id="sidebar-leaderboard">
-<div class="pod cpod">
-<h2>
-People to follow
-</h2>
-<ul class="top_foodspotters">
-<li class="person clearfix">
-<a class="follow-button primary-background-color" href="#" id="Person_17942" onclick="FS.authenticate(&quot;if ($('Person_17942').submittable != false) { $('Person_17942').addClassName('loading'); new Ajax.Request('/followings?followable_id=17942&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('IqtF77VV+3tEQDfSj9lpfHl0iIG6kNYFREU8SamS8UA=')}); $('Person_17942').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1308166951">Follow</a>
-
-<a href="/17942-justafoodie" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/people/17942/small_thumb.JPG?1273787329"></a>
-<div class="meta">
-<strong class="name"><a href="/17942-justafoodie">Justafoodie</a></strong>
-<span class="points">
-151,785
-points
-</span>
-</div>
-</li>
-
-</ul>
-</div>
-
-<div class="pod cpod inset">
-<h2>
-This Week's Top Foodspotters
-</h2>
-<ul class="top_foodspotters">
-<li class="person clearfix">
-<a class="follow-button primary-background-color" href="#" id="Person_193958" onclick="FS.authenticate(&quot;if ($('Person_193958').submittable != false) { $('Person_193958').addClassName('loading'); new Ajax.Request('/followings?followable_id=193958&amp;amp;followable_type=Person&amp;amp;referrer=home', {asynchronous:true, evalScripts:true, method:'post', parameters:'authenticity_token=' + encodeURIComponent('IqtF77VV+3tEQDfSj9lpfHl0iIG6kNYFREU8SamS8UA=')}); $('Person_193958').submittable=false; }&quot;, 'to follow', 'person_follow'); return false;" rel="nofollow"><img alt="Clear" src="/images/clear.png?1308166951">Follow</a>
-
-<a href="/penguinsnomnom" class="avatar"><img alt="Small_thumb" src="http://s3.amazonaws.com/TripShare-ec2/people/193958/small_thumb.png?1307938383"></a>
-<div class="meta">
-<strong class="name"><a href="/penguinsnomnom">penguinsnomnom</a></strong>
-<span class="points">
--5
-points
-</span>
-</div>
-</li>
-</ul>
-<div class="pager-container clearfix">
-<div class="pagination"><span class="previous_page disabled">← Previous</span> <em>1</em> <a rel="next" href="/people?page=2">2</a> <a href="/people?page=3">3</a> <a href="/people?page=4">4</a> <a href="/people?page=5">5</a> <a href="/people?page=6">6</a> <a href="/people?page=7">7</a> <a href="/people?page=8">8</a> <a href="/people?page=9">9</a> <span class="gap">…</span> <a href="/people?page=13007">13007</a> <a href="/people?page=13008">13008</a> <a class="next_page" rel="next" href="/people?page=2">Next →</a></div>
-</div>
-</div>
-
-        </div>
-		    
-  </div>
-    </div> 
+ {% include "Module/TopSharers.html" %}
+</div>		    
+ </div>
+ </div> 
     
 {% include "Module/footer.html" %}
  

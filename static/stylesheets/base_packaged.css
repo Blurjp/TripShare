@@ -641,8 +641,8 @@ ul.reviews li.review .creator-bar .avatar img {width: 30px; height: 30px}
 .comments-container .new-comment .perfect-blue {margin-top: 8px}
 .comment_count {color: #777777; font-weight: bold}
 ul.dishes li .photo {float: left; margin-right: 15px}
-ul.list .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
-ul.people li.person .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; float: right; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+ul.list .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
+ul.people li.person .follow-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px 10px; font-size: 1em; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
 ul.people li.person .avatar {float: left; width: 50px; height: 50px}
 ul.people li.person .avatar img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 ul.people li.person .details {color: #555555; margin-left: 65px}

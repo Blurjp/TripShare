@@ -224,7 +224,7 @@
 	
 	for (var i=0; i < dest_places.length; i++) 
 	{
-	  day = dest_places[i]['day'];
+	  day = dest_places[i]['date'];
 	  
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
@@ -1597,7 +1597,7 @@ function guide_tag_add_form_toggle(display)
 
 <input id="place-{{counter}}-text" name="place-{{counter}}-text" type="text" class="text destination margin-right-thin" value="{{dest['dest']}}">
 <input id="place-{{counter}}" name="place-{{counter}}" type="hidden" value="">
-<input id="place-{{counter}}-date" name="place-{{counter}}-date" type="text" value="{{dest['day']}}" class="text">
+<input id="place-{{counter}}-date" name="place-{{counter}}-date" type="text" value="{{dest['date']}}" class="text">
 
 <div class="right" style="padding-right:20px">
 <a href="#" id="place-{{counter}}-move-up-link" class="pad-left-thin f2 lh-tight move-up-link"></a>
