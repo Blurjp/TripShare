@@ -1618,8 +1618,11 @@ function guide_tag_add_form_toggle(display)
 
 <div class='overview'>
 	<div class="left">
+		{%if current_user%}
     <img alt="{{current_user['username']}}" src="{{current_user['picture']}}" title="{{current_user['username']}}" class="picture medium "> 
-	
+	   {%else%}
+	<img alt="guest" src="" title="guest" class="picture medium ">    
+	   {%end%}
      </div>
 	<div class="comment post ">
 		<form action="#" method="post">
