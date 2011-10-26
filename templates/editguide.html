@@ -180,9 +180,7 @@
    // === create the context menu div ===           
     markerMenuDiv = document.createElement("div");
     
-    markerMenuDiv.index = 1;               
-
-                
+    markerMenuDiv.index = 1;                         
     google.maps.event.addListener(map,"rightclick",function(event) {    
      markerMenuDiv.style.visibility = "hidden";
                 });   
@@ -215,8 +213,8 @@
   
   function DestToMarker(dest_places)
 {
-	temp = dest_places.replace(/u'/g,"\"");
-	temp = temp.replace(/\'/g,'\"');;
+	temp = dest_places.replace(/[^\u's ]u'/g,"\"");
+	temp = temp.replace(/[^\'s ]\'/g,'\"');
 	
 	dest_places= jQuery.parseJSON(temp);
 	

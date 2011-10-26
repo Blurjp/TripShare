@@ -260,6 +260,7 @@
 
 function DestToMarker(dest_places, image, shadow)
 {
+	
 	temp = dest_places.replace(/u'/g,"\"");
 	temp = temp.replace(/\'/g,'\"');;
 	
@@ -332,7 +333,13 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
  
  {% include "Module/usersetting.html" %}
  
+</div>
+</div>
 
+
+<div id="discover-map">
+<div id="map">
+</div>
 <div id="map-pagination">
 <a href="#" id="page-right" onclick="; return false;" class="enabled">Next 20</a>
 <a href="#" id="page-left" onclick="; return false;" class="">Previous 20</a>
@@ -342,10 +349,6 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <a href="#" id="map-sort-ended" onclick="FSMap.update_filter('mytrip'); return false;" class="">My Trip</a>
 <a class="last" href="#" id="map-sort-guides" onclick="FSMap.update_filter('guides'); return false;">Guides</a>
 </div>
-</div>
-
-<div id="discover-map">
-<div id="map">
 </div>
 </div>
 

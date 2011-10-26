@@ -19,7 +19,8 @@ $(document).ready(function() {
 		
     }); 
 		$('#closeexportguide-modal').show();
-        var id = $(this).attr('href');  
+        //var id = $(this).attr('href'); 
+		var id = '#export_guide_step_1'; 
         //Set height and width to mask to fill up the whole screen  
         $('#mask4').css({'width':maskWidth,'height':maskHeight});  
           

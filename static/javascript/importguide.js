@@ -34,6 +34,8 @@ $(document).ready(function() {
 	    $(id).animate({right: winW/2-$(id).width()/2});
         $(id).css("position", "fixed");
     });  
+	
+	
       
     //if close button is clicked  
     $("#closeimportguide-modal").click(function (e) {  

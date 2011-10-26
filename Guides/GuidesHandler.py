@@ -127,16 +127,16 @@ class ExportGuidesHandler(BaseHandler):
         date = FromStringtoDate.ToDate(last_trip['date'])
         #date = last_trip['date']
         one_day = datetime.timedelta(days=1)
-        trip = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
-        dest_place = trip['dest_place']
-        title = trip['title']
+        guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
+        dest_place = guide['dest_place']
+        title = trip['title']+' to '+ guide['title']
         for dest in dest_place:
             next_day = date+one_day
             dest['date'] = next_day.isoformat()
             dest['type'] = 'car'
-            title +=' to '+ dest['dest']
+           
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tag':dest['dest']}})
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tags':dest['dest']}})
         
         self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})  
         #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
@@ -194,7 +194,7 @@ class CreateGuidesHandler(BaseHandler):
             if(dest!=""):
                 self.syncdb.sites.save({'site_id':bson.ObjectId(), 'guide_id':guide_id, 'type':'', 'site_name':dest['dest'], 'location':[]})
             
-        self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tag': tag}})
+        self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tags': tag}})
         self.syncdb.guides.ensure_index('rating', pymongo.DESCENDING);
         self.syncdb.guides.ensure_index('guide_id', unique=True);
         self.redirect("/guide/" + str(self.slug))
@@ -213,20 +213,20 @@ class ImportGuideToTripHandler(BaseHandler):
         guide_id = self.get_argument('guide_id')
         trip_id = self.get_argument('trip_id')
         #print('tripid++++++++'+trip_id)
-        guide_dest_place = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})['dest_place']
+        guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
         last_trip = trip['dest_place'][len(trip['dest_place'])-1]
         date = FromStringtoDate.ToDate(last_trip['date'])
         #date = last_trip['date']
         one_day = datetime.timedelta(days=1)
-        title = trip['title']
-        for dest in guide_dest_place:
+        title = trip['title'] + guide['title']
+        for dest in guide['dest_place']:
             next_day = date+one_day
             dest['date'] = next_day.isoformat()
             dest['type'] = 'car'
-            title +=' to '+ dest['dest']
+            
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tag':dest['dest']}})
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tags':dest['dest']}})
             
         self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})
         #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
