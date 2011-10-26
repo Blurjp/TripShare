@@ -281,7 +281,6 @@ function DestToMarker(dest_places, image, shadow)
         map: map,
         shadow: shadow,
         icon: image,
-        
         zIndex: 9000
     });
 		
@@ -333,9 +332,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
  
  {% include "Module/usersetting.html" %}
  
-<div id="partner-header" style="background-color:#99b2ce;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;">
 
-	
 <div id="map-pagination">
 <a href="#" id="page-right" onclick="; return false;" class="enabled">Next 20</a>
 <a href="#" id="page-left" onclick="; return false;" class="">Previous 20</a>
@@ -348,15 +345,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 </div>
 
 <div id="discover-map">
-<div id="map-loading-box" style="display: none; opacity: 0.75; "></div>
-<div id="map-message-box" style="display: none; "></div>
-<div id="map" style="position: relative; background-color: rgb(229, 227, 223); ">
-<div style="position: absolute; left: 0px; top: 0px; overflow-x: hidden; overflow-y: hidden; width: 100%; height: 100%; ">
-<div style="z-index: 0; position: absolute; left: 3px; top: 32px; cursor: url(http://maps.gstatic.com/intl/en_us/mapfiles/openhand_8_8.cur), default; ">
-<div style="position: absolute; left: 0px; top: 0px; display: none; ">
-<div style="position: absolute; left: 0px; top: 0px; z-index: 0; ">
-
-</div></div></div></div>
+<div id="map">
 </div>
 </div>
 
@@ -397,7 +386,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
             // ]]>
             </script>
     </div>
-	   </div>
+
 <div id="container" class="clearfix">
 <div class="clearfix" id="content">
 
@@ -412,23 +401,29 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 </div>
 
 
-
-
 <div class="sidebar right">
 <div id="sidebar-home">
-<div class="pod" id="home-featured">
-<div class="pod" id="sidebar-promo">
+<div class="pod inset">
 <h2>Featured Guide</h2>
-<iframe frameborder="0" height="250" scrolling="no" src="" width="300"></iframe>
 
+<ul class="profile-guides-list clearfix">	
+{% for guide in guides %}	
+<li class="clearfix first guide">
+<div class="guide-stats" style="font-size:1.1em">
+<a href="/guide/{{guide['slug']}}">{{guide['title']}}</a>
+<div class="guide-standings">
+{{guide['rating']}} people like
+</div>
+</div>
+</li>
+{% end %}
+
+</ul>
 </div>
 </div>
 
 
-</div>
-
-
-<div id="sidebar-leaderboard">
+<div id="sidebar-home">
 
  {% include "Module/TopSharers.html" %}
 

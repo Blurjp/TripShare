@@ -136,6 +136,7 @@ class ExportGuidesHandler(BaseHandler):
             dest['type'] = 'car'
             title +=' to '+ dest['dest']
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tag':dest['dest']}})
         
         self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})  
         #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
@@ -205,6 +206,32 @@ class CreateGuidesHandler(BaseHandler):
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'guides': self.slug} })     
             print('redirect')
             self.redirect("/guide/" + str(self.slug))
+
+class ImportGuideToTripHandler(BaseHandler):
+    @tornado.web.authenticated
+    def post(self):
+        guide_id = self.get_argument('guide_id')
+        trip_id = self.get_argument('trip_id')
+        #print('tripid++++++++'+trip_id)
+        guide_dest_place = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})['dest_place']
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+        last_trip = trip['dest_place'][len(trip['dest_place'])-1]
+        date = FromStringtoDate.ToDate(last_trip['date'])
+        #date = last_trip['date']
+        one_day = datetime.timedelta(days=1)
+        title = trip['title']
+        for dest in guide_dest_place:
+            next_day = date+one_day
+            dest['date'] = next_day.isoformat()
+            dest['type'] = 'car'
+            title +=' to '+ dest['dest']
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tag':dest['dest']}})
+            
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})
+        #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
+        self.write('Import successfully!')
+        
 
 class ImportGuidesHandler(BaseHandler):
     @tornado.web.authenticated

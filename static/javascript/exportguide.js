@@ -18,10 +18,7 @@ $(document).ready(function() {
 		ShowTripInGuideList(response);
 		
     }); 
-		
 		$('#closeexportguide-modal').show();
-		
-		
         var id = $(this).attr('href');  
         //Set height and width to mask to fill up the whole screen  
         $('#mask4').css({'width':maskWidth,'height':maskHeight});  
@@ -29,7 +26,7 @@ $(document).ready(function() {
         //transition effect       
         $('#mask4').fadeIn();             
 		//slide from right to left, Set the popup window to center  
-		
+		//alert('test');
 		$(id).show();
 		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
 	    $(id).animate({right: winW/2-$(id).width()/2});

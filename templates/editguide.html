@@ -1361,7 +1361,7 @@ function PostFeedResponse(response){
 <div id="nav-bar">
  {% include "Module/headline.html" %} 
  {% include "Module/usersetting.html" %}
-
+ {% include "Module/ExportGuide.html" %}
 </div> 
 </div> 
  
@@ -1393,7 +1393,7 @@ function PostFeedResponse(response){
 </div>
 
 <h1><a class="name" href="{{guide['slug']}}">{{guide['title']}}</a> </h1>
-<a href="#" class="l_exportguide" uid="{{guide['guide_id']}}">export</a>
+<a href="#export_guide_step_1" class="l_exportguide" uid="{{guide['guide_id']}}">export</a>
 /
 <a href="#" class="l_deleteguide" uid="{{guide['guide_id']}}">delete</a>
 /
@@ -1642,7 +1642,7 @@ function guide_tag_add_form_toggle(display)
 	 
 </div>
 
-{% include "Module/ExportGuide.html" %}
+
 
 <!-- AddThis script-->
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>

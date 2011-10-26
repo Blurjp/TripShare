@@ -21,7 +21,7 @@ $(document).ready(function() {
     }); 
 		
 		$('#closeimportguide-modal').show();
-        var id = $(this).attr('href');  
+        var id = $(this).attr('href');
         //Set height and width to mask to fill up the whole screen  
         $('#mask4').css({'width':maskWidth,'height':maskHeight});  
           
@@ -77,7 +77,7 @@ function ShowGuideInList(message)
         //Cancel the link behavior  
         e.preventDefault();  
 		var content = {'_xsrf': getCookie("_xsrf"), 'guide_id' : $(this).attr('sid'), 'trip_id': $('#tripId').val()};
-    	$.postJSON('/importguide', content, function(response){
+    	$.postJSON('/importguidetotrip', content, function(response){
         ShowimportGuideResponse(response);
 			});	
 		

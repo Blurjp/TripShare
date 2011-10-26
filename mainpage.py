@@ -56,6 +56,7 @@ from Guides.GuidesHandler import DeleteGuidesHandler
 from Guides.GuidesHandler import EntryGuidesHandler
 from Guides.GuidesHandler import GuidePageHandler
 from Guides.GuidesHandler import ImportGuidesHandler
+from Guides.GuidesHandler import ImportGuideToTripHandler
 from Guides.GuidesHandler import CategoryGuidesHandler
 from Comment.CommentHandler import PostCommentHandler
 from Comment.CommentHandler import DeleteCommentHandler
@@ -107,6 +108,7 @@ class MainPage(BaseHandler):
         latest_trip_ids = self.syncdb.trips.find().limit(10).sort("published", pymongo.DESCENDING)
         
         top_shares = self.syncdb.users.find().limit(10).sort("trip_count", pymongo.DESCENDING)
+        top_guides = self.syncdb.guides.find().limit(5).sort("rating", pymongo.DESCENDING)
         
         _trips = []
         if latest_trip_ids.count() > 0:
@@ -124,7 +126,7 @@ class MainPage(BaseHandler):
                         _trips.append(latest_trip_id)
                         
                        
-        self.render("newbeforesignin.html", trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
+        self.render("newbeforesignin.html", guides=top_guides, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
 
 class Terms(BaseHandler):
     def get(self):
@@ -194,6 +196,7 @@ class Application(tornado.web.Application):
                                       (r"/getguidesforimport", GetGuidesForImportHandler),
                                       (r"/deleteguide", DeleteGuidesHandler),
                                       (r"/importguidefile", ImportGuidesHandler),
+                                      (r"/importguidetotrip", ImportGuideToTripHandler),
                                       #(r"/a/changepicture", UserPictureHandler),
                                       (r"/updateuserprofile", UpdateUserProfileHandler),
                                   
