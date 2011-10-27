@@ -49,7 +49,7 @@ class CategoryGuidesHandler(BaseHandler):
         if latest_guide_ids.count() >0:
                 
                 for latest_guide_id in latest_guide_ids:                        
-                        self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
+                        self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
         else:
             self.write('<li><span>No guide for this category yet....</span></li>')
         
@@ -72,7 +72,7 @@ class GuidePageHandler(BaseHandler):
             
         if latest_guide_ids!= None:
                 for latest_guide_id in latest_guide_ids:                        
-                        self.write(self.render_string("Guides/guideentry.html", guide = latest_guide_id) + "||||")
+                        self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
      
 class SaveGuidesHandler(BaseHandler):  
     @tornado.web.authenticated  
@@ -121,8 +121,8 @@ class ExportGuidesHandler(BaseHandler):
     def post(self):
         guide_id = self.get_argument('guide_id')
         trip_id = self.get_argument('trip_id')
-        #print('tripid++++++++'+trip_id)
-        trip_dest_place = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['dest_place']
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+        trip_dest_place = trip['dest_place']
         last_trip = trip_dest_place[len(trip_dest_place)-1]
         date = FromStringtoDate.ToDate(last_trip['date'])
         #date = last_trip['date']
@@ -140,7 +140,7 @@ class ExportGuidesHandler(BaseHandler):
         
         self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})  
         #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
-        self.write('Export successfully!')
+        self.write(trip['slug'])
 
 class GetGuidesForImportHandler(BaseHandler):
     @tornado.web.authenticated

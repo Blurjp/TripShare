@@ -144,7 +144,10 @@ $(document).ready(function() {
 	 }
 	}); 
 	
-	
+	function getCookie(name) {
+    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return r ? r[1] : undefined;
+    }
 	
 	/* create trip slide 3*/
 	
@@ -648,6 +651,8 @@ jQuery.postJSON = function(url, args, callback) {
 
     }
     
+
+	
     function move_add_link() {
       $("#add-row-div").insertBefore(".transport-label:last");
     }
@@ -819,10 +824,7 @@ jQuery.postJSON = function(url, args, callback) {
 	
 $(document).ready(function() {   
 
-function getCookie(name) {
-    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
-    return r ? r[1] : undefined;
-    }
+
 
 $('input.add_member').focus(function() {
 	if (this.value == '' || this.value == null) {

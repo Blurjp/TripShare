@@ -13,21 +13,17 @@ $(document).ready(function() {
 					 
     //select all the tag with name equal to createguide
     $('.l_exportguide').click(function(e) {  
-        
+
 		$.getJSON('/gettrips', function(response) {
 		ShowTripInGuideList(response);
 		
     }); 
 		$('#closeexportguide-modal').show();
         //var id = $(this).attr('href'); 
-		var id = '#export_guide_step_1'; 
-        //Set height and width to mask to fill up the whole screen  
+		var id = '#export_guide_step_1';
         $('#mask4').css({'width':maskWidth,'height':maskHeight});  
-          
-        //transition effect       
+        
         $('#mask4').fadeIn();             
-		//slide from right to left, Set the popup window to center  
-		//alert('test');
 		$(id).show();
 		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
 	    $(id).animate({right: winW/2-$(id).width()/2});
@@ -80,6 +76,10 @@ $(document).ready(function() {
              node.show();
          });
 		 }
+		 else
+		 {
+		 	alert('You have no trip yet:)')
+		 }
     }
  
  
@@ -89,7 +89,8 @@ $(document).ready(function() {
 	 $('#mask4').hide();  
 	 $('#export_guide_step_1').hide();
 	 document.getElementById('export_guide_form').reset();
-	 
+	 $.getJSON('/trip/'+response, function(res){});
+	 //window.location = "http://www.google.com/"
  }
     
 	$(".l_exporttotrip").live('click', function (e) {  

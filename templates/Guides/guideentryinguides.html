@@ -1,7 +1,7 @@
 <li class="show_guide" id="{{guide['guide_id']}}">
 <div class="item hproduct">
 <div class="sighting-box clearfix">
-<a href="/guide/{{guide['slug']}}"><h2>{{guide['title']}}</h2></a>
+<h2><a href="/guide/{{guide['slug']}}">{{guide['title']}}</a></h2>
 
 <ul class="guide_details">
   
@@ -28,7 +28,7 @@
 <a href="#login" >like this</a> \ 
 <a href="#login" >save this</a>
 {% else %}
-<input type ="button" class="Importguidestotrip fancy" sid={{guide['guide_id']}} value="Import" href="{{current_user['user_id']}}">
+<input type ="button" class="l_exportguide fancy" uid={{guide['guide_id']}} value="Import">
 {% if guide['guide_id'] in  current_user['like_guide'] %}
 <input type ="button" class="like_guide action" sid={{guide['guide_id']}} value="unlike" actiontype="like" targettype="guide">
 

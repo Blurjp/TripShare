@@ -1036,13 +1036,14 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 .friend_dropdown_list {float:left;width:150px}
 
 /* guides  */
-.show_guides {padding-top:5px}
+.show_guide {padding-top:5px}
+.show_guide h2 a {font-size: 1.0em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
 .guide_action {padding-right:50px}
 .guide_action .action {-moz-border-radius:12px;-webkit-border-radius:12px;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
 
 .guide_action .saving_like_message, .guide_action .saving_save_message {display:none}
 .guide_details {width:50%; float:left}
-.guide_photo {padding-left:200px}
+.guide_photo {margin-left:200px}
 .guide_sights {padding-left:20px}
 .notice_no_plans {text-align: center;margin: 150px;width:50%}
 
