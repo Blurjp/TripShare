@@ -123,7 +123,7 @@ class ComposeHandler(BaseHandler):
                 self.slug += "-2"
 
             self.trip_id = bson.ObjectId()
-            self.db.trips.save({ 'trip_id':self.trip_id, 'tags': tags,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'slug':self.slug, 'members': members,'member_count':len(members),'description': str(description), 'start_place':start, 'dest_place':destinations, 'start_place_position':tripStartPosition, 'way_points':waypoints ,'trip_path':trip_path, 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'start_date': start_date_object, 'finish_date': finish_date_object, 'random' : random.random()}, callback=self._create_trips)
+            self.db.trips.save({ 'trip_id':self.trip_id, 'tags': tags,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'slug':self.slug, 'members': members,'member_count':len(members),'description': str(description), 'start_place':start, 'dest_place':destinations, 'start_place_position':tripStartPosition, 'way_points':waypoints ,'trip_path':trip_path, 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'start_date': start_date_object, 'finish_date': finish_date_object, 'imported_guides':[],'random' : random.random()}, callback=self._create_trips)
             
         
     def _create_trips(self, response, error):

@@ -1391,7 +1391,8 @@ function PostFeedResponse(response){
 </div>
 
 <h1><a class="name" href="{{guide['slug']}}">{{guide['title']}}</a> </h1>
-
+<a href="#" class="l_exportguide" uid="{{guide['guide_id']}}">export</a>
+/
 <a href="#" class="l_deleteguide" uid="{{guide['guide_id']}}">delete</a>
 /
 <a href="#" class="l_updateguide" uid="{{guide['guide_id']}}">update</a>
@@ -1517,12 +1518,12 @@ function guide_tag_add_form_toggle(display)
 <div class="conv-head">
 <ul>
 <li>
-<input type="button" class="regular-button l_exportguide" href="#" value="Export Guide">
+<input type="button" class="regular-button importguide" href="#import_guide_step_1" value="Import Guide">
 </li>
 </ul>
 </div>
 
-<div id="map-canvas"></div>
+<div id="map-canvas" style="margin-top:50px"></div>
 <div class="container">
 
 <div id="social">
@@ -1638,7 +1639,7 @@ function guide_tag_add_form_toggle(display)
         <input type="button" class="post-button postfeed" href="#post_feed" value="Post">
         </form>
         </div>
-	  <div style="clear:both"></div>
+	  
 	  <ul class="feedsUI">
 		  {% include "Module/guidecomment.html" %}
 	</ul>

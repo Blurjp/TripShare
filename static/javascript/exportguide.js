@@ -89,6 +89,7 @@ $(document).ready(function() {
 	 $('#mask4').hide();  
 	 $('#export_guide_step_1').hide();
 	 document.getElementById('export_guide_form').reset();
+	 alert(response);
 	 $.getJSON('/trip/'+response, function(res){});
 	 //window.location = "http://www.google.com/"
  }
@@ -100,7 +101,6 @@ $(document).ready(function() {
     	$.postJSON('/exportguide', content, function(response){
         ShowExportGuideResponse(response);
 			});	
-		
 		});
 	
 })

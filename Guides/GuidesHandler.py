@@ -211,27 +211,34 @@ class ImportGuideToTripHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
         guide_id = self.get_argument('guide_id')
-        trip_id = self.get_argument('trip_id')
-        #print('tripid++++++++'+trip_id)
-        guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
-        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
-        last_trip = trip['dest_place'][len(trip['dest_place'])-1]
-        date = FromStringtoDate.ToDate(last_trip['date'])
+        guide_ids = []
+        guide_ids.append(guide_id)
+        check = self.syncdb.trips.find({'imported_guides':{'$in':guide_ids}})
+        if not check:
+            trip_id = self.get_argument('trip_id')
+            print('not check+++++++++++++==')
+            guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            last_trip = trip['dest_place'][len(trip['dest_place'])-1]
+            date = FromStringtoDate.ToDate(last_trip['date'])
         #date = last_trip['date']
-        one_day = datetime.timedelta(days=1)
-        title = trip['title'] + guide['title']
-        for dest in guide['dest_place']:
-            next_day = date+one_day
-            dest['date'] = next_day.isoformat()
-            dest['type'] = 'car'
+            one_day = datetime.timedelta(days=1)
+            title = trip['title'] + guide['title']
+            for dest in guide['dest_place']:
+                next_day = date+one_day
+                dest['date'] = next_day.isoformat()
+                dest['type'] = 'car'
             
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tags':dest['dest']}})
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tags':dest['dest']}})
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'imported_guides':guide_id}})
             
-        self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})
-        #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
-        self.write('Import successfully!')
-        
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})
+            #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
+            self.write('Import successfully!')
+        else:
+            print('check+++++++++++++==')
+            self.write('This guide is already imported')
 
 class ImportGuidesHandler(BaseHandler):
     @tornado.web.authenticated
