@@ -84,8 +84,10 @@
 		}
 	   
 	var  dest_places = document.getElementById('dest_place').value;
-	temp = dest_places.replace(/u'/g,"\"");
-	temp = temp.replace(/\'/g,'\"');;
+	temp = dest_places.replace(/{u['"]/g,"{\"");
+	temp = temp.replace(/ u['"]/g," \"");
+	temp = temp.replace(/\'/g,'\"');
+	temp = temp.replace(/\"s /g,'\'s ');
 	dest_places= jQuery.parseJSON(temp);
 	var bounds = new google.maps.LatLngBounds();
 	for (var i=0; i < dest_places.length; i++) 

@@ -1517,7 +1517,7 @@ function guide_tag_add_form_toggle(display)
 <div class="conv-head">
 <ul>
 <li>
-<input type="button" class="regular-button l_exportguide" href="#" value="Export Guide">
+<input type="button" uid="{{guide['guide_id']}}" class="regular-button l_exportguide" href="#" value="Export Guide">
 </li>
 </ul>
 </div>
@@ -1671,7 +1671,7 @@ function guide_tag_add_form_toggle(display)
 		$.postJSON('/updateguide', content, function(response){ alert(response);});
 	});
 </script>
-
+<input type='hidden' value='' id='guide_id_for_export'>
 <div id="editmap_footer">
 
 <div class="editmap_inset">

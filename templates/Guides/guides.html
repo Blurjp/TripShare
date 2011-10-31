@@ -14,7 +14,8 @@ TripShare - Guides
 <script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/jquery.pagination.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/exportguide.js") }}" type="text/javascript"></script>
-
+<script src="{{ static_url("javascript/createguideslides.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/createtripslides.js") }}" type="text/javascript"></script>
 <script src='http://use.typekit.com/gmg0plj.js' type='text/javascript'></script> 
 <script type='text/javascript'> 
 try{Typekit.load();}catch(e){}
@@ -44,7 +45,7 @@ try{Typekit.load();}catch(e){}
     <div id="plans_tabs">
         <div id="plans_tabs_categories" style="display: block;">
               <a id="plans_tabs_category_me" class="plans_tabs_selected" onclick="set_tab('me');">My Collections</a>
-              <a id="plans_tabs_category_park" class="plans_tabs_small" onclick="set_tab('national_park');">Park<img src="{{ static_url("../static/icon/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
+              <a id="plans_tabs_category_national_park" class="plans_tabs_small" onclick="set_tab('national_park');">Park<img src="{{ static_url("../static/icon/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
               <a id="plans_tabs_category_city" class="plans_tabs_small" onclick="set_tab('city');">City<img src="{{ static_url("../static/icon/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
               <a id="plans_tabs_category_world" class="plans_tabs_small" onclick="set_tab('world');">World<img src="{{ static_url("../static/icon/remove.png") }}" class="plans_tabs_category_remove" style="display: none; "></a>
         </div>
@@ -95,10 +96,7 @@ try{Typekit.load();}catch(e){}
   </div>
 
   <script type="text/javascript">
-  
     var plans_scope = new Menu('plans_scope');
-    
-        
   </script>
 </div>    
     <div id="plans_pending" style="display: none; "><img src="/images/icons/wait/30.gif"></div>
@@ -125,7 +123,7 @@ try{Typekit.load();}catch(e){}
   #sidebar_import_plans ul li         { font-size: 1.2em; margin: 10px 0 10px 5px;  }
   #sidebar_import_plans ul li img     { vertical-align: bottom; margin-right: 5px  }
 </style>
-
+<input type='hidden' value='' id='guide_id_for_export'>
 
 <div id="sidebar_import_plans">
   <div class="col3_header">
@@ -228,25 +226,31 @@ function set_tab(tag) {
 		
         $('#plans_tabs_categories > .plans_tabs_selected').removeClass('plans_tabs_selected');
         $('#plans_tabs_category_'+tag).addClass('plans_tabs_selected');
-		$.getJSON(_url, function(response) {
-        
-		history.pushState(null, null, _url);
-		ShowGuide(response);
+		//tag = $('.plans_tabs_selected').attr('id').substring(20, $('.plans_tabs_selected').attr('id').length);
+		//alert(tag);
+		var content = {'_xsrf':getCookie("_xsrf"), 'count': $('#plans li').size()};
 		
-    }); 
+		$.postJSON('/guides/'+tag, content, function(response){
+			    history.pushState(null, null, _url);
+				ShowGuide(response, true);
+			});	
+		
     }
 	
 function set_rate_tab(){
 	    
 }
 	  
-function ShowGuide(message) {
+function ShowGuide(message, more) {
 		if(message!=null)
 		{
 		
 		var node;
 		var trips = message.split("||||");
+		if (more)
+		{
 		$("#plans").empty();
+		}
 		$.each(trips, function(index, value) {
 	         node = $(value);
              node.hide();
@@ -254,7 +258,7 @@ function ShowGuide(message) {
              node.show();
          });	
 		 }
-    }
+}
 	
 jQuery.getJSON = function(_url, callback) {
     $.ajax({
@@ -293,6 +297,27 @@ function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
     return r ? r[1] : undefined;
     }
+	
+$(window).scroll(function(){
+        if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+           //alert('bottom');
+		   lastPostFunc();
+        }
+});
+
+function lastPostFunc() 
+{ 
+    tag = $('.plans_tabs_selected').attr('id').substring(20, $('.plans_tabs_selected').attr('id').length);
+    //alert(tag);
+	var content = {'_xsrf':getCookie("_xsrf"), 'count': $('.show_guide li').size()};
+	alert($('#plans li').size());
+    $.postJSON('/guides/'+tag, content, function(response){
+			    ShowGuide(response, false);
+			});		
+	
+}; 
+
+
 </script>
  
 

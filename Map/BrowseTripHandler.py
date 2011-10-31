@@ -7,10 +7,8 @@ import string
 import bson
 import logging
 import tornado.web
-import json
 import datetime
 import pymongo
-from MongoEncoder import MongoEncoder
 
 class BaseHandler(tornado.web.RequestHandler):
     @property
@@ -101,7 +99,7 @@ class EntryHandler(BaseHandler):
     def _trip_entry(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
-        #print("edittrip.html")
+        print("edittrip.html")
         self.render("edittrip.html", singletrip=self.singletrip, token = self.xsrf_token, trips=response)
         
 class TripPageHandler(BaseHandler):

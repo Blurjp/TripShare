@@ -49,8 +49,6 @@
     strokeWeight: 3
     }
     polyline = new google.maps.Polyline(polyOptions);
-   // alert(document.getElementById("startPosition").value);
-	//alert(document.getElementById("startPlace").value);
 	var _center = new google.maps.LatLng(34.3664951, -89.5192484);
 
     var myOptions = {
@@ -76,7 +74,7 @@
                 });   
                 
     google.maps.event.addListener(map,"rightclick",function(event) {    
-     markerMenuDiv.style.visibility = "hidden";
+    markerMenuDiv.style.visibility = "hidden";
     // polylineMenuDiv.style.visibility = "hidden";
                 });   
                 

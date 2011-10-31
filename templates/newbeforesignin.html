@@ -261,8 +261,10 @@
 function DestToMarker(dest_places, image, shadow)
 {
 	
-	temp = dest_places.replace(/u'/g,"\"");
-	temp = temp.replace(/\'/g,'\"');;
+	temp = dest_places.replace(/{u['"]/g,"{\"");
+	temp = temp.replace(/ u['"]/g," \"");
+	temp = temp.replace(/\'/g,'\"');
+	temp = temp.replace(/\"s /g,'\'s ');
 	
 	dest_places= jQuery.parseJSON(temp);
 	
@@ -436,11 +438,32 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 <div class="main" id="discover-list">
 <ul class="list" id="db-reviews">
+<li class="clearfix" id="db-following-tabs">
+<ul class="bbox-tabs four" id="tabs">
+<li id="newtrips-tab" class="on">
+<a href="#" onclick="set_section('newtrips', '/newtrips'); return false;"><strong>Newest Trip</strong><span>Following 0</span></a>
+</li>
+<li id="hottrips-tab" >
+<a href="#" onclick="set_section('hottrips', '/hottrips'); return false;"><strong>Hottest Trip</strong><span>Following 0</span></a>
+</li>
+<li id="endtrips-tab" >
+<a href="#" onclick="set_section('endtrips', '/endtrips'); return false;"><strong>Ended Trip</strong><span>Following 0</span></a>
+</li>
+</ul>
+</li>
+<li id="following_items">
+<ul id="latest_trip">
 {% if latest_trip_ids %}
   
    {% module Template("Module/tripentry.html", latest_trip_ids = latest_trip_ids) %}
    
 {% end %}
+<li class="more" id="following-more">
+<a href="#" onclick="$(this).update('Loading...'); new Ajax.Request('/dashboard?list=people&page=2', {asynchronous:true, evalScripts:true, method:'get'}); return false;">More...</a>
+</li>
+
+</ul>
+</li>
 </ul>
 </div>
 

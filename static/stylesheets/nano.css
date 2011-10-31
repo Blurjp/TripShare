@@ -245,7 +245,7 @@ width: 302px;
  .profile .header h1 a {text-decoration:none}       
  .profile .header h1 a.l_editprofile{margin-left:5px;font-size:15px;font-weight:normal}       
  .profile .header .description,.profile .header .servicespreview,.profile .header .editprofile,.profile .header .servicespromo{margin-top:4px}       .servicespreview img.icon{vertical-align:middle;margin-right:4px}      
- .servicespromo a{padding-left:63px;background:url("/static/images/servicepromo.png?v=d8b9") no-repeat left center}       .profile .header .stats{float:right;text-align:right;margin-left:25px;margin-right:1px;white-space:nowrap}       .profile .header .stats div{margin-bottom:1px}       
+ .servicespromo a{padding-left:63px;background:url("/static/images/servicepromo.png") no-repeat left center}       .profile .header .stats{float:right;text-align:right;margin-left:25px;margin-right:1px;white-space:nowrap}       .profile .header .stats div{margin-bottom:1px}       
  .profile .header .profile{float:left;line-height:0}      
  .profile .header .clear{clear:left}       
  .profile .header .body{margin-left:90px}       
@@ -1033,13 +1033,13 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
 #export_guide_step_1 .trip_pic .picture {position:absolute;right:50px;}
 #export_guide_step_1 .sighting-box.guideexport {padding: 15px 15px 10px 25px; background: #f7f6f1; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px}
-#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
-#closeexportguide-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;overflow-y: scroll; overflow-x:hidden}  
+#closeexportguide-modal {position: absolute; overflow: visible; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 #import_guide_step_1 .trip_pic .picture {position:absolute;right:50px;}
 #import_guide_step_1 .sighting-box.guideexport {padding: 15px 15px 10px 25px; background: #f7f6f1; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px}
-#import_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
-#closeimportguide-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+#import_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white; overflow-y: auto; overflow-x:auto}
+#closeimportguide-modal {position: absolute; overflow: visible; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 
 #trip_tag      { display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_tag.png) no-repeat 0 13px; margin-bottom: 5px  }

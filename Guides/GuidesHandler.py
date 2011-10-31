@@ -6,7 +6,6 @@ Created on Aug 31, 2011
 import bson
 import random
 import datetime
-import StringIO
 import string
 import simplejson
 import pymongo
@@ -21,7 +20,7 @@ from Utility.DateProcessor import FromStringtoDate
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
         if self.current_user:  
-            guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort('title')
+            guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(10).sort('title')
         else:
             guides = None    
         self.render("Guides/guides.html", guides=guides)
@@ -35,16 +34,34 @@ class EntryGuidesHandler(BaseHandler):
         
         
 class CategoryGuidesHandler(BaseHandler):
+    def post(self, section):
+        count = self.get_argument('count')
+        print(count+'+++++++++++++')
+        latest_guide_ids = None
+        if section == "me":
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(int(count)).limit(10).sort('title')
+        elif section == "national_park":
+            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).skip(int(count)).limit(10).sort('title')
+        elif section == "city":
+            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).skip(int(count)).limit(10).sort('title')
+        elif section == "world":
+            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(int(count)).limit(10).sort('title')
+            
+        if latest_guide_ids.count() >0:
+                
+                for latest_guide_id in latest_guide_ids:                        
+                        self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
+    
     def get(self, section):
         latest_guide_ids = None
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(5).sort('title')
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(10).sort('title')
         elif section == "national_park":
-            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).limit(5).sort('title')
+            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).limit(10).sort('title')
         elif section == "city":
-            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).limit(5).sort('title')
+            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).limit(10).sort('title')
         elif section == "world":
-            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).limit(5).sort('title')
+            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).limit(10).sort('title')
             
         if latest_guide_ids.count() >0:
                 
@@ -62,13 +79,13 @@ class GuidePageHandler(BaseHandler):
         latest_guide_ids = None
         skip_number = index*3
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(skip_number).limit(5).sort("title")
+            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(skip_number).limit(10).sort("title")
         if section == "park":
-            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).skip(skip_number).limit(5).sort('title')
+            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).skip(skip_number).limit(10).sort('title')
         elif section == "city":
-            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).skip(skip_number).limit(5).sort('title')
+            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).skip(skip_number).limit(10).sort('title')
         elif section == "world":
-            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(skip_number).limit(5).sort('title')
+            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(skip_number).limit(10).sort('title')
             
         if latest_guide_ids!= None:
                 for latest_guide_id in latest_guide_ids:                        
@@ -122,25 +139,32 @@ class ExportGuidesHandler(BaseHandler):
         guide_id = self.get_argument('guide_id')
         trip_id = self.get_argument('trip_id')
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
-        trip_dest_place = trip['dest_place']
-        last_trip = trip_dest_place[len(trip_dest_place)-1]
-        date = FromStringtoDate.ToDate(last_trip['date'])
-        #date = last_trip['date']
-        one_day = datetime.timedelta(days=1)
-        guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
-        dest_place = guide['dest_place']
-        title = trip['title']+' to '+ guide['title']
-        for dest in dest_place:
-            next_day = date+one_day
-            dest['date'] = next_day.isoformat()
-            dest['type'] = 'car'
+        if guide_id not in trip['imported_guides']:
+            
+            trip_dest_place = trip['dest_place']
+            last_trip = trip_dest_place[len(trip_dest_place)-1]
+            date = FromStringtoDate.ToDate(last_trip['date'])
+            #date = last_trip['date']
+            one_day = datetime.timedelta(days=1)
+            guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
+            dest_place = guide['dest_place']
+            title = trip['title']+' to '+ guide['title']
+            for dest in dest_place:
+                next_day = date+one_day
+                dest['date'] = next_day.isoformat()
+                dest['type'] = 'car'
            
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tags':dest['dest']}})
-        
-        self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})  
-        #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
-        self.write(trip['slug'])
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tags':dest['dest']}})
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'imported_guides':guide_id}})
+            
+                
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})  
+            #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
+            self.write(trip['slug'])
+        else:
+            print('check+++++++++++++==')
+            self.write('This guide is already exported to this trip')
 
 class GetGuidesForImportHandler(BaseHandler):
     @tornado.web.authenticated
@@ -211,14 +235,15 @@ class ImportGuideToTripHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
         guide_id = self.get_argument('guide_id')
-        guide_ids = []
-        guide_ids.append(guide_id)
-        check = self.syncdb.trips.find({'imported_guides':{'$in':guide_ids}})
-        if not check:
-            trip_id = self.get_argument('trip_id')
+        
+        trip_id = self.get_argument('trip_id')
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+        
+        if guide_id not in trip['imported_guides']:
+            
             print('not check+++++++++++++==')
             guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
-            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            
             last_trip = trip['dest_place'][len(trip['dest_place'])-1]
             date = FromStringtoDate.ToDate(last_trip['date'])
         #date = last_trip['date']
