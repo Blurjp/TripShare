@@ -188,7 +188,7 @@ class Application(tornado.web.Application):
                                       (r"/guides", BrowseGuidesHandler),
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),
-                                      (r"/guides/([^/]+)/([^/]+)", GuidePageHandler),
+                                      #(r"/guides/([^/]+)/([^/]+)", GuidePageHandler),
                                       (r"/saveguide/([^/]+)", SaveGuidesHandler),
                                       (r"/likeguide/([^/]+)", LikeGuidesHandler),
                                       (r"/createguide", CreateGuidesHandler),

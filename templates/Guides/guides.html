@@ -101,6 +101,7 @@ try{Typekit.load();}catch(e){}
 </div>    
     <div id="plans_pending" style="display: none; "><img src="/images/icons/wait/30.gif"></div>
     <div id="plans">
+    	
     {% if guides %}
     <ul id="latest_guides">
     {% for guide in guides %} 
@@ -108,6 +109,7 @@ try{Typekit.load();}catch(e){}
     {% end %}
 	</ul>
 	{% else %}
+	
 	<div id="notice_no_plans"><img src="{{ static_url("../static/images/no_plans_me.png") }}"></div>
 	{% end %}
 	<div style="clear:both"></div>
@@ -119,7 +121,7 @@ try{Typekit.load();}catch(e){}
     <div id="col3_interior"><div id="col3_user_sidebar">
 
   <style type="text/css">
-  #sidebar_import_plans ul            {  }
+  #sidebar_import_plans ul            {}
   #sidebar_import_plans ul li         { font-size: 1.2em; margin: 10px 0 10px 5px;  }
   #sidebar_import_plans ul li img     { vertical-align: bottom; margin-right: 5px  }
 </style>
@@ -221,14 +223,12 @@ $('.action').live("click",function(e) {
 
 
 function set_tab(tag) {
-	    
+	    $('#latest_guides').empty();
 		var _url = '/guides/'+tag.toString();
 		
         $('#plans_tabs_categories > .plans_tabs_selected').removeClass('plans_tabs_selected');
         $('#plans_tabs_category_'+tag).addClass('plans_tabs_selected');
-		//tag = $('.plans_tabs_selected').attr('id').substring(20, $('.plans_tabs_selected').attr('id').length);
-		//alert(tag);
-		var content = {'_xsrf':getCookie("_xsrf"), 'count': $('#plans li').size()};
+		var content = {'_xsrf':getCookie("_xsrf"), 'count': $('#latest_guides li').length/2};
 		
 		$.postJSON('/guides/'+tag, content, function(response){
 			    history.pushState(null, null, _url);
@@ -249,12 +249,13 @@ function ShowGuide(message, more) {
 		var trips = message.split("||||");
 		if (more)
 		{
-		$("#plans").empty();
+		$("#latest_guides").empty();
+		
 		}
 		$.each(trips, function(index, value) {
 	         node = $(value);
              node.hide();
-             $("#plans").append(node);
+             $("#latest_guides").append(node);
              node.show();
          });	
 		 }
@@ -309,12 +310,11 @@ function lastPostFunc()
 { 
     tag = $('.plans_tabs_selected').attr('id').substring(20, $('.plans_tabs_selected').attr('id').length);
     //alert(tag);
-	var content = {'_xsrf':getCookie("_xsrf"), 'count': $('.show_guide li').size()};
-	alert($('#plans li').size());
+	var content = {'_xsrf':getCookie("_xsrf"), 'count': $('#latest_guides li').length/2};
+	//alert($('#latest_guides li').size());
     $.postJSON('/guides/'+tag, content, function(response){
 			    ShowGuide(response, false);
-			});		
-	
+			});
 }; 
 
 
