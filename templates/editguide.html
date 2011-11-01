@@ -92,11 +92,8 @@
      clickedOverlay.setMap(map);
 
     /*   Autocomplete   */
-        var start_input = document.getElementById('start');
-        var autocomplete_start = new google.maps.places.Autocomplete(input);
-
-        var dest_input = document.getElementByName('dest');
-        var autocomplete_dest = new google.maps.places.Autocomplete(input);
+        var input = document.getElementById('searchTextField');
+        var autocomplete = new google.maps.places.Autocomplete(input);
 
         autocomplete.bindTo('bounds', map);
 
@@ -104,8 +101,8 @@
           map: map
         });
 
-          google.maps.event.addListener(autocomplete_start, 'place_changed', function() {
-          infowindow.close();
+          google.maps.event.addListener(autocomplete, 'place_changed', function() {
+          infoWindow.close();
           var place = autocomplete.getPlace();
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
@@ -134,44 +131,12 @@
                       ].join(' ');
           }
 
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-          infowindow.open(map, marker);
+          infoWindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infoWindow.open(map, marker);
         });
 
 
-          google.maps.event.addListener(autocomplete_dest, 'place_changed', function() {
-          infowindow.close();
-          var place = autocomplete.getPlace();
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(10);  // Why 17? Because it looks good.
-          }
-
-          var image = new google.maps.MarkerImage(
-              place.icon,
-              new google.maps.Size(71, 71),
-              new google.maps.Point(0, 0),
-              new google.maps.Point(17, 34),
-              new google.maps.Size(35, 35));
-          marker.setIcon(image);
-          marker.setPosition(place.geometry.location);
-
-          var address = '';
-          if (place.address_components) {
-            address = [(place.address_components[0] &&
-                        place.address_components[0].short_name || ''),
-                       (place.address_components[1] &&
-                        place.address_components[1].short_name || ''),
-                       (place.address_components[2] &&
-                        place.address_components[2].short_name || '')
-                      ].join(' ');
-          }
-
-          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-          infowindow.open(map, marker);
-        });
+         
 		
    /* Initialize gogole map place search      */
     placeService = new google.maps.places.PlacesService(map);
@@ -213,8 +178,11 @@
   
   function DestToMarker(dest_places)
 {
-	temp = dest_places.replace(/[^\u's ]u'/g,"\"");
-	temp = temp.replace(/[^\'s ]\'/g,'\"');
+	
+	temp = dest_places.replace(/{u['"]/g,"{\"");
+	temp = temp.replace(/ u['"]/g," \"");
+	temp = temp.replace(/\'/g,'\"');
+	temp = temp.replace(/\"s /g,'\'s ');
 	
 	dest_places= jQuery.parseJSON(temp);
 	
@@ -227,7 +195,7 @@
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	bounds.extend(results[0].geometry.location);
-		
+		map.fitBounds(bounds);
         createSightsMarker(results[0].geometry.location,day, i);
 		geo_results.push(results[0]);
 		
