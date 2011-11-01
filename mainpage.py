@@ -62,6 +62,7 @@ from Comment.CommentHandler import PostCommentHandler
 from Comment.CommentHandler import DeleteCommentHandler
 from Comment.CommentHandler import PostFeedHandler
 from Exception.ExceptionHandler import ExceptionPage
+from Search.SearchHandler import RealTimeSearchAllHandler
 #import tornado.database
 import tornado.httpserver
 import tornado.ioloop
@@ -207,6 +208,7 @@ class Application(tornado.web.Application):
                                       (r"/postfeed", PostFeedHandler),
                                       (r"/searchpeople/([^/]+)", SearchUserHandler),
                                       (r"/realtime_searchpeople/([^/]+)", RealTimeSearchUserHandler),
+                                      (r"/realtime_searchall/([^/]+)", RealTimeSearchAllHandler),
                                       (r"/checkuserintrip/([^/]+)/([^/]+)", CheckUserinTripHandler),
                                       
                                       (r"/confirmfriend", FriendConfirmHandler),

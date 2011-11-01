@@ -34,9 +34,10 @@ class EntryGuidesHandler(BaseHandler):
         
         
 class CategoryGuidesHandler(BaseHandler):
+    
     def post(self, section):
         count = self.get_argument('count')
-        print(count+'+++++++++++++')
+        #print(count+'+++++++++++++')
         latest_guide_ids = None
         if section == "me":
             latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(int(count)).limit(10).sort('title')
@@ -51,6 +52,8 @@ class CategoryGuidesHandler(BaseHandler):
                 
                 for latest_guide_id in latest_guide_ids:                        
                         self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
+        else:
+            self.write('<li><span>No guide for this category yet....</span></li>')
     
     def get(self, section):
         latest_guide_ids = None
@@ -212,7 +215,7 @@ class CreateGuidesHandler(BaseHandler):
         self.syncdb.guides.ensure_index('guide_id',  unique = True)  
         guide_id = bson.ObjectId()                      
         #self.db.guides.save({ 'guide_id':bson.ObjectId(), 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(), 'random' : random.random()}, callback=self._create_guide)
-        self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':0, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'title': title, 'description': str(description), 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'random' : random.random()})
+        self.syncdb.guides.save({ 'guide_id':guide_id, 'rating':0, 'slug': self.slug,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'lc_guidename':title.upper(), 'title': title, 'description': str(description), 'type':'guide', 'dest_place':destinations, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'random' : random.random()})
         
         for dest in destinations:
             if(dest!=""):
@@ -290,13 +293,13 @@ class ImportGuidesHandler(BaseHandler):
                     data = simplejson.loads(line)
                     if data['type'] == 'national_park':
                         guide_id = bson.ObjectId()
-                        guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'title': data['parent_site_name'], 'description': '', 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'type':data['type'], 'random' : random.random()}
+                        guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'lc_guidename':data['parent_site_name'].upper(), 'title': data['parent_site_name'], 'description': '', 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'type':data['type'], 'random' : random.random()}
                         self.syncdb.guides.save(guide, safe=True)
                     site_id = bson.ObjectId()
                     dest = {'dest':data['site_name'],'type':'car','date':''}
                     self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'dest_place':dest}})
                     self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'tags':data['site_name']}})
-                    self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location']})       
+                    self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'lc_sitename':data['site_name'].upper(), 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location']})       
              
         self.redirect('/guides')
           
