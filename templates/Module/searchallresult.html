@@ -1,0 +1,20 @@
+<ul class="list_result"> 
+{% if searchallresults %}             
+ {% for user in searchallresults %} 
+<li class="all_result">
+<div class="user_modal">
+
+<strong><a class="username" href="/people/{{user['slug']}}" style="padding: 0">{{user['username']}}</a></strong>
+<a class="addusertotrip-button" href="#" onclick="AddUserToTrip(); return false;" value="{{trip_id}}/{{user['user_id']}}">Add</a>
+<div>
+</li>
+{% end %}
+{% else %} 
+  <li class="person_result">
+  <div class="user_modal">
+  <strong>Traveler not found.</strong>	
+  <div>
+  </li>
+
+{% end %}
+</ul>

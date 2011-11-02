@@ -114,6 +114,7 @@ class CreateAccountHandler(BaseHandler):
                            'current_position':[],
                            'new_notifications':[],
                            'notifications':[],
+                           'type':'person'
                                }
                 
                 self.db.users.insert(user, callback=self._on_action)
@@ -182,7 +183,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'trip_count':0,
                     'new_notifications':[],
                     'notifications':[],
-                    
+                    'type':'person'
                     
                 }
         _user_db = self.syncdb.users.find_one({'email': user[0]['email']})
