@@ -954,11 +954,17 @@ $("a.comment").live("click",function(a){a.preventDefault();$(this).parents("li.f
 $(document).ready(function() {   
 $('input.manage_member').click(function(e) { 
         e.preventDefault();  
-        $('#manage_member_dropdown').show();
-		 $.getJSON('/getfriends', function(response) {
-        ShowResultInDropList(response);
-        });
-		$('#mask6').show();
+		if ($('#manage_member_dropdown').css('display') == 'none') {
+			$('#manage_member_dropdown').show();
+			$.getJSON('/getfriends', function(response){
+				ShowResultInDropList(response);
+			});
+		//$('#mask6').show();
+		}
+		else
+		{
+			$('#manage_member_dropdown').hide();
+		}
 		
 
 });

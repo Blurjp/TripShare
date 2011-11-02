@@ -356,10 +356,12 @@ text-indent: -9999px;
 width: 28px;
 }
 #searchmemberentry text {width:30px}
-#manage_member_dropdown {width: 40%;display:none ;padding-left:190px;position:relative; z-index:9999;}
-#manage_member_dropdown fieldset {overflow-y;height: 300px;background: #f0eee4; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; padding: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;}
-span.user_name {float:right; margin-top: 6px; padding-left: 50px}
 
+#manage_member_dropdown {width: 20%;display:none;position:relative; z-index:9999;}
+#manage_member_dropdown fieldset {overflow-y;height: 200px;background: #f0eee4; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; padding: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;position:relative;}
+span.user_name, .user_image {float:left;}
+span.user_image {padding-right:5px}
+span.user_name {padding-top:2px}
 a.add_user_link {float:left}
 
 #mask6 { 
@@ -1065,3 +1067,6 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #guide_tag_add_show    { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
 #guide_tag_add_show:hover    { background-color: #59d859  }
 #guide_tag_add_form {display:none}
+
+#all_search_result ul {position:absolute; z-index:9999;border:2px solid #f0eee4;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: #f0eee4;}
+#all_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}

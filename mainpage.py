@@ -16,7 +16,7 @@ from Map.ProcessTripHandler import SaveTrips
 from Map.ProcessTripHandler import SubscribeTrip
 from Map.ProcessTripHandler import UnsubscribeTrip
 from Users.UserInfo import UpdateUserProfileHandler
-from Users.UserInfo import RealTimeSearchUserHandler
+
 from Map.BrowseTripHandler import BaseHandler
 from Map.BrowseTripHandler import BrowseHandler
 from Map.BrowseTripHandler import EntryHandler
@@ -34,14 +34,11 @@ from Users.UserInfo import AuthLoginFBHandler
 from Users.UserInfo import AuthLogoutFBHandler
 from Users.UserInfo import UserHandler
 from Users.UserInfo import FollowUserHandler
-from Users.UserInfo import SearchUserHandler
 from Users.UserInfo import UserSettingHandler
-from Users.UserInfo import SearchFriendHandler
 from Users.UserInfo import FriendRequestHandler
 from Users.UserInfo import FriendRemoveHandler
 from Users.UserInfo import FriendConfirmHandler
 from Users.UserInfo import GetFriendHandler
-
 from Users.UserInfo import UnFollowUserHandler
 from Users.UserInfo import TravelersHandler
 from Users.UserInfo import AddUserToTripHandler
@@ -63,6 +60,9 @@ from Comment.CommentHandler import DeleteCommentHandler
 from Comment.CommentHandler import PostFeedHandler
 from Exception.ExceptionHandler import ExceptionPage
 from Search.SearchHandler import RealTimeSearchAllHandler
+from Search.SearchHandler import SearchFriendHandler
+from Search.SearchHandler import SearchUserHandler
+from Search.SearchHandler import RealTimeSearchUserHandler
 #import tornado.database
 import tornado.httpserver
 import tornado.ioloop
@@ -106,10 +106,10 @@ class MainPage(BaseHandler):
         
         """ Get latest trips to show in the list"""
         
-        latest_trip_ids = self.syncdb.trips.find().limit(10).sort("published", pymongo.DESCENDING)
+        latest_trip_ids = self.syncdb.trips.find().sort("published", pymongo.DESCENDING).limit(10)
         
-        top_shares = self.syncdb.users.find().limit(10).sort("trip_count", pymongo.DESCENDING)
-        top_guides = self.syncdb.guides.find().limit(5).sort("rating", pymongo.DESCENDING)
+        top_shares = self.syncdb.users.find().sort("trip_count", pymongo.DESCENDING).limit(10)
+        top_guides = self.syncdb.guides.find().sort("rating", pymongo.DESCENDING).limit(5)
         
         _trips = []
         if latest_trip_ids.count() > 0:

@@ -37,7 +37,7 @@
 </div> 
  
 <div id="body"> 
-
+<div class="container">
 <div class="box white"> 
 <div class="box-bar"> 
 
@@ -101,7 +101,10 @@
 <li>	
 <input type="button" class="regular-button manage_member" href="#manage_member_dropdown" value="Manage Member">
 
+{% include "Module/manage_member_dropdown.html" %}
+
 </li>
+
 <li>	
 <input type="button" class="regular-button invitefriend" href="#invite_friend_pop" value="Invite Friends">
 </li>
@@ -111,7 +114,7 @@
 </ul> 
 
 </div> 
-{% include "Module/manage_member_dropdown.html" %}
+
  
 <script type='text/javascript'> 
 var trip_tag_add_form_displayed;
@@ -189,7 +192,7 @@ function trip_tag_add_form_toggle(display)
 }
 </script>
 <div id="map-canvas"></div>
-<div class="container">
+
 
 <div id="social">
 <ul>

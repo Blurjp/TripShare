@@ -23,7 +23,7 @@
 {% for member in singletrip['members'] %}
 <li>
 	<a href="/addusertotrip/{{member['slug']}}">
-<span>
+<span class="user_image">
 
 <img class="picture medium" alt="{{member['username']}}"  src="{{member['picture']}}" >
 
@@ -36,7 +36,7 @@
 {% end %}
 
 </ul>
-		</div>
-			<input class="user_ids" type="hidden" value="" name="user_ids">
+</div>
+<input class="user_ids" type="hidden" value="" name="user_ids">
         </fieldset>             
 </div>

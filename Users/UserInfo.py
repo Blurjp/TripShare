@@ -114,7 +114,7 @@ class CreateAccountHandler(BaseHandler):
                            'current_position':[],
                            'new_notifications':[],
                            'notifications':[],
-                           'type':'person'
+                           'search_type':'person'
                                }
                 
                 self.db.users.insert(user, callback=self._on_action)
@@ -183,7 +183,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'trip_count':0,
                     'new_notifications':[],
                     'notifications':[],
-                    'type':'person'
+                    'search_type':'person'
                     
                 }
         _user_db = self.syncdb.users.find_one({'email': user[0]['email']})
@@ -316,26 +316,7 @@ class UnFollowUserHandler(BaseHandler):
             raise tornado.web.HTTPError(500)
         return "success"       
 
-class SearchUserHandler(BaseHandler):  
-    def get(self, name):   
-            
-        _name = name.upper()
-        users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
-        if users.count() >= 1 :
-            self.write(self.render_string("Module/searchpeopleresult.html", searchuserresults = users)) 
-        else:
-            self.write(self.render_string("Module/searchpeopleresult.html", searchuserresults = None)) 
 
-class RealTimeSearchUserHandler(BaseHandler):  
-    def get(self, name): 
-        _name = name.upper()  
-        users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
-        if users.count() >0 :
-            
-            self.write(unicode(simplejson.dumps(users, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
-            #self.write(users[0]);
-        else:
-            self.write('not found');
         
 class GetFriendHandler(BaseHandler):  
     def get(self):    
@@ -394,14 +375,7 @@ class FriendConfirmHandler(BaseHandler):
         else:
             print('error')
 
-class SearchFriendHandler(BaseHandler):
-    def get(self, name):   
-        _name = name.upper()
-        users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
-        if users.count() >= 1 :
-            self.write(self.render_string("Module/searchfriendresult.html", searchuserresults = users)) 
-        else:
-            self.write(self.render_string("Module/searchpeopleresult.html", searchuserresults = None)) 
+
            
 class UpdateUserProfileHandler(BaseHandler):
     @tornado.web.authenticated
