@@ -9,7 +9,9 @@ $('#search_all').focus(function() {
 
 $('#search_all').keyup(function() {
    if (this.value == '' || this.value == null) {
-       $('.all_search_result ul').empty();
+       
+	   $('.all_search_result ul').hide();
+	   $('.all_search_result ul').empty();
    }
    else {
    	//alert('test');

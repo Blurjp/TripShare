@@ -357,7 +357,7 @@ width: 28px;
 }
 #searchmemberentry text {width:30px}
 
-#manage_member_dropdown {width: 20%;display:none;position:relative; z-index:9999;}
+#manage_member_dropdown {width: 20%;display:none;position:absolute; z-index:9999;}
 #manage_member_dropdown fieldset {overflow-y;height: 200px;background: #f0eee4; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; padding: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;position:relative;}
 span.user_name, .user_image {float:left;}
 span.user_image {padding-right:5px}
@@ -1068,5 +1068,5 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #guide_tag_add_show:hover    { background-color: #59d859  }
 #guide_tag_add_form {display:none}
 
-#all_search_result ul {position:absolute; z-index:9999;border:2px solid #f0eee4;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: #f0eee4;}
+#all_search_result_list {display:none; width:25%; position:absolute; z-index:9999;border-width:5px;border-style:solid; border-color: #BEBEBE;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: white;}
 #all_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}

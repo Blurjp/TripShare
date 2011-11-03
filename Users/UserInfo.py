@@ -321,8 +321,9 @@ class UnFollowUserHandler(BaseHandler):
 class GetFriendHandler(BaseHandler):  
     def get(self):    
         
-        user = self.syncdb.users.find({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
-        self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+        user = self.syncdb.users.find_one({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
+        if user:
+            self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
 class FriendRemoveHandler(BaseHandler):  
     @tornado.web.authenticated
