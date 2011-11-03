@@ -216,7 +216,7 @@ class Application(tornado.web.Application):
                                       (r"/removefriend", FriendRemoveHandler),
                                       (r"/searchfriend/([^/]+)", SearchFriendHandler),
                                       (r"/getfriends", GetFriendHandler),
-                                      
+                                      (r"/importfriends", ImportFriendHandler),
                                     
                                       (r"/travelers/([^/]*)", TravelersHandler),
                                       (r"/people/([^/]+)", UserHandler),

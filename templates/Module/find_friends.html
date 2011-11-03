@@ -1,0 +1,44 @@
+	<div id="social_tools" class="window1">
+		<a href="#" id="social-close-modal" class="close">close</a>
+		
+		<ul class="soical_list">
+			<li class="on"><a href="#" onclick="set_section('facebook'); return false;"><strong>Facebook</strong></a></li>
+			<li><a href="#" onclick="set_section('twitter', '/import_friends_twitter'); return false;"><strong>Twitter</strong></a></li>
+			<li><a href="#" onclick="set_section('invite', '/import_friends_invite'); return false;"><strong>Invite</strong></a></li>
+		</ul>
+		<div id = "">
+			{% if current_user %}
+	          <form accept-charset="UTF-8" action="/import_friends_facebook" id="facebook_friends_form" class="default" method="post">
+{% raw xsrf_form_html() %}
+
+<div class="row cleafix">
+<div class="text-box text-area-box">
+<textarea id="invite_text" name="invite_text">Try TripShare here: http://tripshare.cc/people/{{current_user['slug']}}</textarea>
+</div>
+</div>
+<input class="submit" name="commit" type="submit" value="Post to your wall">
+
+            </form>
+			<form id="twitter_friends_form">
+			{% raw xsrf_form_html() %}
+			<div class="row cleafix">
+<div class="text-box text-area-box">
+<textarea id="invite_text" name="invite_text">Try TripShare here: http://tripshare.cc/people/{{current_user['slug']}}</textarea>
+</div>
+</div>
+<input class="submit" name="commit" type="submit" value="Tweet ">
+			</form>
+			
+			{% else %}
+			
+			<div style="text-align:center"><img class="twitter_login_button" onclick="external_service_authorize('twitter')" src="{{ static_url("images/twitter-login-button.png") }}"></div>
+	        <div style="text-align:center"><img class="twitter_login_button" onclick="external_service_authorize('twitter')" src="{{ static_url("images/twitter-login-button.png") }}"></div>
+
+			{% end %}
+			<form id="invite_friends_form">
+	        {% raw xsrf_form_html() %}
+	
+            </form>
+		</div>
+	</div>
+	

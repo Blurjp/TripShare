@@ -316,7 +316,10 @@ class UnFollowUserHandler(BaseHandler):
             raise tornado.web.HTTPError(500)
         return "success"       
 
-
+class ImportFriendHandler(BaseHandler):
+    def post(self):
+        type = self.get_argument('type')
+        
         
 class GetFriendHandler(BaseHandler):  
     def get(self):    

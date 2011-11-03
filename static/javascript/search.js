@@ -37,22 +37,22 @@ function ShowResultInSearchAllDropList(response)
 			
 		if(_object[i]['search_type']=='person')
 		{
-			$('.all_search_result ul').append('<li><a class="person_search"><span class="user_image"><img class="picture medium" title=' + _object[i]['username'] + ' alt=' + _object[i]['user_id'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li><div style="clear:both"></div>');
+			$('.all_search_result ul').append('<li><a class="person_search" href="/people/'+_object[i]["slug"]+'"><span class="user_image"><img class="picture medium" title=' + _object[i]['username'] + ' alt=' + _object[i]['user_id'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li><div style="clear:both"></div>');
 		}
 		else if(_object[i]['search_type']=='guide')
 		{
 			
-			$('.all_search_result ul').append('<li><a class="guide_search"></span><span class="guide_name">' + _object[i]["title"] + '</span></a></li><div style="clear:both"></div>');
+			$('.all_search_result ul').append('<li><a class="guide_search" href="/guide/'+_object[i]["title"]+'"></span><span class="guide_name">' + _object[i]["title"] + '</span></a></li><div style="clear:both"></div>');
 	
 		}
 		else if(_object[i]['search_type']=='trip')
 		{
-			$('.all_search_result ul').append('<li><a class="trip_search"></span><span class="trip_name">' + _object[i]["title"] + '</span></a></li><div style="clear:both"></div>');
+			$('.all_search_result ul').append('<li><a class="trip_search" href="/trip/'+_object[i]["title"]+'"></span><span class="trip_name">' + _object[i]["title"] + '</span></a></li><div style="clear:both"></div>');
 	
 		}
 		else if(_object[i]['search_type']=='site')
 		{
-			$('.all_search_result ul').append('<li><a class="site_search"></span><span class="site_name">' + _object[i]["site_name"] + '</span></a></li><div style="clear:both"></div>');
+			$('.all_search_result ul').append('<li><a class="site_search" href="/site/'+_object[i]["site_name"]+'"></span><span class="site_name">' + _object[i]["site_name"] + '</span></a></li><div style="clear:both"></div>');
 		}
 		}
 		$('.all_search_result ul').show();

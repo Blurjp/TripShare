@@ -77,7 +77,7 @@
 			  section = "newtrips";
 			  
 			  _url = "/trips/"+section+"/"+page_index.toString();
-			 // alert(_url);
+			 
                	$.getJSON(_url, function(response) {
               //alert('test');
 		        ShowTrip(response);
@@ -397,10 +397,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 <div id="discover-bar">
 <div class="hgroup clearfix">
-<div id="social-icons">
-<a href="http://twitter.com/tripsharer" class=""><img alt="Twitter-icon" src="{{ static_url("images/twitter-icon.png") }}"></a>
-<a href="http://www.facebook.com/TripShare" class=""><img alt="Facebook-icon" src="{{ static_url("images/facebook-icon.png") }}"></a>
-</div>
+
 <h1 id="list-view-title">Tell us <strong>when</strong> and <strong>where</strong> you plan to go</h1>
 </div>
 </div>
@@ -408,6 +405,11 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 <div class="sidebar right">
 <div id="sidebar-home">
+<div id="sidebar_find_friends">
+<a href="#" name="find_friends" value="Find Friends" type="button" class="fancy left"><h2>Find Friends</h2></a>
+<img alt="members" class="find_friends_icon left" src="{{ static_url("images/people.png") }}">
+</div>
+<div style="clear:both"></div>
 <div class="pod inset">
 <h2>Featured Guide</h2>
 
@@ -482,7 +484,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 </div>
 {% include "Module/footer.html" %}
 {% include "Module/CreateTripSlide1.html" %}
-
+{% include "Module/find_friends.html" %}
    
 <script type="text/javascript">
 //<![CDATA[
@@ -618,6 +620,40 @@ function ShowTrip(message) {
     }
 </script>
 
+<script type='text/javascript'>
+	 //Get the screen height and width  
+        var maskHeight = $(document).height();  
+        var maskWidth = $(window).width();  
+		
+	 //Get the window height and width  
+        var winH = $(window).height();  
+        var winW = $(window).width();  
+	
+	$('a[name=find_friends]').click(function(e) {  
+      e.preventDefault();  
+	  $('#social-close-modal').show()
+        var id = '#social_tools';  
+       
+        $('#mask4').css({'width':maskWidth,'height':maskHeight});  
+        $('#mask4').fadeIn();             
+		$(id).show();
+		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
+	    $(id).animate({right: winW/2-$(id).width()/2});
+        $(id).css("position", "fixed");
+ });
+ 
+   //if close button is clicked  
+    $("#social-close-modal").click(function (e) {  
+        //Cancel the link behavior  
+        e.preventDefault();  
+        $('#mask4').hide();  
+		$('#social_tools').hide();
+		 $("#social-close-modal").hide();
+		document.getElementById('find_friends_form').reset();
+		
+    }); 
+
+</script>
 
 <script type='text/javascript'>
   $(function() {
