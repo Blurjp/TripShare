@@ -15,6 +15,7 @@ from Map.ProcessTripHandler import ShowEndTrips
 from Map.ProcessTripHandler import SaveTrips
 from Map.ProcessTripHandler import SubscribeTrip
 from Map.ProcessTripHandler import UnsubscribeTrip
+from Map.ProcessTripHandler import LikeTripHandler
 from Users.UserInfo import UpdateUserProfileHandler
 
 from Map.BrowseTripHandler import BaseHandler
@@ -176,10 +177,11 @@ class Application(tornado.web.Application):
                                       (r"/auth/fblogin", AuthLoginFBHandler),
                                       (r"/auth/fblogout", AuthLogoutFBHandler),
                                       (r"/updateusersetting", UserSettingHandler),
-                                      # 
+                                      
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
                                       (r"/trips/([^/]+)/([^/]+)", TripPageHandler),
+                                      (r"/liketrip/([^/]+)", LikeTripHandler),
                                       (r"/gettrips", GetTrips),
                                       (r"/createtrip", ComposeHandler),
                                       (r"/savetrip", SaveTrips),

@@ -175,9 +175,9 @@ form.default .text-box label, form.default .text-box input, form.default .text-b
 form.default .text-box label {color: #777777; cursor: text; position: absolute}
 form.default .text-box input, form.default .text-box textarea {border: none; padding: 0; margin: 0 !important}
 form.default .text-box textarea {height: 80px; background: transparent}
-form.default .text-box.text-area-box {width: 580px}
-form.default .text-box.text-area-box label {width: 580px}
-form.default .text-box.text-area-box textarea {width: 580px; height: 40px; font-size: 15px; font-family: inherit}
+form.default .text-box.text-area-box {width: 520px}
+form.default .text-box.text-area-box label {width: 520px}
+form.default .text-box.text-area-box textarea {width: 520px; height: 40px; font-size: 15px; font-family: inherit}
 form.default .row.inline-200 .text-box {width: 140px; padding: 4px 5px}
 form.default .row.inline-200 .text-box .clear {top: 4px; right: 4px}
 form.default .row.inline-200 .text-box input, form.default .row.inline-200 .text-box label {font-size: 100%; width: 140px}

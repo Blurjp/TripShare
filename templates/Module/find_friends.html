@@ -1,9 +1,9 @@
 	<div id="social_tools" class="window1">
 		<a href="#" id="social-close-modal" class="close">close</a>
 		<ul class="soical_list">
-			<li class="facebook-tab on"><a href="#" onclick="set_section('facebook'); return false;"><strong>Facebook</strong></a></li>
-			<li class="twitter-tab"><a href="#" onclick="set_section('twitter'); return false;"><strong>Twitter</strong></a></li>
-			<li class="invite-tab"><a href="#" onclick="set_section('invite'); return false;"><strong>Invite</strong></a></li>
+			<li class="facebook-tab on"><a href="#" onclick="set_section('facebook'); return false;"><img class="picture small" src="{{ static_url("images/facebook-icon.png") }}"></a></li>
+			<li class="twitter-tab"><a href="#" onclick="set_section('twitter'); return false;"><img class="picture small" src="{{ static_url("images/twitter-icon.png") }}"></a></li>
+			<li class="invite-tab"><a href="#" onclick="set_section('invite'); return false;"><img class="picture small" src="{{ static_url("images/email.png") }}"></a></li>
 		</ul>
 		{% if current_user %}
 		   <div id = "content_facebook">
@@ -36,9 +36,16 @@
 			  <div id = "content_invite">
 			   <form accept-charset="UTF-8" action="/send_invite" id="invite_friends_form" class="default" method="post">
 	            {% raw xsrf_form_html() %}
+				<div class="row cleafix">
+				
+				 <div class="receiver-text-box">
+				 	<label class="prompted" for="emails" style="display: block; ">Emails (comma-separated)</label>
+                 <textarea name="invite_text"></textarea>
+                 </div>
+                 </div>
 				 <div class="row cleafix">
                  <div class="text-box text-area-box">
-                 <textarea name="invite_text">Try TripShare here: http://tripshare.cc/people/{{current_user['slug']}}</textarea>
+                 <textarea name="invite_text">Try TripShare here</textarea>
                  </div>
                  </div>
                  <input class="submit" name="commit" type="submit" value="Mail">
