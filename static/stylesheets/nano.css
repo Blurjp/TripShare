@@ -1074,10 +1074,6 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 .find_friends_icon {padding:5px 0 0 15px}
 
 #social_tools  { position: fixed;z-index:9999;  display:none;  width:575px;   height:350px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
-
-
-
-
 #social_tools li {float: left; width: 110px; margin-bottom: 15px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
 #social_tools li a {display: block; padding: 15px 20px}
 #social_tools li a span {color: #777777}
@@ -1090,3 +1086,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
   
 #social-close-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+
+#content_twitter, #content_invite {display:none}
+#login_facebook {float:right; width:255px; height:123px; overflow:hidden; background: url("/static/images/facebook_sign_in.jpg") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
+#login_twitter {float:right; display:none; width:255px; height:123px; overflow:hidden; background: url("/static/images/twitter-login-button.png") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}

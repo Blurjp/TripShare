@@ -485,6 +485,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 {% include "Module/footer.html" %}
 {% include "Module/CreateTripSlide1.html" %}
 {% include "Module/find_friends.html" %}
+<input id="social_section_value" value = "" type = "hidden">
    
 <script type="text/javascript">
 //<![CDATA[
@@ -604,7 +605,6 @@ function ShowTrip(message) {
 		if(message!=null)
 		{
 		var node;
-		
 		var trips = message.split("||||");
 		$("#latest_trip").empty();
 		
@@ -618,6 +618,22 @@ function ShowTrip(message) {
          });	
 		 }
     }
+	
+function set_section(section) {
+	    
+		var value = $("#social_section_value").val();
+		if (value=="")
+		{
+			value = "facebook";
+		}
+        $('.soical_list > .on').removeClass('on');
+        $('.'+section + '-tab').addClass('on');
+		$('#content_'+value).hide();
+		$('#login_'+value).hide();
+		$('#login_'+section).show();
+		$('#content_'+section).show();
+		$("#social_section_value").val(section);
+        }
 </script>
 
 <script type='text/javascript'>
@@ -649,7 +665,7 @@ function ShowTrip(message) {
         $('#mask4').hide();  
 		$('#social_tools').hide();
 		 $("#social-close-modal").hide();
-		document.getElementById('find_friends_form').reset();
+		//document.getElementById('find_friends_form').reset();
 		
     }); 
 
