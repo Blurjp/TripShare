@@ -1,15 +1,15 @@
-<div class="guide_route" style="width:500px !important; float:left; padding-left:20px">
-{% if guide %}
+<div class="trip_route" style="width:500px !important; float:left; padding-left:20px">
+{% if singletrip %}
 
 <ul class="route">
-{% for site in guide['dest_place'] %} 
+{% for site in singletrip['dest_place'] %} 
 <li class="show_site">
 <div class="site-details">
 
   <div class="site-bar">
   <img class="picture small"  src="{{ static_url("icon/site_icon2.png") }}">
   <h2><a href="/sights/{{site['dest']}}">
-    <span class="guide_sights">{{site['dest']}} </span><br>
+    <span class="trip_sights">{{site['dest']}} </span><br>
   </a></h2>
   </div>
   <p>{{site['description']}}</p>

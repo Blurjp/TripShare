@@ -1332,9 +1332,16 @@ function PostFeedResponse(response){
 </div> 
  
  
-
 <div class="clearfix" id="container"> 
+
 <div class="clearfix" id="content"> 
+
+<div id="sidebar">
+ 
+</div> 
+ 
+<div id="body"> 
+
 
 <div class="box-bar"> 
 
@@ -1482,12 +1489,14 @@ function guide_tag_add_form_toggle(display)
 </li>
 </ul>
 </div>
-</div>
-</div>
 
-<div id="body">
 <div id="map-canvas"></div>
-  <div style="clear:both"></div>
+
+ {% include "Guides/guide_sites.html" %}
+
+<div style="clear:both"></div>
+<div class="container">
+
 <div id="social">
 <ul>
 <li original-title="Tweet This"><span class="twitter_custom" onclick="TwitterShare()">&nbsp;</span></li>
@@ -1498,8 +1507,8 @@ function guide_tag_add_form_toggle(display)
 <li original-title="Email This"><a href="javascript:void(0)" class="addthis_button_email st_email_custom at300b" title="Email"><span>&nbsp;</span></a></li><li original-title="More Sharing Options"><span class="addthis_button st_sharethis_custom"><span>&nbsp;</span></span></li>
 </ul>
 </div>
-
-<div class="map-detail" type="hidden">
+	
+<div class="map-detail">
 				<input name="guideId" id="guideId" type="hidden" value = "{{guide['guide_id']}}">
 				<input name="slug" id="guide_slug" type="hidden" value = "{{guide['slug']}}"> 
 				<input name="title" id="guide_title" type="hidden" value = "{{guide['title']}}"> 
@@ -1508,7 +1517,7 @@ function guide_tag_add_form_toggle(display)
 				<input id="type" type="hidden" value = "guide">
 				<input id="geo" type="hidden" value = "">
 </div> 
-
+</div> 
 
 <div id="photoBarBg" class="right" >
 <div class="first"></div>
@@ -1573,7 +1582,6 @@ function guide_tag_add_form_toggle(display)
 
 
 
-
 <!-- AddThis script-->
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>
 <!-- AddThis Button END -->
@@ -1594,17 +1602,31 @@ function guide_tag_add_form_toggle(display)
 		alert('update');
 		var geo = $('#geo').attr('value');
 		var content = {'_xsrf': getCookie("_xsrf"), 'geo' : geo};
+		
 		$.postJSON('/updateguide', content, function(response){ alert(response);});
 	});
 </script>
 <input type='hidden' value='' id='guide_id_for_export'>
-</div>
- {% include "Guides/guide_sites.html" %}
+<div id="editmap_footer">
+
+<div class="editmap_inset">
+
+<a href="/about_us">About us</a>
+<small class="divider">·</small>
+<a href="/iphone">iPhone</a>
+<small class="divider">·</small>
+<a href="/api">API</a>
+<small class="divider">·</small>
+<a href="/about/terms">Terms</a>
+<small class="divider">·</small>
+<a href="/about/privacy">Privacy</a>
+<small class="divider">·</small>
+<a href="http://twitter.com/TripShare">Twitter</a>
+<small class="divider">·</small>
+<a href="http://www.facebook.com/pages/TripShare/191851192979">Facebook</a>
 </div>
 
-
-</div>
-{% include "Module/footer.html" %} 
+</div> 
  <div id="mask6"></div>
 </body> 
 </html>

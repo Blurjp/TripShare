@@ -32,9 +32,17 @@
 <div class="clearfix" id="container"> 
 <div class="clearfix" id="content"> 
 
-
+<div id="sidebar">
+ 
+</div> 
+ 
+<div id="body"> 
+<div class="container">
+<div class="box white"> 
 <div class="box-bar"> 
 
+ 
+<div class="box-body"> 
 
 <div class="profile withbar">
 <div class="header">
@@ -106,8 +114,7 @@
 </ul> 
 
 </div> 
-</div>
-</div>
+
  
 <script type='text/javascript'> 
 var trip_tag_add_form_displayed;
@@ -184,11 +191,8 @@ function trip_tag_add_form_toggle(display)
     }
 }
 </script>
-
-
-<div id="body"> 
 <div id="map-canvas"></div>
-<div style="clear:both"></div>
+
 
 <div id="social">
 <ul>
@@ -209,7 +213,7 @@ function trip_tag_add_form_toggle(display)
 </ul>
 </div>
 	
-<div class="map-detail" type="hidden">
+<div class="map-detail">
 
 				<input name="username" id="username" type="hidden" value="{{current_user['username']}}" > 
 				<input name="tripId" id="tripId" type="hidden" value = "{{singletrip['trip_id']}}">
@@ -225,32 +229,6 @@ function trip_tag_add_form_toggle(display)
 				<input id="type" type="hidden" value = "trip">
                
 </div> 
-
-<div class='overview'>
-	<div class="left">
-    	{%if current_user%}
-    <img alt="{{current_user['username']}}" src="{{current_user['picture']}}" title="{{current_user['username']}}" class="picture medium "> 
-	   {%else%}
-	<img alt="guest" src="{{ static_url("images/guest.png") }}" title="guest" class="picture medium">    
-	   {%end%}
-     </div>
-	<div class="comment post">
-		<form action="#" method="post">
-		{% raw xsrf_form_html() %}
-        <div class="FORM-text">
-        <div class="area">
-        <input type="text" name="feedBody" class="feedBody" placeholder="Post a comment…">
-        </div>
-        </div>
-        <input type="button" class="post-button postfeed" href="#post_feed" value="Post">
-        </form>
-     </div>
-	 <div style="clear:both"></div>
-	 <ul class="feedsUI">
-		  {% include "Module/comment.html" %}
-	</ul>
-</div>
-
 </div> 
 
 <div id="photoBarBg" class="right" >
@@ -283,16 +261,74 @@ function trip_tag_add_form_toggle(display)
 </div>
 
 
+<div id="tripBarBg" class="right" >
+<div class="first"></div>
+<div class="middle"></div>
+<div class="last"></div>
+</div>
 
+<div id="tripBarContent" class="right">
+<div class="tripRank first" id="tripRank">
+<a href="">Route:</a>
+{% if singletrip %}
+<input type="text" class="left text start margin-right-thin" value="{{singletrip['start_place']}}">
 
- {% include "Trips/trip_sites.html" %}
+<ul class="route">
+
+</ul>
+{% end %}
+</div>
+
+</div>
+
+<div class='overview'>
+	<div class="left">
+    <img alt="{{current_user['username']}}" src="{{current_user['picture']}}" title="{{current_user['username']}}" class="picture medium "> 
+	
+     </div>
+	<div class="comment post">
+		<form action="#" method="post">
+		{% raw xsrf_form_html() %}
+        <div class="FORM-text">
+        <div class="area">
+        <input type="text" name="feedBody" class="feedBody" placeholder="Post a comment…">
+        </div>
+        </div>
+        <input type="button" class="post-button postfeed" href="#post_feed" value="Post">
+        </form>
+     </div>
+	 <div style="clear:both"></div>
+	 <ul class="feedsUI">
+		  {% include "Module/comment.html" %}
+	</ul>
+</div>
+
 
 {% include "Module/CreateTripSlide1.html" %}
 <!-- AddThis script-->
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>
 <!-- AddThis Button END -->
 
-{% include "Module/footer.html" %} 
+<div id="editmap_footer">
+
+<div class="editmap_inset">
+
+<a href="/about_us">About us</a>
+<small class="divider">·</small>
+<a href="/iphone">iPhone</a>
+<small class="divider">·</small>
+<a href="/api">API</a>
+<small class="divider">·</small>
+<a href="/about/terms">Terms</a>
+<small class="divider">·</small>
+<a href="/about/privacy">Privacy</a>
+<small class="divider">·</small>
+<a href="http://twitter.com/TripShare">Twitter</a>
+<small class="divider">·</small>
+<a href="http://www.facebook.com/pages/TripShare/191851192979">Facebook</a>
+</div>
+
+</div> 
 
 </body> 
 </html>

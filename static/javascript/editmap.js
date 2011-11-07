@@ -1044,7 +1044,7 @@ function PostFeedResponse(response){
 	if (response != '') {
 		var _object = JSON.parse(response);
 		var node = '<li class="feed item left" data-feedid="' + _object['id'] + '"><div class="left"><img alt="' + _object['from']['username'] + '" src="' + _object['from']['picture'] + '" title="' + _object['from']['username'] + '" class="picture medium"></div><div class="right"><p class="message">' + _object['body'] + '</p><p class="details"><span class="timestamp">' + _object['date'] + '</span>  · <a class="comment" href="#">Comment</a></p></div></li>';
-		$('.feedsUI li').first().before(node);
+		$('.feedsUI').first().before(node);
 		
 	}
 	$('.feedBody').val('');

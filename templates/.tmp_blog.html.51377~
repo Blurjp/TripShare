@@ -749,7 +749,33 @@ on
       </div> 
     </div> 
     
- {% include "Module/footer.html" %}
+    <div id='footer'> 
+
+<div class='inset'> 
+<span class='copy'> 
+&copy;
+2011
+TripShare
+</span> 
+<a href="/about">About</a> 
+<small class='divider'>&middot;</small> 
+<a href="/iphone">iPhone</a> 
+<small class='divider'>&middot;</small> 
+<a href="/jobs">Jobs</a> 
+<small class='divider'>&middot;</small> 
+<a href="/terms">Terms</a> 
+<small class='divider'>&middot;</small> 
+<a href="/privacy">Privacy</a> 
+<small class='divider'>&middot;</small> 
+<a href="http://twitter.com/TripShare">Twitter</a> 
+<small class='divider'>&middot;</small> 
+<a href="http://www.facebook.com/pages/TripShare/191851192979">Facebook</a> 
+
+</div> 
+</div> 
+
+<div id='footer-repeat'></div> 
+</div> 
 
   </body> 
 </html>

@@ -1,4 +1,4 @@
-<div class="guide_route" style="width:500px !important; float:left; padding-left:20px">
+<div class="guide_ruote right">
 {% if guide %}
 
 <ul class="route">
@@ -7,7 +7,7 @@
 <div class="site-details">
 
   <div class="site-bar">
-  <img class="picture small"  src="{{ static_url("icon/site_icon2.png") }}">
+  <img src="{{ static_url("icon/site_icon.png") }}">
   <h2><a href="/sights/{{site['dest']}}">
     <span class="guide_sights">{{site['dest']}} </span><br>
   </a></h2>
