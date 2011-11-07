@@ -28,11 +28,11 @@ from Users.Message import MessageHandler
 from Users.Notification import NotificationHandler
 from Settings.Settings import SettingsHandler
 from Users.Friend import FriendEntryModule
-from Users.UserInfo import CreateAccountHandler
-from Users.UserInfo import LoginHandler
-from Users.UserInfo import AuthLogoutHandler
-from Users.UserInfo import AuthLoginFBHandler
-from Users.UserInfo import AuthLogoutFBHandler
+from Auth.AuthHandler import CreateAccountHandler
+from Auth.AuthHandler import LoginHandler
+from Auth.AuthHandler import AuthLogoutHandler
+from Auth.AuthHandler import AuthLoginFBHandler
+from Auth.AuthHandler import AuthLogoutFBHandler
 from Users.UserInfo import UserHandler
 from Users.UserInfo import FollowUserHandler
 from Users.UserInfo import UserSettingHandler

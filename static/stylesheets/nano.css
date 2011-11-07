@@ -64,8 +64,7 @@ img{-ms-interpolation-mode:bicubic}
 	
  .box .box-bar .box-corner{height:28px}     
  .box-bar-text .title{font-weight:bold}      
- .box .box-bar,.box .box-bar .box-corner{background-image:url("/static/images/bar-home.png?v=05a7")}   
- .box .box-bar.friends,.box .box-bar.friends .box-corner{background-image:url("/static/images/bar-friends.png?v=b42c")}       .box .box-bar.groups,.box .box-bar.groups .box-corner{background-image:url("/static/images/bar-groups.png?v=7d74")}       .box .box-bar.search,.box .box-bar.search .box-corner{background-image:url("/static/images/bar-search.png?v=1012")}       
+ 
 /* Chrome */ 
 
  #container.nosidebar{width:755px;width:auto !important;max-width:755px}      
@@ -575,7 +574,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 .section li {padding-top:10px}
 .section .lively-user {padding-left:10px;font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .managemember {font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
-.conv-head {margin-top: 15px; border-top:1px solid #ccc;}
+.conv-head {margin-top: 15px; margin-bottom:55px;border-top:1px solid #ccc;}
 .conv-head li {float: left; padding:4px}
 .conv-head img.searchmemberfortrip {width:25px; height:25px; padding-top:15px; padding-left:15px}
 .map-detail {padding-top: 120px}
@@ -664,7 +663,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
     background: url("/static/images/buttons-sprite.png") no-repeat scroll -189px -214px transparent;
 }
 /* map in edit trip */
-#map-canvas{width:800px;height:600px;border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0;}
+#map-canvas{float:left;width:600px;height:600px;border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 2px 2px 0 #b4aaa0; -moz-box-shadow: 2px 2px 0 #b4aaa0; -webkit-box-shadow: 2px 2px 0 #b4aaa0;}
 
 h2.trigger {
 	padding: 0 0 0 50px;
@@ -895,7 +894,7 @@ p.trip_save
 	cursor: pointer;
 }
 
-
+.guide_ruote {z-index: 9999; width:50%;height:100%;position: relative;}
 /* for map info bar */
 #tripBarBg {overflow: hidden;display: none;z-index: 9999; height: 580px; left: 950px; top: 210px; width: 100px;position: absolute;padding: 15px 0px 25px;opacity:0.4;filter:alpha(opacity=20)}
 #tripBarBg.bottom {height: 0px;width: auto;padding: 0px 21px 0px 19px;	}
@@ -1074,7 +1073,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 .find_friends_icon {padding:5px 0 0 15px}
 
 #social_tools  { position: fixed;z-index:9999;  display:none;  width:575px;   height:280px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
-#social_tools li {float: left; width: 100px; margin-bottom: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
+#social_tools li {float: left; width: 140px; margin-bottom: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
 #social_tools li a {display: block; padding: 10px 15px}
 #social_tools li a span {color: #777777}
 #social_tools li a:hover {text-decoration: none}
@@ -1084,11 +1083,36 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #social_tools li.on {border-bottom: 1px solid #f7f6f1; background-color: #f7f6f1}
 #social_tools form.default .text-box.text-area-box {width: 520px}
 #social_tools form.default .text-box.text-area-box textarea {width: 520px; height: 150px; font-size: 15px; font-family: inherit}
-#social_tools form.default .receiver-text-box label {color: #777777; cursor: text; position: absolute}
-#social_tools form.default .receiver-text-box  {cursor: text !important; width: 205px; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
-#social_tools form.default .receiver-text-box textarea {background: transparent;border: none; padding: 0; margin: 0 !important;width: 165px; height: 20px; font-size: 15px; font-family: inherit}
+#social_tools form.default .receiver-text-box label {padding: 3px 10px;color: #777777; cursor: text; position: absolute}
+#social_tools form.default .receiver-text-box  {cursor: text !important; width: 520px; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#social_tools form.default .receiver-text-box textarea {background: transparent;border: none; padding: 3px 10px; margin: 0 !important;width: 520px; height: 20px; font-size: 15px; font-family: inherit}
+#social_tools strong {color:#268CA0;float:left;margin:5px}
+#social_tools .picture {float:left;margin:2px}
 #social-close-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 #content_twitter, #content_invite {display:none; margin-top:60px}
 #login_facebook {float:right; width:255px; height:123px; overflow:hidden; background: url("/static/images/facebook_sign_in.jpg") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 #login_twitter {float:right; display:none; width:255px; height:123px; overflow:hidden; background: url("/static/images/twitter-login-button.png") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
+
+/* sites */
+
+.show_site {padding-top:5px}
+.show_site .site_details {-webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+.show_site img {float:left;}
+.show_site .site-bar {background-color: #F7C651;-webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;}
+.show_site h2 a {font-size: 0.8em;letter-spacing: 0;color: white;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
+.site_details .action-bar {padding-right: 3px; background-color: #f0eee4; border-radius: 0 0 0 5px; -webkit-border-bottom-right-radius: 5px;-moz-border-radius-bottomright: 5px}
+.site_details .site_action {padding-right:50px}
+.site_details .site_action .action {-moz-border-radius:12px;-webkit-border-radius:12px;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;cursor:pointer}     
+#body .box-bar {width:1200px}

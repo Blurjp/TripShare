@@ -1307,7 +1307,7 @@ function PostFeedResponse(response){
 	if (response != '') {
 		var _object = JSON.parse(response);
 		var node = '<li class="feed item left" data-feedid="' + _object['id'] + '"><div class="left"><img alt="' + _object['from']['username'] + '" src="' + _object['from']['picture'] + '" title="' + _object['from']['username'] + '" class="picture medium"></div><div class="right"><p class="message">' + _object['body'] + '</p><p class="details"><span class="timestamp">' + _object['date'] + '</span>  · <a class="comment" href="#">Comment</a></p></div></li>';
-		$('.feedsUI li').first().before(node);
+		$('.feedsUI').first().before(node);
 		
 	}
 	$('.feedBody').val('');
@@ -1491,6 +1491,10 @@ function guide_tag_add_form_toggle(display)
 </div>
 
 <div id="map-canvas"></div>
+
+ {% include "Guides/guide_sites.html" %}
+
+<div style="clear:both"></div>
 <div class="container">
 
 <div id="social">
@@ -1546,43 +1550,6 @@ function guide_tag_add_form_toggle(display)
 </div>
 <div id="photoSave"><img id="savePhotoButton" src="{{ static_url("images/spacer.gif") }}" width="28" height="31" border="0" style="cursor:pointer" alt="Save Photo" title="Save Photo">
 </div>
-</div>
-
-
-<div id="tripBarBg" class="right" >
-<div class="first"></div>
-<div class="middle"></div>
-<div class="last"></div>
-</div>
-
-<div id="tripBarContent" class="right">
-<div class="tripRank first" id="tripRank">
-<a href="">Route:</a>
-{% if guide %}
-<ul class="route">
-
-{% for counter, dest in enumerate(guide['dest_place']) %}
-<div id="place-{{counter}}-wrapper" class="row-wrapper">
-<li class="lh-tighter place-{{counter}}-element multihop-row">
-<label for="place-{{counter}}-text">Destination:</label>
-
-<input id="place-{{counter}}-text" name="place-{{counter}}-text" type="text" class="text destination margin-right-thin" value="{{dest['dest']}}">
-<input id="place-{{counter}}" name="place-{{counter}}" type="hidden" value="">
-<input id="place-{{counter}}-date" name="place-{{counter}}-date" type="text" value="{{dest['date']}}" class="text">
-
-<div class="right" style="padding-right:20px">
-<a href="#" id="place-{{counter}}-move-up-link" class="pad-left-thin f2 lh-tight move-up-link"></a>
-<a href="#" id="place-{{counter}}-move-down-link" class="f2 lh-tight move-down-link"></a>
-<a href="#" id="place-{{counter}}-remove-link" class="pad-left-thin f2 lh-tight remove-trip-link"></a>
-</div>
-</li>
-</div>
-{% end %}
-{% end %}
-</ul>
-
-</div>
-
 </div>
 
 
