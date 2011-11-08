@@ -1375,12 +1375,12 @@ function PostFeedResponse(response){
 
 <div style="clear:both"></div>
 
-<ul id="guide_tag" onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);" style="display:block">
+<ul id="guide_tag" onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);">
 {% for tag in guide['tags']%}
 <li class="tag_button">
   <a class="tag_button_add" rel="tag" href="/tag">{{tag}}</a>
   <div class="tag_button_remove" ></div>
-  <div style="clear:both"></div>
+  
 </li>
 {% end %}
 
@@ -1499,7 +1499,7 @@ function guide_tag_add_form_toggle(display)
 </ul>
 </div>
 
-<div class="map-detail" type="hidden">
+
 				<input name="guideId" id="guideId" type="hidden" value = "{{guide['guide_id']}}">
 				<input name="slug" id="guide_slug" type="hidden" value = "{{guide['slug']}}"> 
 				<input name="title" id="guide_title" type="hidden" value = "{{guide['title']}}"> 
@@ -1507,7 +1507,7 @@ function guide_tag_add_form_toggle(display)
 				<input name="dest_place" id="dest_place" type="hidden" value = "{{guide['dest_place']}}">
 				<input id="type" type="hidden" value = "guide">
 				<input id="geo" type="hidden" value = "">
-</div> 
+
 
 
 <div id="photoBarBg" class="right" >
