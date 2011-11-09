@@ -406,16 +406,19 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <div class="sidebar right">
 <div id="sidebar-home">
 <div id="sidebar_find_friends">
-<a href="#" name="find_friends" value="Find Friends" type="button" class="fancy left"><h2>Find Friends</h2></a>
+<a href="#" name="find_friends" value="Find Friends" type="button" class="fancy left">
+	<h2>Find Friends</h2>
+</a>
 <img alt="members" class="find_friends_icon left" src="{{ static_url("images/people.png") }}">
 </div>
 <div style="clear:both"></div>
 <div>
-<h2>Featured Guide</h2>
-
+<a href="/guides" type="button" class="fancy left">
+<h2>Popular Guides</h2>
+</a>
 <ul class="profile-guides-list clearfix">	
 {% for guide in guides %}	
-<li class="clearfix first guide">
+<li class="clearfix first guide left">
 <div class="guide-stats" style="font-size:1.1em">
 <a href="/guide/{{guide['slug']}}">{{guide['title']}}</a>
 <div class="guide-standings">

@@ -71,7 +71,7 @@ img{-ms-interpolation-mode:bicubic}
  #sidebar{width:135px;float:right;display:inline}       
 
  #container.nosidebar #body{margin-right:0}   
- #body {float:left;width :60%}
+ #body {float:left;width :600px}
  #body .box-bar-text .control{padding-left:15px}   
  #sidebar .box .box-body{padding-top:10px;padding-left:15px;padding-right:15px;padding-bottom:3px}    
  #sidebar .box ,#sidebar .box .emptymessage{color:#737373;font-size:11px;font-family:"Lucida Grande",Tahoma,Verdana}       
@@ -1005,8 +1005,10 @@ h2 .user_name {margin-left:150px !important}
 /* feeds and comments */:
 
 .overview .feed .right {margin-right:50px;margin-left:10px}
-.overview ul.feedsUI {padding-top:10px}
+.overview ul.feedsUI {padding-top:10px; width:600px}
+.overview ul.feedsUI li.right {width:300px !important}
 .overview ul.feedsUI a  {font-size: 1.0em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
+.overview ul.feedsUI li.feed .right p.details a{font-weight:normal;width:40px}
 
 .overview .post-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: right; margin-left:21px}
 .overview .post-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
@@ -1015,8 +1017,8 @@ h2 .user_name {margin-left:150px !important}
 p.message{font-size:15px;line-height:1.35em;height:7px;}
 p.message{font-size:12px;margin-right:84px;padding-bottom:3px;}
 p.message span.meta{color:#a1a1a1;display:block;font-size:10px;}
-p.details{color:#999999;clear:both;font-size:11px;font-weight:normal;margin-right:425px;}
-ul.feedsUI li.feed .right p.details a{font-weight:normal;width:40px}
+p.details{color:#999999;width:400px;font-size:11px;font-weight:normal;margin-right:425px;}
+
 
 
 a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow:hidden; background:url("/static/images/facebook_sign_in.png") no-repeat transparent; z-index:5000;  text-decoration:none;margin-top:5px; margin-left:15px}
@@ -1058,8 +1060,8 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #trip_tag_add_form {display:none}
 
 
-#guide_tag     { display: block; padding: 10px 0 5px 22px; background: url("/static/images/trip_tag.png") no-repeat 0 13px; margin-bottom: 5px  }
-#guide_tag li  { float: left; margin: 0px 5px 5px 0 }
+#guide_tag     { width: 1080px; display: block; padding: 10px 0 5px 22px; background: url("/static/images/trip_tag.png") no-repeat 0 13px; margin-bottom: 5px  }
+#guide_tag li  {  float: left; margin: 0px 5px 5px 0 }
 .tag_button    { position: relative;}
 .tag_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
 .tag_button a:hover { background-color: #5495d7 ;text-decoration: none; }
@@ -1097,7 +1099,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #login_twitter {float:right; display:none; width:255px; height:123px; overflow:hidden; background: url("/static/images/twitter-login-button.png") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 
 /* sites */:
-.guide_route {position:relative;width:550px !important; float:left; padding-right:20px}
+.guide_route {position:relative;width:480px; float:left; padding-right:20px}
 .show_site {padding-top:5px}
 .show_site .site_details {-webkit-border-top-left-radius: 5px;
 -webkit-border-top-right-radius: 5px;
@@ -1106,6 +1108,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 border-top-left-radius: 5px;
 border-top-right-radius: 5px;
 }
+.show_site .site_details .p {text-align: left;}
 .show_site img {float:left;}
 .show_site .site-bar {background-color: #F7C651;-webkit-border-top-left-radius: 5px;
 -webkit-border-top-right-radius: 5px;

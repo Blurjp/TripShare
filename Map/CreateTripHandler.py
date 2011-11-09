@@ -81,6 +81,7 @@ class ComposeHandler(BaseHandler):
                 tags.append(dest['dest'])
                 dest_string += " to "+ dest['dest']
                 dest['geo'] = ''
+                dest['description'] = ''
                 dest['date'] = dest['date']
  
         title = "From "+start+dest_string

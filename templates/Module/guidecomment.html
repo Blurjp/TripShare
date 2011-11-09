@@ -1,10 +1,11 @@
 {% if 'feeds' in guide %}
 {% for feed in guide['feeds'] %}
+
 <li class="feed item left" data-feedid="{{feed['feed_id']}}">
 					<div class="left">
 						<img alt="{{feed['from']['username']}}" src="{{feed['from']['picture']}}" title="{{feed['from']['username']}}" class="picture medium"><div class="type"></div>
 					</div>
-					<div class="right" >
+					<div class="right" style="width:500px">
 						
 						<p class="message">
 							{{feed['body']}}

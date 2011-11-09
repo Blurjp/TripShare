@@ -8,13 +8,31 @@
  <input name="guide title" class="text destination margin-right-thin" type="text" style="margin-left:90px"></input>  
  </div>
  <div style="clear:both"></div>  
-  <h2 style="margin:20px 0;">Category  
-  <select name="tag" style="margin:0 30px;">
-  <option value="park">park</option>
-  <option value="city">city</option>
-  <option value="state">state</option>
-  <option value="sight">sight</option>
-  </select></h2>
+  <h2 style="margin:20px 0;">Tag</h2>
+  <ul id="guide_tag" onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);">
+{% for tag in guide['tags']%}
+<li class="tag_button">
+  <a class="tag_button_add" rel="tag" href="/tag">{{tag}}</a>
+  <div class="tag_button_remove" ></div>
+  
+</li>
+{% end %}
+
+<li id="guide_tag_add_show" onclick="guide_tag_add_form_toggle(true); event.stopPropagation(); return false">
+</li>
+  
+<li id="guide_tag_add_form">
+   <div id="guide_tag_add_input_exterior" style="position: relative; float: left">
+   <div id="guide_tag_add_input_exterior">
+   <input type="text" id="guide_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small">
+   </div>
+   </div>    
+    <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="guide_tag_add_form_toggle(false); return false">done</a>
+  </li>
+  
+  <div style="clear:both"></div>
+  
+</ul>
  
       
       	<div style="clear:both"></div> 
