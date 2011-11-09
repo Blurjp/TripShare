@@ -1,42 +1,40 @@
 <form name="create_guide" id="create_guide_form" onsubmit="return check_createguide_form(this);">
 	 {% raw xsrf_form_html() %}
-<div id="create_guide_step_1" class="window1">
-	<a href="#" id="closeguide-modal" class="close">close</a>
-    <fieldset>
-    	<div style="margin:20px 0;heigh:10px">
+<div id="create_guide_step_1" >
+
+	
+<div class="scrollbar">
+	<div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+    <div class="viewport">
+	<fieldset class="overview">
+ <div id="guide_title_slide">
  <h2 style="float:left"> Title </h2>   
  <input name="guide title" class="text destination margin-right-thin" type="text" style="margin-left:90px"></input>  
  </div>
- <div style="clear:both"></div>  
-  <h2 style="margin:20px 0;">Tag</h2>
-  <ul id="guide_tag" onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);">
-{% for tag in guide['tags']%}
-<li class="tag_button">
-  <a class="tag_button_add" rel="tag" href="/tag">{{tag}}</a>
-  <div class="tag_button_remove" ></div>
-  
-</li>
-{% end %}
+<div id="guide_tag_slide">
+  <h2 style="float:left;">Tag</h2>
+  <ul onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);">
 
-<li id="guide_tag_add_show" onclick="guide_tag_add_form_toggle(true); event.stopPropagation(); return false">
+
+<li id="guide_tag_slide_add_show" onclick="guide_tag_add_form_toggle(true); event.stopPropagation(); return false">
 </li>
   
-<li id="guide_tag_add_form">
-   <div id="guide_tag_add_input_exterior" style="position: relative; float: left">
-   <div id="guide_tag_add_input_exterior">
-   <input type="text" id="guide_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small">
+<li id="guide_tag_slide_add_form">
+   <div id="guide_tag_slide_add_input_exterior" style="position: relative; float: left">
+   <div id="guide_tag_slide_add_input_exterior">
+   <input type="text" id="guide_slide_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small">
    </div>
    </div>    
     <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="guide_tag_add_form_toggle(false); return false">done</a>
-  </li>
+</li>
   
   <div style="clear:both"></div>
   
 </ul>
- 
+ </div>
       
       	<div style="clear:both"></div> 
-  <h2> Add Destination </h2>
+  <h2 style="margin-left:20px"> Add Destination </h2>
   <fieldset>
 <ul class="guide_destinations">
 	<div class="guide-row-wrapper">
@@ -56,6 +54,8 @@
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
+  <option value="4">5</option>
+  <option value="4">6</option>
   </select> day</label>
   </div>
 
@@ -70,9 +70,10 @@
  </ul>
 </fieldset>
 </fieldset>
+</div>
 <div class="button_container">
     <input type="submit" href="#create_guide_finish" name="create_guide_finish" value="Publish" style="width:180px;margin-right:10px" class="sidebar-auth-button">
 </div>    
-               
+        	<a href="#" id="closeguide-modal" class="close">close</a>       
 </div>
 <div id="mask4"></div>

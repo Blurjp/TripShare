@@ -379,7 +379,7 @@ opacity:0.5;
 /* id="box" class = "window"*/  
 #mask4 { position:fixed ;z-index:9000;background-color:black;  width: 100%; height: 100%; top: 0px; left: 0px;display:none;  opacity:0.5;filter:alpha(opacity=50)}  
 
-#create_trip_step_1, #create_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:575px;   height:350px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
+#create_trip_step_1, #create_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:775px;   height:450px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
 .start_from{width:500px;}
 .add_icon{float:left;padding-top:35px;padding-right:45px}
 .add_icon img{height:20px;width: 20px}
@@ -390,6 +390,18 @@ opacity:0.5;
 	padding-top:5px;
 	padding:8px 8px;font-size:1.40em;font-weight:bold;color:#64bcc9;font-family:inherit
 }
+
+/* Tiny Scrollbar */
+#create_guide_step_1 {margin: 20px 0 10px;}
+#create_guide_step_1 .viewport { width:300px; height: 300px;overflow: hidden; position: relative; }
+#create_guide_step_1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+#create_guide_step_1 .scrollbar{  position: relative; background-position: 0 0; float: right; width: 15px; }
+#create_guide_step_1 .track {  height: 100%; width:13px; position: relative; padding: 0 1px; }
+#create_guide_step_1 .thumb { background: transparent url(/static/images/scrollbar.png) no-repeat 50% 100%; height: 35px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
+#create_guide_step_1 .thumb .end { background: transparent url(/static/images/scrollbar.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
+#create_guide_step_1 .disable { display: none; }
+
+
 #search_bar #start:focus{outline:none}
 .current_location {height:40px ;}
 
@@ -1070,6 +1082,20 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #guide_tag_add_show    { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
 #guide_tag_add_show:hover    { background-color: #59d859  }
 #guide_tag_add_form {display:none}
+
+#guide_title_slide {margin:30px 20px;heigh:10px}
+#guide_tag_slide {margin:30px 20px;heigh:10px}
+#guide_tag_slide ul    {width:300px; display: block; }
+
+#guide_tag_slide li  {  float: left; margin: 0px 5px 5px 0 }
+.tag_button    { position: relative;}
+.tag_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
+.tag_button a:hover { background-color: #5495d7 ;text-decoration: none; }
+.tag_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat 4px 7px #9ebedf; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
+.tag_button_remove:hover { background-color: #5495d7 }
+#guide_tag_slide_add_show    { left:80px;position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
+#guide_tag_slide_add_show:hover    { background-color: #59d859  }
+#guide_tag_slide_add_form {display:none}
 
 #all_search_result_list {display:none; width:25%; position:absolute; z-index:9999;border-width:5px;border-style:solid; border-color: #BEBEBE;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: white;}
 #all_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}

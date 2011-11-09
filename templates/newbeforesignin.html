@@ -21,6 +21,7 @@
 <script src="{{ static_url("javascript/createguideslides.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/CalendarPopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/search.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/scrollbar.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/jquery.pagination.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/dragdroptool/core.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/dragdroptool/dragsort.js") }}" type="text/javascript"></script>
@@ -416,9 +417,10 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <a href="/guides" type="button" class="fancy left">
 <h2>Popular Guides</h2>
 </a>
-<ul class="profile-guides-list clearfix">	
+<div style="clear:both"></div>
+<ul class="profile-guides-list">	
 {% for guide in guides %}	
-<li class="clearfix first guide left">
+<li class="clearfix first guide">
 <div class="guide-stats" style="font-size:1.1em">
 <a href="/guide/{{guide['slug']}}">{{guide['title']}}</a>
 <div class="guide-standings">

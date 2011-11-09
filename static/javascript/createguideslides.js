@@ -2,7 +2,7 @@
 
 /* create guide slide */
 $(document).ready(function() {    
-  
+        $('#create_guide_step_1').tinyscrollbar();
      //Get the screen height and width  
         var maskHeight = $(document).height();  
         var maskWidth = $(window).width();  
