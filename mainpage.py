@@ -52,10 +52,11 @@ from Guides.GuidesHandler import ExportGuidesHandler
 from Guides.GuidesHandler import GetGuidesForImportHandler
 from Guides.GuidesHandler import DeleteGuidesHandler
 from Guides.GuidesHandler import EntryGuidesHandler
-from Guides.GuidesHandler import GuidePageHandler
+
 from Guides.GuidesHandler import ImportGuidesHandler
 from Guides.GuidesHandler import ImportGuideToTripHandler
 from Guides.GuidesHandler import CategoryGuidesHandler
+from Guides.GuidesHandler import AddGuidesTagHandler
 from Comment.CommentHandler import PostCommentHandler
 from Comment.CommentHandler import DeleteCommentHandler
 from Comment.CommentHandler import PostFeedHandler
@@ -191,7 +192,7 @@ class Application(tornado.web.Application):
                                       (r"/guides", BrowseGuidesHandler),
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),
-                                      #(r"/guides/([^/]+)/([^/]+)", GuidePageHandler),
+                                      (r"/add_guide_tag", AddGuidesTagHandler),
                                       (r"/saveguide/([^/]+)", SaveGuidesHandler),
                                       (r"/likeguide/([^/]+)", LikeGuidesHandler),
                                       (r"/createguide", CreateGuidesHandler),

@@ -34,7 +34,7 @@ h3 small {color: #817772; font-weight: normal}
 h4 {margin-bottom: 10px}
 h4.light {color: #999999}
 a {color: #268ca0; text-decoration: none}
-a:hover {text-decoration: underline; color: #196473}
+a:hover { color: #196473}
 .nomargin {margin: 0 !important}
 .padding {padding: 15px}
 .center {text-align: center}
@@ -418,17 +418,17 @@ body {background: white}
 #header #nav-bar #logo-small img {padding-left: 50px;padding-right:10px; height:55px; width: 140px}
 
 #header #nav-bar .logged-out-actions {color: white; text-align: center}
-#header #nav-bar .logged-out-actions a {color: #e1dcc8; text-decoration: underline}
+#header #nav-bar .logged-out-actions a {color: #e1dcc8;}
 #header #nav-bar .logged-out-actions a:hover {color: #f7f6f1}
-#header #nav-bar .logged-out-actions {float: right; padding: 20px 0 0}
+#header #nav-bar .logged-out-actions {float: right; padding: 25px 0 0}
 #header #nav-bar .content {position: relative;width: 1240px;padding: 0 20px;margin: 0 auto; }
-#header #nav-bar ul.headline { }
+
 #header #nav-bar ul.headline li {padding: 20px 7px; float: left; margin-right: 5px}
 #header #nav-bar ul.headline li.last {margin-right: 0}
 #header #nav-bar ul.headline li.on {background: #564b40; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px 6px; margin: 15px 4px 14px 0; border-right: 1px solid #1e0f00; border-bottom: 1px solid #1e0f00}
 #header #nav-bar ul.headline li.on a:hover {text-decoration: none}
 #header #nav-bar ul.headline li a {font-size: 1.2em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
-#header #nav-bar ul.headline li a:hover {}
+#header #nav-bar ul.headline li a:hover { text-decoration: none}
 #header #nav-bar #mini-profile {float: right;padding: 12px 0 0; }
 
 

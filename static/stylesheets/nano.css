@@ -99,7 +99,7 @@ img{-ms-interpolation-mode:bicubic}
  
  #login
  {
- 	background-color:white;
+ 	background-color:#F7F6F1;
 	padding:15px;
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px
@@ -141,8 +141,9 @@ width: 302px;
 #close-signup {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 #close-login {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
- 
- #modal-tabs {float: right}
+ #login #modal-head {padding: 20px;}
+#login #modal-head h1 {font-size: 1.8em}
+ #modal-tabs {float: right; margin-bottom:30px}
  #modal-tabs li {float: left; margin-left: 10px}
  #modal-tabs li a {display: block; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: #f0eee4; padding: 7px 10px}
  #modal-tabs li.on a {background: #e1dcc8; box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2); -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2); -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.2); color: #1e0f00; font-weight: bold; cursor: default}
@@ -393,14 +394,14 @@ opacity:0.5;
 
 /* Tiny Scrollbar */
 #create_guide_step_1 {margin: 20px 0 10px;}
-#create_guide_step_1 .viewport { width:300px; height: 300px;overflow: hidden; position: relative; }
-#create_guide_step_1 .overview { list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
+#create_guide_step_1 .viewport { width:700px; height: 500px;overflow: hidden; position: relative; }
+#create_guide_step_1 .overview { width:600px;list-style: none; position: absolute; left: 0; top: 0; padding: 0; margin: 0; }
 #create_guide_step_1 .scrollbar{  position: relative; background-position: 0 0; float: right; width: 15px; }
 #create_guide_step_1 .track {  height: 100%; width:13px; position: relative; padding: 0 1px; }
 #create_guide_step_1 .thumb { background: transparent url(/static/images/scrollbar.png) no-repeat 50% 100%; height: 35px; width: 25px; cursor: pointer; overflow: hidden; position: absolute; top: 0; left: -5px; }
 #create_guide_step_1 .thumb .end { background: transparent url(/static/images/scrollbar.png) no-repeat 50% 0; overflow: hidden; height: 5px; width: 25px; }
 #create_guide_step_1 .disable { display: none; }
-
+#create_guide_step_1 .viewport .guide_destinations {margin: 30px 20px}
 
 #search_bar #start:focus{outline:none}
 .current_location {height:40px ;}
@@ -1018,9 +1019,9 @@ h2 .user_name {margin-left:150px !important}
 
 .overview .feed .right {margin-right:50px;margin-left:10px}
 .overview ul.feedsUI {padding-top:10px; width:600px}
-.overview ul.feedsUI li.right {width:300px !important}
+.overview ul.feedsUI li.feed .right {width:300px !important}
 .overview ul.feedsUI a  {font-size: 1.0em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
-.overview ul.feedsUI li.feed .right p.details a{font-weight:normal;width:40px}
+.overview ul.feedsUI p.details a{font-weight:normal;width:40px}
 
 .overview .post-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: right; margin-left:21px}
 .overview .post-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
@@ -1083,19 +1084,22 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #guide_tag_add_show:hover    { background-color: #59d859  }
 #guide_tag_add_form {display:none}
 
+
+
 #guide_title_slide {margin:30px 20px;heigh:10px}
 #guide_tag_slide {margin:30px 20px;heigh:10px}
-#guide_tag_slide ul    {width:300px; display: block; }
+#guide_tag_slide ul    {width:700px; display: block; padding-left:120px}
+#guide_tag_slide li  {  float: left; margin: 0px 5px 15px 0px }
 
-#guide_tag_slide li  {  float: left; margin: 0px 5px 5px 0 }
 .tag_button    { position: relative;}
 .tag_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
 .tag_button a:hover { background-color: #5495d7 ;text-decoration: none; }
 .tag_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat 4px 7px #9ebedf; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
 .tag_button_remove:hover { background-color: #5495d7 }
-#guide_tag_slide_add_show    { left:80px;position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
+#guide_tag_slide_add_show    { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
 #guide_tag_slide_add_show:hover    { background-color: #59d859  }
 #guide_tag_slide_add_form {display:none}
+
 
 #all_search_result_list {display:none; width:25%; position:absolute; z-index:9999;border-width:5px;border-style:solid; border-color: #BEBEBE;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: white;}
 #all_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}

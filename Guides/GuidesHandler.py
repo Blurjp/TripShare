@@ -40,14 +40,18 @@ class CategoryGuidesHandler(BaseHandler):
         #print(count+'+++++++++++++')
         latest_guide_ids = None
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(int(count)).limit(10).sort('title')
+            if self.current_user:  
+                latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(int(count)).limit(10).sort('title')
+            else:
+                latest_guide_ids = self.syncdb.guides.find().limit(0)
         elif section == "national_park":
             latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).skip(int(count)).limit(10).sort('title')
         elif section == "city":
             latest_guide_ids = self.syncdb.guides.find({"type":'city'}).skip(int(count)).limit(10).sort('title')
         elif section == "world":
             latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(int(count)).limit(10).sort('title')
-            
+        
+        print(str(latest_guide_ids.count())+'+++++++++++++')
         if latest_guide_ids.count() >0:
                 
                 for latest_guide_id in latest_guide_ids:                        
@@ -58,7 +62,10 @@ class CategoryGuidesHandler(BaseHandler):
     def get(self, section):
         latest_guide_ids = None
         if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(10).sort('title')
+            if self.current_user:               
+                latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(10).sort('title')
+            else:
+                latest_guide_ids = self.syncdb.guides.find().limit(0)
         elif section == "national_park":
             latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).limit(10).sort('title')
         elif section == "city":
@@ -73,26 +80,13 @@ class CategoryGuidesHandler(BaseHandler):
         else:
             self.write('<li><span>No guide for this category yet....</span></li>')
         
-class GuidePageHandler(BaseHandler):
-
-    def get(self, _section, _index):
-       
-        section = _section
-        index = string.atoi(_index)
-        latest_guide_ids = None
-        skip_number = index*3
-        if section == "me":
-            latest_guide_ids = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).skip(skip_number).limit(10).sort("title")
-        if section == "national_park":
-            latest_guide_ids = self.syncdb.guides.find({"type":'national_park'}).skip(skip_number).limit(10).sort('title')
-        elif section == "city":
-            latest_guide_ids = self.syncdb.guides.find({"type":'city'}).skip(skip_number).limit(10).sort('title')
-        elif section == "world":
-            latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(skip_number).limit(10).sort('title')
+class AddGuidesTagHandler(BaseHandler):  
+    @tornado.web.authenticated  
+    def post(self):
+        guide_id = self.get_argument('guide_id')
+        tag = self.get_argument('tag')
+        self.syncdb.guides.update({'guide_id': bson.ObjectId(guide_id)}, {'$addToSet':{'tags': tag}})
             
-        if latest_guide_ids!= None:
-                for latest_guide_id in latest_guide_ids:                        
-                        self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
      
 class SaveGuidesHandler(BaseHandler):  
     @tornado.web.authenticated  

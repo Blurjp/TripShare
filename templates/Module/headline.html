@@ -107,14 +107,10 @@ Join TripShare
 </div>
 </li>
 <li class="row last">
-<div class="text-box small">
+<div class="text-box">
 <label class="prompted" for="password">Password</label>
 <input class="text" id="password" name="password" size="30" type="password">
 <label class="error" for="password" id="password_error">This field is required.</label>
-</div>
-<div class="text-box small">
-<label class="prompted" for="confirm_password">Retype Password</label>
-<input class="text" id="confirm_password" name="confirm_password" size="30" type="password">
 </div>
 </li>
 </ul>
@@ -146,6 +142,7 @@ Or,
     <!-- #customize your modal window here -->  
   
  <div id="login" class="window">  
+ <ul id="modal-head">
  <a href="#" id="close-login" class="close">close</a>
  <div style="width:350px; padding-left:5px; padding-right:5px; padding-top:5px" class="createform">
  </div><br>
@@ -156,8 +153,12 @@ Or,
 <li>
 <a href="#login">Log in</a>
 </li>
+
 </ul>
-	    
+<h1>
+Log In TripShare
+</h1>
+<div id="modal-body">
 <form name="login_form" action="/account/login" method="post" onsubmit="return checkform(this);" autocomplete="off">
 	{% raw xsrf_form_html() %}
 <table class="form">
@@ -174,16 +175,13 @@ Or,
 <td>&nbsp;</td>
 <td class="buttons">
 <input type="submit" value="Log in" style="font-weight:bold">
-
-
-
 </td>
 </tr>
 </tbody></table>
 </form> 
 </div>  
-  
-      
+  </div>  
+      </div>
     <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->    
 <div id="mask2"></div> 
 </div>

@@ -1451,27 +1451,22 @@ function guide_tag_add_form_toggle(display)
         $('#guide_tag_add_form').hide(); 
         $('#guide_tag_add_show').show();
         
-        // Show remove buttons for each category
-        var plan_category_as = $('#guide_tag').find('.category_button_a');
-        
-        if(plan_category_as)
-        {
-            plan_category_as.removeClass('category_button_a_edit_active');
-        }
-        
-        var plan_category_removes = $('#guide_tag').find('.category_button_remove');
-        
-        if(plan_category_removes)
-        {
-            plan_category_removes.hide();
-        }
+		
+		var content ={'tag':$('#guide_tag_add_input').val(),'guide_id':$('#guideId').val(),'_xsrf':getCookie('_xsrf')};
+        $.postJSON('/add_guide_tag', content, function(response){
+			    ShowGuideTag($('#guide_tag_add_input').val());
+		});	
+		
+    }
+}
 
-        var lis = $('#guide_tag').find('li');
-
-        if(lis.length == 2)
-        {
-            $('#guide_tag').hide();
-        }
+function ShowGuideTag(tag)
+{
+	if(tag!='')
+	{
+	var node = $('<li class="tag_button"><a class="tag_button_add tag_button_a_edit_active" rel="tag" href="/tag">'+tag+'</a><div class="tag_button_remove" style="display: block; "></div></li>');
+	node.insertBefore($('#guide_tag_add_show'));
+	$('#guide_tag_add_input').val('');
     }
 }
 </script>

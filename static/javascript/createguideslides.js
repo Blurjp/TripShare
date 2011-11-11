@@ -2,7 +2,9 @@
 
 /* create guide slide */
 $(document).ready(function() {    
-        $('#create_guide_step_1').tinyscrollbar();
+       
+		var oScrollbar = $('#create_guide_step_1');
+        oScrollbar.tinyscrollbar();
      //Get the screen height and width  
         var maskHeight = $(document).height();  
         var maskWidth = $(window).width();  
@@ -16,6 +18,7 @@ $(document).ready(function() {
         
 		//each time before create guide, clear all the cache information for 
 		
+		oScrollbar.tinyscrollbar_update();
 		$('#destinations_for_guide').val('');
 		
         e.preventDefault();
