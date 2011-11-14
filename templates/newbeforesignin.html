@@ -344,17 +344,13 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 		    
 		    <li class="walkthrough_tab on">
 			<a href="#" onclick="set_walkthrough_section('walkthrough'); return false;">
-                <strong>Traveller</strong>
+                <strong>How it works</strong>
             </a>
 			</li>
-			<li class="agency_tab">
-			<a href="#" onclick="set_walkthrough_section('agency'); return false;">
-                <strong>Agency</strong>
-            </a>
-			</li>
+			
 			<li class="map_tab">
             <a href="#" onclick="set_walkthrough_section('map'); return false;">
-                <strong>Map</strong>
+                <strong>Travelers on Map</strong>
             </a>
 			</li>
 			
@@ -635,12 +631,22 @@ function set_walkthrough_section(section) {
 		}
         $('.GuideTabList > .on').removeClass('on');
         $('.'+section + '_tab').addClass('on');
-		$('#'+value).hide();
+		
+		$('.'+value).hide();
 		if(section=='map')
 		{
+		
 		initialize();
+		$('#map').show();
+		$('#map-pagination').show();
 		}
-		$('#'+section).show();
+		else
+		{
+		$('#map-pagination').hide();	
+		$('#map').hide();
+		$('.'+section).show();
+		}
+		
 		$("#walkthrough_section_value").val(section);
         }
 </script>

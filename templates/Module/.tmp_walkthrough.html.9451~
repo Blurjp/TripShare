@@ -5,8 +5,8 @@
       <a href="http://help.github.com/set-up-git-redirect" target="_blank">
         <div class="image"></div>
         <div class="desc">
-          <h2>Create A Trip Plan</h2>
-          <p>The trip can be based on Guides or Package</p>
+          <h2>Create A Plan</h2>
+          
         </div>
         <span class="step-number one"></span>
       </a>
@@ -15,8 +15,8 @@
       <a href="http://help.github.com/create-a-repo" target="_blank">
         <div class="image"></div>
         <div class="desc">
-          <h2>Send it to Agency</h2>
-          <p>Review your plan and send it to agency</p>
+          <h2>Import A Guide</h2>
+          
         </div>
         <span class="step-number two"></span>
       </a>
@@ -25,8 +25,8 @@
       <a href="http://help.github.com/fork-a-repo" target="_blank">
         <div class="image"></div>
         <div class="desc">
-          <h2>Negotiate the Trip Detail</h2>
-          <p>You can easily manage your trip plan with agency on TripShare</p>
+          <h2>Send it to Agency</h2>
+          <p>Review your plan and send it to agency</p>
         </div>
         <span class="step-number three"></span>
       </a>
@@ -35,8 +35,8 @@
       <a href="http://help.github.com/be-social" target="_blank">
         <div class="image"></div>
         <div class="desc">
-          <h2>Share the Trip</h2>
-          <p>Other travelers may like your plan and follow you.</p>
+          <h2>Be social</h2>
+          <p>Find a travler like you.</p>
         </div>
         <span class="step-number four"></span>
       </a>
@@ -44,4 +44,5 @@
   </ul>
   </div>
 </div>
-
+<div class="agency">
+</div>
