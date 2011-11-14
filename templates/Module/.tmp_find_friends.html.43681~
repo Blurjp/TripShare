@@ -1,6 +1,6 @@
 	<div id="social_tools" class="window1">
 		<a href="#" id="social-close-modal" class="close">close</a>
-		<ul class="social_list">
+		<ul class="soical_list">
 			<li class="facebook-tab on"><a href="#" onclick="set_social_section('facebook'); return false;"><img class="picture small" src="{{ static_url("images/facebook-icon.png") }}"><strong>Facebook</strong></a></li>
 			<li class="twitter-tab"><a href="#" onclick="set_social_section('twitter'); return false;"><img class="picture small" src="{{ static_url("images/twitter-icon.png") }}"><strong>Twitter</strong></a></li>
 			<li class="invite-tab"><a href="#" onclick="set_social_section('invite'); return false;"><img class="picture small" src="{{ static_url("images/email.png") }}"><strong>Email</strong></a></li>

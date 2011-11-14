@@ -327,7 +327,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
  
 </head> 
-<body> 
+<body onload="initialize()"> 
 
 <div id="header"> 
 
@@ -339,30 +339,8 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 </div>
 </div>
 
-<div id="GuideTab">
-	<ul class="GuideTabList">
-		    
-		    <li class="walkthrough_tab on">
-			<a href="#" onclick="set_walkthrough_section('walkthrough'); return false;">
-                <strong>Traveller</strong>
-            </a>
-			</li>
-			<li class="agency_tab">
-			<a href="#" onclick="set_walkthrough_section('agency'); return false;">
-                <strong>Agency</strong>
-            </a>
-			</li>
-			<li class="map_tab">
-            <a href="#" onclick="set_walkthrough_section('map'); return false;">
-                <strong>Map</strong>
-            </a>
-			</li>
-			
-     </ul>
 
-    </div>
 <div id="discover-map">
- {% include "Module/walkthrough.html" %}
 <div id="map">
 </div>
 <div id="map-pagination">
@@ -377,7 +355,43 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 </div>
 </div>
 
-
+<div id="mapTab">
+            <div class="sponsoredHead">
+    <div id="mpuSponsor" class="mpuWrapper ">
+        <div class="mpuInner">
+           
+        </div>
+    </div>
+                
+            </div>
+            <a href="#" id="tabToggleMap" class="toggleMap open" style="display:block">
+                <span class="hidden">Open Map</span>
+            </a>
+			<a href="#" id="tabToggleGuide" class="toggleGuide open" style="display:block">
+                <span class="hidden">Open Walkthrough</span>
+            </a>
+            <script type="text/javascript">
+            // <![CDATA[
+            lp_init_map_toggle ($('#tabToggleMap'), 'map') ;  
+            $(function() {
+                if (jQuery.cookies.get('lpmaps') == 'open') {                  
+                  show_map('map');
+                }
+            });
+            // ]]>
+            </script>
+			
+			<script type="text/javascript">
+            // <![CDATA[
+            lp_init_guide_toggle ($('#tabToggleGuide'), 'guide');
+            $(function() {
+                if (jQuery.cookies.get('lpguides') == 'open') {                  
+                  show_map('guide');
+                }
+            });
+            // ]]>
+            </script>
+    </div>
 
 <div id="container" class="clearfix">
 <div class="clearfix" id="content">
@@ -477,7 +491,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 {% include "Module/CreateTripSlide1.html" %}
 {% include "Module/find_friends.html" %}
 <input id="social_section_value" value = "" type = "hidden">
-<input id="walkthrough_section_value" value = "" type = "hidden">   
+   
 <script type="text/javascript">
 //<![CDATA[
 function checkform(form)
@@ -617,31 +631,13 @@ function set_social_section(section) {
 		{
 			value = "facebook";
 		}
-        $('.social_list > .on').removeClass('on');
+        $('.soical_list > .on').removeClass('on');
         $('.'+section + '-tab').addClass('on');
 		$('#content_'+value).hide();
 		$('#login_'+value).hide();
 		$('#login_'+section).show();
 		$('#content_'+section).show();
 		$("#social_section_value").val(section);
-        }
-		
-function set_walkthrough_section(section) {
-	    
-		var value = $("#walkthrough_section_value").val();
-		if (value=="")
-		{
-			value = "walkthrough";
-		}
-        $('.GuideTabList > .on').removeClass('on');
-        $('.'+section + '_tab').addClass('on');
-		$('#'+value).hide();
-		if(section=='map')
-		{
-		initialize();
-		}
-		$('#'+section).show();
-		$("#walkthrough_section_value").val(section);
         }
 </script>
 

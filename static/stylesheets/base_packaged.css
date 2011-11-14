@@ -855,8 +855,10 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 .marker-border {border: 2px solid white !important; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85); -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85); -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.85); background-color: #dddddd; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px}
 .marker-rotate {-webkit-transform: rotate(-8deg); -o-transform: rotate(-8deg); -moz-transform: rotate(-8deg); border: 3px solid white !important; margin: -1px 0 0 -1px !important}
 #mapContainer {width: 280px; height: 180px; overflow: hidden; position: relative;}
-#map {width: 100%; height: 100%;}
-#discover-map {width: 100%;height: 420px; position:relative;}
+#walkthrough {width: 100%; height: 100%;}
+#agent {width: 100%; height: 100%;display:none}
+#map {width: 100%; height: 100%;display:none}
+#discover-map {width: 100%;height: 420px; position:relative;margin-top:33px}
 
 #map-pagination {text-align: center;bottom: 10px;left: 50%;width: 940px;padding: 0 20px;margin: 10px 0 0 -490px;z-index:9000;position: absolute; }
 #map-pagination #map-sorts {margin: 0 auto; width: 400px; text-align: center; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
