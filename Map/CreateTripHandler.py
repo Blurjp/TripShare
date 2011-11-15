@@ -41,12 +41,12 @@ class ComposeHandler(BaseHandler):
         else:
                 self.greeting = "Become a TripSharer!"
         
-        #self.render("edittrip.html", singletrip=singletrip,  greeting= greeting, trips=trips)
+        #self.render("Trips/edittrip.html", singletrip=singletrip,  greeting= greeting, trips=trips)
         
     def _get_trips(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
-        self.render("edittrip.html", trips=response, singletrip=self.singletrip,  greeting= self.greeting)
+        self.render("Trips/edittrip.html", trips=response, singletrip=self.singletrip,  greeting= self.greeting)
         
     @tornado.web.asynchronous
     @tornado.web.authenticated

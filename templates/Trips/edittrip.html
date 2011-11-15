@@ -23,9 +23,9 @@
 
 <div id="header"> 
 <div id="nav-bar">
- {% include "Module/headline.html" %}
- {% include "Module/usersetting.html" %}
- {% include "Guides/ImportGuide.html" %}
+ {% include "../Module/headline.html" %}
+ {% include "../Module/usersetting.html" %}
+ {% include "../Guides/ImportGuide.html" %}
 </div> 
 </div> 
  
@@ -93,7 +93,7 @@
 <li>	
 <input type="button" class="regular-button manage_member" href="#manage_member_dropdown" value="Manage Member">
 
-{% include "Module/manage_member_dropdown.html" %}
+{% include "../Module/manage_member_dropdown.html" %}
 
 </li>
 
@@ -109,7 +109,7 @@
 </div>
 </div>
  
-<script type='text/javascript'> 
+<script type='text/javascript'>
 var trip_tag_add_form_displayed;
 function trip_tag_add_show(status)
 {
@@ -247,7 +247,7 @@ function trip_tag_add_form_toggle(display)
      </div>
 	 <div style="clear:both"></div>
 	 <ul class="feedsUI">
-		  {% include "Module/comment.html" %}
+		  {% include "../Module/comment.html" %}
 	</ul>
 </div>
 
@@ -285,14 +285,14 @@ function trip_tag_add_form_toggle(display)
 
 
 
- {% include "Trips/trip_sites.html" %}
+ {% include "trip_sites.html" %}
 
-{% include "Module/CreateTripSlide1.html" %}
+{% include "../Module/CreateTripSlide1.html" %}
 <!-- AddThis script-->
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>
 <!-- AddThis Button END -->
 
-{% include "Module/footer.html" %} 
+{% include "../Module/footer.html" %} 
 
 </body> 
 </html>
