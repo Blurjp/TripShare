@@ -1152,7 +1152,8 @@ border-top-right-radius: 5px;}
 .site_details .site_action .action {-moz-border-radius:12px;-webkit-border-radius:12px;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}
 
 #GuideTab {float:right;position:relative;}
-.GuideTabList li {font-size:19px; float: left; width: 200px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
+.GuideTabList {width:470px;}
+.GuideTabList li {font-size:19px; float: left; width: 230px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
 .GuideTabList li a {display: block; padding: 10px 15px}
 .GuideTabList li a span {color: #777777}
 .GuideTabList li a:hover {text-decoration: none}

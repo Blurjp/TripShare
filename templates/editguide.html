@@ -1292,8 +1292,6 @@ $('#mask6').click(function(e) {
 		$.postJSON('/postcomment', message, function(response){PostCommentResponse(response)}, "text");	
 });
 
-
-
 function PostCommentResponse(response){
 	alert('post');
 	response = JSON.parse(data);
@@ -1330,8 +1328,6 @@ function PostFeedResponse(response){
  {% include "Module/ExportGuide.html" %}
 </div> 
 </div> 
- 
- 
 
 <div class="clearfix" id="container"> 
 <div class="clearfix" id="content"> 
@@ -1451,11 +1447,22 @@ function guide_tag_add_form_toggle(display)
         $('#guide_tag_add_form').hide(); 
         $('#guide_tag_add_show').show();
         
-		
+		if($('#guide_tag_add_input').val() != '')
+		{
 		var content ={'tag':$('#guide_tag_add_input').val(),'guide_id':$('#guideId').val(),'_xsrf':getCookie('_xsrf')};
         $.postJSON('/add_guide_tag', content, function(response){
 			    ShowGuideTag($('#guide_tag_add_input').val());
 		});	
+		}
+		else
+		{
+		var plan_category_removes = $('#guide_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+		}
 		
     }
 }
@@ -1467,7 +1474,15 @@ function ShowGuideTag(tag)
 	var node = $('<li class="tag_button"><a class="tag_button_add tag_button_a_edit_active" rel="tag" href="/tag">'+tag+'</a><div class="tag_button_remove" style="display: block; "></div></li>');
 	node.insertBefore($('#guide_tag_add_show'));
 	$('#guide_tag_add_input').val('');
+	 
     }
+	var plan_category_removes = $('#guide_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+	
 }
 </script>
 <div class="conv-head">

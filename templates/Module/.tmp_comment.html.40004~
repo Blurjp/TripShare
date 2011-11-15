@@ -16,10 +16,7 @@
 						<ul class="comment_list" style="display: none">
 							{% if 'comments' in feed %}
 							{% for comment in feed['comments'] %}
-							<li class="comment item" data-commentid="{{comment['comment_id']}}">
-								<a href="#">
-									<img alt="{{comment['from']['username']}}" src="{{comment['from']['picture']}}" title="{{comment['from']['username']}}" class="picture medium">
-								</a>
+							<li class="comment item" data-commentid="{{comment['comment_id']}}"><a href="#"><img alt="{{comment['from']['username']}}" src="{{comment['from']['picture']}}" title="{{comment['from']['username']}}" class="picture medium"></a>
 									<div class="body">
 										<p class="message"><a class="name" href="">{{comment['from']['username']}}</a> {{comment['from']['body']}}</p>
 										<p class="timestamp">{{comment['date']}}<a class="remove_comment" href="#">Delete</a></p>

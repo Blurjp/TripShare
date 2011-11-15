@@ -473,8 +473,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 {% include "Module/CreateTripSlide1.html" %}
 {% include "Module/find_friends.html" %}
 <input id="social_section_value" value = "" type = "hidden">
-<input id="walkthrough_section_value" value = "" type = "hidden">
-<input id="initialize" value = "" type = "hidden">   
+<input id="walkthrough_section_value" value = "" type = "hidden">   
 <script type="text/javascript">
 //<![CDATA[
 function checkform(form)
@@ -626,7 +625,6 @@ function set_social_section(section) {
 function set_walkthrough_section(section) {
 	    
 		var value = $("#walkthrough_section_value").val();
-		var initialize_value = $("#initialize").val();
 		if (value=="")
 		{
 			value = "walkthrough";
@@ -637,11 +635,8 @@ function set_walkthrough_section(section) {
 		$('.'+value).hide();
 		if(section=='map')
 		{
-		if(initialize_value == '')
-		{
+		
 		initialize();
-		$("#initialize").val('initialize');
-		}
 		$('#map').show();
 		$('#map-pagination').show();
 		}
