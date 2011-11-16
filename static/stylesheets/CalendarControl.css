@@ -1,7 +1,7 @@
 #CalendarControlIFrame {
   display: none;
   left: 0px;
-  position: absolute;
+  position: fixed;
   top: 0px;
   height: 250px;
   width: 250px;
@@ -9,7 +9,7 @@
 }
 
 #CalendarControl {
-  position:absolute;
+  position:fixed;
   background-color:#FFF;
   margin:0;
   padding:0;

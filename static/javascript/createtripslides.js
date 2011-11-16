@@ -42,6 +42,7 @@ $(document).ready(function() {
         e.preventDefault();  
         $('#mask4').hide();  
 		$('#create_trip_step_1').hide();
+		hideCalendarControl();
 		document.getElementById('create_trip_form').reset();
 		
     }); 
@@ -49,6 +50,7 @@ $(document).ready(function() {
 	  /* Click go back step1 button */
  $('a[name=Go_back_to_Step1]').click(function(e) {  
       e.preventDefault();  
+	  hideCalendarControl();
 	  $('#close-modal1').show()
       $('#create_trip_step_1').animate({right: winW/2-$('#create_trip_step_1').width()/2});
 	  $('#create_trip_step_2').animate({right: $('#create_trip_step_2').width()-winW});
@@ -60,7 +62,7 @@ $(document).ready(function() {
     $('a[name=createtrip2]').click(function(e) {  
         //Cancel the link behavior  
         e.preventDefault(); 
-		
+		hideCalendarControl();
 		if($("#start").attr("value")=='' || $("#start").attr("value") == null || $("#start").attr("value") == "EX: New York, NY")
 		{
 			alert("Please input start place.");
@@ -95,6 +97,7 @@ $(document).ready(function() {
     $("#close-modal2").click(function (e) {  
         //Cancel the link behavior  
         e.preventDefault();  
+		hideCalendarControl();
         $('#mask4').hide();  
 		$('#create_trip_step_2').hide();
 		$('#create_trip_step_1').hide();
@@ -104,7 +107,6 @@ $(document).ready(function() {
 /* add start*/
 	$('#start').focus(function() { 
 	     $("#start").val('');
-	  
 	 });
 	
 	var calendar_id = 1;
@@ -154,7 +156,7 @@ $(document).ready(function() {
    $('a[name=createtrip3]').click(function(e) {  
         //Cancel the link behavior  
         e.preventDefault(); 
-		
+		hideCalendarControl();
 		if($("#start").attr("value")=='' || $("#start").attr("value") == null || $("#start").attr("value") == "EX: New York, NY")
 		{
 			alert("Please input start place.");
@@ -186,6 +188,7 @@ $(document).ready(function() {
 		  /* Click go back step2 button */
  $('a[name=Go_back_to_Step2]').click(function(e) {  
       e.preventDefault();  
+	  hideCalendarControl();
 	  $('#close-modal2').show()
       $('#create_trip_step_2').animate({right: winW/2-$('#create_trip_step_1').width()/2});
 	  $('#create_trip_step_3').animate({right: $('#create_trip_step_2').width()-winW});
@@ -194,7 +197,7 @@ $(document).ready(function() {
 	    /* Click finish button */
   $('input[name=create_trip_finish]').click(function(e) {  
       e.preventDefault();  
-      
+      hideCalendarControl();
 	  $('#create_trip_step_3').animate({right: winW});
 	  $('#mask4').hide();  
 	  $('#close-modal3').hide();
@@ -477,7 +480,8 @@ $(function(){
 	
 var d = new Date();
 var curr_date = d.getDate();
-var curr_month = d.getMonth();
+var curr_month = d.getMonth()+1;
+
 var curr_year = d.getFullYear();
 var current_date = curr_year + "-" + ('0' + (curr_month)).slice(-2) + "-" + curr_date;
 
@@ -487,9 +491,6 @@ if(document.getElementById("place-0-date") != null)
 }
 	
 multihop_setup();
-
-
-
 
 /*    subscribe trip    */	  
 		$('.l_subscribe').live('click', function(){
@@ -504,8 +505,6 @@ multihop_setup();
 				}
 				else
 				{
-					 
-					
 					$.getJSON('/subscribe_trip/'+tripid, function(response) {
                       if(response.indexOf("success") != -1)
 					  {
@@ -685,7 +684,7 @@ jQuery.postJSON = function(url, args, callback) {
       magic_transport_type = false;
 
       // what date do we put in the box? Copy the most recent date
-      var new_date = "2011-08-05";
+      var new_date = "";
       var cal = $(".multihop-row .multihop-calendar:last")
       if (cal)
         new_date = cal.val()
@@ -789,7 +788,7 @@ jQuery.postJSON = function(url, args, callback) {
       });
       
       if ($.browser.msie && $.browser.version == 6) {
-        // IE6 is a pain. No cheese^Wmulti-hop for YOU.
+        // IE6 is a pain.
       } else {
         // add the link text with JS, so that if you don't have JS, you don't see it.
         $("#add-row-div").removeClass('hidden');
