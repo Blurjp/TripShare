@@ -355,5 +355,7 @@ function changeCalendarControlMonth(change) {
   calendarControl.changeMonth(change);
 }
 
+
+
 document.write("<iframe id='CalendarControlIFrame' src='javascript:false;' frameBorder='0' scrolling='no'></iframe>");
 document.write("<div id='CalendarControl'></div>");

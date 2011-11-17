@@ -1,12 +1,14 @@
-<div class="trip_route" style="width:40% ; float:left; padding-left:20px">
+
+<div class="trip_route" style="width:45% ; float:left; padding-left:20px">
 {% if singletrip %}
 
-<ul class="route">
+<ul class="route left" style="width:100%">
 {% for site in singletrip['dest_place'] %} 
-<li class="show_site">
-<div class="site-details">
+<li class="show_site" style="height:100px">
+<div class="site-details left" style="width:80% ;padding:5px">
 
-  <div class="site-bar">
+ 
+  <div class="site-bar" >
   <img class="picture small"  src="{{ static_url("icon/site_icon2.png") }}">
   <h2><a href="/sights/{{site['dest']}}">
     <span class="trip_sights">{{site['dest']}} </span>
@@ -14,9 +16,7 @@
   
     <input onfocus="showCalendarControl(this);" class="trip_date" value="{{site['date']}}">
 	</h2>
-	<div class="right">
-<a href="#"><img src="/static/images/move_stop_up_16px.png" width="16" height="16"></a><a href="#" ><img src="/static/images/move_stop_down_16px.png" width="16" height="16"></a><a href="#"><img src="/static/images/delete_stop_16px.png" width="16" height="16"></a></div>
-  </div>
+ </div>
   <p>{{site['description']}}</p>
 <div class="action-bar">
 <div class="actions">
@@ -44,9 +44,14 @@
 </div>
 </div>
 </div>
-
+<div class="trip_site_move" style="padding:5px">
+<a class="trip_site_move_up"  href="#"><img src="/static/images/move_stop_up_16px.png" width="24" height="24"></a><a class="trip_site_move_down" href="#" ><img src="/static/images/move_stop_down_16px.png" width="24" height="24"></a><a class="trip_site_remove" href="#"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a>
+</div>
 </li>
 {% end %}
 </ul>
+
+
+
 {% end %}
 </div>

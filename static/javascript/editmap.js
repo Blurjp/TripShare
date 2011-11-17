@@ -1029,6 +1029,24 @@ $('#mask6').click(function(e) {
 		$.postJSON('/postcomment', message, function(response){PostCommentResponse(response)}, "text");	
 });
 
+  $('.show_site').hover(function()
+  {
+  	  $(this).find('.trip_site_move').show();
+  },
+  function(){$(this).find('.trip_site_move').hide();}
+  );
+  
+  $('.trip_site_move_up').click(function(){
+  	
+  	$(this).closest('li').prev().before($(this).closest('li'));
+  });
+  $('.trip_site_move_down').click(function(){
+  	$(this).closest('li').next().after($(this).closest('li'));
+  });
+  $('.trip_site_remove').click(function(){
+  	
+  	 $(this).closest('li').remove();
+  });
 
 
 
@@ -1058,4 +1076,4 @@ function PostFeedResponse(response){
 	});
 });
 
-
+   
