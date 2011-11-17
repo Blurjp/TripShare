@@ -13,7 +13,11 @@ $(document).ready(function() {
 					 
     //select all the tag with name equal to createtrip
     $('a[name=createtrip]').click(function(e) {  
-        
+        if($("#initialize").val()=='')
+		{
+			initialize();
+		}
+		
 		//each time before create trip, clear all the cache information for 
 		$('#user_ids_for_trips').val('');
 		$('#destinations_for_trips').val('');

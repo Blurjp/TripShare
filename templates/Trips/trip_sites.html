@@ -9,8 +9,13 @@
   <div class="site-bar">
   <img class="picture small"  src="{{ static_url("icon/site_icon2.png") }}">
   <h2><a href="/sights/{{site['dest']}}">
-    <span class="trip_sights">{{site['dest']}} </span><br>
-  </a></h2>
+    <span class="trip_sights">{{site['dest']}} </span>
+  </a>
+  
+    <input onfocus="showCalendarControl(this);" class="trip_date" value="{{site['date']}}">
+	</h2>
+	<div class="right">
+<a href="#"><img src="/static/images/move_stop_up_16px.png" width="16" height="16"></a><a href="#" ><img src="/static/images/move_stop_down_16px.png" width="16" height="16"></a><a href="#"><img src="/static/images/delete_stop_16px.png" width="16" height="16"></a></div>
   </div>
   <p>{{site['description']}}</p>
 <div class="action-bar">
@@ -24,18 +29,14 @@
 {% else %}
 {% if site['dest'] in  current_user['like_site'] %}
 <input type ="button" class="like_site action" value="unlike" actiontype="like" targettype="site">
-
 {% else %}
 <input type ="button" class="like_site action" value="like" actiontype="like" targettype="site">
-
 {% end %}
 \
 {% if site['dest'] in  current_user['save_site'] %}
 <input type="button" class="save_site action" value="remove" actiontype="save" targettype="site">
-
 {% else %}
 <input type="button" class="save_site action" value="save" actiontype="save" targettype="site">
-
 {% end %}
 {% end %}
 

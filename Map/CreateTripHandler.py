@@ -79,7 +79,10 @@ class ComposeHandler(BaseHandler):
         for dest in destinations:
             if(dest!=""):
                 tags.append(dest['dest'])
-                dest_string += " to "+ dest['dest']
+                if ',' in dest['dest']:  
+                    dest_string += " to "+ dest['dest'][:(dest['dest'].find(','))]
+                else:
+                    dest_string += " to "+ dest['dest']
                 dest['geo'] = ''
                 dest['description'] = ''
                 dest['date'] = dest['date']

@@ -106,7 +106,7 @@
           var place = autocomplete.getPlace();
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
-			map.setZoom(10);
+			//map.setZoom(10);
           } else {
             map.setCenter(place.geometry.location);
             map.setZoom(10);  // Why 17? Because it looks good.
@@ -197,7 +197,7 @@
       if (status == google.maps.GeocoderStatus.OK) {
 	  	bounds.extend(results[0].geometry.location);
 		map.fitBounds(bounds);
-		map.setZoom(10);
+		//map.setZoom(10);
         createSightsMarker(results[0].geometry.location,day, i);
 		geo_results.push(results[0]);
 		

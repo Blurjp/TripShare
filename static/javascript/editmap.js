@@ -99,7 +99,7 @@
 	  	//map.setCenter(results[0].geometry.location);
 		bounds.extend(results[0].geometry.location);
 		map.fitBounds(bounds);
-		map.setZoom(7);
+		//map.setZoom(7);
 		createMarker('normal', results[0].geometry.location);
       } else {
         alert("Geocode was not successful for the following reason: " + status);

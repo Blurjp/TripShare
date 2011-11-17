@@ -1146,7 +1146,8 @@ border-top-right-radius: 5px;
 -moz-border-radius-topright: 5px;
 border-top-left-radius: 5px;
 border-top-right-radius: 5px;}
-.show_site h2 a {font-size: 0.8em;letter-spacing: 0;color: white;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
+.show_site h2 a {text-decoration: none ;font-size: 0.8em;letter-spacing: 0;color: white;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
+.show_site h2 .trip_date {float:right; width:80px;margin:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
 .site_details .action-bar {padding-right: 3px; background-color: #f0eee4; border-radius: 0 0 0 5px; -webkit-border-bottom-right-radius: 5px;-moz-border-radius-bottomright: 5px}
 
 .site_details .site_action .action {-moz-border-radius:12px;-webkit-border-radius:12px;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}
