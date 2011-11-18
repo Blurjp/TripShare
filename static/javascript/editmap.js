@@ -1048,7 +1048,26 @@ $('#mask6').click(function(e) {
   	 $(this).closest('li').remove();
   });
 
-
+$('.trip_site_add').click(function(){
+  	
+     $(this).closest('ul').add('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input class="site_input"><input onfocus="showCalendarControl(this);" class="trip_date" value=""></h2></div></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="save_site_to_trip action" value="save" targettype="site"></div></div></div></div></li>')
+  });
+  
+$('.trip_site_add_done').click(function(){
+	var content = {"site_name":$(this).closest('.site_input').val() ,"date":$(this).closest('.trip_date').val()};
+	content._xsrf = getCookie("_xsrf");
+	$.postJSON('',content, function (response){
+		AddSiteResponse(response)
+	});
+	});
+	
+function AddSiteResponse(response)
+{
+	var site_name = $(this).find().val();
+	var site_date = $(this).find().val();
+	$(this).closest('li').remove();
+	$(this).closest('ul').append(response);
+}
 
 function PostCommentResponse(response){
 	alert('post');
