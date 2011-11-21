@@ -1130,7 +1130,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
 /* sites */:
 
-.show_site {padding-top:5px}
+.show_site {}
 .show_site .site_details {-webkit-border-top-left-radius: 5px;
 -webkit-border-top-right-radius: 5px;
 -moz-border-radius-topleft: 5px;

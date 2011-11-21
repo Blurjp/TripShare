@@ -1048,6 +1048,8 @@ $('#mask6').click(function(e) {
   function(){$(this).find('.trip_site_move').hide();}
   );
   
+
+  
   $('.trip_site_move_up').click(function(){
   	
   	$(this).closest('li').prev().before($(this).closest('li'));
@@ -1061,10 +1063,16 @@ $('#mask6').click(function(e) {
   	
   	 $(this).closest('li').remove();
   });
+  
+    $('.add_trip_site_remove').live('click',function(){
+  	
+  	 $(this).closest('li').remove();
+	 $('.trip_site_add').show();
+  });
 
 $('.trip_site_add').click(function(){
   	
-     $('.route').append('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input type="text" autocomplete="off" class="ac_input" id="site_input" name="site_input" placeholder="EX: New York, NY" class="site_input"><input onfocus="showCalendarControl(this);" class="site_input_date" value=""></h2></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="trip_site_add_done action" value="update" targettype="site"><select class="site_ride"><option value="plane">by plane</option><option value="train">by train</option><option value="car">by car</option><option value="bus">by bus</option><option value="ferry">by ferry</option><option value="motorcycle">by motorcycle</option><option value="cycle">by bicycle</option><option value="walk">on foot</option><option value="other">other</option></select></div></div></div></div></div></div></li>')
+     $('.route').append('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input type="text" autocomplete="off" class="ac_input" id="site_input" name="site_input" placeholder="EX: New York, NY" class="site_input"><input onfocus="showCalendarControl(this);" class="site_input_date" value=""></h2></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="trip_site_add_done action" value="update" targettype="site"><select class="site_ride"><option value="plane">by plane</option><option value="train">by train</option><option value="car">by car</option><option value="bus">by bus</option><option value="ferry">by ferry</option><option value="motorcycle">by motorcycle</option><option value="cycle">by bicycle</option><option value="walk">on foot</option><option value="other">other</option></select></div></div></div></div></div></div><div class="add_trip_site_move left" style="padding:5px"><a class="add_trip_site_remove" href="#"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a></div></li>')
      setAutoComplete('site_input');
 	 $('.trip_site_add').hide();
   });
@@ -1095,29 +1103,34 @@ $('.trip_site_add_done').live('click',function(){
 	
  //$(".site_ride").change(alert('test'));
 $('.postUpdate').click(function(){
-	$('.site_note_action').show();
+	
+	//alert($(this).parent().attr('class'));
+	$(this).parent().children('.site_note_action').show();
+	//alert($(this).closest('.site_details left').attr('class'));
 });
 
 $('.postUpdateDone').click(function(){
-	$('.site_note_action').hide();
-	var message = {"": };
+	
+	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"trip_id":$('#tripId').val(),"site_name":$('.site_name').val()};
 	message._xsrf = getCookie("_xsrf");
-	$.postJSON('/postsitenote', message, function(response){AddSiteNoteResponse(response);});
+	var object = $(this);
+	$.postJSON('/postsitenote', message, function(response){if (response != '') {
+		var _object = JSON.parse(response);
+		var node = '<li class="note item left"><div class="left"><img alt="' + _object['from']['username'] + '" src="' + _object['from']['picture'] + '" title="' + _object['from']['username'] + '" class="picture medium"></div><div class="right"><p class="message">' + _object['note'] + '</p><p class="details"><span class="timestamp">' + _object['date'] + '</span>  · <a class="comment" href="#">Comment</a></p></div></li>';
+		object.parent().parent().children('.site_notes').first().before(node);
+		//alert(object.parent().parent().children('.site_notes').attr('class'));
+	}});
+	
+	$(this).closest('.site_note_action').hide();
 });
 
-function AddSiteNoteResponse(response)
-{
-     $('.route li').last().remove();
-	
-	 $('.trip_route ul').append(response);
-	 $('.trip_site_add').show();
-}
+
 
 function AddSiteResponse(response)
 {
      $('.route li').last().remove();
 	
-	 $('.trip_route ul').append(response);
+	 $('ul.route').append(response);
 	 $('.trip_site_add').show();
 }
 

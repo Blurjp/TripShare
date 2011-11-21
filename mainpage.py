@@ -66,6 +66,7 @@ from Search.SearchHandler import SearchFriendHandler
 from Search.SearchHandler import SearchUserHandler
 from Search.SearchHandler import RealTimeSearchUserHandler
 from Sites.SiteHandler import AddSiteToTrip
+from Sites.SiteHandler import PostNoteToSite
 #import tornado.database
 import tornado.httpserver
 import tornado.ioloop
@@ -180,6 +181,7 @@ class Application(tornado.web.Application):
                                       (r"/auth/fblogout", AuthLogoutFBHandler),
                                       (r"/updateusersetting", UserSettingHandler),
                                       
+                                      
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
                                       (r"/trips/([^/]+)/([^/]+)", TripPageHandler),
@@ -191,6 +193,7 @@ class Application(tornado.web.Application):
                                       (r"/hottrips", ShowHotTrips),
                                       (r"/endtrips", ShowEndTrips),
                                       (r"/addsitetotrip", AddSiteToTrip),
+                                      (r"/postsitenote", PostNoteToSite),
                                       (r"/guides", BrowseGuidesHandler),
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),
