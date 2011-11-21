@@ -82,7 +82,7 @@
 				}
 			});
 		}
-	   
+	//setAutoComplete('site_input');
 	var  dest_places = document.getElementById('dest_place').value;
 	temp = dest_places.replace(/{u['"]/g,"{\"");
 	temp = temp.replace(/ u['"]/g," \"");
@@ -154,7 +154,19 @@
    
   }
   
-  
+	
+function setAutoComplete(searchId)
+	{
+		   /*   Autocomplete   */
+        var input = document.getElementById(searchId);
+		
+        var autocomplete = new google.maps.places.Autocomplete(input);
+		
+		 google.maps.event.addListener(autocomplete, 'place_changed', function() {
+         var place = autocomplete.getPlace();
+        });
+	}
+
   /**
  * The HomeControl adds a control to the map that simply
  * returns the user to Chicago. This constructor takes
@@ -1039,9 +1051,11 @@ $('#mask6').click(function(e) {
   $('.trip_site_move_up').click(function(){
   	
   	$(this).closest('li').prev().before($(this).closest('li'));
+	$(this).closest('li .trip_site_move').hide();
   });
   $('.trip_site_move_down').click(function(){
   	$(this).closest('li').next().after($(this).closest('li'));
+	$(this).closest('li .trip_site_move').hide();
   });
   $('.trip_site_remove').click(function(){
   	
@@ -1050,23 +1064,61 @@ $('#mask6').click(function(e) {
 
 $('.trip_site_add').click(function(){
   	
-     $(this).closest('ul').add('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input class="site_input"><input onfocus="showCalendarControl(this);" class="trip_date" value=""></h2></div></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="save_site_to_trip action" value="save" targettype="site"></div></div></div></div></li>')
+     $('.route').append('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input type="text" autocomplete="off" class="ac_input" id="site_input" name="site_input" placeholder="EX: New York, NY" class="site_input"><input onfocus="showCalendarControl(this);" class="site_input_date" value=""></h2></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="trip_site_add_done action" value="update" targettype="site"><select class="site_ride"><option value="plane">by plane</option><option value="train">by train</option><option value="car">by car</option><option value="bus">by bus</option><option value="ferry">by ferry</option><option value="motorcycle">by motorcycle</option><option value="cycle">by bicycle</option><option value="walk">on foot</option><option value="other">other</option></select></div></div></div></div></div></div></li>')
+     setAutoComplete('site_input');
+	 $('.trip_site_add').hide();
   });
   
-$('.trip_site_add_done').click(function(){
-	var content = {"site_name":$(this).closest('.site_input').val() ,"date":$(this).closest('.trip_date').val()};
+
+  
+$('.trip_site_add_done').live('click',function(){
+	if($('#site_input').val()=='')
+	{
+		alert('Please input site name.');
+		return;
+	}
+	if($('.site_input_date').val()=='')
+	{
+		alert('Please input date.');
+		return;
+	}
+	
+	var content = {"site_name":$('#site_input').val() ,"date":$('.site_input_date').val(),"site_ride":$('.site_action select').val(),"trip_id":$('#tripId').val()};
+	
 	content._xsrf = getCookie("_xsrf");
-	$.postJSON('',content, function (response){
+	
+	$.postJSON('/addsitetotrip',content, function (response){
+		//alert('test');
 		AddSiteResponse(response)
 	});
 	});
 	
+ //$(".site_ride").change(alert('test'));
+$('.postUpdate').click(function(){
+	$('.site_note_action').show();
+});
+
+$('.postUpdateDone').click(function(){
+	$('.site_note_action').hide();
+	var message = {"": };
+	message._xsrf = getCookie("_xsrf");
+	$.postJSON('/postsitenote', message, function(response){AddSiteNoteResponse(response);});
+});
+
+function AddSiteNoteResponse(response)
+{
+     $('.route li').last().remove();
+	
+	 $('.trip_route ul').append(response);
+	 $('.trip_site_add').show();
+}
+
 function AddSiteResponse(response)
 {
-	var site_name = $(this).find().val();
-	var site_date = $(this).find().val();
-	$(this).closest('li').remove();
-	$(this).closest('ul').append(response);
+     $('.route li').last().remove();
+	
+	 $('.trip_route ul').append(response);
+	 $('.trip_site_add').show();
 }
 
 function PostCommentResponse(response){
@@ -1077,6 +1129,8 @@ function PostCommentResponse(response){
 	$('.comment_list li').first().before(node);
 	$('.commentBody').val('');
 }
+
+
 
 function PostFeedResponse(response){
 	if (response != '') {

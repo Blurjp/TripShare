@@ -168,3 +168,4 @@ class ShowEndTrips(BaseHandler):
                         latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
                         #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
                         self.write(latest_trip_id['html'])
+                        

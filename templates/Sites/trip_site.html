@@ -5,17 +5,33 @@
 <h2><a href="/sights/{{site['dest']}}">
 <span class="trip_sights">{{site['dest']}}</span>
 </a>
-<input onfocus="showCalendarControl(this);" class="trip_date" value="{{site['date']}}">
+<input onfocus="showCalendarControl(this);" class="site_date" value="{{site['date']}}">
 </h2>
 </div>
 <p>{{site['description']}}</p>
+<a href="#" class="postUpdate">Post a note</a>
 <div class="action-bar">
 <div class="actions">
 <div class="site_action">
 <input type="button" class="like_site action" value="like" actiontype="like" targettype="site">
 \
 <input type="button" class="save_site action" value="save" actiontype="save" targettype="site">
+
+<select class="site_ride">
+<option value="plane">by plane</option>
+<option value="train">by train</option>
+<option value="car">by car</option>
+<option value="bus">by bus</option>
+<option value="ferry">by ferry</option>
+<option value="motorcycle">by motorcycle</option>
+<option value="cycle">by bicycle</option>
+<option value="walk">on foot</option>
+<option value="other">other</option></select>
 </div>
+
+
+
+
 </div>
 </div>
 </div>

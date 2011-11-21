@@ -439,7 +439,7 @@ opacity:0.5;
  .v3_button {border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 60%; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left}
  .v3_button:hover {color: white; background-color: #64bcc9; text-decoration: none}
  .v3_button:active, #sidebar-auth-buttons .sidebar-auth-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
- .regular-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:100%; font-size: 1.00em; float: left; margin: 10px}
+ .regular-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left; margin: 10px}
  .regular-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
 
 #close-modal1
@@ -1147,7 +1147,9 @@ border-top-right-radius: 5px;
 border-top-left-radius: 5px;
 border-top-right-radius: 5px;}
 .show_site h2 a {text-decoration: none ;font-size: 0.8em;letter-spacing: 0;color: white;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
-.show_site h2 .trip_date {float:right; width:80px;margin:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+.show_site h2 .site_date {float:right; width:80px;margin:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+.show_site h2 .site_input_date {float:right; width:80px;margin:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+
 .site_details .action-bar {padding-right: 3px; background-color: #f0eee4; border-radius: 0 0 0 5px; -webkit-border-bottom-right-radius: 5px;-moz-border-radius-bottomright: 5px}
 
 .site_details .site_action .action {-moz-border-radius:12px;-webkit-border-radius:12px;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}
@@ -1201,3 +1203,20 @@ border-top-right-radius: 5px;}
 #dashboard .repos a.show-more{display:block;padding:10px;font-size:14px;font-weight:bold;color:#999;}
 
 .trip_site_move {display:none}
+.trip_site_add   { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 25px; width: 25px;  }
+.trip_site_add :hover  { background-color: #59d859  }
+.site_action .action {
+-moz-border-radius: 12px;
+-webkit-border-radius: 12px;
+border:1px solid #2f72c4;
+background-color:#2f72c4 !important;
+background:url("/static/icon/button-shine.png") repeat-x top ;
+color:white;
+padding: 2px;
+padding-left: 10px;
+padding-right: 10px;
+cursor: pointer;
+}
+
+.site_action .site_ride {float:right}
+.site_note_action {display:none}
