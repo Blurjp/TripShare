@@ -38,8 +38,9 @@ class PostNoteToSite(BaseHandler):
             
             site_name = self.get_argument('site_name')
             trip_id = self.get_argument('trip_id')
-            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            print(site_name)
+            #trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             message = {"note": self.get_argument('note'), "date": datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
             #response = {'comment_id': bson.ObjectId(),'body': content,'date': datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
-            self.syncdb.trips.update({ "trip_id":trip_id,'dest_place.dest':site_name},  {'$push': {'dest_place.note':message}})
+            self.syncdb.trips.update({"trip_id":bson.ObjectId(trip_id),"dest_place.dest":site_name},  {'$push': {'dest_place.note':message}})
             self.write(unicode(simplejson.dumps(message, cls=MongoEncoder.MongoEncoder.MongoEncoder)))

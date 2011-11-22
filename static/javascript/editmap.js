@@ -1110,8 +1110,8 @@ $('.postUpdate').click(function(){
 });
 
 $('.postUpdateDone').click(function(){
-	
-	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"trip_id":$('#tripId').val(),"site_name":$('.site_name').val()};
+	alert($(this).parent().parent().find('.trip_sights').attr('class'));
+	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().children('.trip_sights').val()};
 	message._xsrf = getCookie("_xsrf");
 	var object = $(this);
 	$.postJSON('/postsitenote', message, function(response){if (response != '') {
