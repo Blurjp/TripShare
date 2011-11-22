@@ -9,6 +9,14 @@ import simplejson
 import MongoEncoder.MongoEncoder
 from Map.BrowseTripHandler import BaseHandler
 
+class RemoveSiteFromTrip(BaseHandler):
+        def post(self): 
+            trip_id = self.get_argument('trip_id')
+            site_name  = self.get_argument('site_name')
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{'site_name':site_name}})
+            self.write('success')
+            
+            
 class AddSiteToTrip(BaseHandler):
         def post(self): 
             _site = {}
@@ -39,8 +47,13 @@ class PostNoteToSite(BaseHandler):
             site_name = self.get_argument('site_name')
             trip_id = self.get_argument('trip_id')
             print(site_name)
-            #trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             message = {"note": self.get_argument('note'), "date": datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
+            for place in trip['dest_place']:
+                if place['dest'] == site_name:
+                    place['note'].append(message)
+                    break
             #response = {'comment_id': bson.ObjectId(),'body': content,'date': datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
-            self.syncdb.trips.update({"trip_id":bson.ObjectId(trip_id),"dest_place.dest":site_name},  {'$push': {'dest_place.note':message}})
+            #self.syncdb.trips.update({"trip_id":bson.ObjectId(trip_id),"dest_place.dest":site_name},  {'$push': {'dest_place.note':message}})
+            self.syncdb.trips.save(trip)
             self.write(unicode(simplejson.dumps(message, cls=MongoEncoder.MongoEncoder.MongoEncoder)))

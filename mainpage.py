@@ -67,6 +67,7 @@ from Search.SearchHandler import SearchUserHandler
 from Search.SearchHandler import RealTimeSearchUserHandler
 from Sites.SiteHandler import AddSiteToTrip
 from Sites.SiteHandler import PostNoteToSite
+from Sites.SiteHandler import RemoveSiteFromTrip
 #import tornado.database
 import tornado.httpserver
 import tornado.ioloop
@@ -193,6 +194,7 @@ class Application(tornado.web.Application):
                                       (r"/hottrips", ShowHotTrips),
                                       (r"/endtrips", ShowEndTrips),
                                       (r"/addsitetotrip", AddSiteToTrip),
+                                      (r"/removesitefromtrip", RemoveSiteFromTrip),
                                       (r"/postsitenote", PostNoteToSite),
                                       (r"/guides", BrowseGuidesHandler),
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),

@@ -1111,7 +1111,7 @@ $('.postUpdate').click(function(){
 
 $('.postUpdateDone').click(function(){
 	alert($(this).parent().parent().find('.trip_sights').attr('class'));
-	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().children('.trip_sights').val()};
+	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
 	message._xsrf = getCookie("_xsrf");
 	var object = $(this);
 	$.postJSON('/postsitenote', message, function(response){if (response != '') {
@@ -1124,7 +1124,17 @@ $('.postUpdateDone').click(function(){
 	$(this).closest('.site_note_action').hide();
 });
 
-
+$('.trip_site_remove').live('click',function(){
+	var message = {"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
+	message._xsrf = getCookie("_xsrf");
+	var object = $(this);
+	$.postJSON('/removetripsite', message, function(response)
+	{
+		if (response == 'success') {
+			object.parent().parent('li').remove();
+		}
+	});
+});
 
 function AddSiteResponse(response)
 {
