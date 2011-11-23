@@ -1,7 +1,5 @@
 <div id="manage_member_dropdown">
-	
                 <fieldset>
-                	<a href="#" id="close_member_dropdown" class="close">close</a>     
                   <div id="searchmemberentry">
                   	
                   		<table>
@@ -9,7 +7,9 @@
                   		<td>
                        <input type="text" autocomplete="off" class="member_input">
 					   </td>
-					  
+					   <td>
+					   <button onclick="SearchMember('{{singletrip['trip_id']}}'); return false;">Search</button>
+                          </td>  
 						  </tr>
 						  </table> 
                     <div class="clear"></div>

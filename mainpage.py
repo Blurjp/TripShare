@@ -47,6 +47,7 @@ from Users.UserInfo import UnFollowUserHandler
 from Users.UserInfo import TravelersHandler
 from Users.UserInfo import AddUserToTripHandler
 from Users.UserInfo import CheckUserinTripHandler
+from Users.UserInfo import GetTripMemberHandler
 from Guides.GuidesHandler import SaveGuidesHandler
 from Guides.GuidesHandler import LikeGuidesHandler
 from Guides.GuidesHandler import BrowseGuidesHandler
@@ -111,7 +112,7 @@ class MainPage(BaseHandler):
                
                 if (trip_user):
                     image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
-                    dest_places.append(trip['dest_place'])
+                    dest_places.append(unicode(simplejson.dumps(trip['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         
         """ Get latest trips to show in the list"""
         
@@ -135,8 +136,8 @@ class MainPage(BaseHandler):
                         #latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
                         _trips.append(latest_trip_id)
                         
-        _dest_places = unicode(simplejson.dumps(dest_places, cls=MongoEncoder.MongoEncoder.MongoEncoder))         
-        self.render("newbeforesignin.html", guides=top_guides, dest_places = _dest_places, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
+        
+        self.render("newbeforesignin.html", guides=top_guides, dest_places = dest_places, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
 
 class Terms(BaseHandler):
     def get(self):
@@ -232,6 +233,7 @@ class Application(tornado.web.Application):
                                       (r"/removefriend", FriendRemoveHandler),
                                       (r"/searchfriend/([^/]+)", SearchFriendHandler),
                                       (r"/getfriends", GetFriendHandler),
+                                      (r"/gettripmembers", GetTripMemberHandler),
                                       #(r"/importfriends", ImportFriendHandler),
                                     
                                       (r"/travelers/([^/]*)", TravelersHandler),

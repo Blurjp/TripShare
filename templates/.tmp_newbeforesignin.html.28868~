@@ -216,13 +216,27 @@
       var image,shadow;
 	  var image_split;
 	  var image_url, image_title, image_startPlace, image_id;
-dest_places = document.getElementsByName("dest_places");
 
   for (var i = 0; i < user_images.length; i++) {
       image_split = user_images.item(i).value.split(';');
-	  image_url = image_split[1];
-	  image_id = image_split[2];
+//	  temp = image_split[0].split(' to ');
+//	  image_title = temp[temp.length-1];
+	
+//	  image_startPlace  = google.maps.geometry.encoding.decodePath(image_split[2])[0].toString();
+	
+	  
+//	  var temp = image_startPlace.substring(1, image_startPlace.length-1);
+//	
+//      var latlngStr = temp.split(",",2);
+//      var lat = parseFloat(latlngStr[0]);
+//      var lng = parseFloat(latlngStr[1]);
+//      var latlng = new google.maps.LatLng(lat, lng);
 
+	  image_url = image_split[1];
+	
+	  image_id = image_split[2];
+	
+	  
 	  image = new google.maps.MarkerImage(image_url,
       new google.maps.Size(50, 50),    
       new google.maps.Point(0,0),    
@@ -234,16 +248,33 @@ dest_places = document.getElementsByName("dest_places");
       new google.maps.Point(0,0),
       new google.maps.Point(0, 1));
 	
-	DestToMarker(dest_places.item(i).value,image, shadow);
-
+	//dest_places = image_split[3];
+	
+	DestToMarker(image, shadow);
+	
+    //var myLatLng = new google.maps.LatLng(image_startPlace);
+ 
   }
 }
 
-function DestToMarker(dest_place,image, shadow)
+function DestToMarker(image, shadow)
 {
-
-      dest_place= jQuery.parseJSON(dest_place);
-	  geocoder.geocode( { 'address': dest_place[0]['dest']}, function(results, status) {
+	
+	//temp = dest_places.replace(/{u['"]/g,"{\"");
+	//temp = temp.replace(/ u['"]/g," \"");
+	//temp = temp.replace(/\'/g,'\"');
+	//temp = temp.replace(/\"s /g,'\'s ');
+	dest_places = document.getElementsByName("dest_places");
+	dest_places= jQuery.parseJSON(dest_places);
+	
+	var day = '';
+	
+	for (var i=0; i < dest_places.length; i++) 
+	{
+	
+	  day = dest_places[i]['day'];
+	  
+	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	bounds.extend(results[0].geometry.location);
 		map.fitBounds(bounds);
@@ -261,7 +292,7 @@ function DestToMarker(dest_place,image, shadow)
       }
       });
  
-	
+	}
 }
 </script>
 

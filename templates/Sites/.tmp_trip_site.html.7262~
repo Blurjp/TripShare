@@ -9,9 +9,6 @@
 </h2>
 </div>
 <p>{{site['description']}}</p>
-  <div class="site_hotel">
-  	<a class="add_hotel">Add hotel</a>
-  </div>
  <a class="show_notes">Show notes</a>
  <a class="hide_notes">Hide notes</a>
  <ul class="site_notes">

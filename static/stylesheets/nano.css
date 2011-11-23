@@ -358,12 +358,14 @@ width: 28px;
 }
 #searchmemberentry text {width:30px}
 
-#manage_member_dropdown {width: 20%;display:none;position:absolute; z-index:9999;}
+#manage_member_dropdown {position: absolute;z-index:9999;display:none;padding:20px;width:575px;height:350px}
 #manage_member_dropdown fieldset {overflow-y;height: 200px;background: #f0eee4; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; padding: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;position:relative;}
 span.user_name, .user_image {float:left;}
 span.user_image {padding-right:5px}
 span.user_name {padding-top:2px}
 a.add_user_link {float:left}
+#close_member_dropdown {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+
 
 #mask6 { 
 position:fixed;
@@ -1222,6 +1224,6 @@ cursor: pointer;
 .site_action .site_ride {float:right}
 .site_note_action {display:none}
 .show_site a  {font-size: 1.0em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
-.hide_notes {display:none;text-decoration:none;}
-.show_notes {text-decoration:none;}
+.hide_notes {display:none;text-decoration:none;cursor: pointer;}
+.show_notes {text-decoration:none;cursor: pointer;}
 .site_notes {display:none}

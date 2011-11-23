@@ -1,0 +1,15 @@
+
+<form name="import_guide" id="import_guide_form" onsubmit="return check_import_guide_form(this);">
+	 {% raw xsrf_form_html() %}
+
+<div id="import_guide_step_1" class="window1">
+	
+	<a href="#" id="closeimportguide-modal" class="close">close</a>
+			<ul id="guideinimportlist">
+			</ul>	
+
+</div>
+
+</form>  
+	
+<div id="mask4"></div>

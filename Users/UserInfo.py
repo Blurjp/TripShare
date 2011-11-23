@@ -138,6 +138,13 @@ class GetFriendHandler(BaseHandler):
         if user:
             self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
+class GetTripMemberHandler(BaseHandler):
+    def post(self):
+        trip_id = self.get_argument("trip_id")
+        users = self.trips.find_one({"trip_id":bson.ObjectId(trip_id)})['members']
+        if users:
+            self.write(unicode(simplejson.dumps(users, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+        
 class FriendRemoveHandler(BaseHandler):  
     @tornado.web.authenticated
     def post(self):
