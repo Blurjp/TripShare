@@ -99,7 +99,7 @@
 </li>
 
 <li>	
-<input type="button" class="regular-button invitefriend" href="#invite_friend_pop" value="Invite Friends">
+<input type="button" class="regular-button discusstrip" href="#discuss_trip" value="Discuss">
 </li>
 <li>	
 <input type="button" class="regular-button importguide" href="#import_guide_step_1" value="Import Guide">
@@ -162,27 +162,41 @@ function trip_tag_add_form_toggle(display)
         $('#trip_tag_add_show').show();
         
         // Show remove buttons for each category
-        var plan_category_as = $('#trip_tag').find('.category_button_a');
-        
-        if(plan_category_as)
-        {
-            plan_category_as.removeClass('category_button_a_edit_active');
-        }
-        
-        var plan_category_removes = $('#trip_tag').find('.category_button_remove');
+		if($('#trip_tag_add_input').val() != '')
+		{
+		var content ={'tag':$('#trip_tag_add_input').val(),'trip_id':$('#tripId').val(),'_xsrf':getCookie('_xsrf')};
+        $.postJSON('/add_trip_tag', content, function(response){
+			    ShowtripTag($('#trip_tag_add_input').val());
+		});
+		}
+		else
+		{
+		var plan_category_removes = $('#trip_tag').find('.tag_button_remove');
         
         if(plan_category_removes)
         {
             plan_category_removes.hide();
         }
-
-        var lis = $('#trip_tag').find('li');
-
-        if(lis.length == 2)
-        {
-            $('#trip_tag').hide();
-        }
+		}
     }
+}
+
+function ShowTripTag(tag)
+{
+	if(tag!='')
+	{
+	var node = $('<li class="tag_button"><a class="tag_button_add tag_button_a_edit_active" rel="tag" href="/tag">'+tag+'</a><div class="tag_button_remove" style="display: block; "></div></li>');
+	node.insertBefore($('#trip_tag_add_show'));
+	$('#trip_tag_add_input').val('');
+	 
+    }
+	var plan_category_removes = $('#trip_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+	
 }
 </script>
 
@@ -215,7 +229,7 @@ function trip_tag_add_form_toggle(display)
 				<input name="username" id="username" type="hidden" value="{{current_user['username']}}" > 
 				<input name="tripId" id="tripId" type="hidden" value = "{{singletrip['trip_id']}}">
                 <input name="startPlace" id="startPlace" type="hidden" value = "{{singletrip['start_place']}}"> 
-                <input name="dest_place" id="dest_place" type="hidden" value = "{{singletrip['dest_place']}}">  
+                <input name="dest_place" id="dest_place" type="hidden" value = "{{dest_place}}">  
 				<input name="startPosition" id="startPosition" type="hidden" value = "{{singletrip['start_place_position']}}"> 
 				<input name="wayPoints" id="wayPoints" type="hidden" value = "{{singletrip['way_points']}}"> 
                 <input name="encodedPolyline" id="encodedPolyline" type="hidden" value = "{{singletrip['trip_path']}}">  
@@ -248,6 +262,7 @@ function trip_tag_add_form_toggle(display)
      </div>
 	 <div style="clear:both"></div>
 	 <ul class="feedsUI">
+	 	<li></li>
 		  {% include "../Module/comment.html" %}
 	</ul>
 </div>

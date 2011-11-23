@@ -84,16 +84,11 @@
 		}
 	//setAutoComplete('site_input');
 	var  dest_places = document.getElementById('dest_place').value;
-	temp = dest_places.replace(/{u['"]/g,"{\"");
-	temp = temp.replace(/ u['"]/g," \"");
-	temp = temp.replace(/\'/g,'\"');
-	temp = temp.replace(/\"s /g,'\'s ');
-	dest_places= jQuery.parseJSON(temp);
+	dest_places = jQuery.parseJSON(dest_places);
 	var bounds = new google.maps.LatLngBounds();
-	for (var i=0; i < dest_places.length; i++) 
+	for (var i=0; i < dest_places.length; i++)
 	{
 	  day = dest_places[i]['day'];
-	  
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	//map.setCenter(results[0].geometry.location);
@@ -1059,10 +1054,7 @@ $('#mask6').click(function(e) {
   	$(this).closest('li').next().after($(this).closest('li'));
 	$(this).closest('li .trip_site_move').hide();
   });
-  $('.trip_site_remove').click(function(){
-  	
-  	 $(this).closest('li').remove();
-  });
+
   
     $('.add_trip_site_remove').live('click',function(){
   	
@@ -1110,28 +1102,41 @@ $('.postUpdate').click(function(){
 });
 
 $('.postUpdateDone').click(function(){
-	alert($(this).parent().parent().find('.trip_sights').attr('class'));
+	//alert($(this).parent().parent().find('.trip_sights').attr('class'));
 	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
 	message._xsrf = getCookie("_xsrf");
 	var object = $(this);
 	$.postJSON('/postsitenote', message, function(response){if (response != '') {
 		var _object = JSON.parse(response);
-		var node = '<li class="note item left"><div class="left"><img alt="' + _object['from']['username'] + '" src="' + _object['from']['picture'] + '" title="' + _object['from']['username'] + '" class="picture medium"></div><div class="right"><p class="message">' + _object['note'] + '</p><p class="details"><span class="timestamp">' + _object['date'] + '</span>  · <a class="comment" href="#">Comment</a></p></div></li>';
-		object.parent().parent().children('.site_notes').first().before(node);
+		var node = '<li class="note item left"><div class="left"><img alt="' + _object['from']['username'] + '" src="' + _object['from']['picture'] + '" title="' + _object['from']['username'] + '" class="picture medium"></div><div style="margin:5px 10px"><p class="message">' + _object['note'] + '</p><p class="details"><span class="timestamp">' + _object['date'] + '</span>  · <a class="remove_site_note" href="#">Remove</a></p></div></li>';
+		object.parent().parent().children('.site_notes').append(node);
 		//alert(object.parent().parent().children('.site_notes').attr('class'));
 	}});
 	
 	$(this).closest('.site_note_action').hide();
 });
 
+$('.show_notes').live('click',function(){
+	$(this).siblings('.hide_notes').show();
+	$(this).hide();
+	$(this).siblings('.site_notes').show();
+});
+
+$('.hide_notes').live('click',function(){
+	$(this).hide();
+	$(this).siblings('.show_notes').show();
+	$(this).siblings('.site_notes').hide();
+});
+
 $('.trip_site_remove').live('click',function(){
 	var message = {"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
 	message._xsrf = getCookie("_xsrf");
 	var object = $(this);
-	$.postJSON('/removetripsite', message, function(response)
+	$.postJSON('/removesitefromtrip', message, function(response)
 	{
 		if (response == 'success') {
-			object.parent().parent('li').remove();
+			
+			object.closest('li').remove();
 		}
 	});
 });

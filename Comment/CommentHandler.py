@@ -8,7 +8,6 @@ import bson
 import tornado.web
 import datetime
 import simplejson
-import pymongo
 import MongoEncoder.MongoEncoder
 
 class PostCommentHandler(BaseHandler):
@@ -56,6 +55,7 @@ class PostFeedHandler(BaseHandler):
             #self.syncdb.trips.ensure_index('feeds.date', pymongo.DESCENDING)
         
         json_data = {'id': feed_id, 'body': content, 'date': current_date,'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'],'picture': self.current_user['picture']}}
+        print(unicode(simplejson.dumps(json_data, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         self.write(unicode(simplejson.dumps(json_data, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         
 class DeleteFeedHandler(BaseHandler):

@@ -1025,6 +1025,7 @@ h2 .user_name {margin-left:150px !important}
 
 .overview .post-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: right; margin-left:21px}
 .overview .post-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
+.overview .postfeed {margin-right:250px}
 .overview .post-comment-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: left; margin-left:21px}
 .overview .post-comment-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
 p.message{font-size:15px;line-height:1.35em;height:7px;}
@@ -1220,3 +1221,7 @@ cursor: pointer;
 
 .site_action .site_ride {float:right}
 .site_note_action {display:none}
+.show_site a  {font-size: 1.0em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
+.hide_notes {display:none;text-decoration:none;}
+.show_notes {text-decoration:none;}
+.site_notes {display:none}

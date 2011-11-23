@@ -8,6 +8,8 @@ Created on July 19, 2010
 import pymongo
 import asyncmongo
 import os
+import simplejson
+import MongoEncoder.MongoEncoder
 from Map.ProcessTripHandler import GetTrips
 from Map.ProcessTripHandler import ShowNewTrips
 from Map.ProcessTripHandler import ShowHotTrips
@@ -16,6 +18,7 @@ from Map.ProcessTripHandler import SaveTrips
 from Map.ProcessTripHandler import SubscribeTrip
 from Map.ProcessTripHandler import UnsubscribeTrip
 from Map.ProcessTripHandler import LikeTripHandler
+from Map.ProcessTripHandler import AddTripTagHandler
 from Users.UserInfo import UpdateUserProfileHandler
 
 from Map.BrowseTripHandler import BaseHandler
@@ -98,6 +101,7 @@ class MainPage(BaseHandler):
     def get(self):
        
         image_info=[]
+        dest_places = []
         """ Get RANDOM trips to show in the map"""
         trips = self.syncdb.trips.find().limit(10)
         if trips.count() > 0:
@@ -106,8 +110,8 @@ class MainPage(BaseHandler):
                 trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
                
                 if (trip_user):
-                    image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug']+';'+str(trip['dest_place']))
-        
+                    image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
+                    dest_places.append(trip['dest_place'])
         
         """ Get latest trips to show in the list"""
         
@@ -131,8 +135,8 @@ class MainPage(BaseHandler):
                         #latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
                         _trips.append(latest_trip_id)
                         
-                       
-        self.render("newbeforesignin.html", guides=top_guides, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
+        _dest_places = unicode(simplejson.dumps(dest_places, cls=MongoEncoder.MongoEncoder.MongoEncoder))         
+        self.render("newbeforesignin.html", guides=top_guides, dest_places = _dest_places, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
 
 class Terms(BaseHandler):
     def get(self):
@@ -197,6 +201,8 @@ class Application(tornado.web.Application):
                                       (r"/removesitefromtrip", RemoveSiteFromTrip),
                                       (r"/postsitenote", PostNoteToSite),
                                       (r"/guides", BrowseGuidesHandler),
+                                     
+                                      (r"/add_trip_tag", AddTripTagHandler),
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),
                                       (r"/add_guide_tag", AddGuidesTagHandler),

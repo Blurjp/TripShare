@@ -10,6 +10,13 @@ import datetime
 import tornado.web
 from BrowseTripHandler import BaseHandler
 
+class AddTripTagHandler(BaseHandler):  
+    @tornado.web.authenticated  
+    def post(self):
+        trip_id = self.get_argument('trip_id')
+        tag = self.get_argument('tag')
+        self.syncdb.guides.update({'trip_id': bson.ObjectId(trip_id)}, {'$addToSet':{'tags': tag}})
+
 class LikeTripHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self, id):

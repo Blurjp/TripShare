@@ -80,7 +80,7 @@ class CategoryGuidesHandler(BaseHandler):
         else:
             self.write('<li><span>No guide for this category yet....</span></li>')
         
-class AddGuidesTagHandler(BaseHandler):  
+class AddGuidesTagHandler(BaseHandler):
     @tornado.web.authenticated  
     def post(self):
         guide_id = self.get_argument('guide_id')

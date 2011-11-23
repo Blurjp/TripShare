@@ -85,7 +85,7 @@ class ComposeHandler(BaseHandler):
                     dest_string += " to "+ dest['dest']
                 dest['geo'] = ''
                 dest['description'] = ''
-                dest['note'] = []
+                dest['notes'] = []
                 dest['date'] = dest['date']
  
         title = "From "+start+dest_string

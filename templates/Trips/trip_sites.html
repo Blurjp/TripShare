@@ -18,9 +18,11 @@
 	</h2>
  </div>
   <p>{{site['description']}}</p>
+ <a class="show_notes">Show notes</a>
+  <a class="hide_notes">Hide notes</a>
  <ul class="site_notes">
  	<li></li>
- {% for note in site['note'] %}
+ {% for note in site['notes'] %}
 <li class="site_note left">
 					<div class="left">
 						<img alt="{{note['from']['username']}}" src="{{note['from']['picture']}}" title="{{note['from']['username']}}" class="picture medium"><div class="type"></div>
@@ -31,7 +33,7 @@
 							{{note['note']}}
 						</p>
 						<p class="details">
-							<span class="timestamp">{{note['date']}}</span>  · 
+							<span class="timestamp">{{note['date']}}</span>  · <a class="remove_site_note" href="#">Remove</a>
 						</p>
 		</div>			
 </li>

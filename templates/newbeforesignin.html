@@ -248,24 +248,24 @@
       new google.maps.Point(0,0),
       new google.maps.Point(0, 1));
 	
-	dest_places = image_split[3];
+	//dest_places = image_split[3];
 	
-	DestToMarker(dest_places, image, shadow);
+	DestToMarker(image, shadow);
 	
     //var myLatLng = new google.maps.LatLng(image_startPlace);
  
   }
 }
 
-function DestToMarker(dest_places, image, shadow)
+function DestToMarker(image, shadow)
 {
 	
-	temp = dest_places.replace(/{u['"]/g,"{\"");
-	temp = temp.replace(/ u['"]/g," \"");
-	temp = temp.replace(/\'/g,'\"');
-	temp = temp.replace(/\"s /g,'\'s ');
-	
-	dest_places= jQuery.parseJSON(temp);
+	//temp = dest_places.replace(/{u['"]/g,"{\"");
+	//temp = temp.replace(/ u['"]/g," \"");
+	//temp = temp.replace(/\'/g,'\"');
+	//temp = temp.replace(/\"s /g,'\'s ');
+	dest_places = document.getElementsByName("dest_places");
+	dest_places= jQuery.parseJSON(dest_places);
 	
 	var day = '';
 	
@@ -464,6 +464,10 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 {% for image in image_info %} 
 <input name="image_info" value = "{{image}}" type = "hidden">
+{% end %}
+
+{% for dest in dest_places %} 
+<input name="dest_places" value = "{{dest}}" type = "hidden">
 {% end %}
 
 </div>
