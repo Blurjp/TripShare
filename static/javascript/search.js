@@ -66,7 +66,15 @@ $('.add_user_to_trip').live('click',function()
 {
 	var content = {"trip_id":$('#tripId').val(), "user_id":$(this).attr('sid'), "_xsrf":getCookie("_xsrf")};
 	$.postJSON('/addusertotrip', content, function(response){
-		if (response == 'success') {
+		if(response=='existed')
+		{
+			alert('User already exist in this trip.');
+		}
+		else if (response != '') {
+			
+			var user = JSON.parse(response);
+			var node = $('<li><span class="headpichold"><a style="cursor:pointer;" href="/people/'+user["slug"]+'"><img class="picture medium" alt="'+user['username']+'"  src="'+user['picture']+'" ></a></span><div sid="'+user['user_id']+'" class="member_button_remove"></div></li>');
+	        node.insertBefore($('#trip_member_add_show'));
 			trip_member_add_form_toggle(false);
 			alert('User has been added to the trip.');
 			return false;

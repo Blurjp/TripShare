@@ -960,63 +960,9 @@ $("li.end ul.BUTTON li").click(function(){if(!a.loading)a.loading=!0,$.post(URI+
 $("a.comment").live("click",function(a){a.preventDefault();$(this).parents("li.feed").find("ul.comment_list").show().find(".commentBody").focus()});
 
 $(document).ready(function() {   
-$('input.manage_member').click(function(e) { 
-        e.preventDefault();  
-		if ($('#manage_member_dropdown').css('display') == 'none') {
-			$('#manage_member_dropdown').show();
-			$.getJSON('/gettripmembers', function(response){
-				ShowResultInDropList(response);
-			});
-		$('#close_member_dropdown').show();
-		}
-		else
-		{
-			$('#manage_member_dropdown').hide();
-		}
-		
-
-});
-
-    //if close button is clicked  
-    $("#close_member_dropdown").click(function (e) {  
-        //Cancel the link behavior  
-        e.preventDefault();  
-		$('#manage_member_dropdown').hide();
-		$("#close_member_dropdown").hide();
-    }); 
-
-$('input.member_input').focus(function() {
-   $('.friend_dropdown_list ul').empty();
-   
-});
-
-$('input.member_input').keyup(function() {
-   $.getJSON('/realtime_searchpeople/'+this.value, function(response) {
-        ShowResultInDropList(response);
-        });
-});
-
-function ShowResultInDropList(response)
-{
-	if (response != '') {
-		$('.friend_dropdown_list ul').empty();
-		//alert(response);
-		var _object = JSON.parse(response);
-		//alert(_object.length);
-		for (var i = 0; i < _object.length; i++) {
-			$('.friend_dropdown_list ul').append('<li><a href="/addusertotrip/' + _object[i]['slug'] + '"><span><img class="picture medium" alt=' + _object[i]['username'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li>');
-		}
-	}
-}
-
-$('#mask6').click(function(e) { 
-        e.preventDefault();  
-        $('#manage_member_dropdown').hide();
-		$('#mask6').hide();
-});
 
   $('.post-button').click(function(e) { 
-        e.preventDefault();  
+        e.preventDefault();
         var id = $('#typeId').val();
 		var type = $('#type').val();
 		var content  = $('.feedBody').val();

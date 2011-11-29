@@ -93,10 +93,17 @@ class AddUserToTripHandler(BaseHandler):
     def post(self):
         self.userid = self.get_argument('user_id')
         self.tripid = self.get_argument('trip_id')
-        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
-        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, { '$addToSet':{'members': user}, '$inc' : { 'member_count' : 1 }})  
-        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
-        self.write('success')
+        _user = self.syncdb.trips.find({'trip_id':bson.ObjectId(self.tripid), 'members.user_id': bson.ObjectId(self.userid)})
+        print(str(_user.count()))
+        if _user.count()<1:
+           user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
+           self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, { '$addToSet':{'members': user}})  
+           self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$inc' : { 'member_count' : 1 }}) 
+           self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
+        #self.write('success')
+           self.write(unicode(simplejson.dumps(user, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+        else:
+           self.write('existed')
         
 class RemoveUserFromTripHandler(BaseHandler):
     userid = None

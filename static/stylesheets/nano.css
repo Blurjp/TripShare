@@ -1228,8 +1228,8 @@ cursor: pointer;
 .site_notes {display:none}
 
 
-#trip_member      { display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_member.png) no-repeat 0 13px; margin-bottom: 5px  }
-#trip_member li   { float: left; margin: 0px 5px 5px 0 }
+#trip_member      {float:left; display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_member.png) no-repeat 0 13px; margin-bottom: 5px  }
+#trip_member li   { float: left; margin: 0px 15px 15px 0 }
 .member_button    { position: relative;}
 .member_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
 .member_button a:hover { background-color: #5495d7 ;text-decoration: none; }
@@ -1239,3 +1239,16 @@ cursor: pointer;
 #trip_member_add_show     {position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
 #trip_member_add_show:hover    { background-color: #59d859  }
 #trip_member_add_form {display:none}
+.trip_action_options {float:right;width:300px}
+.member_count {float:right;padding:15px}
+.trip_member_tabs ul {-webkit-border-radius: 0 15px 0 0; -moz-border-radius: 0 15px 0 0;}
+.trip_member_tabs li {border-radius: 0 15px 0 0;-webkit-border-radius: 0 15px 0 0; -moz-border-radius: 0 15px 0 0;float: left; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
+
+.trip_member_tabs li.on {border-bottom: 1px solid #f7f6f1}
+
+.trip_member_tabs li.first.on {width: 309px; border-bottom: 1px solid #f7f6f1}
+.trip_member_tabs li.first.on a {color: black}
+.trip_member_tabs li.last {border-radius: 0 5px 0 0; -moz-border-radius: 0 5px 0 0; -webkit-border-radius: 0 5px 0 0}
+.trip_member_tabs li.last.on {width: 309px; border-bottom: 1px solid #f7f6f1}
+.trip_member_tabs li.last.on a {color: black}
+.trip_member_tabs li.on {background-color: #f7f6f1}
