@@ -1,17 +1,8 @@
 <div id="manage_member_dropdown">
 	
                 <fieldset>
-                	<a href="#" id="close_member_dropdown" class="close">close</a>     
+                
                   <div id="searchmemberentry">
-                  	
-                  		<table>
-                  			<tr>
-                  		<td>
-                       <input type="text" autocomplete="off" class="member_input">
-					   </td>
-					  
-						  </tr>
-						  </table> 
                     <div class="clear"></div>
 					</div>
 					
@@ -20,20 +11,7 @@
 					</div>
 					<div class="friend_dropdown_list">
 						<ul> 
-{% for member in singletrip['members'] %}
-<li>
-	<a href="/addusertotrip/{{member['slug']}}">
-<span class="user_image">
 
-<img class="picture medium" alt="{{member['username']}}"  src="{{member['picture']}}" >
-
-</span>
-<span class="user_name">
-{{member['username']}}
-</span>
-</a>
-</li>
-{% end %}
 
 </ul>
 </div>

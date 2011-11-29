@@ -76,7 +76,8 @@ class UserHandler(BaseHandler):
 class AddUserToTripHandler(BaseHandler):
     userid = None
     tripid = None
-    def get(self, userid, tripid):  
+    @tornado.web.asynchronous
+    def get(self, userid, tripid):
         self.userid = userid
         self.tripid = tripid
         user = self.syncdb.users.find_one({'user_id':bson.ObjectId(userid)})
@@ -85,10 +86,38 @@ class AddUserToTripHandler(BaseHandler):
     def _add_user_to_trip(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
-        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': self.tripid}})
-        self.write('success') 
-     
+        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
+        self.write('success')
     
+    
+    def post(self):
+        self.userid = self.get_argument('user_id')
+        self.tripid = self.get_argument('trip_id')
+        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, { '$addToSet':{'members': user}, '$inc' : { 'member_count' : 1 }})  
+        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
+        self.write('success')
+        
+class RemoveUserFromTripHandler(BaseHandler):
+    userid = None
+    tripid = None
+    
+    def post(self):
+        self.userid = self.get_argument('user_id')
+        self.tripid = self.get_argument('trip_id')
+        
+        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$pull':{'members': {'user_id': user['user_id']}}})  
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$dec' : { 'member_count' : 1 }})  
+        
+        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, {'$pull':{'trips': bson.ObjectId(self.tripid)}})
+        self.write('success')
+        
+    def _remove_user_from_trip(self, response, error):
+        if error:
+            raise tornado.web.HTTPError(500)
+        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$pull':{'trips': bson.ObjectId(self.tripid)}})
+        self.write('success')
 
 class CheckUserinTripHandler(BaseHandler):
     def get(self, userid, tripid):  

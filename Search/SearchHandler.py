@@ -33,7 +33,7 @@ class RealTimeSearchAllHandler(BaseHandler):
 
 class SearchUserHandler(BaseHandler):  
     def get(self, name):   
-            
+        
         _name = name.upper()
         users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
         if users.count() >= 1 :
@@ -43,12 +43,13 @@ class SearchUserHandler(BaseHandler):
 
 class RealTimeSearchUserHandler(BaseHandler):  
     def get(self, name): 
+        objects = []
         _name = name.upper()  
         users = self.syncdb.users.find({'lc_username': {'$regex':'^'+_name}})
         if users.count() >0 :
+            objects.append(users)
+            self.write(unicode(simplejson.dumps(objects, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
             
-            self.write(unicode(simplejson.dumps(users, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
-            #self.write(users[0]);
         else:
             self.write('not found');      
             

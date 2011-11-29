@@ -553,7 +553,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 
  .action-bar {padding-right: 3px; background-color: #f0eee4; border-radius: 0 0 0 5px; -webkit-border-bottom-right-radius: 5px;-moz-border-radius-bottomright: 5px}
  .members, .member_count {float:left; margin-left: 2px; margin-right: 10px; margin-top: 3px; }
- .members .avatar img {width: 30px; height: 30px; padding-left: 3px; padding-top:0px}  
+ .members .avatar img {width: 30px; height: 30px; padding-top:0px; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}  
  .members .label {float: left; background: #96af4b; padding: 6px 10px 5px 18px; border-radius: 5px ; -moz-border-radius: 5px ; -webkit-border-radius: 5px ; color: white; margin: 0 5px 0 0; font-weight: 100; font-style: italic; font-size: 120%; font-family: "museo-slab-1", "museo-slab-2", serif}
  .sighting-box {padding: 15px; background: #f7f6f1; border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
 
@@ -573,10 +573,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
  li.show_trips .photo {display: block}
  li.show_trips .photo img {width: 150px; height: 150px; background-color: white}
 
-#tooltip{position:absolute;background:url(/static/images/dark_arrow.png) 50% 0 no-repeat;padding:7px 0 0 0;z-index:500;}
-#tooltip_interior{background:url(/static/images/backgrounds/tooltip.png);color:white;padding:5px 8px 5px 8px;}
-#tooltip_interior div{margin-top:2px;font-size:1em;}
-#tooltip_micro{font-size:.8em!important;}
+
 
 /*  edit trip */
 #tooltip {position: absolute;background: url(/static/images/dark_arrow.png) 50% 0 no-repeat;padding: 7px 0 0 0;z-index: 500;}
@@ -591,7 +588,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 .section .lively-user {padding-left:10px;font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .managemember {font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .conv-head {margin-top: 15px; margin-bottom:65px;border-top:1px solid #ccc;}
-.conv-head li {float: left; padding:4px}
+.conv-head li {float: left; }
 .conv-head img.searchmemberfortrip {width:25px; height:25px; padding-top:15px; padding-left:15px}
 .map-detail {padding-top: 120px}
 
@@ -1106,6 +1103,8 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
 #all_search_result_list {display:none; width:25%; position:absolute; z-index:9999;border-width:5px;border-style:solid; border-color: #BEBEBE;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: white;}
 #all_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}
+#people_search_result_list {display:none; width:100%; position:absolute; z-index:9999;border-width:5px;border-style:solid; border-color: #BEBEBE;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: white;}
+#people_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}
 
 .find_friends_icon {padding:5px 0 0 15px}
 
@@ -1227,3 +1226,16 @@ cursor: pointer;
 .hide_notes {display:none;text-decoration:none;cursor: pointer;}
 .show_notes {text-decoration:none;cursor: pointer;}
 .site_notes {display:none}
+
+
+#trip_member      { display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_member.png) no-repeat 0 13px; margin-bottom: 5px  }
+#trip_member li   { float: left; margin: 0px 5px 5px 0 }
+.member_button    { position: relative;}
+.member_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
+.member_button a:hover { background-color: #5495d7 ;text-decoration: none; }
+.member_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
+
+
+#trip_member_add_show     {position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
+#trip_member_add_show:hover    { background-color: #59d859  }
+#trip_member_add_form {display:none}

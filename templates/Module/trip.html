@@ -26,7 +26,11 @@
 <img alt="members" class="members" src="{{ static_url("images/people.png") }}">
 <a href="showmembers" class="member_count">{{ len(trip['members']) }}</a>
 {% for member in trip['members'] %} 
-  <a href="/people/{{member['slug']}}" class = "avatar" alt="{{member['user_id']}}"><img alt="{{member['username']}}" src={{member['picture']}}></a>
+<span class="avatar">
+  <a style="cursor:pointer;" href="/people/{{member['slug']}}" >
+  	<img class="picture small" alt="{{member['username']}}" src={{member['picture']}}>
+  </a>
+</span>
 {% end %}
 </div>
 <div class="right">

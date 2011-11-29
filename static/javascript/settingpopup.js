@@ -108,7 +108,7 @@ $(document).ready(function() {
       $('.avatar img').live('mouseenter', function(){
 	  	 var position = $(this).position();
 		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
-		 $('#tooltip').css({left:position.left+95, top: position.top+810, });
+		 $('#tooltip').css({left:position.left+90, top: position.top+630, });
 	  });
 
       $('.avatar img').live('mouseleave', function(){
