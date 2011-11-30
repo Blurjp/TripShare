@@ -97,10 +97,10 @@
 <div class="conv-head"> 
 <ul class="trip_member_tabs trip_member_groups_list">
 
-<li class="on droppable">
-<ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"> 
+<li class="on">
+<ul id="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"> 
 {% for member in singletrip['members'] %}
-<li class="draggable">
+<li>
 <span class="headpichold">
 <a style="cursor:pointer;" href="/people/{{member['slug']}}">
 <img class="picture medium" alt="{{member['username']}}"  src="{{member['picture']}}" >
@@ -110,26 +110,22 @@
 </li>
 {% end %}
 
-<li class="trip_member_add_show" onclick="trip_member_add_form_toggle(true); event.stopPropagation(); return false">
+<li id="trip_member_add_show" onclick="trip_member_add_form_toggle(true); event.stopPropagation(); return false">
 
 </li>
 <li id="trip_member_add_form">
-
+<div id="trip_member_add_input_exterior" style="position: relative; float: left">
 <div id="trip_member_add_input_exterior">
 <input type="text" id="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small">
 <div class="people_search_result_in_trip">
 <ul id="people_search_result_list"></ul>
 </div>
-
+</div>
 
 </div>
-<a style="margin:7px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="trip_member_add_form_toggle(false); return false">done</a>
+<a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="trip_member_add_form_toggle(false); return false">done</a>
 </li>
 </ul>
-<li class="new_trip_tab droppable">
-	<ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block">
-	</ul>
-</li>	
 </li>
 </ul>
 <div class="member_count"><a href="/managemember/{{singletrip['slug']}}"><span class="num">{{ len(singletrip['members']) }}</span> member</a>
@@ -239,15 +235,15 @@ var trip_member_add_form_displayed;
 function trip_member_add_show(status)
 {
 	
-    if(!$('.trip_member_add_show').length) { return; } 
+    if(!$('#trip_member_add_show').length) { return; } 
     
     if(status && !trip_member_add_form_displayed)
     {
-        $('.trip_member_add_show').show();
+        $('#trip_member_add_show').show();
     }
     else
     {
-        $('.trip_member_add_show').hide();
+        $('#trip_member_add_show').hide();
     }
 }
 
@@ -258,7 +254,7 @@ function trip_member_add_form_toggle(display)
         trip_member_add_form_displayed = true;
         
         $('#trip_member').show();
-        $('.trip_member_add_show').hide(); 
+        $('#trip_member_add_show').hide(); 
         $('#trip_member_add_form').show(); 
         
         // Show remove buttons for each category
@@ -283,7 +279,7 @@ function trip_member_add_form_toggle(display)
         trip_member_add_form_displayed = false;
         
         $('#trip_member_add_form').hide(); 
-        $('.trip_member_add_show').show();
+        $('#trip_member_add_show').show();
         
         // Show remove buttons for each category
 		if($('#trip_member_add_input').val() != '')
@@ -307,7 +303,7 @@ function ShowTripmember(member)
 	if(member!='')
 	{
 	var node = $('<li class="member_button"><a class="member_button_add member_button_a_edit_active" rel="member" href="/member">'+member+'</a><div class="member_button_remove" style="display: block; "></div></li>');
-	node.insertBefore($('.trip_member_add_show'));
+	node.insertBefore($('#trip_member_add_show'));
 	$('#trip_member_add_input').val('');
 	 
     }

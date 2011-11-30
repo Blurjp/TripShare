@@ -1130,4 +1130,47 @@ function PostFeedResponse(response){
 	});
 });
 
+
+	$(function() {
+		
+		$(".draggable").draggable({
+			containment: $('.trip_member_tabs'),
+			stack: $('.trip_member'),
+			revert: true,
+			
+			stop: function(event, ui){ 
+		       $(this).parent().parent().parent().find('.new_trip_tab').hide();
+               
+			},
+			drag: function(event, ui){ 
+		       $(this).parent().parent().parent().find('.new_trip_tab').show();
+               
+			}
+		});
+		
+		$(".droppable").droppable({
+			
+			tolerance: 'touch',
+			over: function() {
+                      // $(this).css('backgroundColor', '#cedae3');
+                },
+            out: function() {
+                     //  $(this).css('backgroundColor', '#a6bcce');
+                },
+			drop: function( event, ui) {
+				
+				if($(this).attr('class').indexOf('new_trip_tab')>-1)
+				{
+					var draggable = ui.draggable;
+					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"></ul></li>';
+					$(this).removeClass('new_trip_tab');
+					$(this).addClass('on');
+					var temp = draggable;
+					draggable.remove();
+					$(this).children('ul').append(temp);
+					$(this).parent('ul').append(node);
+				}
+			}
+		});
+	});
    
