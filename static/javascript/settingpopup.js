@@ -97,7 +97,7 @@ $(document).ready(function() {
       $('.headpichold img').mouseenter(function(){
 	  	 var position = $(this).position();
 		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
-		 $('#tooltip').css({left:position.left, top: position.top+110});
+		 $('#tooltip').css({left:position.left+50, top: position.top+310});
 	  });
 
       $('.headpichold img').mouseleave(function(){

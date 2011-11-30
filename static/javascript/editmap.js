@@ -1131,20 +1131,77 @@ function PostFeedResponse(response){
 });
 
 
+
 	$(function() {
-		
+		$('.draggable').live('mouseover',function(){
+    $(this).draggable({
+			containment: $('.trip_member_tabs'),
+			stack: $('.trip_member'),
+			revert: true,
+			zIndex:2700,
+			start:function(event, ui){ 
+		       $(this).parent().closest('li').addClass('on').siblings().removeClass('on');
+			},
+			stop: function(event, ui){ 
+		       $('.new_trip_tab').hide();
+               
+			},
+			drag: function(event, ui){ 
+		       $('.new_trip_tab').show();
+               
+			}
+		});
+});
+
+		$('.droppable').live('mouseover',function(){
+    $(this).droppable({
+			
+			tolerance: 'touch',
+			over: function() {
+                      // $(this).css('backgroundColor', '#cedae3');
+                },
+            out: function() {
+                     //  $(this).css('backgroundColor', '#a6bcce');
+                },
+			drop: function( event, ui) {
+				var draggable = ui.draggable;
+				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
+				
+					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"></ul></li>';
+					$(this).removeClass('new_trip_tab');
+					
+					var temp = draggable;
+					$(this).addClass('on').siblings().removeClass('on');
+					draggable.remove();
+					$(this).children('ul').append(temp);
+					$(this).parent('ul').append(node);
+				//alert('test');
+				}
+				else
+				{
+					var temp = draggable;
+					$(this).addClass('on').siblings().removeClass('on');
+					draggable.remove();
+					$(this).children('ul').append(temp);
+					$(this).parent('ul').append(node);
+				}
+			}
+		});
+});
 		$(".draggable").draggable({
 			containment: $('.trip_member_tabs'),
 			stack: $('.trip_member'),
 			revert: true,
-			
+			zIndex:12700,
+			start:function(event, ui){ 
+		       $(this).parent().closest('li').addClass('on').siblings().removeClass('on');
+			},
 			stop: function(event, ui){ 
-		       $(this).parent().parent().parent().find('.new_trip_tab').hide();
+		       $('.new_trip_tab').hide();
                
 			},
 			drag: function(event, ui){ 
-		       $(this).parent().parent().parent().find('.new_trip_tab').show();
-               
+		       $('.new_trip_tab').show();
 			}
 		});
 		
@@ -1158,18 +1215,26 @@ function PostFeedResponse(response){
                      //  $(this).css('backgroundColor', '#a6bcce');
                 },
 			drop: function( event, ui) {
+				var draggable = ui.draggable;
+				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
 				
-				if($(this).attr('class').indexOf('new_trip_tab')>-1)
-				{
-					var draggable = ui.draggable;
 					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"></ul></li>';
 					$(this).removeClass('new_trip_tab');
-					$(this).addClass('on');
 					var temp = draggable;
+					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
 					$(this).children('ul').append(temp);
 					$(this).parent('ul').append(node);
 				}
+				else {
+					var temp = draggable;
+					$(this).addClass('on').siblings().removeClass('on');
+					draggable.remove();
+					$(this).children('ul').append(temp);
+					$(this).parent('ul').append(node);
+				//alert('test');
+				}
+				
 			}
 		});
 	});
