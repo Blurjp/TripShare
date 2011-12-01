@@ -94,13 +94,13 @@ $(document).ready(function() {
 	
 	
 	/*  Set user icon hover effect   */ 
-      $('.headpichold img').mouseenter(function(){
+      $('.headpichold img').live('mouseenter', function(){
 	  	 var position = $(this).position();
 		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
-		 $('#tooltip').css({left:position.left+50, top: position.top+310});
+		 $('#tooltip').css({left:position.left+150, top: position.top+300});
 	  });
 
-      $('.headpichold img').mouseleave(function(){
+      $('.headpichold img').live('mouseleave', function(){
 	  	 $('#tooltip').remove();
 	  });
 	  

@@ -99,7 +99,7 @@
 
 <li class="on droppable">
 
-<ul class="trip_member" onmouseover="trip_member_add_show(true, this);" onmouseout="trip_member_add_show(false, this);" style="display:block"> 
+<ul class="trip_member" style="display:block"> 
 {% for member in singletrip['members'] %}
 <li class="draggable">
 <span class="headpichold">
@@ -128,7 +128,7 @@
 </li>
 </ul>
 <li class="new_trip_tab droppable">
-	<ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block">
+	<ul class="trip_member" style="display:block">
 	</ul>
 </li>	
 </li>
@@ -235,54 +235,59 @@ function ShowTripTag(tag)
 <script type='text/javascript'>
 var trip_member_add_form_displayed;
 var add_show = $('.trip_member_add_show');
-var add_form = $('.trip_member_add_form');
+var add_form = $('#trip_member_add_form');
 //var $tabs = $('.conv-head').tabs();
 //var selected  = $tabs.tabs('option', 'selected');
 function trip_member_add_show(status, object)
 {
 	var object = $(object);
     if(status && !trip_member_add_form_displayed)
-    {//alert($('.trip_member_add_show').length);
+    {//alert('test');
 		if(!$('.trip_member_add_show').length)
 		{
-			//alert('no');
 		object.append(add_show);
 		object.append(add_form);
 		}
-        add_show.show();
     }
     else
     {
-		if(add_show.length)
-		{
-		//	alert('yes');
+		//alert('test');
 		add_show.remove();
-		add_form.remove();
-		}
-		
-        add_show.hide();
+		//add_form.remove();
+		//add_show.hide();
     }
 }
+
+$('.trip_member').mouseleave(function()
+{
+	trip_member_add_show(false,this);
+});
+
+$('.trip_member').mouseover(function()
+{
+	trip_member_add_show(true,this);
+});
 
 function trip_member_add_form_toggle(display)
 { 
     if(display)
     {
+		
         trip_member_add_form_displayed = true;
         
-        $('#trip_member').show();
-        $('.trip_member_add_show').hide(); 
-        $('#trip_member_add_form').show(); 
+        $('.trip_member').show();
+        add_show.hide(); 
+        add_form.show(); 
         
         // Show remove buttons for each category
-        var plan_category_as = $('#trip_member').find('.member_button_add');
+        var plan_category_as = $('.trip_member').find('.member_button_add');
         
         if(plan_category_as)
         {
             plan_category_as.addClass('member_button_a_edit_active');
         }
         
-        var plan_category_removes = $('#trip_member').find('.member_button_remove');
+        var plan_category_removes = $('.trip_member').find('.member_button_remove');
         
         if(plan_category_removes)
         {
@@ -293,10 +298,11 @@ function trip_member_add_form_toggle(display)
     }
     else
     { 
+	
         trip_member_add_form_displayed = false;
         
-        $('#trip_member_add_form').hide(); 
-        $('.trip_member_add_show').show();
+        add_form.hide(); 
+        add_show.show();
         
         // Show remove buttons for each category
 		if($('#trip_member_add_input').val() != '')
@@ -305,7 +311,7 @@ function trip_member_add_form_toggle(display)
 		}
 		else
 		{
-		var plan_category_removes = $('#trip_member').find('.member_button_remove');
+		var plan_category_removes = $('trip_member').find('.member_button_remove');
         
         if(plan_category_removes)
         {

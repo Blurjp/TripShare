@@ -1153,7 +1153,7 @@ function PostFeedResponse(response){
 		});
 });
 
-		$('.droppable').live('mouseover',function(){
+$('.droppable').live('mouseover',function(){
     $(this).droppable({
 			
 			tolerance: 'touch',
@@ -1167,7 +1167,7 @@ function PostFeedResponse(response){
 				var draggable = ui.draggable;
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
 				
-					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"></ul></li>';
+					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"></ul></li>';
 					$(this).removeClass('new_trip_tab');
 					
 					var temp = draggable;
@@ -1175,7 +1175,7 @@ function PostFeedResponse(response){
 					draggable.remove();
 					$(this).children('ul').append(temp);
 					$(this).parent('ul').append(node);
-				//alert('test');
+				//alert($(this).children('ul').attr('class'));
 				}
 				else
 				{
@@ -1192,9 +1192,10 @@ function PostFeedResponse(response){
 			containment: $('.trip_member_tabs'),
 			stack: $('.trip_member'),
 			revert: true,
-			zIndex:12700,
+			zIndex:2700,
 			start:function(event, ui){ 
 		       $(this).parent().closest('li').addClass('on').siblings().removeClass('on');
+			  
 			},
 			stop: function(event, ui){ 
 		       $('.new_trip_tab').hide();
@@ -1215,10 +1216,10 @@ function PostFeedResponse(response){
                      //  $(this).css('backgroundColor', '#a6bcce');
                 },
 			drop: function( event, ui) {
-				var draggable = ui.draggable;
-				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
 				
-					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"></ul></li>';
+				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
+				var draggable = ui.draggable;
+					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"></ul></li>';
 					$(this).removeClass('new_trip_tab');
 					var temp = draggable;
 					$(this).addClass('on').siblings().removeClass('on');
@@ -1227,14 +1228,14 @@ function PostFeedResponse(response){
 					$(this).parent('ul').append(node);
 				}
 				else {
+					var draggable = ui.draggable;
 					var temp = draggable;
 					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
 					$(this).children('ul').append(temp);
 					$(this).parent('ul').append(node);
-				//alert('test');
+				//alert($(this).children('ul').attr('class'));
 				}
-				
 			}
 		});
 	});

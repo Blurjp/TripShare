@@ -1228,7 +1228,7 @@ cursor: pointer;
 .site_notes {display:none}
 
 
-.trip_member      {float:left; display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_member.png) no-repeat 0 13px; margin-bottom: 5px  }
+.trip_member      {float:left; display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_member.png) no-repeat 0 13px; }
 .trip_member li   { border-radius: 0;-webkit-border-radius: 0; -moz-border-radius: 0;float: left; margin: 0px 15px 15px 0 }
 .member_button    { position: relative;}
 .member_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
@@ -1242,7 +1242,7 @@ cursor: pointer;
 .trip_action_options {float:right;width:300px}
 .member_count {float:right;padding:15px}
 .trip_member_tabs {height:100px;float:left;width:950px}
-.trip_member_tabs ul {overflow: hidden; 
+.trip_member_tabs ul {
 		background: #e1e1e1; 
 		background: -moz-linear-gradient(center top , #f2f2f2, #e1e1e1); 
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#e1e1e1)); 
@@ -1252,7 +1252,7 @@ cursor: pointer;
 		-webkit-box-shadow: 0 1px 0 #FFF inset; 
 		-moz-box-shadow: 0 1px 0 #FFF inset; 
 		box-shadow: 0 1px 0 #FFF inset;}
-.trip_member_tabs li {		display: block; 
+.trip_member_tabs li {	
 		float: left; 
 		font: 15px/35px Arial, Helvetica, Sans-serif; 
 		color: #999; 
@@ -1260,14 +1260,9 @@ cursor: pointer;
 		border-left: solid 1px rgba(0,0,0,0.05);
 		border-right: solid 1px rgba(255,255,255,0.7);
 		position: relative;
-		overflow: hidden;}
+		}
 
 .trip_member_tabs li.on {background: white;border-left-color: #CCC;}
-
-.trip_member_tabs li.last {border-radius: 0 5px 0 0; -moz-border-radius: 0 5px 0 0; -webkit-border-radius: 0 5px 0 0}
-.trip_member_tabs li.last.on {width: 309px; border-bottom: 1px solid #f7f6f1}
-.trip_member_tabs li.last.on a {color: black}
-
-.new_trip_tab {display: block; float: left; font: 15px/35px Arial, Helvetica, Sans-serif; color: #999; text-shadow: 0 1px 0 #FFF;border-left: solid 1px rgba(0,0,0,0.05);border-right: solid 1px rgba(255,255,255,0.7);position: relative;overflow: hidden;height:85px;}
+.new_trip_tab {display: none; float: left; font: 15px/35px Arial, Helvetica, Sans-serif; color: #999; text-shadow: 0 1px 0 #FFF;border-left: solid 1px rgba(0,0,0,0.05);border-right: solid 1px rgba(255,255,255,0.7);position: relative;height:85px;width:150px}
 
 
