@@ -21,7 +21,7 @@
 
 <script src="{{ static_url("javascript/search.js") }}" type="text/javascript"></script>
 </head> 
-<body onload="initialize()"> 
+<body onload="set_trip_section('default')"> 
 
 <div id="header"> 
 <div id="nav-bar">
@@ -95,12 +95,12 @@
 
 <div class="conv-head"> 
 <ul class="trip_member_tabs trip_member_groups_list">
-
-<li class="on droppable">
+{% for group in singletrip['groups'] %}
+<li class="on droppable" sid="{{['user_id']}}">
 
 <ul class="trip_member" style="display:block"> 
 {% for member in singletrip['members'] %}
-<li class="draggable">
+<li class="draggable" sid="{{member['user_id']}}">
 <span class="headpichold">
 <a style="cursor:pointer;" href="/people/{{member['slug']}}">
 <img class="picture medium" alt="{{member['username']}}"  src="{{member['picture']}}" >
@@ -123,6 +123,9 @@
 </li>
 
 </ul>
+</li>
+{% end %}
+
 <li class="new_trip_tab droppable">
 	<ul class="trip_member" style="display:block">
 	<li class="trip_member_add_form_show">
@@ -240,194 +243,7 @@ function ShowTripTag(tag)
 </script>
 
 <script type='text/javascript'>
-	
-$('.trip_member').live('mouseover',function(){
-	trip_member_add_show(true, $(this));
-});
-$('.trip_member').live('mouseleave',function(){
-	trip_member_add_show(false, $(this));
-});
-var trip_member_add_form_displayed;
 
-//var $tabs = $('.conv-head').tabs();
-//var selected  = $tabs.tabs('option', 'selected');
-function trip_member_add_show(status, object)
-{
-    
-    if(!object.children('.trip_member_add_form_show').length) { return; } 
-    
-    if(status && !trip_member_add_form_displayed)
-    {
-        object.children('.trip_member_add_form_show').show();
-    }
-    else
-    {
-        object.children('.trip_member_add_form_show').hide();
-    }
-}
-
-$('.trip_member_add_form_show').live('click',function(){
-	trip_member_add_form_displayed = true;
-	$(this).closest('.trip_member').show();
-    $(this).hide(); 
-    $(this).siblings('.trip_member_add_form').show(); 
-	var plan_category_as =  $(this).closest('.trip_member').find('.member_button_add');
-        
-        if(plan_category_as)
-        {
-            plan_category_as.addClass('member_button_a_edit_active');
-        }
-        
-        var plan_category_removes =  $(this).closest('.trip_member').find('.member_button_remove');
-        
-        if(plan_category_removes)
-        {
-            plan_category_removes.show();
-        }
-
-        setTimeout("$('.trip_member_add_input').focus();", 50);
-});
-
-$('.trip_member_add_form_hide').live('click',function(){
-	 trip_member_add_form_displayed = false;
-        
-        $(this).closest('.trip_member_add_form').hide(); 
-        $(this).parent().siblings('.trip_member_add_show').show();
-        
-        // Show remove buttons for each category
-		
-		//alert($(this).siblings().children('.trip_member_add_input').attr('class'));
-		
-		if($(this).siblings().children('.trip_member_add_input').val() != '')
-		{
-			//alert($(this).parents('.trip_member').children('.trip_member_add_input').val());
-	          $(this).siblings().children('.trip_member_add_input').val('');
-		//alert('test1');
-		}
-		else
-		{
-		var plan_category_removes = $(this).parents('.trip_member').children('.draggable').children('.member_button_remove');
-		
-        if(plan_category_removes)
-        {
-		//	alert('test');
-            plan_category_removes.hide();
-        }
-		}
-});
-
-$('.add_user_to_trip').live('click',function()
-{
-	var content = {"trip_id":$('#tripId').val(), "user_id":$(this).attr('sid'), "_xsrf":getCookie("_xsrf")};
-	$.postJSON('/addusertotrip', content, function(response){
-		if(response=='existed')
-		{
-			alert('User already exist in this trip.');
-		}
-		else if (response != '') {
-			
-			var user = JSON.parse(response);
-			var node = $('<li><span class="headpichold"><a style="cursor:pointer;" href="/people/'+user["slug"]+'"><img class="picture medium" alt="'+user['username']+'"  src="'+user['picture']+'" ></a></span><div sid="'+user['user_id']+'" class="member_button_remove"></div></li>');
-	        alert($(this).parents('.trip_member').attr('class'));
-			node.insertBefore($(this).parents('.trip_member').find('.trip_member_add_form_show'));
-			
-		    trip_member_add_form_displayed = false;
-        
-		//alert($('.trip_member_add_form').attr('class'));
-        $(this).parents('.trip_member_add_form').hide();
-        $(this).parents('.trip_member_add_form').siblings('.trip_member_add_form_show').show();
-        
-        // Show remove buttons for each category
-		if($(this).parents('.trip_member_add_form').children('.trip_member_add_input').val() != '')
-		{
-	          $(this).parents('.trip_member_add_form').children('.trip_member_add_input').val('');
-		}
-		else
-		{
-		var plan_category_removes = $(this).parents('.trip_member_add_form').siblings().children('.member_button_remove');
-        
-        if(plan_category_removes)
-        {
-            plan_category_removes.hide();
-        }
-		}
-			alert('User has been added to the trip.');
-			return false;
-		}
-		else
-		{alert('failed');}
-	});
-});
-
-function trip_member_add_form_toggle(display,object)
-{ 
-object = $(object);
-    if(display)
-    {
-        trip_member_add_form_displayed = true;
-        
-        object.closest('.trip_member').show();
-        object.hide(); 
-        object.siblings('#trip_member_add_form').show(); 
-        
-        // Show remove buttons for each category
-        var plan_category_as =  object.closest('.trip_member').find('.member_button_add');
-        
-        if(plan_category_as)
-        {
-            plan_category_as.addClass('member_button_a_edit_active');
-        }
-        
-        var plan_category_removes =  object.closest('.trip_member').find('.member_button_remove');
-        
-        if(plan_category_removes)
-        {
-            plan_category_removes.show();
-        }
-
-        setTimeout("$('.trip_member_add_input').focus();", 50);
-    }
-    else
-    { 
-        trip_member_add_form_displayed = false;
-        
-        object.siblings('#trip_member_add_form').hide(); 
-        object.show();
-        
-        // Show remove buttons for each category
-		if($('.trip_member_add_input').val() != '')
-		{
-	          $('.trip_member_add_input').val('');
-		}
-		else
-		{
-		var plan_category_removes = object.closest('.trip_member').find('.member_button_remove');
-        
-        if(plan_category_removes)
-        {
-            plan_category_removes.hide();
-        }
-		}
-    }
-}
-
-function ShowTripmember(member)
-{
-	if(member!='')
-	{
-	var node = $('<li class="member_button"><a class="member_button_add member_button_a_edit_active" rel="member" href="/member">'+member+'</a><div class="member_button_remove" style="display: block; "></div></li>');
-	node.insertBefore($('.trip_member_add_show'));
-	$('.trip_member_add_input').val('');
-	 
-    }
-	var plan_category_removes = $('.trip_member').find('.member_button_remove');
-        
-        if(plan_category_removes)
-        {
-            plan_category_removes.hide();
-        }
-	
-}
 </script>
 
 <div id="body"> 

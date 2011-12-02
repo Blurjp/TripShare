@@ -588,7 +588,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 .section .lively-user {padding-left:10px;font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .managemember {font-size:120%;color: black; font-weight: bold; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .conv-head {border-top:1px solid #ccc;}
-.conv-head li {float: left; }
+
 .conv-head img.searchmemberfortrip {width:25px; height:25px; padding-top:15px; padding-left:15px}
 .map-detail {padding-top: 120px}
 
@@ -1271,5 +1271,5 @@ cursor: pointer;
 .trip_member_tabs li.last.on a {color: black}
 
 .new_trip_tab {min-width:80px;min-height:80px;float: left; font: 15px/35px Arial, Helvetica, Sans-serif; color: #999; text-shadow: 0 1px 0 #FFF;border-left: solid 1px rgba(0,0,0,0.05);border-right: solid 1px rgba(255,255,255,0.7);position: relative;}
-
+.droppable {cursor:pointer}
 

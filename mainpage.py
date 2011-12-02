@@ -19,6 +19,8 @@ from Map.ProcessTripHandler import SubscribeTrip
 from Map.ProcessTripHandler import UnsubscribeTrip
 from Map.ProcessTripHandler import LikeTripHandler
 from Map.ProcessTripHandler import AddTripTagHandler
+from Map.ProcessTripHandler import AddTripGroupHandler
+from Map.ProcessTripHandler import GetTripGroupHandler
 from Users.UserInfo import UpdateUserProfileHandler
 
 from Map.BrowseTripHandler import BaseHandler
@@ -199,11 +201,13 @@ class Application(tornado.web.Application):
                                       (r"/newtrips", ShowNewTrips),
                                       (r"/hottrips", ShowHotTrips),
                                       (r"/endtrips", ShowEndTrips),
+                                      (r"/addgrouptotrip", AddTripGroupHandler),
                                       (r"/addsitetotrip", AddSiteToTrip),
                                       (r"/removesitefromtrip", RemoveSiteFromTrip),
                                       (r"/postsitenote", PostNoteToSite),
                                       (r"/guides", BrowseGuidesHandler),
                                      
+                                      (r"/gettripgroup/([^/]+)/([^/]+)", GetTripGroupHandler),
                                       (r"/add_trip_tag", AddTripTagHandler),
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),

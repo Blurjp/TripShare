@@ -18,8 +18,8 @@ class RemoveSiteFromTrip(BaseHandler):
             print(site_name)
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{'dest_place':{'dest':site_name}}})
             self.write('success')
-            
-            
+
+     
 class AddSiteToTrip(BaseHandler):
         @tornado.web.authenticated
         def post(self): 

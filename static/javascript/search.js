@@ -21,7 +21,7 @@ $('#search_all').keyup(function() {
    }
 });
 
-$('.trip_member_add_input').focus(function() {
+$('.trip_member_add_input').live('focus',function() {
 	//alert('test');
 	if (this.value == '' || this.value == null) {
 		$(this).siblings('.people_search_result_in_trip').children('ul').hide();
@@ -29,7 +29,8 @@ $('.trip_member_add_input').focus(function() {
 	}
 });
 
-$('.trip_member_add_input').keyup(function() {
+$('.trip_member_add_input').live('keyup',function() {
+	
    if (this.value == '' || this.value == null) {
        
 	   $(this).siblings('.people_search_result_in_trip').children('ul').hide();

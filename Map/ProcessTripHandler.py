@@ -10,6 +10,45 @@ import datetime
 import tornado.web
 from BrowseTripHandler import BaseHandler
 
+            
+class AddTripGroupHandler(BaseHandler):
+        @tornado.web.authenticated
+        def post(self): 
+            trip_id = self.get_argument('trip_id')
+            group_id = self.get_argument('group_id')
+            user_id = self.get_argument('user_id')
+            user = self.syncdb.find_one({'user_id':bson.ObjectId(user_id)})
+            _groups = self.syncdb.trips.find({'trip_id':bson.ObjectId(trip_id)})['groups']
+            
+            # add user to new group
+            if group_id == '':
+                group_id = bson.ObjectId()
+                group_template = _groups[0]
+                group_template['group_id']=bson.ObjectId(group_id)
+                group_template['members'] = []
+                group_template['members'].append(user)
+                _groups.append(group_template)
+                
+            else:
+                # add user to existed group
+                for group in _groups:
+                    if group['group_id'] == bson.ObjectId(group_id):
+                        group['members'].append(user)
+                    for user in group['members']:
+                        if user['user_id'] == bson.ObjectId(user_id):
+                            del user
+                    
+                        
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'groups':_groups})
+
+class GetTripGroupHander(BaseHandler):
+    def get(self, group_id, trip_id):
+        if group_id == 'default':
+            group = self.syncdb.trips.find_one({'trip_id':trip_id})['groups'][0]
+        else:
+            group = self.syncdb.trips.find_one({'group.group_id':bson.ObjectId(group_id), 'trip_id':bson.ObjectId(trip_id)})
+        self.write(unicode(simplejson.dumps(group, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+
 class AddTripTagHandler(BaseHandler):  
     @tornado.web.authenticated  
     def post(self):

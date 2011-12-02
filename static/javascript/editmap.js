@@ -49,19 +49,16 @@
     strokeWeight: 3
     }
     polyline = new google.maps.Polyline(polyOptions);
-   // alert(document.getElementById("startPosition").value);
-	//alert(document.getElementById("startPlace").value);
+   
 	var _center = new google.maps.LatLng(34.3664951, -89.5192484);
 	if (document.getElementById("startPosition").value != 'undefined' && document.getElementById("startPosition").value != '') {
-		//alert("enter position");
+
 		var startValue = document.getElementById("startPosition").value;
-		//alert("startValue: "+startValue + "This should be two number.");
 		var temp = startValue.substring(1, startValue.length - 2);
 		var a = temp.split(', ')[0];
 		var b = temp.split(', ')[1];
 		
 		_center = new google.maps.LatLng(a, b);
-		// alert("calcRoute");
 		calcRoute(false);
 	}
 	else 
@@ -1132,9 +1129,31 @@ function PostFeedResponse(response){
 
 
 
+function set_trip_section(group_id)
+{
+	$.getJSON('/gettripgroup/'+group_id+'/'+$('#tripId').val(), function(response){
+		if(response!='')
+		{
+			var object = JSON.parse(response);
+			$('#dest_place').val(object['dest_place']);
+			//init the map after change group
+			initialize();
+	
+		}
+	});
+}
+
 	$(function() {
+		
+		$('.droppable').live('click',function(){
+			$(this).addClass('on').siblings().removeClass('on');
+			var group_id = $(this).attr('sid');
+			set_trip_section(group_id);
+		});
+		
+		
 		$('.draggable').live('mouseover',function(){
-    $(this).draggable({
+            $(this).draggable({
 			containment: $('.trip_member_tabs'),
 			stack: $('.trip_member'),
 			revert: true,
@@ -1143,11 +1162,11 @@ function PostFeedResponse(response){
 		       $(this).parent().closest('li').addClass('on').siblings().removeClass('on');
 			},
 			stop: function(event, ui){ 
-		       $('.new_trip_tab').hide();
+		 //      $('.new_trip_tab').hide();
                
 			},
 			drag: function(event, ui){ 
-		       $('.new_trip_tab').show();
+		 //      $('.new_trip_tab').show();
                
 			}
 		});
@@ -1165,26 +1184,36 @@ function PostFeedResponse(response){
                 },
 			drop: function( event, ui) {
 				var draggable = ui.draggable;
-				//alert($(this).children('ul').children('.trip_member_add_form_show').attr('class'));
+				var group_id = $(this).attr('sid');
+				var object = $(this);
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
-				
+					alert(draggable['sid']);
+					var content = {'trip_id':$('#tripId').val(),'group_id':'','user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
+				    $.postJSON('/addgrouptotrip', content, function(response){
+					if(response!='')
+					{
 					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
-					$(this).removeClass('new_trip_tab');
-					
+					object.removeClass('new_trip_tab');
 					var temp = draggable;
-					$(this).addClass('on').siblings().removeClass('on');
+					object.addClass('on').siblings().removeClass('on');
 					draggable.remove();
-					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
-					$(this).parent('ul').append(node);
-				//alert('test');
+					object.children('ul').children('.trip_member_add_form_show').before(temp);
+					object.parent('ul').append(node);
+					}
+					});
+					
 				}
-				else
-				{
+				else {
 					var temp = draggable;
+					var content = {'trip_id':$('#tripId').val(),'group_id': group_id,'user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
+					$.postJSON('/addgrouptotrip', content, function(response){
+					if(response!='')
+					{
 					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
 					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
-					
+					}
+					});
 				}
 			}
 		});
@@ -1198,11 +1227,11 @@ function PostFeedResponse(response){
 		       $(this).parent().closest('li').addClass('on').siblings().removeClass('on');
 			},
 			stop: function(event, ui){ 
-		       $('.new_trip_tab').hide();
+		     //  $('.new_trip_tab').hide();
                
 			},
 			drag: function(event, ui){ 
-		       $('.new_trip_tab').show();
+		     //  $('.new_trip_tab').show();
 			}
 		});
 		
@@ -1217,25 +1246,227 @@ function PostFeedResponse(response){
                 },
 			drop: function( event, ui) {
 				var draggable = ui.draggable;
-				//alert($(this).children('ul').children('.trip_member_add_form_show').attr('class'));
+				var group_id = $(this).attr('sid');
+				var object = $(this);
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
-				
+					alert(draggable['sid']);
+					var content = {'trip_id':$('#tripId').val(),'group_id':'','user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
+				    $.postJSON('/addgrouptotrip', content, function(response){
+					if(response!='')
+					{
 					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
-					$(this).removeClass('new_trip_tab');
+					object.removeClass('new_trip_tab');
 					var temp = draggable;
-					$(this).addClass('on').siblings().removeClass('on');
+					object.addClass('on').siblings().removeClass('on');
 					draggable.remove();
-					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
-					$(this).parent('ul').append(node);
+					object.children('ul').children('.trip_member_add_form_show').before(temp);
+					object.parent('ul').append(node);
+					}
+					});
 				}
 				else {
 					var temp = draggable;
+					var content = {'trip_id':$('#tripId').val(),'group_id': group_id,'user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
+					$.postJSON('/addgrouptotrip', content, function(response){
+					if(response!='')
+					{
 					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
 					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
+					}
+					});
 				}
 				
 			}
 		});
 	});
    
+	
+$('.trip_member').live('mouseover',function(){
+	trip_member_add_show(true, $(this));
+});
+$('.trip_member').live('mouseleave',function(){
+	trip_member_add_show(false, $(this));
+});
+var trip_member_add_form_displayed;
+
+//var $tabs = $('.conv-head').tabs();
+//var selected  = $tabs.tabs('option', 'selected');
+function trip_member_add_show(status, object)
+{
+    
+    if(!object.children('.trip_member_add_form_show').length) { return; } 
+    
+    if(status && !trip_member_add_form_displayed)
+    {
+        object.children('.trip_member_add_form_show').show();
+    }
+    else
+    {
+        object.children('.trip_member_add_form_show').hide();
+    }
+}
+
+$('.trip_member_add_form_show').live('click',function(){
+	trip_member_add_form_displayed = true;
+	$(this).closest('.trip_member').show();
+    $(this).hide(); 
+    $(this).siblings('.trip_member_add_form').show(); 
+	var plan_category_as =  $(this).closest('.trip_member').find('.member_button_add');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.addClass('member_button_a_edit_active');
+        }
+        
+        var plan_category_removes =  $(this).closest('.trip_member').find('.member_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.show();
+        }
+
+        setTimeout("$('.trip_member_add_input').focus();", 50);
+});
+
+$('.trip_member_add_form_hide').live('click',function(){
+	 trip_member_add_form_displayed = false;
+        
+        $(this).closest('.trip_member_add_form').hide(); 
+        $(this).parent().siblings('.trip_member_add_show').show();
+        
+        // Show remove buttons for each category
+		
+		//alert($(this).siblings().children('.trip_member_add_input').attr('class'));
+		
+		if($(this).siblings().children('.trip_member_add_input').val() != '')
+		{
+			//alert($(this).parents('.trip_member').children('.trip_member_add_input').val());
+	          $(this).siblings().children('.trip_member_add_input').val('');
+		//alert('test1');
+		}
+		else
+		{
+		var plan_category_removes = $(this).parents('.trip_member').children('.draggable').children('.member_button_remove');
+		
+        if(plan_category_removes)
+        {
+		//	alert('test');
+            plan_category_removes.hide();
+        }
+		}
+});
+
+$('.add_user_to_trip').live('click',function()
+{
+	var content = {"trip_id":$('#tripId').val(), "user_id":$(this).attr('sid'), "_xsrf":getCookie("_xsrf")};
+	var object = $(this);
+	$.postJSON('/addusertotrip', content, function(response){
+		if(response=='existed')
+		{
+			alert('User already exist in this trip.');
+		}
+		else if (response != '') {
+			
+			var user = JSON.parse(response);
+			var node = $('<li><span class="headpichold"><a style="cursor:pointer;" href="/people/'+user["slug"]+'"><img class="picture medium" alt="'+user['username']+'"  src="'+user['picture']+'" ></a></span><div sid="'+user['user_id']+'" class="member_button_remove" style="display:block"></div></li>');
+	       // alert(object.parents('.trip_member').find('.trip_member_add_form_show').attr('class'));
+			node.insertBefore(object.parents('.trip_member').find('.trip_member_add_form_show'));
+			
+		    trip_member_add_form_displayed = false;
+        
+		
+        object.parents('.trip_member_add_form').hide();
+        object.parents('.trip_member_add_form').siblings('.trip_member_add_form_show').show();
+        
+        // Show remove buttons for each category
+		if(object.parents('.trip_member_add_form').children('.trip_member_add_input').val() != '')
+		{
+	          object.parents('.trip_member_add_form').children('.trip_member_add_input').val('');
+		}
+		else
+		{
+		var plan_category_removes = object.parents('.trip_member_add_form').siblings().children('.member_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+		}
+			alert('User has been added to the trip.');
+			return false;
+		}
+		else
+		{alert('failed');}
+	});
+});
+
+function trip_member_add_form_toggle(display,object)
+{ 
+object = $(object);
+    if(display)
+    {
+        trip_member_add_form_displayed = true;
+        
+        object.closest('.trip_member').show();
+        object.hide(); 
+        object.siblings('#trip_member_add_form').show(); 
+        
+        // Show remove buttons for each category
+        var plan_category_as =  object.closest('.trip_member').find('.member_button_add');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.addClass('member_button_a_edit_active');
+        }
+        
+        var plan_category_removes =  object.closest('.trip_member').find('.member_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.show();
+        }
+
+        setTimeout("$('.trip_member_add_input').focus();", 50);
+    }
+    else
+    { 
+        trip_member_add_form_displayed = false;
+        
+        object.siblings('#trip_member_add_form').hide(); 
+        object.show();
+        
+        // Show remove buttons for each category
+		if($('.trip_member_add_input').val() != '')
+		{
+	          $('.trip_member_add_input').val('');
+		}
+		else
+		{
+		var plan_category_removes = object.closest('.trip_member').find('.member_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+		}
+    }
+}
+
+function ShowTripmember(member)
+{
+	if(member!='')
+	{
+	var node = $('<li class="member_button"><a class="member_button_add member_button_a_edit_active" rel="member" href="/member">'+member+'</a><div class="member_button_remove" style="display: block; "></div></li>');
+	node.insertBefore($('.trip_member_add_show'));
+	$('.trip_member_add_input').val('');
+	 
+    }
+	var plan_category_removes = $('.trip_member').find('.member_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+	
+}
