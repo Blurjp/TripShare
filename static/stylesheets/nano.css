@@ -362,7 +362,7 @@ width: 28px;
 #manage_member_dropdown fieldset {overflow-y;height: 200px;background: #f0eee4; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; padding: 10px;-moz-border-radius:10px;-webkit-border-radius:10px;position:relative;}
 span.user_name, .user_image {float:left;}
 span.user_image {padding-right:5px}
-span.user_name {padding-top:2px}
+span.user_name {padding-top:2px;text-decoration:none}
 a.add_user_link {float:left}
 #close_member_dropdown {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
@@ -1105,6 +1105,8 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #all_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}
 #people_search_result_list {display:none; width:100%; position:absolute; z-index:9999;border-width:5px;border-style:solid; border-color: #BEBEBE;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: white;}
 #people_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}
+.people_search_result_list {display:none; width:100%; position:absolute; z-index:9999;border-width:5px;border-style:solid; border-color: #BEBEBE;border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;background: white;}
+.people_search_result_list li {padding: 5px !important; font-weight: normal; border-bottom: 1px solid #BEBEBE; cursor: pointer;  position: relative; list-style: none; display: block;}
 
 .find_friends_icon {padding:5px 0 0 15px}
 
@@ -1235,14 +1237,14 @@ cursor: pointer;
 .member_button a:hover { background-color: #5495d7 ;text-decoration: none; }
 .member_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
 
-#trip_member_add_input_exterior {padding-top:5px;position:relative;float:left}
-.trip_member_add_show     {position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; border-radius: 5px;-webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
-.trip_member_add_show:hover    { background-color: #59d859  }
-#trip_member_add_form {display:none}
+.trip_member_add_input_exterior {padding-top:5px;position:relative;float:left}
+.trip_member .trip_member_add_form_show     {display:none;position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; border-radius: 5px;-webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
+.trip_member .trip_member_add_form_show:hover    { background-color: #59d859  }
+.trip_member .trip_member_add_form {display:none}
 .trip_action_options {float:right;width:300px}
 .member_count {float:right;padding:15px}
 .trip_member_tabs {height:100px;float:left;width:950px}
-.trip_member_tabs ul {overflow: hidden; 
+.trip_member_tabs ul {
 		background: #e1e1e1; 
 		background: -moz-linear-gradient(center top , #f2f2f2, #e1e1e1); 
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#e1e1e1)); 
@@ -1252,22 +1254,22 @@ cursor: pointer;
 		-webkit-box-shadow: 0 1px 0 #FFF inset; 
 		-moz-box-shadow: 0 1px 0 #FFF inset; 
 		box-shadow: 0 1px 0 #FFF inset;}
-.trip_member_tabs li {		display: block; 
-		float: left; 
+.trip_member_tabs li {		display: block; float: left; 
 		font: 15px/35px Arial, Helvetica, Sans-serif; 
 		color: #999; 
 		text-shadow: 0 1px 0 #FFF;
 		border-left: solid 1px rgba(0,0,0,0.05);
 		border-right: solid 1px rgba(255,255,255,0.7);
 		position: relative;
-		overflow: hidden;}
-
+		
+		}
+.trip_member_add_form_hide {margin:7px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA}
 .trip_member_tabs li.on {background: white;border-left-color: #CCC;}
 
 .trip_member_tabs li.last {border-radius: 0 5px 0 0; -moz-border-radius: 0 5px 0 0; -webkit-border-radius: 0 5px 0 0}
 .trip_member_tabs li.last.on {width: 309px; border-bottom: 1px solid #f7f6f1}
 .trip_member_tabs li.last.on a {color: black}
 
-.new_trip_tab {display: block; float: left; font: 15px/35px Arial, Helvetica, Sans-serif; color: #999; text-shadow: 0 1px 0 #FFF;border-left: solid 1px rgba(0,0,0,0.05);border-right: solid 1px rgba(255,255,255,0.7);position: relative;overflow: hidden;height:85px;}
+.new_trip_tab {min-width:80px;min-height:80px;float: left; font: 15px/35px Arial, Helvetica, Sans-serif; color: #999; text-shadow: 0 1px 0 #FFF;border-left: solid 1px rgba(0,0,0,0.05);border-right: solid 1px rgba(255,255,255,0.7);position: relative;}
 
 

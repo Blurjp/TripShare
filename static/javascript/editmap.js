@@ -1165,15 +1165,16 @@ function PostFeedResponse(response){
                 },
 			drop: function( event, ui) {
 				var draggable = ui.draggable;
+				//alert($(this).children('ul').children('.trip_member_add_form_show').attr('class'));
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
 				
-					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"></ul></li>';
+					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
 					$(this).removeClass('new_trip_tab');
 					
 					var temp = draggable;
 					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
-					$(this).children('ul').append(temp);
+					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
 					$(this).parent('ul').append(node);
 				//alert('test');
 				}
@@ -1182,8 +1183,8 @@ function PostFeedResponse(response){
 					var temp = draggable;
 					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
-					$(this).children('ul').append(temp);
-					$(this).parent('ul').append(node);
+					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
+					
 				}
 			}
 		});
@@ -1216,23 +1217,22 @@ function PostFeedResponse(response){
                 },
 			drop: function( event, ui) {
 				var draggable = ui.draggable;
+				//alert($(this).children('ul').children('.trip_member_add_form_show').attr('class'));
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
 				
-					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" onmouseover="trip_member_add_show(true);" onmouseout="trip_member_add_show(false);" style="display:block"></ul></li>';
+					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
 					$(this).removeClass('new_trip_tab');
 					var temp = draggable;
 					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
-					$(this).children('ul').append(temp);
+					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
 					$(this).parent('ul').append(node);
 				}
 				else {
 					var temp = draggable;
 					$(this).addClass('on').siblings().removeClass('on');
 					draggable.remove();
-					$(this).children('ul').append(temp);
-					$(this).parent('ul').append(node);
-				//alert('test');
+					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
 				}
 				
 			}
