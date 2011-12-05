@@ -8,6 +8,8 @@ import bson
 import pymongo
 import datetime
 import tornado.web
+import simplejson
+import MongoEncoder.MongoEncoder
 from BrowseTripHandler import BaseHandler
 
             
@@ -18,7 +20,7 @@ class AddTripGroupHandler(BaseHandler):
             group_id = self.get_argument('group_id')
             user_id = self.get_argument('user_id')
             user = self.syncdb.find_one({'user_id':bson.ObjectId(user_id)})
-            _groups = self.syncdb.trips.find({'trip_id':bson.ObjectId(trip_id)})['groups']
+            _groups = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
             
             # add user to new group
             if group_id == '':
@@ -41,14 +43,28 @@ class AddTripGroupHandler(BaseHandler):
                         
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'groups':_groups})
 
-class GetTripGroupHander(BaseHandler):
+class GetTripGroupForMapHandler(BaseHandler):
     def get(self, group_id, trip_id):
         if group_id == 'default':
-            group = self.syncdb.trips.find_one({'trip_id':trip_id})['groups'][0]
+            group = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups'][0]
         else:
-            group = self.syncdb.trips.find_one({'group.group_id':bson.ObjectId(group_id), 'trip_id':bson.ObjectId(trip_id)})
+            group = self.syncdb.trips.find_one({'groups.group_id':bson.ObjectId(group_id), 'trip_id':bson.ObjectId(trip_id)})
         self.write(unicode(simplejson.dumps(group, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
+class GetTripGroupForSiteHandler(BaseHandler):
+    def get(self, group_id, trip_id):
+        if group_id == 'default':
+            group = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups'][0]
+            for site in group['dest_place']:
+                        self.write(self.render_string("Sites/trip_site.html", site = site) + "||||")
+        else:
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            for _group in trip['groups']:
+                if _group['group_id'] == bson.ObjectId(group_id):
+                    for site in _group['dest_place']:
+                        self.write(self.render_string("Sites/trip_site.html", site = site) + "||||")
+                    break
+                
 class AddTripTagHandler(BaseHandler):  
     @tornado.web.authenticated  
     def post(self):
@@ -73,14 +89,16 @@ class LikeTripHandler(BaseHandler):
   
 class GetTrips(BaseHandler):
         def get(self): 
-            
+            members = []
             latest_trip_ids = self.syncdb.trips.find().limit(20).sort("published", pymongo.DESCENDING)
            
             if latest_trip_ids.count() > 0:
                 for latest_trip_id in latest_trip_ids:
                         latest_trip_id['check_join'] = False
                         
-                        members = latest_trip_id['members']
+                        for _group in latest_trip_id['groups']:
+                            for _member in _group['members']:
+                                members.append(_member)
                         if self.current_user:
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:
@@ -155,14 +173,16 @@ class UnsubscribeTrip(BaseHandler):
         
 class ShowNewTrips(BaseHandler):
         def get(self): 
-            
+            members = []
             latest_trip_ids = self.syncdb.trips.find().limit(20).sort("published", pymongo.DESCENDING)
            
             if latest_trip_ids.count() > 0:
                 for latest_trip_id in latest_trip_ids:
                         latest_trip_id['check_join'] = False
                         
-                        members = latest_trip_id['members']
+                        for _group in latest_trip_id['groups']:
+                            for _member in _group['members']:
+                                members.append(_member)
                         if self.current_user:
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:
@@ -178,13 +198,16 @@ class ShowNewTrips(BaseHandler):
 class ShowHotTrips(BaseHandler):
         
         def get(self): 
+            members = []
             t = datetime.datetime.now()  
             latest_trip_ids = self.syncdb.trips.find({"end_date": {"$gt": t}}).sort("members", pymongo.DESCENDING).limit(20)
             if latest_trip_ids.count() > 0:
                 for latest_trip_id in latest_trip_ids:
                         latest_trip_id['check_join'] = False
                         
-                        members = latest_trip_id['members']
+                        for _group in latest_trip_id['groups']:
+                            for _member in _group['members']:
+                                members.append(_member)
                         if self.current_user:
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:
@@ -198,13 +221,16 @@ class ShowHotTrips(BaseHandler):
 class ShowEndTrips(BaseHandler):
         
         def get(self):   
+            members = []
             t = datetime.datetime.now()
             latest_trip_ids = self.syncdb.trips.find({"end_date": {"$lt": t}}).sort("published", pymongo.DESCENDING).limit(20)
             if latest_trip_ids.count() > 0:
                 for latest_trip_id in latest_trip_ids:
                         latest_trip_id['check_join'] = False
                         
-                        members = latest_trip_id['members']
+                        for _group in latest_trip_id['groups']:
+                            for _member in _group['members']:
+                                members.append(_member)
                         if self.current_user:
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:

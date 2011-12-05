@@ -650,8 +650,6 @@ jQuery.postJSON = function(url, args, callback) {
           $(".move-down-link").html("");
         }
       }
-      
-
     }
     
 
@@ -818,17 +816,12 @@ jQuery.postJSON = function(url, args, callback) {
         if (edit_trip_form_is_dirty) {
           
             return "You have started entering details, but not saved them.";
-          
         }
       }
-      
     }
 	
 	
 $(document).ready(function() {   
-
-
-
 $('input.add_member').focus(function() {
 	if (this.value == '' || this.value == null) {
 		$('.friend_dropdown_list ul').hide();
@@ -869,9 +862,7 @@ $('#mask4').click(function(e) {
         $('.friend_dropdown_list ul').hide();
 		
 });
-
 });
-
 });
 
 	  

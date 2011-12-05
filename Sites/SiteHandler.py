@@ -28,6 +28,7 @@ class AddSiteToTrip(BaseHandler):
             site_name  = self.get_argument('site_name')
             date  = self.get_argument('date')
             ride = self.get_argument('site_ride')
+            group_id = self.get_argument('group_id')
             print(ride+'+++++++++++++++++++++==')
             site = self.syncdb.sites.find_one({'lc_username': {'$regex':'^'+site_name.upper()}})
             
@@ -42,7 +43,13 @@ class AddSiteToTrip(BaseHandler):
             _site['dest'] = site_name
             _site['type'] = ride
             trip_site = self.render_string("Sites/trip_site.html", site = _site)
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$addToSet':{'dest_place':_site}})
+            #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$addToSet':{'dest_place':_site}})
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            for group in trip['groups']:
+                if group['group_id'] == bson.ObjectId(group_id):
+                    group['dest_place'].append(_site)
+                    
+            self.syncdb.trips.save(trip)
             self.write(trip_site)
             
 class PostNoteToSite(BaseHandler):

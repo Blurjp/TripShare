@@ -20,7 +20,8 @@ from Map.ProcessTripHandler import UnsubscribeTrip
 from Map.ProcessTripHandler import LikeTripHandler
 from Map.ProcessTripHandler import AddTripTagHandler
 from Map.ProcessTripHandler import AddTripGroupHandler
-from Map.ProcessTripHandler import GetTripGroupHandler
+from Map.ProcessTripHandler import GetTripGroupForMapHandler
+from Map.ProcessTripHandler import GetTripGroupForSiteHandler
 from Users.UserInfo import UpdateUserProfileHandler
 
 from Map.BrowseTripHandler import BaseHandler
@@ -115,7 +116,7 @@ class MainPage(BaseHandler):
                
                 if (trip_user):
                     image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
-                    dest_places.append(unicode(simplejson.dumps(trip['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+                    dest_places.append(unicode(simplejson.dumps(trip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         
         """ Get latest trips to show in the list"""
         
@@ -129,7 +130,7 @@ class MainPage(BaseHandler):
                 for latest_trip_id in latest_trip_ids:
                         latest_trip_id['check_join'] = False
                         
-                        members = latest_trip_id['members']
+                        members = latest_trip_id['groups'][0]['members']
                         if self.current_user:
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:
@@ -207,7 +208,8 @@ class Application(tornado.web.Application):
                                       (r"/postsitenote", PostNoteToSite),
                                       (r"/guides", BrowseGuidesHandler),
                                      
-                                      (r"/gettripgroup/([^/]+)/([^/]+)", GetTripGroupHandler),
+                                      (r"/gettripgroupformap/([^/]+)/([^/]+)", GetTripGroupForMapHandler),
+                                      (r"/gettripgroupforsite/([^/]+)/([^/]+)", GetTripGroupForSiteHandler),
                                       (r"/add_trip_tag", AddTripTagHandler),
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),

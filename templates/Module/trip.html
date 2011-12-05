@@ -4,13 +4,13 @@
 <a href="/trip/{{trip['slug']}}"><h2>{{trip['title']}}</h2></a>
 <ul class="trip_details">
   <li ><b>Organizer</b>: <a href="/people/{{trip['owner_name']}}">{{trip['owner_name']}}</a></li>
-  <li >Start: {{trip['start_place']}}</li>
+  <li >Start: {{trip['groups'][0]['start_place']}}</li>
   <li >Destination:
-  {% for place in trip['dest_place'] %}
+  {% for place in trip['groups'][0]['dest_place'] %}
     <span>{{place['dest']}} </span><br>
   {% end %}
   </li>
-  <li >Start Date: {{trip['start_date']}}</li>
+  <li >Start Date: {{trip['groups'][0]['start_date']}}</li>
   <li >Last updated by <a href="/people/{{trip['last_updated_by']['slug']}}">{{trip['last_updated_by']['username']}}</a></li>
   <li>
 </li>
@@ -24,8 +24,8 @@
 <div class="actions">
 <div class="members">
 <img alt="members" class="members" src="{{ static_url("images/people.png") }}">
-<a href="showmembers" class="member_count">{{ len(trip['members']) }}</a>
-{% for member in trip['members'] %} 
+<a href="showmembers" class="member_count">{{ len(trip['groups'][0]['members']) }}</a>
+{% for member in trip['groups'][0]['members'] %} 
 <span class="avatar">
   <a style="cursor:pointer;" href="/people/{{member['slug']}}" >
   	<img class="picture small" alt="{{member['username']}}" src={{member['picture']}}>
@@ -37,14 +37,14 @@
 {% if not current_user %}
 <input type ="button" class="l_subscribe fancy" sid={{trip['trip_id']}} value="Join" href="#login">
 {% else %}
-{% if current_user['slug'] in [p['slug'] for p in trip['members'] if p['user_id'] == current_user['user_id'] ]%}
+{% if current_user['slug'] in [p['slug'] for p in trip['groups'][0]['members'] if p['user_id'] == current_user['user_id'] ]%}
 <input type ="button" class="l_unsubscribe fancy" sid={{trip['trip_id']}} value="Leave the trip" href="{{current_user['user_id']}}">
 {% else %}
 <input type ="button" class="l_subscribe fancy" sid={{trip['trip_id']}} value="Join" href="{{current_user['user_id']}}">
 {% end %}
 {% end %}
 <a href="/like/{{trip['slug']}}">like this</a> / 
-<a href="/places/{{trip['start_place']}}">You have been there</a>
+<a href="/places/{{trip['groups'][0]['start_place']}}">You have been there</a>
 </div>
 </div>
 </div>

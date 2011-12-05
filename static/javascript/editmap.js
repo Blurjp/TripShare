@@ -1033,7 +1033,7 @@ $('.trip_site_add_done').live('click',function(){
 		return;
 	}
 	
-	var content = {"site_name":$('#site_input').val() ,"date":$('.site_input_date').val(),"site_ride":$('.site_action select').val(),"trip_id":$('#tripId').val()};
+	var content = {"site_name":$('#site_input').val() ,"group_id": $('#groupId').val(),"date":$('.site_input_date').val(),"site_ride":$('.site_action select').val(),"trip_id":$('#tripId').val()};
 	
 	content._xsrf = getCookie("_xsrf");
 	
@@ -1131,23 +1131,41 @@ function PostFeedResponse(response){
 
 function set_trip_section(group_id)
 {
-	$.getJSON('/gettripgroup/'+group_id+'/'+$('#tripId').val(), function(response){
+	$.getJSON('/gettripgroupformap/'+group_id+'/'+$('#tripId').val(), function(response){
 		if(response!='')
 		{
 			var object = JSON.parse(response);
 			$('#dest_place').val(object['dest_place']);
 			//init the map after change group
 			initialize();
-	
 		}
 	});
+	
+	$.getJSON('/gettripgroupforsite/'+group_id+'/'+$('#tripId').val(), function(response){
+		if(message!='')
+		{
+			var node;
+		    var sites = message.split("||||");
+			$(".route").empty();
+		
+		    $.each(trips, function(index, value) {
+	         node = $(value);
+            // node.hide();
+		     
+             $(".route").append(node);
+             //node.show(); 
+         });	
+		 }
+	});
 }
+
 
 	$(function() {
 		
 		$('.droppable').live('click',function(){
 			$(this).addClass('on').siblings().removeClass('on');
 			var group_id = $(this).attr('sid');
+			$('#groupId').val(group_id);
 			set_trip_section(group_id);
 		});
 		
@@ -1359,7 +1377,7 @@ $('.trip_member_add_form_hide').live('click',function(){
 
 $('.add_user_to_trip').live('click',function()
 {
-	var content = {"trip_id":$('#tripId').val(), "user_id":$(this).attr('sid'), "_xsrf":getCookie("_xsrf")};
+	var content = {"trip_id":$('#tripId').val(),"group_id":$(this).parents('.droppable').attr('sid') , "user_id":$(this).attr('sid'), "_xsrf":getCookie("_xsrf")};
 	var object = $(this);
 	$.postJSON('/addusertotrip', content, function(response){
 		if(response=='existed')

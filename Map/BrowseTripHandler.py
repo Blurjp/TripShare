@@ -102,7 +102,7 @@ class EntryHandler(BaseHandler):
         if error:
             raise tornado.web.HTTPError(500)
         print("Trips/edittrip.html")
-        self.render("Trips/edittrip.html", singletrip=self.singletrip, dest_place = unicode(simplejson.dumps(self.singletrip['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)),token = self.xsrf_token, trips=response)
+        self.render("Trips/edittrip.html", group_id=self.singletrip['groups'][0]['group_id'] , singletrip=self.singletrip, dest_place = unicode(simplejson.dumps(self.singletrip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)),token = self.xsrf_token, trips=response)
         
 class TripPageHandler(BaseHandler):
 
@@ -126,7 +126,7 @@ class TripPageHandler(BaseHandler):
                 for latest_trip_id in latest_trip_ids:
                         latest_trip_id['check_join'] = False
                         
-                        members = latest_trip_id['members']
+                        members = latest_trip_id['groups'][0]['members']
                         if self.current_user:
                             for member in members:
                                 if member['user_id'] == self.current_user['user_id']:

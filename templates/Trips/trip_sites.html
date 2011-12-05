@@ -1,19 +1,18 @@
 
 <div class="trip_route" style="width:45% ; float:left; padding-left:20px">
 {% if singletrip %}
-
 <ul class="route left" style="width:100%">
-{% for site in singletrip['groups'][]['dest_place'] %} 
+{% for site in singletrip['groups'][0]['dest_place'] %}
 <li class="show_site" >
 <div class="site-details left" style="width:80% ;padding:5px">
 
  
   <div class="site-bar" >
   <img class="picture small"  src="{{ static_url("icon/site_icon2.png") }}">
-  <h2><a href="/sights/{{site['dest']}}">
+  <h2>
+  <a href="/sights/{{site['dest']}}">
     <span class="trip_sights" value="{{site['dest']}}">{{site['dest']}} </span>
   </a>
-  
     <input onfocus="showCalendarControl(this);" class="site_date" value="{{site['date']}}">
 	</h2>
  </div>
@@ -89,10 +88,11 @@
 <a class="trip_site_remove" href="#"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a>
 </div>
 </li>
+
 {% end %}
 </ul>
-
+{% end %}
 <input class="trip_site_add" type="button">
 
-{% end %}
+
 </div>

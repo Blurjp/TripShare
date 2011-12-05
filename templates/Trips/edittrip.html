@@ -96,10 +96,10 @@
 <div class="conv-head"> 
 <ul class="trip_member_tabs trip_member_groups_list">
 {% for group in singletrip['groups'] %}
-<li class="on droppable" sid="{{['user_id']}}">
+<li class="droppable" sid="{{group['group_id']}}">
 
 <ul class="trip_member" style="display:block"> 
-{% for member in singletrip['members'] %}
+{% for member in group['members'] %}
 <li class="draggable" sid="{{member['user_id']}}">
 <span class="headpichold">
 <a style="cursor:pointer;" href="/people/{{member['slug']}}">
@@ -143,7 +143,7 @@
 </li>	
 </li>
 </ul>
-<div class="member_count"><a href="/managemember/{{singletrip['slug']}}"><span class="num">{{ len(singletrip['members']) }}</span> member</a>
+<div class="member_count"><a href="/managemember/{{singletrip['slug']}}"><span class="num">{{ singletrip['member_count'] }}</span> member</a>
 </div>
 </div>
 
@@ -272,12 +272,13 @@ function ShowTripTag(tag)
 <div class="map-detail" type="hidden">
 
 				<input name="username" id="username" type="hidden" value="{{current_user['username']}}" > 
+				<input name="groupId" id="groupId" value="{{group_id}}" type="hidden">
 				<input name="tripId" id="tripId" type="hidden" value = "{{singletrip['trip_id']}}">
-                <input name="startPlace" id="startPlace" type="hidden" value = "{{singletrip['start_place']}}"> 
+                <input name="startPlace" id="startPlace" type="hidden" value = "{{singletrip['groups'][0]['start_place']}}"> 
                 <input name="dest_place" id="dest_place" type="hidden" value = "{{dest_place}}">  
-				<input name="startPosition" id="startPosition" type="hidden" value = "{{singletrip['start_place_position']}}"> 
-				<input name="wayPoints" id="wayPoints" type="hidden" value = "{{singletrip['way_points']}}"> 
-                <input name="encodedPolyline" id="encodedPolyline" type="hidden" value = "{{singletrip['trip_path']}}">  
+				<input name="startPosition" id="startPosition" type="hidden" value = "{{singletrip['groups'][0]['start_place_position']}}"> 
+				<input name="wayPoints" id="wayPoints" type="hidden" value = "{{singletrip['groups'][0]['way_points']}}"> 
+                <input name="encodedPolyline" id="encodedPolyline" type="hidden" value = "{{singletrip['groups'][0]['trip_path']}}">  
                 <input name="result" id="result" type="hidden" value=''> 
 				<input name="slug" id="trip_slug" type="hidden" value = "{{singletrip['slug']}}"> 
 				<input name="title" id="trip_title" type="hidden" value = "{{singletrip['title']}}">
