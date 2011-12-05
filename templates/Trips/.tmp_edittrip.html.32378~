@@ -126,9 +126,8 @@
 </li>
 {% end %}
 
-<li class="new_trip_tab droppable" sid="">
+<li class="new_trip_tab droppable">
 	<ul class="trip_member" style="display:block">
-	<li class="readme"><span>New Group</span></li>
 	<li class="trip_member_add_form_show">
 </li>
 <li class="trip_member_add_form">

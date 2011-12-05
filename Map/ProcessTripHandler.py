@@ -19,7 +19,8 @@ class AddTripGroupHandler(BaseHandler):
             trip_id = self.get_argument('trip_id')
             group_id = self.get_argument('group_id')
             user_id = self.get_argument('user_id')
-            user = self.syncdb.find_one({'user_id':bson.ObjectId(user_id)})
+            global user
+            user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
             _groups = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
             
             # add user to new group

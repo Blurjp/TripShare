@@ -58,14 +58,20 @@ class PostNoteToSite(BaseHandler):
             
             site_name = self.get_argument('site_name')
             trip_id = self.get_argument('trip_id')
+            group_id = self.get_argument('group_id')
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             message = {"note": self.get_argument('note'), "date": datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
-            for place in trip['dest_place']:
-                if place['dest'] == site_name:
-                    place['notes'].append(message)
-                    break
+            for group in trip['groups']:
+                if group['group_id'] == bson.ObjectId(group_id):
+                   for place in group['dest_place']:
+                      
+                      if place['dest'] == site_name:
+                          print(site_name)
+                          place['notes'].append(message)
+                          break
+                      
             #response = {'comment_id': bson.ObjectId(),'body': content,'date': datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
             #self.syncdb.trips.update({"trip_id":bson.ObjectId(trip_id),"dest_place.dest":site_name},  {'$push': {'dest_place.note':message}})
             self.syncdb.trips.save(trip)
-            print(unicode(simplejson.dumps(message, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+            #print(unicode(simplejson.dumps(message, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
             self.write(unicode(simplejson.dumps(message, cls=MongoEncoder.MongoEncoder.MongoEncoder)))

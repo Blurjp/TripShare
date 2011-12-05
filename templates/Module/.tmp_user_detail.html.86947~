@@ -1,0 +1,58 @@
+<div class='sidebar vcard'> 
+<div id="xri">
+<a href="/login" sid="{{custom_user['user_id']}}" name="focus" class="friendaction xf xbj">Add friend</a>
+<a class="xe" title="Send Message" target="_blank" sid="{{custom_user['user_id']}}" href="/login"><span class="xi"></span></a>
+</div>
+<div class="pod sidebar-counts clearfix">
+<table>
+<tbody><tr>
+<td>
+<div class="inset">
+<strong class="primary-text-color">{{len(custom_user['city'])}}</strong>
+city have been
+</div>
+</td>
+<td class="last">
+<div class="inset">
+<strong class="primary-text-color">{{len(custom_user['trips'])}}</strong>
+trips created
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="pod cpod">
+<div id="dashboard-profile">
+<a href="{{custom_user['picture']}}" class="avatar" target="_blank"><img class="picture medium" src="{{custom_user['picture']}}"></a>
+<div class="details">
+<strong class="fn">{{custom_user['slug']}}</strong>
+<div class="url" rel="me nofollow"><a href="/people/notifications" target="_blank" title=""></a></div>
+<small style="white-space:nowrap">
+
+</small>
+</div>
+</div>
+<h2>
+<small class="right">
+<a href="/settings">Edit Profile and Settings</a>
+</small>
+About
+</h2>
+<dl class="dlist" style="margin-bottom:0">
+<dt>Location:</dt>
+<dd class="adr">{{custom_user['current_location']}}</dd>
+</dl>
+</div>
+<div class="pod cpod">
+<h2>Friends</h2>
+<dl class="dlist pod clearfix" style="margin-bottom:0">
+<dd class="following-avatar-list clearfix">
+{% for user in custom_user['friends'] %}
+<span class='avatar tooltip vcard' title="{{user['slug']}}"> 
+<a href="/people/{{user['slug']}}" class="url" rel="contact"><img alt="Small_thumb" class="photo fn" src="{{user['picture']}}" /></a> 
+</span> 
+{% end %}
+</dd>
+</dl>
+</div>
+</div> 

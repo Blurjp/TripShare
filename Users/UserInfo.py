@@ -98,44 +98,48 @@ class AddUserToTripHandler(BaseHandler):
         userids.append(bson.ObjectId(self.userid))
         self.tripid = self.get_argument('trip_id')
         self.group_id = self.get_argument('group_id')
-        #_user = self.syncdb.trips.find({'trip_id':bson.ObjectId(self.tripid), 'members.user_id': bson.ObjectId(self.userid)})
         if self.syncdb.trips.find({'trip_id':bson.ObjectId(self.tripid), 'groups.members.user_id':{'$in':userids}}).count()>0:
             self.write('existed')
-        
+            return
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(self.tripid)})
+        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
+        if self.group_id =='new':
+            
+            group_template = trip['groups'][0].copy()
+            group_template['group_id']=bson.ObjectId()
+            group_template['members'] = []
+            group_template['members'].append(user)            
+            trip['groups'].append(group_template)
+            user['group_id'] = group_template['group_id']
+        #_user = self.syncdb.trips.find({'trip_id':bson.ObjectId(self.tripid), 'members.user_id': bson.ObjectId(self.userid)})
         else:
-            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(self.tripid)})
-            user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
+            
             for group in trip['groups']:
                 if group['group_id'] == bson.ObjectId(self.group_id):
                     group['members'].append(user)
+                    break
                     
-            self.syncdb.trips.save(trip)
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$inc' : { 'member_count' : 1 }}) 
-            self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
-        #self.write('success')
-            self.write(unicode(simplejson.dumps(user, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+            
+        self.syncdb.trips.save(trip)
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$inc' : { 'member_count' : 1 }}) 
+        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
+        self.write(unicode(simplejson.dumps(user, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         
         
 class RemoveUserFromTripHandler(BaseHandler):
     userid = None
     tripid = None
-    
     def post(self):
         self.userid = self.get_argument('user_id')
         self.tripid = self.get_argument('trip_id')
         
-        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
-        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$pull':{'members': {'user_id': user['user_id']}}})  
-        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$dec' : { 'member_count' : 1 }})  
-        
+        #user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$pull':{'groups.members': {'user_id': bson.ObjectId(self.userid)}}})  
+        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$inc' : { 'member_count' : -1 }})  
+        print('dec+++++++++++++++='+self.userid)
         self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, {'$pull':{'trips': bson.ObjectId(self.tripid)}})
         self.write('success')
-        
-    def _remove_user_from_trip(self, response, error):
-        if error:
-            raise tornado.web.HTTPError(500)
-        self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$pull':{'trips': bson.ObjectId(self.tripid)}})
-        self.write('success')
+
 
 class CheckUserinTripHandler(BaseHandler):
     def get(self, userid, tripid):  
@@ -164,7 +168,7 @@ class UnFollowUserHandler(BaseHandler):
     def post(self, userid):
         if self.current_user:
             user = self.syncdb.users.find_one({'owner_id': bson.ObjectId(userid)})
-            self.db.users.update({'owner_id':bson.ObjectId(self.current_user['user_id'])}, { '$pop':{'friends': user} }, callback = self._user_unfollow)     
+            self.db.users.update({'owner_id':bson.ObjectId(self.current_user['user_id'])}, { '$pull':{'friends': user} }, callback = self._user_unfollow)     
         else:
             self.redirect("exception.html")
     

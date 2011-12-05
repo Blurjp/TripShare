@@ -1254,8 +1254,8 @@ cursor: pointer;
 		-webkit-box-shadow: 0 1px 0 #FFF inset; 
 		-moz-box-shadow: 0 1px 0 #FFF inset; 
 		box-shadow: 0 1px 0 #FFF inset;}
-.trip_member_tabs li {		display: block; float: left; 
-		font: 15px/35px Arial, Helvetica, Sans-serif; 
+.trip_member_tabs .droppable {		display: block; float: left; 
+font: 15px/35px Arial, Helvetica, Sans-serif; 
 		color: #999; 
 		text-shadow: 0 1px 0 #FFF;
 		border-left: solid 1px rgba(0,0,0,0.05);
@@ -1272,4 +1272,5 @@ cursor: pointer;
 
 .new_trip_tab {min-width:80px;min-height:80px;float: left; font: 15px/35px Arial, Helvetica, Sans-serif; color: #999; text-shadow: 0 1px 0 #FFF;border-left: solid 1px rgba(0,0,0,0.05);border-right: solid 1px rgba(255,255,255,0.7);position: relative;}
 .droppable {cursor:pointer}
-
+.readme {border-left:none!important;border-right:none !important}
+.readme span {text-decoration:none}

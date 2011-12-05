@@ -1053,7 +1053,7 @@ $('.postUpdate').click(function(){
 
 $('.postUpdateDone').click(function(){
 	//alert($(this).parent().parent().find('.trip_sights').attr('class'));
-	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
+	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"group_id":$('#groupId').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
 	message._xsrf = getCookie("_xsrf");
 	var object = $(this);
 	$.postJSON('/postsitenote', message, function(response){if (response != '') {
@@ -1210,7 +1210,7 @@ function set_trip_section(group_id)
 				    $.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
 					{
-					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
+					var node = '<li class="new_trip_tab droppable" sid=""><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
 					object.removeClass('new_trip_tab');
 					var temp = draggable;
 					object.addClass('on').siblings().removeClass('on');
@@ -1377,7 +1377,24 @@ $('.trip_member_add_form_hide').live('click',function(){
 
 $('.add_user_to_trip').live('click',function()
 {
-	var content = {"trip_id":$('#tripId').val(),"group_id":$(this).parents('.droppable').attr('sid') , "user_id":$(this).attr('sid'), "_xsrf":getCookie("_xsrf")};
+	//alert($(this).parents('.droppable').attr('sid'));
+	if ($(this).parents('.droppable').attr('sid') == '') {
+		var content = {
+			"trip_id": $('#tripId').val(),
+			"group_id": 'new',
+			"user_id": $(this).attr('sid'),
+			"_xsrf": getCookie("_xsrf")
+		};
+		
+	}
+	else {
+		var content = {
+			"trip_id": $('#tripId').val(),
+			"group_id": $(this).parents('.droppable').attr('sid'),
+			"user_id": $(this).attr('sid'),
+			"_xsrf": getCookie("_xsrf")
+		};
+	}
 	var object = $(this);
 	$.postJSON('/addusertotrip', content, function(response){
 		if(response=='existed')
@@ -1385,7 +1402,13 @@ $('.add_user_to_trip').live('click',function()
 			alert('User already exist in this trip.');
 		}
 		else if (response != '') {
-			
+			//if ('group_id' in response)
+			if(response.hasOwnProperty('group_id'))
+			{
+				$(this).parents('.droppable').attr('sid').val(response['group_id']);
+				$(this).parents('.droppable').removeClass('new_trip_tab');
+				$(this).parents('.droppable').children('.readme').empty();
+			}
 			var user = JSON.parse(response);
 			var node = $('<li><span class="headpichold"><a style="cursor:pointer;" href="/people/'+user["slug"]+'"><img class="picture medium" alt="'+user['username']+'"  src="'+user['picture']+'" ></a></span><div sid="'+user['user_id']+'" class="member_button_remove" style="display:block"></div></li>');
 	       // alert(object.parents('.trip_member').find('.trip_member_add_form_show').attr('class'));
