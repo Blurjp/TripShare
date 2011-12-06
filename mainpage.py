@@ -111,9 +111,7 @@ class MainPage(BaseHandler):
         trips = self.syncdb.trips.find().limit(10)
         if trips.count() > 0:
             for trip in trips:
-                
                 trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
-               
                 if (trip_user):
                     image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
                     dest_places.append(unicode(simplejson.dumps(trip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))

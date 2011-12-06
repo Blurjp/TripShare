@@ -14,19 +14,19 @@ from BrowseTripHandler import BaseHandler
 
             
 class AddTripGroupHandler(BaseHandler):
+        
         @tornado.web.authenticated
         def post(self): 
             trip_id = self.get_argument('trip_id')
             group_id = self.get_argument('group_id')
             user_id = self.get_argument('user_id')
-            global user
-            user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
             _groups = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
             
             # add user to new group
             if group_id == '':
+                user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
                 group_id = bson.ObjectId()
-                group_template = _groups[0]
+                group_template = _groups[0].copy()
                 group_template['group_id']=bson.ObjectId(group_id)
                 group_template['members'] = []
                 group_template['members'].append(user)
@@ -34,12 +34,14 @@ class AddTripGroupHandler(BaseHandler):
                 
             else:
                 # add user to existed group
+                
                 for group in _groups:
                     if group['group_id'] == bson.ObjectId(group_id):
+                        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
                         group['members'].append(user)
-                    for user in group['members']:
+                    for index, user in enumerate(group['members']):
                         if user['user_id'] == bson.ObjectId(user_id):
-                            del user
+                            group['members'][index]=[]
                     
                         
             self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'groups':_groups})

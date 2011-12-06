@@ -1,0 +1,67 @@
+<li class="show_site" style="height:100px">
+<div class="site-details left" style="width:80% ;padding:5px">
+<div class="site-bar">
+<img class="picture small" src="/static/icon/site_icon2.png">
+<h2><a href="/sights/{{site['dest']}}">
+<span class="trip_sights" value="{{site['dest']}}">{{site['dest']}}</span>
+</a>
+<input onfocus="showCalendarControl(this);" class="site_date" value="{{site['date']}}">
+</h2>
+</div>
+<p>{{site['description']}}</p>
+  <div class="site_hotel">
+  	<a class="add_hotel">Add hotel</a>
+  </div>
+ <a class="show_notes">Show notes</a>
+ <a class="hide_notes">Hide notes</a>
+ <ul class="site_notes">
+ 	<li></li>
+ {% for note in site['notes'] %}
+<li class="site_note left">
+					<div class="left">
+						<img alt="{{note['from']['username']}}" src="{{note['from']['picture']}}" title="{{note['from']['username']}}" class="picture medium"><div class="type"></div>
+					</div>
+					<div style="margin:5px 10px">
+						
+						<p class="message">
+							{{note['note']}}
+						</p>
+						<p class="details">
+							<span class="timestamp">{{note['date']}}</span>  · <a class="remove_site_note" href="#">Remove</a>
+						</p>
+		</div>			
+</li>
+ {% end %}
+ </ul>
+<div class="site_note_action">
+<input class="site_note_input">
+<input class="postUpdateDone regular_button" type="button" value="post">
+</div>
+<a href="#" class="postUpdate">Post a note</a>
+<div class="action-bar">
+<div class="actions">
+<div class="site_action">
+<input type="button" class="like_site action" value="like" actiontype="like" targettype="site">
+\
+<input type="button" class="save_site action" value="save" actiontype="save" targettype="site">
+
+<select class="site_ride">
+<option value="plane">by plane</option>
+<option value="train">by train</option>
+<option value="car">by car</option>
+<option value="bus">by bus</option>
+<option value="ferry">by ferry</option>
+<option value="motorcycle">by motorcycle</option>
+<option value="cycle">by bicycle</option>
+<option value="walk">on foot</option>
+<option value="other">other</option></select>
+</div>
+</div>
+</div>
+</div>
+<div class="trip_site_move left" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; display: none; ">
+<a class="trip_site_move_up" href="#"><img src="/static/images/move_stop_up_16px.png" width="24" height="24"></a>
+<a class="trip_site_move_down" href="#"><img src="/static/images/move_stop_down_16px.png" width="24" height="24"></a>
+<a class="trip_site_remove" href="#"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a>
+</div>
+</li>

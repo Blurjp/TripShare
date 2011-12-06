@@ -1044,14 +1044,14 @@ $('.trip_site_add_done').live('click',function(){
 	});
 	
  //$(".site_ride").change(alert('test'));
-$('.postUpdate').click(function(){
+$('.postUpdate').live('click',function(){
 	
-	//alert($(this).parent().attr('class'));
-	$(this).parent().children('.site_note_action').show();
+	//alert($(this).siblings('.site_note_action').attr('class'));
+	$(this).siblings('.site_note_action').show();
 	//alert($(this).closest('.site_details left').attr('class'));
 });
 
-$('.postUpdateDone').click(function(){
+$('.postUpdateDone').live('click',function(){
 	//alert($(this).parent().parent().find('.trip_sights').attr('class'));
 	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"group_id":$('#groupId').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
 	message._xsrf = getCookie("_xsrf");
@@ -1131,24 +1131,29 @@ function PostFeedResponse(response){
 
 function set_trip_section(group_id)
 {
+	if(group_id=='default')
+	{
+		group_id = $('#groupId').val()
+	}
 	$.getJSON('/gettripgroupformap/'+group_id+'/'+$('#tripId').val(), function(response){
 		if(response!='')
 		{
 			var object = JSON.parse(response);
-			$('#dest_place').val(object['dest_place']);
+			$('#dest_place').val(JSON.stringify(object['dest_place']));
+			alert(JSON.stringify(object['dest_place']));
 			//init the map after change group
 			initialize();
 		}
 	});
 	
-	$.getJSON('/gettripgroupforsite/'+group_id+'/'+$('#tripId').val(), function(response){
+	$.getJSON('/gettripgroupforsite/'+group_id+'/'+$('#tripId').val(), function(message){
 		if(message!='')
 		{
 			var node;
 		    var sites = message.split("||||");
 			$(".route").empty();
 		
-		    $.each(trips, function(index, value) {
+		    $.each(sites, function(index, value) {
 	         node = $(value);
             // node.hide();
 		     
