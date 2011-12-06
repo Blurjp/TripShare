@@ -1138,9 +1138,11 @@ function set_trip_section(group_id)
 	$.getJSON('/gettripgroupformap/'+group_id+'/'+$('#tripId').val(), function(response){
 		if(response!='')
 		{
-			var object = JSON.parse(response);
-			$('#dest_place').val(JSON.stringify(object['dest_place']));
-			alert(JSON.stringify(object['dest_place']));
+			
+			//var object = JSON.parse(response);
+			//alert(JSON.stringify(object['title']))
+			$('#dest_place').val(response);
+			
 			//init the map after change group
 			initialize();
 		}
@@ -1352,6 +1354,7 @@ $('.trip_member_add_form_show').live('click',function(){
         setTimeout("$('.trip_member_add_input').focus();", 50);
 });
 
+
 $('.trip_member_add_form_hide').live('click',function(){
 	 trip_member_add_form_displayed = false;
         
@@ -1407,14 +1410,15 @@ $('.add_user_to_trip').live('click',function()
 			alert('User already exist in this trip.');
 		}
 		else if (response != '') {
-			//if ('group_id' in response)
-			if(response.hasOwnProperty('group_id'))
-			{
-				$(this).parents('.droppable').attr('sid').val(response['group_id']);
-				$(this).parents('.droppable').removeClass('new_trip_tab');
-				$(this).parents('.droppable').children('.readme').empty();
-			}
 			var user = JSON.parse(response);
+			if(user.hasOwnProperty('group_id'))
+			{
+				
+				object.parents('.droppable').attr('sid',user['group_id']);
+				object.parents('.droppable').removeClass('new_trip_tab');
+				object.parents('.droppable').children('li').remove();
+			}
+			
 			var node = $('<li><span class="headpichold"><a style="cursor:pointer;" href="/people/'+user["slug"]+'"><img class="picture medium" alt="'+user['username']+'"  src="'+user['picture']+'" ></a></span><div sid="'+user['user_id']+'" class="member_button_remove" style="display:block"></div></li>');
 	       // alert(object.parents('.trip_member').find('.trip_member_add_form_show').attr('class'));
 			node.insertBefore(object.parents('.trip_member').find('.trip_member_add_form_show'));

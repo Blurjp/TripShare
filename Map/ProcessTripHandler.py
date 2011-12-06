@@ -48,15 +48,20 @@ class AddTripGroupHandler(BaseHandler):
 
 class GetTripGroupForMapHandler(BaseHandler):
     def get(self, group_id, trip_id):
-        if group_id == 'default':
-            group = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups'][0]
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+        if group_id == 'default' or group_id =='new':
+            group = trip['groups'][0]
         else:
-            group = self.syncdb.trips.find_one({'groups.group_id':bson.ObjectId(group_id), 'trip_id':bson.ObjectId(trip_id)})
-        self.write(unicode(simplejson.dumps(group, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+            for _group in trip['groups']:
+                if _group['group_id'] == bson.ObjectId(group_id):
+                    group = _group
+                    break
+              
+        self.write(unicode(simplejson.dumps(group['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
 class GetTripGroupForSiteHandler(BaseHandler):
     def get(self, group_id, trip_id):
-        if group_id == 'default':
+        if group_id == 'default' or group_id =='new':
             group = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups'][0]
             for site in group['dest_place']:
                         self.write(self.render_string("Sites/trip_site.html", site = site) + "||||")

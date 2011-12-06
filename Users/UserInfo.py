@@ -104,13 +104,13 @@ class AddUserToTripHandler(BaseHandler):
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(self.tripid)})
         user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
         if self.group_id =='new':
-            
             group_template = trip['groups'][0].copy()
             group_template['group_id']=bson.ObjectId()
             group_template['members'] = []
             group_template['members'].append(user)            
             trip['groups'].append(group_template)
             user['group_id'] = group_template['group_id']
+            
         #_user = self.syncdb.trips.find({'trip_id':bson.ObjectId(self.tripid), 'members.user_id': bson.ObjectId(self.userid)})
         else:
             
@@ -134,9 +134,16 @@ class RemoveUserFromTripHandler(BaseHandler):
         self.tripid = self.get_argument('trip_id')
         
         #user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
-        self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$pull':{'groups.members': {'user_id': bson.ObjectId(self.userid)}}})  
+        #wait for MongoDb 2.1 to be able update on multi-level embedded documents
+        #self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$pull':{'groups.members': {'user_id': bson.ObjectId(self.userid)}}})  
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(self.tripid)})
+        for group in trip['groups']:
+            for i, member in enumerate(group['members']):
+                if member['user_id'] == bson.ObjectId(self.userid):
+                    del group['members'][i]
+                    break
+        self.syncdb.trips.save(trip)
         self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$inc' : { 'member_count' : -1 }})  
-        print('dec+++++++++++++++='+self.userid)
         self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, {'$pull':{'trips': bson.ObjectId(self.tripid)}})
         self.write('success')
 

@@ -126,7 +126,7 @@
 </li>
 {% end %}
 
-<li class="new_trip_tab droppable" sid="">
+<li class="new_trip_tab droppable" sid="new">
 	<ul class="trip_member" style="display:block">
 	<li class="readme"><span>New Group</span></li>
 	<li class="trip_member_add_form_show">
@@ -246,7 +246,7 @@ function ShowTripTag(tag)
 <script type='text/javascript'>
 
 </script>
-
+<div id="above-body"></div>
 <div id="body"> 
 <div id="map-canvas"></div>
 <div style="clear:both"></div>
@@ -278,6 +278,7 @@ function ShowTripTag(tag)
                 <input name="startPlace" id="startPlace" type="hidden" value = "{{singletrip['groups'][0]['start_place']}}"> 
                 <input name="dest_place" id="dest_place" type="hidden" value = "{{dest_place}}">  
 				<input name="startPosition" id="startPosition" type="hidden" value = "{{singletrip['groups'][0]['start_place_position']}}"> 
+				<input name="endPosition" id="endPosition" type="hidden" value = ""> 
 				<input name="wayPoints" id="wayPoints" type="hidden" value = "{{singletrip['groups'][0]['way_points']}}"> 
                 <input name="encodedPolyline" id="encodedPolyline" type="hidden" value = "{{singletrip['groups'][0]['trip_path']}}">  
                 <input name="result" id="result" type="hidden" value=''> 
