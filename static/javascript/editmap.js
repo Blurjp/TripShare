@@ -1091,11 +1091,24 @@ $('.trip_site_remove').live('click',function(){
 	});
 });
 
-function AddSiteResponse(response)
+function AddSiteResponse(message)
 {
-     $('.route li').last().remove();
-	
-	 $('ul.route').append(response);
+		if(message!=null)
+		{
+		$('.route li').last().remove();
+		var node;
+		var sites = message.split("||||");
+		
+		
+		$.each(sites, function(index, value) {
+	         node = $(value);
+            // node.hide();
+		     
+             $('ul.route').append(node);
+             //node.show();
+			 
+         });	
+		 }
 	 $('.trip_site_add').show();
 }
 

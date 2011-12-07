@@ -67,7 +67,7 @@ function ShowGuideInList(message)
 }
  
  
- function ShowimportGuideResponse(response)
+ function ShowimportGuideResponse()
  {
  	 alert('guide import successfully!');
 	 $('#mask4').hide();  
@@ -78,9 +78,10 @@ function ShowGuideInList(message)
 	$(".l_importguide").live('click', function (e) {  
         //Cancel the link behavior  
         e.preventDefault();  
-		var content = {'_xsrf': getCookie("_xsrf"), 'guide_id' : $(this).attr('sid'), 'trip_id': $('#tripId').val()};
+		var content = {'_xsrf': getCookie("_xsrf"),'group_id': $('#groupId').val(), 'guide_id' : $(this).attr('sid'), 'trip_id': $('#tripId').val()};
     	$.postJSON('/importguidetotrip', content, function(response){
-        ShowimportGuideResponse(response);
+        ShowimportGuideResponse();
+		AddSiteResponse(response);
 			});	
 		
 		});
