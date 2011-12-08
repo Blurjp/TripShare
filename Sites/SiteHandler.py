@@ -15,8 +15,17 @@ class RemoveSiteFromTrip(BaseHandler):
         def post(self): 
             trip_id = self.get_argument('trip_id')
             site_name  = self.get_argument('site_name')
-            print(site_name)
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{'dest_place':{'dest':site_name}}})
+            group_id = self.get_argument('group_id')
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            for group in trip['groups']:
+                if group['group_id'] == bson.ObjectId(group_id):
+                    for i, dest in enumerate(group['dest_place']):
+                       if dest['dest'] == site_name:
+                           del group['dest_place'][i]
+                           
+                           break
+            self.syncdb.trips.save(trip)
+            #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{'dest_place':{'dest':site_name}}})
             self.write('success')
 
      

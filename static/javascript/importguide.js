@@ -74,6 +74,27 @@ function ShowGuideInList(message)
 	 $('#import_guide_step_1').hide();
 	 document.getElementById('import_guide_form').reset();
  }
+ 
+ function AddSiteResponse(message)
+{
+		if(message!=null)
+		{
+		$('.route li').last().remove();
+		var node;
+		var sites = message.split("||||");
+		
+		
+		$.each(sites, function(index, value) {
+	         node = $(value);
+            // node.hide();
+		     
+             $('ul.route').append(node);
+             //node.show();
+			 
+         });	
+		 }
+	 $('.trip_site_add').show();
+}
     
 	$(".l_importguide").live('click', function (e) {  
         //Cancel the link behavior  

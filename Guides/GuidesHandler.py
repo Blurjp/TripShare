@@ -233,24 +233,24 @@ class ImportGuideToTripHandler(BaseHandler):
         group_id = self.get_argument('group_id')
         trip_id = self.get_argument('trip_id')
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
-        _group = None
-        print('+++++++++++++'+group_id)
-        for group in trip['groups']:
+        index = 0
+        for i, group in enumerate(trip['groups']):
             if group['group_id'] == bson.ObjectId(group_id):
-                _group = group
+                index = i
                 break
         
-        _site = {}
-        _site['notes'] = []
         
-        if guide_id not in _group['imported_guides']:
+        
+        if guide_id not in trip['groups'][index]['imported_guides']:
             guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})
-            last_trip = _group['dest_place'][len(_group['dest_place'])-1]
+            last_trip = trip['groups'][index]['dest_place'][len(trip['groups'][index]['dest_place'])-1]
             date = FromStringtoDate.ToDate(last_trip['date'])
             one_day = datetime.timedelta(days=1)
             title = trip['title'] + guide['title']
             trip['title'] = title
             for dest in guide['dest_place']:
+                _site = {}
+                _site['notes'] = []
                 next_day = date+one_day
                 #_site['date']= dest['date'] = next_day.isoformat()
                 dest['date'] = next_day.isoformat()
@@ -264,15 +264,10 @@ class ImportGuideToTripHandler(BaseHandler):
                 else:
                     _site['description']= ''
                     _site['geo'] = ''
-                _group['dest_place'].append(_site)
-                _group['imported_guides'].append(guide_id)
+                trip['groups'][index]['dest_place'].append(_site)
+                trip['groups'][index]['imported_guides'].append(guide_id)
                 trip['tags'].append(dest['dest'])
                 self.write(self.render_string("Sites/trip_site.html", site = _site)+ "||||")
-                print(_site['dest'])
-                #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'dest_place':dest}})
-                #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'tags':dest['dest']}})
-                #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'imported_guides':guide_id}})
-            
             self.syncdb.trips.save(trip)
             #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})
             #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
