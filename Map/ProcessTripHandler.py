@@ -20,7 +20,15 @@ class AddTripGroupHandler(BaseHandler):
             trip_id = self.get_argument('trip_id')
             group_id = self.get_argument('group_id')
             user_id = self.get_argument('user_id')
-            _groups = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            _groups = trip['groups']
+            
+            for group in _groups:
+                    for index, user in enumerate(group['members']):
+                        if user['user_id'] == bson.ObjectId(user_id):
+                            print('delete')
+                            del group['members'][index]
+                            
             if group_id == 'new':
                 user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
                 group_id = bson.ObjectId()
@@ -30,19 +38,15 @@ class AddTripGroupHandler(BaseHandler):
                 group_template['members'].append(user)
                 _groups.append(group_template)
                 
+                
             else:
-                # add user to existed group
-                for group in _groups:
-                    for index, user in enumerate(group['members']):
-                        if user['user_id'] == bson.ObjectId(user_id):
-                            print('delete')
-                            #del group['members'][index]
+                # add user to existed group       
                     if group['group_id'] == bson.ObjectId(group_id):
                         user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
                         group['members'].append(user)
-                        
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'groups':_groups})
-
+            
+            self.syncdb.trips.save(trip)         
+            
 class GetTripGroupForMapHandler(BaseHandler):
     def get(self, group_id, trip_id):
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})

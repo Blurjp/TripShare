@@ -1230,7 +1230,7 @@ function set_trip_section(group_id)
 				var object = $(this);
 				//create a new group
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
-					alert(draggable['sid']);
+					//alert(draggable.attr('sid'));
 					var content = {'trip_id':$('#tripId').val(),'group_id':'new','user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
 				    $.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
@@ -1293,7 +1293,7 @@ function set_trip_section(group_id)
 				var group_id = $(this).attr('sid');
 				var object = $(this);
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
-					alert(draggable['sid']);
+					alert(draggable.attr('sid'));
 					var content = {'trip_id':$('#tripId').val(),'group_id':'new','user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
 				    $.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
