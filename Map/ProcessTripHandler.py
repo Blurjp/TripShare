@@ -12,6 +12,13 @@ import simplejson
 import MongoEncoder.MongoEncoder
 from BrowseTripHandler import BaseHandler
 
+class RemoveTripGroupHandler(BaseHandler):
+        @tornado.web.authenticated
+        def post(self): 
+            trip_id = self.get_argument('trip_id')
+            group_id = self.get_argument('group_id')
+            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{'group_id':bson.ObjectId(group_id)}})
+            self.write('success')
             
 class AddTripGroupHandler(BaseHandler):
         
@@ -45,7 +52,8 @@ class AddTripGroupHandler(BaseHandler):
                         user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
                         group['members'].append(user)
             
-            self.syncdb.trips.save(trip)         
+            self.syncdb.trips.save(trip)
+            self.write('success')
             
 class GetTripGroupForMapHandler(BaseHandler):
     def get(self, group_id, trip_id):

@@ -1235,10 +1235,19 @@ function set_trip_section(group_id)
 				    $.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
 					{
-					var node = '<li class="new_trip_tab droppable" sid=""><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
+					var node = '<li class="new_trip_tab droppable" sid=""><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form_remove"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
 					object.removeClass('new_trip_tab');
 					var temp = draggable;
+					//alert(draggable.parent('ul').children('li').size());
+					if(draggable.parent('ul').children('li').size()<4)
+					{
+						draggable.parent('ul').children('.trip_member_add_form_show').before('<li class="readme"><span>Empty Group</span></li>');
+					}
 					object.addClass('on').siblings().removeClass('on');
+					if(object.find('ul').find('.readme'))
+					{
+						object.find('ul').remove('.readme');
+					}
 					draggable.remove();
 					object.children('ul').children('.trip_member_add_form_show').before(temp);
 					object.parent('ul').append(node);
@@ -1253,9 +1262,17 @@ function set_trip_section(group_id)
 					$.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
 					{
-					$(this).addClass('on').siblings().removeClass('on');
+					if(draggable.parent('ul').children('li').size()<4)
+					{
+						draggable.parent('ul').children('.trip_member_add_form_show').before('<li class="readme"><span>Empty Group</span></li>');
+					}
+					object.addClass('on').siblings().removeClass('on');
 					draggable.remove();
-					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
+					if(object.find('ul').find('.readme'))
+					{
+						object.find('ul').remove('.readme');
+					}
+					object.children('ul').children('.trip_member_add_form_show').before(temp);
 					}
 					});
 				}
@@ -1293,15 +1310,23 @@ function set_trip_section(group_id)
 				var group_id = $(this).attr('sid');
 				var object = $(this);
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
-					alert(draggable.attr('sid'));
+					
 					var content = {'trip_id':$('#tripId').val(),'group_id':'new','user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
 				    $.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
 					{
-					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
+					var node = '<li class="new_trip_tab droppable"><ul class="trip_member" style="display:block"><li class="trip_member_add_form_show"></li><li class="trip_member_add_form_remove"></li><li class="trip_member_add_form"><div class="trip_member_add_input_exterior"><input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small"><div class="people_search_result_in_trip"><ul class="people_search_result_list"></ul></div></div><a class="trip_member_add_form_hide">done</a></li></ul></li>';
 					object.removeClass('new_trip_tab');
 					var temp = draggable;
+					if(draggable.parent('ul').children('li').size()<4)
+					{
+						draggable.parent('ul').children('.trip_member_add_form_show').before('<li class="readme"><span>Empty Group</span></li>');
+					}
 					object.addClass('on').siblings().removeClass('on');
+					if(object.find('ul').find('.readme'))
+					{
+						object.find('ul').remove('.readme');
+					}
 					draggable.remove();
 					object.children('ul').children('.trip_member_add_form_show').before(temp);
 					object.parent('ul').append(node);
@@ -1314,9 +1339,17 @@ function set_trip_section(group_id)
 					$.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
 					{
-					$(this).addClass('on').siblings().removeClass('on');
+					if(draggable.parent('ul').children('li').size()<4)
+					{
+						draggable.parent('ul').children('.trip_member_add_form_show').before('<li class="readme"><span>Empty Group</span></li>');
+					}
+					object.addClass('on').siblings().removeClass('on');
+					if(object.find('ul').find('.readme'))
+					{
+						object.find('ul').remove('.readme');
+					}
 					draggable.remove();
-					$(this).children('ul').children('.trip_member_add_form_show').before(temp);
+					object.children('ul').children('.trip_member_add_form_show').before(temp);
 					}
 					});
 				}
@@ -1344,12 +1377,18 @@ function trip_member_add_show(status, object)
     if(status && !trip_member_add_form_displayed)
     {
         object.children('.trip_member_add_form_show').show();
+		object.children('.trip_member_add_form_remove').show();
     }
     else
     {
         object.children('.trip_member_add_form_show').hide();
+		object.children('.trip_member_add_form_remove').hide();
     }
 }
+
+$('.trip_member_add_form_remove').live('click',function(){
+	$(this).parents('trip_member')
+});
 
 $('.trip_member_add_form_show').live('click',function(){
 	trip_member_add_form_displayed = true;

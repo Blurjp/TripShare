@@ -1,5 +1,5 @@
 
-<div class="trip_route" style="width:45% ; float:left; padding-left:20px;">
+<div class="trip_route" style="width:45% ; float:left; padding-left:20px">
 {% if singletrip %}
 <ul class="route left" style="width:100%">
 {% for site in singletrip['groups'][0]['dest_place'] %}
