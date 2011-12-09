@@ -17,8 +17,20 @@ class RemoveTripGroupHandler(BaseHandler):
         def post(self): 
             trip_id = self.get_argument('trip_id')
             group_id = self.get_argument('group_id')
-            self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{'group_id':bson.ObjectId(group_id)}})
-            self.write('success')
+            if group_id == 'new':
+                self.write('success')
+                return
+            groups = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
+            if self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id), 'groups.group_id':bson.ObjectId(group_id)}):
+                len = 0
+                for group in groups:
+                    if group['group_id'] == bson.ObjectId(group_id):
+                        len = 0 - group['members'].__len__()
+                        
+                print(str(group['members'].__len__()))
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{ 'groups': {'group_id':bson.ObjectId(group_id)}}})
+                self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$inc':{'member_count': len}})
+                self.write('success')
             
 class AddTripGroupHandler(BaseHandler):
         
@@ -58,6 +70,7 @@ class AddTripGroupHandler(BaseHandler):
 class GetTripGroupForMapHandler(BaseHandler):
     def get(self, group_id, trip_id):
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+        group = None
         if group_id == 'default' or group_id =='new':
             group = trip['groups'][0]
         else:
@@ -65,8 +78,10 @@ class GetTripGroupForMapHandler(BaseHandler):
                 if _group['group_id'] == bson.ObjectId(group_id):
                     group = _group
                     break
-              
-        self.write(unicode(simplejson.dumps(group['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+        if group == None:
+            return
+        else:
+            self.write(unicode(simplejson.dumps(group['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
 class GetTripGroupForSiteHandler(BaseHandler):
     def get(self, group_id, trip_id):

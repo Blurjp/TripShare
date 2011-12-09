@@ -1026,14 +1026,22 @@ $('.trip_site_add').live('click',function(){
 
   
 $('.trip_site_add_done').live('click',function(){
+	if($('#groupId').val()=='new')
+	{
+		alert('Please assign a member to the new group.');
+		$('.trip_site_add').show();
+		return;
+	}
 	if($('#site_input').val()=='')
 	{
 		alert('Please input site name.');
+		$('.trip_site_add').show();
 		return;
 	}
 	if($('.site_input_date').val()=='')
 	{
 		alert('Please input date.');
+		$('.trip_site_add').show();
 		return;
 	}
 	
@@ -1056,7 +1064,11 @@ $('.postUpdate').live('click',function(){
 });
 
 $('.postUpdateDone').live('click',function(){
-	//alert($(this).parent().parent().find('.trip_sights').attr('class'));
+	if($('#groupId').val()=='new')
+	{
+		alert('Please assign a member to the group');
+		return;
+	}
 	var message = {"note": $(this).closest('.site_note_action').children('.site_note_input').val(),"group_id":$('#groupId').val(),"trip_id":$('#tripId').val(),"site_name":$(this).parent().parent().find('.trip_sights').attr('value')};
 	message._xsrf = getCookie("_xsrf");
 	var object = $(this);
@@ -1152,6 +1164,7 @@ function set_trip_section(group_id)
 	{
 		group_id = $('#groupId').val()
 	}
+	
 	$.getJSON('/gettripgroupformap/'+group_id+'/'+$('#tripId').val(), function(response){
 		if(response!='')
 		{
@@ -1230,7 +1243,7 @@ function set_trip_section(group_id)
 				var object = $(this);
 				//create a new group
 				if ($(this).attr('class').indexOf('new_trip_tab') > -1) {
-					//alert(draggable.attr('sid'));
+					
 					var content = {'trip_id':$('#tripId').val(),'group_id':'new','user_id': draggable.attr('sid'),'_xsrf':getCookie('_xsrf')};
 				    $.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
@@ -1387,7 +1400,21 @@ function trip_member_add_show(status, object)
 }
 
 $('.trip_member_add_form_remove').live('click',function(){
-	$(this).parents('trip_member')
+	
+	var content = {
+			"trip_id": $('#tripId').val(),
+			"group_id": $(this).parents('.droppable').attr('sid'),
+			"_xsrf": getCookie("_xsrf")
+		};
+	var object  = $(this);
+	$.postJSON('/removegroupfromtrip', content, function(response){
+		if (response!='')
+		{
+			object.closest('.trip_member').remove();
+			$('#groupId').val('default');
+		}
+	});
+	
 });
 
 $('.trip_member_add_form_show').live('click',function(){

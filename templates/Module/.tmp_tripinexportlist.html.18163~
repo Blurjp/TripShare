@@ -4,9 +4,9 @@
 <a href="/trip/{{trip['slug']}}"><h2>{{trip['title']}}</h2></a>
 
 <ul class="trip_details">
-  <li >Start: {{trip['groups'][0]['start_place']}}</li>
+  <li >Start: {{trip['start_place']}}</li>
   <li >Destination: 
-  {% for place in trip['groups'][0]['dest_place'] %} 
+  {% for place in trip['dest_place'] %} 
     <span>{{place['dest']}} </span><br>
   {% end %}
   </li>
@@ -20,12 +20,11 @@
 <div class="actions">
 <div class="members">
 <img alt="members" class="members" src="{{ static_url("images/people.png") }}">
-<a href="showmembers" class="member_count">{{ trip['member_count'] }}</a>
-{% for group in trip['groups'] %} 
-{% for member in group['members'] %} 
+<a href="showmembers" class="member_count">{{ len(trip['members']) }}</a>
+{% for member in trip['members'] %} 
   <a href="/people/{{member['slug']}}" class = "avatar" alt="{{member['user_id']}}"><img alt="{{member['username']}}" src={{member['picture']}}></a>
 {% end %}
-{% end %}
+
 </div>
 <div class="right">
 

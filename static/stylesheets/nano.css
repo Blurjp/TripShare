@@ -20,7 +20,7 @@ body,input,textarea,select,option,button,th,td{font-family:Arial,sans-serif;font
 body.fbiframe,.fbiframe input,.fbiframe textarea,.fbiframe select,.fbiframe option,.fbiframe button,.fbiframe th,.fbiframe td{font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:12px}       
 div,table,form,th,td,img,fieldset{padding:0;margin:0;border:0}       
 a{color:#0000cc;text-decoration:none}       
-a:hover{text-decoration:underline}
+a:hover{}
        a.selected{color:black;font-weight:bold}
        a.selected:hover{text-decoration:none}       
 table{border-collapse:collapse}
@@ -1244,6 +1244,7 @@ cursor: pointer;
 .trip_member .trip_member_add_form_remove:hover    { background-color: #59d859  }
 .trip_member .trip_member_add_form {display:none}
 .trip_action_options {float:right;width:300px}
+.guide_action_options {float:right;width:300px}
 .member_count {float:right;padding:15px}
 .trip_member_tabs {height:80px;float:left;width:1150px}
 .trip_member_tabs ul {height:60px;}
@@ -1257,7 +1258,8 @@ cursor: pointer;
 
 
 #above-body {border-top:3px solid #ccc;padding:15px 0;border-left:3px solid #ccc;border-right:3px solid #ccc;height:900px;border-top-right-radius: 25px;border-bottom-right-radius: 25px;border-bottom-left-radius: 25px;}
-.new_trip_tab {border-left: solid 1px rgba(255,255,255,0.7) !important;position: relative;}
+.new_trip_tab {border-left: solid 1px rgba(255,255,255,0.7) ;border-right: solid 3px rgba(0,0,0,0.05) !important;position: relative;}
 .droppable {cursor:pointer}
 .readme {padding-top:10px;border-left:none!important;border-right:none !important}
 .readme span {font-size: 1.3em;letter-spacing: 0;text-decoration:none}
+.add_hotel {cursor:pointer;text-decoration:none}

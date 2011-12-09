@@ -1344,22 +1344,16 @@ function PostFeedResponse(response){
 	<a href="{{guide['slug']}}" class="l_editpicture" title="Change picture"><img class="picture large" src="http://localhost/static/images/site.jpg" alt="{{guide['title']}}" class="picture xlarge"></a>
 </div>
 <div class="body">
-<ul class="guide_action_options">
-<li>
-<input type="button" uid="{{guide['guide_id']}}" class="regular-button l_exportguide" href="#" value="Export Guide">
-</li>
-</ul>
-
-
+<div class="stats">
+<div><a href=""><span class="num">{{ guide['rating'] }}</span> people like this guide</a>
+</div>
+</div>
 
 <h1><a class="name" href="{{guide['slug']}}">{{guide['title']}}</a> </h1>
 
 <a href="#" class="l_deleteguide" uid="{{guide['guide_id']}}">delete</a>
 /
 <a href="#" class="l_updateguide" uid="{{guide['guide_id']}}">update</a>
-/
-<a href=""><span class="num">{{ guide['rating'] }}</span> people like</a>
-
 {% end %}
 </div>
 </div>
@@ -1494,7 +1488,11 @@ function ShowGuideTag(tag)
 }
 </script>
 <div class="conv-head">
-
+<ul>
+<li>
+<input type="button" uid="{{guide['guide_id']}}" class="regular-button l_exportguide" href="#" value="Export Guide">
+</li>
+</ul>
 </div>
 </div>
 </div>

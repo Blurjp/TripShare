@@ -16,6 +16,9 @@ class RemoveSiteFromTrip(BaseHandler):
             trip_id = self.get_argument('trip_id')
             site_name  = self.get_argument('site_name')
             group_id = self.get_argument('group_id')
+            if group_id == 'new':
+                self.write('success')
+                return
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             for group in trip['groups']:
                 if group['group_id'] == bson.ObjectId(group_id):

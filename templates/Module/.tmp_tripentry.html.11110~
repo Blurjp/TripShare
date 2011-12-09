@@ -1,0 +1,7 @@
+
+
+
+{% for trip in latest_trip_ids %} 
+   {% include "trip.html" %}
+{% end %}
+
