@@ -41,28 +41,31 @@ class AddTripGroupHandler(BaseHandler):
             user_id = self.get_argument('user_id')
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             _groups = trip['groups']
+            _user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
             
             for group in _groups:
                     for index, user in enumerate(group['members']):
                         if user['user_id'] == bson.ObjectId(user_id):
-                            print('delete')
                             del group['members'][index]
+                            break
                             
             if group_id == 'new':
-                user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
+                
                 group_id = bson.ObjectId()
                 group_template = _groups[0].copy()
                 group_template['group_id']=bson.ObjectId(group_id)
                 group_template['members'] = []
-                group_template['members'].append(user)
+                group_template['members'].append(_user)
                 _groups.append(group_template)
                 
                 
             else:
-                # add user to existed group       
+                # add user to existed group   
+                for index, group in enumerate(_groups):    
                     if group['group_id'] == bson.ObjectId(group_id):
-                        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
-                        group['members'].append(user)
+                        _groups[index]['members'].append(_user)
+                        
+                        break
             
             self.syncdb.trips.save(trip)
             self.write('success')

@@ -18,7 +18,6 @@
 <script src="{{ static_url("javascript/importguide.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/js/all.js") }}" type="text/javascript"></script> 
 <script src="{{ static_url("javascript/createtripslides.js") }}" type="text/javascript"></script>
-
 <script src="{{ static_url("javascript/search.js") }}" type="text/javascript"></script>
 </head> 
 <body onload="set_trip_section('default')"> 
@@ -59,6 +58,9 @@
 
 <h1><a class="name" href="{{singletrip['slug']}}">{{singletrip['title']}}</a> </h1>
 <a href="#" class="l_editprofile" uid={{singletrip['trip_id']}}>edit settings</a>
+\
+<a href="/managemember/{{singletrip['slug']}}"><span class="num">{{ singletrip['member_count'] }}</span> member</a>
+
 {% end %}
 </div>
 </div>
@@ -95,10 +97,16 @@
 
 <div class="conv-head"> 
 <ul class="trip_member_tabs trip_member_groups_list">
-{% for group in singletrip['groups'] %}
+{% for index, group in enumerate(singletrip['groups']) %}
+{% if index == 0%}
+<li class="droppable first on" sid="{{group['group_id']}}">
+	{% else %}
 <li class="droppable" sid="{{group['group_id']}}">
-
+	{% end %}
 <ul class="trip_member" style="display:block"> 
+{% if len(group['members']) == 0  %}
+<li class="readme"><span>Empty Group</span></li>
+{% else %}
 {% for member in group['members'] %}
 <li class="draggable" sid="{{member['user_id']}}">
 <span class="headpichold">
@@ -109,8 +117,10 @@
 <div sid="{{member['user_id']}}" class="member_button_remove"></div> 
 </li>
 {% end %}
-
+{% end %}
 <li class="trip_member_add_form_show">
+</li>
+<li class="trip_member_add_form_remove">
 </li>
 <li class="trip_member_add_form">
 <div class="trip_member_add_input_exterior">
@@ -129,8 +139,7 @@
 <li class="new_trip_tab droppable" sid="new">
 	<ul class="trip_member" style="display:block">
 	<li class="readme"><span>New Group</span></li>
-	<li class="trip_member_add_form_show">
-</li>
+	<li class="trip_member_add_form_show"></li>
 <li class="trip_member_add_form">
 <div class="trip_member_add_input_exterior">
 <input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small">
@@ -144,8 +153,7 @@
 </li>	
 </li>
 </ul>
-<div class="member_count"><a href="/managemember/{{singletrip['slug']}}"><span class="num">{{ singletrip['member_count'] }}</span> member</a>
-</div>
+
 </div>
 
 
@@ -246,7 +254,8 @@ function ShowTripTag(tag)
 <script type='text/javascript'>
 
 </script>
-<div id="above-body"></div>
+<div id="above-body">
+
 <div id="body"> 
 <div id="map-canvas"></div>
 <div style="clear:both"></div>
@@ -352,6 +361,8 @@ function ShowTripTag(tag)
 {% include "trip_sites.html" %}
 
 {% include "../Module/CreateTripSlide1.html" %}
+
+</div>
 <!-- AddThis script-->
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>
 <!-- AddThis Button END -->

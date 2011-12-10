@@ -1028,7 +1028,7 @@ $('.trip_site_add').live('click',function(){
 $('.trip_site_add_done').live('click',function(){
 	if($('#groupId').val()=='new')
 	{
-		alert('Please assign a member to the new group.');
+		alert('Please assign a member to the r.');
 		$('.trip_site_add').show();
 		return;
 	}
@@ -1259,7 +1259,7 @@ function set_trip_section(group_id)
 					object.addClass('on').siblings().removeClass('on');
 					if(object.find('ul').find('.readme'))
 					{
-						object.find('ul').remove('.readme');
+						object.children('li').remove('.readme');
 					}
 					draggable.remove();
 					object.children('ul').children('.trip_member_add_form_show').before(temp);
@@ -1275,7 +1275,7 @@ function set_trip_section(group_id)
 					$.postJSON('/addgrouptotrip', content, function(response){
 					if(response!='')
 					{
-					if(draggable.parent('ul').children('li').size()<4)
+					if(draggable.parent('ul').children('li').size()<5)
 					{
 						draggable.parent('ul').children('.trip_member_add_form_show').before('<li class="readme"><span>Empty Group</span></li>');
 					}
@@ -1283,7 +1283,7 @@ function set_trip_section(group_id)
 					draggable.remove();
 					if(object.find('ul').find('.readme'))
 					{
-						object.find('ul').remove('.readme');
+						object.children('li').remove('.readme');
 					}
 					object.children('ul').children('.trip_member_add_form_show').before(temp);
 					}
@@ -1338,7 +1338,7 @@ function set_trip_section(group_id)
 					object.addClass('on').siblings().removeClass('on');
 					if(object.find('ul').find('.readme'))
 					{
-						object.find('ul').remove('.readme');
+						object.children('li').remove('.readme');
 					}
 					draggable.remove();
 					object.children('ul').children('.trip_member_add_form_show').before(temp);
@@ -1359,7 +1359,7 @@ function set_trip_section(group_id)
 					object.addClass('on').siblings().removeClass('on');
 					if(object.find('ul').find('.readme'))
 					{
-						object.find('ul').remove('.readme');
+						object.children('li').remove('.readme');
 					}
 					draggable.remove();
 					object.children('ul').children('.trip_member_add_form_show').before(temp);
@@ -1385,7 +1385,7 @@ var trip_member_add_form_displayed;
 function trip_member_add_show(status, object)
 {
     
-    if(!object.children('.trip_member_add_form_show').length) { return; } 
+    if(!object.children('.trip_member_add_form_show').length) { return; }
     
     if(status && !trip_member_add_form_displayed)
     {

@@ -24,13 +24,16 @@
 <div class="actions">
 <div class="members">
 <img alt="members" class="members" src="{{ static_url("images/people.png") }}">
-<a href="showmembers" class="member_count">{{ len(trip['groups'][0]['members']) }}</a>
-{% for member in trip['groups'][0]['members'] %} 
+<a href="showmembers" class="member_count">{{ trip['member_count']}}</a>
+{%for group in trip['groups']%}
+
+{% for member in group['members'] %} 
 <span class="avatar">
   <a style="cursor:pointer;" href="/people/{{member['slug']}}" >
   	<img class="picture small" alt="{{member['username']}}" src={{member['picture']}}>
   </a>
 </span>
+{% end %}
 {% end %}
 </div>
 <div class="right">
