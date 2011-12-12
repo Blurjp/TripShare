@@ -30,19 +30,15 @@
 {% else %}
 <input type ="button" class="l_exportguide fancy" uid={{guide['guide_id']}} value="Import">
 {% if guide['guide_id'] in  current_user['like_guide'] %}
-<input type ="button" class="like_guide action" sid={{guide['guide_id']}} value="unlike" actiontype="like" targettype="guide">
-
+<a class="like_guide guide_action" sid={{guide['guide_id']}} actiontype="like" targettype="guide" alt="Like it"><span class="like_guide_icon"></a>
 {% else %}
-<input type ="button" class="like_guide action" sid={{guide['guide_id']}} value="like" actiontype="like" targettype="guide">
-
+<a class="like_guide guide_action" sid={{guide['guide_id']}} actiontype="like" targettype="guide" alt="Unlike it"><span class="un like_guide_icon"></a>
 {% end %}
 \
 {% if guide['guide_id'] in  current_user['save_guide'] %}
-<input type="button" class="save_guide action" sid={{guide['guide_id']}} value="remove" actiontype="save" targettype="guide">
-
+<a class="save_guide guide_action" sid={{guide['guide_id']}} actiontype="save" targettype="guide" alt="Save it"><span class="save_guide_icon"></a>
 {% else %}
-<input type="button" class="save_guide action" sid={{guide['guide_id']}} value="save" actiontype="save" targettype="guide">
-
+<a class="save_guide guide_action" sid={{guide['guide_id']}} actiontype="save" targettype="guide" alt="Unsave it"><span class="un save_guide_icon"></a>
 {% end %}
 {% end %}
 

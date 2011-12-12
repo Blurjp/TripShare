@@ -90,7 +90,8 @@ class AddGuidesTagHandler(BaseHandler):
      
 class SaveGuidesHandler(BaseHandler):  
     @tornado.web.authenticated  
-    def post(self, id):
+    def post(self):
+        id = self.get_argument('guide_id')
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'save_guide': bson.ObjectId(id)})
         if check == None:
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'save_guide': bson.ObjectId(id)}})
@@ -109,7 +110,8 @@ class UpdateGuidesHandler(BaseHandler):
      
 class LikeGuidesHandler(BaseHandler):
     @tornado.web.authenticated  
-    def post(self, id):
+    def post(self):
+        id = self.get_argument('guide_id')
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'like_guide': bson.ObjectId(id)})
         
         if check == None:
@@ -246,7 +248,7 @@ class ImportGuideToTripHandler(BaseHandler):
             last_trip = trip['groups'][index]['dest_place'][len(trip['groups'][index]['dest_place'])-1]
             date = FromStringtoDate.ToDate(last_trip['date'])
             one_day = datetime.timedelta(days=1)
-            title = trip['title'] + guide['title']
+            title = trip['title'] + ' to '+ guide['title']
             trip['title'] = title
             for dest in guide['dest_place']:
                 _site = {}

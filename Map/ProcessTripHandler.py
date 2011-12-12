@@ -109,17 +109,25 @@ class AddTripTagHandler(BaseHandler):
 
 class LikeTripHandler(BaseHandler):
     @tornado.web.authenticated
-    def post(self, id):
+    def post(self):
+        id = self.get_argument('trip_id')
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'like_trip': bson.ObjectId(id)})
-        
         if check == None:
-            
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'like_trip': bson.ObjectId(id)}})
             self.syncdb.trips.update({'trip_id': bson.ObjectId(id)}, {'$inc':{'rating': 1}, '$addToSet':{'user_like': bson.ObjectId(self.current_user['user_id'])}})
         else:
-            
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'like_trip': bson.ObjectId(id)}})
             self.syncdb.trips.update({'trip_id': bson.ObjectId(id)}, {'$inc':{'rating': -1}, '$pull':{'user_like': bson.ObjectId(self.current_user['user_id'])}})
+
+class SaveTripHandler(BaseHandler):
+    @tornado.web.authenticated
+    def post(self):
+        id = self.get_argument('trip_id')
+        check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'save_trip': bson.ObjectId(id)})
+        if check == None:
+            self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'save_trip': bson.ObjectId(id)}})
+        else:
+            self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'save_trip': bson.ObjectId(id)}})
 
   
 class GetTrips(BaseHandler):

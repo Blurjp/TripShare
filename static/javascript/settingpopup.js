@@ -114,6 +114,16 @@ $(document).ready(function() {
       $('.avatar img').live('mouseleave', function(){
 	  	 $('#tooltip').remove();
 	  });
+	  
+	  $('.trip_action span').live('mouseenter', function(){
+	  	 var position = $(this).position();
+		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).parent().attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
+		 $('#tooltip').css({left:position.left+90, top: position.top+630, });
+	  });
+
+      $('.trip_action span').live('mouseleave', function(){
+	  	 $('#tooltip').remove();
+	  });
 
 
       xsrf = getCookie("_xsrf");
@@ -161,7 +171,42 @@ $(document).ready(function() {
     });
 	
 	
+
+	
+	$('.trip_action').live("click",function(e) {
+    type = $(this).attr('targettype');
+	action = $(this).attr('actiontype');
+	url = '/'+action+'_'+type;
+	var content = {
+			"trip_id": $(this).attr('sid'),
+			"_xsrf": getCookie("_xsrf")
+		};
+	var object = $(this);
+	$.postJSON(url, content, function(response){
+		object.children().toggleClass('un');
+			//SwapClass(object, action)
+	});
+	
+	});
+	
+		$('.guide_action').live("click",function(e) {
+    type = $(this).attr('targettype');
+	action = $(this).attr('actiontype');
+	url = '/'+action+'_'+type;
+	var content = {
+			"guide_id": $(this).attr('sid'),
+			"_xsrf": getCookie("_xsrf")
+		};
+	var object = $(this);
+	$.postJSON(url, content, function(response){
+		object.children().toggleClass('un');
+			//SwapClass(object, action)
+	});
+	
+	});
+	
 });  
+
 
 function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");

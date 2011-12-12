@@ -593,14 +593,14 @@ ul.reviews li.review .creator-bar {*display: inline-block; font-size: 90%; margi
 ul.reviews li.review .creator-bar:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
 ul.reviews li.review .creator-bar .avatar {margin-right: 10px; float: left}
 ul.reviews li.review .creator-bar .avatar img {width: 30px; height: 30px}
-.action-bar .actions {padding: 5px 0px; height: 28px; color: black; font-size: 89%; box-shadow: inset 0 2px 2px #e1dcc8; -moz-box-shadow: inset 0 2px 2px #e1dcc8; -webkit-box-shadow: inset 0 2px 2px #e1dcc8}
+.action-bar .actions {border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; -moz-border-bottom-left-radius:0 15px;-webkit-border-bottom-left-radius:0 15px; padding: 7px 5px; height: 28px; color: black; font-size: 89%; box-shadow: inset 0 2px 2px #e1dcc8; -moz-box-shadow: inset 0 2px 2px #e1dcc8; -webkit-box-shadow: inset 0 2px 2px #e1dcc8}
 .action-bar .actions a.more-link {color: #777777; line-height: 18px; margin-left: 10px}
 .action-bar .actions a.more-link:hover {color: #333333}
 .action-bar .actions .more {position: relative; float: right}
 .action-bar .actions .more .more-actions {position: absolute; padding: 5px 0; width: 150px; background: #f7f6f1; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; box-shadow: 2px 2px 0 #aaaaaa; -moz-box-shadow: 2px 2px 0 #aaaaaa; -webkit-box-shadow: 2px 2px 0 #aaaaaa}
 .action-bar .actions .more .more-actions a {color: #777777; display: block; padding: 5px 10px}
 .action-bar .actions .more .more-actions a:hover {color: white; text-decoration: none; background-color: #196473}
-.action-bar ul {float: left; text-transform: uppercase}
+.action-bar ul {float: left; text-transform: uppercase;}
 .action-bar ul li {float: left; margin-right: 12px}
 .action-bar ul li.show-sightings {font-weight: bold}
 .action-bar ul li.map-it a {padding-left: 12px; background: transparent url(/static/images/pin-off.png) no-repeat}

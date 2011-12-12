@@ -18,6 +18,7 @@ from Map.ProcessTripHandler import SaveTrips
 from Map.ProcessTripHandler import SubscribeTrip
 from Map.ProcessTripHandler import UnsubscribeTrip
 from Map.ProcessTripHandler import LikeTripHandler
+from Map.ProcessTripHandler import SaveTripHandler
 from Map.ProcessTripHandler import AddTripTagHandler
 from Map.ProcessTripHandler import AddTripGroupHandler
 from Map.ProcessTripHandler import RemoveTripGroupHandler
@@ -194,10 +195,11 @@ class Application(tornado.web.Application):
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
                                       (r"/trips/([^/]+)/([^/]+)", TripPageHandler),
-                                      (r"/liketrip/([^/]+)", LikeTripHandler),
+                                      (r"/like_trip", LikeTripHandler),
+                                      (r"/save_trip", SaveTripHandler), #save the trip to personal save
                                       (r"/gettrips", GetTrips),
                                       (r"/createtrip", ComposeHandler),
-                                      (r"/savetrip", SaveTrips),
+                                      (r"/savetrip", SaveTrips),   #save the trip when edit trip
                                       (r"/newtrips", ShowNewTrips),
                                       (r"/hottrips", ShowHotTrips),
                                       (r"/endtrips", ShowEndTrips),
@@ -214,8 +216,8 @@ class Application(tornado.web.Application):
                                       (r"/guides/([^/]+)", CategoryGuidesHandler),
                                       (r"/guide/([^/]+)", EntryGuidesHandler),
                                       (r"/add_guide_tag", AddGuidesTagHandler),
-                                      (r"/saveguide/([^/]+)", SaveGuidesHandler),
-                                      (r"/likeguide/([^/]+)", LikeGuidesHandler),
+                                      (r"/saveguide)", SaveGuidesHandler),
+                                      (r"/likeguide)", LikeGuidesHandler),
                                       (r"/createguide", CreateGuidesHandler),
                                       (r"/exportguide", ExportGuidesHandler),
                                       (r"/getguidesforimport", GetGuidesForImportHandler),

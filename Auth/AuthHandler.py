@@ -94,6 +94,8 @@ class CreateAccountHandler(BaseHandler):
                            'save_guide':[],
                            'save_site':[],
                            'like_site':[],
+                           'save_trip':[],
+                           'like_trip':[],
                            'friends':[],
                            'current_location':'',
                            'current_position':[],

@@ -57,7 +57,11 @@
 
 
 <h2>{{singletrip['title']}}</h2>
-<a href="#" class="l_editprofile" uid={{singletrip['trip_id']}}>edit settings</a>
+<select>
+  <option value="volvo">Public</option>
+  <option value="saab">Only to Friends</option>
+  <option value="audi">Private</option>
+</select>
 \
 <a href="/managemember/{{singletrip['slug']}}"><span class="num">{{ singletrip['member_count'] }}</span> member</a>
 
