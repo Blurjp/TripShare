@@ -16,19 +16,32 @@ class MergeTripGroupHandler(BaseHandler):
         @tornado.web.authenticated
         def post(self):
             trip_id = self.get_argument('trip_id')
-            group_id = self.get_argument('group_id')
+            main_group_id = self.get_argument('group_id')
+            group_ids = self.get_argument('group_ids')
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             groups = trip['groups']
             main_group = groups[0]
+            dates = []
+            for index, _group_id in enumerate(group_ids):
+                group_ids[index] = bson.ObjectId(group_ids[index])
+            
             for group in groups:
-                if group['group_id'] == bson.ObjectId(group_id):
+                if group['group_id'] == bson.ObjectId(main_group_id):
                     main_group = group
             
-            for _group in groups:
-                if _group['group_id'] == main_group['group_id']:
+            for dest_place in main_group['dest_place']:
+                dates.append(dest_place['date'])
+            
+            for index, _group in enumerate(groups):
+                if _group['group_id'] not in group_ids:
                     continue;
+                main_group['members'].append(_group['members'])
                 for dest_place in _group['dest_place']:
-                    if 
+                    if dest_place['date'] not in dates:
+                        main_group['dest_place'].append(dest_place)
+                del trip['groups'][index]
+                        
+            self.write('success')
                 
 
 class RemoveTripGroupHandler(BaseHandler):

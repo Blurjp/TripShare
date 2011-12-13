@@ -10,7 +10,33 @@ $(document).ready(function() {
 	 //Get the window height and width  
         var winH = $(window).height();  
         var winW = $(window).width();  
-					 
+	
+	$('.mergegrouppop').click(function(e) {  
+	  var group_ids = [];
+	  $('.trip_member_tabs .droppable').each(function(index) {
+	  	$('#merge_group_list').append('<ul class="trip_member" style="display:block"><li sid="'+$(this).attr('sid')+'" style="position: relative; "><span class="headpichold"><img class="picture medium" alt="steven" src="http://tripshare.s3.amazonaws.com/userpix_thumbs/4eb15e8f6af043152f000000t_hero.png"></li></ul>')
+		
+       // group_ids.push($(this).attr('sid'));
+       });
+	   
+
+	   
+        $('#closemergegroup-modal').show();
+        var id = $('#merge_group_step_1');
+        //Set height and width to mask to fill up the whole screen  
+        $('#mask4').css({'width':maskWidth,'height':maskHeight});  
+          
+        //transition effect       
+        $('#mask4').fadeIn();             
+		//slide from right to left, Set the popup window to center  
+		
+		$(id).show();
+		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
+	    $(id).animate({right: winW/2-$(id).width()/2});
+        $(id).css("position", "fixed");
+		
+        });
+				 
     //select all the tag with name equal to createguide
     $('.importguide').click(function(e) {  
         
@@ -47,7 +73,15 @@ $(document).ready(function() {
 		document.getElementById('import_guide_form').reset();
     }); 
 
- 
+     $("#closemergegroup-modal").click(function (e) {  
+        //Cancel the link behavior  
+        e.preventDefault();  
+        $('#mask4').hide();  
+		$('#merge_group_step_1').hide();
+	
+		document.getElementById('merge_group_step_1').reset();
+    }); 
+	 
 function ShowGuideInList(message)
 {
 		if(message!=null)

@@ -27,6 +27,9 @@
  {% include "../Module/headline.html" %}
  {% include "../Module/usersetting.html" %}
  {% include "../Guides/ImportGuide.html" %}
+ {% include "../Module/CreateTripSlide1.html" %}
+{% include "../Module/MergeGroup.html" %}
+{% include "../Module/ExportCalendar.html" %}
 </div> 
 </div> 
  
@@ -47,10 +50,13 @@
 
 <ul class="trip_action_options">
 <li>	
-<input type="button" class="regular-button mergegroup" href="#merge_group" value="Merge Group">
+<input type="button" class="regular-button mergegrouppop" href="#merge_group" value="Merge Group">
 </li>
 <li>	
 <input type="button" class="regular-button importguide" href="#import_guide_step_1" value="Import Guide">
+</li>
+<li>	
+<input type="button" class="regular-button exporttocalenderpop" href="#export_calendar" value="Export Calendar">
 </li>
 </ul> 
 
@@ -62,7 +68,7 @@
   <option value="saab">Only to Friends</option>
   <option value="audi">Private</option>
 </select>
-\
+<br>
 <a href="/managemember/{{singletrip['slug']}}"><span class="num">{{ singletrip['member_count'] }}</span> member</a>
 
 {% end %}
@@ -364,7 +370,7 @@ function ShowTripTag(tag)
 
 {% include "trip_sites.html" %}
 
-{% include "../Module/CreateTripSlide1.html" %}
+
 
 </div>
 <!-- AddThis script-->

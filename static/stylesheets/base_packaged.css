@@ -313,7 +313,7 @@ body {background: white}
 #service-notification h3 {font-weight: bold; font-size: 120%; margin-bottom: 5px}
 #service-notification .check-settings {float: right; font-size: 1.1em; font-weight: bold; text-decoration: underline; padding: 7px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; text-shadow: 1px 1px #ffffcc; color: #268ca0}
 #wrapper {position: relative; height: auto}
-#container {z-index: 2; margin: 0 auto; position: relative;border:1px solid #ccc;}
+#container {z-index: 2; margin: 0 auto; position: relative;}
 .deny-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; font-weight: 300; font-family: angie-sans,sans-serif;; font-size: 1.65em; background-color: #aaaaaa !important; box-shadow: inset -1px -1px #777777; -moz-box-shadow: inset -1px -1px #777777; -webkit-box-shadow: inset -1px -1px #777777}
 .deny-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
 .deny-button:active, .deny-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
