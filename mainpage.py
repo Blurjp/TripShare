@@ -22,6 +22,7 @@ from Map.ProcessTripHandler import SaveTripHandler
 from Map.ProcessTripHandler import AddTripTagHandler
 from Map.ProcessTripHandler import AddTripGroupHandler
 from Map.ProcessTripHandler import RemoveTripGroupHandler
+from Map.ProcessTripHandler import MergeTripGroupHandler
 from Map.ProcessTripHandler import GetTripGroupForMapHandler
 from Map.ProcessTripHandler import GetTripGroupForSiteHandler
 from Users.UserInfo import UpdateUserProfileHandler
@@ -205,6 +206,7 @@ class Application(tornado.web.Application):
                                       (r"/endtrips", ShowEndTrips),
                                       (r"/addgrouptotrip", AddTripGroupHandler),
                                       (r"/removegroupfromtrip", RemoveTripGroupHandler),
+                                      (r"/mergetripgroup", MergeTripGroupHandler),
                                       (r"/addsitetotrip", AddSiteToTrip),
                                       (r"/removesitefromtrip", RemoveSiteFromTrip),
                                       (r"/postsitenote", PostNoteToSite),

@@ -12,6 +12,25 @@ import simplejson
 import MongoEncoder.MongoEncoder
 from BrowseTripHandler import BaseHandler
 
+class MergeTripGroupHandler(BaseHandler):
+        @tornado.web.authenticated
+        def post(self):
+            trip_id = self.get_argument('trip_id')
+            group_id = self.get_argument('group_id')
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            groups = trip['groups']
+            main_group = groups[0]
+            for group in groups:
+                if group['group_id'] == bson.ObjectId(group_id):
+                    main_group = group
+            
+            for _group in groups:
+                if _group['group_id'] == main_group['group_id']:
+                    continue;
+                for dest_place in _group['dest_place']:
+                    if 
+                
+
 class RemoveTripGroupHandler(BaseHandler):
         @tornado.web.authenticated
         def post(self): 

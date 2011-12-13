@@ -6,7 +6,6 @@ Created on Aug 31, 2011
 import bson
 import random
 import datetime
-import string
 import simplejson
 import pymongo
 import re
@@ -163,7 +162,7 @@ class ExportGuidesHandler(BaseHandler):
             #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
             self.write(trip['slug'])
         else:
-            print('check+++++++++++++==')
+            
             self.write('This guide is already exported to this trip')
 
 class GetGuidesForImportHandler(BaseHandler):
