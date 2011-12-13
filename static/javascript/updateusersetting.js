@@ -7,10 +7,11 @@ $('.updateusersetting').click(function(){
       disabled.disable();
 	  
 	  $.postJSON('/updateusersetting', content, function(response){
-			   // ShowCreateguideResponse(response);
+			   if(response=='success')
+			   {
+			   	alert('User profile updated.');
+			   }
 			});	
-	 
-	  //document.getElementById("create_guide_form").reset();	
 	  disabled.enable();
 });
 

@@ -21,28 +21,41 @@
 </div>
 <div class="action-bar">
 <div class="actions">
-<div class="right guide_action">
+<ul class="right guide_action">
 
 {% if not current_user %}
+<li>
 <input type ="button" value="Import" href="#login">
-<a href="#login" >like this</a> \ 
+</li>
+<li>
+<a href="#login" >like this</a> \
+</li>
+<li> 
 <a href="#login" >save this</a>
+</li>
 {% else %}
-<input type ="button" class="l_exportguide fancy" uid={{guide['guide_id']}} value="Import">
-{% if guide['guide_id'] in  current_user['like_guide'] %}
+<li>
+<input type ="button" class="l_importguide fancy" sid={{guide['guide_id']}} value="Import" href="{{current_user['user_id']}}">
+</li>
+<li>
+{% if guide['guide_id'] not in  current_user['like_guide'] %}
 <a class="like_guide guide_action" sid={{guide['guide_id']}} actiontype="like" targettype="guide" alt="Like it"><span class="like_guide_icon"></a>
 {% else %}
 <a class="like_guide guide_action" sid={{guide['guide_id']}} actiontype="like" targettype="guide" alt="Unlike it"><span class="un like_guide_icon"></a>
 {% end %}
+</li>
+<li>
 \
-{% if guide['guide_id'] in  current_user['save_guide'] %}
+</li>
+<li>
+{% if guide['guide_id']  not in  current_user['save_guide'] %}
 <a class="save_guide guide_action" sid={{guide['guide_id']}} actiontype="save" targettype="guide" alt="Save it"><span class="save_guide_icon"></a>
 {% else %}
 <a class="save_guide guide_action" sid={{guide['guide_id']}} actiontype="save" targettype="guide" alt="Unsave it"><span class="un save_guide_icon"></a>
 {% end %}
 {% end %}
-
-</div>
+</li>
+</ul
 
 </div>
 </div>

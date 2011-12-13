@@ -258,13 +258,14 @@ class FriendConfirmHandler(BaseHandler):
            
 class UpdateUserProfileHandler(BaseHandler):
     @tornado.web.authenticated
-    @tornado.web.asynchronous 
     def post(self): 
-        user_id = self.get_secure_cookie("user")
-        if not user_id: return None
         
-        bio = self.get_argument('description')
-        self.syncdb.users.update({"user_id": bson.ObjectId(user_id)}, {"$set": { "bio": bio}})
+        if not self.current_user: return None
+        user = self.syncdb.users.find_one({"user_id": bson.ObjectId(self.current_user['user_id'])})
+        user['current_location'] = self.get_argument('current_location')
+        user['bio'] = self.get_argument('description')
+        user['email'] = self.get_argument('email')
+        self.syncdb.users.save(user)
         
         if len(self.request.files)>0:
             file = self.request.files['picture'][0]
@@ -298,7 +299,9 @@ class UpdateUserProfileHandler(BaseHandler):
             output_file.close()
             self.syncdb.users.update({"user_id": bson.ObjectId(user_id)}, {"$set": { "picture": "http://tripshare.s3.amazonaws.com"+s3_path}}, upsert = False, safe=True)
         
+        
         self.redirect('/settings')
+        
          
      
      

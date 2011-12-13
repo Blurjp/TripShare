@@ -27,7 +27,7 @@ Setting
  {% include "Module/headline.html" %}
  {% include "Module/usersetting.html" %}
 <div class='clearfix' id='container'> 
-<a href="#" id="back_to_map" onclick="FS.hide_back_to_map();; return false;" style="display:none">Take me Back To The Map!</a> 
+
 <div class='clearfix' id='content'> 
 
 
@@ -36,9 +36,8 @@ Setting
 <div class='main'> 
 <h1>Settings</h1>
 {% if current_user %}
-<div id="user_settingboxes"> 
+<div id="user_settingboxes">
 <div id="setting" class="settingdialogdiv">
-
 <form id="usersettingform" action="/updateuserprofile" enctype="multipart/form-data" method="post">
 	{% raw xsrf_form_html() %}
 <table class="form">
@@ -52,50 +51,19 @@ Setting
 <td class="label" style="vertical-align:top">Bio:</td>
 <td><textarea rows="2" cols="20" name="description" style="width:310px">{{current_user['bio']}}</textarea></td>
 </tr>
-
+<tr>
+<td class="label" style="vertical-align:top">Location:</td>
+<td><textarea rows="2" cols="20" name="current_location" style="width:310px">{{current_user['current_location']}}</textarea></td>
+</tr>
 <tr>
 <td class="label" style="vertical-align:top">Photo:</td>
 <td><input class="file-field" id="person_avatar" name="picture" type="file"></td>
 </tr>
 
-<tr>
-<td class="label">Language:</td>
-<td class="value">
-<select name="locale">
-
-<option value="de">Deutsch</option>
-
-<option value="en" selected="selected">English</option>
-
-<option value="es">Español</option>
-
-<option value="fa">فارسی</option>
-
-<option value="fr">Français</option>
-
-<option value="it">Italiano</option>
-
-<option value="ja">日本語</option>
-
-<option value="ru">русский язык</option>
-
-<option value="tr">Türkçe</option>
-
-<option value="ud">uʍop ǝpısd∩</option>
-
-<option value="zh-cn">中文(简体)</option>
-
-</select>
-</td>
-</tr>
 
 <tr>
 <td class="label">Email:</td>
-<td class="value">
-
-{{current_user["email"]}} (<a href="#" class="l_emailaddresses">change</a>)
-
-</td>
+<td><textarea rows="2" cols="20" name="email" style="width:310px">{{current_user['email']}}</textarea></td>
 </tr>
 <tr>
 <td class="label">Password:</td>
@@ -106,54 +74,6 @@ Setting
 <tr>
 <td class="label">Notifications:</td>
 <td class="value"><a href="/settings/notifications">Email / IM preferences</a></td>
-</tr>
-
-
-<tr>
-<td class="label" style="vertical-align: top;">Theme:</td>
-<td class="value">
-<table>
-<tbody><tr>
-<td colspan="2">
-<div>
-<a href="/settings/themes">Choose a theme</a>
-</div>
-</td>
-</tr>
-<tr>
-<td style="padding-bottom: 0;">
-
-<a href="/settings/themes"><img style="width: 100px; height: 100px; border: 1px solid #0000cc" src="/static/images/themes/default/preview.png?v=317f" alt="Classic"></a>
-</td>
-<td style="vertical-align: top;">
-<div>
-<input type="checkbox" name="public_theme" id="public_theme" value="1" checked="checked">
-<label for="public_theme">Theme your profile page</label>
-</div>
-<div>
-<input type="checkbox" name="use_profile_themes" id="use_profile_themes" value="1" checked="checked">
-<label for="use_profile_themes">See other people's themes</label>
-</div>
-</td>
-</tr>
-</tbody></table>
-</td>
-</tr>
-
-
-<tr>
-<td></td>
-<td class="value">
-<table>
-<tbody><tr>
-<td style="vertical-align:top; padding-bottom:0"><input type="checkbox" name="private" value="1" id="publiccheckbox">&nbsp;</td>
-<td style="padding-bottom:0">
-<div><label for="publiccheckbox">Private feed</label></div>
-<div style="font-size:8pt" class="g"><label for="publiccheckbox">Only let people I approve see my feed</label></div>
-</td>
-</tr>
-</tbody></table>
-</td>
 </tr>
 
 <tr>

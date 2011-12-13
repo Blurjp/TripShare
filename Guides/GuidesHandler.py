@@ -37,7 +37,7 @@ class CategoryGuidesHandler(BaseHandler):
     
     def post(self, section):
         count = self.get_argument('count')
-        #print(count+'+++++++++++++')
+        print(count+'+++++++++++++')
         latest_guide_ids = None
         if section == "me":
             if self.current_user:  
@@ -51,11 +51,12 @@ class CategoryGuidesHandler(BaseHandler):
         elif section == "world":
             latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(int(count)).limit(10).sort('title')
         
-        print(str(latest_guide_ids.count())+'+++++++++++++')
+        print(str(latest_guide_ids.count())+'------------')
         if latest_guide_ids.count() >0:
                 
                 for latest_guide_id in latest_guide_ids:                        
-                        self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
+                    print(latest_guide_id['title'])
+                    self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
         else:
             self.write('<li><span>No guide for this category yet....</span></li>')
     
@@ -91,7 +92,7 @@ class AddGuidesTagHandler(BaseHandler):
 class SaveGuidesHandler(BaseHandler):  
     @tornado.web.authenticated  
     def post(self):
-        id = self.get_argument('guide_id')
+        id = self.get_argument('id')
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'save_guide': bson.ObjectId(id)})
         if check == None:
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'save_guide': bson.ObjectId(id)}})
@@ -111,15 +112,15 @@ class UpdateGuidesHandler(BaseHandler):
 class LikeGuidesHandler(BaseHandler):
     @tornado.web.authenticated  
     def post(self):
-        id = self.get_argument('guide_id')
+        id = self.get_argument('id')
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'like_guide': bson.ObjectId(id)})
         
         if check == None:
-            print('check')
+            
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$addToSet':{'like_guide': bson.ObjectId(id)}})
             self.syncdb.guides.update({'guide_id': bson.ObjectId(id)}, {'$inc':{'rating': 1}, '$addToSet':{'user_like': bson.ObjectId(self.current_user['user_id'])}})
         else:
-            print('uncheck')
+            
             self.syncdb.users.update({'user_id': bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'like_guide': bson.ObjectId(id)}})
             self.syncdb.guides.update({'guide_id': bson.ObjectId(id)}, {'$inc':{'rating': -1}, '$pull':{'user_like': bson.ObjectId(self.current_user['user_id'])}})
 

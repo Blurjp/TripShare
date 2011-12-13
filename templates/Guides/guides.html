@@ -10,13 +10,14 @@ TripShare - Guides
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/plan.css") }}" type="text/css"/>
+<link rel="stylesheet" href="{{ static_url("stylesheets/CalendarControl.css") }}" type="text/css"/>
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
 <script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/jquery.pagination.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/exportguide.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/createguideslides.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/CalendarPopup.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/CalendarControl.js")}}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/jquery.tinyscrollbar.min.js") }}" type="text/javascript"></script>
 <script src='http://use.typekit.com/gmg0plj.js' type='text/javascript'></script> 
 <script type='text/javascript'> 
@@ -185,18 +186,19 @@ function ShowSaveResponse(response)
 	//alert(response);
 }
 
-$('.action').live("click",function(e) {
-	//alert('test');
-	id = $(this).attr('sid');
+$('.guide_action').live("click",function(e) {
     type = $(this).attr('targettype');
 	action = $(this).attr('actiontype');
-	url = '/'+action+type+'/'+ id;
+	url = '/'+action+type;
 	var formData = {};
 	formData._xsrf = getCookie("_xsrf");
+	formData.id = $(this).attr('sid');
+	var object = $(this);
 	$.postJSON(url, formData, function(response){
-		ShowSaveResponse(response);
+		object.children().toggleClass('un');
+		//ShowSaveResponse(response);
 	});
-	SwapValue($(this), action, 'un'+action);
+	//SwapValue($(this), action, 'un'+action);
 	});
 
 function set_tab(tag) {
@@ -211,7 +213,6 @@ function set_tab(tag) {
 			    history.pushState(null, null, _url);
 				ShowGuide(response, true);
 			});	
-		
     }
 	
 function set_rate_tab(){
@@ -231,10 +232,11 @@ function ShowGuide(message, more) {
 		}
 		$.each(trips, function(index, value) {
 	         node = $(value);
-             node.hide();
+             //node.hide();
              $("#latest_guides").append(node);
-             node.show();
-         });	
+			 
+            // node.show();
+         });
 		 }
 }
 	
@@ -248,8 +250,7 @@ jQuery.getJSON = function(_url, callback) {
 };
 
 jQuery.postJSON = function(url, args, callback) {
-	
-	//alert(_data);
+
     $.ajax({url: url, data: $.param(args), type: "POST", dataType:"text", success: function(data, textStatus) {if (callback) callback(data);}, error: function(response) {console.log("ERROR:", response)}});
 
 	};
@@ -287,14 +288,12 @@ function lastPostFunc()
 { 
     tag = $('.plans_tabs_selected').attr('id').substring(20, $('.plans_tabs_selected').attr('id').length);
     //alert(tag);
-	var content = {'_xsrf':getCookie("_xsrf"), 'count': $('#latest_guides li').length/2};
+	var content = {'_xsrf':getCookie("_xsrf"), 'count': $('#latest_guides .show_guide').length};
 	//alert($('#latest_guides li').size());
     $.postJSON('/guides/'+tag, content, function(response){
 			    ShowGuide(response, false);
 			});
 }; 
-
-
 </script>
 		
 <script type='text/javascript'> 

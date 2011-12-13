@@ -141,10 +141,10 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                               extra_params={"scope": "user_about_me,email,user_website,publish_stream,read_friendlists"})
  
     def handle_request(self, response):
-        print('++++++++++++++++++++++++++++++'+response.body)
+        #print('++++++++++++++++++++++++++++++'+response.body)
         user = simplejson.loads(response.body)
-        print('-------------------------'+str(user[0]['uid']))
-        
+        #print('-------------------------'+str(user[0]['uid']))
+        #location = user[0]['current_location']
         _user = {   'fb_user_id' : str(user[0]['uid']),
                     'username': user[0]['name'],
                     'lc_username': user[0]['name'].upper(),
@@ -152,7 +152,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'locale':user[0]['locale'],
                     'email': user[0]['email'],
                     'picture': user[0]['pic'],
-                    'current_location': user[0]['current_location'],
+                    'current_location': user[0]['current_location']['city'],
                     'current_position':[],
                     'access_token': self.access_token,
                     'save_guide':[],

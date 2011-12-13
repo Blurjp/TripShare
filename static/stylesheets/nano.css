@@ -574,7 +574,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 #tooltip_interior div {margin-top: 2px;font-size: 1em;}
 #tooltip_micro {font-size: .8em !important;}
 
-.headpichold img {float:left}
+.headpichold img {float:left;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
 .header .body h1 a.name{ font-family:     "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .box-bar-text .title {}
 .section li {padding-top:10px}
@@ -1033,7 +1033,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 /* guides  */
 .show_guide {padding-top:5px}
 .show_guide h2 a {font-size: 1.0em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
-.guide_action {padding-right:50px}
+
 .guide_action .action {-moz-border-radius:12px;-webkit-border-radius:12px;background:url("/static/icon/button-shine.png") repeat-x top;color:blue;padding:2px;padding-left:10px;padding-right:10px;cursor:pointer}     
 
 .guide_action .saving_like_message, .guide_action .saving_save_message {display:none}
@@ -1103,7 +1103,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
 .find_friends_icon {padding:5px 0 0 15px}
 
-#social_tools  { position: fixed;z-index:9999;  display:none;  width:575px;   height:280px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
+#social_tools  { position: fixed;z-index:9999;  display:none;  width:575px; height:300px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
 #social_tools li {float: left; width: 140px; margin-bottom: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
 #social_tools li a {display: block; padding: 10px 15px}
 #social_tools li a span {color: #777777}
@@ -1121,7 +1121,7 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #social_tools .picture {float:left;margin:2px}
 #social-close-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
-#content_twitter, #content_invite {display:none; margin-top:60px}
+#content_twitter, #content_facebook,#content_invite {display:none; margin-top:60px}
 #login_facebook {float:right; width:255px; height:123px; overflow:hidden; background: url("/static/images/facebook_sign_in.jpg") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 #login_twitter {float:right; display:none; width:255px; height:123px; overflow:hidden; background: url("/static/images/twitter-login-button.png") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 
@@ -1197,6 +1197,7 @@ border-top-right-radius: 5px;}
 #dashboard .repos a.show-more{display:block;padding:10px;font-size:14px;font-weight:bold;color:#999;}
 
 .trip_site_move {display:none}
+.trip_site_move a {cursor:pointer}
 .trip_site_add   { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 25px; width: 25px;  }
 .trip_site_add :hover  { background-color: #59d859  }
 .site_action .action {
@@ -1255,6 +1256,7 @@ cursor: pointer;
 .readme {padding-top:10px;border-left:none!important;border-right:none !important}
 .readme span {font-size: 1.3em;letter-spacing: 0;text-decoration:none}
 .add_hotel {cursor:pointer;text-decoration:none}
+.postUpdate {cursor:pointer;text-decoration:none}
 
 .un.like_trip_icon {background-repeat: no-repeat;
 background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/icon_followed.png') !important}
@@ -1273,3 +1275,6 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/icon_collected.png') !important}
 .save_guide_icon  {background-repeat: no-repeat;
 background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/icon_collect.png')}
+
+
+.list.people li {padding:10px}

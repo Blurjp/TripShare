@@ -16,9 +16,9 @@ table {border-collapse: collapse; border-spacing: 0}
 body {font: 83% "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .large {font-size: 110%; line-height: 1.4}
 .sidebar .pod {line-height: 1.3}
-.hgroup {margin-bottom: 20px}
+.hgroup {margin-bottom: 20px; width:680px}
 .hgroup h2 {color: black; font-weight: 300; font-family: angie-sans,sans-serif;}
-.hsubgroup {margin-bottom: 10px}
+.hsubgroup {margin-bottom: 10px; font: 15px/25px Arial, Helvetica, Sans-serif;color: #999;text-shadow: 0 1px 0 white;}
 .lead-in {color: #333333; margin-bottom: 10px; line-height: 1.4em; font-size: 1.7em; font-weight: 300; font-family: angie-sans,sans-serif;}
 h1 {font-size: 2.2em; letter-spacing: 0; color: #96af4b; font-weight: 100; font-family: raleway,sans-serif}
 h1 strong {font-weight: 500}
@@ -616,7 +616,7 @@ ul.reviews li.review .creator-bar .avatar img {width: 30px; height: 30px}
 .action-bar ul li.edit-it a {padding-left: 20px; background: transparent url(/static/images/sighting-action-edit.png) no-repeat}
 .action-bar ul li.delete-it a {padding-left: 20px; background: transparent url(/static/images/sighting-action-delete.png) no-repeat}
 .action-bar ul li.print-it a {padding-left: 20px; background: transparent url(/static/images/print-it.png) no-repeat}
-.action-bar ul li a {color: #333333; display: block; line-height: 18px}
+.action-bar ul li a {color: #333333; display: block; line-height: 25px}
 .action-bar ul li a:hover {text-decoration: underline}
 .action-bar ul a {color: #333333}
 .action-bar ul a.sighting-count {background: transparent url(/static/images/review-arrow.png) no-repeat left center; padding-left: 12px}
