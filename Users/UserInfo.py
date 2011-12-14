@@ -265,6 +265,7 @@ class UpdateUserProfileHandler(BaseHandler):
         user['current_location'] = self.get_argument('current_location')
         user['bio'] = self.get_argument('description')
         user['email'] = self.get_argument('email')
+        user_id = user['user_id']
         self.syncdb.users.save(user)
         
         if len(self.request.files)>0:
@@ -356,7 +357,7 @@ class UserSettingHandler(BaseHandler):
     @tornado.web.asynchronous
     @tornado.web.authenticated
     def post(self):
-         _formData = simplejson.loads(self.get_argument('data'))
+        _formData = simplejson.loads(self.get_argument('data'))
 
 class UserEntryModule(tornado.web.UIModule):
     def render(self):

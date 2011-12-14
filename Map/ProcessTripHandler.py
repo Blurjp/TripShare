@@ -6,6 +6,7 @@ Created on Oct 19, 2010
 
 import bson
 import pymongo
+import re
 import datetime
 import tornado.web
 import simplejson
@@ -16,31 +17,33 @@ class MergeTripGroupHandler(BaseHandler):
         @tornado.web.authenticated
         def post(self):
             trip_id = self.get_argument('trip_id')
-            main_group_id = self.get_argument('group_id')
+            #splitter = re.compile(r'test')
             group_ids = self.get_argument('group_ids')
+            #main_group_id = self.get_argument('group_id')
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             groups = trip['groups']
             main_group = groups[0]
             dates = []
-            for index, _group_id in enumerate(group_ids):
-                group_ids[index] = bson.ObjectId(group_ids[index])
             
-            for group in groups:
-                if group['group_id'] == bson.ObjectId(main_group_id):
-                    main_group = group
+            
+            #for group in groups:
+            #    if group['group_id'] == bson.ObjectId(main_group_id):
+            #        main_group = group
             
             for dest_place in main_group['dest_place']:
                 dates.append(dest_place['date'])
             
             for index, _group in enumerate(groups):
-                if _group['group_id'] not in group_ids:
+                if str(_group['group_id']) not in group_ids:
                     continue;
+                print _group['group_id']
                 main_group['members'].append(_group['members'])
                 for dest_place in _group['dest_place']:
                     if dest_place['date'] not in dates:
                         main_group['dest_place'].append(dest_place)
                 del trip['groups'][index]
-                        
+                
+            self.syncdb.trips.save(trip)
             self.write('success')
                 
 
@@ -101,7 +104,15 @@ class AddTripGroupHandler(BaseHandler):
             
             self.syncdb.trips.save(trip)
             self.write('success')
-            
+
+class GetTripGroupForMergeHandler(BaseHandler):
+    def post(self):
+        trip_id = self.get_argument('trip_id')
+        groups = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
+        
+        
+        self.write(unicode(simplejson.dumps(groups, cls=MongoEncoder.MongoEncoder.MongoEncoder)))                
+          
 class GetTripGroupForMapHandler(BaseHandler):
     def get(self, group_id, trip_id):
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})

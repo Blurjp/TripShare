@@ -1283,3 +1283,5 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 #merge_group_step_1 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
 #closemergegroup-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
+#merge_group_list .trip_member {cursor:pointer;margining:40px}
+#merge_group_list .trip_member.on {background: #F39814;color: white;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;}

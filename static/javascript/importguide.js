@@ -11,32 +11,77 @@ $(document).ready(function() {
         var winH = $(window).height();  
         var winW = $(window).width();  
 	
-	$('.mergegrouppop').click(function(e) {  
-	  var group_ids = [];
-	  $('.trip_member_tabs .droppable').each(function(index) {
-	  	$('#merge_group_list').append('<ul class="trip_member" style="display:block"><li sid="'+$(this).attr('sid')+'" style="position: relative; "><span class="headpichold"><img class="picture medium" alt="steven" src="http://tripshare.s3.amazonaws.com/userpix_thumbs/4eb15e8f6af043152f000000t_hero.png"></li></ul>')
-		
-       // group_ids.push($(this).attr('sid'));
-       });
-	   
-
-	   
-        $('#closemergegroup-modal').show();
-        var id = $('#merge_group_step_1');
-        //Set height and width to mask to fill up the whole screen  
-        $('#mask4').css({'width':maskWidth,'height':maskHeight});  
-          
-        //transition effect       
-        $('#mask4').fadeIn();             
-		//slide from right to left, Set the popup window to center  
-		
-		$(id).show();
-		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
-	    $(id).animate({right: winW/2-$(id).width()/2});
-        $(id).css("position", "fixed");
-		
+	$('.mergegrouppop').click(function(e) { 
+	    var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':$('#tripId').val()}; 
+	    $.postJSON('/gettripgroupformerge', content, function(response){
+	       
+        if (response != null) {
+			
+		    var groups = JSON.parse(response);
+			
+			for (var i = 0; i < groups.length; i++) 
+			{
+				
+				if(groups[i]['group_id']=='new')
+				{
+					continue;
+				}
+				var classname = "group_"+i.toString();
+				$('#merge_group_list').append('<ul class="trip_member '+classname+'" sid="' + groups[i]['group_id'] + '" style="position: relative;">');
+				
+				for (var x = 0; x < groups[i]['members'].length; x++) {
+					
+					$('#merge_group_list .trip_member.'+classname+'').append('<li><span class="headpichold"><img class="picture medium" src="'+groups[i]['members'][x]['picture']+'"></li>');
+				}
+			}
+			
+			$('#closemergegroup-modal').show();
+			var id = $('#merge_group_step_1');
+			//Set height and width to mask to fill up the whole screen  
+			$('#mask4').css({
+				'width': maskWidth,
+				'height': maskHeight
+			});
+			
+			//transition effect       
+			$('#mask4').fadeIn();
+			//slide from right to left, Set the popup window to center  
+			
+			$(id).show();
+			$(id).css({
+				right: $(id).width() - winW,
+				top: winH / 2 - $(id).height() / 2
+			});
+			$(id).animate({
+				right: winW / 2 - $(id).width() / 2
+			});
+			$(id).css("position", "fixed");
+		}
+		});
         });
-				 
+		
+	$('#merge_group_list .trip_member').live('click',function(){
+		
+		$(this).toggleClass('on');
+		
+	});
+				
+	$('a[name=mergegroup]').click(function(e) { 
+	    var group_ids = '';
+		 $('#merge_group_list .trip_member.on').each(function(index) {
+		 	
+		 	//group_ids.push($(this).attr('sid'));
+			group_ids += $(this).attr('sid')+'test';
+		 });
+		 alert(group_ids);
+	    var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':$('#tripId').val(), 'group_ids':group_ids};
+		 $.postJSON('/mergetripgroups', content, function(response){
+		 	$('#mask4').hide();  
+		    $('#merge_group_step_1').hide();
+		    $('#merge_group_list').empty();
+		 });
+	});		
+	 
     //select all the tag with name equal to createguide
     $('.importguide').click(function(e) {  
         
@@ -78,8 +123,8 @@ $(document).ready(function() {
         e.preventDefault();  
         $('#mask4').hide();  
 		$('#merge_group_step_1').hide();
-	
-		document.getElementById('merge_group_step_1').reset();
+	    $('#merge_group_list').empty();
+		//document.getElementById('merge_group_step_1').reset();
     }); 
 	 
 function ShowGuideInList(message)
