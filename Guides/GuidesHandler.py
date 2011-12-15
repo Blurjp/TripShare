@@ -281,13 +281,12 @@ class ImportGuideToTripHandler(BaseHandler):
 class ImportGuidesHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
-        user_id = self.get_secure_cookie("user")
-        if not user_id: return None
+        
         if len(self.request.files)>0:
             
             file = self.request.files['guidefile'][0]
             if not file: return None
-            local_file_path = "/tmp/" + user_id +str(file['filename'])
+            local_file_path = "/tmp/" + str(self.current_user['user_id']) +str(file['filename'])
             output_file = open(local_file_path, 'w')
             output_file.write(file['body'])
             output_file.close()
@@ -299,7 +298,7 @@ class ImportGuidesHandler(BaseHandler):
 
             for line in file_list:
                 if line !='' and line !='\n':
-                    print(line)
+                    #print(line)
                     data = simplejson.loads(line)
                     if data['type'] == 'national_park' or data['type'] == 'city':
                         guide_id = bson.ObjectId()
