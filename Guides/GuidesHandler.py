@@ -138,9 +138,9 @@ class ExportGuidesHandler(BaseHandler):
         guide_id = self.get_argument('guide_id')
         trip_id = self.get_argument('trip_id')
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
-        if guide_id not in trip['imported_guides']:
+        if guide_id not in trip['groups'][0]['imported_guides']:
             
-            trip_dest_place = trip['dest_place']
+            trip_dest_place = trip['groups'][0]['dest_place']
             last_trip = trip_dest_place[len(trip_dest_place)-1]
             date = FromStringtoDate.ToDate(last_trip['date'])
             #date = last_trip['date']

@@ -73,7 +73,7 @@ $(document).ready(function() {
 		 	//group_ids.push($(this).attr('sid'));
 			group_ids += $(this).attr('sid')+'test';
 		 });
-		 alert(group_ids);
+		// alert(group_ids);
 	    var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':$('#tripId').val(), 'group_ids':group_ids};
 		 $.postJSON('/mergetripgroups', content, function(response){
 		 	$('#mask4').hide();  

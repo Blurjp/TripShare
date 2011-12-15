@@ -34,14 +34,15 @@ class MergeTripGroupHandler(BaseHandler):
                 dates.append(dest_place['date'])
             
             for index, _group in enumerate(groups):
-                if str(_group['group_id']) not in group_ids:
+                if str(_group['group_id']) not in group_ids or index ==0:
                     continue;
                 print _group['group_id']
-                main_group['members'].append(_group['members'])
+                for member in _group['members']:
+                    main_group['members'].append(member)
                 for dest_place in _group['dest_place']:
                     if dest_place['date'] not in dates:
                         main_group['dest_place'].append(dest_place)
-                del trip['groups'][index]
+                del groups[index]
                 
             self.syncdb.trips.save(trip)
             self.write('success')
