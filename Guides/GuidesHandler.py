@@ -13,6 +13,7 @@ import unicodedata
 import tornado.web
 from Map.BrowseTripHandler import BaseHandler
 from Utility.DateProcessor import FromStringtoDate
+import time
 
 
 
@@ -302,16 +303,17 @@ class ImportGuidesHandler(BaseHandler):
                         data = simplejson.loads(line)
                         if data['type'] == 'national_park' or data['type'] == 'city':
                             guide_id = bson.ObjectId()
-                            guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'lc_guidename':data['parent_site_name'].upper(), 'title': data['parent_site_name'], 'description': '', 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'search_type':'guide','type':data['type'], 'random' : random.random()}
+                            guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'lc_guidename':data['parent_site_name'].upper(), 'title': data['parent_site_name'], 'description': data['description'], 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'search_type':'guide','type':data['type'], 'random' : random.random()}
                             self.syncdb.guides.save(guide, safe=True)
-                            site_id = bson.ObjectId()
-                            dest = {'dest':data['site_name'], 'type':'car','date':'', 'picture':'', 'description':''}
-                            self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'dest_place':dest}})
-                            self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'tags':data['site_name']}})
-                            self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'search_type':'site', 'lc_sitename':data['site_name'].upper(), 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location'], 'pictures':[], 'description':data['description']})       
+                        site_id = bson.ObjectId()
+                        dest = {'dest':data['site_name'], 'type':'car','date':'', 'picture':'', 'description':data['description'], 'geo':data['location'], 'state':data['state']}
+                        self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'dest_place':dest}})
+                        self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'tags':data['site_name']}})
+                        self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'search_type':'site', 'lc_sitename':data['site_name'].upper(), 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location'], 'pictures':[], 'description':data['description']})       
              
                     except:
                         print ('+++++++++++++++'+line)
+                        #time.sleep(2)
                     
         self.redirect('/guides')
           

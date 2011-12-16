@@ -41,7 +41,6 @@ class AddSiteToTrip(BaseHandler):
             date  = self.get_argument('date')
             ride = self.get_argument('site_ride')
             group_id = self.get_argument('group_id')
-            print(ride+'+++++++++++++++++++++==')
             site = self.syncdb.sites.find_one({'lc_username': {'$regex':'^'+site_name.upper()}})
             
             if site:
