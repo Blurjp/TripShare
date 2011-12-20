@@ -149,7 +149,11 @@ class AddTripTagHandler(BaseHandler):
     def post(self):
         trip_id = self.get_argument('trip_id')
         tag = self.get_argument('tag')
-        self.syncdb.guides.update({'trip_id': bson.ObjectId(trip_id)}, {'$addToSet':{'tags': tag}})
+        action = self.get_argument('action')
+        if action == 'remove':
+            self.syncdb.trips.update({'trip_id': bson.ObjectId(trip_id)}, {'$pull':{'tags': tag}})
+        else:
+            self.syncdb.trips.update({'trip_id': bson.ObjectId(trip_id)}, {'$addToSet':{'tags': tag}})
 
 class LikeTripHandler(BaseHandler):
     @tornado.web.authenticated

@@ -845,10 +845,11 @@ $('input.add_member').keyup(function() {
 function ShowResultInCreateTripDropList(response)
 {
 	$('.friend_dropdown_list ul').empty();
-	//alert(response);
+	
 	if (response != '' && response != 'not found') {
+		
 		var _object = JSON.parse(response);
-		//alert(_object.length);
+		
 		for (var i = 0; i < _object.length; i++) {
 		
 			$('.friend_dropdown_list ul').append('<li><a class="add_user_link"><span class="user_image"><img class="picture medium" title='+  _object[i]['username']  +' alt=' + _object[i]['user_id'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li>');

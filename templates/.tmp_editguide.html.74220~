@@ -19,7 +19,6 @@
 <script src="{{ static_url("javascript/followuser.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/js/all.js") }}" type="text/javascript"></script> 
 <script src="{{ static_url("javascript/createtripslides.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/search.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/exportguide.js") }}" type="text/javascript"></script>
 <script type="text/javascript">
   var rendererOptions = {
@@ -180,37 +179,32 @@
   
   function DestToMarker(dest_places)
 {
-	//alert(dest_places);
-	dest_places= jQuery.parseJSON(dest_places);
+	
+	temp = dest_places.replace(/{u['"]/g,"{\"");
+	temp = temp.replace(/ u['"]/g," \"");
+	temp = temp.replace(/\'/g,'\"');
+	temp = temp.replace(/\"s /g,'\'s ');
+	
+	dest_places= jQuery.parseJSON(temp);
+	
 	var day = '';
 	
 	for (var i=0; i < dest_places.length; i++) 
 	{
 	  day = dest_places[i]['date'];
-	  if (dest_places[i].hasOwnProperty('geo'))
-	  {
-	  	var lat = new google.maps.LatLng(dest_places[i]['geo'][0],dest_places[i]['geo'][1]);
-	  	bounds.extend(lat);
-		map.fitBounds(bounds);
-		map.setZoom(15);
-        createSightsMarker(lat,day, i);
-		geo_results.push(lat);
-	  } 
-	  else
-	  {
+	  
 	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
 	  	bounds.extend(results[0].geometry.location);
 		map.fitBounds(bounds);
 		//map.setZoom(10);
-        createSightsMarker(results[0].geometry.location, day, i);
+        createSightsMarker(results[0].geometry.location,day, i);
 		geo_results.push(results[0]);
 		
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
       });
-	  }
  
 	}
 	
@@ -1388,7 +1382,7 @@ function PostFeedResponse(response){
 <ul id="guide_tag" onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);">
 {% for tag in guide['tags']%}
 <li class="tag_button">
-  <a class="tag_button_add" rel="tag" href="/tag" sid="{{tag}}">{{tag}}</a>
+  <a class="tag_button_add" rel="tag" href="/tag">{{tag}}</a>
   <div class="tag_button_remove" ></div>
   
 </li>
@@ -1463,7 +1457,7 @@ function guide_tag_add_form_toggle(display)
         
 		if($('#guide_tag_add_input').val() != '')
 		{
-		var content ={'action':'add','tag':$('#guide_tag_add_input').val(),'guide_id':$('#guideId').val(),'_xsrf':getCookie('_xsrf')};
+		var content ={'tag':$('#guide_tag_add_input').val(),'guide_id':$('#guideId').val(),'_xsrf':getCookie('_xsrf')};
         $.postJSON('/add_guide_tag', content, function(response){
 			    ShowGuideTag($('#guide_tag_add_input').val());
 		});	
@@ -1485,7 +1479,7 @@ function ShowGuideTag(tag)
 {
 	if(tag!='')
 	{
-	var node = $('<li class="tag_button"><a class="tag_button_add tag_button_a_edit_active" rel="tag" sid="'+tag+'" href="/tag">'+tag+'</a><div class="tag_button_remove" style="display: block; "></div></li>');
+	var node = $('<li class="tag_button"><a class="tag_button_add tag_button_a_edit_active" rel="tag" href="/tag">'+tag+'</a><div class="tag_button_remove" style="display: block; "></div></li>');
 	node.insertBefore($('#guide_tag_add_show'));
 	$('#guide_tag_add_input').val('');
 	 
@@ -1498,15 +1492,6 @@ function ShowGuideTag(tag)
         }
 	
 }
-
-$('.tag_button_remove').live('click',function()
-{ 
-    var object = $(this);
-	var content ={'action':'remove','tag':$(this).siblings('a').attr('sid'),'guide_id':$('#guideId').val(),'_xsrf':getCookie('_xsrf')};
-	 $.postJSON('/add_guide_tag', content, function(response){
-			    object.parents('.tag_button').remove();
-		});	
-});
 </script>
 <div class="conv-head">
 
@@ -1533,7 +1518,7 @@ $('.tag_button_remove').live('click',function()
 				<input name="slug" id="guide_slug" type="hidden" value = "{{guide['slug']}}"> 
 				<input name="title" id="guide_title" type="hidden" value = "{{guide['title']}}"> 
 				<input name="typeId" id="typeId" type="hidden" value = "{{guide['guide_id']}}">
-				<input name="dest_place" id="dest_place" type="hidden" value = "{{dest_place}}">
+				<input name="dest_place" id="dest_place" type="hidden" value = "{{guide['dest_place']}}">
 				<input id="type" type="hidden" value = "guide">
 				<input id="geo" type="hidden" value = "">
 

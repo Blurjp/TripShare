@@ -51,13 +51,11 @@ function ShowResultInSearchPeopleList(object,response)
 	object.siblings('.people_search_result_in_trip').children('ul').hide();
 	object.siblings('.people_search_result_in_trip').children('ul').empty();
 	if (response != '' && response != 'not found') {
-		response = response.substring(1,response.length-1);
-		response = response.replace(/\], \[/g,",");
 		
 		var _object = JSON.parse(response);
 		
 		for (var i = 0; i < _object.length; i++) {
-			//alert(_object[i]["slug"]);
+			
 			object.siblings('.people_search_result_in_trip').children('ul').append('<li><a class="add_user_to_trip" sid="'+_object[i]["user_id"]+'"><span class="user_image"><img class="picture medium" title=' + _object[i]['username'] + ' alt=' + _object[i]['user_id'] + ' src=' + _object[i]['picture'] + '></span><span class="user_name">' + _object[i]["username"] + '</span></a></li><div style="clear:both"></div>');
 		}
 		object.siblings('.people_search_result_in_trip').children('ul').show();
@@ -79,6 +77,12 @@ $('.member_button_remove').live('click',function()
 		else
 		{alert('failed');}
 	});
+});
+
+$('#search_clear_button').live('click', function (){
+	
+	 $('#search_all').val('');
+	 $('#all_search_result_list').hide();
 });
 
 function ShowResultInSearchAllDropList(response)

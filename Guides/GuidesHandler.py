@@ -11,18 +11,16 @@ import pymongo
 import re
 import unicodedata
 import tornado.web
+import MongoEncoder.MongoEncoder
 from Map.BrowseTripHandler import BaseHandler
 from Utility.DateProcessor import FromStringtoDate
-import time
-
-
 
 class BrowseGuidesHandler(BaseHandler):
     def get(self):
         if self.current_user:  
             guides = self.syncdb.guides.find({"guide_id":  { "$in" : self.current_user['save_guide'] }}).limit(10).sort('title')
         else:
-            guides = None    
+            guides = None   
         self.render("Guides/guides.html", guides=guides)
 
 class EntryGuidesHandler(BaseHandler):
@@ -30,14 +28,13 @@ class EntryGuidesHandler(BaseHandler):
         guide = self.syncdb.guides.find_one({"slug":slug})
         
         if not guide: raise tornado.web.HTTPError(404)
-        self.render("editguide.html", guide=guide)
+        self.render("editguide.html", guide=guide, dest_place = unicode(simplejson.dumps(guide['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)) )
         
         
 class CategoryGuidesHandler(BaseHandler):
     
     def post(self, section):
         count = self.get_argument('count')
-        print(count+'+++++++++++++')
         latest_guide_ids = None
         if section == "me":
             if self.current_user:  
@@ -86,7 +83,11 @@ class AddGuidesTagHandler(BaseHandler):
     def post(self):
         guide_id = self.get_argument('guide_id')
         tag = self.get_argument('tag')
-        self.syncdb.guides.update({'guide_id': bson.ObjectId(guide_id)}, {'$addToSet':{'tags': tag}})
+        action = self.get_argument('action')
+        if action == 'remove':
+            self.syncdb.guides.update({'guide_id': bson.ObjectId(guide_id)}, {'$pull':{'tags': tag}})
+        else:
+            self.syncdb.guides.update({'guide_id': bson.ObjectId(guide_id)}, {'$addToSet':{'tags': tag}})
             
      
 class SaveGuidesHandler(BaseHandler):  
