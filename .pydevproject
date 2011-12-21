@@ -18,5 +18,6 @@
 <path>/usr/local/lib/python2.6/dist-packages/boto-2.0b3-py2.6.egg</path>
 <path>/usr/local/lib/python2.6/dist-packages/PIL</path>
 <path>/usr/local/lib/python2.6/dist-packages/asyncmongo</path>
+<path>/home/jason/google-api-python-client/dist/google_api_python_client-1.0beta7-py2.6.egg</path>
 </pydev_pathproperty>
 </pydev_project>

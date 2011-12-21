@@ -205,12 +205,6 @@
     map.setCenter(initialLocation);
   }
 	
-	//var shape = new google.maps.MarkerShape({ coord: [1, 1, 1, 20, 18, 20, 18 , 1], type: 'rect' });
-	
-//	var shape = {
-//          coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-//          type: 'poly'
-//              };
 	
 	function setMarkers(map) {
   
@@ -255,8 +249,7 @@ function DestToMarker(dest_place,image, shadow)
         icon: image,
         zIndex: 9000
     });
-		
-		
+
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }

@@ -236,32 +236,31 @@ class SaveTrips(BaseHandler):
             #===================================================================
             
 class SubscribeTrip(BaseHandler):
-        
+        @tornado.web.authenticated
         def get(self, trip_id):   
-            if self.current_user:
-                #trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id),  'members.user_id': bson.ObjectId(self.current_user['user_id']) } )
-                if not self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id),  'members.user_id': bson.ObjectId(self.current_user['user_id']) } ):
-                    self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$addToSet':{'members':self.current_user} })
-                    self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips':trip_id} })
-                self.write("success"+trip_id)
-            
-            else:
-                self.redirect("/login")               
+            check = False
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            for group in trip['groups']:
+                for member in group['members']:
+                    if member['user_id'] == self.current_user['user_id']:
+                        check = True
+            if not check:
+                trip['groups'][0]['members'].append(self.current_user)
+            trip['member_count'] += 1
+            self.syncdb.trips.save(trip)
             
 class UnsubscribeTrip(BaseHandler):
-
+        @tornado.web.authenticated
         def get(self, trip_id): 
-            if self.current_user:
-                if self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id),  'members.user_id': bson.ObjectId(self.current_user['user_id']) } ):
-                    self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, { '$pull':{'members': {'user_id': bson.ObjectId(self.current_user['user_id'])}}})
-                    self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$pop':{'trips':trip_id} })
-                self.write("success"+trip_id)
             
-            else:
-                self.redirect("/login")
-
-
-        
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            for index, group in enumerate(trip['groups']):
+                for _index, member in enumerate(group['members']):
+                    if member['user_id'] == self.current_user['user_id']:
+                        del trip['groups'][index]['members'][_index]
+            trip['member_count'] -= 1
+            self.syncdb.trips.save(trip)
+            
 class ShowNewTrips(BaseHandler):
         def get(self): 
             members = []

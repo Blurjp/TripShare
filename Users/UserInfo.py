@@ -132,10 +132,6 @@ class RemoveUserFromTripHandler(BaseHandler):
     def post(self):
         self.userid = self.get_argument('user_id')
         self.tripid = self.get_argument('trip_id')
-        
-        #user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
-        #wait for MongoDb 2.1 to be able update on multi-level embedded documents
-        #self.syncdb.trips.update({'trip_id':bson.ObjectId(self.tripid)}, {'$pull':{'groups.members': {'user_id': bson.ObjectId(self.userid)}}})  
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(self.tripid)})
         for group in trip['groups']:
             for i, member in enumerate(group['members']):
@@ -150,9 +146,13 @@ class RemoveUserFromTripHandler(BaseHandler):
 
 class CheckUserinTripHandler(BaseHandler):
     def get(self, userid, tripid):  
-        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(tripid),  'members.user_id': bson.ObjectId(userid) } )
-        if trip != '' and trip != None:
-            #self.write(trip['slug']) 
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(tripid)})
+        check = False
+        for group in trip['groups']:
+            for member in group['members']:
+                if member['user_id'] == bson.ObjectId(userid):
+                    check =True
+        if check:
             self.write('existed')
         else:
             self.write('nonexisted')

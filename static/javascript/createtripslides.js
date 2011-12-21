@@ -543,11 +543,6 @@ multihop_setup();
 					  {
 					  
 					  	var tripid = response.substring(7);
-						//alert($(this).attr('value'));
-						
-						//	$('#'+tripid+'.l_unsubscribe').removeClass('l_unsubscribe').addClass('l_subscribe');
-						//	$('#'+tripid+'.l_subscribe').val('Join');
-						// alert('User has been removed from the trip.');
 					  } 
 					});
 				}
