@@ -4,6 +4,8 @@ Created on Sep 9, 2011
 @author: jason
 '''
 from Map.BrowseTripHandler import BaseHandler
+import tornado.web
+import bson
 import gflags
 import httplib2
 
@@ -21,10 +23,10 @@ FLAGS = gflags.FLAGS
 # The client_id and client_secret are copied from the API Access tab on
 # the Google APIs Console
 FLOW = OAuth2WebServerFlow(
-    client_id='YOUR_CLIENT_ID',
-    client_secret='YOUR_CLIENT_SECRET',
+    client_id='1072071824058.apps.googleusercontent.com',
+    client_secret='Zh1EiK8GTXiDObnzEKEmm02h',
     scope='https://www.googleapis.com/auth/calendar',
-    user_agent='YOUR_APPLICATION_NAME/YOUR_APPLICATION_VERSION')
+    user_agent='tripshare/1.0')
 
 # To disable the local server feature, uncomment the following line:
 # FLAGS.auth_local_webserver = False
@@ -46,9 +48,38 @@ http = credentials.authorize(http)
 # the Google APIs Console
 # to get a developerKey for your own application.
 service = build(serviceName='calendar', version='v3', http=http,
-       developerKey='YOUR_DEVELOPER_KEY')
+       developerKey='AIzaSyCjWwQX-D4UMDRVcoLaxZGaeU_76tMIKNA')
 
 
-class ImportCalendar:
+class ExportCalendarHandler:
+    @tornado.web.authenticated
     def post(self):
+        start = self.get_argument("start")
+        end = self.get_argument("end")
+        title = self.get_argument("title")
+        location = self.get_argument("location")
+        trip_id = self.get_argument("trip_id")
+        groups = self.syncdb.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
+        
+        attendees = []
+        for index, group in enumerate(groups):
+            if self.current_user in group['members']:
+                for member in group[index]['members']:
+                    attendees.append({'email': member['email']})
+                break
+
+        event = {
+                 "summary": "Trip: "+title,
+                 "location": location,
+                 'start': {
+                          'dateTime': start
+                          },
+                 'end':   {
+                          'dateTime': end
+                          },
+                 'attendees': attendees,
+                }
+
+        created_event = service.events().insert(calendarId='primary', body=event).execute()
+        print created_event['id']
         
