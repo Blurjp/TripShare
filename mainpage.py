@@ -28,6 +28,8 @@ from Map.ProcessTripHandler import GetTripGroupForMapHandler
 from Map.ProcessTripHandler import GetTripGroupForSiteHandler
 from Users.UserInfo import UpdateUserProfileHandler
 
+from Calendar.CalendarHandler import ExportCalendarHandler
+
 from Map.BrowseTripHandler import BaseHandler
 from Map.BrowseTripHandler import BrowseHandler
 from Map.BrowseTripHandler import EntryHandler
@@ -208,6 +210,8 @@ class Application(tornado.web.Application):
                                       (r"/addgrouptotrip", AddTripGroupHandler),
                                       (r"/removegroupfromtrip", RemoveTripGroupHandler),
                                       (r"/mergetripgroups", MergeTripGroupHandler),
+                                      
+                                      (r"/exportcalendar", ExportCalendarHandler),
                                       
                                       (r"/addsitetotrip", AddSiteToTrip),
                                       (r"/removesitefromtrip", RemoveSiteFromTrip),

@@ -48,11 +48,11 @@ class CategoryGuidesHandler(BaseHandler):
         elif section == "world":
             latest_guide_ids = self.syncdb.guides.find({"type":'world'}).skip(int(count)).limit(10).sort('title')
         
-        print(str(latest_guide_ids.count())+'------------')
+        
         if latest_guide_ids.count() >0:
                 
                 for latest_guide_id in latest_guide_ids:                        
-                    print(latest_guide_id['title'])
+                    
                     self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
         else:
             self.write('<li><span>No guide for this category yet....</span></li>')

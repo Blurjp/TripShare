@@ -99,7 +99,8 @@ class ComposeHandler(BaseHandler):
         description = title
         self.slug = unicodedata.normalize("NFKD", unicode(title)).encode("ascii", "ignore")
         start_date_object = start_date
-        finish_date_object = FromStringtoDate.ToDate(finish_date)
+        #finish_date_object = FromStringtoDate.ToDate(finish_date)
+        finish_date_object = finish_date
         trip_path = ""
         waypoints=[]
         members.append(self.current_user)

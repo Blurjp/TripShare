@@ -29,7 +29,7 @@ td,th{text-align:left;vertical-align:middle}
 p{margin:0;margin-bottom:15px}       
 img{-ms-interpolation-mode:bicubic}       
 /* Common design elements */ 
- img.picture{border:1px solid #ccc}      
+   
  img.picture.small{width:25px;height:25px}       
  img.picture.medium{width:50px;height:50px} 
  img.picture.large{width:75px;height:75px} 
@@ -1285,3 +1285,11 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 
 #merge_group_list .trip_member {cursor:pointer;margining:40px}
 #merge_group_list .trip_member.on {background: #F39814;color: white;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;}
+
+#export_calendar_step_1  { position: fixed;z-index:9999;  display:none;  width:25%; height:40%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}
+#export_calendar_step_1 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
+#closeexportcalendar-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+
+#plan_calendar_export_options {float:left}
+#plan_calendar_export_options li a {margin:10px; cursor:pointer;}
+#plan_calendar_export_options li a img {margin:10px}

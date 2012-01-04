@@ -110,8 +110,6 @@ class GetTripGroupForMergeHandler(BaseHandler):
     def post(self):
         trip_id = self.get_argument('trip_id')
         groups = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups']
-        
-        
         self.write(unicode(simplejson.dumps(groups, cls=MongoEncoder.MongoEncoder.MongoEncoder)))                
           
 class GetTripGroupForMapHandler(BaseHandler):
