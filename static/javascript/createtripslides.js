@@ -167,14 +167,6 @@ $(document).ready(function() {
 			return false;
 		}
 		
-//		if($('.dest_list_part li').length == 1)
-//		{
-//			$('#dest_list').clear();
-//		}
-//		if ($('.dest_list_part li').length == 0) {
-//			$('#dest_list').append('<li>' + 'Start:' + $("#start").attr("value") + '<img src="../static/icon/start.png" alt="" border="0"></li>');
-//		}
-
 		$('#create_trip_step_1').animate({right: winW});
 		$('#close-modal1').hide();
 		$('#close-modal2').show();
@@ -186,7 +178,6 @@ $(document).ready(function() {
 	    $(id).animate({right: winW/2-$(id).width()/2});
         $(id).css("position", "fixed");
 				   
-	   
     });	
 	
 		  /* Click go back step2 button */
@@ -206,11 +197,12 @@ $(document).ready(function() {
 	  $('#mask4').hide();  
 	  $('#close-modal3').hide();
 	  
-	  //var formData = form2object('create_trip_form');
+	  setGeoComplete('start');
+	  setGeoComplete('place-0-text');
 	  
 	  var formData = $('#create_trip_form').formToDict();
 	  var _formData=JSON.stringify(formData, null, '\t');
-      //alert(_formData);
+      alert(_formData);
 	  var content = {'_xsrf': getCookie("_xsrf"), 'data' : _formData};
       var disabled = $('#create_trip_form').find("input[type=submit]");
       disabled.disable();
@@ -352,16 +344,7 @@ jQuery.fn.enable = function(opt_enable) {
 	
 	     /* Click current location */
      $('#current_location').click(function(e) {  
-      e.preventDefault();  
-		
-        	
-//		if ($('.dest_list_part li').length == 0) {
-//			$('#dest_list').append('<li class="start"><img src="../static/icon/start.png" alt="" border="0">' + 'Start:' + 'Beijing' + '</li>').fadeIn();
-//		}
-//		else
-//		{
-//			$('#dest_list li.start').replaceWith('<li class="start"><img src="../static/icon/start.png" alt="" border="0">' + 'Start:'+ 'Beijing' + '</li>');
-//		}		
+      e.preventDefault();  	
         
 		$('.start_list_part').empty();
 		$('.start_list_part').append('<img src="../static/icon/start.png" alt="" border="0"><span>' + 'Start:' + 'New York</span>').fadeIn();
@@ -384,7 +367,6 @@ jQuery.fn.enable = function(opt_enable) {
 
 function SearchMember()
 {
-	//var trip_id = $("#member").attr("name");
 	var name = $("#member").attr("value");
 	$("#member").val('');
 	$(".people_search_result").empty();
@@ -673,8 +655,8 @@ jQuery.postJSON = function(url, args, callback) {
     var assume_euro = false;
 
     // this is a template for adding rows to the disambiguation template
-    var disambiguator_template = "<div id=\"{ID}-wrapper\" class=\"row-wrapper\">\n<li class=\"lh-tighter {ID}-element multihop-row goodbox\">\n  \n  <div class=\"left c1of5 tright\" style=\"margin-top:2px;\">\n    <label for=\"{ID}-text\">Destination:<\/label>\n  <\/div>\n  <div class=\"left c2of5 tright\">\n    <input id=\"{ID}-text\" name=\"{ID}-text\" type=\"text\" class=\"text destination margin-right-thin\" value=\"\" \/>\n    <input id=\"{ID}\" name=\"{ID}\" type=\"hidden\" value=\"\" \/>\n  <\/div>\n  <div class=\"left c1of10 tright\" style=\"margin-top:2px;\">\n    <label for=\"{ID}-date\">on:<\/label>\n  <\/div>\n  <div class=\"left c1of5\">\n    <input id=\"{ID}-date\" name=\"{ID}-date\" type=\"text\" value=\"\" onfocus=\"showCalendarControl(this)\"  class=\"text date multihop-calendar\" \/>\n  <\/div>\n  <div class=\"left\">\n  <a href=\"#\" id=\"{ID}-move-up-link\" class=\"pad-left-thin f2 lh-tight move-up-link\"><\/a><a href=\"#\" id=\"{ID}-move-down-link\" class=\"f2 lh-tight move-down-link\"><\/a><a href=\"#\" id=\"{ID}-remove-link\" class=\"pad-left-thin f2 lh-tight remove-trip-link\"><\/a><\/div>\n<\/li>\n<li class=\"lh-tighter {ID}-element goodbox\" id=\"{ID}-feedback-wrapper\" style=\"margin-bottom:0;\">\n  <div id=\"{ID}-feedback\" class=\"check-placename-info\" style=\"display:none;\"><\/div>\n  <div id=\"{ID}-others\" style=\"display:none;\"><\/div>\n<\/li>\n<li class=\"lh-tighter pad-bottom-thin {ID}-element goodbox\">\n  <div class=\"left c1of5 transport-label\">&nbsp;<\/div>\n  <div class=\"left c2of5 tright\">\n    <img id=\"{ID}-loading\" class=\"left margin-top-thin\" style=\"display: none\" src=\"\/images\/dopplr-anim-smaller-faster.gif\" alt=\"loading...\" \/>\n    <div class=\"margin-right-thin\"><select class=\"transport-selector\" id=\"{ID}-transport-type\" name=\"{ID}-transport-type\"><option value=\"plane\">by plane<\/option>\n<option value=\"train\">by train<\/option>\n<option value=\"car\">by car<\/option>\n<option value=\"bus\">by bus<\/option>\n<option value=\"ferry\">by ferry<\/option>\n<option value=\"motorcycle\">by motorcycle<\/option>\n<option value=\"cycle\">by bicycle<\/option>\n<option value=\"walk\">on foot<\/option>\n<option value=\"other\">other<\/option><\/select><\/div>\n  <\/div>\n<\/li>\n<\/div>\n";
-    var disambiguator_index = 1;
+    var disambiguator_template = "<div id=\"{ID}-wrapper\" class=\"row-wrapper\">\n<li class=\"lh-tighter {ID}-element multihop-row goodbox\">\n  \n  <div class=\"left c1of5 tright\" style=\"margin-top:2px;\">\n    <label for=\"{ID}-text\">Destination:<\/label>\n  <\/div>\n  <div class=\"left c2of5 tright\">\n    <input id=\"{ID}-text\" name=\"{ID}-text\" type=\"text\" class=\"text destination margin-right-thin\" value=\"\" \/>\n    <input id=\"{ID}\" name=\"{ID}\" type=\"hidden\" value=\"\" \/>\n <input id=\"{ID}-geo\" name=\"{ID}-geo\" type=\"hidden\" value=\"\" \/>\n <\/div>\n  <div class=\"left c1of10 tright\" style=\"margin-top:2px;\">\n    <label for=\"{ID}-date\">on:<\/label>\n  <\/div>\n  <div class=\"left c1of5\">\n    <input id=\"{ID}-date\" name=\"{ID}-date\" type=\"text\" value=\"\" onfocus=\"showCalendarControl(this)\"  class=\"text date multihop-calendar\" \/>\n  <\/div>\n  <div class=\"left\">\n  <a href=\"#\" id=\"{ID}-move-up-link\" class=\"pad-left-thin f2 lh-tight move-up-link\"><\/a><a href=\"#\" id=\"{ID}-move-down-link\" class=\"f2 lh-tight move-down-link\"><\/a><a href=\"#\" id=\"{ID}-remove-link\" class=\"pad-left-thin f2 lh-tight remove-trip-link\"><\/a><\/div>\n<\/li>\n<li class=\"lh-tighter {ID}-element goodbox\" id=\"{ID}-feedback-wrapper\" style=\"margin-bottom:0;\">\n  <div id=\"{ID}-feedback\" class=\"check-placename-info\" style=\"display:none;\"><\/div>\n  <div id=\"{ID}-others\" style=\"display:none;\"><\/div>\n<\/li>\n<li class=\"lh-tighter pad-bottom-thin {ID}-element goodbox\">\n  <div class=\"left c1of5 transport-label\">&nbsp;<\/div>\n  <div class=\"left c2of5 tright\">\n    <img id=\"{ID}-loading\" class=\"left margin-top-thin\" style=\"display: none\" src=\"\/images\/dopplr-anim-smaller-faster.gif\" alt=\"loading...\" \/>\n    <div class=\"margin-right-thin\"><select class=\"transport-selector\" id=\"{ID}-transport-type\" name=\"{ID}-transport-type\"><option value=\"plane\">by plane<\/option>\n<option value=\"train\">by train<\/option>\n<option value=\"car\">by car<\/option>\n<option value=\"bus\">by bus<\/option>\n<option value=\"ferry\">by ferry<\/option>\n<option value=\"motorcycle\">by motorcycle<\/option>\n<option value=\"cycle\">by bicycle<\/option>\n<option value=\"walk\">on foot<\/option>\n<option value=\"other\">other<\/option><\/select><\/div>\n  <\/div>\n<\/li>\n<\/div>\n";
+	var disambiguator_index = 1;
     function add_disambiguator() {
 
       // adding a disambiguator breaks the magic connection, as we're suddenly complicated.
@@ -702,7 +684,6 @@ jQuery.postJSON = function(url, args, callback) {
       disambiguator_index += 1;
 	 
 	  setAutoComplete(id+"-text");
-	  
       return false;
     }
     

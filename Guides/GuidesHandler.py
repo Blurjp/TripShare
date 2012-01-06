@@ -34,7 +34,11 @@ class EntryGuidesHandler(BaseHandler):
 class CategoryGuidesHandler(BaseHandler):
     
     def post(self, section):
-        count = self.get_argument('count')
+        type = self.get_argument('type')
+        if type == 'scroll':
+            count = self.get_argument('count')
+        else:
+            count = 0
         latest_guide_ids = None
         if section == "me":
             if self.current_user:  
@@ -50,10 +54,10 @@ class CategoryGuidesHandler(BaseHandler):
         
         
         if latest_guide_ids.count() >0:
-                
-                for latest_guide_id in latest_guide_ids:                        
-                    
-                    self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
+                # check if the request is ajax
+                #if self.request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                    for latest_guide_id in latest_guide_ids:                        
+                        self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
         else:
             self.write('<li><span>No guide for this category yet....</span></li>')
     
@@ -72,9 +76,8 @@ class CategoryGuidesHandler(BaseHandler):
             latest_guide_ids = self.syncdb.guides.find({"type":'world'}).limit(10).sort('title')
             
         if latest_guide_ids.count() >0:
-                
-                for latest_guide_id in latest_guide_ids:                        
-                        self.write(self.render_string("Guides/guideentryinguides.html", guide = latest_guide_id) + "||||")
+
+                self.render("Guides/guides.html", guides=latest_guide_ids)
         else:
             self.write('<li><span>No guide for this category yet....</span></li>')
         
@@ -242,8 +245,6 @@ class ImportGuideToTripHandler(BaseHandler):
             if group['group_id'] == bson.ObjectId(group_id):
                 index = i
                 break
-        
-        
         
         if guide_id not in trip['groups'][index]['imported_guides']:
             guide = self.syncdb.guides.find_one({'guide_id':bson.ObjectId(guide_id)})

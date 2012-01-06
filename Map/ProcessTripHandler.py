@@ -260,7 +260,7 @@ class UnsubscribeTrip(BaseHandler):
             self.syncdb.trips.save(trip)
             
 class ShowNewTrips(BaseHandler):
-        def get(self): 
+        def post(self):
             members = []
             latest_trip_ids = self.syncdb.trips.find().limit(20).sort("published", pymongo.DESCENDING)
            
@@ -280,6 +280,45 @@ class ShowNewTrips(BaseHandler):
                         latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
                         #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
                         self.write(latest_trip_id['html'])
+            
+            
+        def get(self): 
+            image_info=[]
+            dest_places = []
+            """ Get Latest trips to show in the map"""
+            trips = self.syncdb.trips.find().limit(10).sort("published", pymongo.DESCENDING)
+            if trips.count() > 0:
+                for trip in trips:
+                     trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
+                     if (trip_user):
+                         image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
+                         dest_places.append(unicode(simplejson.dumps(trip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+        
+            """ Get latest trips to show in the list"""
+        
+            latest_trip_ids = trips
+        
+            top_shares = self.syncdb.users.find().sort("trip_count", pymongo.DESCENDING).limit(10)
+            top_guides = self.syncdb.guides.find().sort("rating", pymongo.DESCENDING).limit(5)
+        
+            _trips = []
+            if latest_trip_ids.count() > 0:
+                    for latest_trip_id in latest_trip_ids:
+                            latest_trip_id['check_join'] = False
+                        
+                            members = latest_trip_id['groups'][0]['members']
+                            if self.current_user:
+                                for member in members:
+                                    if member['user_id'] == self.current_user['user_id']:
+                                        latest_trip_id['check_join'] = True
+                                        break
+                                
+                            #latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
+                            _trips.append(latest_trip_id)
+                        
+        
+            self.render("newbeforesignin.html", guides=top_guides, dest_places = dest_places, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
+   
          
 
 
