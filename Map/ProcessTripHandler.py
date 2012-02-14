@@ -6,12 +6,20 @@ Created on Oct 19, 2010
 
 import bson
 import pymongo
-import re
 import datetime
 import tornado.web
 import simplejson
 import MongoEncoder.MongoEncoder
 from BrowseTripHandler import BaseHandler
+
+class MyTripsHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+
+        response = self.syncdb.trips.find({'trip_id':{'$in':self.current_user['trips']}}).sort("published", pymongo.DESCENDING)
+           
+        self.render("userentry.html", check=True, custom_user = self.current_user, trips = response)
+
 
 class MergeTripGroupHandler(BaseHandler):
         @tornado.web.authenticated
@@ -78,7 +86,9 @@ class AddTripGroupHandler(BaseHandler):
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             _groups = trip['groups']
             _user = self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
-            
+            if _user['slug'] not in trip['expense']:
+                trip['expense'][_user['slug']]=[]
+                
             for group in _groups:
                     for index, user in enumerate(group['members']):
                         if user['user_id'] == bson.ObjectId(user_id):

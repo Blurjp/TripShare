@@ -197,12 +197,10 @@ $(document).ready(function() {
 	  $('#mask4').hide();  
 	  $('#close-modal3').hide();
 	  
-	  setGeoComplete('start');
-	  setGeoComplete('place-0-text');
+
 	  
 	  var formData = $('#create_trip_form').formToDict();
 	  var _formData=JSON.stringify(formData, null, '\t');
-      alert(_formData);
 	  var content = {'_xsrf': getCookie("_xsrf"), 'data' : _formData};
       var disabled = $('#create_trip_form').find("input[type=submit]");
       disabled.disable();
@@ -232,7 +230,6 @@ jQuery.fn.formToDict = function() {
     for (var i = 0; i < fields.length; i++) {
 		if(fields[i].name.indexOf('place-')==0)
 		{
-			
 			index = fields[i].name.substring(6,7);
 			if(temp==index)
 			{
@@ -240,6 +237,10 @@ jQuery.fn.formToDict = function() {
 				if(name=='text')
 				{
 					name = 'dest';
+				}
+				else if(name=='geo')
+				{
+					name = 'loc';
 				}
 				subjson[name] = fields[i].value;
 			}
@@ -252,6 +253,10 @@ jQuery.fn.formToDict = function() {
 				if(name=='text')
 				{
 					name = 'dest';
+				}
+				else if(name=='geo')
+				{
+					name = 'loc';
 				}
 				subjson[name] = fields[i].value;
 			}

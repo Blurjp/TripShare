@@ -174,19 +174,19 @@ class GetGuidesForImportHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
         trip_id = self.get_argument('trip_id')
-        tags = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['tags']
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
         guides= []
         # need improvement here!
-        guides_all_match = self.syncdb.guides.find({'tags':{'$in':tags}}).limit(10)
-        for guide in guides_all_match:
-            guides.append(guide)
-        if guides_all_match.count()<5:
-            guides_part_match = self.syncdb.guides.find({}).limit(5)
-            for guide in guides_part_match:
-                guides.append(guide)
-            
-        if len(guides)>0:
-            for guide in guides:                        
+        
+        guides_all_match = []
+        for group in trip['groups']:
+            for dest_place in group['dest_place']:
+                    guides = self.syncdb.guides.find({ 'loc' : { '$near' : dest_place['loc'] }}).limit(20)
+                    for guide in guides:
+                        guides_all_match.append(guide)
+                    
+        if len(guides_all_match)>0:
+            for guide in guides_all_match:                        
                     self.write(self.render_string("Guides/guideentry.html", guide = guide) + "||||")
 
 class CreateGuidesHandler(BaseHandler):
@@ -221,8 +221,9 @@ class CreateGuidesHandler(BaseHandler):
                 self.syncdb.sites.save({'site_id':bson.ObjectId(), 'guide_id':guide_id, 'type':'', 'site_name':dest['dest'], 'location':[]})
             
         self.syncdb.guides.update({'guide_id':guide_id},{'$addToSet':{'tags': tag}})
-        self.syncdb.guides.ensure_index('rating', pymongo.DESCENDING);
-        self.syncdb.guides.ensure_index('guide_id', unique=True);
+        self.syncdb.guides.ensure_index('rating', pymongo.DESCENDING)
+        self.syncdb.guides.ensure_index('dest_place.geo', pymongo.GEO2D)
+        self.syncdb.guides.ensure_index('guide_id', unique=True)
         self.redirect("/guide/" + str(self.slug))
        
     def _create_guide(self, response, error):
@@ -265,15 +266,16 @@ class ImportGuideToTripHandler(BaseHandler):
                 site = self.syncdb.sites.find_one({'lc_username': {'$regex':'^'+ _site['dest'].upper()}})
                 if site:
                     _site['description']= site['description']
-                    _site['geo']= site['geo']
+                    _site['loc']= site['location']
                 else:
                     _site['description']= ''
-                    _site['geo'] = ''
+                    _site['loc'] = ''
                 trip['groups'][index]['dest_place'].append(_site)
                 trip['groups'][index]['imported_guides'].append(guide_id)
                 trip['tags'].append(dest['dest'])
                 self.write(self.render_string("Sites/trip_site.html", site = _site)+ "||||")
             self.syncdb.trips.save(trip)
+            
             #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)}, {'$set':{'title':title}})
             #self.syncdb.guides.remove({'guide_id':bson.ObjectId(id)})
           
@@ -305,14 +307,16 @@ class ImportGuidesHandler(BaseHandler):
                         data = simplejson.loads(line)
                         if data['type'] == 'national_park' or data['type'] == 'city':
                             guide_id = bson.ObjectId()
-                            guide = {'guide_id':guide_id, 'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'lc_guidename':data['parent_site_name'].upper(), 'title': data['parent_site_name'], 'description': data['description'], 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'search_type':'guide','type':data['type'], 'random' : random.random()}
+                            guide = {'guide_id':guide_id, 'loc':data['location'],'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'lc_guidename':data['parent_site_name'].upper(), 'title': data['parent_site_name'], 'description': data['description'], 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'search_type':'guide','type':data['type'], 'random' : random.random()}
                             self.syncdb.guides.save(guide, safe=True)
                         site_id = bson.ObjectId()
                         dest = {'dest':data['site_name'], 'type':'car','date':'', 'picture':'', 'description':data['description'], 'geo':data['location'], 'state':data['state']}
                         self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'dest_place':dest}})
                         self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'tags':data['site_name']}})
                         self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'search_type':'site', 'lc_sitename':data['site_name'].upper(), 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location'], 'pictures':[], 'description':data['description']})       
-             
+                        self.syncdb.sites.ensure_index('location', pymongo.GEO2D)
+                        self.syncdb.guides.ensure_index('loc', pymongo.GEO2D)
+                        self.syncdb.sites.ensure_index('site_id', unique=True)
                     except:
                         print ('+++++++++++++++'+line)
                         #time.sleep(2)

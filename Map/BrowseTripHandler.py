@@ -101,8 +101,13 @@ class EntryHandler(BaseHandler):
     def _trip_entry(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
+        users = []
+        for group in self.singletrip['groups']:
+            for user in group['members']:
+                users.append(user)
+        users.reverse()
         
-        self.render("Trips/edittrip.html", group_id=self.singletrip['groups'][0]['group_id'] , singletrip=self.singletrip, dest_place = unicode(simplejson.dumps(self.singletrip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)),token = self.xsrf_token, trips=response)
+        self.render("Trips/edittrip.html", current_user=self.current_user, expense = self.singletrip['expense'], users = users ,group_id=self.singletrip['groups'][0]['group_id'] , singletrip=self.singletrip, dest_place = unicode(simplejson.dumps(self.singletrip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)),token = self.xsrf_token, trips=response)
         
 class TripPageHandler(BaseHandler):
 

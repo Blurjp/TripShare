@@ -86,7 +86,13 @@ class ComposeHandler(BaseHandler):
                     dest_string += " to "+ dest['dest'][:(dest['dest'].find(','))]
                 else:
                     dest_string += " to "+ dest['dest']
-                dest['geo'] = ''
+                geo = []
+                geo1 = dest['loc'][dest['loc'].find('(')+1:dest['loc'].find(',')]
+                geo2 = dest['loc'][dest['loc'].find(',')+1:dest['loc'].find(')')]
+                geo.append(float(geo1))
+                geo.append(float(geo2))
+                dest['loc']= geo
+                print (dest['loc'])
                 dest['description'] = ''
                 dest['notes'] = []
                 dest['date'] = dest['date']
@@ -104,6 +110,9 @@ class ComposeHandler(BaseHandler):
         trip_path = ""
         waypoints=[]
         members.append(self.current_user)
+        expense = {}
+        for member in members:
+            expense[member['slug']] = [{'date': '', 'amount': '', 'type': 'Select', 'description': ''}]
         
         if _formData.has_key('id'):
             trip =  self.syncdb.trips.find_one({'trip_id':bson.ObjectId(_formData['id'])})
@@ -133,13 +142,13 @@ class ComposeHandler(BaseHandler):
             self.trip_id = bson.ObjectId()
             _group = {'group_id': group_id,'members': members, 'start_place':start, 'dest_place':destinations, 'start_place_position':tripStartPosition, 'way_points':waypoints ,'trip_path':trip_path, 'start_date': start_date_object, 'finish_date': finish_date_object, 'imported_guides':[]}
             groups.append(_group)
-            self.db.trips.save({ 'trip_id':self.trip_id, 'groups':groups, 'rating':0,'user_like':[],'tags': tags,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'lc_tripname':title.upper(), 'title': title, 'slug':self.slug, 'search_type':'trip', 'type':'trip','member_count':len(members),'description': str(description), 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'random' : random.random()}, callback=self._create_trips)
+            self.db.trips.save({ 'trip_id':self.trip_id, 'groups':groups, 'rating':0,'user_like':[],'tags': tags,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'lc_tripname':title.upper(), 'title': title, 'slug':self.slug, 'search_type':'trip', 'type':'trip','member_count':len(members),'description': str(description), 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'expense':expense,'random' : random.random()}, callback=self._create_trips)
         
     def _create_trips(self, response, error):
             if error:
                     raise tornado.web.HTTPError(500)
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id}, '$inc':{'trip_count':1}})    
-            self.syncdb.trips.ensure_index([('dest_place_position', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
+            self.syncdb.trips.ensure_index([('groups.dest_place.loc', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
             self.syncdb.trips.ensure_index('trip_id', unique=True)
             self.syncdb.trips.ensure_index('slug', unique=True)
             print('redirect')

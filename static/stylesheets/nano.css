@@ -427,37 +427,27 @@ opacity:0.5;
 		padding-top: 5px;
 		
 	}
- .sidebar-auth-button { border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 60%; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left}
+	
+ .sidebar-auth-button { border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white !important; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 60%; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left}
  .sidebar-auth-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
  .sidebar-auth-button:active, #sidebar-auth-buttons .sidebar-auth-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+ .sidebar-auth-button.disabled {color: white; background-color: #64bcc9; text-decoration: none; pointer-events: none;cursor: default;}
  .v3_button {border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; padding: 15px; width: 60%; font-weight: 300; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left}
  .v3_button:hover {color: white; background-color: #64bcc9; text-decoration: none}
  .v3_button:active, #sidebar-auth-buttons .sidebar-auth-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
  .regular-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left; margin: 10px}
  .regular-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
 
-#close-modal1
-{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
-#closeguide-modal
-{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
-
+#close-modal1{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+#closeguide-modal{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 /* /////////////////////////////////////////////////////  */
 /* create trip slide 2*/	
 /* id="box" class = "window"*/      
 
-#create_trip_step_2 { 
-  position: absolute;
-  z-index:9999;
-  display:none;    
-  padding:20px;
-  width:575px;   
-  height:350px
-  
-}  
+#create_trip_step_2 { position: absolute;z-index:9999;display:none;    padding:20px;width:675px;   height:350px }  
 
-#close-modal2
-{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+#close-modal2 {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 
 #create_trip_step_2 .input_three_steps .h1
@@ -545,12 +535,12 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 
  .action-bar {padding-right: 3px; }
  .members, .member_count {float:left; margin-left: 2px; margin-right: 10px; margin-top: 3px; }
- .members .avatar img {width: 30px; height: 30px; border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}  
+ .members .avatar img {width: 30px; height: 30px; border-radius: 5px;-moz-border-radius: 5px ;-webkit-border-radius: 5px;}  
  .members .label {float: left; background: #96af4b; padding: 6px 10px 5px 18px; border-radius: 5px ; -moz-border-radius: 5px ; -webkit-border-radius: 5px ; color: white; margin: 0 5px 0 0; font-weight: 100; font-style: italic; font-size: 120%; font-family: "museo-slab-1", "museo-slab-2", serif}
  .actions .like_trip img {padding-top:3px}
  .sighting-box {padding: 15px; background: #f7f6f1; border-radius: 15px 15px 0 0; -moz-border-radius: 15px 15px 0 0; -webkit-border-radius: 15px 15px 0 0}
 
- li.show_trips {margin:0 0 20px 0; border: 1px solid #ccc;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;}	
+ li.show_trips {margin:0 0 20px 0; border: 1px;border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;}	
  li.show_trips.first {margin-left: 15px}
  li.show_trips .photo {display: block}
  li.show_trips .photo img {width: 170px; height: 170px; background-color: white}
@@ -575,6 +565,7 @@ li.person_result {height: 50px; width: 350px;background-color: #EEEEE0; border-r
 #tooltip_micro {font-size: .8em !important;}
 
 .headpichold img {float:left;border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
+.expense_headpichold img {border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;}
 .header .body h1 a.name{ font-family:     "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .box-bar-text .title {}
 .section li {padding-top:10px}
@@ -1044,13 +1035,13 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
 #export_guide_step_1 .trip_pic .picture {position:absolute;right:50px;}
 #export_guide_step_1 .sighting-box.guideexport {padding: 15px 15px 10px 25px; background: #f7f6f1; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px}
-#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;overflow-y: scroll; overflow-x:hidden}  
-#closeexportguide-modal {position: absolute; overflow: visible; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+#export_guide_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
+#closeexportguide-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 #import_guide_step_1 .trip_pic .picture {position:absolute;right:50px;}
 #import_guide_step_1 .sighting-box.guideexport {padding: 15px 15px 10px 25px; background: #f7f6f1; border-radius: 5px 5px 5px 5px; -moz-border-radius: 5px 5px 5px 5px; -webkit-border-radius: 5px 5px 5px 5px}
 #import_guide_step_1  {position: fixed;z-index:9999;  display:none;  width:50%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}
-#closeimportguide-modal {position: absolute; overflow: visible; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+#closeimportguide-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 
 #trip_tag      { display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_tag.png) no-repeat 0 13px; margin-bottom: 5px  }
@@ -1079,8 +1070,8 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 
 
 
-#guide_title_slide {margin:30px 20px;heigh:10px}
-#guide_tag_slide {margin:30px 20px;heigh:10px}
+#guide_title_slide {margin:30px 20px;height:10px}
+#guide_tag_slide {margin:30px 20px;height:10px}
 #guide_tag_slide ul    {width:700px; display: block; padding-left:120px}
 #guide_tag_slide li  {  float: left; margin: 0px 5px 15px 0px }
 
@@ -1221,7 +1212,7 @@ cursor: pointer;
 .site_notes {display:none}
 
 
-.trip_member      {float:left; display: block; padding: 10px 0 5px 22px; background: url(/static/images/trip_member.png) no-repeat 0 13px; margin-bottom: 5px  }
+.trip_member      {float:left; display: block; padding: 10px 0 5px 22px; margin-bottom: 5px  }
 .trip_member li   { border-radius: 0;-webkit-border-radius: 0; -moz-border-radius: 0;float: left; margin: 0px 15px 15px 0 }
 .member_button    { position: relative;}
 .member_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
@@ -1293,3 +1284,52 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 #plan_calendar_export_options {float:left}
 #plan_calendar_export_options li a {margin:10px; cursor:pointer;}
 #plan_calendar_export_options li a img {margin:10px}
+
+
+/* css for scrollbar below here*/
+#scroll-pane { float:left;overflow: auto; width: 620px; height:530px;position:relative;display:inline}
+#scroll-content {position:absolute;width:100%}
+#slider-wrap{float:left;background-color:lightgrey;width:8px;}
+#slider-vertical{position:relative;height:100%}
+.ui-slider-handle{width:8px;height:15px;margin:0 auto;background-color:darkgray;display:block;position:absolute}
+
+
+/*  manage budget  */
+#manage_budget  { position: fixed;z-index:9999;  display:none;  width:80%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}
+#manage_budget  .button_container {position:absolute;right:15px;bottom:15px;overflow:hidden}
+#manage_budget .tab_tag {height:380px;overflow-y:scroll;}
+#share_expense_step_1  { position: fixed;z-index:9999;  display:none;  width:80%; height:80%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}
+#share_expense_step_1  .button_container {position:absolute;right:15px;bottom:15px;overflow:hidden}
+#closemanagebudget-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+#closeshareexpense-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+
+#expense_add_button   { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 25px; width: 25px;  }
+#expense_add_button :hover  { background-color: #59d859  }
+
+div#users-contain {  }
+div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
+
+
+li span.pay-button {
+background-image: url('/static/images/collect_buttons.png');
+width: 70px;
+height: 70px;
+display: block;
+position: relative;
+margin-left: 15px;
+}
+li span.collect-button {
+background-image: url('/static/images/collect_buttons.png');
+width: 70px;
+height: 70px;
+display: block;
+position: relative;
+margin-left: 15px;
+}
+
+li .user_expense_request{float:left;}
+.checkoption{margin-right:25px !important; margin-bottom:10px !important;}
+.expense_amount{margin-left:80px !important; margin-bottom:10px !important;}

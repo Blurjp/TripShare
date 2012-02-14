@@ -2,9 +2,7 @@
 
 /* create guide slide */
 $(document).ready(function() {    
-       
-		var oScrollbar = $('#create_guide_step_1');
-        oScrollbar.tinyscrollbar();
+
      //Get the screen height and width  
         var maskHeight = $(document).height();  
         var maskWidth = $(window).width();  
@@ -18,7 +16,7 @@ $(document).ready(function() {
         
 		//each time before create guide, clear all the cache information for 
 		
-		oScrollbar.tinyscrollbar_update();
+		
 		$('#destinations_for_guide').val('');
 		
         e.preventDefault();
@@ -94,14 +92,18 @@ $(document).ready(function() {
  
  function ShowCreateguideResponse(response)
  {
- 	//alert(response);
+
  }
     
 	  $('a[class=add_another_destination]').live("click",function()
   {
-  	   //alert('guide');
+  	  
 	   $('.add_another_box').remove();
   	   $('.guide-row-wrapper').append('<li class="lh-tighter place-0-element multihop-row goodbox"><div class="left c1of5 tright" style="margin-top:2px;"><label for="place-0-text">Destination:</label></div><div class="left c2of5 tright"><input id="place-0-text" name="place-0-text" type="text" class="text destination margin-right-thin" value=""></div><div class="right " style="margin:0 50px 22px 12px;"><label>on <select name="day"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> day</label></div></li><li class="add_another_box"><div class="right" style="margin-right:40px;"><a class="add_another_destination" href="#" >Add another destination on this guide</a></div></li>');
   });
 })
+
+
+
+
 	

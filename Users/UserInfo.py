@@ -69,25 +69,33 @@ class UserHandler(BaseHandler):
     def _user_entry(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
+        check = True if self.user['slug'] == self.current_user['slug'] else False
         
-       
-        self.render("userentry.html", custom_user = self.user, trips = response)
+        self.render("userentry.html", check = check ,custom_user = self.user, trips = response)
+
 
 class AddUserToTripHandler(BaseHandler):
     userid = None
     tripid = None
     group_id = None
+    user = None
     @tornado.web.asynchronous
     def get(self, userid, tripid, group_id):
         self.userid = userid
         self.tripid = tripid
         self.group_id = group_id
-        user = self.syncdb.users.find_one({'user_id':bson.ObjectId(userid)})
-        self.db.trips.update({'trip_id':bson.ObjectId(tripid)}, { '$addToSet':{'members': user}, '$inc' : { 'member_count' : 1 }}, callback = self._add_user_to_trip)  
+        self.user = self.syncdb.users.find_one({'user_id':bson.ObjectId(userid)})
+        self.db.trips.update({'trip_id':bson.ObjectId(tripid)},  {'$addToSet':{'members': self.user}, '$inc' : { 'member_count' : 1 }}, callback = self._add_user_to_trip)  
     
     def _add_user_to_trip(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
+        trip = self.syncdb.users.find_one({'trip_id':bson.ObjectId(self.tripid)})
+        
+        if self.user['slug'] not in trip['expense']:
+                trip['expense'][self.user['slug']]=[]
+                print '++++++++++++++++++++++++++++++++'
+        self.syncdb.trips.save(trip)
         self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
         self.write('success')
     
@@ -103,6 +111,9 @@ class AddUserToTripHandler(BaseHandler):
             return
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(self.tripid)})
         user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.userid)})
+        if user['slug'] not in trip['expense']:
+                trip['expense'][user['slug']]=[{'date': '', 'amount': '', 'type': 'Select', 'description': ''}]
+                
         if self.group_id =='new':
             group_template = trip['groups'][0].copy()
             group_template['group_id']=bson.ObjectId()

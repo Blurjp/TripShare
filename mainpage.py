@@ -26,9 +26,13 @@ from Map.ProcessTripHandler import MergeTripGroupHandler
 from Map.ProcessTripHandler import GetTripGroupForMergeHandler
 from Map.ProcessTripHandler import GetTripGroupForMapHandler
 from Map.ProcessTripHandler import GetTripGroupForSiteHandler
+from Map.ProcessTripHandler import MyTripsHandler
 from Users.UserInfo import UpdateUserProfileHandler
 
 from Calendar.CalendarHandler import ExportCalendarHandler
+
+from Expense.ExpenseHandler import ExpenseSaveHandler
+from Expense.ExpenseHandler import GetExpenseHandler
 
 from Map.BrowseTripHandler import BaseHandler
 from Map.BrowseTripHandler import BrowseHandler
@@ -194,8 +198,8 @@ class Application(tornado.web.Application):
                                       (r"/auth/fblogin", AuthLoginFBHandler),
                                       (r"/auth/fblogout", AuthLogoutFBHandler),
                                       (r"/updateusersetting", UserSettingHandler),
-                                      
-                                      
+                                      (r"/saveexpense", ExpenseSaveHandler),
+                                      (r"/getexpense", GetExpenseHandler),
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
                                       (r"/trips/([^/]+)/([^/]+)", TripPageHandler),
@@ -210,7 +214,7 @@ class Application(tornado.web.Application):
                                       (r"/addgrouptotrip", AddTripGroupHandler),
                                       (r"/removegroupfromtrip", RemoveTripGroupHandler),
                                       (r"/mergetripgroups", MergeTripGroupHandler),
-                                      
+                                      (r"/mytrips", MyTripsHandler),
                                       (r"/exportcalendar", ExportCalendarHandler),
                                       
                                       (r"/addsitetotrip", AddSiteToTrip),
@@ -255,6 +259,7 @@ class Application(tornado.web.Application):
                                     
                                       (r"/travelers/([^/]*)", TravelersHandler),
                                       (r"/people/([^/]+)", UserHandler),
+                                      
                                       #(r"/addusertotrip/([^/]+)/([^/]+)", AddUserToTripHandler),
                                       (r"/addusertotrip", AddUserToTripHandler),
                                       (r"/removeuserfromtrip", RemoveUserFromTripHandler),
@@ -268,8 +273,8 @@ class Application(tornado.web.Application):
                                       (r"/resetpassword", ResetPassword),
                                       (r"/subscribe_trip/([^/]+)", SubscribeTrip),
                                       (r"/unsubscribe_trip/([^/]+)", UnsubscribeTrip),
-                                      (r"/messages", MessageHandler),
-                                      (r"/notifications", NotificationHandler),
+                                      #(r"/messages", MessageHandler),
+                                      (r"/messages", NotificationHandler),
                                       (r"/static/images/(.*)", tornado.web.StaticFileHandler, {"path": "/home/jason/workspace/TripShare/static/images"}),
                                       
                                       (r"/exception", ExceptionPage),

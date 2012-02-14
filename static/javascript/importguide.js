@@ -16,7 +16,7 @@ $(document).ready(function() {
 	    $.postJSON('/gettripgroupformerge', content, function(response){
 	       
         if (response != null) {
-			showCircleView();
+			//showCircleView();
 		    var groups = JSON.parse(response);
 			
 			for (var i = 0; i < groups.length; i++) 

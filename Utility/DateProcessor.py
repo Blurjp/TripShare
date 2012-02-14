@@ -3,9 +3,9 @@ Created on May 1, 2011
 
 @author: jason
 '''
-
+import bson
 from datetime import datetime
-
+from Map.BrowseTripHandler import BaseHandler
 
 class FromStringtoDate:    
     @staticmethod  
@@ -22,4 +22,14 @@ class FromStringtoDate:
         return date
     
 
-        
+class GetMembers(BaseHandler):
+    @staticmethod   
+    def GetTripMembers(self, trip_id):   
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+        groups = trip['groups']
+        members = []
+        for group in groups:
+            for member in group['members']:
+                members.append(member)
+        members.reverse()
+        return members

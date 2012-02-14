@@ -115,18 +115,27 @@ $(document).ready(function() {
 	  	 $('#tooltip').remove();
 	  });
 	  
-	  $('.actions span').live('mouseenter', function(){
+	  $('.trip_action span').live('mouseenter', function(){
 	  	 var position = $(this).position();
 		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).parent().attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
-		 $('#tooltip').css({left:position.left+90, top: position.top+610 });
+		 $('#tooltip').css({left:position.left+85, top: position.top+620 });
 	  });
 
-      $('.actions span').live('mouseleave', function(){
+      $('.trip_action span').live('mouseleave', function(){
 	  	 $('#tooltip').remove();
 	  });
 
 	
-	
+	  $('.guide_action span').live('mouseenter', function(){
+	  	//alert('tset');
+	  	 var position = $(this).position();
+		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).parent().attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
+		 $('#tooltip').css({left:position.left+150, top: position.top+100 });
+	  });
+
+      $('.guide_action span').live('mouseleave', function(){
+	  	 $('#tooltip').remove();
+	  });
 
 	
 	$('.trip_action').live("click",function(e) {
