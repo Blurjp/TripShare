@@ -949,7 +949,62 @@ function codeLatLng(name) {
 	  	var timeoutId = setTimeout(function(){ panel.hide(); panel2.hide();panel3.hide(); panel4.hide();}, 650);
 		$(this).data('timeoutId', timeoutId); 
        });
+	   
+	   
+	   //Get the screen height and width  
+        var maskHeight = $(document).height();  
+        var maskWidth = $(window).width();  
+		
+	 //Get the window height and width  
+        var winH = $(window).height();  
+        var winW = $(window).width();  
+	
+	$('input[name=invite_friend]').click(function(e) {  
+      e.preventDefault();  
+	  
+	  $('#social-close-modal').show()
+        var id = '#social_tools';  
+       
+        $('#mask4').css({'width':maskWidth,'height':maskHeight});  
+        $('#mask4').fadeIn();             
+		$(id).show();
+		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
+	    $(id).animate({right: winW/2-$(id).width()/2});
+        $(id).css("position", "fixed");
+		set_social_section('tripshare');
+ });
+ 
+   //if close button is clicked  
+    $("#social-close-modal").click(function (e) {  
+        //Cancel the link behavior  
+        e.preventDefault();  
+        $('#mask4').hide();  
+		$('#social_tools').hide();
+		 $("#social-close-modal").hide();
+		//document.getElementById('find_friends_form').reset();
+		
+    }); 
 });
+
+function set_social_section(section) {
+	    
+		var value = $("#social_section_value").val();
+		if (value=="")
+		{
+			value = "tripshare";
+		}
+        $('.social_list > .on').removeClass('on');
+        $('.'+section + '-tab').addClass('on');
+		$('#content_'+value).hide();
+		$('#login_'+value).hide();
+		$('#login_'+section).show();
+		$('#content_'+section).show();
+		$("#social_section_value").val(section);
+		$('.invite_text').val("I create this trip here for you to join! " + window.location.href);
+	   
+        }
+
+
 
 $(".comment form").live("submit",function(a){a.preventDefault();var c=$(this).parents("li.feed"),
 a=c.find(".commentBody"),e=c.data("feedId"),b=a.val();a.val("");$.post(URI+"overview/comment",{id:e,comment:b},function(a){a.status=="ok"&&c.find(".comment.post").before(a.html)},"json")});
@@ -1605,3 +1660,6 @@ function ShowTripmember(member)
         }
 	
 }
+
+
+	 

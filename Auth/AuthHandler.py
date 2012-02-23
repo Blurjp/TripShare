@@ -143,8 +143,14 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
     def handle_request(self, response):
         #print('++++++++++++++++++++++++++++++'+response.body)
         user = simplejson.loads(response.body)
-        #print('-------------------------'+str(user[0]['uid']))
-        #location = user[0]['current_location']
+        
+        slug  = user[0]['name']
+                
+        while True:
+            e = self.syncdb.users.find_one({'slug':slug})
+            if not e: break
+            slug += "-2"
+            
         _user = {   'fb_user_id' : str(user[0]['uid']),
                     'username': user[0]['name'],
                     'lc_username': user[0]['name'].upper(),
@@ -154,11 +160,16 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'picture': user[0]['pic'],
                     'current_location': user[0]['current_location']['city'],
                     'current_position':[],
+                    'status': 'online',
+                    'slug': slug,
+                    'createdtime': datetime.datetime.utcnow(),
                     'access_token': self.access_token,
                     'save_guide':[],
                     'like_guide':[],
                     'save_site':[],
                     'like_site':[],
+                    'save_trip':[],
+                    'like_trip':[],
                     'friends':[],
                     'city': [],
                     'country': [],
@@ -167,6 +178,8 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'bio':'',
                     'link': '',
                     'trip_count':0,
+                    'current_location':'',
+                    'current_position':[],
                     'new_notifications':[],
                     'notifications':[],
                     'search_type':'person'

@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/CalendarControl.css") }}" type="text/css"/>
-<link rel="stylesheet" href="{{ static_url("stylesheets/css/jquery-ui-1.8.16.custom.css") }}" type="text/css"/>
-
+<link rel="stylesheet" href="{{ static_url("stylesheets/css/smoothness/jquery-ui-1.8.17.custom.css") }}" type="text/css"/>
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
 
@@ -31,7 +30,7 @@
 <script src="{{ static_url("javascript/dragdroptool/coordinates.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/dragdroptool/css.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/dragdroptool/cookies.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/jquery.tinyscrollbar.min.js") }}" type="text/javascript"></script>
+
 <script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
 <script src="{{ static_url("javascript/vertical.slider.js")}}" type="text/javascript"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" type="text/javascript"></script>
@@ -295,6 +294,14 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
     margin-left:25px;
 }
 
+/* css for scrollbar below here*/
+#scroll-pane { float:left;overflow: auto; width: 620px; height:270px;position:relative;display:inline}
+#scroll-content {position:absolute;width:100%}
+#slider-wrap{float:left;background-color:lightgrey;width:8px;}
+#slider-vertical{position:relative;height:270px}
+.ui-slider-handle{width:8px;height:15px;margin:0 auto;background-color:darkgray;display:block;position:absolute}
+
+
 </style> 
 
 
@@ -317,13 +324,13 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 		    
 		    <li class="walkthrough_tab on">
 			<a href="#" onclick="set_walkthrough_section('walkthrough'); return false;">
-                <strong>How it works</strong>
+                How it works
             </a>
 			</li>
 			
 			<li class="map_tab">
             <a href="#" onclick="set_walkthrough_section('map'); return false;">
-                <strong>Travelers on Map</strong>
+                Travelers on Map
             </a>
 			</li>
 			
@@ -593,7 +600,7 @@ function set_social_section(section) {
 		var value = $("#social_section_value").val();
 		if (value=="")
 		{
-			value = "facebook";
+			value = "tripshare";
 		}
         $('.social_list > .on').removeClass('on');
         $('.'+section + '-tab').addClass('on');
@@ -657,7 +664,7 @@ function set_walkthrough_section(section) {
 		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
 	    $(id).animate({right: winW/2-$(id).width()/2});
         $(id).css("position", "fixed");
-		set_social_section('facebook');
+		set_social_section('tripshare');
  });
  
    //if close button is clicked  

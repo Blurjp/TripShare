@@ -44,12 +44,10 @@
 	<span class="xat">{{current_user['username']}}</span>
 </a>
 <li class="xft"><a class="xet xxs" href="/settings" name="usersetting">Setting</a>
-<li class="xft"><a class="xet xzt" href="/mytrips">Trips
-{% if len(current_user['new_notifications'])>0 %}
+<li class="xft"><a class="xet xzt" href="/mytrips">Trips</a>
+<li class="xft"><a class="xet xyt" href="/messages">Messages{% if len(current_user['new_notifications'])>0 %}
 <span id="xbd" class="xtv xl" style="visibility:visible;">{{len(current_user['new_notifications'])}}</span>
-{% end %}
-</a>
-<li class="xft"><a class="xet xyt" href="/messages">Messages</a>
+{% end %}</a>
 <li class="xft"><a class="xet xws" href="/auth/logout">Log out</a>
 </ul>
 

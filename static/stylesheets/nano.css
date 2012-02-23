@@ -436,7 +436,7 @@ opacity:0.5;
  .v3_button:hover {color: white; background-color: #64bcc9; text-decoration: none}
  .v3_button:active, #sidebar-auth-buttons .sidebar-auth-button.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
  .regular-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 10px; font-size: 20%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1.00em; float: left; margin: 10px}
- .regular-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
+ .regular-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
 
 #close-modal1{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 #closeguide-modal{position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
@@ -1007,10 +1007,10 @@ h2 .user_name {margin-left:150px !important}
 .overview ul.feedsUI p.details a{font-weight:normal;width:40px}
 
 .overview .post-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: right; margin-left:21px}
-.overview .post-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
+.overview .post-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
 .overview .postfeed {margin-right:250px}
 .overview .post-comment-button {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; font-size: 30%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; width:20%; font-size: 1.00em; float: left; margin-left:21px}
-.overview .post-comment-button :hover {color: white; background-color: #64bcc9; text-decoration: none}
+.overview .post-comment-button:hover {color: white; background-color: #64bcc9; text-decoration: none}
 p.message{font-size:15px;line-height:1.35em;height:7px;}
 p.message{font-size:12px;margin-right:84px;padding-bottom:3px;}
 p.message span.meta{color:#a1a1a1;display:block;font-size:10px;}
@@ -1095,8 +1095,10 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 .find_friends_icon {padding:5px 0 0 15px}
 
 #social_tools  { position: fixed;z-index:9999;  display:none;  width:575px; height:300px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
-#social_tools li {float: left; width: 140px; margin-bottom: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
-#social_tools li a {display: block; padding: 10px 15px}
+.invite_person {width: 540px !important}
+.invite_person .actions{ padding-top:15px}
+#social_tools li {text-decoration: none;float: left; width: 140px; margin-bottom: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
+#social_tools li a {font-weight:normal;font-size: 16px;display: block; padding: 10px 15px;color:#268CA0;float:left;}
 #social_tools li a span {color: #777777}
 #social_tools li a:hover {text-decoration: none}
 #social_tools li a:hover strong {text-decoration: underline}
@@ -1108,11 +1110,10 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #social_tools form.default .receiver-text-box label {padding: 3px 10px;color: #777777; cursor: text; position: absolute}
 #social_tools form.default .receiver-text-box  {cursor: text !important; width: 520px; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #social_tools form.default .receiver-text-box textarea {background: transparent;border: none; padding: 3px 10px; margin: 0 !important;width: 520px; height: 20px; font-size: 15px; font-family: inherit}
-#social_tools strong {color:#268CA0;float:left;margin:5px}
 #social_tools .picture {float:left;margin:2px}
 #social-close-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
-#content_twitter, #content_facebook,#content_invite {display:none; margin-top:60px}
+#content_twitter, #content_facebook,#content_invite,#content_tripshare {display:none; margin-top:60px}
 #login_facebook {float:right; width:255px; height:123px; overflow:hidden; background: url("/static/images/facebook_sign_in.jpg") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 #login_twitter {float:right; display:none; width:255px; height:123px; overflow:hidden; background: url("/static/images/twitter-login-button.png") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 
@@ -1145,15 +1146,14 @@ border-top-right-radius: 5px;}
 
 #GuideTab {float:right;position:relative;}
 .GuideTabList {width:470px;}
-.GuideTabList li {font-size:19px; float: left; width: 230px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
-.GuideTabList li a {display: block; padding: 10px 15px}
+.GuideTabList li {font-size:20px; float: left; width: 230px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
+.GuideTabList li a {display: block; font-weight:bold;padding: 10px 15px;color:#268CA0;float:left;text-decoration:none;}
 .GuideTabList li a span {color: #777777}
 .GuideTabList li a:hover {text-decoration: none}
 .GuideTabList li a:hover strong {text-decoration: underline}
 .GuideTabList li a:hover span {text-decoration: none}
 .GuideTabList li {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
 .GuideTabList li.on {background-color: #F7f6f1}
-.GuideTabList strong {color:#268CA0;float:left;margin:5px}
 .GuideTabList .picture {float:left;margin:2px}
 
 
@@ -1161,7 +1161,7 @@ border-top-right-radius: 5px;}
 .walkthrough .walkthrough-body{padding:40px;width:100%;background-color:#e9f1f4;overflow:hidden;border-style:solid;border-width:1px 1px 2px;border-color:#e9f1f4 #d8dee2 #d8dee2;border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;-webkit-border-radius:0 0 5px 5px;}.walkthrougho ul{list-style-type:none;position:relative;}
 .walkthrough ul li{color:#666;font-size:13px;font-weight:normal;background-color:#fffff5;background:-moz-linear-gradient(center top,'#fffff5','#f5f3b4');filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fffff5',endColorstr='#f5f3b4');background:-webkit-gradient(linear,left top,left bottom,from(#fffff5),to(#f5f3b4));background:-moz-linear-gradient(top,#fffff5,#f5f3b4);border:1px solid #dfddb5;border-radius:5px 5px 5px 5px;-moz-border-radius:5px 5px 5px 5px;-webkit-border-radius:5px 5px 5px 5px;display:block;width:23%;float:left;position:relative;margin:0 10px 0 0;-moz-box-shadow:0 1px 0 #fff;-webkit-box-shadow:0 1px 0 #fff;box-shadow:0 1px 0 #fff;}
 .walkthrough ul li:hover{background:-moz-linear-gradient(center top,'#fcfce9','#f1eea3');filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fcfce9',endColorstr='#f1eea3');background:-webkit-gradient(linear,left top,left bottom,from(#fcfce9),to(#f1eea3));background:-moz-linear-gradient(top,#fcfce9,#f1eea3);border:1px solid #d6d4ad;}
-.walkthrough ul li a{color:#666;text-decoration:none;}
+.walkthrough ul li a {color:#666;text-decoration:none;}
 .walkthrough .image{display:block;position:relative;height:250px;border-bottom:1px solid #f1efaf;background-repeat:no-repeat;background-position:center center;}.walkthrough .setup .image{}
 .walkthrough ul li:hover .image{border-bottom:1px solid #f1eea3;}
 .walkthrough .desc{padding:13px 0 15px 15px;display:block;height:45px;overflow:hidden;border-top:1px solid #fff;background-repeat:no-repeat;position:relative;z-index:2;}
@@ -1190,7 +1190,7 @@ border-top-right-radius: 5px;}
 .trip_site_move {display:none}
 .trip_site_move a {cursor:pointer}
 .trip_site_add   { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 25px; width: 25px;  }
-.trip_site_add :hover  { background-color: #59d859  }
+.trip_site_add:hover  { background-color: #59d859  }
 .site_action .action {
 -moz-border-radius: 12px;
 -webkit-border-radius: 12px;
@@ -1287,10 +1287,10 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 
 
 /* css for scrollbar below here*/
-#scroll-pane { float:left;overflow: auto; width: 620px; height:530px;position:relative;display:inline}
+#scroll-pane { float:left;overflow: auto; width: 620px; height:270px;position:relative;display:inline}
 #scroll-content {position:absolute;width:100%}
 #slider-wrap{float:left;background-color:lightgrey;width:8px;}
-#slider-vertical{position:relative;height:100%}
+#slider-vertical{position:relative;height:270px}
 .ui-slider-handle{width:8px;height:15px;margin:0 auto;background-color:darkgray;display:block;position:absolute}
 
 
@@ -1304,7 +1304,7 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 #closeshareexpense-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 #expense_add_button   { position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 25px; width: 25px;  }
-#expense_add_button :hover  { background-color: #59d859  }
+#expense_add_button:hover  { background-color: #59d859  }
 
 div#users-contain {  }
 div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
@@ -1316,10 +1316,10 @@ div#users-contain table td, div#users-contain table th { border: 1px solid #eee;
 li span.pay-button {
 background-image: url('/static/images/collect_buttons.png');
 width: 70px;
-height: 70px;
+height: 68px;
 display: block;
 position: relative;
-margin-left: 15px;
+margin-left: 8px;
 }
 li span.collect-button {
 background-image: url('/static/images/collect_buttons.png');

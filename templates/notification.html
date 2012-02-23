@@ -35,18 +35,7 @@ Messages
 
 <div class='hgroup'> 
 <div class='right'><a href="/settings/notifications">Notification Preferences</a></div> 
-<ul class="user_action">
-	<li>
-	<a id="tf-efe4eef5cd217b1b7b8782b87c664767" name="focus" class="xb xdg">focus</a>
-	</li>	
-	<a>action1</a>
-	<li>
-		<a  >action2</a>
-	</li>
-	<li>
-		<a  >action3</a>
-	</li>
-</ul>
+
 <h1>Messages</h1> 
 </div> 
 
@@ -67,6 +56,17 @@ send you a friend request,
 <span class='item'><a class="acceptfriend" href="#" sid="{{notification['user_id']}}">accept</a></span> 
 or 
 <span class='item'><a class="declinefriend" href="#" sid="{{notification['user_id']}}">decline</a></span>
+.
+<span class='timestamp'>{{notification['created']}}</span> 
+</div> 
+{% elif notification['type'] == 'expense_request' %}
+<div class='content'> 
+<span class='person_name'><a href="/people/{{notification['slug']}}">{{notification['slug']}}</a></span> 
+send you a expense request, 
+<span class='item'>{{notification['expense']}}.<span class='item'>
+<span class='item'><a class="acceptfriend" href="#" sid="{{notification['user_id']}}">pay</a></span> 
+or 
+<span class='item'><a class="declinefriend" href="#" sid="{{notification['user_id']}}">not pay</a></span>
 .
 <span class='timestamp'>{{notification['created']}}</span> 
 </div> 

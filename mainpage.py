@@ -32,6 +32,7 @@ from Users.UserInfo import UpdateUserProfileHandler
 from Calendar.CalendarHandler import ExportCalendarHandler
 
 from Expense.ExpenseHandler import ExpenseSaveHandler
+from Expense.ExpenseHandler import ExpenseRequestHandler
 from Expense.ExpenseHandler import GetExpenseHandler
 
 from Map.BrowseTripHandler import BaseHandler
@@ -86,6 +87,9 @@ from Search.SearchHandler import RealTimeSearchUserHandler
 from Sites.SiteHandler import AddSiteToTrip
 from Sites.SiteHandler import PostNoteToSite
 from Sites.SiteHandler import RemoveSiteFromTrip
+
+from Social.SocialHandler import FaceBookPostHandler
+from Social.SocialHandler import TwitterPostHandler
 #import tornado.database
 import tornado.httpserver
 import tornado.ioloop
@@ -249,6 +253,7 @@ class Application(tornado.web.Application):
                                       (r"/realtime_searchall/([^/]+)", RealTimeSearchAllHandler),
                                       (r"/checkuserintrip/([^/]+)/([^/]+)", CheckUserinTripHandler),
                                       
+                                      (r"/sendexpenserequest", ExpenseRequestHandler),
                                       (r"/confirmfriend", FriendConfirmHandler),
                                       (r"/requestfriend", FriendRequestHandler),
                                       (r"/removefriend", FriendRemoveHandler),
@@ -276,6 +281,10 @@ class Application(tornado.web.Application):
                                       #(r"/messages", MessageHandler),
                                       (r"/messages", NotificationHandler),
                                       (r"/static/images/(.*)", tornado.web.StaticFileHandler, {"path": "/home/jason/workspace/TripShare/static/images"}),
+                                      
+                                      (r"/post_on_facebook", FaceBookPostHandler),
+                                      (r"/post_on_twitter", TwitterPostHandler),
+                                      #(r"/send_email_invite", EmailInviteHandler),
                                       
                                       (r"/exception", ExceptionPage),
                           ]
