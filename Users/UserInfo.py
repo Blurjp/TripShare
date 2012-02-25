@@ -69,8 +69,11 @@ class UserHandler(BaseHandler):
     def _user_entry(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
-        check = True if self.user['slug'] == self.current_user['slug'] else False
-        
+        if self.current_user():
+            
+            check = True if self.user['slug'] == self.current_user['slug'] else False
+        else:
+            check = False
         self.render("userentry.html", check = check ,custom_user = self.user, trips = response)
 
 
