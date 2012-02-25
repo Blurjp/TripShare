@@ -84,6 +84,7 @@ class AddUserToTripHandler(BaseHandler):
     tripid = None
     group_id = None
     user = None
+    @tornado.web.authenticated
     @tornado.web.asynchronous
     def get(self, userid, tripid, group_id):
         self.userid = userid
@@ -104,7 +105,7 @@ class AddUserToTripHandler(BaseHandler):
         self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
         self.write('success')
     
-    
+    @tornado.web.authenticated
     def post(self):
         userids = []
         self.userid = self.get_argument('user_id')
@@ -143,8 +144,10 @@ class AddUserToTripHandler(BaseHandler):
         
         
 class RemoveUserFromTripHandler(BaseHandler):
+    
     userid = None
     tripid = None
+    @tornado.web.authenticated
     def post(self):
         self.userid = self.get_argument('user_id')
         self.tripid = self.get_argument('trip_id')
@@ -161,6 +164,7 @@ class RemoveUserFromTripHandler(BaseHandler):
 
 
 class CheckUserinTripHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self, userid, tripid):  
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(tripid)})
         check = False
@@ -175,6 +179,7 @@ class CheckUserinTripHandler(BaseHandler):
     
 
 class FollowUserHandler(BaseHandler):  
+    @tornado.web.authenticated
     def post(self, userid):
         if self.current_user:
             user = self.syncdb.users.find_one({'owner_id': bson.ObjectId(userid)})
@@ -187,7 +192,8 @@ class FollowUserHandler(BaseHandler):
             raise tornado.web.HTTPError(500)
         return "success"
         
-class UnFollowUserHandler(BaseHandler):  
+class UnFollowUserHandler(BaseHandler): 
+    @tornado.web.authenticated 
     def post(self, userid):
         if self.current_user:
             user = self.syncdb.users.find_one({'owner_id': bson.ObjectId(userid)})
@@ -201,18 +207,23 @@ class UnFollowUserHandler(BaseHandler):
         return "success"       
 
 class ImportFriendHandler(BaseHandler):
+    @tornado.web.authenticated
     def post(self):
         type = self.get_argument('type')
         
         
 class GetFriendHandler(BaseHandler):  
+    @tornado.web.authenticated
     def get(self):    
-        
-        user = self.syncdb.users.find_one({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
+        if self.current_user:
+            user = self.syncdb.users.find_one({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
+        else:
+            user = None
         if user:
             self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
 class GetTripMemberHandler(BaseHandler):
+    @tornado.web.authenticated
     def post(self):
         trip_id = self.get_argument("trip_id")
         users = self.trips.find_one({"trip_id":bson.ObjectId(trip_id)})['members']
