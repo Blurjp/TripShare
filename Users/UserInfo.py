@@ -45,8 +45,10 @@ class TravelersHandler(BaseHandler):
         elif (type == 'latest'):
                 self.db.users.find(sort = [('createdtime', -1)] , callback=self._people_entry)  
         elif (type == 'nearest'):
+            if self.current_user:
                 self.db.users.find({ 'current_position' : { '$near' : self.current_user['current_position']} } , callback=self._people_entry)  
-        
+            else:
+                self.redirect('/login')
         
     def _people_entry(self, response, error):
         if error:
