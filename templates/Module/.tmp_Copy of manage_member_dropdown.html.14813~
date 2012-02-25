@@ -1,0 +1,34 @@
+<div id="search_member_dropdown">
+	<a href="#" id="close-searchmember" class="close">close</a>
+               
+                <fieldset>
+                  <div id="searchmemberentry">
+                  	<h2> Manage Member </h2>
+                       <input type="text" autocomplete="off" id="member">
+					   <button onclick="SearchMember('{{singletrip['trip_id']}}'); return false;">Search</button>
+                             
+                    <div class="clear"></div>
+					</div>
+					
+					<div class="people_search_result">
+						
+					</div>
+					<div class="friend_dropdown_list">
+						<ul> 
+{% for member in singletrip['members'] %}
+<li>
+<span>
+<a style="cursor:pointer;" href="/people/{{member['slug']}}">
+<img class="picture medium" alt="{{member['username']}}"  src="{{member['picture']}}" >
+</a>
+</span>
+<a href="/people/{{member['slug']}}">
+<img class="picture medium" alt="{{member['username']}}"  src="{{member['picture']}}" >
+</a>
+</li>
+{% end %}
+</ul>
+					</div>
+					<input class="user_ids" type="hidden" value="" name="user_ids">
+                </fieldset>             
+</div>

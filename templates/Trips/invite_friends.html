@@ -1,0 +1,77 @@
+	<div id="social_tools" class="window1">
+		<a href="#" id="social-close-modal" class="close">close</a>
+		<ul class="social_list">
+			<li class="tripshare-tab on"><a href="#" onclick="set_social_section('tripshare'); return false;"><img class="picture small" src="{{ static_url("images/TripShare.png") }}">TripShare</a></li>
+			<li class="facebook-tab on"><a href="#" onclick="set_social_section('facebook'); return false;"><img class="picture small" src="{{ static_url("images/facebook-icon.png") }}">Facebook</a></li>
+			<li class="twitter-tab"><a href="#" onclick="set_social_section('twitter'); return false;"><img class="picture small" src="{{ static_url("images/twitter-icon.png") }}">Twitter</a></li>
+			<li class="invite-tab"><a href="#" onclick="set_social_section('invite'); return false;"><img class="picture small" src="{{ static_url("images/email.png") }}">Email</a></li>
+		</ul>
+		{% if current_user %}
+		  <div id = "content_tripshare">
+	           <ul class="list people">
+	         
+{% for user in current_user['friends'] %}
+<li class="invite_person clearfix">
+<div class="actions right">
+<input type="button" class="send-invite-button regular-button" href="#" value="Invite">
+</div>
+<a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
+
+</li>
+{%end%}
+</ul>
+		   </div>
+		   <div id = "content_facebook">
+	           <form accept-charset="UTF-8" action="/post_on_facebook" id="facebook_friends_form" class="default" method="post">
+                 {% raw xsrf_form_html() %}
+
+                 <div class="row cleafix">
+                 <div class="text-box text-area-box">
+                 <textarea class="invite_text" name="invite_text"></textarea>
+                 </div>
+                 </div>
+                 <input class="submit" name="commit" type="submit" value="Post to your wall">
+               </form>
+			 </div>
+			 <div id = "content_twitter">
+			   <form accept-charset="UTF-8" action="/post_on_twitter" id="twitter_friends_form" class="default" method="post">
+			    {% raw xsrf_form_html() %}
+			     <div class="row cleafix">
+                 <div class="text-box text-area-box">
+                 <textarea class="invite_text" name="invite_text"></textarea>
+                 </div>
+                 </div>
+                 <input  class="submit" name="commit" type="submit" value="Tweet">
+			    </form>
+			 </div>
+			    {% else %}
+			   <a id="login_facebook" href="/auth/fblogin"></a>
+			   <a id="login_twitter"  href="/auth/twlogin"></a>
+			    {% end %}
+			  <div id = "content_invite">
+			   <form accept-charset="UTF-8" action="/send_email_invite" id="invite_friends_form" class="default" method="post">
+	            {% raw xsrf_form_html() %}
+				<div class="row cleafix">
+				
+				 <div class="receiver-text-box">
+				 	
+                 <textarea name="invite_text" placeholder="Emails (comma-separated)"></textarea>
+                 </div>
+                 </div>
+				 <div class="row cleafix">
+                 <div class="text-box text-area-box">
+                 <textarea class="invite_text" name="invite_text"></textarea>
+                 </div>
+                 </div>
+                 <input class="submit" name="commit" type="submit" value="Mail">
+               </form>
+			   </div>
+		</div>
+	</div>
+	
+
+
+<script type="text/javascript">
+	var input	= document.getElementByClassName('invite_text');
+	input.value = "I create this trip here for you to join!" + window.location.href;
+</script>

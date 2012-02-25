@@ -1,0 +1,174 @@
+<form name="manage_budget_form" id="manage_budget_form" onsubmit="return check_managebudget_form(this);">
+	 {% raw xsrf_form_html() %}
+<div id="manage_budget" class="window1">
+	<a href="#" id="closemanagebudget-modal" class="close">close</a>
+<div class="demo">
+
+<div id="tabs">
+	<ul id="user_tabs">
+		{% for index, user in enumerate(users) %}
+		<li><a name="user_expense_tab" href="#tabs-{{index+1}}">
+			<img class="picture medium" alt="{{user['slug']}}" src="{{user['picture']}}"></>{{user['username']}}</a>
+		</li>
+	    {% end %}
+	</ul>
+	
+	
+
+</div>
+
+</div><!-- End demo -->
+
+<div class="demo-description" style="display: none; ">
+<p>Click tabs to swap between content that is broken into logical sections.</p>
+</div><!-- End demo-description -->
+ <div class="button_container">
+ <a name="saveexpense" value="saveexpense" style="width:180px;margin-right:10px" class="sidebar-auth-button">Save</a>
+ </div>
+</div>
+</form>  
+<div id="mask4"></div>
+
+<script>
+	$(function() {
+		var $tabs = $( "#tabs" ).tabs(
+		{
+			select: function(event, ui) {
+			 //alert(ui.index);
+			 //("#user_tabs ul li").removeClass("ui-tabs-selected ui-state-active");
+			 //ui.tab.addClass("ui-tabs-selected ui-state-active");
+			 }
+		});
+	
+	
+		
+	});
+	$(function() {
+		$(".datepicker").datepicker();
+	});
+	var count = 1;
+	
+	$('#expense_add_button').live('click',function(){
+		var tag = $(this).attr('class').toString();
+		tag = tag.substring(12);
+		tag = '#user_expense_table_'+tag;
+		
+	    $(tag+' tr:last').after('<tr><td><img class="expense_icon" src="/static/icon/expense.png"></td><td><input type="text" class="datepicker"></td><td><select class="expense_type"><option>Select</option><option value="railway">Railway</option>	<option value="taxi">Taxi</option>	<option value="flight">Flight</option><option value="gas">Gas</option><option value="car_rental">Car Rental</option><option value="hotel">Hotel</option><option value="food">Food</option> <option value="equipment">Equipment</option></select></td><td><input type="text" class="expense_description"></td><td><input type="text" class="expense_amount"></td></tr>');
+	   count++;
+	   
+	});
+	
+	var headers = ['date','type','description','amount'];
+	
+
+	$('a[name=saveexpense]').live('click', function(){
+		var json = {};
+		var subjson = [];
+		var subsubjson = {};
+        
+
+user_mapping = {};
+$('#user_tabs .ui-state-default').each(function(index) {
+   // alert(index + ': ' + $(this).children('a').children('img').attr('alt'));
+	user_mapping[index]=$(this).children('a').children('img').attr('alt');
+});
+
+    for (index in user_mapping)
+    {
+	var _index=parseInt(index)+1;
+	//alert(_index.toString());
+    var $table = $('#user_expense_table_'+_index.toString());
+    $('tr', $table).each(function(index1, value){
+      if(index1>0)
+      {
+	  	
+       $('td',$(this)).each(function(index2, value){
+       if(index2>0)
+       {
+  	    subsubjson[headers[index2-1]] = $(this).children().attr('value');
+  	    //myArray[index1-1][index2-2][headers[index2]] = $(this).children().attr('value');
+        // alert(headers[index2-1]+":"+$(this).children().attr('value')); 
+       }
+     });
+       //alert(subsubjson);
+       subjson.push(subsubjson);
+       subsubjson = {};
+     }
+     });
+     json[user_mapping[index]]= subjson;
+     subjson = [];
+     }
+
+		 var _formData = JSON.stringify(json, null, '\t');
+		 alert(_formData);
+	     var content = {'_xsrf': getCookie("_xsrf"), 'data' : _formData,'trip_id':$('#tripId').val()};
+		$.postJSON('/saveexpense', content, function(response) {
+              alert('Expense saved successfully'); 
+        });
+	});
+	
+	
+     
+    $('a[name=user_expense_tab]').live('click', function(){
+		//alert('test');
+		//alert($(this).parent("#user_tabs").children("li").attr('class'));
+		//$(this).parent("#user_tabs").children("li").removeClass("ui-tabs-selected ui-state-active");
+		//$(this).parent("li").addClass("ui-tabs-selected ui-state-active");
+		//$('#userslug').val(this.children('img').attr('alt'));
+		//var content = {'_xsrf': getCookie("_xsrf"), 'trip_id':$('#tripId').val(), 'slug':$('#userslug').val()};
+		//$.postJSON('/getexpense', content, function(response) {
+		//  ShowExpenseTable(response);
+        //}); 
+	});
+
+	jQuery.fn.ForceNumericOnly = function()
+    {
+    return this.each(function()
+    {
+        $(this).keydown(function(e)
+        {
+            var key = e.charCode || e.keyCode || 0;
+            // allow backspace, tab, delete, arrows, numbers and keypad numbers ONLY
+            return (
+                key == 8 || 
+                key == 9 ||
+                key == 46 ||
+                (key >= 37 && key <= 40) ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+    });
+    };
+	
+    $(".expense_amount").ForceNumericOnly();
+	
+	
+	$('.managebudget').live('click', function(){
+		//alert($('a[href=#tabs-1]').children('img').attr('alt'));
+		$('#userslug').val($('a[href=#tabs-1]').children('img').attr('alt'));
+		var content = {'_xsrf': getCookie("_xsrf"), 'trip_id':$('#tripId').val(), 'slug':$('#userslug').val()};
+		$.postJSON('/getexpense', content, function(response) {
+		  ShowExpenseTable(response);
+        }); 
+	});
+	
+	
+	 function ShowExpenseTable(message) {
+		if(message!="")
+		{
+		
+		var node;
+		var expense = message.split("||||");
+		//$("#user_expense_table").empty();
+		
+		$.each(expense, function(index, value) {
+	         node = $(value);
+             node.hide();
+		     //node.replace("{{index}}",index.toString());
+         //$("#user_expense_table").append(node);
+		 $("#tabs").append(node);
+             node.show();
+       });
+		 }
+    }
+	</script>

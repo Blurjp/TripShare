@@ -1,0 +1,40 @@
+	<div id="tabs-{{index+1}}" class="tab_tag {{uitab}}">
+	<div id="users-contain" class="ui-widget">
+	
+	<table id="user_expense_table_{{index+1}}" class="expense_table ui-widget ui-widget-content">
+		<thead>
+			<tr class="ui-widget-header">
+				<th><input type="checkbox" name="checkAllYourCB" id="checkAllYourCB_{{index+1}}" onclick="jqCheckAll( this.id, 'checkoption_{{index+1}}' )"/></th>
+				<th>Date</th>
+				<th>Expense Type</th>
+				<th>Description</th>
+				<th>Amount</th>
+			</tr>
+		</thead>
+		<tbody class="user_expense">
+			{% for expense in expenses %}
+			<tr>
+				<td><input class="itemcheckoption checkoption_{{index+1}}" type="checkbox"></td>
+				<td><input type="text" class="datepicker" value={{expense["date"]}}></td>
+				<td><select class="expense_type">
+				<option>{{expense["type"]}}</option>
+				<option value="railway">Railway</option>	
+				<option value="taxi">Taxi</option>	
+				<option value="flight">Flight</option>
+				<option value="gas">Gas</option>
+			    <option value="car_rental">Car Rental</option>
+                <option value="hotel">Hotel</option>
+                <option value="food">Food</option>
+                <option value="equipment">Equipment</option>
+		        </select></td>
+				<td><input type="text" class="expense_description" value={{expense["description"]}}></td>
+				<td><input type="text" class="expense_amount" value={{expense["amount"]}}></td>
+			</tr>
+			{% end %}
+		</tbody>
+	</table>
+</div>
+
+<input class="expense_add_{{index+1}}" id="expense_add_button" type="button">
+
+</div>
