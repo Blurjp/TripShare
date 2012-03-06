@@ -1056,6 +1056,18 @@ a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow
 #trip_tag_add_show:hover    { background-color: #59d859  }
 #trip_tag_add_form {display:none}
 
+#user_tag      { display: block; margin: 5px 0 5px 10px; background: url(/static/images/user_tag.png) no-repeat 0 13px; margin-bottom: 5px  }
+
+#user_tag li   { float:left; margin: 0px 5px 5px 0 }
+.tag_button    { position: relative;}
+.tag_button a  { padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
+.tag_button a:hover { background-color: #5495d7 ;text-decoration: none; }
+.tag_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat 4px 7px #9ebedf; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
+.tag_button_remove:hover { background-color: #5495d7 }
+
+#user_tag_add_show    {float: left;position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; -webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
+#user_tag_add_show:hover    { background-color: #59d859  }
+#user_tag_add_form {display:none}
 
 #guide_tag     { width: 1080px; display: block; padding: 10px 0 5px 22px; background: url("/static/images/trip_tag.png") no-repeat 0 13px; margin-bottom: 5px  }
 #guide_tag li  {  float: left; margin: 0px 5px 5px 0 }
@@ -1333,3 +1345,148 @@ margin-left: 15px;
 li .user_expense_request{float:left;}
 .checkoption{margin-right:25px !important; margin-bottom:10px !important;}
 .expense_amount{margin-left:80px !important; margin-bottom:10px !important;}
+
+
+
+/* Searchresult */ 
+
+#Searchresult {
+	margin-top:15px;
+	margin-bottom:15px;
+	border:solid 1px #eef;
+	padding:5px;
+	background:#eef;
+  	width:40%;
+}
+
+#Searchresult p { margin-bottom:1.4em;}
+
+#Searchresult dt {
+    font-weight:bold;
+}
+
+#Searchresult dd {
+    margin-left:25px;
+}
+
+/* Calendar css */ 
+
+#CalendarControlIFrame {
+  display: none;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  height: 250px;
+  width: 250px;
+  z-index: 99;
+}
+
+#CalendarControl {
+  position:fixed;
+  background-color:#FFF;
+  margin:0;
+  padding:0;
+  display:none;
+  z-index: 100;
+}
+
+#CalendarControl table {
+  font-family: arial, verdana, helvetica, sans-serif;
+  font-size: 8pt;
+  border-left: 1px solid #336;
+  border-right: 1px solid #336;
+}
+
+#CalendarControl th {
+  font-weight: normal;
+}
+
+#CalendarControl th a {
+  font-weight: normal;
+  text-decoration: none;
+  color: #FFF;
+  padding: 1px;
+}
+
+#CalendarControl td {
+  text-align: center;
+}
+
+#CalendarControl .header {
+  background-color: #336;
+}
+
+#CalendarControl .weekday {
+  background-color: #DDD;
+  color: #000;
+}
+
+#CalendarControl .weekend {
+  background-color: #FFC;
+  color: #000;
+}
+
+#CalendarControl .current {
+  border: 1px solid #339;
+  background-color: #336;
+  color: #FFF;
+}
+
+#CalendarControl .weekday,
+#CalendarControl .weekend,
+#CalendarControl .current {
+  display: block;
+  text-decoration: none;
+  border: 1px solid #FFF;
+  width: 2em;
+}
+
+#CalendarControl .weekday:hover,
+#CalendarControl .weekend:hover,
+#CalendarControl .current:hover {
+  color: #FFF;
+  background-color: #336;
+  border: 1px solid #999;
+}
+
+#CalendarControl .previous {
+  text-align: left;
+}
+
+#CalendarControl .next {
+  text-align: right;
+}
+
+#CalendarControl .previous,
+#CalendarControl .next {
+  padding: 1px 3px 1px 3px;
+  font-size: 1.4em;
+}
+
+#CalendarControl .previous a,
+#CalendarControl .next a {
+  color: #FFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#CalendarControl .title {
+  text-align: center;
+  font-weight: bold;
+  color: #FFF;
+}
+
+#CalendarControl .empty {
+  background-color: #CCC;
+  border: 1px solid #FFF;
+}
+
+#send_message_step_1  { position: fixed;z-index:9999;  display:none;  width:50%; height:70%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}
+#send_message_step_1 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
+#closesendmessage-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+
+
+#send_message_form .text-box.text-area-box {margin-top:50px; width: 520px}
+#send_message_form .text-box.text-area-box textarea {width: 520px; height: 150px; font-size: 15px; font-family: inherit}
+#send_message_form .receiver-text-box  {position:absolute; cursor: text !important; width: 520px; border: 1px solid #cccccc; background-color: white; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+

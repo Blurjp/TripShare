@@ -10,7 +10,6 @@ Messages
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type' /> 
 <meta name="description" content="TripShare is a group trip planner for you to create and share the trip among your friends."> 
 <meta name="keywords" content="group trip, budget control, hotel, travel guide, collect travel expense">
-<link rel="stylesheet" href="{{ static_url("stylesheets/css/smoothness/jquery-ui-1.8.17.custom.css") }}" type="text/css"/>
 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
@@ -45,8 +44,8 @@ Messages
 <div class='main'> 
 <div id='notifications'> 
 <ul class='notifications'> 
-{% for notification in notifications %}
-<li class='clearfix first last notification'>
+{% for notification in current_user['notifications'] %}
+<li class='clearfix first last notification'> 
 <div class='avatar'> 
 <a href="/people/{{notification['slug']}}"><img alt="Missing" src="{{notification['picture']}}" /></a> 
 </div> 

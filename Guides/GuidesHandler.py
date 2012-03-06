@@ -5,6 +5,8 @@ Created on Aug 31, 2011
 '''
 import bson
 import random
+import traceback
+import sys
 import datetime
 import simplejson
 import pymongo
@@ -181,7 +183,7 @@ class GetGuidesForImportHandler(BaseHandler):
         guides_all_match = []
         for group in trip['groups']:
             for dest_place in group['dest_place']:
-                    guides = self.syncdb.guides.find({ 'loc' : { '$near' : dest_place['loc'] }}).limit(20)
+                    guides = self.syncdb.guides.find({ 'geo' : { '$near' : dest_place['loc'] }}).limit(20)
                     for guide in guides:
                         guides_all_match.append(guide)
                     
@@ -307,18 +309,20 @@ class ImportGuidesHandler(BaseHandler):
                         data = simplejson.loads(line)
                         if data['type'] == 'national_park' or data['type'] == 'city':
                             guide_id = bson.ObjectId()
-                            guide = {'guide_id':guide_id, 'loc':data['location'],'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'lc_guidename':data['parent_site_name'].upper(), 'title': data['parent_site_name'], 'description': data['description'], 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'search_type':'guide','type':data['type'], 'random' : random.random()}
-                            self.syncdb.guides.save(guide, safe=True)
+                            guide = {'guide_id':guide_id, 'geo':data['location'],'rating':0,'owner_name': self.get_current_username(),'owner_id': bson.ObjectId(self.current_user['user_id']), 'slug': data['parent_site_name'], 'lc_guidename':data['parent_site_name'].upper(), 'title': data['parent_site_name'], 'description': data['description'], 'dest_place':[], 'last_updated_by': self.current_user['username'], 'published': datetime.datetime.utcnow(),'tags':[], 'user_like':[], 'search_type':'guide','type':data['type'], 'random' : random.random()}
+                            self.syncdb.guides.save(guide)
                         site_id = bson.ObjectId()
                         dest = {'dest':data['site_name'], 'type':'car','date':'', 'picture':'', 'description':data['description'], 'geo':data['location'], 'state':data['state']}
                         self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'dest_place':dest}})
                         self.syncdb.guides.update({'guide_id':guide_id}, {'$addToSet':{'tags':data['site_name']}})
                         self.syncdb.sites.save({'site_id':site_id,'guide_id':guide_id,'type':data['type'], 'search_type':'site', 'lc_sitename':data['site_name'].upper(), 'site_name':data['site_name'], 'parent_site_name':data['parent_site_name'], 'location':data['location'], 'pictures':[], 'description':data['description']})       
                         self.syncdb.sites.ensure_index('location', pymongo.GEO2D)
-                        self.syncdb.guides.ensure_index('loc', pymongo.GEO2D)
+                        self.syncdb.guides.ensure_index('geo', pymongo.GEO2D)
                         self.syncdb.sites.ensure_index('site_id', unique=True)
                     except:
-                        print ('+++++++++++++++'+line)
+                        #print line
+                        print "Unexpected error:", sys.exc_info()[0]
+                        #print repr(traceback.format_stack())
                         #time.sleep(2)
                     
         self.redirect('/guides')

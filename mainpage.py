@@ -42,6 +42,7 @@ from Map.BrowseTripHandler import TripPageHandler
 from Map.CreateTripHandler import ComposeHandler
 from Map.CreateTripHandler import CreateTripModule
 from Users.Message import MessageHandler
+from Users.Message import PostMessageHandler
 from Users.Notification import NotificationHandler
 from Settings.Settings import SettingsHandler
 from Users.Friend import FriendEntryModule
@@ -278,7 +279,7 @@ class Application(tornado.web.Application):
                                       (r"/resetpassword", ResetPassword),
                                       (r"/subscribe_trip/([^/]+)", SubscribeTrip),
                                       (r"/unsubscribe_trip/([^/]+)", UnsubscribeTrip),
-                                      #(r"/messages", MessageHandler),
+                                      (r"/postmessage", PostMessageHandler),
                                       (r"/messages", NotificationHandler),
                                       (r"/static/images/(.*)", tornado.web.StaticFileHandler, {"path": "/home/jason/workspace/TripShare/static/images"}),
                                       

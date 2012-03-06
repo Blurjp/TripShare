@@ -1,24 +1,86 @@
+$(document).ready(function() {    
+  
+     //Get the screen height and width  
+        var maskHeight = $(document).height();  
+        var maskWidth = $(window).width();  
+		
+	 //Get the window height and width  
+        var winH = $(window).height();  
+        var winW = $(window).width();  
+					 
+    //select all the tag with name equal to createguide
+    $('.sendmessage').click(function(e) {  
+       
+		$('#closesendmessage-modal').show();
+		var id = '#send_message_step_1';
+        $('#mask4').css({'width':maskWidth,'height':maskHeight});  
+        $('#mask4').fadeIn();             
+		$(id).show();
+		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
+	    $(id).animate({right: winW/2-$(id).width()/2});
+        $(id).css("position", "fixed");
+		
+    });
+	
+	  //if close button is clicked  
+    $("#closesendmessage-modal").click(function (e) {  
+        //Cancel the link behavior  
+        e.preventDefault();  
+        $('#mask4').hide();  
+		$('#send_message_step_1').hide();
+    }); 
+	
+	$(".postmessage").click(function()
+	{
+		var slugs = [];
+		$('#user_tag li').each(function(index) {
+			if (index < $('#user_tag li').length - 1) {
+				
+				slugs.push($(this).find('.tag_button_add').attr('sid'));
+			}
+        });
+		
+		var slugs_json = JSON.stringify({slugs: slugs});
+
+		var content = {'_xsrf':getCookie('_xsrf'), 'slugs':slugs_json, 'message': document.getElementById("messagetextarea").value};
+		
+		$.postJSON('/postmessage', content, function(response){
+			      alert('message sent.');
+				  $('#mask4').hide();  
+		          $('#send_message_step_1').hide();
+			});
+	});
+	})  
+
+
+
 
 $('.requestfriend').live('click',function(){
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid')};
 	 $.postJSON('/requestfriend',content,function(response){
+	 	alert('Friend request send.')
 	 });
 });	
 
 $('.removefriend').live('click',function(){
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid')};
-	 $.postJSON('/removefriend',content,function(response){});
+	 $.postJSON('/removefriend',content,function(response){
+	 	alert('Friend has been removed.')
+	 });
 });	
 
 $('.acceptfriend').live('click',function(){
 	alert('tet');
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'accept'};
-	 $.postJSON('/confirmfriend',content,function(response){});
+	 $.postJSON('/confirmfriend',content,function(response){
+	 	alert('Friend request accepted.')
+	 });
 });	
 
 $('.declinefriend').live('click',function(){
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'decline'};
 	 $.postJSON('/confirmfriend',content,function(response){
+	 	alert('Friend request declined.')
 	 });
 });	
 
@@ -115,4 +177,94 @@ var title = $('#trip_title').val();
 	
     new_window('http://www.stumbleupon.com/submit?url=http://www.tripshare.cc/trip/'+slug+';title='+title, 1060, 500)
 }
+
+
+var user_tag_add_form_displayed;
+function user_tag_add_show(status)
+{
+	
+    if(!$('#user_tag_add_show').length) { return; } 
+    
+    if(status && !user_tag_add_form_displayed)
+    {
+        $('#user_tag_add_show').show();
+    }
+    else
+    {
+        $('#user_tag_add_show').hide();
+    }
+}
+
+function user_tag_add_form_toggle(display)
+{ 
+    if(display)
+    {
+        user_tag_add_form_displayed = true;
+        
+        $('#user_tag').show();
+        $('#user_tag_add_show').hide(); 
+        $('#user_tag_add_form').show(); 
+        
+        // Show remove buttons for each category
+        var plan_category_as = $('#user_tag').find('.tag_button_add');
+        
+        if(plan_category_as)
+        {
+            plan_category_as.addClass('tag_button_a_edit_active');
+        }
+        
+        var plan_category_removes = $('#user_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.show();
+        }
+
+        setTimeout("$('#user_tag_add_input').focus();", 50);
+    }
+    else
+    { 
+        user_tag_add_form_displayed = false;
+        
+        $('#user_tag_add_form').hide(); 
+        $('#user_tag_add_show').show();
+        
+        // Show remove buttons for each category
+		if($('#user_tag_add_input').val() != '')
+		{
+		var content ={'tag':$('#user_tag_add_input').val(),'user_id':$('#userId').val(),'_xsrf':getCookie('_xsrf')};
+        $.postJSON('/add_user_tag', content, function(response){
+			    ShowuserTag($('#user_tag_add_input').val());
+		});
+		}
+		else
+		{
+		var plan_category_removes = $('#user_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+		}
+    }
+}
+
+function ShowUserTag(tag)
+{
+	if(tag!='')
+	{
+	var node = $('<li class="tag_button"><a class="tag_button_add tag_button_a_edit_active" rel="tag" href="/tag">'+tag+'</a><div class="tag_button_remove" style="display: block; "></div></li>');
+	node.insertBefore($('#user_tag_add_show'));
+	$('#user_tag_add_input').val('');
+	 
+    }
+	var plan_category_removes = $('#user_tag').find('.tag_button_remove');
+        
+        if(plan_category_removes)
+        {
+            plan_category_removes.hide();
+        }
+	
+}
   
+

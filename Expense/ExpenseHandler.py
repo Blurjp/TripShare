@@ -12,12 +12,9 @@ import simplejson
 from Utility.DateProcessor import GetMembers
 
 class ExpenseRequestHandler(BaseHandler):
-
     @tornado.web.authenticated
     def post(self):
         content = simplejson.loads(self.get_argument('userexpense'))
-        
-         
         for userexpense in content['userexpense']:
             _notification = Users.Notification.ExpenseNotificationGenerator('expense_request', self.current_user['username'], self.current_user['slug'], self.current_user['picture'], datetime.datetime.utcnow(), self.current_user['user_id'], userexpense['expense'])
             self.syncdb.users.update({'slug':userexpense['slug']}, {'$addToSet':{'new_notifications':_notification.notification}})

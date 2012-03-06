@@ -11,7 +11,7 @@ TripShare - Guides
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/plan.css") }}" type="text/css"/>
 <link rel="stylesheet" href="{{ static_url("stylesheets/CalendarControl.css") }}" type="text/css"/>
-<link rel="stylesheet" href="{{ static_url("stylesheets/css/smoothness/jquery-ui-1.8.17.custom.css") }}" type="text/css"/>
+<link rel="stylesheet" href="{{ static_url("stylesheets/css/jquery-ui-1.8.16.custom.css") }}" type="text/css"/>
 
 
 <script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
