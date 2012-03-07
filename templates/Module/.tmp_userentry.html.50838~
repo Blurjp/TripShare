@@ -1,0 +1,57 @@
+<ul class="list people">
+{% for user in users %}
+{% if current_user %}
+{% if user['slug'] == current_user['slug'] %}
+<li></li>
+{% else %}
+<li class="person clearfix">
+<div class="actions right">
+{% if user not in current_user['friends'] %}
+<input type="button" class="follow-button regular-button" href="#" value="Add friend">
+{% else %}
+<input type="button" class="follow-button regular-button" href="#" value="Remove friend">
+{% end %}
+</div>
+<a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
+<div class="details">
+<div class="hsubgroup">
+<strong><a href="/people/{{user['slug']}}">{{user['username']}}</a></strong>
+<span>
+
+<span class="city">{{user['current_location']}}</span>
+</span>
+</div>
+<div class="bio">
+<p>{{user['bio']}}</p>
+</div>
+{{len(user['trips'])}} trips
+</div>
+</li>
+
+{%end%}
+
+{% else %}
+
+<li class="person clearfix">
+<div class="actions right">
+<input type="button" class="follow-button regular-button" href="#" value="Add friend">
+</div>
+<a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
+<div class="details">
+<div class="hsubgroup">
+<strong><a href="/people/{{user['slug']}}">{{user['username']}}</a></strong>
+<span>
+
+<span class="city">{{user['current_location']}}</span>
+</span>
+</div>
+<div class="bio">
+<p>{{user['bio']}}</p>
+</div>
+{{len(user['trips'])}} trips
+</div>
+</li>
+
+{%end%}
+{%end%}
+</ul>

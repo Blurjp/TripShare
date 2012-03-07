@@ -4,8 +4,7 @@
 </a>
 
 <ul class="headline">
-	<li>Beta
-		</li>
+	
 <li><a href="/guides">Guides</a></li>
 {% if current_user%}
 <li><a href="/travelers/">Travelers</a></li>
@@ -54,8 +53,7 @@
 </div>	
 {% else %}
 <div class="logged-out-actions">
-
-Welcome
+<strong>
 <a href="#modal-content" name="modal" class="signin_modal">Join</a>
 </strong>
 or
@@ -150,10 +148,8 @@ Or,
 <li>
 <a href="#modal-content" name="modal" class="signin_modal">Join</a>
 </li>
-<li>
-<a href="#login">Log in</a>
-</li>
 
+ <a id="fb_login_pop" href="/auth/fblogin" ></a>
 </ul>
 <h1>
 Log In TripShare

@@ -149,8 +149,8 @@ class ComposeHandler(BaseHandler):
                     raise tornado.web.HTTPError(500)
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id}, '$inc':{'trip_count':1}})    
             self.syncdb.trips.ensure_index([('groups.dest_place.loc', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
-            self.syncdb.trips.ensure_index('trip_id', unique=True)
-            self.syncdb.trips.ensure_index('slug', unique=True)
+            self.syncdb.trips.ensure_index([('trip_id')], unique=True)
+            self.syncdb.trips.ensure_index([('slug')], unique=True)
             print('redirect')
             self.redirect("/trip/" + str(self.slug))
             

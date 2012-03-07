@@ -982,8 +982,8 @@ h2 .user_name {margin-left:150px !important}
 .xf{margin-right:10px; background:#3c8ae0;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d92e6',endColorstr='#3a7fd6');background:-webkit-gradient(linear,0 0,0 100%,from(#3d92e6),to(#3a7fd6));background:-moz-linear-gradient(top,#3d92e6,#3a7fd6);-webkit-box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);-moz-box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);-o-box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 1px 0 rgba(0,0,0,.3);text-shadow:0 -1px 0 rgba(0,0,0,.55);border:1px solid #35649d;color:#fff!important;}
 .xe{background:#3c8ae0;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d92e6',endColorstr='#3a7fd6');background:-webkit-gradient(linear,0 0,0 100%,from(#3d92e6),to(#3a7fd6));background:-moz-linear-gradient(top,#3d92e6,#3d92e6);-webkit-box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);-moz-box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);-o-box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 1px 0 rgba(0,0,0,.2);text-shadow:0 1px 0 rgba(0,0,0,.55);border:1px solid #35649d;color:##fff!important;min-width:56px;width:auto!important;_width:56px;}
 
-#mini-profile{position:relative;}
-.xgt{position:absolute;right:90px;top:10px;min-width:200px;z-index: 6000}
+
+.xgt{position:absolute;right:15px;min-width:200px;z-index: 6000}
 .xft{display:none;}.xet{display:block;border-top:1px solid rgba(255,255,255,0.1);-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.6);-moz-box-shadow:0 1px 2px rgba(0,0,0,0.6);box-shadow:0 1px 2px rgba(0,0,0,0.6);width:110px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;height:39px;line-height:39px;padding:0 0 0 40px;color:#fff!important;text-shadow:0 1px 1px rgba(0,0,0,0.5);text-decoration:none;}#xdt{display:block;}
 .xct:hover{border-bottom:solid 1px white!important;}
 .xgt:hover>.xft{display:block;}.xet:hover{background-color:white!important;text-decoration:none;}
@@ -1019,6 +1019,8 @@ p.details{color:#999999;width:400px;font-size:11px;font-weight:normal;margin-rig
 
 
 a#fb_connect_pop {float:right; display:block; width:155px; height:23px; overflow:hidden; background:url("/static/images/facebook_sign_in.png") no-repeat transparent; z-index:5000;  text-decoration:none;margin-top:5px; margin-left:15px}
+a#fb_login_pop {float:right; display:block; width:155px; height:23px; overflow:hidden; background:url("/static/images/facebook_log_in.gif") no-repeat transparent; z-index:5000;  text-decoration:none;margin-top:5px; margin-left:15px}
+
 .friend_dropdown_list {float:left;width:150px}
 
 /* guides  */

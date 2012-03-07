@@ -1,11 +1,12 @@
 import tornado.auth
-
+from Map.BrowseTripHandler import BaseHandler
         
         
-class FaceBookPostHandler(tornado.web.RequestHandler, tornado.auth.FacebookMixin):
+class FaceBookPostHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
     @tornado.web.authenticated
     @tornado.web.asynchronous
     def post(self):
+        print self.current_user["access_token"]
         content = self.get_argument("invite_text")
         self.facebook_request(
             "/me/feed",
@@ -15,10 +16,11 @@ class FaceBookPostHandler(tornado.web.RequestHandler, tornado.auth.FacebookMixin
 
     def _on_post(self, new_entry):
         if not new_entry:
+            print "call failed"
             # Call failed; perhaps missing permission?
             self.authorize_redirect()
             return
-        self.finish("Posted a message!")
+        self.redirect(self.get_argument("next", "/"))
         
 
 class TwitterPostHandler(tornado.web.RequestHandler,
@@ -27,6 +29,7 @@ class TwitterPostHandler(tornado.web.RequestHandler,
     @tornado.web.asynchronous
     def post(self):
         content = self.get_argument("invite_text")
+        print self.current_user["access_token"]
         self.twitter_request(
             "/statuses/update",
             post_args={"status": content},

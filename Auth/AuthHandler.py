@@ -127,7 +127,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
         my_url = (self.request.protocol + "://" + self.request.host +
                   "/auth/fblogin?next="+
                   tornado.escape.url_escape(self.get_argument("next", "/")))
-        print(my_url)
+        #print(my_url)
         if self.get_argument("code", False):
             self.get_authenticated_user(
             redirect_uri=my_url,
@@ -138,14 +138,22 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
             return
         self.authorize_redirect(redirect_uri=my_url,
                               client_id=self.settings["facebook_api_key"],
-                              extra_params={"scope": "user_about_me,email,user_website,publish_stream,read_friendlists"})
+                              extra_params={"scope": "user_about_me,email,user_website,publish_stream,read_friendlists,offline_access"})
  
     def handle_request(self, response):
-        #print('++++++++++++++++++++++++++++++'+response.body)
+        print('++++++++++++++++++++++++++++++'+response.body)
         user = simplejson.loads(response.body)
         
         slug  = user[0]['name']
-                
+        checkExist = self.syncdb.users.find_one({'fb_user_id':str(user[0]['uid'])})
+        if checkExist:
+            checkExist['access_token'] = self.access_token
+            self.syncdb.user.save(checkExist)
+            self.set_secure_cookie("user", str(checkExist['user_id']))
+            self.redirect(self.get_argument("next", "/"))
+            return
+        
+        
         while True:
             e = self.syncdb.users.find_one({'slug':slug})
             if not e: break
@@ -158,12 +166,12 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'locale':user[0]['locale'],
                     'email': user[0]['email'],
                     'picture': user[0]['pic'],
-                    'current_location': user[0]['current_location']['city'],
+                    'current_location': user[0]['current_location'],
                     'current_position':[],
                     'status': 'online',
                     'slug': slug,
                     'createdtime': datetime.datetime.utcnow(),
-                    'access_token': self.access_token,
+                    'access_token': self.access_token,  
                     'save_guide':[],
                     'like_guide':[],
                     'save_site':[],
