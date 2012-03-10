@@ -1178,7 +1178,7 @@ border-top-right-radius: 5px;}
 .walkthrough ul li a {color:#666;text-decoration:none;}
 .walkthrough .image{display:block;position:relative;height:250px;border-bottom:1px solid #f1efaf;background-repeat:no-repeat;background-position:center center;}.walkthrough .setup .image{}
 .walkthrough ul li:hover .image{border-bottom:1px solid #f1eea3;}
-.walkthrough .desc{padding:13px 0 15px 15px;display:block;height:45px;overflow:hidden;border-top:1px solid #fff;background-repeat:no-repeat;position:relative;z-index:2;}
+.walkthrough .desc{padding:13px 0 15px 15px;display:block;height:60px;overflow:hidden;border-top:1px solid #fff;background-repeat:no-repeat;position:relative;z-index:2;}
 .walkthrough ul li:hover .desc{border-top:1px solid #fcfce9;}.walkthrough .desc h2{margin:0;padding:0;font-size:15px;color:#393939;}.walkthrough .desc p{margin:0;padding:0;line-height:1.2em;}.walkthrough .step-number{background-image:url('../../images/modules/dashboard/walkthrough/largenumb_sprites.png');background-repeat:no-repeat;display:block;width:64px;height:80px;position:absolute;right:0;bottom:0;z-index:0;}.walkthrough .one{background-position:0 0;}
 .walkthrough ul li:hover .one{background-position:0 -80px;}.walkthrough .two{background-position:-64px 0;}
 .walkthrough ul li:hover .two{background-position:-64px -80px;}.walkthrough .three{background-position:-128px 0;}

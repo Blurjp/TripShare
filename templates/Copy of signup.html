@@ -10,10 +10,6 @@
 table.oneclickicons td {line-height:0; padding-right:7px;}
 </style>
 
-
-
-
-
 <style type="text/css">
 .createaccount {
 margin-top: 30px;
@@ -53,31 +49,30 @@ font-weight: bold;
 <div class="box-body">
 
 
-<h1 style="margin-bottom:15px; font-size:20px">Sign in to TripShare</h1>
-<p class="inline_block caption">
-                or
-                <a href="https://www.groupon.com/account/create">Sign Up</a>
-              </p>
-<form action="/account/login" method="post" onsubmit="return checkform(this);">
-	{% raw xsrf_form_html() %}  
+<h1 style="margin-bottom:15px; font-size:20px">Sign up</h1>
+<form name="login_form" action="/account/create" method="post" onsubmit="return checkform(this);">
+	 {{% raw xsrf_form_html() %}}  
 <table class="form">
 <tbody><tr>
-<td class="label">Email or username</td>
+<td class="label">Username</td>
+<td class="value"><input name="username" id="username" type="text" size="25" value=""></td>
+</tr>
+<tr>
+<td class="label">Email</td>
 <td class="value"><input name="email" id="email" type="text" size="25" value=""></td>
 </tr>
 <tr>
 <td class="label">Password</td>
 <td class="value"><input name="password" id="password" type="password" size="25"></td>
-<td style="padding-left: 5px; white-space: nowrap"><a href="/account/password">Forgot your password?</a></td>
+
 </tr>
 <tr>
-<td></td>
-<td class="value"><input name="remember" id="remember" type="checkbox" checked="checked"> <label for="remember">Remember me on this computer</label></td>
+<td class="value"><input name="user[accept_terms]" type="hidden" value="0"><input class="check" id="user_accept_terms" name="user[accept_terms]" type="checkbox" value="1"><label for="user_accept_terms">I agree to the <a href="/terms" target="_blank">Terms of Use</a> and <a href="/privacy" target="_blank">Privacy Policy</a></label></td>	
 </tr>
 <tr>
 <td>&nbsp;</td>
 <td class="buttons">
-<input type="submit" value="Sign in" style="font-weight:bold">
+<input type="submit" value="Sign Up" style="font-weight:bold">
 </td>
 </tr>
 </tbody></table>
@@ -146,28 +141,16 @@ font-weight: bold;
 </div><div id="extradiv"></div><div id="extradivtoo"></div>
 
 
-<script src="/static/javascript/jquery-1.3.js?v=bb38" type="text/javascript"></script>
-
-<script type="text/javascript">
-//<![CDATA[
-var gCurrentUserId = null;
-
-
-var gTwitLogin = "";
-
-var gHttpsPrefix = 'https://TripShare.com';
-var gRTL = false;
-//]]>
-</script>
-
-<script src="/static/javascript/nano.en.js?v=8079" type="text/javascript"></script>
-
 
 <script type="text/javascript">
 //<![CDATA[
 function checkform(form)
 {
-	
+	if (form.user[accept_terms].checked != true) 
+	{
+	   alert("Accept term must be checked");
+	   return false;
+	}
 	
 	if (form.email.value == "") 
 	{
@@ -183,10 +166,16 @@ function checkform(form)
 	  return false;
 	}
 	
+	if (form.password != form.confirm_password ) 
+	{
+	  alert("Password doesn't match confirmation");
+	  form.confirm_password.focus();
+	  return false;
+	}
+	
 	return true;
 }
 </script>
-
 
 
 

@@ -70,7 +70,7 @@ $('.removefriend').live('click',function(){
 });	
 
 $('.acceptfriend').live('click',function(){
-	alert('tet');
+	
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'accept'};
 	 $.postJSON('/confirmfriend',content,function(response){
 	 	alert('Friend request accepted.')

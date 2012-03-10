@@ -16,7 +16,8 @@ table {border-collapse: collapse; border-spacing: 0}
 body {font: 83% "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .large {font-size: 110%; line-height: 1.4}
 .sidebar .pod {line-height: 1.3}
-.hgroup {margin-bottom: 20px; width:680px}
+#sidebar_find_friends {margin: 60px 20px 0 0 ;}
+.hgroup {margin: 20px 20px 0 0 ; width:50%; float:left}
 .hgroup h2 {color: black; font-weight: 300; font-family: angie-sans,sans-serif;}
 .hsubgroup {margin-bottom: 10px; font: 15px/25px Arial, Helvetica, Sans-serif;color: #999;text-shadow: 0 1px 0 white;}
 .lead-in {color: #333333; margin-bottom: 10px; line-height: 1.4em; font-size: 1.7em; font-weight: 300; font-family: angie-sans,sans-serif;}
@@ -387,8 +388,8 @@ body {background: white}
 #tooltip img {border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #tooltip .pointer {width: 100%; height: 5px; text-align: center; background: transparent url(/static/images/tooltip-pointer.png) no-repeat top center}
 .sidebar {float: right; display: inline; width: 300px; padding: 0}
-.main {float: left; width: 620px; display: inline; position: relative}
-.bbox-tabs.four li {width: 205px !important}
+.main {float: left; width: 60%; display: inline; position: relative}
+.bbox-tabs.four li {width: 33% !important}
 .bbox-tabs.four li.last {width: 205px !important}
 .bbox-tabs.three li {width: 206px !important}
 .bbox-tabs li {float: left; width: 310px; margin-bottom: 15px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
@@ -457,7 +458,7 @@ body {background: white}
 
 
 #container {font-size: 1em;}
-#container #content {padding: 30px 20px 0; background-color: white; min-height: 300px; }
+#container #content {margin-top:60px;padding-left: 130px;width:80%; background-color: white; min-height: 300px; }
 
 
 

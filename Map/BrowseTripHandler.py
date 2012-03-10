@@ -89,14 +89,14 @@ class BrowseHandler(BaseHandler):
 class EntryHandler(BaseHandler):
     singletrip = None
     trips = None
+    @tornado.web.authenticated
     @tornado.web.asynchronous
     def get(self, slug):
         if self.current_user:
                 self.singletrip = self.syncdb.trips.find_one({'slug':slug})
                 if not self.singletrip: raise tornado.web.HTTPError(404)
                 self.db.trips.find({'owner_id':self.get_db_user_id()}, limit = 10, sort = [('published', -1)], callback=self._trip_entry)   
-        else:
-                self.redirect('/account/login')
+        
         
     def _trip_entry(self, response, error):
         if error:

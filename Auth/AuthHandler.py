@@ -13,8 +13,8 @@ from Map.BrowseTripHandler import BaseHandler
 
 class LoginHandler(BaseHandler):
     def get(self):
-        self.render("login.html")
-       
+        self.render("signup.html")
+        
    
     def post(self):
         email = self.get_argument("email")
