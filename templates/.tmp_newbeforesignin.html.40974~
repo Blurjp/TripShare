@@ -531,6 +531,8 @@ function set_walkthrough_section(section) {
 
 <script>
 			(function(window,undefined){
+
+
 				// Establish Variables
 				var
 					History = window.History, // Note: We are using a capital H instead of a lower h
@@ -540,7 +542,9 @@ function set_walkthrough_section(section) {
 				   History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
 					// Log the State
 					var State = History.getState(); // Note: We are using History.getState() instead of event.state
+				    
 
+					
 				});
 				})(window);
 </script>	

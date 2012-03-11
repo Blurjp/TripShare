@@ -5,7 +5,7 @@
 <meta name="description" content="TripShare is a group trip planner for you to create and share the trip among your friends."> 
 <meta name="keywords" content="group trip, budget control, hotel, travel guide, collect travel expense">
 
-<title>TripShare - Guide</title> 
+<title>TripShare - Sight</title> 
 <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="TripShare Feed Search"/> 
 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
@@ -186,43 +186,20 @@
 	
   }
   
-  function DestToMarker(dest_places)
+  function DestToMarker(dest_place)
 {
-	//alert(dest_places);
-	dest_places= jQuery.parseJSON(dest_places);
-	var day = '';
 	
-	for (var i=0; i < dest_places.length; i++) 
-	{
-	  day = dest_places[i]['date'];
-	  if (dest_places[i].hasOwnProperty('geo'))
-	  {
-	  	var lat = new google.maps.LatLng(dest_places[i]['geo'][0],dest_places[i]['geo'][1]);
-	  	
-		bounds.extend(lat);
-		map.fitBounds(bounds);
-		map.setZoom(15);
-        createSightsMarker(lat,day, i);
-		geo_results.push(lat);
-	  } 
-	  else
-	  {
-	  geocoder.geocode( { 'address': dest_places[i]['dest']}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-	  	bounds.extend(results[0].geometry.location);
-		map.fitBounds(bounds);
-		//map.setZoom(10);
-        createSightsMarker(results[0].geometry.location, day, i);
-		geo_results.push(results[0]);
-		
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-      });
-	  }
- 
-	}
+    dest_place = dest_place.slice(1,dest_place.length-1);
+	var lat = dest_place.substring(0, dest_place.indexOf(','));
+	var lng = dest_place.substring(dest_place.indexOf(',')+1, dest_place.length);
 	
+	 var latlng =  new google.maps.LatLng(lat, lng);
+	  	bounds.extend(latlng);
+		map.fitBounds(bounds);
+		map.setZoom(5);
+        createSightsMarker(latlng);
+		geo_results.push(latlng);
+
 }
   /**
  * The HomeControl adds a control to the map that simply
@@ -976,15 +953,15 @@ function codeLatLng(name) {
 		});
 		}}
 				
-	  function createSightsMarker(latLng, day, index)
+	  function createSightsMarker(latLng)
 	  {
-	  
+	  	
 	  	var marker = new google.maps.Marker({
             position: latLng,
             map: map
             
           });
-		 var url = '/static/icon/tripshare_'+index+'.png';
+		 var url = '/static/icon/tripshare_1.png';
 		 marker.setIcon(url);
 		 
 		 sightsMarkerGroup.push(marker);
@@ -1268,7 +1245,7 @@ function ShowResultInDropList(response)
 	 for (var i = 0; i < _object.length; i++)
 	{
 	$('.friend_dropdown_list ul').append(
-     '<li><a href="/addusertotrip/'+_object[i]['slug']+'"><span><img class="picture medium" alt='+_object[i]['username']+' src='+_object[i]['picture']+'></span><span class="user_name">'+_object[i]["username"]+'</span></a></li>'
+     '<li><a href="/addusertotrip/'+_object[i]['site_name']+'"><span><img class="picture medium" alt='+_object[i]['username']+' src='+_object[i]['picture']+'></span><span class="user_name">'+_object[i]["username"]+'</span></a></li>'
     );	
 	}
 }
@@ -1341,9 +1318,9 @@ function PostFeedResponse(response){
 
 <div id="header"> 
 <div id="nav-bar">
- {% include "Module/headline.html" %} 
- {% include "Module/usersetting.html" %}
- {% include "Module/ExportGuide.html" %}
+ {% include "../Module/headline.html" %}
+ {% include "../Module/usersetting.html" %}
+ {% include "../Module/ExportSite.html" %}
 </div> 
 </div> 
 
@@ -1355,27 +1332,27 @@ function PostFeedResponse(response){
 
 <div class="profile withbar">
 <div class="header">
-{% if guide %}
+{% if site %}
 <div class="profile">
-	<a href="{{guide['slug']}}" class="l_editpicture" title="Change picture"><img class="picture large" src="http://localhost/static/images/site.jpg" alt="{{guide['title']}}" class="picture xlarge"></a>
+	<a href="{{site['site_name']}}" class="l_editpicture" title="Change picture"><img class="picture large" src="http://localhost/static/images/site.jpg" alt="{{site['site_name']}}" class="picture xlarge"></a>
 </div>
 <div class="body">
-<ul class="guide_action_options">
+<ul class="site_action_options">
 <li>
-<input type="button" uid="{{guide['guide_id']}}" class="regular-button l_exportguide" href="#" value="Export Guide">
+<input type="button" uid="{{site['site_id']}}" class="regular-button l_exportsite" href="#" value="Export Site">
 </li>
 </ul>
 
 
 
-<h1><a class="name" href="{{guide['slug']}}">{{guide['title']}}</a> </h1>
+<h1><a class="name" href="{{site['site_name']}}">{{site['site_name']}}</a> </h1>
 {% if current_user["slug"] == "jason" %}
-<a href="#" class="l_deleteguide" uid="{{guide['guide_id']}}">delete</a>
+<a href="#" class="l_deletesite" uid="{{site['site_id']}}">delete</a>
 /
 {% end %}
-<a href="#" class="l_updateguide" uid="{{guide['guide_id']}}">update</a>
+<a href="#" class="l_updatesite" uid="{{site['site_id']}}">update</a>
 /
-<a href=""><span class="num">{{ guide['rating'] }}</span> people like</a>
+<a href=""><span class="num">{{ site['rating'] }}</span> people like</a>
 
 {% end %}
 </div>
@@ -1383,13 +1360,13 @@ function PostFeedResponse(response){
 
 <div>
       <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="off">
-  
+      
 </div>
 
 <div style="clear:both"></div>
 
-<ul id="guide_tag" onmouseover="guide_tag_add_show(true);" onmouseout="guide_tag_add_show(false);">
-{% for tag in guide['tags']%}
+<ul id="site_tag" onmouseover="site_tag_add_show(true);" onmouseout="site_tag_add_show(false);">
+{% for tag in site['tags']%}
 <li class="tag_button">
   <a class="tag_button_add" rel="tag" href="/tag" sid="{{tag}}">{{tag}}</a>
   <div class="tag_button_remove" ></div>
@@ -1397,16 +1374,16 @@ function PostFeedResponse(response){
 </li>
 {% end %}
 
-<li id="guide_tag_add_show" onclick="guide_tag_add_form_toggle(true); event.stopPropagation(); return false">
+<li id="site_tag_add_show" onclick="site_tag_add_form_toggle(true); event.stopPropagation(); return false">
 </li>
   
-<li id="guide_tag_add_form">
-   <div id="guide_tag_add_input_exterior" style="position: relative; float: left">
-   <div id="guide_tag_add_input_exterior">
-   <input type="text" id="guide_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small">
+<li id="site_tag_add_form">
+   <div id="site_tag_add_input_exterior" style="position: relative; float: left">
+   <div id="site_tag_add_input_exterior">
+   <input type="text" id="site_tag_add_input" default_value="add tag" tip="add tag" css_size="small" autocomplete="off" class="input_inactive_small">
    </div>
    </div>    
-    <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="guide_tag_add_form_toggle(false); return false">done</a>
+    <a style="margin:3px 0 0 9px; cursor: pointer; float: left; font-weight: bold; color: #428EDA" onclick="site_tag_add_form_toggle(false); return false">done</a>
   </li>
   
   <div style="clear:both"></div>
@@ -1414,66 +1391,66 @@ function PostFeedResponse(response){
 </ul>
 
 <script type='text/javascript'> 
-var guide_tag_add_form_displayed;
-function guide_tag_add_show(status)
+var site_tag_add_form_displayed;
+function site_tag_add_show(status)
 {
 	
-    if(!$('#guide_tag_add_show').length) { return; } 
+    if(!$('#site_tag_add_show').length) { return; } 
     
-    if(status && !guide_tag_add_form_displayed)
+    if(status && !site_tag_add_form_displayed)
     {
-        $('#guide_tag_add_show').show();
+        $('#site_tag_add_show').show();
     }
     else
     {
-        $('#guide_tag_add_show').hide();
+        $('#site_tag_add_show').hide();
     }
 }
 
-function guide_tag_add_form_toggle(display)
+function site_tag_add_form_toggle(display)
 { 
     if(display)
     {
-        guide_tag_add_form_displayed = true;
+        site_tag_add_form_displayed = true;
         
-        $('#guide_tag').show();
-        $('#guide_tag_add_show').hide(); 
-        $('#guide_tag_add_form').show(); 
+        $('#site_tag').show();
+        $('#site_tag_add_show').hide(); 
+        $('#site_tag_add_form').show(); 
         
         // Show remove buttons for each category
-        var plan_category_as = $('#guide_tag').find('.tag_button_add');
+        var plan_category_as = $('#site_tag').find('.tag_button_add');
         
         if(plan_category_as)
         {
             plan_category_as.addClass('tag_button_a_edit_active');
         }
         
-        var plan_category_removes = $('#guide_tag').find('.tag_button_remove');
+        var plan_category_removes = $('#site_tag').find('.tag_button_remove');
         
         if(plan_category_removes)
         {
             plan_category_removes.show();
         }
 
-        setTimeout("$('#guide_tag_add_input').focus();", 50);
+        setTimeout("$('#site_tag_add_input').focus();", 50);
     }
     else
     { 
-        guide_tag_add_form_displayed = false;
+        site_tag_add_form_displayed = false;
         
-        $('#guide_tag_add_form').hide(); 
-        $('#guide_tag_add_show').show();
+        $('#site_tag_add_form').hide(); 
+        $('#site_tag_add_show').show();
         
-		if($('#guide_tag_add_input').val() != '')
+		if($('#site_tag_add_input').val() != '')
 		{
-		var content ={'action':'add','tag':$('#guide_tag_add_input').val(),'guide_id':$('#guideId').val(),'_xsrf':getCookie('_xsrf')};
-        $.postJSON('/add_guide_tag', content, function(response){
-			    ShowGuideTag($('#guide_tag_add_input').val());
+		var content ={'action':'add','tag':$('#site_tag_add_input').val(),'site_id':$('#siteId').val(),'_xsrf':getCookie('_xsrf')};
+        $.postJSON('/add_site_tag', content, function(response){
+			    ShowSiteTag($('#site_tag_add_input').val());
 		});	
 		}
 		else
 		{
-		var plan_category_removes = $('#guide_tag').find('.tag_button_remove');
+		var plan_category_removes = $('#site_tag').find('.tag_button_remove');
         
         if(plan_category_removes)
         {
@@ -1484,16 +1461,16 @@ function guide_tag_add_form_toggle(display)
     }
 }
 
-function ShowGuideTag(tag)
+function ShowSiteTag(tag)
 {
 	if(tag!='')
 	{
 	var node = $('<li class="tag_button"><a class="tag_button_add tag_button_a_edit_active" rel="tag" sid="'+tag+'" href="/tag">'+tag+'</a><div class="tag_button_remove" style="display: block; "></div></li>');
-	node.insertBefore($('#guide_tag_add_show'));
-	$('#guide_tag_add_input').val('');
+	node.insertBefore($('#site_tag_add_show'));
+	$('#site_tag_add_input').val('');
 	 
     }
-	var plan_category_removes = $('#guide_tag').find('.tag_button_remove');
+	var plan_category_removes = $('#site_tag').find('.tag_button_remove');
         
         if(plan_category_removes)
         {
@@ -1505,8 +1482,8 @@ function ShowGuideTag(tag)
 $('.tag_button_remove').live('click',function()
 { 
     var object = $(this);
-	var content ={'action':'remove','tag':$(this).siblings('a').attr('sid'),'guide_id':$('#guideId').val(),'_xsrf':getCookie('_xsrf')};
-	 $.postJSON('/add_guide_tag', content, function(response){
+	var content ={'action':'remove','tag':$(this).siblings('a').attr('sid'),'site_id':$('#siteId').val(),'_xsrf':getCookie('_xsrf')};
+	 $.postJSON('/add_site_tag', content, function(response){
 			    object.parents('.tag_button').remove();
 		});	
 });
@@ -1532,12 +1509,12 @@ $('.tag_button_remove').live('click',function()
 </div>
 
 
-				<input name="guideId" id="guideId" type="hidden" value = "{{guide['guide_id']}}">
-				<input name="slug" id="guide_slug" type="hidden" value = "{{guide['slug']}}"> 
-				<input name="title" id="guide_title" type="hidden" value = "{{guide['title']}}"> 
-				<input name="typeId" id="typeId" type="hidden" value = "{{guide['guide_id']}}">
-				<input name="dest_place" id="dest_place" type="hidden" value = "{{dest_place}}">
-				<input id="type" type="hidden" value = "guide">
+				<input name="siteId" id="siteId" type="hidden" value = "{{site['site_id']}}">
+				<input name="site_name" id="site_site_name" type="hidden" value = "{{site['site_name']}}"> 
+				<input name="title" id="site_title" type="hidden" value = "{{site['site_name']}}"> 
+				<input name="typeId" id="typeId" type="hidden" value = "{{site['site_id']}}">
+				<input name="dest_place" id="dest_place" type="hidden" value = "{{site['location']}}">
+				<input id="type" type="hidden" value = "site">
 				<input id="geo" type="hidden" value = "">
 
 
@@ -1599,45 +1576,21 @@ $('.tag_button_remove').live('click',function()
 	  <div style="clear:both"></div>
 	  <ul class="feedsUI">
 	  	<li></li>
-		  {% include "Module/guidecomment.html" %}
+		  {% include "../Module/sitecomment.html" %}
 	  </ul>
 	 
 </div>
 
 
 
-
-<!-- AddThis script-->
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4e1d7b7d69c15ffd"></script>
-<!-- AddThis Button END -->
- 
-<script type="text/javascript">
-	$('.l_deleteguide').click(function(){
-		var content = {'_xsrf': getCookie("_xsrf"), 'id' : $(this).attr('uid')};
-		
-		$.postJSON('/deleteguide', content, function(response){ alert(response);});
-	});
-
-    function getCookie(name) {
-    var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
-    return r ? r[1] : undefined;
-    }
-	
-	$('.l_updateguide').click(function(){
-		alert('update');
-		var geo = $('#geo').attr('value');
-		var content = {'_xsrf': getCookie("_xsrf"), 'geo' : geo};
-		$.postJSON('/updateguide', content, function(response){ alert(response);});
-	});
-</script>
-<input type='hidden' value='' id='guide_id_for_export'>
+<input type='hidden' value='' id='site_id_for_export'>
 </div>
- {% include "Guides/guide_sites.html" %}
+  {% include "site_site.html" %}
 </div>
 
 
 </div>
-{% include "Module/footer.html" %} 
+{% include "../Module/footer.html" %} 
  <div id="mask6"></div>
 </body> 
 </html>

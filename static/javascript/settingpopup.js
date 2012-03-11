@@ -97,7 +97,7 @@ $(document).ready(function() {
       $('.headpichold img').live('mouseenter', function(){
 	  	 var position = $(this).position();
 		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
-		 $('#tooltip').css({left:position.left+150, top: position.top+300});
+		 $('#tooltip').css({left:position.left+180, top: position.top+380});
 	  });
 
       $('.headpichold img').live('mouseleave', function(){
@@ -108,7 +108,7 @@ $(document).ready(function() {
       $('.avatar img').live('mouseenter', function(){
 	  	 var position = $(this).position();
 		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
-		 $('#tooltip').css({left:position.left+90, top: position.top+680 });
+		 $('#tooltip').css({left:position.left+120, top: position.top+700 });
 	  });
 
       $('.avatar img').live('mouseleave', function(){
@@ -118,7 +118,7 @@ $(document).ready(function() {
 	  $('.trip_action span').live('mouseenter', function(){
 	  	 var position = $(this).position();
 		 $('<div id="tooltip"><div id="tooltip_interior"><div>'+ $(this).parent().attr('alt')+'</div><div id="tooltip_micro"></div></div></div>').appendTo("body");
-		 $('#tooltip').css({left:position.left+85, top: position.top+620 });
+		 $('#tooltip').css({left:position.left+120, top: position.top+700 });
 	  });
 
       $('.trip_action span').live('mouseleave', function(){

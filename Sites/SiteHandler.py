@@ -10,6 +10,14 @@ import simplejson
 import MongoEncoder.MongoEncoder
 from Map.BrowseTripHandler import BaseHandler
 
+class ShowSightsHandler(BaseHandler):
+        def get(self, site):
+            
+           
+            site  = self.syncdb.sites.find_one({"lc_sitename":  site.upper()})
+           
+            self.render("Sites/sight.html", site = site )
+
 class RemoveSiteFromTrip(BaseHandler):
         @tornado.web.authenticated
         def post(self): 
@@ -23,10 +31,9 @@ class RemoveSiteFromTrip(BaseHandler):
             for group in trip['groups']:
                 if group['group_id'] == bson.ObjectId(group_id):
                     for i, dest in enumerate(group['dest_place']):
-                       if dest['dest'] == site_name:
-                           del group['dest_place'][i]
-                           
-                           break
+                        if dest['dest'] == site_name:
+                            del group['dest_place'][i]
+                            break
             self.syncdb.trips.save(trip)
             #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{'dest_place':{'dest':site_name}}})
             self.write('success')
@@ -74,12 +81,12 @@ class PostNoteToSite(BaseHandler):
             message = {"note": self.get_argument('note'), "date": datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
             for group in trip['groups']:
                 if group['group_id'] == bson.ObjectId(group_id):
-                   for place in group['dest_place']:
+                    for place in group['dest_place']:
                       
-                      if place['dest'] == site_name:
-                          print(site_name)
-                          place['notes'].append(message)
-                          break
+                        if place['dest'] == site_name:
+                            print(site_name)
+                            place['notes'].append(message)
+                            break
                       
             #response = {'comment_id': bson.ObjectId(),'body': content,'date': datetime.datetime.utcnow(),'from': {'username': self.current_user['username'], 'user_id': self.current_user['user_id'], 'picture':self.current_user['picture']}}
             #self.syncdb.trips.update({"trip_id":bson.ObjectId(trip_id),"dest_place.dest":site_name},  {'$push': {'dest_place.note':message}})

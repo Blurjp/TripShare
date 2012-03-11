@@ -88,6 +88,7 @@ from Search.SearchHandler import RealTimeSearchUserHandler
 from Sites.SiteHandler import AddSiteToTrip
 from Sites.SiteHandler import PostNoteToSite
 from Sites.SiteHandler import RemoveSiteFromTrip
+from Sites.SiteHandler import ShowSightsHandler
 
 from Social.SocialHandler import FaceBookPostHandler
 from Social.SocialHandler import TwitterPostHandler
@@ -241,6 +242,8 @@ class Application(tornado.web.Application):
                                       (r"/deleteguide", DeleteGuidesHandler),
                                       (r"/importguidefile", ImportGuidesHandler),
                                       (r"/importguidetotrip", ImportGuideToTripHandler),
+                                      (r"/sights/([^/]+)", ShowSightsHandler),
+                                      
                                       #(r"/a/changepicture", UserPictureHandler),
                                       (r"/updateuserprofile", UpdateUserProfileHandler),
                                   
