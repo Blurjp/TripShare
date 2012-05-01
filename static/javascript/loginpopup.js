@@ -42,7 +42,7 @@ $(document).ready(function() {
         e.preventDefault();  
         $('#mask').hide();  
 		$('#modal-content').hide();
-		$( "signup_form" )[0].reset();
+		$("form[name=signup_form]")[0].reset();
     });      
 	
     $(".text").focus(function (e) {
@@ -60,7 +60,7 @@ $(document).ready(function() {
 	 
 	$('#new_person').submit(function() {
         
-       $("signup_form")[0].reset();
+       $("form[name=signup_form]")[0].reset();
     });      
 });  
 
@@ -109,7 +109,7 @@ $(document).ready(function() {
         //Cancel the link behavior  
         e.preventDefault();  
         $('#mask2, .window').hide(); 
-		$( "login_form" )[ 0 ].reset();
+		$("form[name=login_form]")[0].reset();
     }); 
 	
       //if close tag is clicked  
@@ -118,10 +118,42 @@ $(document).ready(function() {
         e.preventDefault();  
         $('#mask2').hide();  
 		$('#login').hide();
-		$( "login_form" )[ 0 ].reset();
+		$("form[name=login_form]")[0].reset();
     });   
       
-        
       
+
 });  
+
+	  /* login pop-up*/
+function loginpopup(){
+	
+	$('#mask').hide(); 
+		$('#modal-content').hide();
+        //Get the A tag  
+        var id = "#login";  
+      
+        //Get the screen height and width  
+        var maskHeight = $(document).height();  
+        var maskWidth = $(window).width();  
+      
+        //Set height and width to mask to fill up the whole screen  
+        $('#mask2').css({'width':maskWidth,'height':maskHeight});  
+          
+        //transition effect       
+        $('#mask2').fadeIn();      
+     
+      
+        //Get the window height and width  
+        var winH = $(window).height();  
+        var winW = $(window).width();  
+                
+        //Set the popup window to center  
+        $(id).css('top',  winH/2-$(id).height()/2);  
+        $(id).css('left', winW/2-$(id).width()/2);  
+      
+        //transition effect  
+        $(id).fadeIn();   
+}
+
 

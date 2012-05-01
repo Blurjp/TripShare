@@ -3,44 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-<meta name="description" content="TripShare is a group trip planner for you to create and share the trip among your friends."> 
-<meta name="keywords" content="group trip, budget control, hotel, travel guide, collect travel expense">
+<meta name="description" content="TripShare is a group trip planner for you to create and share the trip among your friends."/> 
+<meta name="keywords" content="group trip, budget control, hotel, travel guide, collect travel expense"/>
 
 <title>TripShare</title> 
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry,places"></script> 
+<script  src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry,places"></script> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/css/smoothness/jquery-ui-1.8.17.custom.css") }}" type="text/css"/>
-<script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
-<script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
+<script  src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
+<script  src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
+<script  src="{{ static_url("javascript/js/jquery.history.js") }}"></script>
+<script  src="{{ static_url("javascript/js/jquery.tools.min.js") }}"></script>
 
-<script type="text/javascript" src="{{ static_url("javascript/js/jquery.history.js") }}"></script>
-<script src="{{ static_url("javascript/js/form2object.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/js/all.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/js/explore_map.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/autocomplete.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/createtripslides.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/createguideslides.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/CalendarControl.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/search.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/jquery.pagination.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/dragdroptool/core.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/dragdroptool/dragsort.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/dragdroptool/drag.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/dragdroptool/events.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/dragdroptool/coordinates.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/dragdroptool/css.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/dragdroptool/cookies.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/js/form2object.js") }}" ></script>
+<script src="{{ static_url("javascript/js/all.js") }}" ></script>
+<script src="{{ static_url("javascript/js/explore_map.js") }}" ></script>
+<script src="{{ static_url("javascript/loginpopup.js") }}" ></script>
+<script src="{{ static_url("javascript/autocomplete.js") }}" ></script>
+<script src="{{ static_url("javascript/createtripslides.js") }}"  ></script>
+<script src="{{ static_url("javascript/createguideslides.js") }}"  ></script>
+<script src="{{ static_url("javascript/CalendarControl.js") }}"  ></script>
+<script src="{{ static_url("javascript/search.js") }}"  ></script>
+<script src="{{ static_url("javascript/jquery.pagination.js") }}"  ></script>
+<script src="{{ static_url("javascript/dragdroptool/core.js") }}"  ></script>
+<script src="{{ static_url("javascript/dragdroptool/dragsort.js") }}"  ></script>
+<script src="{{ static_url("javascript/dragdroptool/drag.js") }}"  ></script>
+<script src="{{ static_url("javascript/dragdroptool/events.js") }}"  ></script>
+<script src="{{ static_url("javascript/dragdroptool/coordinates.js") }}"  ></script>
+<script src="{{ static_url("javascript/dragdroptool/css.js") }}"  ></script>
+<script src="{{ static_url("javascript/dragdroptool/cookies.js") }}"  ></script>
 
-<script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
-<script src="{{ static_url("javascript/vertical.slider.js")}}" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js" type="text/javascript"></script>
-
+<script src="{{ static_url("javascript/settingpopup.js") }}"  ></script>
+<script src="{{ static_url("javascript/vertical.slider.js")}}"  ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"  ></script>
 
 
-<script language="JavaScript" type="text/javascript"><!--
+
+<script  ><!--
 	var dragsort = ToolMan.dragsort();
 	var junkdrawer = ToolMan.junkdrawer();
 
@@ -65,7 +66,7 @@
 </script>
 
 
-<script type="text/javascript">
+<script  >
         
             /**
              * Callback function that displays the content.
@@ -113,13 +114,13 @@
             // When the HTML has loaded, call initPagination to paginate the elements        
             $(document).ready(function(){      
              
-			   initPagination();
+			   //initPagination();
             });
             
              
 </script> 
  
-<script  type="text/javascript">
+<script   >
   $('[placeholder]').focus(function() {
   var input = $(this);
   if (input.val() == input.attr('placeholder')) {
@@ -170,7 +171,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 
 <div id="GuideTab">
 	<ul class="GuideTabList">
-		    
+		    <!--到梦之都XHTML教程的链接
 		    <li class="walkthrough_tab on">
 			<a href="#" onclick="set_walkthrough_section('walkthrough'); return false;">
                 How it works
@@ -182,7 +183,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
                 Travelers on Map
             </a>
 			</li>
-			
+			-->
      </ul>
 
     </div>
@@ -194,10 +195,9 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <a href="#" id="page-right" onclick="; return false;" class="enabled">Next 20</a>
 <a href="#" id="page-left" onclick="; return false;" class="">Previous 20</a>
 <div class="clearfix" id="map-sorts">
-<a class="first on" href="#" id="map-sort-best" onclick="FSMap.update_sort('hottest'); return false;">Hottest</a>
-<a href="#" id="map-sort-latest" onclick="FSMap.update_sort('latest'); return false;" class="">Latest</a>
-<a href="#" id="map-sort-ended" onclick="FSMap.update_filter('mytrip'); return false;" class="">My Trip</a>
-<a class="last" href="#" id="map-sort-guides" onclick="FSMap.update_filter('guides'); return false;">Guides</a>
+<a class="first on" href="#" id="map-sort-latest">Latest</a>
+<a href="#" id="map-sort-ended">My Trip</a>
+<a class="last" href="#" id="map-sort-guides">Guides</a>
 </div>
 </div>
 </div>
@@ -210,7 +210,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <div id="discover-bar">
 <div class="hgroup clearfix">
 
-<h1 id="list-view-title">Tell us <strong>when</strong> and <strong>where</strong> you plan to go</h1>
+
 </div>
 </div>
 
@@ -259,14 +259,13 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 <li class="clearfix" id="db-following-tabs">
 <ul class="bbox-tabs four" id="tabs">
 <li id="newtrips-tab" class="on">
-<a href="#" onclick="set_section('newtrips', '/newtrips'); return false;"><strong>Newest Trip</strong><span>Following 0</span></a>
+<a onclick="set_section('newtrips', '/newtrips'); return false;"><strong>Newest Trips</strong></a>
 </li>
-<li id="hottrips-tab" >
-<a href="#" onclick="set_section('hottrips', '/hottrips'); return false;"><strong>Hottest Trip</strong><span>Following 0</span></a>
+{% if current_user %}
+<li id="mytrips-tab" >
+<a onclick="set_section('mytrips', '/showmytrips'); return false;"><strong>My Trips</strong></a>
 </li>
-<li id="endtrips-tab" >
-<a href="#" onclick="set_section('endtrips', '/endtrips'); return false;"><strong>Ended Trip</strong><span>Following 0</span></a>
-</li>
+{% end %}
 </ul>
 </li>
 <li id="following_items">
@@ -276,9 +275,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
    {% module Template("Module/tripentry.html", latest_trip_ids = latest_trip_ids) %}
    
 {% end %}
-<li class="more" id="following-more">
-<a href="#" onclick="$(this).update('Loading...'); new Ajax.Request('/dashboard?list=people&page=2', {asynchronous:true, evalScripts:true, method:'get'}); return false;">More...</a>
-</li>
+
 
 </ul>
 </li>
@@ -302,13 +299,15 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 {% end %}
 
 </div>
+
+
 {% include "Module/footer.html" %}
 {% include "Module/CreateTripSlide1.html" %}
 {% include "Module/find_friends.html" %}
-<input id="social_section_value" value = "" type = "hidden">
+
 <input id="walkthrough_section_value" value = "" type = "hidden">
 <input id="initialize" value = "" type = "hidden">   
-<script type="text/javascript">
+<script  >
 //<![CDATA[
 function checkform(form)
 {
@@ -409,56 +408,8 @@ function check_createguide_form(form)
 </script>
 
 
-<script type="text/javascript">
-function set_section(section, _url) {
-	    var trips = null;
-		$("#section_value").val(section);
-        $('#tabs > .on').removeClass('on');
-        $('#'+section + '-tab').addClass('on');
-		var content = {'_xsrf':getCookie("_xsrf"), 'section':section,'type':'click'};
-		$.postJSON(_url, content, function(response) {
-        
-		var History = window.History;
-                if ( History.enabled ) {
-				History.pushState({state:section}, null, _url);
-				}
-		ShowTrip(response); 
-        }); 
-        }
-	  
-function ShowTrip(message) {
-		if(message!=null)
-		{
-		var node;
-		var trips = message.split("||||");
-		$("#latest_trip").empty();
-		
-		$.each(trips, function(index, value) {
-	         node = $(value);
-            // node.hide();
-		     
-             $("#latest_trip").append(node);
-             //node.show();
-			 
-         });	
-		 }
-    }
-	
-function set_social_section(section) {
-	    
-		var value = $("#social_section_value").val();
-		if (value=="")
-		{
-			value = "tripshare";
-		}
-        $('.social_list > .on').removeClass('on');
-        $('.'+section + '-tab').addClass('on');
-		$('#content_'+value).hide();
-		$('#login_'+value).hide();
-		$('#login_'+section).show();
-		$('#content_'+section).show();
-		$("#social_section_value").val(section);
-        }
+<script>
+
 		
 function set_walkthrough_section(section) {
 	    
@@ -493,41 +444,7 @@ function set_walkthrough_section(section) {
         }
 </script>
 
-<script type='text/javascript'>
-	 //Get the screen height and width  
-        var maskHeight = $(document).height();  
-        var maskWidth = $(window).width();  
-		
-	 //Get the window height and width  
-        var winH = $(window).height();  
-        var winW = $(window).width();  
-	
-	$('a[name=find_friends]').click(function(e) {  
-      e.preventDefault();  
-	  $('#social-close-modal').show()
-        var id = '#social_tools';  
-       
-        $('#mask4').css({'width':maskWidth,'height':maskHeight});  
-        $('#mask4').fadeIn();             
-		$(id).show();
-		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
-	    $(id).animate({right: winW/2-$(id).width()/2});
-        $(id).css("position", "fixed");
-		set_social_section('tripshare');
- });
- 
-   //if close button is clicked  
-    $("#social-close-modal").click(function (e) {  
-        //Cancel the link behavior  
-        e.preventDefault();  
-        $('#mask4').hide();  
-		$('#social_tools').hide();
-		 $("#social-close-modal").hide();
-		//document.getElementById('find_friends_form').reset();
-		
-    }); 
 
-</script>
 
 <script>
 			(function(window,undefined){
@@ -545,7 +462,7 @@ function set_walkthrough_section(section) {
 				})(window);
 </script>	
 
-<script type='text/javascript'>
+<script>
   $(function() {
     Timezone.set();
   });

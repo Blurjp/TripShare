@@ -11,9 +11,10 @@ import tornado.web
 import simplejson
 import MongoEncoder.MongoEncoder
 from BrowseTripHandler import BaseHandler
+from Auth.AuthHandler import ajax_login_authentication
 
 class MyTripsHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def get(self):
 
         response = self.syncdb.trips.find({'trip_id':{'$in':self.current_user['trips']}}).sort("published", pymongo.DESCENDING)
@@ -22,7 +23,7 @@ class MyTripsHandler(BaseHandler):
 
 
 class MergeTripGroupHandler(BaseHandler):
-        @tornado.web.authenticated
+        @ajax_login_authentication
         def post(self):
             trip_id = self.get_argument('trip_id')
             #splitter = re.compile(r'test')
@@ -57,7 +58,7 @@ class MergeTripGroupHandler(BaseHandler):
                 
 
 class RemoveTripGroupHandler(BaseHandler):
-        @tornado.web.authenticated
+        @ajax_login_authentication
         def post(self): 
             trip_id = self.get_argument('trip_id')
             group_id = self.get_argument('group_id')
@@ -71,14 +72,14 @@ class RemoveTripGroupHandler(BaseHandler):
                     if group['group_id'] == bson.ObjectId(group_id):
                         len = 0 - group['members'].__len__()
                         
-                print(str(group['members'].__len__()))
+                #print(str(group['members'].__len__()))
                 self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$pull':{ 'groups': {'group_id':bson.ObjectId(group_id)}}})
                 self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$inc':{'member_count': len}})
                 self.write('success')
             
 class AddTripGroupHandler(BaseHandler):
         
-        @tornado.web.authenticated
+        @ajax_login_authentication
         def post(self): 
             trip_id = self.get_argument('trip_id')
             group_id = self.get_argument('group_id')
@@ -141,19 +142,22 @@ class GetTripGroupForMapHandler(BaseHandler):
 class GetTripGroupForSiteHandler(BaseHandler):
     def get(self, group_id, trip_id):
         if group_id == 'default' or group_id =='new':
-            group = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})['groups'][0]
-            for site in group['dest_place']:
-                        self.write(self.render_string("Sites/trip_site.html", site = site) + "||||")
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            if trip:
+                group = trip['groups'][0]
+                for site in group['dest_place']:
+                            self.write(self.render_string("Sites/trip_site.html", site = site, singletrip = trip ) + "||||")
         else:
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
-            for _group in trip['groups']:
-                if _group['group_id'] == bson.ObjectId(group_id):
-                    for site in _group['dest_place']:
-                        self.write(self.render_string("Sites/trip_site.html", site = site) + "||||")
-                    break
+            if trip:
+                for _group in trip['groups']:
+                   if _group['group_id'] == bson.ObjectId(group_id):
+                        for site in _group['dest_place']:
+                            self.write(self.render_string("Sites/trip_site.html", site = site, singletrip = trip))
+                        break
                 
 class AddTripTagHandler(BaseHandler):  
-    @tornado.web.authenticated  
+    @ajax_login_authentication  
     def post(self):
         trip_id = self.get_argument('trip_id')
         tag = self.get_argument('tag')
@@ -164,7 +168,7 @@ class AddTripTagHandler(BaseHandler):
             self.syncdb.trips.update({'trip_id': bson.ObjectId(trip_id)}, {'$addToSet':{'tags': tag}})
 
 class LikeTripHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         id = self.get_argument('trip_id')
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'like_trip': bson.ObjectId(id)})
@@ -176,7 +180,7 @@ class LikeTripHandler(BaseHandler):
             self.syncdb.trips.update({'trip_id': bson.ObjectId(id)}, {'$inc':{'rating': -1}, '$pull':{'user_like': bson.ObjectId(self.current_user['user_id'])}})
 
 class SaveTripHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         id = self.get_argument('trip_id')
         check  = self.syncdb.users.find_one({'user_id': bson.ObjectId(self.current_user['user_id']), 'save_trip': bson.ObjectId(id)})
@@ -212,7 +216,7 @@ class SaveTrips(BaseHandler):
         slug = None
         
         @tornado.web.asynchronous
-        @tornado.web.authenticated
+        @ajax_login_authentication
         def post(self):   
             tripStart = self.get_argument("startPlace")
             tripDest = self.get_argument("endPlace")
@@ -244,7 +248,7 @@ class SaveTrips(BaseHandler):
             #===================================================================
             
 class SubscribeTrip(BaseHandler):
-        @tornado.web.authenticated
+        @ajax_login_authentication
         def get(self, trip_id):   
             check = False
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
@@ -256,9 +260,10 @@ class SubscribeTrip(BaseHandler):
                 trip['groups'][0]['members'].append(self.current_user)
             trip['member_count'] += 1
             self.syncdb.trips.save(trip)
+            self.write(trip_id)
             
 class UnsubscribeTrip(BaseHandler):
-        @tornado.web.authenticated
+        @ajax_login_authentication
         def get(self, trip_id): 
             
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
@@ -268,14 +273,16 @@ class UnsubscribeTrip(BaseHandler):
                         del trip['groups'][index]['members'][_index]
             trip['member_count'] -= 1
             self.syncdb.trips.save(trip)
+            self.write('success')
             
 class ShowNewTrips(BaseHandler):
         def post(self):
             members = []
-            latest_trip_ids = self.syncdb.trips.find().limit(20).sort("published", pymongo.DESCENDING)
+            latest_trip_ids = self.syncdb.trips.find({"privacy": {"$ne": 2}}).limit(20).sort("published", pymongo.DESCENDING)
            
             if latest_trip_ids.count() > 0:
                 for latest_trip_id in latest_trip_ids:
+                    
                         latest_trip_id['check_join'] = False
                         
                         for _group in latest_trip_id['groups']:
@@ -287,6 +294,7 @@ class ShowNewTrips(BaseHandler):
                                     latest_trip_id['check_join'] = True
                                     print("true")
                                     break
+                        
                         latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
                         #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
                         self.write(latest_trip_id['html'])
@@ -331,6 +339,61 @@ class ShowNewTrips(BaseHandler):
    
          
 
+class ShowMyTrips(BaseHandler):
+        
+        def post(self): 
+            members = []
+            t = datetime.datetime.now()  
+            latest_trip_ids =[]
+            for trip_id in self.current_user['trips']:
+                trip = self.syncdb.trips.find_one({"trip_id":bson.ObjectId(trip_id)})
+                if trip:
+                    latest_trip_ids.append(trip)
+                
+            latest_trip_ids.reverse()
+            if len(latest_trip_ids) > 0:
+                for latest_trip_id in latest_trip_ids:
+                        latest_trip_id['check_join'] = False
+                        
+                        for _group in latest_trip_id['groups']:
+                            for _member in _group['members']:
+                                members.append(_member)
+                        if self.current_user:
+                            for member in members:
+                                if member['user_id'] == self.current_user['user_id']:
+                                    latest_trip_id['check_join'] = True
+                                    #print("true")
+                                    break
+                        latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
+                        #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
+                        self.write(latest_trip_id['html'])
+        
+        def get(self): 
+            members = []
+            t = datetime.datetime.now()  
+            latest_trip_ids =[]
+            for trip_id in self.current_user['trips']:
+                trip = self.syncdb.trips.find_one({"trip_id":bson.ObjectId(trip_id)})
+                if trip:
+                    latest_trip_ids.append(trip)
+               
+            latest_trip_ids.reverse()
+            if len(latest_trip_ids) > 0:
+                for latest_trip_id in latest_trip_ids:
+                        latest_trip_id['check_join'] = False
+                        
+                        for _group in latest_trip_id['groups']:
+                            for _member in _group['members']:
+                                members.append(_member)
+                        if self.current_user:
+                            for member in members:
+                                if member['user_id'] == self.current_user['user_id']:
+                                    latest_trip_id['check_join'] = True
+                                    #print("true")
+                                    break
+                        latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
+                        #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
+                        self.write(latest_trip_id['html'])
 
 class ShowHotTrips(BaseHandler):
         

@@ -45,9 +45,15 @@ $(document).ready(function() {
 		var content = {'_xsrf':getCookie('_xsrf'), 'slugs':slugs_json, 'message': document.getElementById("messagetextarea").value};
 		
 		$.postJSON('/postmessage', content, function(response){
-			      alert('message sent.');
-				  $('#mask4').hide();  
-		          $('#send_message_step_1').hide();
+			if (response == 'not_authenticated') {
+			
+				loginpopup();
+			}
+			else {
+				alert('message sent.');
+				$('#mask4').hide();
+				$('#send_message_step_1').hide();
+			}
 			});
 	});
 	})  
@@ -56,9 +62,16 @@ $(document).ready(function() {
 
 
 $('.requestfriend').live('click',function(){
+	
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid')};
 	 $.postJSON('/requestfriend',content,function(response){
-	 	alert('Friend request send.')
+	 	if (response == 'not_authenticated') {
+		
+			loginpopup();
+		}
+		else {
+			alert('Friend request send.');
+		}
 	 });
 });	
 
@@ -68,6 +81,7 @@ $('.removefriend').live('click',function(){
 	 	alert('Friend has been removed.')
 	 });
 });	
+
 
 $('.acceptfriend').live('click',function(){
 	
@@ -81,6 +95,109 @@ $('.declinefriend').live('click',function(){
 	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'decline'};
 	 $.postJSON('/confirmfriend',content,function(response){
 	 	alert('Friend request declined.')
+	 });
+});	
+
+$(document).ready(function() {    
+  
+     //Get the screen height and width  
+        var maskHeight = $(document).height();  
+        var maskWidth = $(window).width();  
+		
+	 //Get the window height and width  
+        var winH = $(window).height();  
+        var winW = $(window).width();  
+
+$('.acceptpayment').live('click',function(){
+		$("#expense_value").val($(this).attr('expense'));
+		
+		$('#closepayment-modal').show();
+		
+		$('#notification_id').val($(this).attr('id'));
+		 var content = {'_xsrf':getCookie('_xsrf'), 'id':$(this).attr('id')};
+		$.postJSON('/getnotificationpaymentmethod', content, function(response){
+	 	
+		var id = '#pay_expense_step_1';
+		//alert(response);
+		response = jQuery.parseJSON(response);
+		if(response["paypal"] == "paypal")
+		{
+			$("#pay_expense_step_1 ul").append('<li style="display:inline;padding-right:50px" class="PayPal"><img class="picture medium" src="https://www.paypal.com/en_US/i/logo/PayPal_mark_60x38.gif"><input type="radio" name="paymentgroup" class="paymentoption paypal_option"/></li>');
+		}
+		if(response["dwolla"] == "dwolla")
+		{
+			 $("#pay_expense_step_1 ul").append('<li style="display:inline;" class="dwolla"><img class="picture medium" src="/static/icon/dwolla.png"><input type="radio" name="paymentgroup" class="paymentoption dwolla_option"/> </li>');
+		}
+        $('#mask4').css({'width':maskWidth,'height':maskHeight});
+        $('#mask4').fadeIn();             
+		$(id).show();
+		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
+	    $(id).animate({right: winW/2-$(id).width()/2});
+        $(id).css("position", "fixed");
+		
+	 });
+		
+    });
+	
+       //if close button is clicked  
+    $("#closepayment-modal").click(function (e) {  
+        //Cancel the link behavior  
+        e.preventDefault();  
+        $('#mask4').hide();  
+		$('#pay_expense_step_1').hide();
+		$("#pay_expense_step_1 ul").empty();
+    }); 
+	
+    $('a[name=callpaymentapi]').live("click",function()
+  {    
+  var method;
+  if ($('.paypal_option').is(':checked'))
+  {
+  	method = "paypal";
+  }
+  else if ($('.dwolla_option').is(':checked'))
+  {
+  	method = "dwolla";
+  }
+  
+  var amount = $('#expense_value').val();
+  var _url = document.URL;
+  //alert(_url);
+    var content = {'_xsrf':getCookie('_xsrf'), 'amount': amount, 'method':method,'url':_url, 'id':$('#notification_id').val()};
+	 $.postJSON('/callpaymentapi',content,function(response){
+	 	alert(response);
+	 });
+  	  
+	    });
+
+
+  $('input[name=paymentgroup]').live("click",function()
+  {
+  	countChecked();  
+  });
+  
+  function countChecked() {
+  var n = $(".paymentoption:checked").length;
+  if(n<=0)
+  {
+ 
+  	$('a[name=makepayment]').addClass('disabled');
+  }
+  else
+  {
+  
+  	 $('a[name=callpaymentapi]').removeClass('disabled');
+  }
+}
+	 
+	
+});	
+
+
+$('.declinepayment').live('click',function(){
+	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('userid'), 'id':$(this).attr('id'),'type':'decline'};
+	 $.postJSON('/processexpense',content,function(response){
+	 	alert('Payment request declined.')
 	 });
 });	
 
@@ -99,7 +216,13 @@ jQuery.postJSON = function(url, args, callback) {
 function followpeople(_url) {
 
 		$.getJSON('/followpeople/'+_url, function(response) {
-        alert(response.ToString());
+			if (response == 'not_authenticated') {
+			
+				loginpopup();
+			}
+			else {
+				alert(response.ToString());
+			}
         });
         }	
 		

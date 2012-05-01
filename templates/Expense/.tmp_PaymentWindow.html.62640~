@@ -1,0 +1,20 @@
+<form name="pay_expense" id="pay_expense_form" onsubmit="return check_export_guide_form(this);">
+	 {% raw xsrf_form_html() %}
+<div id="pay_expense_step_1" class="window1">
+
+	<a href="#" id="closepayment-modal" class="close">close</a>
+	<h2 style="float:left;padding:2px" > Expense: </h2>
+	<input type="text" id="expense_value" value = "" >
+	
+	<ul style="padding-top:121px">
+		<li>
+	<!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="#" onclick="javascript:window.open('https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=400, height=350');"><img  src="https://www.paypal.com/en_US/i/logo/PayPal_mark_60x38.gif" border="0" alt="Acceptance Mark"></a></td></tr></table><!-- PayPal Logo -->
+	    </li>
+	</ul>
+
+
+
+
+</div>
+</form>  
+<div id="mask4"></div>

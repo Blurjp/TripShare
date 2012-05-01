@@ -13,6 +13,7 @@ import MongoEncoder.MongoEncoder
 from Map.ProcessTripHandler import GetTrips
 from Map.ProcessTripHandler import ShowNewTrips
 from Map.ProcessTripHandler import ShowHotTrips
+from Map.ProcessTripHandler import ShowMyTrips
 from Map.ProcessTripHandler import ShowEndTrips
 from Map.ProcessTripHandler import SaveTrips
 from Map.ProcessTripHandler import SubscribeTrip
@@ -28,13 +29,11 @@ from Map.ProcessTripHandler import GetTripGroupForMapHandler
 from Map.ProcessTripHandler import GetTripGroupForSiteHandler
 from Map.ProcessTripHandler import MyTripsHandler
 from Users.UserInfo import UpdateUserProfileHandler
-
+from Users.UserInfo import UpdatePaymentHandler
 from Calendar.CalendarHandler import ExportCalendarHandler
 
-from Expense.ExpenseHandler import ExpenseSaveHandler
-from Expense.ExpenseHandler import ExpenseRequestHandler
-from Expense.ExpenseHandler import GetExpenseHandler
 
+from Expense.ExpenseHandler import *
 from Map.BrowseTripHandler import BaseHandler
 from Map.BrowseTripHandler import BrowseHandler
 from Map.BrowseTripHandler import EntryHandler
@@ -51,6 +50,8 @@ from Auth.AuthHandler import LoginHandler
 from Auth.AuthHandler import AuthLogoutHandler
 from Auth.AuthHandler import AuthLoginFBHandler
 from Auth.AuthHandler import AuthLogoutFBHandler
+from Auth.AuthHandler import AuthLoginTWHandler
+from Auth.AuthHandler import AuthLogoutTWHandler
 from Users.UserInfo import UserHandler
 from Users.UserInfo import FollowUserHandler
 from Users.UserInfo import UserSettingHandler
@@ -100,15 +101,24 @@ import tornado.web
 import bson
 from tornado.options import define, options
 
-define("port", default=80, help="run on the given port", type=int)
+define("port", default=8001, help="run on the given port", type=int)
 define("mysql_host", default="127.0.0.1:3306", help="trip database host")
 define("mysql_database", default="TripShare", help="trip database name")
 define("mysql_user", default="jason", help="trip database user")
 define("mysql_password", default="jason", help="trip database password")
 define("facebook_api_key", help="your Facebook application API key", default="221334761224948")
 define("facebook_secret", help="your Facebook application secret", default="b0e85f25c5bfddb7ebf40b7670cf5db3")
+define("twitter_consumer_key", help="your Twitter Consumer key", default="WInWKQDuB2IhJLUEuhZxA")
+define("twitter_consumer_secret", help="your Twitter application secret", default="INRfIiXtsKoqm0Lneh1dEt4GjUPvp6Uuakk90v0jY")
 
+define("SANDBOX_API_USER_NAME", help="paypal sandbox user name", default="tom_1333660419_biz_api1.hotmail.com")
+define("SANDBOX_API_PASSWORD", help="paypal sandbox password", default="1333660452")
+define("SANDBOX_API_SIGNATURE", help="paypal sandbox signature", default="AsmQhjDj6zsu8.Jn3.xALQRY4m1jAwJ4yUA2kag1Thrd0xMU4aVRuAbt")
+define("SANDBOX_APPLICATION_ID", help="paypal sandbox application id", default="APP-80W284485P519543T")
+define("SANDBOX_ENDPOINT", help="paypal sandbox api endpoint", default="https://svcs.sandbox.paypal.com/AdaptivePayments/")
 #from functools import wraps
+
+
 #from tornado.web import HTTPError
 #from tornado.websocket import WebSocketHandler
 
@@ -119,7 +129,46 @@ define("facebook_secret", help="your Facebook application secret", default="b0e8
 
 class MainPage(BaseHandler):
     
-    def get(self):
+      def head(self):
+       
+        image_info=[]
+        dest_places = []
+        """ Get RANDOM trips to show in the map"""
+        trips = self.syncdb.trips.find().limit(10)
+        if trips.count() > 0:
+            for trip in trips:
+                trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
+                if (trip_user):
+                    image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
+                    dest_places.append(unicode(simplejson.dumps(trip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+        
+        """ Get latest trips to show in the list"""
+        
+        latest_trip_ids = self.syncdb.trips.find().sort("published", pymongo.DESCENDING).limit(10)
+        
+        top_shares = self.syncdb.users.find().sort("trip_count", pymongo.DESCENDING).limit(10)
+        top_guides = self.syncdb.guides.find().sort("rating", pymongo.DESCENDING).limit(5)
+        
+        _trips = []
+        if latest_trip_ids.count() > 0:
+                for latest_trip_id in latest_trip_ids:
+                        latest_trip_id['check_join'] = False
+                        
+                        members = latest_trip_id['groups'][0]['members']
+                        if self.current_user:
+                            for member in members:
+                                if member['user_id'] == self.current_user['user_id']:
+                                    latest_trip_id['check_join'] = True
+                                    break
+                                
+                        #latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
+                        _trips.append(latest_trip_id)
+                        
+        
+        self.render("newbeforesignin.html", guides=top_guides, dest_places = dest_places, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
+
+    
+      def get(self):
        
         image_info=[]
         dest_places = []
@@ -203,9 +252,18 @@ class Application(tornado.web.Application):
                                       (r"/auth/logout", AuthLogoutHandler),
                                       (r"/auth/fblogin", AuthLoginFBHandler),
                                       (r"/auth/fblogout", AuthLogoutFBHandler),
+                                      (r"/auth/twlogin", AuthLoginTWHandler),
+                                      (r"/auth/twlogout", AuthLogoutTWHandler),
                                       (r"/updateusersetting", UserSettingHandler),
+                                      
+                                      
                                       (r"/saveexpense", ExpenseSaveHandler),
                                       (r"/getexpense", GetExpenseHandler),
+                                      (r"/processexpense", ExpenseProcessHandler),
+                                      (r"/checkpaymentaccount", ExpenseCheckAccountHandler),
+                                      (r"/callpaymentapi", ExpensePaymentAPIHandler),
+                                      
+                                      
                                       (r"/trips", BrowseHandler),   # where you create and browse trips
                                       (r"/trip/([^/]+)", EntryHandler),
                                       (r"/trips/([^/]+)/([^/]+)", TripPageHandler),
@@ -215,6 +273,7 @@ class Application(tornado.web.Application):
                                       (r"/createtrip", ComposeHandler),
                                       (r"/savetrip", SaveTrips),   #save the trip when edit trip
                                       (r"/newtrips", ShowNewTrips),
+                                      (r"/showmytrips", ShowMyTrips),
                                       (r"/hottrips", ShowHotTrips),
                                       (r"/endtrips", ShowEndTrips),
                                       (r"/addgrouptotrip", AddTripGroupHandler),
@@ -246,7 +305,7 @@ class Application(tornado.web.Application):
                                       
                                       #(r"/a/changepicture", UserPictureHandler),
                                       (r"/updateuserprofile", UpdateUserProfileHandler),
-                                  
+                                      (r"/updatepaymentmethod", UpdatePaymentHandler),
                                       (r"/settings", SettingsHandler),
                                       (r"/blog", Blog),
                                       (r"/postcomment", PostCommentHandler),
@@ -255,9 +314,11 @@ class Application(tornado.web.Application):
                                       (r"/searchpeople/([^/]+)", SearchUserHandler),
                                       (r"/realtime_searchpeople/([^/]+)", RealTimeSearchUserHandler),
                                       (r"/realtime_searchall/([^/]+)", RealTimeSearchAllHandler),
-                                      (r"/checkuserintrip/([^/]+)/([^/]+)", CheckUserinTripHandler),
-                                      
+                                      #(r"/checkuserintrip/([^/]+)/([^/]+)", CheckUserinTripHandler),
+                                      (r"/checkuserintrip", CheckUserinTripHandler),
                                       (r"/sendexpenserequest", ExpenseRequestHandler),
+                                      (r"/getnotificationpaymentmethod", GetPaymentMethodHandler),
+                                      
                                       (r"/confirmfriend", FriendConfirmHandler),
                                       (r"/requestfriend", FriendRequestHandler),
                                       (r"/removefriend", FriendRemoveHandler),
@@ -301,9 +362,18 @@ class Application(tornado.web.Application):
                                       xsrf_cookies=True,
                                       facebook_api_key=options.facebook_api_key,
                                       facebook_secret=options.facebook_secret,
+                                      twitter_consumer_key = options.twitter_consumer_key,
+                                      twitter_consumer_secret = options.twitter_consumer_secret,
                                       debug = True,
+                                      gzip = True,
                                       cookie_secret="11oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo=",
                                       login_url = "/login",
+                                      PAYPAL_USERID = options.SANDBOX_API_USER_NAME,
+                                      PAYPAL_PASSWORD = options.SANDBOX_API_PASSWORD,
+                                      PAYPAL_SIGNATURE = options.SANDBOX_API_SIGNATURE,
+                                      PAYPAL_APPLICATION_ID = options.SANDBOX_APPLICATION_ID,
+                                      remote_address = '',
+                                      
                           )
                             tornado.web.Application.__init__(self, handlers, **settings)
 

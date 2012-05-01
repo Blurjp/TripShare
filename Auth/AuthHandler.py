@@ -8,10 +8,32 @@ import bson
 import datetime
 import unicodedata
 import simplejson
+
+import tornado
 import tornado.auth
+from functools import wraps
 from Map.BrowseTripHandler import BaseHandler
 
+def ajax_login_authentication(f):
+        @wraps(f)
+        def wrapper(self,*args, **kwds):
+            
+            if not self.current_user:
+                
+                if self.request.method in ("POST","GET", "HEAD"):
+                    json = simplejson.dumps({ 'not_authenticated': True })
+                    print 'not_authenticated'
+                    self.write('not_authenticated')
+                    return
+                #raise urllib2.HTTPError(403)
+            return f(self, *args, **kwds)
+        return wrapper
+
+
 class LoginHandler(BaseHandler):
+    
+   
+        
     def get(self):
         self.render("signup.html")
         
@@ -134,14 +156,16 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
             client_id=self.settings["facebook_api_key"],
             client_secret=self.settings["facebook_secret"],
             code=self.get_argument("code"),
-            callback=self._on_auth)
+            callback=self._on_auth
+            
+            )
             return
         self.authorize_redirect(redirect_uri=my_url,
                               client_id=self.settings["facebook_api_key"],
                               extra_params={"scope": "user_about_me,email,user_website,publish_stream,read_friendlists,offline_access"})
  
     def handle_request(self, response):
-        print('++++++++++++++++++++++++++++++'+response.body)
+        #print('++++++++++++++++++++++++++++++'+response.body)
         user = simplejson.loads(response.body)
         
         slug  = user[0]['name']
@@ -217,9 +241,9 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
         if not user:
             raise tornado.web.HTTPError(500, "Facebook auth failed")
         
-        print(tornado.escape.json_encode(user))
+        #print(tornado.escape.json_encode(user))
         self.access_token = user['access_token']
-        print(self.access_token)
+        #print(self.access_token)
         http_client = tornado.httpclient.AsyncHTTPClient()
        
         http_client.fetch("https://api.facebook.com/method/users.getInfo?uids="+user['id']+"&fields=uid%2C%20name%2C%20website%2C%20locale%2C%20pic%2C%20current_location%2C%20email&access_token="+self.access_token+"&format=json", self.handle_request)
@@ -231,7 +255,7 @@ class AuthLogoutFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
         self.redirect(self.get_argument("next", "/"))
         
 
-class GoogleHandler(tornado.web.RequestHandler, tornado.auth.GoogleMixin):
+class GoogleHandler(BaseHandler, tornado.auth.GoogleMixin):
     @tornado.web.asynchronous
     def get(self):
         if self.get_argument("openid.mode", None):
@@ -244,15 +268,51 @@ class GoogleHandler(tornado.web.RequestHandler, tornado.auth.GoogleMixin):
             raise tornado.web.HTTPError(500, "Google auth failed")
         # Save the user with, e.g., set_secure_cookie()
         
-class TwitterHandler(tornado.web.RequestHandler, tornado.auth.TwitterMixin):
+class AuthLoginTWHandler(BaseHandler, tornado.auth.TwitterMixin):
     @tornado.web.asynchronous
     def get(self):
         if self.get_argument("oauth_token", None):
+            
             self.get_authenticated_user(self.async_callback(self._on_auth))
             return
+        print 'authorize_redirect'
         self.authorize_redirect()
 
+    def handle_request(self, user):
+        
+        
+        checkExist = self.syncdb.users.find_one({'tw_user_id':str(user['uid'])})
+        if checkExist:
+            checkExist['tw_access_token'] = self.access_token
+            self.syncdb.user.save(checkExist)
+            self.set_secure_cookie("user", str(checkExist['user_id']))
+            self.redirect(self.get_argument("next", "/"))
+            return
+       
+        
+        
+        _user['slug'] = slug
+        self.db.users.save(_user, callback=self._on_action)
+        self.set_secure_cookie("user", str(user_id))
+        self.redirect(self.get_argument("next", "/"))
+    
+
     def _on_auth(self, user):
+        
         if not user:
             raise tornado.web.HTTPError(500, "Twitter auth failed")
+            return
+        print user
+        
+        self.current_user['tw_access_token'] = user['access_token']
+        self.syncdb.users.save(self.current_user)
+        
+        self.redirect(self.get_argument("next", "/"))
+
+        
+        
+class AuthLogoutTWHandler(BaseHandler, tornado.auth.TwitterMixin):
+    def get(self):
+        self.clear_cookie("user")
+        self.redirect(self.get_argument("next", "/"))
         # Save the user using, e.g., set_secure_cookie()

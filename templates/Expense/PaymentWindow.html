@@ -1,0 +1,19 @@
+<form name="pay_expense" id="pay_expense_form" onsubmit="return check_export_guide_form(this);">
+	 {% raw xsrf_form_html() %}
+<div id="pay_expense_step_1" class="window1">
+
+	<a href="#" id="closepayment-modal" class="close">close</a>
+	<h2 style="float:left;padding:2px" > Expense: </h2>
+	<input type="text" id="expense_value" value = "" >
+	<ul style="padding:100px;">
+		
+	   </ul>				                
+
+ <div class="button_container">
+ 	
+ <a name="callpaymentapi" style="width:200px;margin-right:10px;cursor:pointer" class="disabled sidebar-auth-button">Pay</a>
+ </div>
+
+</div>
+</form>  
+<div id="mask4"></div>

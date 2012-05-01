@@ -1,0 +1,78 @@
+<li class="show_site" style="height:100px">
+<div class="site-details left" style="width:80% ;padding:5px">
+<div class="site-bar">
+<img class="picture small" src="/static/icon/site_icon2.png">
+<h2><a href="/sights/{{site['dest']}}">
+<span class="trip_sights" value="{{site['dest']}}">{{site['dest']}}</span>
+</a>
+<input onfocus="showCalendarControl(this);" class="site_date" value="{{site['date']}}">
+</h2>
+</div>
+<p>{{site['description']}}</p>
+{% if current_user['user_id'] in [member['user_id'] for group in singletrip['groups'] for member in group['members'] if member['user_id'] == current_user['user_id']]  %}
+
+  <div class="site_hotel">
+  	<a class="add_hotel">Add hotel</a>
+  </div>
+ <a class="show_notes">Show notes</a>
+ <a class="hide_notes">Hide notes</a>
+ <ul class="site_notes">
+ 	<li></li>
+ {% for note in site['notes'] %}
+<li class="site_note left">
+					<div class="left">
+						<img alt="{{note['from']['username']}}" src="{{note['from']['picture']}}" title="{{note['from']['username']}}" class="picture medium"><div class="type"></div>
+					</div>
+					<div style="margin:5px 10px">
+						<p class="message">
+							{{note['note']}}
+						</p>
+						<p class="details">
+							<span class="timestamp">{{note['date']}}</span>  · <a class="remove_site_note" href="#">Remove</a>
+						</p>
+		            </div>			
+</li>
+ {% end %}
+ </ul>
+<div class="site_note_action">
+<input class="site_note_input">
+<input class="postUpdateDone regular_button" type="button" value="post">
+</div>
+<a class="postUpdate">Post a note</a>
+<div class="action-bar">
+<div class="actions">
+<div class="site_action">
+
+{% if site['dest'] in  current_user['like_site'] %}
+<a class="like_site trip_action"  actiontype="like" targettype="site" alt="Like it" ><span class="like_trip_icon"></a>
+{% else %}
+<a class="like_site trip_action"  actiontype="like" targettype="site" alt="Unlike it"><span class="un like_trip_icon"></a>
+{% end %}
+\
+{% if site['dest'] in  current_user['save_site'] %}
+<a class="save_trip trip_action"  actiontype="save" targettype="site" alt="Save it"><span class="save_trip_icon"></a>
+{% else %}
+<a class="save_trip trip_action"  actiontype="save" targettype="site" alt="Unsave it"><span class="un save_trip_icon"></a>
+{% end %}
+
+<select class="site_ride">
+<option value="plane">by plane</option>
+<option value="train">by train</option>
+<option value="car">by car</option>
+<option value="bus">by bus</option>
+<option value="ferry">by ferry</option>
+<option value="motorcycle">by motorcycle</option>
+<option value="cycle">by bicycle</option>
+<option value="walk">on foot</option>
+<option value="other">other</option></select>
+</div>
+</div>
+</div>
+</div>
+<div class="trip_site_move left" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; display: none; ">
+<a class="trip_site_move_up" ><img src="/static/images/move_stop_up_16px.png" width="24" height="24"></a>
+<a class="trip_site_move_down" ><img src="/static/images/move_stop_down_16px.png" width="24" height="24"></a>
+<a class="trip_site_remove" ><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a>
+</div>
+{%end%}
+</li>

@@ -13,6 +13,7 @@ import tornado.web
 import MongoEncoder.MongoEncoder
 import Users.Notification
 import Users.Friend
+from Auth.AuthHandler import ajax_login_authentication
 from Map.BrowseTripHandler import BaseHandler
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
@@ -84,7 +85,7 @@ class AddUserToTripHandler(BaseHandler):
     tripid = None
     group_id = None
     user = None
-    @tornado.web.authenticated
+    @ajax_login_authentication
     @tornado.web.asynchronous
     def get(self, userid, tripid, group_id):
         self.userid = userid
@@ -100,12 +101,12 @@ class AddUserToTripHandler(BaseHandler):
         
         if self.user['slug'] not in trip['expense']:
                 trip['expense'][self.user['slug']]=[]
-                print '++++++++++++++++++++++++++++++++'
+                #print '++++++++++++++++++++++++++++++++'
         self.syncdb.trips.save(trip)
         self.syncdb.users.update({'user_id':bson.ObjectId(self.userid)}, { '$addToSet':{'trips': bson.ObjectId(self.tripid)}})
         self.write('success')
     
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         userids = []
         self.userid = self.get_argument('user_id')
@@ -147,7 +148,7 @@ class RemoveUserFromTripHandler(BaseHandler):
     
     userid = None
     tripid = None
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         self.userid = self.get_argument('user_id')
         self.tripid = self.get_argument('trip_id')
@@ -164,7 +165,7 @@ class RemoveUserFromTripHandler(BaseHandler):
 
 
 class CheckUserinTripHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def get(self, userid, tripid):  
         trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(tripid)})
         check = False
@@ -176,10 +177,24 @@ class CheckUserinTripHandler(BaseHandler):
             self.write('existed')
         else:
             self.write('nonexisted')
-    
+     
+    @ajax_login_authentication
+    def post(self):
+        userid = self.get_argument('user_id')
+        tripid = self.get_argument('trip_id')
+        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(tripid)})
+        check = False
+        for group in trip['groups']:
+             for member in group['members']:
+                 if member['user_id'] == bson.ObjectId(userid):
+                     check =True
+        if check:
+             self.write('existed')
+        else:
+             self.write('nonexisted')
 
 class FollowUserHandler(BaseHandler):  
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self, userid):
         if self.current_user:
             user = self.syncdb.users.find_one({'owner_id': bson.ObjectId(userid)})
@@ -193,7 +208,7 @@ class FollowUserHandler(BaseHandler):
         return "success"
         
 class UnFollowUserHandler(BaseHandler): 
-    @tornado.web.authenticated 
+    @ajax_login_authentication 
     def post(self, userid):
         if self.current_user:
             user = self.syncdb.users.find_one({'owner_id': bson.ObjectId(userid)})
@@ -207,13 +222,13 @@ class UnFollowUserHandler(BaseHandler):
         return "success"       
 
 class ImportFriendHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         type = self.get_argument('type')
         
         
 class GetFriendHandler(BaseHandler):  
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def get(self):    
         if self.current_user:
             user = self.syncdb.users.find_one({'user_id': {'$regex':bson.ObjectId(self.current_user['user_id'])}})
@@ -223,7 +238,7 @@ class GetFriendHandler(BaseHandler):
             self.write(unicode(simplejson.dumps(user['friends'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
 
 class GetTripMemberHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         trip_id = self.get_argument("trip_id")
         users = self.trips.find_one({"trip_id":bson.ObjectId(trip_id)})['members']
@@ -231,7 +246,7 @@ class GetTripMemberHandler(BaseHandler):
             self.write(unicode(simplejson.dumps(users, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         
 class FriendRemoveHandler(BaseHandler):  
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         user_id = self.get_argument('user_id')
         friend= self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
@@ -244,7 +259,7 @@ class FriendRemoveHandler(BaseHandler):
                    
             
 class FriendRequestHandler(BaseHandler):  
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         user_id = self.get_argument('user_id')
         _notification = Users.Notification.NotificationGenerator('friend_request', self.current_user['username'], self.current_user['slug'], self.current_user['picture'], datetime.datetime.utcnow(), self.current_user['user_id'])
@@ -261,7 +276,7 @@ class FriendRequestHandler(BaseHandler):
 
 
 class FriendConfirmHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         user_id = self.get_argument('user_id')
         type = self.get_argument('type')
@@ -281,13 +296,22 @@ class FriendConfirmHandler(BaseHandler):
         else:
             print('error')
 
-
+class UpdatePaymentHandler(BaseHandler):
+    @ajax_login_authentication
+    def post(self):
+        user = self.syncdb.users.find_one({"user_id": bson.ObjectId(self.current_user['user_id'])})
+        if 'payment_method' not in user:
+            user['payment_method'] = {}
+        user['payment_method']['paypal'] = self.get_argument('paypal')
+        user['payment_method']['dwolla'] = self.get_argument('dwolla')
+        self.syncdb.users.save(user)
+        self.redirect("/settings")
            
 class UpdateUserProfileHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self): 
         
-        if not self.current_user: return None
+        
         user = self.syncdb.users.find_one({"user_id": bson.ObjectId(self.current_user['user_id'])})
         user['current_location'] = self.get_argument('current_location')
         user['bio'] = self.get_argument('description')
@@ -328,14 +352,14 @@ class UpdateUserProfileHandler(BaseHandler):
             self.syncdb.users.update({"user_id": bson.ObjectId(user_id)}, {"$set": { "picture": "http://tripshare.s3.amazonaws.com"+s3_path}}, upsert = False, safe=True)
         
         
-        self.redirect('/settings')
+        #self.redirect("/settings")
         
          
      
      
 class UserPictureHandler(BaseHandler):
     
-    @tornado.web.authenticated
+    @ajax_login_authentication
     @tornado.web.asynchronous 
     def post(self):
         user_id = self.get_secure_cookie("user")
@@ -382,7 +406,7 @@ class UserPictureHandler(BaseHandler):
     
 class UserSettingHandler(BaseHandler):
     @tornado.web.asynchronous
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         _formData = simplejson.loads(self.get_argument('data'))
 

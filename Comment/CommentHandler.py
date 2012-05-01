@@ -9,9 +9,10 @@ import tornado.web
 import datetime
 import simplejson
 import MongoEncoder.MongoEncoder
+from Auth.AuthHandler import ajax_login_authentication
 
 class PostCommentHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         
         feed_id = self.get_argument('feed_id')
@@ -22,21 +23,21 @@ class PostCommentHandler(BaseHandler):
         self.write(response)
         
 class DeleteCommentHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         comment_id = self.get_argument('comment_id')
         feed_id = self.get_argument('feed_id')
         self.syncdb.trips.update({'feeds.feed_id':bson.ObjectId(feed_id)}, {'$pull': {'feeds.comments': {'comment_id':comment_id}}})
 
 class EditCommentHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         comment_id = self.get_argument('comment_id')
         content = self.get_argument('content')
         self.syncdb.trips.update({'feeds.comments.comment_id':bson.ObjectId(comment_id)}, {'$set': {'body': content}})
         
 class PostFeedHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         id = self.get_argument('id')
         content = self.get_argument('content')
@@ -59,11 +60,11 @@ class PostFeedHandler(BaseHandler):
         self.write(unicode(simplejson.dumps(json_data, cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         
 class DeleteFeedHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self, feed_id, id):
         self.syncdb.trips.update({'trip_id':bson.ObjectId(id)}, {'$pull': {'feeds': {'feed_id':feed_id}}})
 
 class EditFeedHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self, feed_id, content):
         self.syncdb.trips.update({'feeds.feed_id':bson.ObjectId(feed_id)}, {'$set': {'body': content}})

@@ -1,0 +1,14 @@
+<li class="person clearfix">
+
+<div class="hsubgroup">
+	<a href="/people/{{custom_user['slug']}}" class="avatar"><img class="picture xlarge" alt="Small_thumb" src="{{custom_user['picture']}}"></a>
+<strong><h2 class="user_name">{{custom_user['username']}}</h2></strong>
+
+<span class="city">{{custom_user['city']}}</span>
+
+<a href="{{custom_user['link']}}" rel="nofollow" target="_blank">{{custom_user['link']}}</a>
+</div>
+
+<div class="details">
+</div>
+</li>

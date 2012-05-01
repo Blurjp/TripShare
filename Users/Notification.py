@@ -29,7 +29,7 @@ class NotificationGenerator():
         
 class ExpenseNotificationGenerator():
      
-    def __init__(self, type, username, slug, picture, time, user_id, expense):
+    def __init__(self, type, username, slug, picture, time, user_id, expense, payment_method):
          
         self.notification = {} 
         self.notification['username'] = username
@@ -40,6 +40,8 @@ class ExpenseNotificationGenerator():
         self.notification['id'] = bson.ObjectId()
         self.notification['created'] = time
         self.notification['expense'] = expense
+        self.notification['result'] = ""
+        self.notification['payment_method'] = payment_method
         
 class MessageNotificationGenerator():
      
@@ -53,4 +55,5 @@ class MessageNotificationGenerator():
         self.notification['picture'] = picture
         self.notification['id'] = bson.ObjectId()
         self.notification['created'] = time
+        self.notification['result'] = ""
         self.notification['message'] = message

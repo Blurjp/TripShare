@@ -60,7 +60,7 @@ class AddSiteToTrip(BaseHandler):
             _site['notes'] = []
             _site['dest'] = site_name
             _site['type'] = ride
-            trip_site = self.render_string("Sites/trip_site.html", site = _site)
+            
             #self.syncdb.trips.update({'trip_id':bson.ObjectId(trip_id)},{'$addToSet':{'dest_place':_site}})
             trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
             for group in trip['groups']:
@@ -68,6 +68,7 @@ class AddSiteToTrip(BaseHandler):
                     group['dest_place'].append(_site)
                     
             self.syncdb.trips.save(trip)
+            trip_site = self.render_string("Sites/trip_site.html", site = _site, singletrip = trip)
             self.write(trip_site)
             
 class PostNoteToSite(BaseHandler):

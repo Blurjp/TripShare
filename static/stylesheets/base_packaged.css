@@ -2,6 +2,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 ::selection {background: #eeeeee}
 ::-moz-selection {background: #eeeeee}
 ::-webkit-selection {background: #eeeeee}
+ p, li {
+font-family: Verdana, arial, helvetica, sans-serif;
+line-height: 1.5;
+}
+
+ h1, h2, h3, h4 {
+font-family: 'webfont', Verdana, arial, helvetica, sans-serif;
+line-height: 1.5;
+}
+
 body {line-height: 1; background:white}
 ol, ul {list-style: none}
 img, fieldset {border: none}
@@ -16,20 +26,22 @@ table {border-collapse: collapse; border-spacing: 0}
 body {font: 83% "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
 .large {font-size: 110%; line-height: 1.4}
 .sidebar .pod {line-height: 1.3}
+.item a{cursor: pointer;}
 #sidebar_find_friends {margin: 60px 20px 0 0 ;}
 .hgroup {margin: 20px 20px 0 0 ; width:50%; float:left}
-.hgroup h2 {color: black; font-weight: 300; font-family: angie-sans,sans-serif;}
+.hgroup h2 {color: #96af4b;font-weight: 300; font-family: angie-sans,sans-serif;}
 .hsubgroup {margin-bottom: 10px; font: 15px/25px Arial, Helvetica, Sans-serif;color: #999;text-shadow: 0 1px 0 white;}
 .lead-in {color: #333333; margin-bottom: 10px; line-height: 1.4em; font-size: 1.7em; font-weight: 300; font-family: angie-sans,sans-serif;}
 h1 {font-size: 2.2em; letter-spacing: 0; color: #96af4b; font-weight: 100; font-family: raleway,sans-serif}
 h1 strong {font-weight: 500}
 h1.helvetica-light {font-weight: 300; font-family: angie-sans,sans-serif;}
-h1.helvetica-light strong {font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif}
+h1.helvetica-light strong {font-family: raleway,sans-serif}
 h1 img {vertical-align: top}
-h2 {text-decoration: none;font-size: 160%; font-weight: 300; margin-bottom: 10px; color: #96af4b; font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
-h2 small {font-size: 60%; padding-top: 5px; font-weight: normal; font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif}
-h2 strong {font-weight: 500}
-.sidebar h2 {font-size: 140%}
+h2 {color: #96af4b;font-size: 140%, font-family: Angie STD Sans, sans-serif}
+h2 small {color: #96af4b;font-size: 60%; padding-top: 5px; font-weight: normal; font-family: Angie STD Sans, sans-serif}
+h2 strong {color: #96af4b;font-weight: 500}
+.sidebar h2 {color: #96af4b;font-size: 140%, font-family: "adelle", serif; font-style: normal; font-weight: 400;}
+.list h2 {color: #96af4b;font-size: 140%, font-family: "adelle", serif; font-style: normal; font-weight: 400;}
 h3 {font-size: 130%; line-height: 1.1; font-weight: normal; margin-bottom: 15px}
 h3 small {color: #817772; font-weight: normal}
 h4 {margin-bottom: 10px}
@@ -387,10 +399,15 @@ body {background: white}
 .bbox-tabs.three li {width: 206px !important}
 .bbox-tabs li {float: left; width: 310px; margin-bottom: 15px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
 .bbox-tabs li a {display: block; padding: 15px 20px}
-.bbox-tabs li a strong {font-size: 1.2em; display: block; margin-bottom: 2px}
+.bbox-tabs li a strong {display: block;
+font-weight: bold;
+color: #268CA0;
+padding: 5px 15px;
+font-size: 120%;
+text-decoration: none;}
 .bbox-tabs li a span {color: #777777}
-.bbox-tabs li a:hover {text-decoration: none}
-.bbox-tabs li a:hover strong {text-decoration: underline}
+.bbox-tabs li a:hover {text-decoration: none;cursor:pointer}
+
 .bbox-tabs li a:hover span {text-decoration: none}
 .bbox-tabs li.on {border-bottom: 1px solid #f7f6f1}
 .bbox-tabs li.first {border-radius: 5px 0 0 0; -moz-border-radius: 5px 0 0 0; -webkit-border-radius: 5px 0 0 0}
@@ -420,7 +437,7 @@ body {background: white}
 #header #nav-bar ul.headline li.last {margin-right: 0}
 #header #nav-bar ul.headline li.on {background: #564b40; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px 6px; margin: 15px 4px 14px 0; border-right: 1px solid #1e0f00; border-bottom: 1px solid #1e0f00}
 #header #nav-bar ul.headline li.on a:hover {text-decoration: none}
-#header #nav-bar ul.headline li a {font-size: 1.2em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
+#header #nav-bar ul.headline li a {font-size: 1.1em;letter-spacing: 0;color: #96af4b;font-weight: 100;font-family: 'webfont', Verdana, arial, helvetica, sans-serif;}
 #header #nav-bar ul.headline li a:hover { text-decoration: none}
 #header #nav-bar #mini-profile {float: right;padding: 12px 0 50px 0; }
 
@@ -610,7 +627,7 @@ ul.reviews li.review .creator-bar .avatar img {width: 30px; height: 30px}
 .action-bar ul li.delete-it a {padding-left: 20px; background: transparent url(/static/images/sighting-action-delete.png) no-repeat}
 .action-bar ul li.print-it a {padding-left: 20px; background: transparent url(/static/images/print-it.png) no-repeat}
 .action-bar ul li a {color: #333333; display: block; line-height: 25px}
-.action-bar ul li a:hover {text-decoration: underline}
+.action-bar ul li a:hover {cursor: pointer}
 .action-bar ul a {color: #333333}
 .action-bar ul a.sighting-count {background: transparent url(/static/images/review-arrow.png) no-repeat left center; padding-left: 12px}
 .comments-container {background: #e1dcc8; padding: 10px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
@@ -854,7 +871,7 @@ ul.reviews li.review h4 {color: #666666; font-size: 0.9em}
 #discover-map {width: 100%;height: 420px; position:relative;margin-top:33px}
 
 #map-pagination {display:none; text-align: center;bottom: 10px;left: 50%;width: 940px;padding: 0 20px;margin: 10px 0 0 -490px;z-index:9000;position: absolute; }
-#map-pagination #map-sorts {margin: 0 auto; width: 400px; text-align: center; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+#map-pagination #map-sorts {margin: 0 auto; width: 300px; text-align: center; box-shadow: 1px 1px 3px #666666; -moz-box-shadow: 1px 1px 3px #666666; -webkit-box-shadow: 1px 1px 3px #666666; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px}
 #map-pagination #map-sorts a {width: 100px; padding: 5px 0; float: left; font-weight: bold; background-color: white; width: 99px; border-left: 1px solid #dddddd}
 #map-pagination #map-sorts a.last {border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px; border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px}
 #map-pagination #map-sorts a.first {width: 100px; border-left: 0; border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px; border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px}

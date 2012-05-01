@@ -1,0 +1,53 @@
+<form name="payment_setting_form" id="payment_setting_form" action="/updatepaymentmethod" enctype="multipart/form-data" method="post">
+	 {% raw xsrf_form_html() %}
+<div id="payment_setting_step_1" class="window1">
+	<a href="#" id="closepaymentsetting-modal" class="close">close</a>
+	<h2> Payment Methods </h2>
+  <table id="payment_method_form">
+<tbody>
+	{% if 'payment_method' not in current_user %}
+	<tr>
+<td class="label"><img class="picture large" src="https://www.paypal.com/en_US/i/logo/PayPal_mark_60x38.gif"></td>
+<td>
+	
+	<textarea rows="2" cols="20" name="paypal" style="width:310px"></textarea>
+</td>
+</tr>
+<tr>
+<td class="label"><img class="picture large" src="/static/icon/dwolla.png"></td>
+<td>
+	<textarea rows="2" cols="20" name="dwolla" style="width:310px"></textarea>
+</td>
+</tr>
+	{% else %}
+<tr>
+<td class="label"><img class="picture large" src="https://www.paypal.com/en_US/i/logo/PayPal_mark_60x38.gif"></td>
+<td>
+	{% if 'paypal' in current_user['payment_method'] %}
+	<textarea rows="2" cols="20" name="paypal" style="width:310px">{{current_user['payment_method']['paypal']}}</textarea>
+	{%else %}
+	<textarea rows="2" cols="20" name="paypal" style="width:310px"></textarea>
+	{% end %}
+</td>
+</tr>
+<tr>
+<td class="label"><img class="picture large" src="/static/icon/dwolla.png"></td>
+<td>
+	{% if 'paypal' in current_user['payment_method'] %}
+	<textarea rows="2" cols="20" name="dwolla" style="width:310px">{{current_user['payment_method']['dwolla']}}</textarea>
+	{%else %}
+	<textarea rows="2" cols="20" name="dwolla" style="width:310px"></textarea>
+	{% end %}
+</td>
+</tr>
+{% end %}
+</tbody></table>
+    
+ 
+
+ <input type="submit" value="Save" style="width:40%;float:right;margin-top:90px" class="savepaymentsetting sidebar-auth-button">
+
+ 
+</div>
+</form>  
+<div id="mask4"></div>

@@ -1,0 +1,34 @@
+<form name="share_expense" id="share_expense_form">
+	 {% raw xsrf_form_html() %}
+<div id="share_expense_step_1" class="window1">
+	<a href="#" id="closeshareexpense-modal" class="close">close</a>
+	<div class="step">
+                  <img alt="Step 1 of 3" src="{{ static_url("icon/expense.png") }}">
+    </div>
+                <fieldset>
+                    <div class="collect_expense">
+                     <h2> Collect Expense </h2>
+				   <ul class="user_expense_request_collection">
+				   	{% for index, user in enumerate(users) %}
+					{% if user['slug']!=current_user['slug'] %}
+		            <li class="user_expense_request">
+		            	<input class="usercheckoption" type="checkbox">
+						<a name="user_expense_tab" href="#tabs-{{index+1}}">
+		            	<span class="expense_headpichold">
+			        <img class="picture medium" alt="{{user['slug']}}" src="{{user['picture']}}"></a>
+					</span>
+		            <input type="text" class="expense_amount">
+					</li>
+					{% end %}
+	                {% end %}
+					</ul>
+				
+				</div>
+                </fieldset>
+ <div class="button_container">
+ 	<a href="#Go_back_to_expense" name="Go_back_to_expense" value="Go back to Expense" style="width:180px;margin-right:10px" class="sidebar-auth-button">Go back</a>
+ <a name="sendexpenserequest" value="sendexpenserequest" style="width:200px;margin-right:10px" class="disabled sidebar-auth-button">Send Expense Request</a>
+ </div>
+</div>
+</form>  
+<div id="mask4"></div>

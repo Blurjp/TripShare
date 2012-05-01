@@ -48,6 +48,7 @@ $(document).ready(function() {
 		$('#create_trip_step_1').hide();
 		hideCalendarControl();
 		document.getElementById('create_trip_form').reset();
+		$("#initialize").val('');
 		
     }); 
 
@@ -488,32 +489,42 @@ multihop_setup();
 			
 			tripid= $(this).attr('sid');
 			userid =  $(this).attr('href');
+			var content = {'_xsrf': getCookie("_xsrf"), 'user_id' : userid, 'trip_id':tripid};
 			
-		    $.getJSON('/checkuserintrip/' + userid + '/' + tripid, function(response){
+		    $.postJSON('/checkuserintrip',content, function(response){
+				
 				if(response=='existed')
 				{
 					alert('user is already in the trip.');
 				}
+				else if(response == 'not_authenticated')
+				{
+					loginpopup();
+				}
 				else
 				{
 					$.getJSON('/subscribe_trip/'+tripid, function(response) {
-                      if(response.indexOf("success") != -1)
-					  {
-					  	 var tripid = response.substring(7);
+                     
+					  	 //alert(response);
+					  	 var tripid = response;
+						 //$(this).val('Leave the trip');
+                         //$(this).removeClass('l_subscribe').addClass('l_unsubscribe');
+		                 //$(this).parent('.right').siblings('.members').append('');
 						 //alert($(this).attr('value'));
 						 //this.removeClass('l_subscribe').addClass('l_unsubscribe');
+						 //alert($('#'+tripid+' .action-bar .actions .right .l_subscribe').attr('class'));
+						 $('#'+tripid+' .action-bar .actions .right .l_subscribe').val('Leave the trip');
+						 $('#'+tripid+' .action-bar .actions .right .l_subscribe').parent('.right').siblings('.members').append('');
+						 $('#'+tripid+' .action-bar .actions .right .l_subscribe').removeClass('l_subscribe').addClass('l_unsubscribe');
+						 
+						 
 						
-						// $('#'+tripid+'.l_subscribe').removeClass('l_subscribe').addClass('l_unsubscribe');
-						// $('#'+tripid+'.l_subscribe').val('Leave the trip');
-						
-					  }
+					  
 	                });
 					
 				}
 		});
-		$(this).val('Leave the trip');
-        $(this).removeClass('l_subscribe').addClass('l_unsubscribe');
-		$(this).parent('.right').siblings('.members').append('');
+		
 		return false;
 		});
 		
@@ -522,8 +533,9 @@ multihop_setup();
 			
 			tripid=$(this).attr('sid');
 			userid = $(this).attr('href');
+			var content = {'_xsrf': getCookie("_xsrf"), 'user_id' : userid, 'trip_id':tripid};
 			
-		    $.getJSON('/checkuserintrip/' + userid + '/' + tripid, function(response){
+		    $.postJSON('/checkuserintrip',content, function(response){
 				if (response == 'existed') {
 					$.getJSON('/unsubscribe_trip/' + tripid, function(response){
 					   if(response.indexOf("success") != -1)

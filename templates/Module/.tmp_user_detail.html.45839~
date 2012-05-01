@@ -1,0 +1,59 @@
+<div class='sidebar vcard'> 
+<div id="xri">
+{% if current_user %}
+{%if current_user['user_id'] in [p['user_id'] for p in custom_user['friends'] if p['user_id'] == current_user['user_id'] ]%}
+<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="removefriend xf xbj">Remove friend</a>
+{% else%}
+<a href="#" sid="{{custom_user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
+{% end %}
+<a class="sendmessage xe" title="Send Message" target="_blank" sid="{{custom_user['user_id']}}" ><span class="xi"></span></a>
+{% else %}
+<a href="/login" sid="{{custom_user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
+<a href="/login" class="sendmessage xe" title="Send Message" target="_blank" sid="{{custom_user['user_id']}}" ><span class="xi"></span></a>
+{% end %}
+</div>
+<div class="pod sidebar-counts clearfix">
+<table>
+<tbody><tr>
+<td>
+<div class="inset">
+<strong class="primary-text-color">{{len(custom_user['city'])}}</strong>
+city have been
+</div>
+</td>
+<td class="last">
+<div class="inset">
+<strong class="primary-text-color">{{len(custom_user['trips'])}}</strong>
+trips created
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="pod cpod">
+<div id="dashboard-profile">
+<a href="{{custom_user['picture']}}" class="avatar" target="_blank"><img class="picture medium" src="{{custom_user['picture']}}"></a>
+<div class="details">
+<strong  class="fn">{{custom_user['slug']}}</strong>
+<div class="url" rel="me nofollow"><a href="/people/notifications" target="_blank" title=""></a></div>
+<small style="white-space:nowrap">
+
+</small>
+</div>
+</div>
+<h2>
+About
+</h2>
+<dl class="dlist" style="margin-bottom:0">
+<dt>Location:</dt>
+<dd class="adr">{{custom_user['current_location']}}</dd>
+</dl>
+</div>
+<div id="sidebar_find_friends">
+<a href="#" name="find_friends" value="Find Friends" type="button" class="fancy left">
+	<h2>Find Friends</h2>
+</a>
+<img alt="members" class="find_friends_icon left" src="{{ static_url("images/people.png") }}">
+</div>
+<div style="clear:both"></div>
+</div> 

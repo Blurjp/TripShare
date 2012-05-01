@@ -1,0 +1,47 @@
+<div class="walkthrough">
+	<div class="walkthrough-body">
+  <ul>
+    <li class="createtrip">
+      
+        <div class="image"></div>
+        <div class="desc">
+          <h2>Create Trip</h2>
+          <p>The trip can be based on hundreds of Guides or you create one yourself.</p>
+        </div>
+        <span class="step-number one"></span>
+      </a>
+    </li>
+    <li class="importguide">
+      
+        <div class="image"></div>
+        <div class="desc">
+          <h2>Schedule Trip</h2>
+          <p>Export the trip calendar to your personal calendar and setup notification for events from email and mobile phone</p>
+        </div>
+        <span class="step-number two"></span>
+      </a>
+    </li>
+    <li class="fork-a-repo">
+      
+        <div class="image"></div>
+        <div class="desc">
+          <h2>Manage Expense</h2>
+          <p>Collect and transfer travel expense in variuos ways among group members, </p>
+        </div>
+        <span class="step-number three"></span>
+      </a>
+    </li>
+    <li class="be-social">
+      
+        <div class="image"></div>
+        <div class="desc">
+          <h2>Share Trip</h2>
+          <p>Invite your friends in and make decision together. You can have different groups with different plans in same trip.</p>
+        </div>
+        <span class="step-number four"></span>
+      </a>
+    </li>
+  </ul>
+  </div>
+</div>
+

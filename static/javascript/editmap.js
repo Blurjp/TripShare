@@ -61,8 +61,7 @@
 		_center = new google.maps.LatLng(a, b);
 		calcRoute(false);
 	}
-	else 
-		if (document.getElementById("startPlace").value != 'undefined' && document.getElementById("startPlace").value != '') {
+	else if (document.getElementById("startPlace").value != 'undefined' && document.getElementById("startPlace").value != '') {
 			//alert(document.getElementById("startPlace").value);
 			var address_id = document.getElementById("startPlace").value;
 			geocoder.geocode({
@@ -1023,7 +1022,16 @@ $(document).ready(function() {
 		//alert(jQuery.parseJSON(message));
 		//$('.feedsUI li').last().before('<li class="feed item">'+content+'</li>');
 		//$('.feedBody').val('');
-		$.postJSON('/postfeed', message, function(response){PostFeedResponse(response)}, "text");	
+		$.postJSON('/postfeed', message, function(response){
+			
+			if (response == 'not_authenticated') {
+			
+				loginpopup();
+			}
+			else {
+				PostFeedResponse(response)
+			}
+			}, "text");	
 });
 
   $('.post-comment-button').live('click',function(e) { 
@@ -1083,7 +1091,7 @@ $('.trip_site_add').live('click',function(){
 $('.trip_site_add_done').live('click',function(){
 	if($('#groupId').val()=='new')
 	{
-		alert('Please assign a member to the r.');
+		alert('Please assign a member to the group');
 		$('.trip_site_add').show();
 		return;
 	}
@@ -1105,7 +1113,7 @@ $('.trip_site_add_done').live('click',function(){
 	content._xsrf = getCookie("_xsrf");
 	
 	$.postJSON('/addsitetotrip',content, function (response){
-		//alert('test');
+		alert('test');
 		AddSiteResponse(response)
 	});
 	});

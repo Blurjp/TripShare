@@ -1,0 +1,7 @@
+#Fri Apr 27 21:32:44 UTC 2012
+eclipse.preferences.version=1
+encoding//PaymentMethod/paypal/__init__.py=utf-8
+encoding//PaymentMethod/paypal/exceptions.py=utf-8
+encoding//PaymentMethod/paypal/interface.py=utf-8
+encoding//PaymentMethod/paypal/response.py=utf-8
+encoding//PaymentMethod/paypal/settings.py=utf-8

@@ -13,6 +13,7 @@ import tornado.web
 import unicodedata
 from BrowseTripHandler import BaseHandler
 from Utility.DateProcessor import FromStringtoDate
+from Auth.AuthHandler import ajax_login_authentication
 
 class ComposeHandler(BaseHandler):
     
@@ -24,7 +25,7 @@ class ComposeHandler(BaseHandler):
     
     
     @tornado.web.asynchronous
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def get(self):
         
         id = self.get_argument("id", None)
@@ -49,7 +50,7 @@ class ComposeHandler(BaseHandler):
         self.render("Trips/edittrip.html", trips=response, singletrip=self.singletrip,  greeting= self.greeting)
         
     @tornado.web.asynchronous
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         
         tags = []
@@ -70,9 +71,9 @@ class ComposeHandler(BaseHandler):
         radio = _formData['privacy']
 
         if radio == 'private':
-            privacy = 1 
+            privacy = 2 
         elif radio == 'public':
-            privacy = 2
+            privacy = 1
         else:
             privacy = 3
         
@@ -142,12 +143,21 @@ class ComposeHandler(BaseHandler):
             self.trip_id = bson.ObjectId()
             _group = {'group_id': group_id,'members': members, 'start_place':start, 'dest_place':destinations, 'start_place_position':tripStartPosition, 'way_points':waypoints ,'trip_path':trip_path, 'start_date': start_date_object, 'finish_date': finish_date_object, 'imported_guides':[]}
             groups.append(_group)
-            self.db.trips.save({ 'trip_id':self.trip_id, 'groups':groups, 'rating':0,'user_like':[],'tags': tags,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'lc_tripname':title.upper(), 'title': title, 'slug':self.slug, 'search_type':'trip', 'type':'trip','member_count':len(members),'description': str(description), 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'expense':expense,'random' : random.random()}, callback=self._create_trips)
-        
+            
+            #self.db.trips.save({ 'trip_id':self.trip_id, 'groups':groups, 'rating':0,'user_like':[],'tags': tags,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'lc_tripname':title.upper(), 'title': title, 'slug':self.slug, 'search_type':'trip', 'type':'trip','member_count':len(members),'description': str(description), 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'expense':expense,'random' : random.random()}, callback=self._create_trips)
+            self.syncdb.trips.save({ 'trip_id':self.trip_id, 'groups':groups, 'rating':0,'user_like':[],'tags': tags,'owner_name': self.get_current_username(),'owner_id': self.current_user['user_id'], 'lc_tripname':title.upper(), 'title': title, 'slug':self.slug, 'search_type':'trip', 'type':'trip','member_count':len(members),'description': str(description), 'privacy': privacy, 'last_updated_by': self.current_user, 'published': datetime.datetime.utcnow(),'expense':expense,'random' : random.random()})
+            for member in members:
+                self.syncdb.users.update({'user_id':bson.ObjectId(member['user_id'])}, { '$addToSet':{'trips': self.trip_id}, '$inc':{'trip_count':1}})    
+            self.syncdb.trips.ensure_index([('groups.dest_place.loc', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
+            self.syncdb.trips.ensure_index([('trip_id')], unique=True)
+            self.syncdb.trips.ensure_index([('slug')], unique=True)
+            self.redirect("/trip/" + str(self.slug))
+            
     def _create_trips(self, response, error):
             if error:
                     raise tornado.web.HTTPError(500)
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id}, '$inc':{'trip_count':1}})    
+            
             self.syncdb.trips.ensure_index([('groups.dest_place.loc', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
             self.syncdb.trips.ensure_index([('trip_id')], unique=True)
             self.syncdb.trips.ensure_index([('slug')], unique=True)

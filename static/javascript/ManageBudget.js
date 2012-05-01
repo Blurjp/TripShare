@@ -49,19 +49,42 @@ $(document).ready(function() {
     $('a[name=shareexpense]').click(function(e) {  
         //Cancel the link behavior  
         e.preventDefault(); 
-
-		ExpenseSum();
-		$('#manage_budget').animate({right: winW});
-		$('#closemanagebudget-modal').hide();
-		$('#closeshareexpense-modal').show();
-        //Get the A tag  
-        var id = $(this).attr('href');  
-		
-	    $(id).show();
-		$(id).css({right: $(id).width()-winW, top: winH / 2 - $(id).height() / 2});
-	    $(id).animate({right: winW/2-$(id).width()/2});
-        $(id).css("position", "fixed");
-				  
+		//var content = {'_xsrf': getCookie("_xsrf"), 'user_id':_formData};
+        $.getJSON('/checkpaymentaccount',  function(response){
+			$('#manage_budget').animate({
+				right: winW
+			});
+		var id;
+		if (response == "none") {
+		     
+			$('#closemanagebudget-modal').hide();
+			$('#closepaymentsetting-modal').show();
+			//Get the A tag  
+			//var id = "#share_expense_setup_1";
+			id = "#payment_setting_step_1";
+			
+		}
+		else {
+			ExpenseSum();
+			
+			$('#closemanagebudget-modal').hide();
+			$('#closeshareexpense-modal').show();
+			//Get the A tag  
+			//var id = $(this).attr('href');
+			id = "#share_expense_step_1";
+			
+		}
+		$(id).show();
+			$(id).css({
+				right: $(id).width() - winW,
+				top: winH / 2 - $(id).height() / 2
+			});
+			$(id).animate({
+				right: winW / 2 - $(id).width() / 2
+			});
+			$(id).css("position", "fixed");
+		});	
+	  
     });  
 	
 			  /* Click go back step2 button */
@@ -103,6 +126,17 @@ $(document).ready(function() {
 			subjson['pic'] = $(this).find('.picture').attr('src');
 			subjson['expense'] = $(this).find('.expense_amount').val();
 			//alert($(this).find('.expense_amount').val());
+			var payment = {};
+			if($(this).find('.paypal_option').is(':checked'))
+			{
+				
+				payment['paypal']='paypal';
+			}
+			if ($(this).find('.dwolla_option').is(':checked'))
+			{
+				payment['dwolla']='dwolla';
+			}
+			subjson['payment'] = payment;
 			temp[index]=subjson;
 			
 			subjson={};
@@ -112,7 +146,7 @@ $(document).ready(function() {
    
 	  
 	  var _formData=JSON.stringify(formData, null, '\t');
-	  alert(_formData);
+	  //alert(_formData);
 	  var content = {'_xsrf': getCookie("_xsrf"), 'userexpense':_formData};
 	  $.postJSON('/sendexpenserequest', content, function(response){
 			    //ShowCreateTripResponse(response);

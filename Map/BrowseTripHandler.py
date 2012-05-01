@@ -12,6 +12,7 @@ import simplejson
 import MongoEncoder.MongoEncoder
 import pymongo
 
+
 class BaseHandler(tornado.web.RequestHandler):
     @property
     def db(self):
@@ -53,14 +54,14 @@ class BaseHandler(tornado.web.RequestHandler):
         if error:
             raise tornado.web.HTTPError(500)
         #self.render('template', full_name=response['full_name'])
-        logging.info('response: +++++++++++++++++++++++=' + str(response))
+        #logging.info('response: +++++++++++++++++++++++=' + str(response))
         
     
     def _on_action(self, response, error):
         if error:
             raise tornado.web.HTTPError(500)
         #self.render('template', full_name=response['full_name'])
-        logging.info('_on_action: +++++++++++++++++++++++=' + str(response))
+        #logging.info('_on_action: +++++++++++++++++++++++=' + str(response))
         
     def _get_trips(self, response, error):
         if error:
@@ -89,14 +90,21 @@ class BrowseHandler(BaseHandler):
 class EntryHandler(BaseHandler):
     singletrip = None
     trips = None
-    @tornado.web.authenticated
+    
     @tornado.web.asynchronous
     def get(self, slug):
         if self.current_user:
                 self.singletrip = self.syncdb.trips.find_one({'slug':slug})
                 if not self.singletrip: raise tornado.web.HTTPError(404)
                 self.db.trips.find({'owner_id':self.get_db_user_id()}, limit = 10, sort = [('published', -1)], callback=self._trip_entry)   
-        
+        else:
+                self.singletrip = self.syncdb.trips.find_one({'slug':slug})
+                users = []
+                for group in self.singletrip['groups']:
+                   for user in group['members']:
+                       users.append(user)
+                users.reverse()
+                self.render("Trips/edittrip_nologin.html", users = users ,group_id=self.singletrip['groups'][0]['group_id'] , singletrip=self.singletrip, dest_place = unicode(simplejson.dumps(self.singletrip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
         
     def _trip_entry(self, response, error):
         if error:
@@ -118,14 +126,17 @@ class TripPageHandler(BaseHandler):
 
         skip_number = index*3
         if section == "newtrips":
-            latest_trip_ids = self.syncdb.trips.find().skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+            latest_trip_ids = self.syncdb.trips.find({"privacy": {"$ne": 2}}).skip(skip_number).limit(10).sort("published", pymongo.DESCENDING)
+        elif section =="mytrips":
+            
+            latest_trip_ids = self.syncdb.trips.find({"privacy": {"$ne": 2}}).skip(skip_number).limit(10).sort("published", pymongo.DESCENDING)
         elif section == "hottrips":
             
             t = datetime.datetime.now()  
-            latest_trip_ids = self.syncdb.trips.find({"end_date": {"$gt": t}}).skip(skip_number).limit(3).sort("members_count", pymongo.DESCENDING)
+            latest_trip_ids = self.syncdb.trips.find({"end_date": {"$gt": t}}).skip(skip_number).limit(10).sort("members_count", pymongo.DESCENDING)
         elif section == "endtrips":
             t = datetime.datetime.now()
-            latest_trip_ids = self.syncdb.trips.find({"end_date": {"$lt": t}}).skip(skip_number).limit(3).sort("published", pymongo.DESCENDING)
+            latest_trip_ids = self.syncdb.trips.find({"end_date": {"$lt": t}}).skip(skip_number).limit(10).sort("published", pymongo.DESCENDING)
             
         if latest_trip_ids.count() > 0:
                 for latest_trip_id in latest_trip_ids:

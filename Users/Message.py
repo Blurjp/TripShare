@@ -8,6 +8,7 @@ import simplejson
 import datetime
 import bson
 import tornado.web
+from Auth.AuthHandler import ajax_login_authentication
 from Map.BrowseTripHandler import BaseHandler
 
 class MessageHandler(BaseHandler):
@@ -25,7 +26,7 @@ class MessageHandler(BaseHandler):
         
         
 class PostMessageHandler(BaseHandler):
-    @tornado.web.authenticated
+    @ajax_login_authentication
     def post(self):
         message = self.get_argument('message')
         #print(self.get_argument('slugs'))
@@ -33,7 +34,7 @@ class PostMessageHandler(BaseHandler):
         
         _notification = Users.Notification.MessageNotificationGenerator('message_request', self.current_user['username'], self.current_user['slug'], self.current_user['picture'], datetime.datetime.utcnow(), self.current_user['user_id'], message)
         for user_slug in slugs['slugs']:
-            print(user_slug)
+            
             self.syncdb.users.update({'slug':user_slug}, {'$addToSet':{'new_notifications':_notification.notification}})
             self.syncdb.users.update({'slug':user_slug}, {'$addToSet':{'notifications':_notification.notification}})
             self.syncdb.users.update({'slug':user_slug}, {'$addToSet':{'message_request_receive':message}})
