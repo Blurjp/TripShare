@@ -186,10 +186,15 @@
 </li>
 {% end %}
 {% end %}
+{% if current_user %}
+{% if current_user['user_id'] in [member['user_id'] for group in singletrip['groups'] for member in group['members'] if member['user_id'] == current_user['user_id']]  %}
+
 <li class="trip_member_add_form_show">
 </li>
 <li class="trip_member_add_form_remove">
 </li>
+{% end %}
+{% end %}
 <li class="trip_member_add_form">
 <div class="trip_member_add_input_exterior">
 <input type="text" class="trip_member_add_input" default_value="add member" tip="add member" css_size="small" autocomplete="off" class="input_inactive_small">
@@ -203,6 +208,9 @@
 </ul>
 </li>
 {% end %}
+
+{% if current_user %}
+{% if current_user['user_id'] in [member['user_id'] for group in singletrip['groups'] for member in group['members'] if member['user_id'] == current_user['user_id']]  %}
 
 <li class="new_trip_tab droppable" sid="new">
 	<ul class="trip_member" style="display:block">
@@ -219,6 +227,9 @@
 </li>
 	</ul>
 </li>	
+
+{% end %}
+{% end %}
 </li>
 </ul>
 
