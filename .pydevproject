@@ -15,9 +15,10 @@
 <path>/usr/local/lib/python2.6/dist-packages/pymongo-1.9-py2.6-linux-x86_64.egg</path>
 <path>/usr/local/lib/python2.6/dist-packages/MySQL_python-1.2.3-py2.6-linux-x86_64.egg</path>
 <path>/home/jason/tornado-1.1</path>
-<path>/usr/local/lib/python2.6/dist-packages/boto-2.0b3-py2.6.egg</path>
 <path>/usr/local/lib/python2.6/dist-packages/PIL</path>
 <path>/usr/local/lib/python2.6/dist-packages/asyncmongo</path>
 <path>/home/jason/google-api-python-client/dist/google_api_python_client-1.0beta7-py2.6.egg</path>
+<path>/usr/local/lib/python2.6/dist-packages/icalendar-2.1-py2.6.egg</path>
+<path>/usr/local/lib/python2.6/dist-packages/boto-2.5.2-py2.6.egg</path>
 </pydev_pathproperty>
 </pydev_project>

@@ -10,6 +10,7 @@ import datetime
 import tornado.web
 import simplejson
 import MongoEncoder.MongoEncoder
+from Users.Message import MessageHandler
 from BrowseTripHandler import BaseHandler
 from Auth.AuthHandler import ajax_login_authentication
 
@@ -441,3 +442,32 @@ class ShowEndTrips(BaseHandler):
                         #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
                         self.write(latest_trip_id['html'])
                         
+
+class ProcessTripRequestHandler(MessageHandler):
+        
+        def post(self):
+            trip_slug = self.get_argument('trip_slug')
+            user_id = self.get_argument('user_id')
+            user = self.syncdb.users.find_one({"user_id":bson.ObjectId(user_id)})
+            type = self.get_argument('type')
+            if type == 'join':
+               trip = self.syncdb.trips.find_one({'slug':trip_slug})
+               print trip_slug
+               if trip != None:
+                   if self.current_user not in trip['groups'][0]['members']:
+                       trip['groups'][0]['members'].append(self.current_user)
+                       trip['member_count'] += 1
+                       self.syncdb.trips.save(trip)
+                   self.Send(self.current_user['user_id'], user_id, user['username']+" has accepted your trip request.", 'system_message')
+                   self.write('accepted')
+               else:
+                   self.Send(self.current_user['user_id'], user_id, user['username']+" failed to accept your trip request.", 'system_message')
+                   self.write('failed') 
+               
+            elif type == 'decline':
+               
+               self.Send(self.current_user['user_id'], user_id, user['username']+" has declined your trip request.", 'system_message')
+               self.write('declined') 
+            self.finish()
+            
+   

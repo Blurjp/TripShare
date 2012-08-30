@@ -13,6 +13,10 @@ $(function() {
 	
 	//$('.headpichold img[alt]').tooltip();
 	
+	
+	
+	
+	
     });
 
 
@@ -235,14 +239,40 @@ function set_social_section(section) {
 		{
 			value = "tripshare";
 		}
-        $('.social_list > .on').removeClass('on');
-        $('.'+section + '-tab').addClass('on');
-		$('#content_'+value).hide();
-		
-		$('#login_'+value).hide();
-		$('#login_'+section).show();
-		$('#content_'+section).show();
-		$("#social_section_value").val(section);
+       if (section == 'facebook') {
+			$.getJSON('/getfriends_on_facebook', function(response){
+				//alert(response);
+			$('.social_list > .on').removeClass('on');
+			$('.invitefriends.person').each(function(index) {
+                     if($(this).hasClass('on'))
+					 {
+					 	$(this).removeClass('on');
+					 }
+             });
+			$('.' + section + '-tab').addClass('on');
+			$('#content_' + value).hide();
+			$('#login_' + value).hide();
+			$('#login_' + section).show();
+			$('#content_' + section).show();
+			$("#social_section_value").val(section);
+			});
+		}
+		else {
+			$('.social_list > .on').removeClass('on');
+			$('.invitefriends.person').each(function(index) {
+                     if($(this).hasClass('on'))
+					 {
+					 	$(this).removeClass('on');
+					 }
+             });
+			$('.' + section + '-tab').addClass('on');
+			$('#content_' + value).hide();
+			$('#login_' + value).hide();
+			$('#login_' + section).show();
+			$('#content_' + section).show();
+			$("#social_section_value").val(section);
+			$('.invite_text').val("I create this trip here for you to join! " + window.location.href);
+		}
         }
 		
 $(document).ready(function() { 
@@ -305,7 +335,7 @@ $(document).ready(function() {
 		
     }); 
 	
-
+	
 	
 	
 });

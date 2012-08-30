@@ -992,15 +992,43 @@ function set_social_section(section) {
 		{
 			value = "tripshare";
 		}
-        $('.social_list > .on').removeClass('on');
-        $('.'+section + '-tab').addClass('on');
-		$('#content_'+value).hide();
-		$('#login_'+value).hide();
-		$('#login_'+section).show();
-		$('#content_'+section).show();
-		$("#social_section_value").val(section);
-		$('.invite_text').val("I create this trip here for you to join! " + window.location.href);
-	   
+		
+		if (section == 'facebook') {
+			$.getJSON('/getfriends_on_facebook', function(response){
+				//alert(response);
+			$('.social_list > .on').removeClass('on');
+			//alert($('#content_tripshare .invitefriends.person > .on').attr('sid'));
+			$('.invitefriends.person').each(function(index) {
+                     if($(this).hasClass('on'))
+					 {
+					 	$(this).removeClass('on');
+					 }
+             });
+			$('#content_tripshare .invitefriends.person > .on').removeClass('on');
+			$('.' + section + '-tab').addClass('on');
+			$('#content_' + value).hide();
+			$('#login_' + value).hide();
+			$('#login_' + section).show();
+			$('#content_' + section).show();
+			$("#social_section_value").val(section);
+			});
+		}
+		else {
+			$('.social_list > .on').removeClass('on');
+			$('.invitefriends.person').each(function(index) {
+                     if($(this).hasClass('on'))
+					 {
+					 	$(this).removeClass('on');
+					 }
+             });
+			$('.' + section + '-tab').addClass('on');
+			$('#content_' + value).hide();
+			$('#login_' + value).hide();
+			$('#login_' + section).show();
+			$('#content_' + section).show();
+			$("#social_section_value").val(section);
+			$('.invite_text').val("I create this trip here for you to join! " + window.location.href);
+		}
         }
 
 
@@ -1081,7 +1109,7 @@ $(document).ready(function() {
 
 $('.trip_site_add').live('click',function(){
   	
-     $('.route').append('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input type="text" autocomplete="off" class="ac_input" id="site_input" name="site_input" placeholder="EX: New York, NY" class="site_input"><input onfocus="showCalendarControl(this);" class="site_input_date" value=""></h2></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="trip_site_add_done action" value="update" targettype="site"><select class="site_ride"><option value="plane">by plane</option><option value="train">by train</option><option value="car">by car</option><option value="bus">by bus</option><option value="ferry">by ferry</option><option value="motorcycle">by motorcycle</option><option value="cycle">by bicycle</option><option value="walk">on foot</option><option value="other">other</option></select></div></div></div></div></div></div><div class="add_trip_site_move left" style="padding:5px"><a class="add_trip_site_remove" href="#"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a></div></li>')
+     $('.route').append('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input type="text" autocomplete="off" class="ac_input" id="site_input" name="site_input" placeholder="EX: New York, NY" class="site_input"><input class="site_input_date" value=""></h2></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="trip_site_add_done action" value="update" targettype="site"><select class="site_ride"><option value="plane">by plane</option><option value="train">by train</option><option value="car">by car</option><option value="bus">by bus</option><option value="ferry">by ferry</option><option value="motorcycle">by motorcycle</option><option value="cycle">by bicycle</option><option value="walk">on foot</option><option value="other">other</option></select></div></div></div></div></div></div><div class="add_trip_site_move left" style="padding:5px"><a class="add_trip_site_remove"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a></div></li>')
      setAutoComplete('site_input');
 	 $('.trip_site_add').hide();
   });
@@ -1113,7 +1141,7 @@ $('.trip_site_add_done').live('click',function(){
 	content._xsrf = getCookie("_xsrf");
 	
 	$.postJSON('/addsitetotrip',content, function (response){
-		alert('test');
+		//alert('test');
 		AddSiteResponse(response)
 	});
 	});
@@ -1669,5 +1697,43 @@ function ShowTripmember(member)
 	
 }
 
+/*invite friend*/
+$(document).ready(function() {    
 
+	$('.invitefriends.person').live('click',function(){
+		
+		$(this).toggleClass('on');
+		
+	});
+				
+	$('input[name=facebookinvite]').live('click',function(){
+	    var group_ids = '';
+		 $('.person.on').each(function(index) {
+			group_ids += $(this).attr('sid')+'test';
+		 });
+		// alert(group_ids);
+	    var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':$('#tripId').val(), 'group_ids':group_ids};
+		 $.postJSON('/invite_on_facebook', content, function(response){
+		 	$('#mask4').hide();  
+		    $('#social_tools').hide();
+		   // $('#merge_group_list').empty();
+		 });
+	});	
+	
+	$('input[name=tripshareinvite]').live('click',function(){
+	    var group_ids = '';
+		 $('.person.on').each(function(index) {
+			group_ids += $(this).attr('sid')+'test';
+		 });
+		 //alert(group_ids);
+	    var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':$('#tripId').val(), 'group_ids':group_ids};
+		
+		 $.postJSON('/sendtripshareinvite', content, function(response){
+		 	$('#mask4').hide();  
+		    $('#social_tools').hide();
+		   // $('#merge_group_list').empty();
+		 });
+	});	
+	
+	});
 	 

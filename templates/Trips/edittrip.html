@@ -11,15 +11,18 @@
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/css/smoothness/jquery-ui-1.8.17.custom.css") }}" type="text/css"/>
+
 <script src="{{ static_url("javascript/CalendarControl.js") }}"  ></script>
-<script   src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
-<script   src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
-<script   src="{{ static_url("javascript/js/jquery.tools.min.js") }}"></script>
-<script   src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry,places"></script>
+<script src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
+<script src="{{ static_url("javascript/js/jquery-ui-1.8.17.custom.min.js") }}"></script>
+<script src="{{ static_url("javascript/js/jquery.tools.min.js") }}"></script>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry,places"></script>
 <script src="{{ static_url("javascript/settingpopup.js") }}"  ></script>
 <script src="{{ static_url("javascript/followuser.js") }}"  ></script>
 <script src="{{ static_url("javascript/editmap.js") }}"  ></script>
 <script src="{{ static_url("javascript/ExportCalendar.js") }}"  ></script>
+<script src="{{ static_url("javascript/DownloadPDF.js") }}"  ></script>
 <script src="{{ static_url("javascript/importguide.js") }}"  ></script>
 <script src="{{ static_url("javascript/js/all.js") }}"  ></script> 
 <script src="{{ static_url("javascript/createtripslides.js") }}"  ></script>
@@ -96,6 +99,13 @@
 </li>
 <li>	
 <input type="button" class="regular-button invitefriend" name="invite_friend" href="#invite_friend" value="Invite Friend">
+</li>
+<li>	
+<form action="/downloadpdf" method="post">
+  {% raw xsrf_form_html() %}
+  <input type="hidden" name="trip_id" value="{{singletrip['trip_id']}}"/>
+  <input class="regular-button" type="submit" value="Download PDF"/>
+</form>
 </li>
 </ul> 
 {% end %}
@@ -223,6 +233,18 @@
 {% if current_user['user_id'] in [member['user_id'] for group in singletrip['groups'] for member in group['members'] if member['user_id'] == current_user['user_id']]  %}
 
 <script type='text/javascript'>
+$(function() {
+ $('.site_date').live('click', function () {
+            $(this).datepicker('destroy').datepicker({showOn: 'both'}).focus();
+    });
+
+	
+ $('.site_input_date').live('click', function () {
+            $(this).datepicker('destroy').datepicker({showOn: 'both'}).focus();
+    });
+	});
+	
+	
 var trip_tag_add_form_displayed;
 function trip_tag_add_show(status)
 {

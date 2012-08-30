@@ -98,6 +98,57 @@ $('.declinefriend').live('click',function(){
 	 });
 });	
 
+
+$('.jointrip').live('click',function(){
+	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'join', 'trip_slug':$(this).attr('tripslug')};
+	 $.postJSON('/processtriprequest',content,function(response){
+	 	if (response == "accepted") {
+			alert("You accept to join the trip.");
+		}
+		else if(response == "failed")
+		{
+			alert("You fail to join the trip.");
+		}
+	 	
+	 });
+});	
+
+
+$('.declinetrip').live('click',function(){
+	 var content = {'_xsrf':getCookie('_xsrf'), 'user_id':$(this).attr('sid'), 'type':'decline', 'trip_slug':$(this).attr('tripslug')};
+	 $.postJSON('/processtriprequest',content,function(response){
+	 	if (response == "declined") {
+			alert("You decline to join the trip.");
+		}
+	 });
+});	
+
+$('input[name=facebookinvitetotripshare]').live('click',function(){
+	    var group_ids = '';
+		 $('.person.on').each(function(index) {
+			group_ids += $(this).attr('sid')+'test';
+		 });
+		// alert(group_ids);
+	    var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':'', 'group_ids':group_ids};
+		 $.postJSON('/invite_on_facebook', content, function(response){
+		 	$('#mask4').hide();  
+		    $('#social_tools').hide();
+		   // $('#merge_group_list').empty();
+		 });
+	});	
+	
+$('input[name=emailinvite]').live('click',function(){
+	    
+		alert($('textarea[name=mail_addresses]').val());
+		alert($('textarea[name=invite_text]').val());
+	    var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':'', 'email':$('textarea[name=mail_addresses]').val(),'text':$('textarea[name=invite_text]').val()};
+		 $.postJSON('/send_email_invite', content, function(response){
+		 	$('#mask4').hide();
+		    $('#social_tools').hide();
+		  
+		 });
+	});	
+
 $(document).ready(function() {    
   
      //Get the screen height and width  
@@ -192,6 +243,8 @@ $('.acceptpayment').live('click',function(){
 	 
 	
 });	
+
+
 
 
 $('.declinepayment').live('click',function(){

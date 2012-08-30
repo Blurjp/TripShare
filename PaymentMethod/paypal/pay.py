@@ -1,5 +1,5 @@
 import tornado
-from Map.BrowseTripHandler import BaseHandler
+
 from tornado.options import define, options
 import json
 import logging
@@ -7,7 +7,7 @@ import urllib
 import urllib2
 #import settings
 
-class Pay( BaseHandler ):
+class Pay( object ):
   def __init__( self, amount, sender, receiver, return_url, cancel_url, remote_address, secondary_receiver=None, ipn_url=None, shipping=False ):
     self.headers = {
       'X-PAYPAL-SECURITY-USERID': options.SANDBOX_API_USER_NAME,

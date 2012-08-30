@@ -83,8 +83,22 @@ or
 <span class='item'>{{notification['result']}}</span>
 {% end %}
 .
+<span class='timestamp'>{{notification['created']}}</span>
+</div> 
+
+{% elif notification['type'] == 'trip_request' %}
+<div class='content'> 
+<span class='person_name'><a href="/people/{{notification['slug']}}">{{notification['slug']}}</a></span> 
+ask you to join the trip: <a href="/trip/{{notification['message']}}">{{notification['message']}}</a>.
+
+<span class='item'><a class="jointrip" tripslug="{{notification['message']}}"  sid="{{notification['user_id']}}">join</a></span> 
+or 
+<span class='item'><a class="declinetrip" tripslug="{{notification['message']}}" sid="{{notification['user_id']}}">decline</a></span>
+
+.
 <span class='timestamp'>{{notification['created']}}</span> 
 </div> 
+
 {% elif notification['type'] == 'expense_request' %}
 <div class='content'> 
 <span class='person_name'><a href="/people/{{notification['slug']}}">{{notification['slug']}}</a></span> 

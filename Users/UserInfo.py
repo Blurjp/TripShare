@@ -337,8 +337,8 @@ class UpdateUserProfileHandler(BaseHandler):
         
             s3_path = "/userpix_thumbs/"+str(user_id)+str(file['filename'])
         
-            access_key = "AKIAJLDHNWC3WXD6PGVA"
-            secret_key = "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"
+            access_key = aws_access_key_id=self.settings["amazon_access_key"]
+            secret_key = aws_secret_access_key=self.settings["amazon_secret_key"]
             bucket = "tripshare"
 
             conn = S3Connection(access_key, secret_key)
@@ -352,7 +352,7 @@ class UpdateUserProfileHandler(BaseHandler):
             self.syncdb.users.update({"user_id": bson.ObjectId(user_id)}, {"$set": { "picture": "http://tripshare.s3.amazonaws.com"+s3_path}}, upsert = False, safe=True)
         
         
-        #self.redirect("/settings")
+        self.redirect("/settings")
         
          
      

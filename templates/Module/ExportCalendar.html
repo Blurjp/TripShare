@@ -1,13 +1,16 @@
-<form name="export_calendar_form" id="export_calendar_form" onsubmit="return check_mergegroup_form(this);">
+<form name="export_calendar_form" id="export_calendar_form" action="/exportcalendar" method="post">
 	 {% raw xsrf_form_html() %}
 <div id="export_calendar_step_1" class="window1">
 	<a href="#" id="closeexportcalendar-modal" class="close">close</a>
 	<h2> Export Calendar </h2>
+	
   <ul id="plan_calendar_export_options">
-    <li><a class="export_ical"><img class="ical_icon picture medium" src="/static/icon/ical_icon.png">iCal</a></li>
-    <li><a class="export_google_calendar"><img class="google_calendar_icon picture medium" src="/static/icon/google_calendar_icon.png">Google</a></li>
-    <li><a class="export_outlook"><img class="outlook_icon picture medium" src="/static/icon/outlook_icon.png">Outlook</a></li>
+  	<input type="hidden" name="trip_id" value={{singletrip['trip_id']}}>
+    <li><img class="calendar_icon picture medium" src="/static/icon/ical_icon.png"><input class="submit" type="submit" name="type" value="ical"></li>
+    <li><img class="calendar_icon picture medium" src="/static/icon/google_calendar_icon.png"><input class="submit" type="submit" name="type" value="google"></li>
+    <li><img class="calendar_icon picture medium" src="/static/icon/outlook_icon.png"><input class="submit" type="submit" name="type" value="outlook"></li>
  </ul>
+ 
 </div>
 </form>  
 <div id="mask4"></div>

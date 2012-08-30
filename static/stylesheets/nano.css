@@ -359,7 +359,8 @@ width: 28px;
 span.user_name, .user_image {float:left;}
 span.user_image {padding-right:5px}
 span.user_name {padding-top:2px;text-decoration:none}
-a.add_user_link {float:left}
+a.add_user_link {float:left;cursor:pointer}
+a.remove_user_link {cursor:pointer;margin-right:10px}
 #close_member_dropdown {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
 
@@ -1134,14 +1135,14 @@ a#fb_login_pop {float:right; display:block; width:155px; height:23px; overflow:h
 #social_tools  { position: fixed;z-index:9999;  display:none;  width:575px; height:300px;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}  
 .invite_person {width: 540px !important}
 .invite_person .actions{ padding-top:15px}
-#social_tools li {text-decoration: none;float: left; width: 140px; margin-bottom: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
-#social_tools li a {font-weight:normal;font-size: 16px;display: block; padding: 10px 15px;color:#268CA0;float:left;}
-#social_tools li a span {color: #777777}
-#social_tools li a:hover {text-decoration: none}
-#social_tools li a:hover strong {text-decoration: underline}
-#social_tools li a:hover span {text-decoration: none}
-#social_tools li {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
-#social_tools li.on {border-bottom: 1px solid #f7f6f1; background-color: #f7f6f1}
+.social_list li {text-decoration: none;float: left; width: 140px; margin-bottom: 10px; background-color: #f0eee4; border-bottom: 1px solid #e1dcc8; border-right: 1px solid #e1dcc8}
+.social_list li a {font-weight:normal;font-size: 16px;display: block; padding: 10px 15px;color:#268CA0;float:left;}
+.social_list li a span {color: #777777}
+.social_list li a:hover {text-decoration: none}
+.social_list li a:hover strong {text-decoration: underline}
+.social_list li a:hover span {text-decoration: none}
+.social_list li {border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -webkit-border-radius: 5px 5px 0 0}
+.social_list li.on {border-bottom: 1px solid #f7f6f1; background-color: #f7f6f1}
 #social_tools form.default .text-box.text-area-box {width: 520px}
 #social_tools form.default .text-box.text-area-box textarea {width: 520px; height: 150px; font-size: 15px; font-family: inherit}
 #social_tools form.default .receiver-text-box label {padding: 3px 10px;color: #777777; cursor: text; position: absolute}
@@ -1150,13 +1151,16 @@ a#fb_login_pop {float:right; display:block; width:155px; height:23px; overflow:h
 #social_tools .picture {float:left;margin:2px}
 #social-close-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
+.list.people      {float:left; display: block; padding: 10px 0 5px 18px; margin-bottom: 5px  }
+.list.people  li   { border-radius: 0;-webkit-border-radius: 0; -moz-border-radius: 0;float: left; margin: 0px 15px 15px 0 }
+
 #content_twitter, #content_facebook,#content_invite,#content_tripshare {display:none; margin-top:60px}
 #login_facebook {float:right; width:255px; height:123px; overflow:hidden; background: url("/static/images/facebook_sign_in.jpg") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 #login_twitter {float:right; display:none; width:255px; height:123px; overflow:hidden; background: url("/static/images/twitter-login-button.png") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}
 
 /* sites */:
 
-.show_site {}
+
 .show_site .site_details {-webkit-border-top-left-radius: 5px;
 -webkit-border-top-right-radius: 5px;
 -moz-border-radius-topleft: 5px;
@@ -1175,6 +1179,7 @@ border-top-right-radius: 5px;}
 .show_site h2 a {text-decoration: none ;font-size: 0.8em;letter-spacing: 0;color: white;font-weight: 100;font-family: "museo-slab-1", "museo-slab-2", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
 .show_site h2 .site_date {float:right; width:80px;margin:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
 .show_site h2 .site_input_date {float:right; width:80px;margin:3px;-moz-border-radius:3px;-webkit-border-radius:3px;}
+.show_site .add_trip_site_remove {cursor:pointer}
 
 .site_details .action-bar {padding-right: 3px; background-color: #f0eee4; border-radius: 0 0 0 5px; -webkit-border-bottom-right-radius: 5px;-moz-border-radius-bottomright: 5px}
 
@@ -1269,7 +1274,7 @@ cursor: pointer;
 .member_button    { position: relative;}
 .member_button a  { float: left; padding: 0px 5px 0px 5px; background: #abcef2; -webkit-border-radius: 5px; -moz-border-radius: 5px; color: white; font-size: 1.2em; height: 21px }
 .member_button a:hover { background-color: #5495d7 ;text-decoration: none; }
-.member_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
+ .create_trip_member_button_remove,.member_button_remove  {display:none; background: url(/static/icon/remove.png) no-repeat; width: 18px; height: 21px; float: left; -webkit-border-radius: 0 5px 5px 0; -moz-border-radius: 0 5px 5px 0; cursor: pointer }
 
 .trip_member_add_input_exterior {padding-top:5px;position:relative;float:left}
 .trip_member .trip_member_add_form_show     {margin-top:15px;display:none;position: relative; color: white; background: url("/static/icon/add_tag_plus.png") no-repeat 4px 4px #adf2ab; cursor: pointer; border-radius: 5px;-webkit-border-radius: 5px; -moz-border-radius: 5px; height: 21px; width: 21px;  }
@@ -1328,9 +1333,13 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 #merge_group_list .trip_member {cursor:pointer;margining:40px}
 #merge_group_list .trip_member.on {background: #F39814;color: white;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;}
 
+.invitefriends.person {cursor:pointer;margining:40px}
+.invitefriends.person.on  {background: #F39814;color: white;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;}
+
 #export_calendar_step_1  { position: fixed;z-index:9999;  display:none;  width:25%; height:40%;padding:15px;-webkit-border-radius:10px;-moz-border-radius:10px;background-color:white;}
 #export_calendar_step_1 .button_container{position:absolute;right:15px;bottom:15px;overflow:hidden}
 #closeexportcalendar-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
+.calendar_icon {margin-right:55px; margin-top:20px}
 
 #plan_calendar_export_options {float:left}
 #plan_calendar_export_options li a {margin:10px; cursor:pointer;}
@@ -1343,6 +1352,18 @@ background-position: 1px;padding: 5px 0 5px 25px;background-image: url('../icon/
 #slider-wrap{float:left;background-color:lightgrey;width:8px;}
 #slider-vertical{position:relative;height:270px}
 .ui-slider-handle{width:8px;height:15px;margin:0 auto;background-color:darkgray;display:block;position:absolute}
+
+/* css for scrollbar below here*/
+#friend_scroll-pane { float:left;overflow: auto; width: 550px; height:200px;position:relative;display:inline}
+#friend_scroll-content {position:absolute;width:100%}
+#friend_slider-wrap{float:left;background-color:lightgrey;width:8px;}
+#friend_slider-vertical{position:relative;height:200px}
+
+/* css for scrollbar below here*/
+#tripsharefriend_scroll-pane { float:left;overflow: auto; width: 550px; height:200px;position:relative;display:inline}
+#tripsharefriend_scroll-content {position:absolute;width:100%}
+#tripsharefriend_slider-wrap{float:left;background-color:lightgrey;width:8px;}
+#tripsharefriend_slider-vertical{position:relative;height:200px}
 
 
 /*  manage budget  */
@@ -1539,3 +1560,20 @@ li .user_expense_request{float:left;}
 #closepaymentsetting-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 #payment_methods_options {padding:30px}
 #payment_methods_options textarea{-moz-border-radius:3px;-moz-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);-webkit-border-radius:3px;-webkit-box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);background:#ffffff;border:1px solid #888888;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.15), inset 0 2px 2px 0 rgba(0,0,0,0.1);color:#666666;font-family:"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size:12px;font-weight:bold;}
+
+.ui-datepicker-trigger {display:none;}
+
+#social_tools .submit {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; display: inline; overflow: visible; font-size: 1em}
+#social_tools .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
+#social_tools .submit:active, form.default .submit.active {box-shadow: inset 1px 1px 1px #196473; -moz-box-shadow: inset 1px 1px 1px #196473; -webkit-box-shadow: inset 1px 1px 1px #196473; background-color: #268ca0; outline: 0}
+#social_tools .submit.inline {padding-left: 10px; padding-right: 10px}
+#social_tools .submit[disabled="disabled"] {color: #999999; background: #dddddd; box-shadow: inset 1px 1px #cccccc; -moz-box-shadow: inset 1px 1px #cccccc; -webkit-box-shadow: inset 1px 1px #cccccc; cursor: default}
+#social_tools .submit-row .submit {padding: 8px 12px}
+#social_tools .submit-row .submit:hover {text-decoration: none}
+
+#plan_calendar_export_options .submit {border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; display: block; background: #41aab9; border: none; box-shadow: inset -1px -1px #196473; -moz-box-shadow: inset -1px -1px #196473; -webkit-box-shadow: inset -1px -1px #196473; color: white; padding: 5px 15px; font-size: 90%; font-weight: bold; text-align: center; cursor: pointer; font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif; display: inline; overflow: visible; font-size: 1em}
+#plan_calendar_export_options .submit:hover {color: white; background-color: #64bcc9; text-decoration: none}
+#plan_calendar_export_options .submit.inline {padding-left: 10px; padding-right: 10px}
+#plan_calendar_export_options .submit[disabled="disabled"] {color: #999999; background: #dddddd; box-shadow: inset 1px 1px #cccccc; -moz-box-shadow: inset 1px 1px #cccccc; -webkit-box-shadow: inset 1px 1px #cccccc; cursor: default}
+#plan_calendar_export_options .submit-row .submit {padding: 8px 12px}
+#plan_calendar_export_options .submit-row .submit:hover {text-decoration: none}

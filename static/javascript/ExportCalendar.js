@@ -36,9 +36,16 @@ $(document).ready(function() {
 	$(".export_google_calendar").click(function()
 	{
 		var content = {'_xsrf':getCookie('_xsrf'), 'trip_id':$('#tripId').val(), 'type':'google'};
-		 alert('test');
+		// alert('test');
 		$.postJSON('/exportcalendar', content, function(response){
-			      alert('test');
+			//alert(response);
+			      if (response != "") {
+				  	//alert(response);
+							window.open(response);
+						}
+						else {
+							alert('Export calendar fail.');
+						}
 				  $('#mask4').hide();  
 		          $('#export_calendar_step_1').hide();
 			});

@@ -5,14 +5,18 @@ Created on Nov 5, 2011
 '''
 import hmac
 import bson
+from bson import BSON
 import datetime
+import MongoEncoder.MongoEncoder
 import unicodedata
 import simplejson
-
+import json
+import urllib
 import tornado
 import tornado.auth
 from functools import wraps
 from Map.BrowseTripHandler import BaseHandler
+from Calendar.CalendarHandler import ExportCalendarHandler
 
 def ajax_login_authentication(f):
         @wraps(f)
@@ -31,9 +35,7 @@ def ajax_login_authentication(f):
 
 
 class LoginHandler(BaseHandler):
-    
-   
-        
+
     def get(self):
         self.render("signup.html")
         
@@ -254,6 +256,66 @@ class AuthLogoutFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
         self.clear_cookie("user")
         self.redirect(self.get_argument("next", "/"))
         
+
+class GoogleCalendarAuthHandler(BaseHandler):
+    @tornado.web.asynchronous
+    def get(self):
+        #code = self.get_argument('code')
+        error = self.get_arguments('error')
+        code = self.get_arguments('code')
+        
+        if code:
+            print code[0]
+            redirect_uri = (self.request.protocol + "://" + self.request.host + "/calendar_oauth2callback")
+            
+            post_args={
+                      "code": code[0],
+                      "redirect_uri": redirect_uri,
+                      "client_secret": self.settings["google_client_secret"],
+                      "client_id": self.settings["google_client_id"],
+                      "grant_type": "authorization_code",
+                      }
+            http_client = tornado.httpclient.AsyncHTTPClient()
+            
+            http_client.fetch("https://accounts.google.com/o/oauth2/token",
+                                   method="POST",
+                                   body=urllib.urlencode(post_args),
+                                   callback=self.google_handle_calendar_request)
+        else:
+           print error[0]
+           self.redirect('/mytrips')
+    
+    @tornado.web.asynchronous
+    def google_handle_calendar_request(self, response):
+        
+        res = simplejson.loads(response.body)
+        if "access_token" in res:
+            access_token = res['access_token']
+            #print access_token
+            user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.current_user['user_id'])})
+            user['google_access_token'] = access_token
+            if "refresh_token" in res:
+               user['google_refresh_token'] = res["refresh_token"]
+            self.syncdb.users.save(user)
+            
+            body = unicodedata.normalize('NFKD', self.current_user['temp_event']).encode('ascii','ignore')
+            
+            http_client = tornado.httpclient.AsyncHTTPClient()
+            headers = {'Authorization':'Bearer '+access_token, 'X-JavaScript-User-Agent':  'Google APIs Explorer', 'Content-Type':  'application/json'}
+            req = tornado.httpclient.HTTPRequest(url="https://www.googleapis.com/calendar/v3/calendars/primary/events?key="+self.settings["google_developer_key"],
+                                             method="POST",
+                                             body=body,
+                                             headers=headers)
+            http_client.fetch(req, callback=self.insert_event_response)
+            
+    def insert_event_response(self, response):
+        
+        response = simplejson.loads(response.body)
+        if "status" in response and response['status'] == 'confirmed':
+            self.redirect('/mytrips')
+        else:
+            self.redirect('/mytrips')
+            
 
 class GoogleHandler(BaseHandler, tornado.auth.GoogleMixin):
     @tornado.web.asynchronous

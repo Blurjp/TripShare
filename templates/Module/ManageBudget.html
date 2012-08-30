@@ -13,9 +13,10 @@
 		            </li>
 			
 	    {% end %}
+		<!----
 		<li><a name="expense_payment_tab" href="#tabs-expense-payment">
 			<span class="pay-button"></span></a>
-		</li>
+		</li>  ---->
 	
 	</ul>
 	<div id="user_expense_table">
@@ -57,7 +58,10 @@
 	    	});
 
 	var count = 1;
-	
+		$('.datepicker').live('click', function () {
+            $(this).datepicker('destroy').datepicker({showOn: 'both'}).focus();
+        });
+
 
 	$('#expense_add_button').live('click',function(){
 		var tag = $(this).attr('class').toString();

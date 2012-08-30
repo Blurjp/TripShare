@@ -1,0 +1,38 @@
+<form name="share_expense" id="share_expense_form">
+	 {% raw xsrf_form_html() %}
+<div id="share_expense_step_1" class="window1">
+	<a href="#" id="closeshareexpense-modal" class="close">close</a>
+	
+                <fieldset>
+                    <div class="collect_expense">
+                     <h2> Collect Expense </h2>
+				   <ul class="user_expense_request_collection">
+				   	{% for index, user in enumerate(users) %}
+					{% if user['slug']!=current_user['slug'] %}
+		            <li class="user_expense_request">
+		            	<input class="usercheckoption" type="checkbox">
+						<a name="user_expense_tab" href="#tabs-{{index+1}}">
+		            	<span class="expense_headpichold">
+			        <img class="picture medium" alt="{{user['slug']}}" src="{{user['picture']}}"></a>
+					</span>
+		            <input type="text" class="expense_amount">
+					{% if 'payment_method' in current_user and  'paypal' in current_user['payment_method'] %}
+					<img class="picture medium" src="https://www.paypal.com/en_US/i/logo/PayPal_mark_60x38.gif"><input type="checkbox" class="paypal_option" />
+                    {% end %}
+					{% if 'payment_method' in current_user and 'dwolla' in current_user['payment_method'] %}
+					<img class="picture medium" src="/static/icon/dwolla.png"><input type="checkbox" class="dwolla_option" /> 
+					{% end %}
+					</li>
+					{% end %}
+	                {% end %}
+					</ul>
+				
+				</div>
+                </fieldset>
+ <div class="button_container">
+ 	<a href="#Go_back_to_expense" name="Go_back_to_expense" value="Go back to Expense" style="width:180px;margin-right:10px" class="sidebar-auth-button">Go back</a>
+ <a name="sendexpenserequest" value="sendexpenserequest" style="width:200px;margin-right:10px" class="disabled sidebar-auth-button">Send Expense Request</a>
+ </div>
+</div>
+</form>  
+<div id="mask4"></div>

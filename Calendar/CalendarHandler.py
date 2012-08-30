@@ -7,91 +7,161 @@ from Map.BrowseTripHandler import BaseHandler
 import tornado.web
 import bson
 import httplib2
+import gflags
+import tornado.ioloop
+import MongoEncoder.MongoEncoder
+import pickle
+import simplejson
+from datetime import datetime
+import urllib
+
 
 from apiclient.discovery import build
 from oauth2client.file import Storage
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.tools import run
+from icalendar import Calendar, Event
+from icalendar import UTC
+
+class ExportCalendarAsiCal(BaseHandler):
+    
+    @staticmethod
+    def GenerateEvent(self, _event):
+        cal = Calendar()
+        cal.add('prodid', '-//My calendar product//mxm.dk//')
+        cal.add('version', '2.0')
+        
+        event = Event()
+        event.add('summary', _event['summary'])
+        event.add('dtstart', datetime.strptime(_event['start']['date'], "%Y-%m-%d"))
+        event.add('dtend', datetime.strptime(_event['end']['date'], "%Y-%m-%d"))
+        event.add('priority', 1)
+        cal.add_component(event)
+        self.set_header ('Content-Type', 'text/calendar')
+        self.set_header ('Content-Disposition', 'attachment; filename=myCalendar.ics')
+        self.write(cal.as_string())
+        self.finish()
+
 
 class ExportCalendarHandler(BaseHandler):
-    @tornado.web.authenticated
+
+    @tornado.web.asynchronous
+    def google_handle_calendar_request(self, response):
+        #print response.body
+        res = simplejson.loads(response.body)
+        if "access_token" in res:
+            access_token = res['access_token']
+            #print access_token
+            user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.current_user['user_id'])})
+            user['google_access_token'] = access_token
+            if "refresh_token" in res:
+               user['google_refresh_token'] = res["refresh_token"]
+            self.syncdb.users.save(user)
+            
+            body = unicodedata.normalize('NFKD', self.current_user['temp_event']).encode('ascii','ignore')
+            http_client = tornado.httpclient.AsyncHTTPClient()
+            headers = {'Authorization':'Bearer '+access_token, 'X-JavaScript-User-Agent':  'Google APIs Explorer', 'Content-Type':  'application/json'}
+            req = tornado.httpclient.HTTPRequest(url="https://www.googleapis.com/calendar/v3/calendars/primary/events?key="+self.settings["google_developer_key"],
+                                             method="POST",
+                                             body=body,
+                                             headers=headers)
+            http_client.fetch(req, callback=self.insert_event_response)
+                
+        
+    def insert_event_response(self, response):
+        
+        response = simplejson.loads(response.body)
+        if "status" in response and response['status'] == 'confirmed':
+            self.redirect('/mytrips')
+        else:
+            self.redirect('/mytrips')
+
+
     def post(self):
-        
-        type = self.get_argument("type")
-        trip_id = self.get_argument("trip_id")
-        trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
-        groups = trip['groups']
-        title = trip['title']
-        check = False
-        location = ''
-        attendees = []
-        for index, group in enumerate(groups):
-            if self.current_user in group['members']:
-                check = True
-                start = group[index]['start_date']
-                end = group[index]['end_date']
-                for dest in groups[index]['dest_place']:
-                    location += dest['dest']+';'
-                for member in group[index]['members']:
-                    attendees.append({'email': member['email']})
-                break
+        try:
+            type = self.get_argument("type")
+            trip_id = self.get_argument("trip_id")
+            trip = self.syncdb.trips.find_one({'trip_id':bson.ObjectId(trip_id)})
+            groups = trip['groups']
+            self.title = trip['title']
+            check = False
+            self.location = ''
+            self.attendees = []
+            for index, group in enumerate(groups):
+                if self.current_user in group['members']:
+                    check = True
+                    self.start = group[index]['start_date']
+                    print group[index]
+                    self.end = group[index]['finish_date']
+                    for dest in groups[index]['dest_place']:
+                        self.location += dest['dest']+';'
+                    for member in group[index]['members']:
+                        self.attendees.append({'email': member['email']})
+                    break
+                
+            if check == False:
+                self.start = groups[0]['start_date']
+                self.end = groups[0]['finish_date']
+                self.attendees.append(self.current_user['email'])
+                for dest in groups[0]['dest_place']:
+                        self.location += dest['dest']+';'
             
-        if check == False:
-            start = groups[0]['start_date']
-            end = groups[0]['finish_date']
-            attendees.append(self.current_user['email'])
-            for dest in groups[0]['dest_place']:
-                    location += dest['dest']+';'
-
-        if type == 'google': 
-            
-            #FLAGS = gflags.FLAGS
-# Set up a Flow object to be used if we need to authenticate. This
-# sample uses OAuth 2.0, and we set up the OAuth2WebServerFlow with
-# the information it needs to authenticate. Note that it is called
-# the Web Server Flow, but it can also handle the flow for native
-# applications
-# The client_id and client_secret are copied from the API Access tab on
-# the Google APIs Console
-            FLOW = OAuth2WebServerFlow(
-            client_id='1072071824058.apps.googleusercontent.com',
-            client_secret='Zh1EiK8GTXiDObnzEKEmm02h',
-            scope='https://www.googleapis.com/auth/calendar',
-            user_agent='tripshare/1.0')
-
-# To disable the local server feature, uncomment the following line:
-# FLAGS.auth_local_webserver = False
-
-# If the Credentials don't exist or are invalid, run through the native client
-# flow. The Storage object will ensure that if successful the good
-# Credentials will get written back to a file.
-            storage = Storage('calendar.dat')
-            credentials = storage.get()
-            if credentials is None or credentials.invalid == True:
-                credentials = run(FLOW, storage)
-
-# Create an httplib2.Http object to handle our HTTP requests and authorize it
-# with our good Credentials.
-            http = httplib2.Http()
-            http = credentials.authorize(http)
-
-# Build a service object for interacting with the API. Visit
-# the Google APIs Console
-# to get a developerKey for your own application.
-            service = build(serviceName='calendar', version='v3', http=http,
-            developerKey='AIzaSyCjWwQX-D4UMDRVcoLaxZGaeU_76tMIKNA')
             event = {
-                 "summary": "Trip: "+title,
-                 "location": location,
-                 'start': {
-                          'dateTime': start
-                          },
-                 'end':   {
-                          'dateTime': end
-                          },
-                 'attendees': attendees,
-                }
+             "title": "Trip: "+self.title,
+             "summary": "Trip: "+self.title,
+             "location": self.location,
+             'start': {
+                      'date': self.start
+                      },
+             'end':   {
+                      'date': self.end
+                      },
+             
+             'attendees': self.attendees,
+             'etag': 'trip',
+            }
+            user = self.syncdb.users.find_one({'user_id':bson.ObjectId(self.current_user['user_id'])})
+            
+            user['temp_event'] = simplejson.dumps(event, cls=MongoEncoder.MongoEncoder.MongoEncoder)
+            self.syncdb.users.save(user)
+            
+            if type == 'ical':
+                ExportCalendarAsiCal.GenerateEvent(self, event)
+                
+            
+            elif type == 'google': 
+                
+                if 'google_refresh_token' in self.current_user and self.current_user['google_refresh_token'] != '':
+                    
+                    post_args={
+                              "refresh_token": self.current_user['google_refresh_token'],
+                              "client_secret": self.settings["google_client_secret"],
+                              "client_id": self.settings["google_client_id"],
+                              "grant_type": "refresh_token",
+                              }
+                    http_client = tornado.httpclient.AsyncHTTPClient()
+                    http_client.fetch("https://accounts.google.com/o/oauth2/token",
+                                           method="POST",
+                                           body=urllib.urlencode(post_args),
+                                           callback=self.async_callback(self.google_handle_calendar_request))
 
-            created_event = service.events().insert(calendarId='primary', body=event).execute()
-            print created_event['id']
-        
+                else:
+                    client_id=self.settings["google_client_id"]
+                    scope='https://www.googleapis.com/auth/calendar' 
+                    #redirect_uri = 'http://www.tripshare.cc/oauth2callback'
+                    redirect_uri = (self.request.protocol + "://" + self.request.host +
+                    "/calendar_oauth2callback")
+                    
+                    args={
+                          "scope": scope,
+                          "redirect_uri": redirect_uri,
+                          "response_type": "code",
+                          "client_id": client_id,
+                          "access_type": "offline",
+                          }
+                    
+                    self.redirect("https://accounts.google.com/o/oauth2/auth?"+ urllib.urlencode(args))
+
+
+        except Exception, err:
+                print "calendar export error: " + str(err)
