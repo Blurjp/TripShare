@@ -153,28 +153,30 @@ Or,
  <a id="fb_login_pop" href="/auth/fblogin" ></a>
 </ul>
 <h1>
-Log In TripShare
+Log In
 </h1>
-<div id="modal-body">
-<form name="login_form" action="/account/login" method="post" onsubmit="return checkform(this);" autocomplete="off">
+<div id="modal-body1">
+<form name="login_form" class="user-form" action="/account/login" method="post" onsubmit="return checkloginform(this);" autocomplete="off">
 	{% raw xsrf_form_html() %}
-<table class="form">
-<tbody>
-<tr>
-<td class="label">Email</td>
-<td class="value"><input name="email" id="email" type="text" size="25" value=""></td>
-</tr>
-<tr>
-<td class="label">Password</td>
-<td class="value"><input name="password" id="password" type="password" size="25"></td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td class="buttons">
-<input type="submit" value="Log in" style="font-weight:bold">
-</td>
-</tr>
-</tbody></table>
+<ul>
+<li class="row">
+<div class="text-box">
+	
+	<input name="email" id="email" type="text" size="30" class="text" placeholder="Email">
+	
+	
+</div>
+</li>
+<li class="row">
+<div class="text-box">
+	
+	<input name="password" id="password" type="password" class="text" size="30" placeholder="Password">
+	
+</div>
+</li>
+<li class="row">
+<input class="submit" type="submit" value="Log in" style="font-weight:bold">
+</li>
 </form> 
 </div>  
   </div>  

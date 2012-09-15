@@ -159,6 +159,13 @@ width: 302px;
 #modal-content #modal-body #modal_scroll_content {height: 310px; overflow: auto; position: relative; margin: -20px -20px}
 #modal-content #modal-body #modal_scroll_content ul.grid {border-top: 0; padding: 0 0 10px 10px}
 #modal-content #modal-body label.error {display:none}
+
+ #modal-body1 {*display: inline-block; background: #f0eee4; border-top: 1px solid white; border-bottom: 1px solid #e1dcc8; padding: 20px}
+ #modal-body1:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
+ #modal-body1 #modal_scroll_content {height: 310px; overflow: auto; position: relative; margin: -20px -20px}
+ #modal-body1 #modal_scroll_content ul.grid {border-top: 0; padding: 0 0 10px 10px}
+ #modal-body1 label.error {display:none}
+
 #modal-content #modal-footer {*display: inline-block; border-top: 1px solid white; padding: 20px}
 #modal-content #modal-footer:after {content: " "; display: block; height: 0; clear: both; visibility: hidden}
 #modal-content #modal-footer .pagination a {background-color: #f0eee4; border-color: #e1dcc8}

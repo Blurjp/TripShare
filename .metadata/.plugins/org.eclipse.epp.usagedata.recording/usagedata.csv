@@ -1,146 +1,43 @@
 what,kind,bundleId,bundleVersion,description,time
-started,bundle,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal",1341083982524
-started,bundle,com.aptana.ide.update,2.0.5.1278523018,"com.aptana.ide.update",1341083982525
-started,bundle,com.aptana.ide.update.eclipse34,2.0.5.1278614541,"com.aptana.ide.update.eclipse34",1341083982526
-started,bundle,com.aptana.ide.update.eclipse35,2.0.5.1278614541,"com.aptana.ide.update.eclipse35",1341083982527
-started,bundle,com.aptana.ide.update.eclipse36,1.0.0.1278614541,"com.aptana.ide.update.eclipse36",1341083982528
-started,bundle,com.aptana.ide.update.ui,2.0.0.1278614541,"com.aptana.ide.update.ui",1341083982528
-started,bundle,org.eclipse.eclipsemonkey,2.0.5.1278445773,"org.eclipse.eclipsemonkey",1341083982529
-started,bundle,org.eclipse.eclipsemonkey.lang.javascript,2.0.0.1277749615,"org.eclipse.eclipsemonkey.lang.javascript",1341083982529
-os,sysinfo,,,"linux",1341083982535
-arch,sysinfo,,,"x86_64",1341083982535
-ws,sysinfo,,,"gtk",1341083982535
-locale,sysinfo,,,"en_US",1341083982535
-processors,sysinfo,,,"2",1341083982535
-java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1341083982535
-java.runtime.version,sysinfo,,,"1.6.0_24-b07",1341083982535
-java.specification.name,sysinfo,,,"Java Platform API Specification",1341083982535
-java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1341083982535
-java.specification.version,sysinfo,,,"1.6",1341083982535
-java.vendor,sysinfo,,,"Sun Microsystems Inc.",1341083982535
-java.version,sysinfo,,,"1.6.0_24",1341083982535
-java.vm.info,sysinfo,,,"mixed mode",1341083982535
-java.vm.name,sysinfo,,,"Java HotSpot(TM) 64-Bit Server VM",1341083982535
-java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1341083982535
-java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1341083982535
-java.vm.specification.version,sysinfo,,,"1.0",1341083982535
-java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1341083982535
-java.vm.version,sysinfo,,,"19.1-b02",1341083982535
-started,bundle,org.eclipse.eclipsemonkey.doms,2.0.0.1277749615,"org.eclipse.eclipsemonkey.doms",1341083982714
-started,bundle,com.aptana.ide.server,2.0.0.1278523018,"com.aptana.ide.server",1341083983199
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341083983580
-error,log,,,"(Build 2.0.0.1278523018) [ERROR] Connection to AptanaDB is null.",1341083983581
-error,log,,,"(Build 2.0.0.1278523018) [ERROR] SQLException: Connection to AptanaDB is null.",1341083983581
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Error initializing DB connection ",1341083983582
-started,bundle,com.aptana.ide.documentation,2.0.0.1278523018,"com.aptana.ide.documentation",1341083986684
-started,bundle,com.aptana.ide.samples.ui,2.0.0.1278614541,"com.aptana.ide.samples.ui",1341083986695
-started,bundle,com.aptana.ide.update.portal,2.0.0.1278614541,"com.aptana.ide.update.portal",1341083986713
-opened,editor,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal.ui.MyAptanaEditor",1341083986786
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341083986804
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341083986815
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341083986828
-started,bundle,com.aptana.ide.server.core,2.0.0.1278523018,"com.aptana.ide.server.core",1341083987046
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341083987422
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341083987492
-started,bundle,org.eclipse.ui.navigator,3.5.0.I20100601-0800,"org.eclipse.ui.navigator",1341083989529
-activated,editor,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal.ui.MyAptanaEditor",1341083989575
-started,bundle,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.resources",1341083993654
-started,bundle,org.eclipse.ui.editors,3.6.1.r361_v20100825-0800,"org.eclipse.ui.editors",1341083993832
-started,bundle,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.workbench.texteditor",1341083993836
-started,bundle,org.eclipse.jdt.core,3.6.2.v_A76_R36x,"org.eclipse.jdt.core",1341083994027
-started,bundle,org.eclipse.jdt.core.manipulation,1.3.0.v20100520-0800,"org.eclipse.jdt.core.manipulation",1341083994130
-started,bundle,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui",1341083994201
-started,bundle,org.python.pydev.core,1.6.5.2011020317,"org.python.pydev.core",1341083994212
-started,bundle,com.python.pydev.analysis,1.6.5.2011020317,"com.python.pydev.analysis",1341083994237
-started,bundle,org.eclipse.core.filebuffers,3.5.100.v20100520-0800,"org.eclipse.core.filebuffers",1341083994249
-started,bundle,org.python.pydev,1.6.5.2011020317,"org.python.pydev",1341083994264
-opened,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1341083994455
-activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1341083994547
-started,bundle,com.aptana.ide.core.epl,2.0.0.1278614541,"com.aptana.ide.core.epl",1341083995872
-started,bundle,com.aptana.ide.core.io,2.0.5.1278614541,"com.aptana.ide.core.io",1341083995887
-started,bundle,com.aptana.ide.syncing.core,2.0.5.1278614541,"com.aptana.ide.syncing.core",1341083995894
-started,bundle,com.aptana.ide.syncing.ui,2.0.5.1278614541,"com.aptana.ide.syncing.ui",1341083995896
-executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.navigate.collapseAll",1341084000111
-executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.navigate.collapseAll",1341084000844
-deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084006278
-activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084012165
-deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084013745
-executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.newWizard",1341084015785
-activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084015810
-deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084021065
-executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.import",1341084245702
-activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084245719
-deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084248136
-activated,editor,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal.ui.MyAptanaEditor",1341084249183
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341084249257
-closed,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1341084249307
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Unable to connect to database",1341084249440
-error,log,,,"(Build 2.0.0.1278523018) [ERROR] Connection to AptanaDB is null.",1341084249441
-error,log,,,"(Build 2.0.0.1278523018) [ERROR] SQLException: Connection to AptanaDB is null.",1341084249442
-error,log,,,"(Build 2.0.5.1278523018) [ERROR] Error initializing DB connection ",1341084249442
-started,bundle,org.eclipse.compare.core,3.5.101.R36x_v20100929-0800,"org.eclipse.compare.core",1341084249875
-started,bundle,org.eclipse.compare,3.5.101.R36x_v20100929-0800,"org.eclipse.compare",1341084249880
-stopped,bundle,org.eclipse.mylyn.ide.ant,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.ide.ant",1341084250109
-stopped,bundle,org.eclipse.ant.ui,3.5.0.v20100427,"org.eclipse.ant.ui",1341084250110
-stopped,bundle,org.eclipse.ant.launching,1.0.1.v20101020_r362,"org.eclipse.ant.launching",1341084250111
-stopped,bundle,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20100513,"org.eclipse.equinox.p2.ui.sdk",1341084250113
-stopped,bundle,org.eclipse.mylyn.java.tasks,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.java.tasks",1341084250114
-stopped,bundle,org.eclipse.mylyn.java.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.java.ui",1341084250115
-stopped,bundle,org.eclipse.jdt.junit,3.6.1.r361_v20100825-0800,"org.eclipse.jdt.junit",1341084250116
-stopped,bundle,org.eclipse.jdt.apt.ui,3.3.300.v20100513-0845,"org.eclipse.jdt.apt.ui",1341084250116
-stopped,bundle,org.eclipse.jdt.debug.ui,3.5.2.v20100928a_r362,"org.eclipse.jdt.debug.ui",1341084250118
-stopped,bundle,com.python.pydev.codecompletion,1.6.5.2011020317,"com.python.pydev.codecompletion",1341084250118
-stopped,bundle,com.python.pydev.refactoring,1.6.5.2011020317,"com.python.pydev.refactoring",1341084250119
-stopped,bundle,com.python.pydev.analysis,1.6.5.2011020317,"com.python.pydev.analysis",1341084250119
-stopped,bundle,com.python.pydev.debug,1.6.5.2011020317,"com.python.pydev.debug",1341084250119
-stopped,bundle,com.python.pydev.fastparser,1.6.5.2011020317,"com.python.pydev.fastparser",1341084250120
-stopped,bundle,com.python.pydev,1.6.5.2011020317,"com.python.pydev",1341084250120
-stopped,bundle,org.python.pydev.django,1.6.5.2011020317,"org.python.pydev.django",1341084250121
-stopped,bundle,org.python.pydev.customizations,1.6.5.2011020317,"org.python.pydev.customizations",1341084250121
-stopped,bundle,org.python.pydev.red_core,1.6.5.2011020317,"org.python.pydev.red_core",1341084250122
-stopped,bundle,org.python.pydev.debug,1.6.5.2011020317,"org.python.pydev.debug",1341084250122
-stopped,bundle,org.python.pydev.mylyn,0.3,"org.python.pydev.mylyn",1341084250124
-stopped,bundle,org.python.pydev.refactoring,1.6.5.2011020317,"org.python.pydev.refactoring",1341084250124
-stopped,bundle,org.python.pydev,1.6.5.2011020317,"org.python.pydev",1341084250127
-stopped,bundle,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui",1341084250136
-stopped,bundle,org.eclipse.wst.dtd.ui,1.0.500.v201004290328,"org.eclipse.wst.dtd.ui",1341084250137
-stopped,bundle,org.eclipse.wst.xsd.ui,1.2.304.v201101251958,"org.eclipse.wst.xsd.ui",1341084250139
-stopped,bundle,org.eclipse.wst.xml.ui,1.1.103.v201101122108,"org.eclipse.wst.xml.ui",1341084250141
-stopped,bundle,org.eclipse.wst.common.ui,1.1.500.v200911190730,"org.eclipse.wst.common.ui",1341084250142
-stopped,bundle,org.eclipse.wst.sse.ui,1.2.3.v201102102045,"org.eclipse.wst.sse.ui",1341084250143
-stopped,bundle,com.aptana.ide.debug.ui,2.0.0.1254164293,"com.aptana.ide.debug.ui",1341084250148
-stopped,bundle,com.aptana.ide.desktop.integration,2.0.0.1253913567,"com.aptana.ide.desktop.integration",1341084250149
-stopped,bundle,com.aptana.ide.desktop.integration.server,2.0.0.1278523018,"com.aptana.ide.desktop.integration.server",1341084250150
-stopped,bundle,com.aptana.ide.documentation,2.0.0.1278523018,"com.aptana.ide.documentation",1341084250151
-stopped,bundle,com.aptana.ide.reporting,2.0.0.1278614541,"com.aptana.ide.reporting",1341084250152
-stopped,bundle,com.aptana.ide.scripting,2.0.0.1278523018,"com.aptana.ide.scripting",1341084250152
-stopped,bundle,com.aptana.ide.editor.xml,2.0.0.1253913567,"com.aptana.ide.editor.xml",1341084250153
-stopped,bundle,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editor.html",1341084250154
-stopped,bundle,com.aptana.ide.editor.css,2.0.0.1257380403,"com.aptana.ide.editor.css",1341084250155
-stopped,bundle,com.aptana.ide.js.docgen,2.0.0.1278523018,"com.aptana.ide.js.docgen",1341084250156
-stopped,bundle,org.eclipse.eclipsemonkey.lang.javascript,2.0.0.1277749615,"org.eclipse.eclipsemonkey.lang.javascript",1341084250156
-stopped,bundle,org.eclipse.eclipsemonkey.ui,2.0.0.1277749615,"org.eclipse.eclipsemonkey.ui",1341084250162
-stopped,bundle,com.aptana.ide.editor.js,2.0.0.1278523018,"com.aptana.ide.editor.js",1341084250163
-stopped,bundle,com.aptana.ide.editor.json,2.0.0.1278614541,"com.aptana.ide.editor.json",1341084250164
-stopped,bundle,com.aptana.ide.editor.text,2.0.0.1253913567,"com.aptana.ide.editor.text",1341084250165
-stopped,bundle,com.aptana.ide.editor.yaml,2.0.0.1255038335,"com.aptana.ide.editor.yaml",1341084250166
-stopped,bundle,com.aptana.ide.editors.codeassist,2.0.0.1278523018,"com.aptana.ide.editors.codeassist",1341084250167
-stopped,bundle,com.aptana.ide.editors.ui,2.0.0.1278614541,"com.aptana.ide.editors.ui",1341084250168
-stopped,bundle,com.aptana.ide.samples.ui,2.0.0.1278614541,"com.aptana.ide.samples.ui",1341084250168
-stopped,bundle,com.aptana.ide.intro,2.0.0.1278523018,"com.aptana.ide.intro",1341084250168
-stopped,bundle,com.aptana.ide.server.jetty.ui,2.0.0.1278614541,"com.aptana.ide.server.jetty.ui",1341084250179
-stopped,bundle,com.aptana.ide.server.ui,2.0.0.1278523018,"com.aptana.ide.server.ui",1341084250180
-stopped,bundle,com.aptana.ide.logging,2.0.0.1278523018,"com.aptana.ide.logging",1341084250180
-stopped,bundle,com.aptana.ide.snippets,2.0.0.1277749615,"com.aptana.ide.snippets",1341084250181
-stopped,bundle,com.aptana.ide.editors,2.0.5.1278523018,"com.aptana.ide.editors",1341084250181
-stopped,bundle,com.aptana.ide.installer,2.0.5.1278523018,"com.aptana.ide.installer",1341084250182
-stopped,bundle,com.aptana.ide.search,2.0.0.1278523018,"com.aptana.ide.search",1341084250186
-stopped,bundle,com.aptana.ide.search.epl,2.0.0.1278523018,"com.aptana.ide.search.epl",1341084250186
-stopped,bundle,com.aptana.ide.security.linux,2.0.0.1254335860,"com.aptana.ide.security.linux",1341084250187
-stopped,bundle,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal",1341084250187
-stopped,bundle,com.aptana.ide.update.portal,2.0.0.1278614541,"com.aptana.ide.update.portal",1341084250187
-stopped,bundle,com.aptana.ide.update.ui,2.0.0.1278614541,"com.aptana.ide.update.ui",1341084250188
-stopped,bundle,com.aptana.ide.server.jetty,2.0.0.1278523018,"com.aptana.ide.server.jetty",1341084250188
-stopped,bundle,com.aptana.ide.syncing.doms,2.0.5.1278614541,"com.aptana.ide.syncing.doms",1341084250188
-stopped,bundle,com.aptana.ide.syncing.ui,2.0.5.1278614541,"com.aptana.ide.syncing.ui",1341084250188
-stopped,bundle,com.aptana.ide.syncing.core,2.0.5.1278614541,"com.aptana.ide.syncing.core",1341084250189
+started,bundle,org.python.pydev.debug,1.6.5.2011020317,"org.python.pydev.debug",1347679577709
+closed,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1347679585554
+started,bundle,org.eclipse.compare.core,3.5.101.R36x_v20100929-0800,"org.eclipse.compare.core",1347679586875
+started,bundle,org.eclipse.compare,3.5.101.R36x_v20100929-0800,"org.eclipse.compare",1347679586881
+stopped,bundle,org.eclipse.mylyn.ide.ant,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.ide.ant",1347679587148
+stopped,bundle,org.eclipse.ant.ui,3.5.0.v20100427,"org.eclipse.ant.ui",1347679587149
+stopped,bundle,org.eclipse.ant.launching,1.0.1.v20101020_r362,"org.eclipse.ant.launching",1347679587149
+stopped,bundle,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20100513,"org.eclipse.equinox.p2.ui.sdk",1347679587150
+stopped,bundle,org.eclipse.mylyn.java.tasks,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.java.tasks",1347679587151
+stopped,bundle,org.eclipse.mylyn.java.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.java.ui",1347679587152
+stopped,bundle,org.eclipse.jdt.junit,3.6.1.r361_v20100825-0800,"org.eclipse.jdt.junit",1347679587153
+stopped,bundle,org.eclipse.jdt.apt.ui,3.3.300.v20100513-0845,"org.eclipse.jdt.apt.ui",1347679587153
+stopped,bundle,org.eclipse.jdt.debug.ui,3.5.2.v20100928a_r362,"org.eclipse.jdt.debug.ui",1347679587155
+stopped,bundle,com.python.pydev.codecompletion,1.6.5.2011020317,"com.python.pydev.codecompletion",1347679587155
+stopped,bundle,com.python.pydev.refactoring,1.6.5.2011020317,"com.python.pydev.refactoring",1347679587156
+stopped,bundle,com.python.pydev.analysis,1.6.5.2011020317,"com.python.pydev.analysis",1347679587156
+stopped,bundle,com.python.pydev.debug,1.6.5.2011020317,"com.python.pydev.debug",1347679587157
+stopped,bundle,com.python.pydev.fastparser,1.6.5.2011020317,"com.python.pydev.fastparser",1347679587157
+stopped,bundle,com.python.pydev,1.6.5.2011020317,"com.python.pydev",1347679587158
+stopped,bundle,org.python.pydev.django,1.6.5.2011020317,"org.python.pydev.django",1347679587158
+stopped,bundle,org.python.pydev.customizations,1.6.5.2011020317,"org.python.pydev.customizations",1347679587159
+stopped,bundle,org.python.pydev.red_core,1.6.5.2011020317,"org.python.pydev.red_core",1347679587159
+stopped,bundle,org.python.pydev.debug,1.6.5.2011020317,"org.python.pydev.debug",1347679587162
+stopped,bundle,org.python.pydev.mylyn,0.3,"org.python.pydev.mylyn",1347679587163
+stopped,bundle,org.python.pydev.refactoring,1.6.5.2011020317,"org.python.pydev.refactoring",1347679587163
+stopped,bundle,org.python.pydev,1.6.5.2011020317,"org.python.pydev",1347679587165
+stopped,bundle,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui",1347679587168
+stopped,bundle,org.eclipse.wst.dtd.ui,1.0.500.v201004290328,"org.eclipse.wst.dtd.ui",1347679587181
+stopped,bundle,org.eclipse.wst.xsd.ui,1.2.304.v201101251958,"org.eclipse.wst.xsd.ui",1347679587183
+stopped,bundle,org.eclipse.wst.xml.ui,1.1.103.v201101122108,"org.eclipse.wst.xml.ui",1347679587184
+stopped,bundle,org.eclipse.wst.common.ui,1.1.500.v200911190730,"org.eclipse.wst.common.ui",1347679587185
+stopped,bundle,org.eclipse.wst.sse.ui,1.2.3.v201102102045,"org.eclipse.wst.sse.ui",1347679587194
+stopped,bundle,com.aptana.ide.debug.ui,2.0.0.1254164293,"com.aptana.ide.debug.ui",1347679587202
+stopped,bundle,com.aptana.ide.desktop.integration,2.0.0.1253913567,"com.aptana.ide.desktop.integration",1347679587203
+stopped,bundle,com.aptana.ide.desktop.integration.server,2.0.0.1278523018,"com.aptana.ide.desktop.integration.server",1347679587203
+stopped,bundle,com.aptana.ide.documentation,2.0.0.1278523018,"com.aptana.ide.documentation",1347679587203
+stopped,bundle,com.aptana.ide.reporting,2.0.0.1278614541,"com.aptana.ide.reporting",1347679587265
+stopped,bundle,com.aptana.ide.scripting,2.0.0.1278523018,"com.aptana.ide.scripting",1347679587265
+stopped,bundle,com.aptana.ide.editor.xml,2.0.0.1253913567,"com.aptana.ide.editor.xml",1347679587266
+stopped,bundle,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editor.html",1347679587266
+stopped,bundle,com.aptana.ide.editor.css,2.0.0.1257380403,"com.aptana.ide.editor.css",1347679587267
+stopped,bundle,com.aptana.ide.js.docgen,2.0.0.1278523018,"com.aptana.ide.js.docgen",1347679587268

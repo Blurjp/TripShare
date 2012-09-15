@@ -71,9 +71,11 @@ class CreateAccountHandler(BaseHandler):
     def get(self):
         self.render("signup.html")
     
-    @tornado.web.asynchronous    
+   
     def post(self):
+        print self.request.arguments
         name = self.get_argument("username")
+        #name = "testjason"
         email = self.get_argument("email")
         check  = self.syncdb.users.find_one( { 'email' : email })
         
@@ -107,6 +109,7 @@ class CreateAccountHandler(BaseHandler):
                            'status': 'online',
                            'slug': slug,
                            'createdtime': datetime.datetime.utcnow(),
+                           'facebook_friends':[],
                            'city': [],
                            'country': [],
                            'trips':[],
@@ -128,7 +131,7 @@ class CreateAccountHandler(BaseHandler):
                            'search_type':'person'
                                }
                 
-                self.db.users.insert(user, callback=self._on_action)
+                self.syncdb.users.insert(user)
                 
                 #===============================================================
                 # Store basic information in cookie
