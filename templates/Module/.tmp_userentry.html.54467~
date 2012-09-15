@@ -1,0 +1,61 @@
+<ul class="list people">
+{% for user in users %}
+{% if current_user %}
+{% if user['slug'] == current_user['slug'] %}
+<li></li>
+{% else %}
+<li class="person clearfix">
+<div class="actions right">
+{% if current_user %}
+{% if current_user['user_id'] not in [p['user_id'] for p in user['friends'] if p['user_id'] == current_user['user_id'] ] %}
+<a  sid="{{user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
+{% else %}
+<a sid="{{user['user_id']}}" name="focus" class="removefriend xf xbj">Remove friend</a>
+{% end %}
+{% else %}
+<a sid="{{user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
+{% end %}
+</div>
+<a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
+<div class="details">
+<div class="hsubgroup">
+<strong><a href="/people/{{user['slug']}}">{{user['username']}}</a></strong>
+<span>
+
+<span class="city">{{user['current_location']}}</span>
+</span>
+</div>
+<div class="bio">
+<p>{{user['bio']}}</p>
+</div>
+{{len(user['trips'])}} trips
+</div>
+</li>
+
+{%end%}
+
+{% else %}
+
+<li class="person clearfix">
+<div class="actions right">
+<a sid="{{user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
+</div>
+<a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
+<div class="details">
+<div class="hsubgroup">
+<strong><a href="/people/{{user['slug']}}">{{user['username']}}</a></strong>
+<span>
+
+<span class="city">{{user['current_location']}}</span>
+</span>
+</div>
+<div class="bio">
+<p>{{user['bio']}}</p>
+</div>
+{{len(user['trips'])}} trips
+</div>
+</li>
+
+{%end%}
+{%end%}
+</ul>

@@ -1,0 +1,150 @@
+{% if current_user %}
+<div id="settingboxes"> 
+<div id="setting" class="settingdialogdiv">
+
+<form action="/a/editprofile" method="post">
+ {% raw xsrf_form_html() %}  
+<table class="form">
+<tbody><tr>
+<td class="label">Name:</td>
+<td class="value" style="padding-right:20px"><input name="name" type="text" size="20" value="{{current_user['username']}}" class="textbox" style="width:310px"></td>
+<td rowspan="12" style="border-left:1px solid #ccc; padding-left:20px; vertical-align:top; text-align:center">
+<div><a href="#" class="l_editpicture" sid="5d993f60e35c40fea505d5d2b1285ee4" title="Change picture"><img src="{{current_user['picture']}}" alt="{{current_user['username']}}" class="picture large"></a></div>
+<div style="font-size:8pt"><a href="#" class="l_editpicture" sid="5d993f60e35c40fea505d5d2b1285ee4">Change picture</a></div>
+</td>
+</tr>
+
+<tr>
+<td class="label">Username:</td>
+<td class="value"><input name="nickname" type="text" size="20" value="{{current_user['username']}}" class="textbox" style="width:310px"></td>
+</tr>
+
+<tr>
+<td class="label" style="vertical-align:top">Description:</td>
+<td class="value"><textarea rows="2" cols="20" name="description" style="width:310px">a developer</textarea></td>
+</tr>
+
+
+<tr>
+<td class="label">Language:</td>
+<td class="value">
+<select name="locale">
+
+<option value="de">Deutsch</option>
+
+<option value="en" selected="selected">English</option>
+
+<option value="es">Español</option>
+
+<option value="fa">فارسی</option>
+
+<option value="fr">Français</option>
+
+<option value="it">Italiano</option>
+
+<option value="ja">日本語</option>
+
+<option value="ru">русский язык</option>
+
+<option value="tr">Türkçe</option>
+
+<option value="ud">uʍop ǝpısd∩</option>
+
+<option value="zh-cn">中文(简体)</option>
+
+</select>
+</td>
+</tr>
+
+<tr>
+<td class="label">Email:</td>
+<td class="value">
+
+{{current_user["email"]}} (<a href="#" class="l_emailaddresses">change</a>)
+
+</td>
+</tr>
+<tr>
+<td class="label">Password:</td>
+<td class="value"><a href="#" class="l_changepassword">Change password</a></td>
+</tr>
+
+
+<tr>
+<td class="label">Notifications:</td>
+<td class="value"><a href="/settings/notifications">Email / IM preferences</a></td>
+</tr>
+
+
+<tr>
+<td class="label" style="vertical-align: top;">Theme:</td>
+<td class="value">
+<table>
+<tbody><tr>
+<td colspan="2">
+<div>
+<a href="/settings/themes">Choose a theme</a>
+</div>
+</td>
+</tr>
+<tr>
+
+<td style="vertical-align: top;">
+<div>
+<input type="checkbox" name="public_theme" id="public_theme" value="1" checked="checked">
+<label for="public_theme">Theme your profile page</label>
+</div>
+<div>
+<input type="checkbox" name="use_profile_themes" id="use_profile_themes" value="1" checked="checked">
+<label for="use_profile_themes">See other people's themes</label>
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+<tr>
+<td class="label"></td>
+<td class="value"><div class="servicespromo"><a href="/blurjp/services">Import a service</a></div></td>
+</tr>
+
+<tr>
+<td></td>
+<td class="value" style="padding-top:5px">
+<input type="checkbox" name="newwindow" value="1" id="newwindowcheckbox">
+<label for="newwindowcheckbox">Open links in new windows</label>
+</td>
+</tr>
+<tr>
+<td></td>
+<td class="value">
+<table>
+<tbody><tr>
+<td style="vertical-align:top; padding-bottom:0"><input type="checkbox" name="private" value="1" id="publiccheckbox">&nbsp;</td>
+<td style="padding-bottom:0">
+<div><label for="publiccheckbox">Private feed</label></div>
+<div style="font-size:8pt" class="g"><label for="publiccheckbox">Only let people I approve see my feed</label></div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+<tr>
+<td></td>
+<td class="buttons" style="padding-top:8px">
+<input type="submit" value="Save changes" class="save">
+<input type="hidden" name="stream" value="5d993f60e35c40fea505d5d2b1285ee4">
+<input type="hidden" name="next" value="">
+<input type="hidden" name="at" value="8309573725218842769_1293988664">
+
+<a href="#" class="closesetting">Cancel</a>
+</td>
+</tr>
+</tbody></table>
+</form>
+</div>
+
+</div>
+{% end %}
