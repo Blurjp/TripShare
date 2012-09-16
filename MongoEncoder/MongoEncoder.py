@@ -7,7 +7,7 @@ import simplejson
 import datetime
 #from json import JSONEncoder
 #import pymongo
-from pymongo.objectid import ObjectId
+from bson.objectid import ObjectId
 from pymongo.cursor import Cursor
 
 class MongoEncoder(simplejson.JSONEncoder):      
