@@ -21,7 +21,7 @@ from oauth2client.file import Storage
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.tools import run
 from icalendar import Calendar, Event
-from icalendar import UTC
+#from icalendar import UTC
 
 class ExportCalendarAsiCal(BaseHandler):
     
