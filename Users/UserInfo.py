@@ -36,20 +36,26 @@ def percent_cb(complete, total):
 
 class TravelersHandler(BaseHandler):
     user = None
-    @tornado.web.asynchronous
+    #@tornado.web.asynchronous
     def get(self, type):
-
+        
         if (type == '' or type == 'friends'):
-                self.db.users.find(sort = [('trips.count()', -1)], callback=self._people_entry)
+                #self.db.users.find(sort = [('trips.count()', -1)], callback=self._people_entry)
+              user =  self.db.users.find().sort('trips.count()', -1)
         elif (type == 'active'):
-                self.db.users.find(sort = [('trips.count()', -1)], callback=self._people_entry)
+                #self.db.users.find(sort = [('trips.count()', -1)], callback=self._people_entry)
+              user =    self.db.users.find().sort('trips.count()', -1)
         elif (type == 'latest'):
-                self.db.users.find(sort = [('createdtime', -1)] , callback=self._people_entry)  
+                #self.db.users.find(sort = [('createdtime', -1)] , callback=self._people_entry)  
+              user =    self.db.users.find().sort('createdtime', -1)
         elif (type == 'nearest'):
             if self.current_user:
-                self.db.users.find({ 'current_position' : { '$near' : self.current_user['current_position']} } , callback=self._people_entry)  
+                #self.db.users.find({ 'current_position' : { '$near' : self.current_user['current_position']} } , callback=self._people_entry)
+              user =    self.syncdb.users.find({ 'current_position' : { '$near' : self.current_user['current_position']}})
             else:
                 self.redirect('/login')
+        top_shares = self.syncdb.users.find().limit(10).sort("trip_count", pymongo.DESCENDING)
+        self.render("travelers.html", users = response, top_shares = top_shares)
         
     def _people_entry(self, response, error):
         if error:

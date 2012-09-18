@@ -216,7 +216,7 @@ class GetTrips(BaseHandler):
 class SaveTrips(BaseHandler):
         slug = None
         
-        @tornado.web.asynchronous
+        #@tornado.web.asynchronous
         @ajax_login_authentication
         def post(self):   
             tripStart = self.get_argument("startPlace")
@@ -234,7 +234,9 @@ class SaveTrips(BaseHandler):
             # else:
             #    self.db.trips.update({'slug':self.slug}, {'$set':{'start_place':tripStart, 'dest_place':tripDest, 'dest_place':tripDest, 'trip_path':tripPath}, '$pushAll':{'way_points': wayPoints} }, callback=self._save_callback)
             #===================================================================
-            self.db.trips.update({'slug':self.slug}, {'$set':{'start_place':tripStart, 'dest_place':tripDest, 'start_place_position':tripStartPosition, 'dest_place_position':tripDestPosition,'trip_path':tripPath}},  callback=self._save_callback)
+            #self.db.trips.update({'slug':self.slug}, {'$set':{'start_place':tripStart, 'dest_place':tripDest, 'start_place_position':tripStartPosition, 'dest_place_position':tripDestPosition,'trip_path':tripPath}},  callback=self._save_callback)
+            self.syncdb.trips.update({'slug':self.slug}, {'$set':{'start_place':tripStart, 'dest_place':tripDest, 'start_place_position':tripStartPosition, 'dest_place_position':tripDestPosition,'trip_path':tripPath}})
+            self.redirect("/trip/" + str(self.slug))
             
         def _save_callback(self, response, error):
             if error:

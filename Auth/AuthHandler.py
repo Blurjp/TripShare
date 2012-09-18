@@ -201,6 +201,7 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
                     'slug': slug,
                     'createdtime': datetime.datetime.utcnow(),
                     'access_token': self.access_token,  
+                    'facebook_friends': [],
                     'save_guide':[],
                     'like_guide':[],
                     'save_site':[],
@@ -238,7 +239,8 @@ class AuthLoginFBHandler(BaseHandler, tornado.auth.FacebookGraphMixin):
             user_id = _user['user_id'] = bson.ObjectId()
             _user['createdtime']=datetime.datetime.utcnow()
         _user['slug'] = slug
-        self.db.users.save(_user, callback=self._on_action)
+        #self.db.users.save(_user, callback=self._on_action)
+        self.syncdb.users.save(_user)
         self.set_secure_cookie("user", str(user_id))
         self.redirect(self.get_argument("next", "/"))
     
@@ -357,7 +359,8 @@ class AuthLoginTWHandler(BaseHandler, tornado.auth.TwitterMixin):
         
         
         _user['slug'] = slug
-        self.db.users.save(_user, callback=self._on_action)
+        #self.db.users.save(_user, callback=self._on_action)
+        self.syncdb.users.save(_user)
         self.set_secure_cookie("user", str(user_id))
         self.redirect(self.get_argument("next", "/"))
     

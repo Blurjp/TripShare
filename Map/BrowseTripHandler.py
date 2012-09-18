@@ -21,7 +21,7 @@ class BaseHandler(tornado.web.RequestHandler):
         #    self._db = asyncmongo.Client(pool_id='mytestdb', host='127.0.0.1', port=27017, maxcached=10, maxconnections=50, dbname='TripShare')
         #=======================================================================
         #return self._db
-        return self.application.db
+        return self.application.syncdb
     
     @property
     def syncdb(self):
@@ -72,7 +72,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
      
 class BrowseHandler(BaseHandler):
-    @tornado.web.asynchronous
+    #@tornado.web.asynchronous
     def get(self):
         if not self.current_user:  
             #trips = self.db.query("SELECT trip_id, slug, title FROM trips ORDER BY published DESC LIMIT 10")
@@ -81,7 +81,7 @@ class BrowseHandler(BaseHandler):
             
         else:  
             #trips = self.db.query("SELECT trip_id, slug, title FROM trips where owner_id = %s ORDER BY published DESC LIMIT 10", self.current_user.user_id)
-            self.db.trips.find({'owner_id':self.get_db_user_id()}, limit = 10, sort = [('published', -1)], callback=self._get_trips)
+            self.syncdb.trips.find({'owner_id':self.get_db_user_id()}).limit(10).sort('published', -1)
             #self.db.trips.find({}, limit = 10, sort = [('published', -1)], callback=self._get_trips)
             
         #self.render("browsetrip.html", trips=trips, token = self.xsrf_token)
@@ -91,12 +91,21 @@ class EntryHandler(BaseHandler):
     singletrip = None
     trips = None
     
-    @tornado.web.asynchronous
+    #@tornado.web.asynchronous
     def get(self, slug):
         if self.current_user:
                 self.singletrip = self.syncdb.trips.find_one({'slug':slug})
                 if not self.singletrip: raise tornado.web.HTTPError(404)
-                self.db.trips.find({'owner_id':self.get_db_user_id()}, limit = 10, sort = [('published', -1)], callback=self._trip_entry)   
+                #self.db.trips.find({'owner_id':self.get_db_user_id()}, limit = 10, sort = [('published', -1)], callback=self._trip_entry)   
+                response = self.syncdb.trips.find({'owner_id':self.get_db_user_id()}).limit(10).sort('published', -1)
+                users = []
+                for group in self.singletrip['groups']:
+                    for user in group['members']:
+                        users.append(user)
+                users.reverse()
+        
+                self.render("Trips/edittrip.html", current_user=self.current_user, expense = self.singletrip['expense'], users = users ,group_id=self.singletrip['groups'][0]['group_id'] , singletrip=self.singletrip, dest_place = unicode(simplejson.dumps(self.singletrip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)),token = self.xsrf_token, trips=response)
+        
         else:
                 self.singletrip = self.syncdb.trips.find_one({'slug':slug})
                 users = []

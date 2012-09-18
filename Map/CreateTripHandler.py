@@ -24,7 +24,7 @@ class ComposeHandler(BaseHandler):
     trip_id = None
     
     
-    @tornado.web.asynchronous
+    #@tornado.web.asynchronous
     @ajax_login_authentication
     def get(self):
         
@@ -34,11 +34,12 @@ class ComposeHandler(BaseHandler):
         if id:
                 self.greeting = "Welcome "+ self.get_current_username()
                 #singletrip = self.db.get("SELECT * FROM trips WHERE trip_id = %s", int(id))
-                self.singletrip = self.db.trips.find_one({'trip_id':id})
-                
+                #self.singletrip = self.db.trips.find_one({'trip_id':id})
+                self.singletrip = self.syncdb.trips.find_one({'trip_id':id})
                 #trips = self.db.query("SELECT * FROM trips where owner_id = %s ORDER BY published DESC LIMIT 10", self.current_user.user_id)
-                self.trips = self.db.trips.find({'owner_id':self.current_user.user_id}, limit = 10, callback=self._get_trips, sort = [('published', -1)])
-                
+                #self.trips = self.db.trips.find({'owner_id':self.current_user.user_id}, limit = 10, callback=self._get_trips, sort = [('published', -1)])
+                response = self.trips = self.syncdb.trips.find({'owner_id':self.current_user.user_id}).limit(10).sort('published', -1)
+                self.render("Trips/edittrip.html", trips=response, singletrip=self.singletrip,  greeting= self.greeting)
         else:
                 self.greeting = "Become a TripSharer!"
         
