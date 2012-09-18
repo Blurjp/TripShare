@@ -55,7 +55,7 @@ class TravelersHandler(BaseHandler):
             else:
                 self.redirect('/login')
         top_shares = self.syncdb.users.find().limit(10).sort("trip_count", pymongo.DESCENDING)
-        self.render("travelers.html", users = response, top_shares = top_shares)
+        self.render("travelers.html", users = user, top_shares = top_shares)
         
     def _people_entry(self, response, error):
         if error:
