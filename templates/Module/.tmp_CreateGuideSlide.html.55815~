@@ -8,7 +8,7 @@
 		
  <div id="guide_title_slide">
  <h2 style="float:left"> Title </h2>   
- <input name="guide title" class="text destination margin-right-thin" type="text" geovalue="" style="margin-left:90px"></input>  
+ <input name="guide title" class="text destination margin-right-thin" type="text" style="margin-left:90px"></input>  
  </div>
 <div id="guide_tag_slide">
   <h2 style="float:left;">Tag</h2>
@@ -41,7 +41,7 @@
     <label for="place-0-text">Destination:</label>
   </div>
   <div class="left c2of5 tright">
-    <input name="place-0-text" type="text" class="text destination margin-right-thin" value="" geovalue="">
+    <input name="place-0-text" type="text" class="text destination margin-right-thin" value="">
     
   </div>
   <div class="right " style="margin:0 50px 22px 12px;">

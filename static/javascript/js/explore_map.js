@@ -61,9 +61,19 @@
         var place = autocomplete.getPlace();
 		geocoder.geocode( { 'address': place.formatted_address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-		var geoId = searchId.replace(/text/g,"geo");
+			
+			if(searchId.indexOf("start")==-1)
+			{
+				var geoId = searchId.replace(/text/g, "geo");
+			}
+			else 
+			{
+				var geoId = searchId+"-geo";
+			}
 	  	$('#'+geoId).val(results[0].geometry.location);
-		
+		//$('#'+geoId).attr('geovalue').val(results[0].geometry.location);
+		//$('#'+geoId).geovalue = results[0].geometry.location;
+		//alert(geoId);
       } 
       });
       });

@@ -71,6 +71,7 @@
 					_center = results[0].geometry.location;
 					document.getElementById("startPosition").value = _center;
 				// alert(_center);
+				//alert("test");
 				}
 				else {
 					alert("Geocode was not successful for the following reason: " + status);
@@ -516,6 +517,7 @@ function codeLatLng(name) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[1]) {
 		  tempName = name.replace(/Position/,"Place");
+		  //alert("Geocoder failed due ");
           document.getElementById(tempName).value = results[1].formatted_address;
         }
       } else {
@@ -532,7 +534,7 @@ function codeLatLng(name) {
       if (status == google.maps.GeocoderStatus.OK) 
       {
        map.setCenter(results[0].geometry.location);        
-       
+       //alert("test");
        return results[0].geometry.location;
         }
 
@@ -1109,7 +1111,7 @@ $(document).ready(function() {
 
 $('.trip_site_add').live('click',function(){
   	
-     $('.route').append('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input type="text" autocomplete="off" class="ac_input" id="site_input" name="site_input" placeholder="EX: New York, NY" class="site_input"><input class="site_input_date" value=""></h2></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="trip_site_add_done action" value="update" targettype="site"><select class="site_ride"><option value="plane">by plane</option><option value="train">by train</option><option value="car">by car</option><option value="bus">by bus</option><option value="ferry">by ferry</option><option value="motorcycle">by motorcycle</option><option value="cycle">by bicycle</option><option value="walk">on foot</option><option value="other">other</option></select></div></div></div></div></div></div><div class="add_trip_site_move left" style="padding:5px"><a class="add_trip_site_remove"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a></div></li>')
+     $('.route').append('<li class="show_site" style="height:100px"><div class="site-details left" style="width:80% ;padding:5px"><div class="site-bar"><img class="picture small" src="/static/icon/site_icon2.png"><h2><input type="text" autocomplete="off" class="ac_input" geovalue="" id="site_input" name="site_input" placeholder="EX: New York, NY" class="site_input"><input class="site_input_date" value=""></h2></div><div class="action-bar"><div class="actions"><div class="site_action"><input type="button" class="trip_site_add_done action" value="update" targettype="site"><select class="site_ride"><option value="plane">by plane</option><option value="train">by train</option><option value="car">by car</option><option value="bus">by bus</option><option value="ferry">by ferry</option><option value="motorcycle">by motorcycle</option><option value="cycle">by bicycle</option><option value="walk">on foot</option><option value="other">other</option></select></div></div></div></div></div></div><div class="add_trip_site_move left" style="padding:5px"><a class="add_trip_site_remove"><img src="/static/images/delete_stop_16px.png" width="24" height="24"></a></div></li>')
      setAutoComplete('site_input');
 	 $('.trip_site_add').hide();
   });

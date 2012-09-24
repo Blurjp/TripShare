@@ -17,8 +17,8 @@
 					</div>
                     <div id="search_bar">
                     	
-                       <input type="text" autocomplete="off" class="ac_input" id="start" name="start" placeholder="EX: New York, NY" geovalue="">
-					   <input type="hidden" id="start-geo" name="start-geo" value="">
+                       <input type="text" autocomplete="off" class="ac_input" id="start" name="start" placeholder="EX: New York, NY">
+					   <input type="hidden" id="start-geo" value="">
                   
                       <p id="enter_location_error_message" class="bad" style="display:none;">Please set location</p>
                    
@@ -79,7 +79,7 @@
     <label for="place-0-text">Destination:</label>
   </div>
   <div class="left c2of5 tright">
-    <input id="place-0-text" name="place-0-text" type="text" class="text destination margin-right-thin" geovalue="" value="">
+    <input id="place-0-text" name="place-0-text" type="text" class="text destination margin-right-thin" value="">
     <input id="place-0" name="place-0" type="hidden" value="">
 	<input id="place-0-geo" name="place-0-geo" type="hidden" value="">
   </div>

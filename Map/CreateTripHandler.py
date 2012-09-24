@@ -50,7 +50,7 @@ class ComposeHandler(BaseHandler):
             raise tornado.web.HTTPError(500)
         self.render("Trips/edittrip.html", trips=response, singletrip=self.singletrip,  greeting= self.greeting)
         
-    @tornado.web.asynchronous
+    #@tornado.web.asynchronous
     @ajax_login_authentication
     def post(self):
         
@@ -59,7 +59,9 @@ class ComposeHandler(BaseHandler):
         groups  = []
         group_id = bson.ObjectId()
         _formData = simplejson.loads(self.get_argument('data'))
+        
         start = _formData['start']
+       
         added_members = _formData['user_ids'].split('||')
                 #added_members = dic["user_ids"].split('//') 
         for member_id in added_members:
@@ -100,7 +102,7 @@ class ComposeHandler(BaseHandler):
                 dest['date'] = dest['date']
  
         title = "From "+start+dest_string
-        tripStartPosition = ""
+        tripStartPosition = _formData['start-geo']
         start_date = destinations[0]['date']
         finish_date = _formData['finish-date']
 
@@ -150,8 +152,8 @@ class ComposeHandler(BaseHandler):
             for member in members:
                 self.syncdb.users.update({'user_id':bson.ObjectId(member['user_id'])}, { '$addToSet':{'trips': self.trip_id}, '$inc':{'trip_count':1}})    
             self.syncdb.trips.ensure_index([('groups.dest_place.loc', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
-            self.syncdb.trips.ensure_index([('trip_id')], unique=True)
-            self.syncdb.trips.ensure_index([('slug')], unique=True)
+            self.syncdb.trips.create_index('trip_id', unique=True)
+            self.syncdb.trips.create_index('slug', unique=True)
             self.redirect("/trip/" + str(self.slug))
             
     def _create_trips(self, response, error):
@@ -160,8 +162,8 @@ class ComposeHandler(BaseHandler):
             self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, { '$addToSet':{'trips': self.trip_id}, '$inc':{'trip_count':1}})    
             
             self.syncdb.trips.ensure_index([('groups.dest_place.loc', pymongo.GEO2D), ('published',pymongo.DESCENDING)])
-            self.syncdb.trips.ensure_index([('trip_id')], unique=True)
-            self.syncdb.trips.ensure_index([('slug')], unique=True)
+            self.syncdb.trips.ensure_index('trip_id', unique=True)
+            self.syncdb.trips.ensure_index('slug', unique=True)
             print('redirect')
             self.redirect("/trip/" + str(self.slug))
             

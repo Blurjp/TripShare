@@ -281,7 +281,7 @@ class UnsubscribeTrip(BaseHandler):
 class ShowNewTrips(BaseHandler):
         def post(self):
             members = []
-            latest_trip_ids = self.syncdb.trips.find({"privacy": {"$ne": 2}}).limit(20).sort("published", pymongo.DESCENDING)
+            latest_trip_ids = self.syncdb.trips.find({"privacy": {"$ne": 1}}).limit(20).sort("published", pymongo.DESCENDING)
            
             if latest_trip_ids.count() > 0:
                 for latest_trip_id in latest_trip_ids:
@@ -306,41 +306,40 @@ class ShowNewTrips(BaseHandler):
         def get(self): 
             image_info=[]
             dest_places = []
-            """ Get Latest trips to show in the map"""
-            trips = self.syncdb.trips.find().limit(10).sort("published", pymongo.DESCENDING)
+            """ Get RANDOM trips to show in the map"""
+            trips = self.syncdb.trips.find().limit(10)
             if trips.count() > 0:
                 for trip in trips:
-                     trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
-                     if (trip_user):
-                         image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
-                         dest_places.append(unicode(simplejson.dumps(trip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
-        
+                    trip_user = self.syncdb.users.find_one({'user_id': bson.ObjectId(trip['owner_id'])})
+                    if (trip_user):
+                        image_info.append(trip['title']+';'+trip_user['picture'] +';'+'/trip/'+trip['slug'])
+                        dest_places.append(unicode(simplejson.dumps(trip['groups'][0]['dest_place'], cls=MongoEncoder.MongoEncoder.MongoEncoder)))
+            
             """ Get latest trips to show in the list"""
-        
-            latest_trip_ids = trips
-        
+            
+            latest_trip_ids = self.syncdb.trips.find().sort("published", pymongo.DESCENDING).limit(10)
+            
             top_shares = self.syncdb.users.find().sort("trip_count", pymongo.DESCENDING).limit(10)
             top_guides = self.syncdb.guides.find().sort("rating", pymongo.DESCENDING).limit(5)
-        
+            
             _trips = []
             if latest_trip_ids.count() > 0:
                     for latest_trip_id in latest_trip_ids:
                             latest_trip_id['check_join'] = False
-                        
-                            members = latest_trip_id['groups'][0]['members']
-                            if self.current_user:
-                                for member in members:
-                                    if member['user_id'] == self.current_user['user_id']:
-                                        latest_trip_id['check_join'] = True
-                                        break
-                                
-                            #latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
-                            _trips.append(latest_trip_id)
-                        
-        
+                            if len(latest_trip_id['groups'])>0:
+                                members = latest_trip_id['groups'][0]['members']
+                                if self.current_user:
+                                    for member in members:
+                                        if member['user_id'] == self.current_user['user_id']:
+                                            latest_trip_id['check_join'] = True
+                                            break
+                                        
+                                #latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id)
+                                _trips.append(latest_trip_id)
+                            
+            
             self.render("newbeforesignin.html", guides=top_guides, dest_places = dest_places, trips=trips, image_info=image_info, latest_trip_ids=_trips, top_shares = top_shares)
-   
-         
+
 
 class ShowMyTrips(BaseHandler):
         
@@ -379,7 +378,7 @@ class ShowMyTrips(BaseHandler):
                 trip = self.syncdb.trips.find_one({"trip_id":bson.ObjectId(trip_id)})
                 if trip:
                     latest_trip_ids.append(trip)
-               
+                
             latest_trip_ids.reverse()
             if len(latest_trip_ids) > 0:
                 for latest_trip_id in latest_trip_ids:
@@ -394,9 +393,16 @@ class ShowMyTrips(BaseHandler):
                                     latest_trip_id['check_join'] = True
                                     #print("true")
                                     break
-                        latest_trip_id['html'] = self.render_string("Module/trip.html", trip = latest_trip_id) + "||||"
-                        #self.write(json.dumps(latest_trip_id, cls=MongoEncoder.MongoEncoder, ensure_ascii=False, indent=0))
-                        self.write(latest_trip_id['html'])
+            
+            top_shares = self.syncdb.users.find().sort("trip_count", pymongo.DESCENDING).limit(10)
+            top_guides = self.syncdb.guides.find().sort("rating", pymongo.DESCENDING).limit(5)
+            image_info=[]
+            dest_places = []
+            """ Get RANDOM trips to show in the map"""
+            trips = []
+
+            self.render("newbeforesignin.html", guides=top_guides, dest_places = dest_places, trips=trips, image_info=image_info, latest_trip_ids=latest_trip_ids, top_shares = top_shares)
+
 
 class ShowHotTrips(BaseHandler):
         
