@@ -211,7 +211,14 @@ $(document).ready(function() {
       disabled.disable();
 	  
 	  $.postJSON('/createtrip', content, function(response){
-			    ShowCreateTripResponse(response);
+			    if (response == 'not_authenticated') {
+			
+				loginpopup();
+			}
+			else {
+				alert('Trip created successfully.');
+				
+			}
 			});		
       
       document.getElementById("create_trip_form").reset();	
@@ -293,10 +300,7 @@ jQuery.fn.enable = function(opt_enable) {
     return this;
 };
  
- function ShowCreateTripResponse(response)
- {
- 	//alert(response);
- }
+ 
      /* Click go to step 3 button */
   $('a[name=create_trip_step_3]').click(function(e) {  
       e.preventDefault();  
