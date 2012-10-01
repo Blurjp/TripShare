@@ -306,10 +306,7 @@ table.oneclickicons td {line-height:0; padding-right:7px;}
 {% include "Module/find_friends.html" %}
 
 <input id="walkthrough_section_value" value = "" type = "hidden">
-<input id="initialize" value = "" type = "hidden"> 
-{% if current_user %}
-<input id="userid" value = "valid" type = "hidden"> 
-{% end  %}  
+<input id="initialize" value = "" type = "hidden">   
 <script  >
 //<![CDATA[
 function checkform(form)

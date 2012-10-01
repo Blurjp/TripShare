@@ -404,7 +404,7 @@ class Application(tornado.web.Application):
                             #===================================================
                             #self.db = asyncmongo.Client(pool_id='mytestdb', host='127.0.0.1', port=27017, maxcached=10, maxconnections=50, dbname='TripShare')
                             #self.syncdb = pymongo.Connection("184.169.172.137", 27017).TripShare
-                            self.syncdb = pymongo.Connection("184.169.172.137", 27017).TripShare
+                            self.syncdb = pymongo.Connection("localhost", 27017).TripShare
                             
 def main():
     tornado.options.parse_command_line()

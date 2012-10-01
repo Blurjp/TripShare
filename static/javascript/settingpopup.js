@@ -285,8 +285,18 @@ $(document).ready(function() {
         var winH = $(window).height();  
         var winW = $(window).width();  
 	
+	
+	
 	$('a[name=find_friends]').click(function(e) {  
-      e.preventDefault();  
+      e.preventDefault(); 
+	  //alert($('user_ids_for_trips').val()==='') ;
+	  if($('userid').length==0)
+	  {
+	  	
+	  	loginpopup();
+	  }
+	  else
+	  {
 	  $('#social-close-modal').show()
         var id = '#social_tools';  
        
@@ -297,6 +307,7 @@ $(document).ready(function() {
 	    $(id).animate({right: winW/2-$(id).width()/2});
         $(id).css("position", "fixed");
 		set_social_section('tripshare');
+	  }
  });
  
    //if close button is clicked  
