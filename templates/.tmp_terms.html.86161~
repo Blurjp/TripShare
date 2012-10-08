@@ -9,7 +9,7 @@ Terms of Service
 </title> 
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type' /> 
 <meta name="description" content="TripShare is a group trip planner for you to create and share the trip among your friends."> 
-<meta name="keywords" content="group trip, expense management, hotel, travel guide, trip calendar"> 
+<meta name="keywords" content="group trip, budget control, hotel, travel guide, collect travel expense">
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/CalendarControl.css") }}" type="text/css"/>
@@ -54,7 +54,7 @@ Terms of Service
 <p>Effective on November 16, 2010</p> 
 <h4>About These Terms</h4> 
 <p>By using the TripShare site, you're agreeing to these terms</p> 
-<p>As a user ("You," "Your") of the TripShare site (“Site”), services ("Services"), and visual or verbal information ("Content") provided by TripShare ("Us," "Our," "We"), its users ("User Content" or "User Generated Content"), or partners from whom we may license data or content ("Partner Content" or "Third Party Content"), including, but not limited to, the TripShare website at http://www.TripShare.com, the trip@TripShare.com email address, the TripShare application programming interfaces (“TripShare APIs”), and the mobile applications created by TripShare, you are agreeing to be bound by the following Terms and Conditions ("Terms of Service" or "Terms"). You acknowledge that these Terms are part of our Site Privacy Policy (“Privacy Policy”), which is incorporated by reference, and by accessing or using our Site, you agree to be bound by all of its terms and conditions. If you do not agree to these terms and the terms in our Privacy Policy, please do not access or use this Site or our Services.</p> 
+<p>As a user ("You," "Your") of the TripShare site (“Site”), services ("Services"), and visual or verbal information ("Content") provided by TripShare ("Us," "Our," "We"), its users ("User Content" or "User Generated Content"), or partners from whom we may license data or content ("Partner Content" or "Third Party Content"), including, but not limited to, the TripShare website at http://www.TripShare.com, the food@TripShare.com email address, the TripShare application programming interfaces (“TripShare APIs”), and the mobile applications created by TripShare, you are agreeing to be bound by the following Terms and Conditions ("Terms of Service" or "Terms"). You acknowledge that these Terms are part of our Site Privacy Policy (“Privacy Policy”), which is incorporated by reference, and by accessing or using our Site, you agree to be bound by all of its terms and conditions. If you do not agree to these terms and the terms in our Privacy Policy, please do not access or use this Site or our Services.</p> 
 <p>Please read the information below to learn the following regarding your use of this Site:</p> 
 <p> 
 <em>You are responsible for any consequences of violating these terms</em> 
@@ -129,6 +129,10 @@ Terms of Service
 <em>Your content may be modified for technical reasons</em> 
 </p> 
 <p>We may modify or adapt your Content in order to transmit, display or distribute it over computer networks and in various media and/or make changes to your Content as are necessary to conform and adapt that Content to any requirements or limitations of any networks, devices, services or media.</p> 
+<h4>Commercial Use</h4> 
+<p>We welcome commercial use of TripShare by small businesses and organizations for the following purposes, as long as your relationship to the business is clear: sharing photos of food available at your small business; incentivizing users to spot foods at your business; creating guides including foods created by your business; and hosting competitions to promote your business or event. Any other commercial use, must be approved in advance by TripShare. We do not permit commercial users to incentivize other users to vote up (or “nom”) their foods on TripShare. Please contact us at team [at] TripShare.com with a description of your intended use.</p> 
+<h4>Removal of Content and Account Termination</h4> 
+<p> 
 <em>We reserve the right to remove content and accounts</em> 
 </p> 
 <p>TripShare, in its sole discretion, has the right to remove content and suspend, terminate or deactivate your account at any time, without notice and without liability, for any reason, including but not limited to violation of Terms of Service, infringing on Intellectual Property and inactivity. We reserve the right to reclaim any username created by a TripShare user on behalf of businesses or individuals that hold legal claim or trademark on that username.</p> 
@@ -204,6 +208,7 @@ Email: copyright@TripShare.com
 <p>TripShare’s rights apply to the TripShare APIs and all output and executables of the TripShare APIs, excluding any software components developed by You which do not themselves incorporate the TripShare APIs or any output or executables of the TripShare APIs. TripShare owns all rights, title, and interest in and to the TripShare APIs.</p> 
 <p>You acknowledge and agree that TripShare (or TripShare licensors and their suppliers, as applicable) own all legal right, title, and interest in and to the Service and Content, including any intellectual property rights that exist in the Service and the Content (whether or not those rights are registered) wherever in the world those rights may exist.</p> 
 <p>TripShare and the TripShare wordmark are trademarks of TripShare.</p> 
+<p>The “I [Camera] Food” logo is a trademark of TripShare.</p> 
 <h4>TripShare API</h4> 
 <p>The TripShare application programming interface (“TripShare API”) is a Service that allows licensees and pre-approved licensees to obtain and display certain TripShare Content. Your license to the TripShare APIs under this TOS shall continue until it is terminated by either You or TripShare. You may terminate the license by discontinuing use of all or any of the TripShare APIs. TripShare may change, suspend, terminate, or discontinue any aspect of the TripShare APIs at any time, including the availability of any TripShare APIs or the presence of advertising from third party advertisers. TripShare may also impose limits on certain features and services or restrict Your access to parts or all of the TripShare APIs or the TripShare Site or mobile apps without notice or liability. TripShare shall not be liable to You or any third party should TripShare exercise its right to modify or discontinue the Service or part of it.</p> 
 <h4>Grant of API License</h4> 

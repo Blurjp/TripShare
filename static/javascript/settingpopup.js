@@ -289,7 +289,7 @@ $(document).ready(function() {
 	
 	$('a[name=find_friends]').click(function(e) {  
       e.preventDefault(); 
-	  //alert($('user_ids_for_trips').val()==='') ;
+	  //alert($('#userid').val()) ;
 	  if($('#userid').length==0)
 	  {
 	  	loginpopup();

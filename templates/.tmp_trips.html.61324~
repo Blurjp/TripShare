@@ -7,9 +7,8 @@ TripShare
 trips
 </title> 
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type' /> 
-<meta name="description" content="TripShare is a group trip planner for you to create and share the trip among your friends."> 
-    <meta name="keywords" content="group trip, expense management, hotel, travel guide, trip calendar"> 
-  
+<meta content="TripShare is a visual trip to good food and where to find it. It's the easiest way to find and share the foods you love." name='description' /> 
+<meta content='dishes, dish, food, reviews, food photos, restaurants, dining, trip, food spotting, menu, local' name='keywords' /> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
 <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
 <link rel="stylesheet" href="{{ static_url("stylesheets/plan.css") }}" type="text/css"/>
