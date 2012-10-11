@@ -66,12 +66,17 @@ class TravelersHandler(BaseHandler):
 class UserHandler(BaseHandler):
     user = None
     
-    @tornado.web.asynchronous
+    
     def get(self, slug):
         
         self.user = self.syncdb.users.find_one({'slug':slug})
         if self.user:
-            self.db.trips.find({'trip_id':{'$in':self.user['trips']}}, sort = [('published', -1)], callback=self._user_entry)
+            response = self.syncdb.trips.find({'trip_id':{'$in':self.user['trips']}}).sort("published", pymongo.DESCENDING)
+            if self.current_user:           
+               check = True if self.user['slug'] == self.current_user['slug'] else False
+            else:
+               check = False
+            self.render("userentry.html", check = check ,custom_user = self.user, trips = response) 
         else:
             self.redirect("exception.html")
                   
@@ -366,7 +371,7 @@ class UpdateUserProfileHandler(BaseHandler):
 class UserPictureHandler(BaseHandler):
     
     @ajax_login_authentication
-    @tornado.web.asynchronous 
+   
     def post(self):
         user_id = self.get_secure_cookie("user")
         if not user_id: return None
