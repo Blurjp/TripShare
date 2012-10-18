@@ -1158,8 +1158,9 @@ a#fb_login_pop {float:right; display:block; width:155px; height:23px; overflow:h
 #social_tools .picture {float:left;margin:2px}
 #social-close-modal {position: absolute; overflow: hidden; text-indent: -10000px; right: -15px; top: -15px; width: 30px; height: 30px; background: transparent url(/static/images/close-button.png) no-repeat}
 
-.list.people      {float:left; display: block; padding: 10px 0 5px 18px; margin-bottom: 5px  }
-.list.people  li   { border-radius: 0;-webkit-border-radius: 0; -moz-border-radius: 0;float: left; margin: 0px 15px 15px 0 }
+
+.list.people      {padding: 10px 0 5px 18px; margin-bottom: 5px  }
+.list.people li { border-radius: 0;-webkit-border-radius: 0; -moz-border-radius: 0; margin: 0px 5px 15px 0 }
 
 #content_twitter, #content_facebook,#content_invite,#content_tripshare {display:none; margin-top:60px}
 #login_facebook {float:right; width:255px; height:123px; overflow:hidden; background: url("/static/images/facebook_sign_in.jpg") no-repeat transparent; z-index:5000;  text-decoration:none;position:absolute;top:40%;left:40%}

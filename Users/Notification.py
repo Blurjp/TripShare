@@ -24,6 +24,7 @@ class NotificationGenerator():
         self.notification['type'] = type
         self.notification['user_id'] = user_id
         self.notification['picture'] = picture
+        self.notification['result'] = ""
         self.notification['id'] = bson.ObjectId()
         self.notification['created'] = time
         
