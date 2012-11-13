@@ -18,7 +18,7 @@
 		//directionsDisplay.setMap(map);
 		//infoWindow = new google.maps.InfoWindow();
 		
-		setMarkers(map);
+		//setMarkers(map);
 		
 		setAutoComplete('start');
 		setAutoComplete('place-0-text');
@@ -123,22 +123,29 @@ function DestToMarker(dest_place,image, shadow)
 {
 
       dest_place= jQuery.parseJSON(dest_place);
-	  geocoder.geocode( { 'address': dest_place[0]['dest']}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-	  	bounds.extend(results[0].geometry.location);
-		map.fitBounds(bounds);
-        var marker = new google.maps.Marker({
-        position: results[0].geometry.location,
-        map: map,
-        shadow: shadow,
-        icon: image,
-        zIndex: 9000
-    });
-
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-      });
+	  if(dest_place[0] === undefined && dest_place[0]['dest'] === undefined)
+	  {
+	  	alert('test');
+	  	geocoder.geocode({
+	  		'address': dest_place[0]['dest']
+	  	}, function(results, status){
+	  		if (status == google.maps.GeocoderStatus.OK) {
+	  			bounds.extend(results[0].geometry.location);
+	  			map.fitBounds(bounds);
+	  			var marker = new google.maps.Marker({
+	  				position: results[0].geometry.location,
+	  				map: map,
+	  				shadow: shadow,
+	  				icon: image,
+	  				zIndex: 9000
+	  			});
+	  			
+	  		}
+	  		else {
+	  			alert("Geocode was not successful for the following reason: " + status);
+	  		}
+	  	});
+	  }
  
 	
 }
