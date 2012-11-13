@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<title>csSearch by CGI Script.net</title>
+
+<style type="text/css"><!--
+INPUT.button { background-color:#eeeeee;font:tahoma;font-weight:bold;color:#000080;font-size:10pt; }
+--></style>
+
+</head>
+
+<body>
+
+<form name=cssearch onSubmit="return DoSearch();">
+<div align="center">
+  <center>
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0">
+  <tr>
+    <td width="100%">
+      <table border="0" width="100%" cellspacing="0" cellpadding="3">
+        <tr>
+          <td width="100%" valign="middle" align="center">
+            <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+              <tr>
+                <td width="100%" valign="middle" align="center">
+                     <p align="center"><b><font face="tahoma" size="5">csSearch</font></b></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td width="100%" valign="middle" align="center">
+            <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+              <tr>
+                <td width="100%" valign="middle" align="center">
+                  <div align="center">
+                    <center>
+                    <table border="0" cellspacing="0" cellpadding="2">
+                      <tr>
+                        <td><font face="tahoma" size="1"> <b> Search For:</b></font></td>
+                        <td><font face="tahoma" size="1"><b><input type=text name="terms" size=45></b></font></td>
+                      </tr>
+                    </table>
+                    </center>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td width="100%">
+            <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">              <tr>
+                <td width="100%" valign="middle" align="center">
+                  <div align="center">
+                    <center>
+                  <table border="0" cellspacing="0" cellpadding="2">
+                    <tr>
+                      <td valign="middle" align="center"><font face="tahoma" size="1"><b>Boolean:</b></font></td>
+                      <td valign="middle" align="center"> <font face="tahoma" size="1"> <b> <select name="mbool">
+<option value="AND">AND
+<option value="OR">OR
+</select> </b> </font> </td>
+                      <td valign="middle" align="center"><font face="tahoma" size="1"><b>Case:</b></font></td>
+                      <td valign="middle" align="center"> <font face="tahoma" size="1"> <b> <select name="mcase">
+<option value="Insensitive">Insensitive
+<option value="Sensitive">Sensitive
+</select></b></font> </td>
+                      <td valign="middle" align="center"> <font face="tahoma" size="1"><input class="button" type=button value="-=Search=-" onClick="DoSearch();"> </font> </td>
+                    </tr>
+                  </table>
+                    </center>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  </center>
+</div>
+<input type=hidden name=command value=query>
+</form>
+
+<script language=javascript>
+var win=null;
+function MyWindow(mypage,myname,w,h,scroll,pos){
+var rndURL = (1000*Math.random());
+if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
+else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
+settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes';
+win=window.open(mypage+'&rndURL='+rndURL,myname,settings);
+if(win.focus){win.focus();}}
+
+function DoSearch(){
+var mbool = document.cssearch.mbool[document.cssearch.mbool.selectedIndex].value;
+var mcase = document.cssearch.mcase[document.cssearch.mcase.selectedIndex].value;
+if(!document.cssearch.terms.value){
+ alert("Error. Please enter something to search for!");
+ return false;
+ }
+else{
+  var URL = "in(cgiurl)?command=query&terms="+escape(document.cssearch.terms.value)+"&mbool="+mbool+"&mcase="+mcase;
+  MyWindow(URL,'query',600,400,'yes','center');
+  return false;
+  }
+}
+</script>
+
+
+<p align="center"><font face="Tahoma" size="1">Powered by: <a href="http://www.cgiscript.net" target="_blank">CGI
+Script.net</a></font></p>
+
+
+</body>
+
+</html>

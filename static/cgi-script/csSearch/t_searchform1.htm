@@ -1,0 +1,50 @@
+<html>
+
+<head>
+<title>csSearch by CGI Script.net</title>
+
+<style type="text/css"><!--
+INPUT.button { background-color:#eeeeee;font:tahoma;font-weight:normal;color:#000080;font-size:8pt; }
+--></style>
+
+</head>
+
+<body>
+<form name=cssearch onSubmit="return DoSearch();">
+<table border="0" cellspacing="0">
+  <tr>
+    <td valign="middle" align="right"><font face="tahoma" size="1"><input class="button" type=button value="search" onClick="DoSearch();"></font></td>
+    <td valign="middle" align="left"><font face="tahoma" size="1"><b><input class="button" type=text name="terms" size=10></b></font></td>
+  </tr>
+</table>
+<input type=hidden name=command value=query>
+</form>
+
+<script language=javascript>
+var win=null;
+function MyWindow(mypage,myname,w,h,scroll,pos){
+var rndURL = (1000*Math.random());
+if(pos=="random"){LeftPosition=(screen.width)?Math.floor(Math.random()*(screen.width-w)):100;TopPosition=(screen.height)?Math.floor(Math.random()*((screen.height-h)-75)):100;}
+if(pos=="center"){LeftPosition=(screen.width)?(screen.width-w)/2:100;TopPosition=(screen.height)?(screen.height-h)/2:100;}
+else if((pos!="center" && pos!="random") || pos==null){LeftPosition=0;TopPosition=20}
+settings='width='+w+',height='+h+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',location=no,directories=no,status=no,menubar=no,toolbar=no,resizable=yes';
+win=window.open(mypage+'&rndURL='+rndURL,myname,settings);
+if(win.focus){win.focus();}}
+
+function DoSearch(){
+var mbool = "AND";
+var mcase = "Insensitive";
+if(!document.cssearch.terms.value){
+ alert("Error. Please enter something to search for");
+ return false;
+ }
+else{
+  var URL = "in(cgiurl)?command=query&terms="+escape(document.cssearch.terms.value)+"&mbool="+mbool+"&mcase="+mcase;
+  MyWindow(URL,'query',600,400,'yes','center');
+  return false;
+  }
+}
+</script>
+
+</body>
+</html>

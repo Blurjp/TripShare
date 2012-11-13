@@ -1,0 +1,191 @@
+<!--
+#####################################################################
+#                                                                   #
+#    Copyright © 1999-2000 CGISCRIPT.NET - All Rights Reserved     #
+#                                                                   #
+#####################################################################
+#                                                                   #
+#          THIS COPYRIGHT INFORMATION MUST REMAIN INTACT            #
+#                AND MAY NOT BE MODIFIED IN ANY WAY                 #
+#                                                                   #
+#####################################################################
+#
+# When you downloaded this script you agreed to accept the terms
+# of this Agreement. This Agreement is a legal contract, which
+# specifies the terms of the license and warranty limitation between
+# you and CGISCRIPT.NET. You should carefully read the following
+# terms and conditions before installing or using this software.
+# Unless you have a different license agreement obtained from
+# CGISCRIPT.NET, installation or use of this software indicates
+# your acceptance of the license and warranty limitation terms
+# contained in this Agreement. If you do not agree to the terms of this
+# Agreement, promptly delete and destroy all copies of the Software.
+#
+# Versions of the Software
+# Only one copy of the registered version of CGISCRIPT.NET
+# may used on one web site.
+#
+# License to Redistribute
+# Distributing the software and/or documentation with other products
+# (commercial or otherwise) or by other than electronic means without
+# CGISCRIPT.NET's prior written permission is forbidden.
+# All rights to the CGISCRIPT.NET software and documentation not expressly
+# granted under this Agreement are reserved to CGISCRIPT.NET.
+#
+# Disclaimer of Warranty
+# THIS SOFTWARE AND ACCOMPANYING DOCUMENTATION ARE PROVIDED "AS IS" AND
+# WITHOUT WARRANTIES AS TO PERFORMANCE OF MERCHANTABILITY OR ANY OTHER
+# WARRANTIES WHETHER EXPRESSED OR IMPLIED.   BECAUSE OF THE VARIOUS HARDWARE
+# AND SOFTWARE ENVIRONMENTS INTO WHICH CGISCRIPT.NET MAY BE USED, NO WARRANTY
+# OF FITNESS FOR A PARTICULAR PURPOSE IS OFFERED.  THE USER MUST ASSUME THE
+# ENTIRE RISK OF USING THIS PROGRAM.  ANY LIABILITY OF CGISCRIPT.NET WILL BE
+# LIMITED EXCLUSIVELY TO PRODUCT REPLACEMENT OR REFUND OF PURCHASE PRICE.
+# IN NO CASE SHALL CGISCRIPT.NET BE LIABLE FOR ANY INCIDENTAL, SPECIAL OR
+# CONSEQUENTIAL DAMAGES OR LOSS, INCLUDING, WITHOUT LIMITATION, LOST PROFITS
+# OR THE INABILITY TO USE EQUIPMENT OR ACCESS DATA, WHETHER SUCH DAMAGES ARE
+# BASED UPON A BREACH OF EXPRESS OR IMPLIED WARRANTIES, BREACH OF CONTRACT,
+# NEGLIGENCE, STRICT TORT, OR ANY OTHER LEGAL THEORY. THIS IS TRUE EVEN IF
+# CGISCRIPT.NET IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO CASE WILL
+# CGISCRIPT.NET' LIABILITY EXCEED THE AMOUNT OF THE LICENSE FEE ACTUALLY PAID
+# BY LICENSEE TO CGISCRIPT.NET.
+#
+# Credits:
+# Andy Angrick - Programmer - angrick@cgiscript.net
+# Mike Barone - Design - mbarone@cgiscript.net
+#
+# For information about this script or other scripts see
+# http://www.cgiscript.net
+#
+# Thank you for trying out our script.
+# If you have any suggestions or ideas for a new innovative script
+# please direct them to suggest@cgiscript.net.  Thanks.
+#
+-->
+<html>
+
+<head>
+<title>Search Results</title>
+
+<style type="text/css"><!--
+
+a{color:#in(TitleText);text-decoration:none;font-weight:bold}
+a:active{color:#in(c2headingcolortxt);font-weight:bold}
+a:hover{color:#in(c3headingcolortxt);text-decoration:underline;font-weight:bold}
+
+.hilite {
+	FONT-SIZE: 10pt;
+	COLOR: #in(highlightcolortxt);
+	FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	background: #in(highlightbgcolortxt);
+   font-weight:bold;
+   padding : 3px 3px 3px 3px;
+}
+   INPUT.button { background-color:#eeeeee;font:verdana;font-weight:bold;color:#000080;font-size:10pt; }
+
+--></style>
+
+</head>
+
+<body bgcolor="#in(BackgroundColorText)" background="in(BackgroundImage)">
+
+<form method=POST action="in(cgiurl)" name=form1 onSubmit="return CheckTerm();">
+<div align="center">
+  <center>
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0">
+  <tr>
+    <td width="100%" valign="middle" align="center">
+      <table border="0" width="100%" cellspacing="0" cellpadding="3">
+        <tr>
+          <td width="100%" valign="middle" align="center">
+            <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+              <tr>
+                <td width="100%" valign="middle" align="center">
+                   <p align="center"><b><font face="Verdana" size="5">csSearch</font></b></p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td width="100%" valign="middle" align="center">
+            <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+              <tr>
+                <td width="100%" valign="middle" align="center">
+                  <div align="center">
+                    <center>
+                    <table border="0" cellspacing="0" cellpadding="2">
+                      <tr>
+                        <td><font face="Verdana" size="1"> <b> Search For:</b></font></td>
+                        <td><font face="Verdana" size="1"><b><input type=text name="terms" size=45 value="in(terms)"></b></font></td>
+                      </tr>
+                    </table>
+                    </center>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td width="100%" valign="middle" align="center">
+            <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">              <tr>
+                <td width="100%" valign="middle" align="center">
+                  <div align="center">
+                    <center>
+                  <table border="0" cellspacing="0" cellpadding="2">
+                    <tr>
+                      <td valign="middle" align="center"><font face="Verdana" size="1"><b>Boolean:</b></font></td>
+                      <td valign="middle" align="center"> <font face="Verdana" size="1"> <b> <select name="mbool">
+<option in(AND)>AND
+<option in(OR)>OR
+</select> </b> </font> </td>
+                      <td valign="middle" align="center"><font face="Verdana" size="1"><b>Case:</b></font></td>
+                      <td valign="middle" align="center"> <font face="Verdana" size="1"> <b> <select name="mcase">
+<option in(Insensitive)>Insensitive
+<option in(Sensitive)>Sensitive
+</select></b></font></td>
+                      <td valign="middle" align="center"><font face="Verdana" size="1"><input class="button" type=submit value="-=Search=-"> </font> </td>
+                    </tr>
+                  </table>
+                    </center>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  </center>
+  <font face="Tahoma" size="1">in(cinfo)</font>
+</div>
+<input type=hidden name=command value=query>
+</form>
+
+  <table border="0" width="100%" cellspacing="0" cellpadding="5">
+    <tr>
+      <td width="100%"><font face="Verdana" size="2">in(count)</font>
+        in(searchresults)
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+          <tr>
+            <td valign="middle" align="center"><center><font face="in(ResultTextFace)" size="in(ResultTextSize)" color="#in(ResultText)">in(link)</center></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <center><form><input type=button value="-=Close=-" onClick="window.close();"></form></center>
+ <script language=javascript>
+ function CheckTerm(){
+ if(!document.form1.terms.value){
+ alert("Error. Please enter something to search for");
+ return false;
+ }
+ return true;
+ }
+ </script>
+
+</html>

@@ -1,0 +1,611 @@
+<html>
+
+<head>
+<title>csSearch Advanced Settings</title>
+</head>
+
+<body>
+<form name=form1 method=post action=in(cgiurl)>
+<input type=hidden name=command value=setstyles>
+<input type=hidden name=database value=in(database)>
+<input type=hidden name=format value=in(format)>
+<div align="center">
+  <center>
+<table border="0" width="100%" cellpadding="0" height="100%" cellspacing="0">
+  <tr>
+    <td width="100%" valign="middle" align="center">
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+        <tr>
+          <td width="100%">
+            <table border="0" width="100%" cellspacing="0" cellpadding="3">
+              <tr>
+                <td>
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%" height="34">
+                    <tr>
+                      <td width="100%" height="22">
+                        <p align="center"><b><font face="Verdana" size="4">csSearch
+                        Advanced Settings</font></b></p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+                    <tr>
+                      <td width="100%">
+
+<table border="1" cellpadding="2" cellspacing="0" bordercolorlight="#FFFFFF" bordercolordark="#000000" width="100%">
+  <tr bgColor=#b0bb9d>
+    <td colspan="3" bgcolor="#B0B898"><b><font face="Verdana" size="2">Results Format</font></b></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" rowspan="3" valign="top"><font face="Tahoma" size="2">Result
+      Text</font></td>
+    <td bgcolor="#DEE4E0" align="right"><font face="Tahoma" size="2">Font
+      Color:</font></td>
+    <td bgcolor="#DEE4E0">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="33%" valign="middle" align="center"><font face="Tahoma"><input type="button" value="Select Color" onClick="javascript:SelectCl(document.form1.ResultText);">
+            </font> </td>
+          <td width="33%" valign="middle" align="center"><table border="1" cellpadding="0" cellspacing="0" width="35" bordercolor="#000000" bgcolor="#in(ResultText)">
+              <tr>
+                <td width="33"><font face="Tahoma">&nbsp;</font></td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="middle" align="center">
+            <font face="Tahoma">#<INPUT maxLength=7 name=ResultText size=7 value=in(ResultText)></font>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0"><font face="Tahoma" size="2">Font
+      Size:</font></td>
+    <td bgcolor="#DEE4E0"><font face="Tahoma"><input type="text" name="ResultTextSize" size="3" value="in(ResultTextSize)"></font></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0"><font face="Tahoma" size="2">Font
+      Face:</font></td>
+    <td bgcolor="#DEE4E0"><font face="Tahoma"><input type="text" name="ResultTextFace" size="35" value="in(ResultTextFace)"></font></td>
+  </tr>
+  <tr bgColor=#c7c6ba>
+    <td align="right" bgcolor="#DEE4E0" rowspan="3" valign="top"><font face="Tahoma" size="2">Link
+      (Title)&nbsp;</font></td>
+    <td bgcolor="#DEE4E0" align="right"><font face="Tahoma" size="2">Font
+      Color:</font></td>
+    <td bgcolor="#DEE4E0">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="33%" valign="middle" align="center"><font face="Tahoma"><input type="button" value="Select Color" onClick="javascript:SelectCl(document.form1.TitleText);">
+            </font> </td>
+          <td width="33%" valign="middle" align="center"><table border="1" cellpadding="0" cellspacing="0" width="35" bordercolor="#000000" bgcolor="#in(TitleText)">
+              <tr>
+                <td width="33"><font face="Tahoma">&nbsp;</font></td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="middle" align="center">
+            <font face="Tahoma">#<INPUT maxLength=7 name=TitleText size=7 value=in(TitleText)></font>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="right" bgcolor="#DEE4E0"><font face="Tahoma" size="2">Font
+      Size:</font></td>
+    <td bgcolor="#DEE4E0"><font face="Tahoma"><input type="text" name="TitleTextSize" size="3" value="in(TitleTextSize)"></font></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0"><font face="Tahoma" size="2">Font
+      Face:</font></td>
+    <td bgcolor="#DEE4E0"><font face="Tahoma"><input type="text" name="TitleTextFace" size="35" value="in(TitleTextFace)"></font></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Link
+      Active</font></td>
+    <td bgcolor="#DEE4E0" align="right">&nbsp;<font face="Tahoma" size="2">Font
+      Color:</font></td>
+    <td bgcolor="#DEE4E0">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="33%" valign="middle" align="center"><font face="Tahoma"><input type="button" value="Select Color" onClick="javascript:SelectCl(document.form1.c2headingcolortxt);">
+            </font> </td>
+          <td width="33%" valign="middle" align="center"><table border="1" cellpadding="0" cellspacing="0" width="35" bordercolor="#000000" bgcolor="#in(c2headingcolortxt)">
+              <tr>
+                <td width="33"><font face="Tahoma">&nbsp;</font></td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="middle" align="center">
+            <font face="Tahoma">#<INPUT maxLength=7 name=c2headingcolortxt size=7 value=in(c2headingcolortxt)></font>
+          </td>
+        </tr>
+      </table>
+</td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" rowspan="2" valign="top"><font face="Tahoma" size="2">Link
+      Hover</font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#DEE4E0" align="right"><font face="Tahoma" size="2">Font
+      Color:</font></td>
+    <td bgcolor="#DEE4E0">
+        <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="33%" valign="middle" align="center"><font face="Tahoma"><input type="button" value="Select Color" onClick="javascript:SelectCl(document.form1.c3headingcolortxt);">
+            </font> </td>
+          <td width="33%" valign="middle" align="center"><table border="1" cellpadding="0" cellspacing="0" width="35" bordercolor="#000000" bgcolor="#in(c3headingcolortxt)">
+              <tr>
+                <td width="33"><font face="Tahoma">&nbsp;</font></td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="middle" align="center">
+            <font face="Tahoma">#<INPUT maxLength=7 name=c3headingcolortxt size=7 value=in(c3headingcolortxt)></font>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" rowspan="2" valign="top"><font face="Tahoma" size="2">Highlight
+      Color</font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#DEE4E0" align="right"><font face="Tahoma" size="2">Font
+      Color:</font></td>
+    <td bgcolor="#DEE4E0">
+        <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="33%" valign="middle" align="center"><font face="Tahoma"><input type="button" value="Select Color" onClick="javascript:SelectCl(document.form1.highlightcolortxt);">
+            </font> </td>
+          <td width="33%" valign="middle" align="center"><table border="1" cellpadding="0" cellspacing="0" width="35" bordercolor="#000000" bgcolor="#in(highlightcolortxt)">
+              <tr>
+                <td width="33"><font face="Tahoma">&nbsp;</font></td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="middle" align="center">
+            <font face="Tahoma">#<INPUT maxLength=7 name=highlightcolortxt size=7 value=in(highlightcolortxt)></font>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" rowspan="2" valign="top"><font face="Tahoma" size="2">Highlight
+      Background</font></td>
+  </tr>
+  <tr>
+    <td bgcolor="#DEE4E0" align="right"><font face="Tahoma" size="2">Font
+      Color:</font></td>
+    <td bgcolor="#DEE4E0">
+        <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="33%" valign="middle" align="center"><font face="Tahoma"><input type="button" value="Select Color" onClick="javascript:SelectCl(document.form1.highlightbgcolortxt);">
+            </font> </td>
+          <td width="33%" valign="middle" align="center"><table border="1" cellpadding="0" cellspacing="0" width="35" bordercolor="#000000" bgcolor="#in(highlightbgcolortxt)">
+              <tr>
+                <td width="33"><font face="Tahoma">&nbsp;</font></td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="middle" align="center">
+            <font face="Tahoma">#<INPUT maxLength=7 name=highlightbgcolortxt size=7 value=in(highlightbgcolortxt)></font>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" bgcolor="#B0B898"><b><font face="Tahoma" size="2">Page Properties</font></b></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Background
+      Color</font></td>
+    <td bgcolor="#DEE4E0" colspan="2">
+        <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="33%" valign="middle" align="center"><font face="Tahoma"><input type="button" value="Select Color" onClick="javascript:SelectCl(document.form1.BackgroundColorText);">
+            </font> </td>
+          <td width="33%" valign="middle" align="center"><table border="1" cellpadding="0" cellspacing="0" width="35" bordercolor="#000000" bgcolor="#in(BackgroundColorText)">
+              <tr>
+                <td width="33"><font face="Tahoma">&nbsp;</font></td>
+              </tr>
+            </table></td>
+          <td width="33%" valign="middle" align="center">
+            <font face="Tahoma">#<INPUT maxLength=7 name=BackgroundColorText size=7 value=in(BackgroundColorText)></font>
+          </td>
+        </tr>
+      </table>
+        <font face="Tahoma"><font size="1">For optional background color on the
+        search results page, select the color here. Note, if you use a template
+        then the background image will be ignored.</font></font>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Background
+      Image URL</font></td>
+    <td bgcolor="#DEE4E0" colspan="2"><font face="Tahoma"><input type="text" name="BackgroundImage" size="23" value="in(BackgroundImage)"><br>
+      <font size="1">For an optional background image on the search results
+      page, enter the FULL url here. Note, if you use a template then the
+      background image will be ignored.</font></font> </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Optional
+      Template</font></td>
+    <td bgcolor="#DEE4E0" colspan="2"><font face="Tahoma"><input type="text" name="template" size="23"><font size="1"><br>
+      </font></font> <font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+      AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+      Now</a></b></font><font size="1"><br>
+      specify a template path here to customize the look of the search results
+      page. Use the absolute path to the template file. Example: /www/htdocs/template.htm.
+      Add the following line of code to your template where you want the search
+      results to appear:<br>
+      &lt;!-- CGIScript Me --&gt;<br>
+      Also, make the URLs on this template absolute. Example: http://www.yourside.com/images/image.gif</font> </td>
+  </tr>
+  <tr>
+    <td colspan="3" bgcolor="#B0B898"><b><font face="Tahoma" size="2">Search Options</font></b></td>
+  </tr>
+  <tr>
+    <td align="left" bgcolor="#DEE4E0" valign="top" colspan="3"><font face="Tahoma" size="2"><b>Note:
+      If this is a new installation and you are using Indexing, which is the
+      default method, you MUST click the Reindex Now button to create your
+      index. Otherwise, a search will have no results. </b></font><b><font color="#FF0000"><font face="Tahoma" size="2">NOTE:
+      INDEXING IS ONLY AVAILABLE IN csSearchPRO! </font></font></b> <font size="2" face="Tahoma" color="#FF0000"><b><a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+      Now</a></b></font></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Use
+      Indexing</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td><input type="checkbox" name="useindex" value="checked"> </td>
+            <td><input type="button" value="Reindex Now" onClick="ReIndex();"></td>
+          </tr>
+        </table><font size="2" face="Tahoma" color="#FF0000"><b>ONLY AVAILABLE
+        IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+        Now</a></b></font><font size="1" face="Verdana"><br>
+        The index option creates an index of all the words on your
+        website. This option is MUCH faster than non-index searching since it
+        doesn't have to search through all your files each time a search is
+        performed. When it does a search, it only needs to look at the index file and see what words
+        are on what pages. It is also recommended that you use indexing if you
+        have a large website. The only drawback is if you make any changes to your
+        site, you need to go back and reindex so the new index will reflect the
+        changes you have made. If you change any search options, such as,
+        ignoring meta tags or parsing for server side includes.. you'll have to
+        first save your changes and then come back to this advanced settings
+        page and click the Reindex button for the search results to reflect the
+        changes.</font>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Ignore
+      Title Meta Tag</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top" align="left">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td><input type="checkbox" name="igtitle" value="checked"></td>
+            <td><font face="Verdana" size="1">check this box to ignore the
+              &lt;title&gt;&lt;/title&gt; tag during searches<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Ignore
+      Keyword Meta Tag</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top" align="left">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td valign="top" align="left"><input type="checkbox" name="igkey" value="checked"> </td>
+            <td valign="top" align="left"><font face="Verdana" size="1">check
+              this box to ignore the keywords meta tag during searches. This is
+              helpful when you repeat the same information in the keywords meta
+              tag on multiple pages and you don't want the search engine to pick
+              them up.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Ignore
+      Description Meta Tag</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top" align="left">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td valign="top" align="left"><input type="checkbox" name="igdesc" value="checked"> </td>
+            <td valign="top" align="left"><font face="Verdana" size="1">check
+              this box to ignore the description meta tag during searches. This
+              is helpful when you repeat the same information in the description
+              meta tag on multiple pages and you don't want the search engine to
+              pick them up.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Ignore
+      Body Text</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td valign="top" align="left"><input type="checkbox" name="igbody" value="checked" in(igbody)> </td>
+            <td valign="top" align="left"><font face="Verdana" size="1">check
+              this box to ignore the body of the pages. This allows you to
+              search only the meta tags.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Search
+      Filenames</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td valign="top" align="left"><input type="checkbox" name="incfn" value="checked" in(incfn)> </td>
+            <td valign="top" align="left"><font face="Verdana" size="1">check
+              this box to include the actual filenames in the search.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Parse
+      Server Side Includes</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top" align="left">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td valign="top" align="left"><input type="checkbox" name="parsessi" value="checked" in(parsessi)></td>
+            <td valign="top" align="left"><font face="Tahoma" size="1"><b>note:</b> this requires the LWP
+              module to be installed on your server and will slow down the
+              indexing (or searching if you have indexing disabled) speed
+              drastically. It is recommended that you leave this feature
+              unchecked unless you have server side include pages on your site
+              that need to be searched.</font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">File
+      Extensions</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top"><font face="Tahoma" size="1">You can include or exclude file type in mass by typing the file extensions below. For example, if you want to ONLY search htm and html files then select "Include" and type htm, html in the text field. The search will ONLY search htm and html files. If you wish to search all files EXCEPT certain file extensions select "Exclude" and type the file extensions you wish to EXCLUDE. If you type gif, jpg, avi the search will EXCLUDE gif, jpg and avi files.</font>
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td><font face="Tahoma" size="2"><input type="radio" name="extinc" value="Y" in(EXTY) onClick="document.form1.efileext.value='htm,html,shtm,shtml,txt,cfml,cfm';"></font></td>
+            <td><font face="Tahoma" size="2"><b>Include</b> (recommended)</font></td>
+            <td><font face="Tahoma" size="2"><input type="radio" name="extinc" value="N" in(EXTN) onClick="document.form1.efileext.value='gif,dat,exe,zip,jpg,pl,cgi,gz,tgz,rtf,csv,pdf,log';"></font></td>
+            <td><font face="Tahoma" size="2"><b>Exclude</b></font></td>
+          </tr>
+          <tr>
+            <td colspan="4"><font face="Tahoma" size="2">File Extensions: <input type="text" name="efileext" size="35" value="in(efileext)"></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td colspan="3" bgcolor="#B0B898"><b><font face="Tahoma" size="2">Other Options</font></b></td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Results
+      On Same Page</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td><input type="checkbox" name="samepageresults" value="checked" in(samepageresults)> </td>
+            <td><font size="1" face="Tahoma">If this feature is selected, the
+              results appear on the same page as opposed to a popup window.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Automatically
+      close window</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td><input type="checkbox" name="autoclose" value="checked" in(autoclose)> </td>
+            <td><font size="1" face="Tahoma">If this feature is selected, the
+              popup window will automatically close when a link has been
+              selected.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Results
+      Target</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td valign="top" align="left"><input type="text" name="resultstarget" size="20" value="in(resultstarget)"> </td>
+            <td valign="top" align="left"><font size="1" face="Tahoma">If you are using frames, specify
+              the target frame where the results should appear. Leave blank for
+              target=&quot;_self&quot; or if you are not using frames.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Link
+      Target</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td valign="top" align="left"><input type="text" name="linktarget" size="20" value="in(linktarget)"> </td>
+            <td valign="top" align="left"><font size="1" face="Tahoma">If you are using frames, specify
+              the target frame where the links will go when clicked. Leave blank
+              for target=&quot;_self&quot; or if you are not using frames.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Entries
+      Per Page</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+      <div align="left">
+        <table border="0" cellpadding="3" cellspacing="0">
+          <tr>
+            <td><font face="Tahoma"><input type="text" name="entriesperpage" size="5"></font> </td>
+            <td><font size="1" face="Tahoma">This feature controls the number of
+              links that
+      appear on the search results page.<br>
+              </font><font size="2" face="Tahoma" color="#FF0000"><b>ONLY
+              AVAILABLE IN csSearchPRO! <a href="http://www.cgiscript.net/csSearchPro1.htm" target="_blank">Upgrade
+              Now</a></b></font></td>
+          </tr>
+        </table>
+      </div>
+ </td>
+  </tr>
+  <tr>
+    <td align="right" bgcolor="#DEE4E0" valign="top"><font face="Tahoma" size="2">Select/View
+      Search Window</font></td>
+    <td bgcolor="#DEE4E0" colspan="2" valign="top">
+
+    <table border="0" cellspacing="0">
+      <tr>
+        <td><font face="tahoma" size="1">[&nbsp;</font></td><td><font face="tahoma" size="1"><input type="radio" name="style" in(S1) value="1"></font></td><td><font face="tahoma" size="1"><a href="csSearch.cgi?style=1" target="_blank">Style 1</a> </font></td><td><font face="tahoma" size="1">&nbsp;|&nbsp;</font></td><td><font face="tahoma" size="1"><input type="radio" name="style" in(S2) value="2"></font></td><td><font face="tahoma" size="1"><a href="csSearch.cgi?style=2" target="_blank"> Style 2</a> </font></td><td><font face="tahoma" size="1">&nbsp;|&nbsp;</font></td><td><p align="center"><font face="tahoma" size="1"><input type="radio" name="style" in(S3) value="3"></font></p></td><td><font face="tahoma" size="1"> <a href="csSearch.cgi?style=3" target="_blank"> Style 3</a></font></td><td><font face="tahoma" size="1">&nbsp;]</font>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      <tr>
+      <td colspan=11><font face="tahoma" size="1">
+      <b><br>
+      Link (javascript) (cut/paste this onto your webpage where you want the search field to appear):</b><br>
+      in(directlinks)<br>
+      <b>Link (direct, no javascript):</b><br>
+      in(directlinksnojs)<br>
+      </font>
+      </td>
+      </tr>
+    </table>
+
+ </td>
+  </tr>
+</table>
+
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+                    <tr>
+                      <td width="100%">
+                        <p align="center">
+<input type=submit value='  Apply  '> <input type="button" value="Cancel" onClick="javascript:history.back()">
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+                    <tr>
+                      <td width="100%">
+                        <p align="center"><font size="2" face="Verdana">
+
+in(cinfo)</font>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+  </center>
+</div>
+
+
+</form>
+
+</body>
+<script language=javascript>
+function SelectCl(tf){
+var rndURL = (1000*Math.random());
+var fname = tf.name;
+var fcolor = tf.value;
+var windowURL = "in(cgiurl)?command=showcolor&database=in(database)&fieldname="+fname+"&cc="+fcolor+"&rnd="+rndURL;
+newWindow = window.open(windowURL,null,'width=600,height=300,location=0,directories=0,status=0,menuBar=0,scrollBars=yes,resizable=yes');
+newWindow.focus();
+}
+
+function ReIndex(){
+var rndURL = (1000*Math.random());
+var windowURL = "in(cgiurl)?command=index&rnd="+rndURL;
+newWindow = window.open(windowURL,null,'width=600,height=300,location=0,directories=0,status=0,menuBar=0,scrollBars=yes,resizable=yes');
+newWindow.focus();
+}
+</script>
+</html>

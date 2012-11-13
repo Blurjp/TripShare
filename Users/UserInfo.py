@@ -263,11 +263,13 @@ class FriendRemoveHandler(BaseHandler):
         friend= self.syncdb.users.find_one({'user_id':bson.ObjectId(user_id)})
         _temp_friend = Users.Friend.FriendRequestHandler(friend)
         for item in self.current_user['friends']:
-            if user_id == item['user_id']:
+            
+            if user_id == str(item['user_id']):
+                print 'remove test'
                 self.syncdb.users.update({'user_id':bson.ObjectId(self.current_user['user_id'])}, {'$pull':{'friends':_temp_friend.temp_friend}})
                 _temp_friend = Users.Friend.FriendRequestHandler(self.current_user)   
                 self.syncdb.users.update({'user_id':bson.ObjectId(user_id)}, {'$pull':{'friends':_temp_friend.temp_friend}})
-                   
+                print "removed"   
             
 class FriendRequestHandler(BaseHandler):  
     @ajax_login_authentication

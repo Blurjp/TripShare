@@ -1,0 +1,179 @@
+
+<html>
+
+<head>
+
+<title>csSearch by CGI Script.net</title>
+
+<style type="text/css"><!--
+a{color:#41779E;text-decoration:none;font-weight:bold}
+a:active{color:red;font-weight:bold}
+a:hover{color:#7A007B;text-decoration:underline;font-weight:bold}
+
+INPUT.button { background-color:#eeeeee;font:tahoma;font-weight:bold;color:#000080;font-size:10pt; }
+--></style>
+
+</head>
+
+<body>
+
+<form method=POST action="in(cgiurl)">
+<input type=hidden name="cdir" value="in(cdir)">
+<input type=hidden name="command" value="agi">
+
+
+<center>
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0">
+<tr>
+<th>
+  <table border="0" cellspacing="0" cellpadding="3">
+    <tr>
+      <td width="100%" valign="middle" align="center">
+        <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+          <tr>
+            <td width="100%">
+
+  <p align="center"><font face="tahoma" size="5"><b>csSearch - Management</b></font></p>
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" valign="middle" align="center">
+        <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+          <tr>
+            <td valign="middle" align="center">
+
+                    <input type="button" value="-=Advanced Settings=-" name="b10" class="button" onClick="ShowAdv();">
+
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </center>
+    <tr>
+      <td width="100%">
+        <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+          <tr>
+            <td width="100%">
+              <table border="1" width="100%" bordercolor="#000000" cellspacing="0" cellpadding="5">
+                <tr>
+                  <td width="100%" colspan="4" bgcolor="#CCCCCC">
+              <p align="left"><font face="tahoma" size="1"><b>Skip</b> applies to only
+                  this instance of the file or directory. If a directory is
+                  marked as 'Skipped' all the files and sub-directories within
+                  that directory are 'Skipped' as well. Click 'Skip' button a
+              second time to un-skip the file/directory.</font>
+              <p align="left"><font face="tahoma" size="1"><b>Ignore</b>
+              applies to all instances of that
+                  file/directory. If a directory is
+                  marked as 'Ignored' all the files and sub-directories within
+                  that directory are 'Ignored' as well. However, only that
+                  directory is ignored globally. Click 'Ignore' button a second
+              time to un-ignore the file/directory.</font>
+                  </td>
+                </tr>
+       <tr><td colspan="4">
+
+
+<table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF" bgcolor="#C0C0C0" width="100%">
+  <tr>
+    <td width="100%">
+      <p align="center">
+<b><font face="tahoma" size="2">Index of the current directory: in(currentdir)</font></b>
+    </td>
+  </tr>
+</table>
+
+</td></tr>
+                  <tr align="middle">
+                    <td align="left">&nbsp;</td>
+                    <td align="left"><b><font size="2" face="tahoma">Name</font></b></td>
+                    <td align="center"><b><font size="2" face="tahoma">Status</font></b></td>
+                    <td align="left"><b><font size="2" face="tahoma">Action </font></b></td>
+                  </tr>
+                  <tr>
+                    <td align="left"><a href="javascript: GoUp();"><font face="tahoma" size="2"><img src="in(htmlurl)/images/up.gif" border="0" width="18" height="16"></font></a></td>
+                    <td align="left"><a href="javascript: GoUp();"><font color="#0000ff" size="2" face="tahoma">Previous
+                      Directory</font></a></td>
+                    <td align="center">&nbsp;</td>
+                    <td align="left">&nbsp;</td>
+                  </tr>
+                  in(directory)
+                  in(files)
+                  in(skipdir)
+			      in(skipfiles)
+			      in(ignoredir)
+			      in(ignorefiles)
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%" align="center">
+              <div align="center">
+                <center>
+                <table border="0" cellpadding="3" cellspacing="0">
+                  <tr>
+                    <td><input type="submit" value="-=Skip/UnSkip All Selected=-" name="action" class="button"></td>
+                    <td><input type="submit" value="-=Ignore/UnIgnore All Selected=-" name="action" class="button"></td>
+                  </tr>
+                </table>
+                </center>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td width="100%">
+              <p align="center">in(cinfo)
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+ </th>
+</tr>
+</table></form>
+<script language=javascript>
+
+var cdir = "in(cdir)";
+function GoUp()
+{
+var rndURL = (1000*Math.random());
+window.location = "in(cgiurl)?command=gu&cdir="+escape(cdir)+"&rndURL="+rndURL;
+}
+
+function GoTo(dir){
+var rndURL = (1000*Math.random());
+window.location = "in(cgiurl)?command=manage&cdir="+escape(cdir)+"&nd="+escape(dir)+"&rndURL="+rndURL;
+}
+
+function JumpTo(dir){
+var rndURL = (1000*Math.random());
+window.location = "in(cgiurl)?command=manage&nd="+escape(dir)+"&rndURL="+rndURL;
+}
+
+function ShowAdv(){
+var rndURL = (1000*Math.random());
+window.location = "in(cgiurl)?command=showadv&rndURL="+rndURL;
+}
+
+function Skip(f){
+var rndURL = (1000*Math.random());
+window.location = "in(cgiurl)?command=as&cdir="+escape(cdir)+"&f="+escape(f)+"&rndURL="+rndURL;
+}
+function Ignore(f){
+var rndURL = (1000*Math.random());
+window.location = "in(cgiurl)?command=ae&cdir="+escape(cdir)+"&f="+escape(f)+"&rndURL="+rndURL;
+}
+
+function NoGo(){
+alert("In order to view the contents of this directory, you must make it searchable");
+}
+
+</script>
+</body>
+</html>

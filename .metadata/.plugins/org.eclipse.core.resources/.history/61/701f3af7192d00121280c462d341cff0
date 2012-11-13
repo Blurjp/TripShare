@@ -1,0 +1,104 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:addthis="http://www.addthis.com/help/api-spec" xml:lang="en" lang="en"> 
+  <head> 
+  	<title>TripShare        |
+        Users
+    </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+    <meta name="description" content="TripShare is a group trip planner for you to create and share the trip among your friends."> 
+    <meta name="keywords" content="group trip, expense management, hotel, travel guide, trip calendar"> 
+	<link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
+    <link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/> 
+<link rel="stylesheet" href="{{ static_url("stylesheets/base_packaged.css") }}" type="text/css" media="screen"/>  
+<link rel="stylesheet" href="{{ static_url("stylesheets/nano.css") }}" type="text/css"/>  
+<link rel="stylesheet" href="{{ static_url("stylesheets/css/smoothness/jquery-ui-1.8.17.custom.css") }}" type="text/css"/>
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-1.4.4.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery-ui-1.8.7.custom.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery.tools.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("javascript/js/jquery.history.js") }}"></script>
+<script src="{{ static_url("javascript/js/form2object.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/js/all.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/loginpopup.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/autocomplete.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/createtripslides.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/createguideslides.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/CalendarControl.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/search.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/jquery.pagination.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/core.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/dragsort.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/drag.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/events.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/coordinates.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/css.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/dragdroptool/cookies.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/followuser.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/settingpopup.js") }}" type="text/javascript"></script>
+<script src="{{ static_url("javascript/vertical.slider.js")}}" type="text/javascript"></script>
+      
+  	<!--[if lte IE 8]> 
+      <link href="/stylesheets/iex.css?1305156180" media="all" rel="stylesheet" type="text/css" />
+    <![endif]--> 
+ 
+  	<!--[if lte IE 6]> 
+      <link href="/stylesheets/ie6.css?1305156180" media="all" rel="stylesheet" type="text/css" />
+    <![endif]-->	
+  </head> 
+      
+  <body> 
+    <div id='modal' style='display:none'> 
+<div class='small' id='modal-facebox'> 
+<a href="#" id="close-modal" onclick="FS.clear_modal(); return false;">close</a> 
+<div id='modal-content'></div> 
+</div> 
+<div id='modal-screen'></div> 
+</div> 
+ 
+    <div id='wrapper' class='clearfix'> 
+      <div id='tooltip' style='display:none'> 
+<div class='content'></div> 
+<div class='pointer'></div> 
+</div> 
+ 
+      <div id='header'> 
+<div class='clearfix' id='nav-bar'> 
+
+ {% include "Module/headline.html" %}
+ {% include "Module/usersetting.html" %}
+  {% include "Module/Message.html" %}
+
+<div id='container' class="clearfix"> 
+
+<div id='content'> 
+
+<div class='hgroup clearfix'> 
+<h1></h1> 
+</div> 
+{% if check %}
+{% include "Module/self_detail.html" %}
+{% else %}
+{% include "Module/user_detail.html" %}
+{% end %}
+<div class='main'> 
+
+
+<h2>Trips:</h2>
+<ul class="trip_list" id="db-reviews">
+  {% for trip in trips %} 
+   {% include "Module/trip.html" %}
+  {% end %}
+</ul>
+</div> 
+</div> 
+ </div> 
+</div>
+
+
+{% include "Module/footer.html" %}
+{% include "Module/CreateTripSlide1.html" %}
+{% include "Module/find_friends.html" %}
+ 
+    
+</body> 
+</html>

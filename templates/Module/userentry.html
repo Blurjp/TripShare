@@ -5,22 +5,6 @@
 
 <li class="person clearfix">
 <div class="actions right">
-
-</div>
-<a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
-<div class="details">
-<div class="hsubgroup">
-<strong><a href="/people/{{user['slug']}}">{{user['username']}}</a></strong>
-<span>
-
-<span class="city">{{user['current_location']}}</span>
-</span>
-</div>
-<div class="bio">
-<p>{{user['bio']}}</p>
-</div>
-{{len(user['trips'])}} trips
-</div>
 {% if current_user %}
 {% if current_user['user_id'] not in [p['user_id'] for p in user['friends'] if p['user_id'] == current_user['user_id'] ] %}
 <a  sid="{{user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
@@ -30,14 +14,7 @@
 {% else %}
 <a  sid="{{user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
 {% end %}
-</li>
-
-{%end%}
-
-{% else %}
-
-<li class="person clearfix">
-
+</div>
 <a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
 <div class="details">
 <div class="hsubgroup">
@@ -52,9 +29,32 @@
 </div>
 {{len(user['trips'])}} trips
 </div>
+
+</li>
+
+{%end%}
+
+{% else %}
+
+<li class="person clearfix">
 <div class="actions right">
 <a sid="{{user['user_id']}}" name="focus" class="requestfriend xf xbj">Add friend</a>
 </div>
+<a href="/people/{{user['slug']}}" class="avatar"><img class="picture medium" src="{{user['picture']}}"></a>
+<div class="details">
+<div class="hsubgroup">
+<strong><a href="/people/{{user['slug']}}">{{user['username']}}</a></strong>
+<span>
+
+<span class="city">{{user['current_location']}}</span>
+</span>
+</div>
+<div class="bio">
+<p>{{user['bio']}}</p>
+</div>
+{{len(user['trips'])}} trips
+</div>
+
 </li>
 
 {%end%}

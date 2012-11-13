@@ -1,0 +1,231 @@
+<html>
+
+<head>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>csSearchPro</title>
+</head>
+
+<body>
+
+<p><font face="tahoma" size="4"><b>csSearch</b></font></p>
+
+<script language="javascript" src="http://www.cgiscript.net/cgi-script/CSIncludes2/js/script_news.HR.js"></script>
+
+<p><font face="tahoma" size="2">Copyright © 1999-2002 <b>WWW.CGISCRIPT.NET, LLC</b> - All Rights
+Reserved<br>
+<br>
+<b>THIS COPYRIGHT INFORMATION MUST REMAIN INTACT AND MAY NOT BE MODIFIED IN ANY
+WAY<br>
+</b>
+<br>
+When you downloaded this script you agreed to accept the terms&nbsp; of this
+Agreement. This Agreement is a legal contract, which&nbsp; specifies the terms of the
+license and warranty limitation between&nbsp; you and WWW.CGISCRIPT.NET, LLC. You should
+carefully read the following&nbsp; terms and conditions before installing or using
+this software.&nbsp; Unless you have a different license agreement obtained from
+WWW.CGISCRIPT.NET, LLC, installation or use of this software indicates your acceptance of
+the license and warranty limitation terms contained in this Agreement. If you do
+not agree to the terms of this Agreement, promptly delete and destroy all copies
+of the Software.<br>
+<br>
+<b>Versions of the Software</b><br>
+Only one copy of the registered version of csSearch may used per domain.
+Multiple domain pricing is available, see the web site for details.<br>
+&nbsp;<br>
+<b>License to Redistribute</b><br>
+Distributing the software and/or documentation with other products (commercial
+or otherwise) or by other than electronic means without&nbsp; WWW.CGISCRIPT.NET,
+LLC's prior
+written permission is forbidden. All rights to the WWW.CGISCRIPT.NET, LLC software and
+documentation not expressly granted under this Agreement are reserved to
+WWW.CGISCRIPT.NET, LLC.<br>
+<br>
+<b>Disclaimer of Warranty</b><br>
+THIS SOFTWARE AND ACCOMPANYING DOCUMENTATION ARE PROVIDED &quot;AS IS&quot; AND WITHOUT
+WARRANTIES AS TO PERFORMANCE OF MERCHANTABILITY OR ANY OTHER WARRANTIES WHETHER
+EXPRESSED OR IMPLIED. BECAUSE OF THE VARIOUS HARDWARE AND SOFTWARE ENVIRONMENTS
+INTO WHICH WWW.CGISCRIPT.NET, LLC MAY BE USED, NO WARRANTY&nbsp;<br>
+OF FITNESS FOR A PARTICULAR PURPOSE IS OFFERED. THE USER MUST ASSUME THE ENTIRE
+RISK OF USING THIS PROGRAM. ANY LIABILITY OF WWW.CGISCRIPT.NET, LLC WILL BE LIMITED
+EXCLUSIVELY TO PRODUCT REPLACEMENT OR REFUND OF PURCHASE PRICE. IN NO CASE SHALL
+WWW.CGISCRIPT.NET, LLC BE LIABLE FOR ANY INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES OR
+LOSS, INCLUDING, WITHOUT LIMITATION, LOST PROFITS OR THE INABILITY TO USE
+EQUIPMENT OR ACCESS DATA, WHETHER SUCH DAMAGES ARE BASED UPON A BREACH OF
+EXPRESS OR IMPLIED WARRANTIES, BREACH OF CONTRACT, NEGLIGENCE, STRICT TORT, OR
+ANY OTHER LEGAL THEORY. THIS IS TRUE EVEN IF WWW.CGISCRIPT.NET, LLC IS ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGES. IN NO CASE WILL WWW.CGISCRIPT.NET, LLC LIABILITY EXCEED THE
+AMOUNT OF THE LICENSE FEE ACTUALLY PAID BY LICENSEE TO WWW.CGISCRIPT.NET, LLC.<br>
+<br>
+&nbsp;<br>
+<b>Credits:&nbsp;</b><br>
+Andy Angrick - Programmer - <a href="mailto:angrick@cgiscript.net">
+angrick@.CGISCRIPT.NET</a><br>
+Mike Barone - Developer - <a href="mailto:mbarone@cgiscript.net">
+mbarone@CGISCRIPT.NET</a><br>
+&nbsp;<br>
+For information about this script or other scripts please visit:&nbsp;<br>
+<a href="http://www.cgiscript.net">http://www.CGISCRIPT.NET</a><br>
+&nbsp;<br>
+Thank you for trying out our script. If you have any suggestions or ideas for a
+new innovative script please direct them to
+<a href="mailto:suggest@cgiscript.net">suggest@CGISCRIPT.NET</a> Thanks.&nbsp;<br>
+&nbsp;<br>
+<b>Installation:<br>
+</b>Unzip the csSearch zip file on your computer. Open csSearch.cgi in any
+ascii text editor and verify the path to perl is correct on the first line of
+the script. If you are not sure what your path to perl is, then leave it alone..
+chances are its okay. Transfer the files and directories to the root of your web
+site retaining the directory structure in the zip file. For example, you should
+have the following directory structure:
+</font> </p>
+<p><font face="Tahoma" size="2">/cgi-script &lt;-- cgiscript.net script directory<br>
+/cgi-script/csSearch &lt;-- csSearch directory<br>
+/cgi-script/csSearch/images &lt;-- image directory for script.</font></p>
+<p><font face="Tahoma" size="2">CHMOD csSearch.cgi to 755. When this is
+complete, open csSearch.cgi in your webbrowser. Example:
+<a href="http://www.yourdomain.com/cgi-script/csSearchPro/csSearchPro.cgi">
+http://www.yourdomain.com/cgi-script/csSearch/csSearch.cgi</a></font></p>
+<p><font face="Tahoma" size="2">If all goes well, this will automatically
+configure the script and show you a setup page and the remaining installation
+instructions.</font></p>
+<p><b><font face="Tahoma" size="2">If you click 'save' and you come back to the
+setup page, then your server doesn't have write access to your directories. You
+can solve this problem by chmod'ing the csSearch directory to 777.&nbsp;</font></b></p>
+<font face="tahoma" size="2">
+<p><b><font face="Tahoma" size="2">Definitions</font></b></font><b><font face="Tahoma" size="2">
+in the setup.cgi file:</font></b></p>
+<font face="tahoma" size="2">
+<p><font face="Tahoma" size="2">$cgiurl = Full URL to </font></font>
+<font face="Tahoma" size="2">the csSearch directory<font face="tahoma" size="2"><br>
+$cgipath = Full PATH to the </font></font> <font face="tahoma" size="2">csSearch</font>
+<font face="Tahoma" size="2"> directory.<br>
+$rooturl = URL to your website<br>
+$rootpath = Full PATH to your document root<br>
+$username = username to enter management screens<br>
+$password = password to enter management screens</font> </p>
+<p><font face="tahoma" size="2">The $rootpath and $rooturl must point to the
+same directory on your server and is the point where the searching starts. For
+normal operations, this would be the root directory of your website.</font><font face="Tahoma" size="2"><font face="tahoma" size="2">
+</p>
+<p><font face="Tahoma" size="2"><b>Normal Installation Instructions:<br>
+</b>In most cases, the script</font></font> will be
+auto configured when you first open csSearch.cgi in your browser<font face="tahoma" size="2">.
+Change the $username and $password variables to your liking and click 'Save'. If
+the setup portion of the script cannot find your site variables automatically,
+you </font>will<font face="tahoma" size="2"> have to enter those in the text
+area.</font> If you click 'save' and you come back to the setup page, then your
+server doesn't have write access to your directories. You can solve this problem
+by chmod'ing the csSearch directory to 777.</p>
+<p><b>WinNT installations:</b><br>
+The script has been tested and works on an NT IIS webserver. You will, however,
+have to manually enter the cgipath and rootpath variables. For example, your
+rootpath might look something like 'c:/inetpub/wwwroot' (Note: the back-slashes
+'\' normally associated with Window's file paths has been changed to a
+forward-slash '/'). Also, in csSearch.cgi there is a variable at the top called
+$basepath.. change this to match the full path to the csSearch directory.</p>
+<font face="tahoma" size="2">
+<p><font face="Tahoma" size="2"><b>CGI-BIN Installation Instructions:<br>
+</b></font>
+</font>
+The preferred method is to install csSearch in a directory outside your
+cgi-bin directory as described above, however, i<font face="tahoma" size="2"><font face="Tahoma" size="2">f
+your hosting service <b>will not</b> let you run scripts outside your <b>cgi-bin</b>
+directory, then follow these procedures:</font></p>
+<p><font face="Tahoma" size="2">Copy all the *.cgi files to a directory in your
+cgi-bin directory, making sure they are chmod'd to 755. For example, you could
+create a /cgi-bin/</font></font>csSearch<font face="tahoma" size="2">/ directory and place
+</font>
+</font>
+
+<font face="tahoma" size="2">csSearch</font><font face="Tahoma" size="2"><font face="tahoma" size="2">.cgi, libs.cgi,
+and setup.cgi </font>(<font face="tahoma" size="2">if this file exists</font>)
+in this direcory<font face="tahoma" size="2"><font face="Tahoma" size="2">.</font></p>
+<p><font face="Tahoma" size="2">Create a directory outside your cgi-bin
+directory and copy all the remaining files and subdirectories there. For
+example, you could create a /cgi-script/</font></font>csSearch<font face="tahoma" size="2"><font face="Tahoma" size="2"> and place the files there.</font></p>
+</font>
+<p>Manually configure setup.cgi to the following:<br>
+$cgiurl = URL to the csSearch directory INSIDE your cgi-bin directory (where
+the script is installed).<br>
+$cgipath = FULL PATH to the csSearch directory INSIDE your cgi-bin directory
+(where the script is installed).<br>
+<i><b>ADD THE FOLLOWING VARIABLES TO THE ABOVE CONFIGURATION OR MANUALLY EDIT
+setup.cgi:<br>
+</b></i>$htmlurl =&nbsp; FULL URL to the csSearch directory OUTSIDE your cgi-bin
+directory (where the remainin<font face="Tahoma" size="2">g files where
+installed) <br>
+$htmlpath = FULL PATH to the csSearch directory OUTSIDE your cgi-bin
+directory (where the remaining</font><font face="Tahoma" size="2"><font face="tahoma" size="2">
+files where installed) <br>
+For Example, your new setup.cgi file might look something like this:<br>
+$cgiurl='http://www.cgiscript.net/cgi-bin/</font></font>csSearch<font face="Tahoma" size="2"><font face="tahoma" size="2">';<br>
+$cgipath='/www/vhosts/cgiscript.net/cgi-bin/</font></font>csSearch<font face="Tahoma" size="2"><font face="tahoma" size="2">';<br>
+$htmlurl='http://www.cgiscript.net/cgi-script/</font></font>csSearch<font face="Tahoma" size="2"><font face="tahoma" size="2">';<br>
+$htmlpath='/www/vhosts/cgiscript.net/cgi-script/</font></font>csSearch<font face="tahoma" size="2"><font face="Tahoma" size="2">';<br>
+$rootpath='/www/vhosts/cgiscript.net';<br>
+$rooturl='http://www.cgiscript.net';<br>
+$username='myusername';<br>
+$password=',mypassword';<br>
+1;</font></p>
+<p><font face="Tahoma" size="2"><i>(note: the '1' at the end is to prevent
+errors from perl if $password was left empty)</i></font></p>
+</font>
+<p><b>Instructions:<br>
+</b>Once the script has been setup, you need to go in and configure the searching
+parameters. To get to the login screen, open csSearch.cgi in browser with
+?command=manage at the end of the URL. Example:<br>
+http://www.yoursite.com/cgi-script/csSearch/csSearch.cgi?command=manage<br>
+enter the login and password you configured the script with to enter.</p>
+<p>This will bring up a screen that has your site's directory contents. To skip
+or ignore certain files or directories, click the appropriate button next to the
+listing. To skip or ignore multiple files or directories, check the box next to
+the name and click the appropriate button at the bottom of the management page.
+To un-skip or un-ignore files or directories, repeat the procedure when you
+originally skipped or ignored the files. This will act as a toggle for skipping
+and ignoring.</p>
+<p>'<b>Skip</b>' will only 'skip' this instance of file or directory in a
+search.<br>
+'<b>Ignore</b>' will 'ignore' all instances of that file or directory name. For
+example, if you are ignoring a directory named 'images'.. all directories on the
+server named 'images' will be ignored in searching.</p>
+<p>Click the 'Advanced Settings' button to enter the advanced settings section.
+Read the options on this page carefully. Instructions are next to each item.</p>
+<p><b>A word about 'use index':<br>
+</b><font color="#FF0000"><b>(ONLY AVAILABLE IN csSearchPro)</b></font><br>
+Indexing will greatly improve the speed and efficiency of your searches. If you
+select this item, you must click the 'reindex now' button to create the index.
+Also, if you have made any chances in the search options such as excluding
+&lt;title&gt; tags or parsing for server side includes, you must save these changes
+and then go back and reindex to have the changes take affect. Also, if you make
+any significant changes on your website, you will want to go back into the
+advanced settings area and reindex the site to reflect the changes as far as a
+search is concerned.</p>
+<p><b>Adding a search form to your page (or anyone else's website):<br>
+</b>There are 2 ways to place the search form on your web page. On the management
+screen in the advanced section, you will see text areas that contain links to
+the search form. You will also see 3 different search form styles you can select
+from. Select any of these styles by clicking the appropriate radio button (don't
+forget to save your changes). Then copy/paste the Javascript code where you want
+the form to appear on your page. This technique uses javascript. If you want to
+use SSI (server side includes), take the direct URL to csSearch and remove
+your domain. Enter this code on your page: &lt;!--#include virtual=&quot;/cgi-script/csSearch/csSearch.cgi--&gt;
+. Make sure the path to your installation of csSearch is correct. The
+javascript technique would be the preferred technique since you don't have to
+have server side includes to be running on your server. Also, you can call the
+javascript code from any page or domain. You can offer clients or affiliates the
+ability to put a search field on their web page to search your site.</p>
+<p>Have Fun!</p>
+
+<p>If you have any comments, questions, concerns or new script ideas go to
+<a href="http://www.cgiscript.net">http://WWW.CGISCRIPT.NET</a>
+and submit Contact Form. Installation is available.
+This is only one of many cool scripts we have, check out
+<a href="http://www.cgiscript.net">http://WWW.CGISCRIPT.NET</a></p>
+<script language="javascript" src="http://www.cgiscript.net/cgi-script/CSIncludes2/js/script_news.suggest_script.js"></script>
+</font>
+
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.team.cvs.ui,3.3.302.R36x_v20110203-1036,"org.eclipse.team.cvs.ui",1352747262129
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352747262302
+started,bundle,org.eclipse.debug.ui,3.6.3.v20101201_r362,"org.eclipse.debug.ui",1352747262968
+started,bundle,com.aptana.ide.server,2.0.0.1278523018,"com.aptana.ide.server",1352747281889
+error,log,,,"(Build 2.0.0.1278523018) [ERROR] Error starting the server for My Studio page",1352747286511
+opened,editor,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal.ui.MyAptanaEditor",1352747286519
+started,bundle,org.eclipse.eclipsemonkey.doms,2.0.0.1277749615,"org.eclipse.eclipsemonkey.doms",1352747287040
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352748568076
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352748568663
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352748571245
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352748573543
+started,bundle,org.eclipse.ui.navigator,3.5.0.I20100601-0800,"org.eclipse.ui.navigator",1352748575328
+closed,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352748575713
+started,bundle,com.aptana.ide.documentation,2.0.0.1278523018,"com.aptana.ide.documentation",1352748576061
+started,bundle,com.aptana.ide.samples.ui,2.0.0.1278614541,"com.aptana.ide.samples.ui",1352748576122
+started,bundle,com.aptana.ide.update.portal,2.0.0.1278614541,"com.aptana.ide.update.portal",1352748576283
+started,bundle,org.eclipse.compare.core,3.5.101.R36x_v20100929-0800,"org.eclipse.compare.core",1352748588003
+started,bundle,org.eclipse.compare,3.5.101.R36x_v20100929-0800,"org.eclipse.compare",1352748588096
+stopped,bundle,org.eclipse.mylyn.ide.ant,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.ide.ant",1352748589015
+stopped,bundle,org.eclipse.ant.ui,3.5.0.v20100427,"org.eclipse.ant.ui",1352748589016
+stopped,bundle,org.eclipse.ant.launching,1.0.1.v20101020_r362,"org.eclipse.ant.launching",1352748589018
+stopped,bundle,org.eclipse.equinox.p2.ui.sdk,1.0.100.v20100513,"org.eclipse.equinox.p2.ui.sdk",1352748589063
+stopped,bundle,org.eclipse.mylyn.java.tasks,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.java.tasks",1352748589098
+stopped,bundle,org.eclipse.mylyn.java.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.java.ui",1352748589109
+stopped,bundle,org.eclipse.jdt.junit,3.6.1.r361_v20100825-0800,"org.eclipse.jdt.junit",1352748589168
+activated,perspective,org.eclipse.jdt.ui,,"org.eclipse.jdt.ui.JavaPerspective",1352749572250
+started,bundle,org.eclipse.osgi,3.6.2.R36x_v20110210,"org.eclipse.osgi",1352749572251
+started,bundle,org.eclipse.equinox.simpleconfigurator,1.0.200.v20100503,"org.eclipse.equinox.simpleconfigurator",1352749572262
+started,bundle,com.ibm.icu,4.2.1.v20100412,"com.ibm.icu",1352749572263
+started,bundle,org.eclipse.core.contenttype,3.4.100.v20100505-1235,"org.eclipse.core.contenttype",1352749572264
+started,bundle,org.eclipse.core.databinding.observable,1.3.0.I20100601-0800,"org.eclipse.core.databinding.observable",1352749572264
+started,bundle,org.eclipse.core.expressions,3.4.200.v20100505,"org.eclipse.core.expressions",1352749572265
+started,bundle,org.eclipse.core.filesystem,1.3.1.R36x_v20100727-0745,"org.eclipse.core.filesystem",1352749572265
+started,bundle,org.eclipse.core.jobs,3.5.1.R36x_v20100824,"org.eclipse.core.jobs",1352749572266
+started,bundle,org.eclipse.core.net,1.2.100.I20100511-0800,"org.eclipse.core.net",1352749572266
+started,bundle,org.eclipse.core.resources,3.6.1.R36x_v20110131-1630,"org.eclipse.core.resources",1352749572273
+started,bundle,org.eclipse.core.runtime,3.6.0.v20100505,"org.eclipse.core.runtime",1352749572274
+started,bundle,org.eclipse.core.runtime.compatibility,3.2.100.v20100505,"org.eclipse.core.runtime.compatibility",1352749572274
+started,bundle,org.eclipse.core.runtime.compatibility.auth,3.2.200.v20100517,"org.eclipse.core.runtime.compatibility.auth",1352749572275
+started,bundle,org.eclipse.debug.core,3.6.0.v20100519,"org.eclipse.debug.core",1352749572276
+started,bundle,org.eclipse.epp.usagedata.gathering,1.3.1.R201102081640,"org.eclipse.epp.usagedata.gathering",1352749572276
+started,bundle,org.eclipse.epp.usagedata.recording,1.3.1.R201102081640,"org.eclipse.epp.usagedata.recording",1352749572277
+started,bundle,org.eclipse.equinox.app,1.3.1.R36x_v20100803,"org.eclipse.equinox.app",1352749572278
+started,bundle,org.eclipse.equinox.common,3.6.0.v20100503,"org.eclipse.equinox.common",1352749572278
+started,bundle,org.eclipse.equinox.ds,1.2.1.R36x_v20100803,"org.eclipse.equinox.ds",1352749572279
+started,bundle,org.eclipse.equinox.event,1.2.0.v20100503,"org.eclipse.equinox.event",1352749572413
+started,bundle,org.eclipse.equinox.p2.core,2.0.3.R36x_v20110111,"org.eclipse.equinox.p2.core",1352749572424
+started,bundle,org.eclipse.equinox.p2.directorywatcher,1.0.203.R36x_v20101220,"org.eclipse.equinox.p2.directorywatcher",1352749572424
+started,bundle,org.eclipse.equinox.p2.engine,2.0.1.R36x_v20110201,"org.eclipse.equinox.p2.engine",1352749572425
+started,bundle,org.eclipse.equinox.p2.metadata,2.0.1.R36x_v20101202,"org.eclipse.equinox.p2.metadata",1352749572426
+started,bundle,org.eclipse.equinox.p2.metadata.repository,1.1.0.v20100513,"org.eclipse.equinox.p2.metadata.repository",1352749572427
+started,bundle,org.eclipse.equinox.p2.operations,2.0.0.v20100510,"org.eclipse.equinox.p2.operations",1352749572427
+started,bundle,org.eclipse.equinox.p2.reconciler.dropins,1.1.2.R36x_v20110114,"org.eclipse.equinox.p2.reconciler.dropins",1352749572428
+started,bundle,org.eclipse.equinox.p2.repository,2.0.2.R36x_v20110111-1500,"org.eclipse.equinox.p2.repository",1352749572432
+started,bundle,org.eclipse.equinox.p2.ui.sdk.scheduler,1.0.0.v20100507-1815,"org.eclipse.equinox.p2.ui.sdk.scheduler",1352749572433
+started,bundle,org.eclipse.equinox.p2.updatechecker,1.1.101.R36x_v20100823,"org.eclipse.equinox.p2.updatechecker",1352749572433
+started,bundle,org.eclipse.equinox.preferences,3.3.0.v20100503,"org.eclipse.equinox.preferences",1352749572459
+started,bundle,org.eclipse.equinox.registry,3.5.0.v20100503,"org.eclipse.equinox.registry",1352749572460
+started,bundle,org.eclipse.equinox.security,1.0.200.v20100503,"org.eclipse.equinox.security",1352749572461
+started,bundle,org.eclipse.equinox.util,1.0.200.v20100503,"org.eclipse.equinox.util",1352749572461
+started,bundle,org.eclipse.help,3.5.0.v20100524,"org.eclipse.help",1352749572462
+started,bundle,org.eclipse.jface,3.6.2.M20110210-1200,"org.eclipse.jface",1352749572463
+started,bundle,org.eclipse.mylyn.bugzilla.core,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.bugzilla.core",1352749572469
+started,bundle,org.eclipse.mylyn.bugzilla.ui,3.4.3.v20110131-0100-e3x,"org.eclipse.mylyn.bugzilla.ui",1352749572470
+started,bundle,org.eclipse.mylyn.commons.net,3.4.1.v20100625-2100-e3x,"org.eclipse.mylyn.commons.net",1352749572470
+started,bundle,org.eclipse.mylyn.commons.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.commons.ui",1352749572471
+started,bundle,org.eclipse.mylyn.monitor.ui,3.4.1.v20110131-0100-e3x,"org.eclipse.mylyn.monitor.ui",1352749572472
+started,bundle,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui",1352749572475
+started,bundle,org.eclipse.ui.ide,3.6.2.M20101201-0800,"org.eclipse.ui.ide",1352749572477
+started,bundle,org.eclipse.ui.net,1.2.100.I20100505-1245,"org.eclipse.ui.net",1352749572477
+started,bundle,org.eclipse.ui.views,3.5.1.M20110202-0800,"org.eclipse.ui.views",1352749572478
+started,bundle,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"org.eclipse.ui.workbench",1352749572478
+started,bundle,org.eclipse.update.configurator,3.3.100.v20100512,"org.eclipse.update.configurator",1352749572479
+started,bundle,org.eclipse.update.core,3.2.402.R36x_v20100629,"org.eclipse.update.core",1352749572524
+started,bundle,org.eclipse.update.ui,3.2.300.v20100512,"org.eclipse.update.ui",1352749572524
+started,bundle,com.aptana.ide.core,2.0.5.1278523018,"com.aptana.ide.core",1352749572525
+started,bundle,com.aptana.ide.core.ui,2.0.5.1278523018,"com.aptana.ide.core.ui",1352749572525
+started,bundle,com.aptana.ide.debug.ui,2.0.0.1254164293,"com.aptana.ide.debug.ui",1352749572526
+started,bundle,com.aptana.ide.epl,2.0.0.1278523018,"com.aptana.ide.epl",1352749572526
+started,bundle,com.aptana.ide.intro,2.0.0.1278523018,"com.aptana.ide.intro",1352749572527
+os,sysinfo,,,"linux",1352749572574
+arch,sysinfo,,,"x86_64",1352749572574
+ws,sysinfo,,,"gtk",1352749572574
+locale,sysinfo,,,"en_US",1352749572574
+processors,sysinfo,,,"1",1352749572574
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1352749572574
+java.runtime.version,sysinfo,,,"1.6.0_24-b07",1352749572574
+java.specification.name,sysinfo,,,"Java Platform API Specification",1352749572574
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1352749572575
+java.specification.version,sysinfo,,,"1.6",1352749572575
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1352749572575
+java.version,sysinfo,,,"1.6.0_24",1352749572575
+java.vm.info,sysinfo,,,"mixed mode",1352749572575
+java.vm.name,sysinfo,,,"Java HotSpot(TM) 64-Bit Server VM",1352749572575
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1352749572575
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1352749572575
+java.vm.specification.version,sysinfo,,,"1.0",1352749572575
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1352749572575
+java.vm.version,sysinfo,,,"19.1-b02",1352749572575
+started,bundle,org.eclipse.ui.forms,3.5.2.r36_v20100702,"org.eclipse.ui.forms",1352749572627
+started,bundle,org.eclipse.mylyn.context.core,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.core",1352749572706
+started,bundle,org.eclipse.mylyn.context.ui,3.4.2.v20110131-0100-e3x,"org.eclipse.mylyn.context.ui",1352749572719
+started,bundle,org.eclipse.mylyn.tasks.ui,3.4.3.v20110131-0100-e3x,"org.eclipse.mylyn.tasks.ui",1352749572862
+started,bundle,org.eclipse.mylyn.team.ui,3.4.3.v20110131-0100-e3x,"org.eclipse.mylyn.team.ui",1352749572902
+started,bundle,org.eclipse.update.scheduler,3.2.300.v20100512,"org.eclipse.update.scheduler",1352749572903
+started,bundle,com.aptana.ide.update,2.0.5.1278523018,"com.aptana.ide.update",1352749573245
+started,bundle,com.aptana.ide.update.eclipse34,2.0.5.1278614541,"com.aptana.ide.update.eclipse34",1352749573286
+started,bundle,com.aptana.ide.update.eclipse35,2.0.5.1278614541,"com.aptana.ide.update.eclipse35",1352749573334
+started,bundle,com.aptana.ide.update.eclipse36,1.0.0.1278614541,"com.aptana.ide.update.eclipse36",1352749573338
+started,bundle,org.eclipse.team.core,3.5.101.R36x_v20110203-1036,"org.eclipse.team.core",1352749573441
+started,bundle,com.aptana.ide.debug.core,2.0.0.1278523018,"com.aptana.ide.debug.core",1352749573489
+started,bundle,com.aptana.ide.desktop.integration.protocolhandler,2.0.0.1278523018,"com.aptana.ide.desktop.integration.protocolhandler",1352749573521
+started,bundle,com.aptana.ide.desktop.integration.server,2.0.0.1278523018,"com.aptana.ide.desktop.integration.server",1352749573525
+started,bundle,com.aptana.ide.installer,2.0.5.1278523018,"com.aptana.ide.installer",1352749573584
+started,bundle,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal",1352749574263
+started,bundle,com.aptana.ide.editors,2.0.5.1278523018,"com.aptana.ide.editors",1352749574311
+started,bundle,com.aptana.ide.scripting,2.0.0.1278523018,"com.aptana.ide.scripting",1352749574313
+started,bundle,com.aptana.ide.server.jetty,2.0.0.1278523018,"com.aptana.ide.server.jetty",1352749574457
+started,bundle,com.aptana.ide.update.ui,2.0.0.1278614541,"com.aptana.ide.update.ui",1352749574582
+started,bundle,org.eclipse.eclipsemonkey,2.0.5.1278445773,"org.eclipse.eclipsemonkey",1352749574645
+started,bundle,org.eclipse.eclipsemonkey.lang.javascript,2.0.0.1277749615,"org.eclipse.eclipsemonkey.lang.javascript",1352749574673
+started,bundle,org.eclipse.jsch.core,1.1.200.I20100505-1245,"org.eclipse.jsch.core",1352749575178
+started,bundle,org.eclipse.team.cvs.core,3.3.301.R36x_v20110119-0815,"org.eclipse.team.cvs.core",1352749575179
+started,bundle,org.eclipse.team.ui,3.5.102.R36x_v20110203-1036,"org.eclipse.team.ui",1352749575256
+started,bundle,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console",1352749575318
+started,bundle,org.eclipse.team.cvs.ui,3.3.302.R36x_v20110203-1036,"org.eclipse.team.cvs.ui",1352749576381
+started,bundle,org.eclipse.debug.ui,3.6.3.v20101201_r362,"org.eclipse.debug.ui",1352749576619
+started,bundle,com.aptana.ide.server,2.0.0.1278523018,"com.aptana.ide.server",1352749586752
+started,bundle,com.aptana.ide.documentation,2.0.0.1278523018,"com.aptana.ide.documentation",1352749587936
+started,bundle,com.aptana.ide.samples.ui,2.0.0.1278614541,"com.aptana.ide.samples.ui",1352749587983
+started,bundle,com.aptana.ide.update.portal,2.0.0.1278614541,"com.aptana.ide.update.portal",1352749588002
+opened,editor,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal.ui.MyAptanaEditor",1352749588048
+started,bundle,org.eclipse.eclipsemonkey.doms,2.0.0.1277749615,"org.eclipse.eclipsemonkey.doms",1352749588444
+started,bundle,com.aptana.ide.server.core,2.0.0.1278523018,"com.aptana.ide.server.core",1352749588580
+started,bundle,org.eclipse.ui.navigator,3.5.0.I20100601-0800,"org.eclipse.ui.navigator",1352749689687
+activated,editor,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal.ui.MyAptanaEditor",1352749689758
+activated,view,org.eclipse.ui.views,3.5.1.M20110202-0800,"org.eclipse.ui.views.ContentOutline",1352749690088
+closed,editor,com.aptana.ide.server.portal,2.0.0.1278523018,"com.aptana.ide.server.portal.ui.MyAptanaEditor",1352749690092
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352749693919
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.import",1352749729412
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352749729467
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352749734838
+started,bundle,com.aptana.ide.core.epl,2.0.0.1278614541,"com.aptana.ide.core.epl",1352749748715
+started,bundle,com.aptana.ide.core.io,2.0.5.1278614541,"com.aptana.ide.core.io",1352749748731
+started,bundle,com.aptana.ide.ui.io,2.0.5.1278614541,"com.aptana.ide.ui.io",1352749748809
+started,bundle,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.resources",1352749749866
+started,bundle,com.aptana.ide.syncing.core,2.0.5.1278614541,"com.aptana.ide.syncing.core",1352749750312
+started,bundle,com.aptana.ide.syncing.ui,2.0.5.1278614541,"com.aptana.ide.syncing.ui",1352749750344
+started,bundle,com.aptana.ide.ui,2.0.0.1278614541,"com.aptana.ide.ui",1352749750634
+started,bundle,org.eclipse.ui.editors,3.6.1.r361_v20100825-0800,"org.eclipse.ui.editors",1352749750883
+started,bundle,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.workbench.texteditor",1352749751027
+opened,view,com.aptana.ide.ui.io,2.0.5.1278614541,"com.aptana.ide.ui.io.fileExplorerView",1352749751231
+started,bundle,org.eclipse.core.filebuffers,3.5.100.v20100520-0800,"org.eclipse.core.filebuffers",1352749751548
+activated,view,com.aptana.ide.ui.io,2.0.5.1278614541,"com.aptana.ide.ui.io.fileExplorerView",1352749751614
+started,bundle,org.eclipse.jdt.core,3.6.2.v_A76_R36x,"org.eclipse.jdt.core",1352749751798
+started,bundle,org.eclipse.jdt.core.manipulation,1.3.0.v20100520-0800,"org.eclipse.jdt.core.manipulation",1352749752271
+started,bundle,org.eclipse.jdt.ui,3.6.2.r362_v20110203,"org.eclipse.jdt.ui",1352749752281
+started,bundle,org.python.pydev.core,1.6.5.2011020317,"org.python.pydev.core",1352749753912
+started,bundle,com.python.pydev.analysis,1.6.5.2011020317,"com.python.pydev.analysis",1352749754045
+started,bundle,org.python.pydev,1.6.5.2011020317,"org.python.pydev",1352749754093
+started,bundle,org.python.pydev.parser,1.6.5.2011020317,"org.python.pydev.parser",1352749754280
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352749754357
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352749754358
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352749754359
+error,log,,,"Required filter org.eclipse.ui.navigator.resources.filters.workingSet is not present. Working set support will not function correctly.",1352749755498
+error,log,,,"",1352749755499
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.https_connection.indexcache (File name too long)",1352749805298
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Exception.ExceptionHandler.indexcache (File name too long)",1352749805374
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.MongoEncoder.MongoEncoder.indexcache (File name too long)",1352749805425
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.__init__.indexcache (File name too long)",1352749805438
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.countries.indexcache (File name too long)",1352749805441
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.exceptions.indexcache (File name too long)",1352749805443
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.https_connection.indexcache (File name too long)",1352749805445
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.interface.indexcache (File name too long)",1352749805449
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.response.indexcache (File name too long)",1352749805452
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.settings.indexcache (File name too long)",1352749805482
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Calendar.CalendarHandler.indexcache (File name too long)",1352749805537
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Calendar.__init__.indexcache (File name too long)",1352749805538
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Exception.ExceptionHandler.indexcache (File name too long)",1352749805556
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Exception.__init__.indexcache (File name too long)",1352749805558
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Expense.ExpenseHandler.indexcache (File name too long)",1352749805573
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Expense.__init__.indexcache (File name too long)",1352749805575
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Guides.GuidesHandler.indexcache (File name too long)",1352749805579
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Guides.__init__.indexcache (File name too long)",1352749805582
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Map.BrowseTripHandler.indexcache (File name too long)",1352749805589
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Map.CreateTripHandler.indexcache (File name too long)",1352749805607
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Map.ProcessTripHandler.indexcache (File name too long)",1352749805612
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.MongoEncoder.MongoEncoder.indexcache (File name too long)",1352749805630
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.MongoEncoder.__init__.indexcache (File name too long)",1352749805632
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.__init__.indexcache (File name too long)",1352749805635
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.__init__.indexcache (File name too long)",1352749805637
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.countries.indexcache (File name too long)",1352749805648
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.exceptions.indexcache (File name too long)",1352749805650
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.https_connection.indexcache (File name too long)",1352749805652
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.interface.indexcache (File name too long)",1352749805669
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.pay.indexcache (File name too long)",1352749805692
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.response.indexcache (File name too long)",1352749805700
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.PaymentMethod.paypal.settings.indexcache (File name too long)",1352749805703
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Search.SearchHandler.indexcache (File name too long)",1352749805730
+error,log,,,"/home/jason/workspace/TripShare/.metadata/.plugins/org.eclipse.core.resources/.projects/mtgtrade2/com.python.pydev.analysis/indexcache/mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.mtgtrade2.Search.__init__.indexcache (File name too long)",1352749805732

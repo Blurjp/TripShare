@@ -1,0 +1,152 @@
+<!--
+#####################################################################
+#                                                                   #
+#    Copyright © 1999-2000 CGISCRIPT.NET - All Rights Reserved     #
+#                                                                   #
+#####################################################################
+#                                                                   #
+#          THIS COPYRIGHT INFORMATION MUST REMAIN INTACT            #
+#                AND MAY NOT BE MODIFIED IN ANY WAY                 #
+#                                                                   #
+#####################################################################
+#
+# When you downloaded this script you agreed to accept the terms
+# of this Agreement. This Agreement is a legal contract, which
+# specifies the terms of the license and warranty limitation between
+# you and CGISCRIPT.NET. You should carefully read the following
+# terms and conditions before installing or using this software.
+# Unless you have a different license agreement obtained from
+# CGISCRIPT.NET, installation or use of this software indicates
+# your acceptance of the license and warranty limitation terms
+# contained in this Agreement. If you do not agree to the terms of this
+# Agreement, promptly delete and destroy all copies of the Software.
+#
+# Versions of the Software
+# Only one copy of the registered version of CGISCRIPT.NET
+# may used on one web site.
+#
+# License to Redistribute
+# Distributing the software and/or documentation with other products
+# (commercial or otherwise) or by other than electronic means without
+# CGISCRIPT.NET's prior written permission is forbidden.
+# All rights to the CGISCRIPT.NET software and documentation not expressly
+# granted under this Agreement are reserved to CGISCRIPT.NET.
+#
+# Disclaimer of Warranty
+# THIS SOFTWARE AND ACCOMPANYING DOCUMENTATION ARE PROVIDED "AS IS" AND
+# WITHOUT WARRANTIES AS TO PERFORMANCE OF MERCHANTABILITY OR ANY OTHER
+# WARRANTIES WHETHER EXPRESSED OR IMPLIED.   BECAUSE OF THE VARIOUS HARDWARE
+# AND SOFTWARE ENVIRONMENTS INTO WHICH CGISCRIPT.NET MAY BE USED, NO WARRANTY
+# OF FITNESS FOR A PARTICULAR PURPOSE IS OFFERED.  THE USER MUST ASSUME THE
+# ENTIRE RISK OF USING THIS PROGRAM.  ANY LIABILITY OF CGISCRIPT.NET WILL BE
+# LIMITED EXCLUSIVELY TO PRODUCT REPLACEMENT OR REFUND OF PURCHASE PRICE.
+# IN NO CASE SHALL CGISCRIPT.NET BE LIABLE FOR ANY INCIDENTAL, SPECIAL OR
+# CONSEQUENTIAL DAMAGES OR LOSS, INCLUDING, WITHOUT LIMITATION, LOST PROFITS
+# OR THE INABILITY TO USE EQUIPMENT OR ACCESS DATA, WHETHER SUCH DAMAGES ARE
+# BASED UPON A BREACH OF EXPRESS OR IMPLIED WARRANTIES, BREACH OF CONTRACT,
+# NEGLIGENCE, STRICT TORT, OR ANY OTHER LEGAL THEORY. THIS IS TRUE EVEN IF
+# CGISCRIPT.NET IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO CASE WILL
+# CGISCRIPT.NET' LIABILITY EXCEED THE AMOUNT OF THE LICENSE FEE ACTUALLY PAID
+# BY LICENSEE TO CGISCRIPT.NET.
+#
+# Credits:
+# Andy Angrick - Programmer - angrick@cgiscript.net
+# Mike Barone - Design - mbarone@cgiscript.net
+#
+# For information about this script or other scripts see
+# http://www.cgiscript.net
+#
+# Thank you for trying out our script.
+# If you have any suggestions or ideas for a new innovative script
+# please direct them to suggest@cgiscript.net.  Thanks.
+#
+-->
+<html>
+
+<head>
+
+<title>csSearch by CGI Script.net</title>
+
+<style type="text/css"><!--
+a{color:#41779E;text-decoration:none;font-weight:bold}
+a:active{color:red;font-weight:bold}
+a:hover{color:#7A007B;text-decoration:underline;font-weight:bold}
+
+INPUT.button { background-color:#eeeeee;font:tahoma;font-weight:bold;color:#000080;font-size:10pt; }
+--></style>
+</head>
+
+<body>
+
+<form method="POST" action="in(cgiurl)" name=form1 onSubmit="return SetPass();">
+<input type=hidden name=command value="manage">
+<div align="center">
+  <center>
+  <table width=100% height="100%"><tr><td valign="middle" align="center">
+  <table border="0" cellpadding="5" cellspacing="0" bgcolor="#C0C0C0">
+    <tr>
+      <td>
+        <div align="center">
+          <table border="1" cellpadding="5" cellspacing="0" bordercolorlight="#000000" bordercolordark="#FFFFFF">
+            <tr>
+              <td>
+                <div align="center">
+                  <table border="0" cellpadding="5" cellspacing="0">
+                    <tr>
+                      <td colspan="2"><img border="1" src="in(htmlurl)/images/top.gif" alt="Login" width="332" height="80"></td>
+                    </tr>
+                    <tr>
+                      <td align="right"><font size="2" face="tahoma,arial,helvetica"><b>Username</b></font><font face="tahoma,arial,helvetica"><b><font size="2">:
+                        </font></b></font></td>
+                      <td><input type="text" name="UserName" size="30"></td>
+                    </tr>
+                    <tr>
+                      <td align="right"><font face="tahoma,arial,helvetica"><b><font size="2">Password:
+                        </font></b></font></td>
+                      <td><input type="password" name="PassWord" size="30"></td>
+                    </tr>
+                    <tr>
+                      <td align="center" colspan="2" valign="middle"><input CLASS="button" type="submit" value="-=Login=-" name="B1"><img border="0" src="http://www.cgiscript.net/s-cssearch.gif" width="1" height="1"></td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </center>
+        </table>
+
+      </div>
+    </td>
+  </tr>
+  </table>
+
+<!-- Please leave Me Here :) -->
+
+<p align="center"><font face="Tahoma" size="1">Powered by: <a href="http://www.cgiscript.net" target="_blank">CGI Script.net</a></font>
+
+</td></tr>
+  </table>
+</div>
+</form>
+
+
+</body>
+<script language=javascript>
+document.form1.UserName.focus();
+function SetPass(){
+var UserName = document.form1.UserName.value;
+var PassWord = document.form1.PassWord.value;
+if(!UserName){
+alert("Error. Please enter a username");
+return false;
+}
+if(!PassWord){
+alert("Error. Please enter a password");
+return false;
+}
+document.cookie = "UserName="+UserName+";path=/";
+document.cookie = "PassWord="+PassWord+";path=/";
+return true;
+}
+</script>
+</html>
