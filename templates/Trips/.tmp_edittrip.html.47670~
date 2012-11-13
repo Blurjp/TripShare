@@ -234,30 +234,17 @@
 </ul>
 
 </div>
+
+
+ 
 </div>
 </div>
  <div style="clear:both"></div>
- 
  {% if current_user %}
 {% if current_user['user_id'] in [member['user_id'] for group in singletrip['groups'] for member in group['members'] if member['user_id'] == current_user['user_id']]  %}
+
 <script type='text/javascript'>
-
-$(document).ready(function() {
-	
-	$('.show_site').live('mouseover',
-  function(){
-  	
-  	  $(this).find('.trip_site_move').show();
-  });
-  
-    $('.show_site').live('mouseout',
-  function(){
-  	
-	$(this).find('.trip_site_move').hide();
-	});
-  
-
-	
+$(function() {
  $('.site_date').live('click', function () {
             $(this).datepicker('destroy').datepicker({showOn: 'both'}).focus();
     });
@@ -266,21 +253,8 @@ $(document).ready(function() {
  $('.site_input_date').live('click', function () {
             $(this).datepicker('destroy').datepicker({showOn: 'both'}).focus();
     });
+	});
 	
-	
-  
-  $('.trip_site_move_up').live('click',function(){
-  	
-  	$(this).closest('li').prev().before($(this).closest('li'));
-	$(this).closest('li .trip_site_move').hide();
-  });
-  $('.trip_site_move_down').live('click',function(){
-  	$(this).closest('li').next().after($(this).closest('li'));
-	$(this).closest('li .trip_site_move').hide();
-  });
-
-});
-  
 	
 var trip_tag_add_form_displayed;
 function trip_tag_add_show(status)
@@ -370,27 +344,9 @@ function ShowTripTag(tag)
 	
 }
 </script>
-{% else %}
+{%end%}
+{%end%}
 <script type='text/javascript'>
-var trip_tag_add_form_displayed;
-function trip_tag_add_show(status)
-{
-	
-    if(!$('#trip_tag_add_show').length) { return; } 
-    
-    if(status && !trip_tag_add_form_displayed)
-    {
-        $('#trip_tag_add_show').show();
-    }
-    else
-    {
-        $('#trip_tag_add_show').hide();
-    }
-}
-</script>
-{%end%}
-{%end%}
-
 
 </script>
 <div id="above-body">
@@ -507,3 +463,9 @@ function trip_tag_add_show(status)
 
 </body> 
 </html>
+
+
+ 
+
+
+

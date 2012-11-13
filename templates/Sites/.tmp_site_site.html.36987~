@@ -1,0 +1,62 @@
+<div class="guide_route" style="width:40% ; float:left; padding-left:20px">
+{% if site %}
+
+<ul class="route">
+
+<li class="show_site">
+<div class="site-details">
+
+  <div class="site-bar">
+  <img class="picture small"  src="{{ static_url("icon/site_icon2.png") }}">
+  <h2><a href="/sights/{{site['site_name']}}">
+    <span class="guide_sights">{{site['site_name']}} </span><br>
+  </a></h2>
+  </div>
+  <p>{{site['description']}}</p>
+<div class="action-bar">
+<div class="actions">
+<ul class="right" >
+
+{% if not current_user %}
+<input type ="button" value="Import" href="#login">
+<li>
+<a href="#login" >like this</a> 
+</li>
+<li>\ 
+</li>
+<li>
+<a href="#login" >save this</a>
+</li>
+{% else %}
+<li>
+{% if site['site_name'] not in  current_user['like_site'] %}
+
+<a class="like_site trip_action" sid={{site['site_id']}} actiontype="like" targettype="site" alt="Like it" ><span class="like_trip_icon"></a>
+
+{% else %}
+
+<a class="like_site trip_action" sid={{site['site_id']}} actiontype="like" targettype="site" alt="Unlike it"><span class="un like_trip_icon"></a>
+</li>
+{% end %}
+<li>
+\
+</li>
+<li>
+{% if site['site_name'] not in  current_user['save_site'] %}
+<a class="save_trip trip_action" sid={{site['site_id']}} actiontype="save" targettype="site" alt="Save it"><span class="save_trip_icon"></a>
+{% else %}
+<a class="save_trip trip_action" sid={{site['site_id']}} actiontype="save" targettype="site" alt="Unsave it"><span class="un save_trip_icon"></a>
+{% end %}
+</li>
+{% end %}
+
+</div>
+</div>
+</div>
+</div>
+
+</li>
+
+</ul>
+{% end %}
+</div>

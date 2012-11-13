@@ -1079,28 +1079,8 @@ $(document).ready(function() {
 		$.postJSON('/postcomment', message, function(response){PostCommentResponse(response)}, "text");	
 });
 
-  $('.show_site').live('mouseover',
-  function()
-  {
-  	  $(this).find('.trip_site_move').show();
-  }
-  );
-  
-    $('.show_site').live('mouseout',
-  function(){$(this).find('.trip_site_move').hide();}
-  );
-  
 
-  
-  $('.trip_site_move_up').live('click',function(){
-  	
-  	$(this).closest('li').prev().before($(this).closest('li'));
-	$(this).closest('li .trip_site_move').hide();
-  });
-  $('.trip_site_move_down').live('click',function(){
-  	$(this).closest('li').next().after($(this).closest('li'));
-	$(this).closest('li .trip_site_move').hide();
-  });
+	
 
   
     $('.add_trip_site_remove').live('click',function(){
