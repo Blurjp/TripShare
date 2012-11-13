@@ -1,0 +1,226 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352756725231
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352756725279
+error,log,,,"No property tester contributes a property com.aptana.ide.core.ui.nature to type class org.python.pydev.navigator.elements.PythonProjectSourceFolder",1352756734020
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352756738886
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756760028
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756760029
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756760029
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.import",1352756760520
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.import",1352756760521
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352756760607
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756765036
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756765036
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756765037
+opened,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352756765059
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352756765677
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352756766023
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352756769847
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352756771608
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352756774323
+closed,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352756774411
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756797115
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756797116
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756825496
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756825497
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756825503
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756825745
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756825746
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756853670
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756853670
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756879664
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352756879665
+error,log,,,"Unable to resolve module for:L/mtgtrade2/Auth/AuthHandler.py",1352756946455
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352756998363
+opened,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757013442
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757013499
+executed,command,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.openSearchDialog",1352757014426
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757014526
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757015230
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757061718
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757069545
+executed,command,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.openSearchDialog",1352757096225
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757096317
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757097310
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757173007
+opened,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757232234
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757232443
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757232600
+opened,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757258064
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757258291
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757258379
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352757268459
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757273931
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352757283170
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757283248
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1352757284643
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757350884
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757449099
+opened,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757449631
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757449827
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757449949
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757456702
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757477152
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757508032
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757549322
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757575576
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352757575720
+closed,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352757575918
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352757609660
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757609740
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757614804
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.copy",1352757748752
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352757790478
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757790558
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757801856
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352757806012
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757827549
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352757839441
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.copy",1352757900576
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1352757901682
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.copy",1352757920405
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1352757921359
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352757926680
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352757940455
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352757950663
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758019438
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758026401
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758028956
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1352758030688
+opened,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352758032592
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352758032623
+executed,command,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.openSearchDialog",1352758033351
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758033584
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758034523
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758076860
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758099281
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758100460
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.copy",1352758130160
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1352758134151
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352758134547
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352758140136
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352758151938
+opened,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758152328
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758152567
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352758152606
+opened,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758157445
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758157645
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352758157767
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758174332
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758400048
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758400205
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758407686
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758879512
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352758879619
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352758880512
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758957454
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352758994163
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759008677
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759019111
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759020024
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759020270
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759020385
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759038882
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759040414
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759042786
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759042884
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759047791
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759047855
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759055765
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759055855
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759058186
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759061198
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759061800
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759061861
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759062734
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759062783
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759197587
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759280340
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759281742
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759281841
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352759312097
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759312157
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759317933
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352759320534
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759320631
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759324768
+opened,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759328934
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759329419
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759329456
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352759329844
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352759329844
+error,log,,,"PythonInterpreterManager:Interpreter is not properly configured!\nPlease go to window > preferences > PyDev > Python Interpreters and configure it.\nIf this is not supposed to be a Python project, change the project type on the\nproject properties to the project you want (e.g.: Jython project).",1352759329845
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759330265
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352759349375
+opened,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759355494
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759355924
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352759356086
+error,log,,,"Unable to resolve module for:L/mtgtrade2/Map/ProcessTripHandler.py",1352759366433
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759475867
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352759509933
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759510038
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759520882
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759615304
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759629650
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352759633112
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759633197
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759638498
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759638572
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759639389
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.findReplace",1352759640624
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759640763
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759651629
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759744711
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759747406
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759747442
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759747654
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759796917
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759873347
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759878551
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759885806
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759898588
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759898590
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759898854
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352759910636
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759916098
+closed,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759916101
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352759924015
+opened,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759932202
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759932442
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352759932481
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759937103
+activated,view,org.eclipse.ui.navigator.resources,3.4.202.M20101124-0800,"org.eclipse.ui.navigator.ProjectExplorer",1352759937109
+closed,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352759937162
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759943047
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759966619
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759978281
+activated,editor,org.python.pydev,1.6.5.2011020317,"org.python.pydev.editor.PythonEditor",1352759980421
+activated,editor,com.aptana.ide.editor.html,2.0.0.1278523018,"com.aptana.ide.editors.HTMLEditor",1352759990621
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352759992523
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352760005894
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.copy",1352760030236
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1352760031612
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352760031982
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352760033062
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352760046527
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.file.save",1352760054568
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352760055540
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352760065216
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352760078279
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352760093368
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786347746
+error,log,,,"(Build 2.0.0.1278523018) [ERROR] Search in directory UI was not created",1352786350306
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786350681
+executed,command,org.eclipse.ui,3.6.2.M20110203-1100,"org.eclipse.ui.edit.paste",1352786354644
+opened,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352786361251
+activated,view,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.views.SearchView",1352786361281
+executed,command,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.openSearchDialog",1352786362324
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786362465
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786363407
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786414015
+error,log,,,"(Build 2.0.0.1278523018) [ERROR] Search in directory UI was not created",1352786557962
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786558212
+executed,command,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search.ui.openSearchDialog",1352786562624
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786562707
+deactivated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786563266
+activated,workbench,org.eclipse.ui.workbench,3.6.2.M20110210-1200,"",1352786574680
