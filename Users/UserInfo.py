@@ -398,8 +398,8 @@ class UserPictureHandler(BaseHandler):
         
         s3_path = "/userpix_thumbs/"+str(user_id)+str(file['filename'])
         
-        access_key = "AKIAJLDHNWC3WXD6PGVA"
-        secret_key = "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"
+        access_key = ""
+        secret_key = ""
         bucket = "tripshare"
 
         conn = S3Connection(access_key, secret_key)
